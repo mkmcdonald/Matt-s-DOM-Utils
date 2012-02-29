@@ -31,7 +31,7 @@ if (Utils) {
                                 (i.e. whitespace); throws an error
                                 if invalid characters are detected.
 			*/
-			var str = String(name);
+			var str = String(name),
 				index = 0,
 				max = str.length,
 				invalidChars =
@@ -123,7 +123,7 @@ if (Utils) {
                                 asserting if the class passed is
                                 in the token list generated.
 			*/
-			var str = String(name);
+			var str = String(name),
 				validClass = checkClass(str),
 				list = buildClassList(el),
 				index = 0,
@@ -156,7 +156,7 @@ if (Utils) {
 				Utils.nodes.isElementNode(
 					el
 				),
-				str = String(name);
+				str = String(name),
 				validClass = checkClass(str),
 				has,
 				list;
@@ -183,7 +183,7 @@ if (Utils) {
                                 removeClass. See removeClass
                                 for details.
 			*/
-			var str = String(name);
+			var str = String(name),
 				validClass = checkClass(str),
 				index = list.length,
 				success = false;
@@ -215,7 +215,7 @@ if (Utils) {
 				Utils.nodes.isElementNode(
 					el
 				),
-				str = String(name);
+				str = String(name),
 				has,
 				list,
 				removed = false;
