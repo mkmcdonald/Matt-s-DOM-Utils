@@ -6,9 +6,9 @@
 		"results": document.getElementById("results")
 	},
 		childNodes,
-		traversedChildNodes,
+		childNodesTraversed,
 		children,
-		traversedChildren;
+		childrenTraversed;
 
 	function createMessage(text)
 	{
