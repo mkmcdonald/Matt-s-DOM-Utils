@@ -9,6 +9,22 @@
 		canDetect,
 		canRemove;
 
+	function addValues()
+	{
+		canAdd = Utils.classes.add(
+			"good",
+			commonElements.test
+		);
+		canDetect = Utils.classes.has(
+			"good",
+			commonElements.test
+		);
+		canRemove = Utils.classes.remove(
+			"good",
+			commonElements.test
+		);
+	}
+
 	function createMessage(text)
 	{
 		var str = String(text);
@@ -35,6 +51,7 @@
 
 	function runTest(evt)
 	{
+		addValues();
 		addMessage(canAdd);
 		addMessage(canDetect);
 		addMessage(canRemove);
@@ -57,22 +74,5 @@
 		commonElements.stop.onclick = clearTest;
 	}
 
-	function addValues()
-	{
-		canAdd = Utils.classes.add(
-			"good",
-			commonElements.test
-		);
-		canDetect = Utils.classes.has(
-			"good",
-			commonElements.test
-		);
-		canRemove = Utils.classes.remove(
-			"good",
-			commonElements.test
-		);
-	}
-
 	addHandlers();
-	addValues();
 }());
