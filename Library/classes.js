@@ -1,26 +1,17 @@
 if (Utils) {
 	(function () {
-		var INVALID_CHARACTER =
+		var INVALID_CHARACTERS = {
+			" ": true,
+			"\t": true,
+			"\n": true,
+			"\f": true,
+			"\r": true
+		},
+			INVALID_CHARACTER =
 			"Class name passed contains an " +
 			"invalid character; whitespace is " +
 			"not permitted";
 
-		function generateInvalidChars()
-		{
-			/*
-                                Private method that returns
-                                an object containing characters
-                                deemed invalid for use inside of
-                                a single "class".
-			*/
-			return {
-				" ": true,
-				"\t": true,
-				"\n": true,
-				"\f": true,
-				"\r": true
-			};
-		}
 
 		function checkClass(name)
 		{
@@ -34,13 +25,11 @@ if (Utils) {
 			var str = String(name),
 				index = 0,
 				max = str.length,
-				invalidChars =
-					generateInvalidChars(),
 				char,
 				invalidChar;
 			while (index < max) {
 				char = str.charAt(index),
-				invalidChar = invalidChars[char];
+				invalidChar = INVALID_CHARS[char];
 				if (typeof invalidChar !==
 					"undefined") {
 					throw new Error(
@@ -180,7 +169,7 @@ if (Utils) {
 		{
 			/*
                                 Private helper method for
-                                removeClass. See removeClass
+                                `removeClass`. See `removeClass`
                                 for details.
 			*/
 			var str = String(name),

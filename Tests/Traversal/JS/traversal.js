@@ -10,6 +10,36 @@
 		children,
 		childrenTraversed;
 
+	function assignValues()
+	{
+		childNodes = Utils.traversal.getChildNodes(
+			commonElements.test
+		);
+		childNodesTraversed =
+			Utils.traversal.traverseChildNodes(
+				commonElements.test,
+				optimisticFilter
+			);
+		children = Utils.traversal.getChildren(
+			commonElements.test
+		);
+		childrenTraversed =
+			Utils.traversal.traverseChildren(
+				commonElements.test,
+				pessimisticFilter
+			);
+	}
+
+	function pessimisticFilter(node)
+	{
+		return false;
+	}
+
+	function optimisticFilter(node)
+	{
+		return true;
+	}
+
 	function createMessage(text)
 	{
 		var str = String(text);
@@ -36,6 +66,7 @@
 
 	function runTest(evt)
 	{
+		assignValues();
 		addMessage(childNodes);
 		addMessage(childNodesTraversed);
 		addMessage(children);
@@ -59,36 +90,5 @@
 		commonElements.stop.onclick = clearTest;
 	}
 
-	function pessimisticFilter(node)
-	{
-		return false;
-	}
-
-	function optimisticFilter(node)
-	{
-		return true;
-	}
-
-	function assignValues()
-	{
-		childNodes = Utils.traversal.getChildNodes(
-			commonElements.test
-		);
-		childNodesTraversed =
-			Utils.traversal.traverseChildNodes(
-				commonElements.test,
-				optimisticFilter
-			);
-		children = Utils.traversal.getChildren(
-			commonElements.test
-		);
-		childrenTraversed =
-			Utils.traversal.traverseChildren(
-				commonElements.test,
-				pessimisticFilter
-			);
-	}
-
 	addHandlers();
-	assignValues();
 }());

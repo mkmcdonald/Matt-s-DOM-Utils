@@ -8,7 +8,7 @@ if (Utils) {
 			/*
                                 Private recursive method that
                                 takes iterable objects and
-                                creates an array or null
+                                creates an array; returns `null`
                                 if not applicable.
 			*/
 			var max = source.length,
@@ -34,8 +34,9 @@ if (Utils) {
 		{
 			/*
                                 Public method that exposes a
-                                static array of childNodes or
-                                null if not applicable.
+                                static array of `childNodes` (via
+                                `makeArray`); returns `null` if not
+                                applicable.
 			*/
 			var isNode = Utils.nodes.isNode(node),
 			nodes = null;
@@ -60,12 +61,13 @@ if (Utils) {
                                 Private recursive method that
                                 traverses an array, running a
                                 callback on each node in the
-                                array or null if not applicable.
+                                array; returns `null` if not
+                                applicable.
 			*/
 			var node,
 				called,
 				result = null;
-			if (!nodes.length) {
+			if (!nodes || !nodes.length) {
 				return [];
 			}
 			if (typeof nodes.shift === "function") {
@@ -83,23 +85,20 @@ if (Utils) {
 		}
 
 		function traverseChildNodes(
-			nodes,
+			node,
 			callback
 		)
 		{
 			/*
-                                Private method that creates a
-                                static array of childNodes (via 
-                                makeArray) and then traverses the
-                                array (via traverseLinear) or
-                                returns null if not applicable.
+                                Public method that traverses
+                                a node's `childNodes` (via
+                                `traverseLinear`); returns `null` if
+                                not applicable.
 			*/
-			var result = null;
+			var nodes,
+				result = null;
 			if (typeof callback === "function") {
-				nodes = makeArray(
-					nodes,
-					0
-				);
+				nodes = getChildNodes(node);
 				result = traverseLinear(
 					nodes,
 					callback
@@ -113,9 +112,9 @@ if (Utils) {
                         /*
                                 Private callback method intended
                                 to be used in conjunction with
-                                traverse* methods. Returns true
+                                `traverse*` methods; returns `true`
                                 if node passed is a node and is
-                                an element node. Returns false
+                                an element node; returns `false`
                                 otherwise.
                         */
 			var isNode = Utils.nodes.isNode(node);
@@ -133,8 +132,10 @@ if (Utils) {
 		{
 			/*
                                 Public method that exposes a
-                                static array of children (element
-                                nodes) or null if not applicable.
+                                static array of `children`—also
+                                known as element nodes—(via
+                                `makeArray`); returns `null` if not
+                                applicable.
 			*/
 			var isNode = Utils.nodes.isNode(node),
 				nodes = [],
@@ -143,7 +144,7 @@ if (Utils) {
 				nodes = getChildNodes(
 					node
 				);
-				children = traverseChildNodes(
+				children = traverseLinear(
 					nodes,
 					filterElementNode
 				);
@@ -151,10 +152,34 @@ if (Utils) {
 			return children;
 		}
 
+		function traverseChildren(
+			node,
+			callback
+		)
+		{
+			/*
+                                Public method that traverses
+                                a node's `children` (via
+                                `traverseLinear`); returns `null` if
+                                not applicable.
+			*/
+			var nodes,
+				result = null;
+			if (typeof callback === "function") {
+				nodes = getChildren(node);
+				result = traverseLinear(
+					nodes,
+					callback
+				);
+			}
+			return result;
+		}
+
 		Utils.traversal = Utils.traversal || {
-			"traverseChildNodes": traverseChildNodes,
 			"getChildNodes": getChildNodes,
-			"getChildren": getChildren
+			"traverseChildNodes": traverseChildNodes,
+			"getChildren": getChildren,
+			"traverseChildren": traverseChildren
 		};
 	}());
 }
