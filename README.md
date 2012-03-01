@@ -71,10 +71,10 @@ is retrieving and/or traversing the `children` of a node.
 
 Both tasks are addressed via the following methods:
 
-1. `Utils.nodes.getChildNodes(nodes)`;
-2. `Utils.nodes.traverseChildNodes(nodes, callback)`;
+1. `Utils.nodes.getChildNodes(node)`;
+2. `Utils.nodes.traverseChildNodes(node, callback)`;
 3. `Utils.nodes.getChildren(node)`;
-4. `Utils.nodes.traverseChildren(nodes, callback)`;
+4. `Utils.nodes.traverseChildren(node, callback)`;
 
 See `./Tests/Traversal` for examples.
 
