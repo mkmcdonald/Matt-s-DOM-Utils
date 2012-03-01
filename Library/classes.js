@@ -29,7 +29,7 @@ if (Utils) {
 				invalidChar;
 			while (index < max) {
 				char = str.charAt(index),
-				invalidChar = INVALID_CHARS[char];
+				invalidChar = INVALID_CHARACTERS[char];
 				if (typeof invalidChar !==
 					"undefined") {
 					throw new Error(
