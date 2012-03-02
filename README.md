@@ -123,4 +123,4 @@ For example:
 
 ## Metadata
 
-* Last edited on Thursday March 1st, 2012;
+* Last edited on Friday March 2nd, 2012;
