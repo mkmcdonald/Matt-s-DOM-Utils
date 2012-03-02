@@ -113,15 +113,15 @@ if (Utils) {
                                 Private callback method intended
                                 to be used in conjunction with
                                 `traverse*` methods; returns `true`
-                                if node passed is a node and is
-                                an element node; returns `false`
-                                otherwise.
+                                if node passed is an element node;
+                                returns `false` otherwise.
                         */
-			var isNode = Utils.nodes.isNode(node);
-			if (isNode) {
-				if (node.nodeType === 1) {
-					return true;
-				}
+				var isElementNode =
+					Utils.nodes.isElementNode(
+						node
+					);
+			if (isElementNode) {
+				return true;
 			}
 			return false;
 		}
@@ -175,11 +175,74 @@ if (Utils) {
 			return result;
 		}
 
+		function clearChildNodes(node)
+		{
+			/*
+                                Public method that clears a
+				a node's `childNodes`, returning
+				them upon successful removal;
+				returns `null` if not applicable.
+			*/
+			var isNode = Utils.nodes.isNode(node),
+				result = null;
+			if (isNode) {
+				result = traverseChildNodes(
+					node,
+					Utils.nodes.remove
+				);
+			}
+			return result;
+		}
+
+		function removeElementNode(node)
+		{
+                        /*
+                                Private callback method intended
+                                to be used in conjunction with
+                                `traverse*` methods; returns `true`
+                                if node passed is an element node
+                                and can be removed; returns `false`
+                                otherwise.
+                        */
+				var isElementNode =
+					Utils.nodes.isElementNode(
+						node
+					),
+					result = false;
+			if (isElementNode) {
+				result = Utils.nodes.remove(
+					node
+				);
+			}
+			return result;
+		}
+
+		function clearChildren(node)
+		{
+			/*
+                                Public method that clears a
+				a node's `children`, returning
+				them upon successful removal;
+				returns `null` if not applicable.
+			*/
+			var isNode = Utils.nodes.isNode(node),
+				result = null;
+			if (isNode) {
+				result = traverseChildren(
+					node,
+					removeElementNode
+				);
+			}
+			return result;
+		}
+
 		Utils.traversal = Utils.traversal || {
 			"getChildNodes": getChildNodes,
 			"traverseChildNodes": traverseChildNodes,
 			"getChildren": getChildren,
-			"traverseChildren": traverseChildren
+			"traverseChildren": traverseChildren,
+			"clearChildNodes": clearChildNodes,
+			"clearChildren": clearChildren
 		};
 	}());
 }

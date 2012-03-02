@@ -61,6 +61,12 @@ These are the current tests:
 11. `Utils.nodes.isDocumentFragmentNode(node)`;
 12. `Utils.nodes.isNotationNode(node)`;
 
+Furthermore, a set of manipulative methods is provided.
+
+These are the current methods:
+
+1. `Utils.nodes.removeNode(node)`;
+
 ---
 
 ### Traversal
@@ -71,10 +77,12 @@ is retrieving and/or traversing the `children` of a node.
 
 Both tasks are addressed via the following methods:
 
-1. `Utils.nodes.getChildNodes(node)`;
-2. `Utils.nodes.traverseChildNodes(node, callback)`;
-3. `Utils.nodes.getChildren(node)`;
-4. `Utils.nodes.traverseChildren(node, callback)`;
+1. `Utils.traversal.getChildNodes(node)`;
+2. `Utils.traversal.traverseChildNodes(node, callback)`;
+3. `Utils.traversal.getChildren(node)`;
+4. `Utils.traversal.traverseChildren(node, callback)`;
+4. `Utils.traversal.clearChildNodes(node)`;
+4. `Utils.traversal.clearChildren(node)`;
 
 See `./Tests/Traversal` for examples.
 

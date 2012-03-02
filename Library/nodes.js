@@ -132,6 +132,29 @@ if (Utils) {
 			return false;
 		}
 
+		function removeNode(node)
+		{
+			/*
+                                Public method with multiple
+                                applicative possibilities:
+                                can be used as a stand-alone
+                                or as a callback for a `traverse*`
+                                method; returns a boolean asserting
+                                the success of the removal.
+			*/
+			var isNode = Utils.nodes.isNode(node);
+			if (isNode) {
+				if (node.parentNode) {
+					node.parentNode.removeChild(
+						node
+					);
+					node = null;
+					return true;
+				}
+			}
+			return false;
+		}
+
 		Utils.nodes = Utils.nodes || {
 			"types": nodeTypes,
 			"isNode": isNode,
@@ -149,7 +172,8 @@ if (Utils) {
 			"isDocumentTypeNode": isDocumentTypeNode,
 			"isDocumentFragmentNode":
 				isDocumentFragmentNode,
-			"isNotationNode": isNotationNode
+			"isNotationNode": isNotationNode,
+			"remove": removeNode
 		};
 	}());
 }

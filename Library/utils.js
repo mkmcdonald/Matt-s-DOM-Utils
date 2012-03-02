@@ -1,4 +1,5 @@
-var Utils = Utils || {};
+var Utils = Utils || {},
+	global = this;
 
 (function () {
 	/*
