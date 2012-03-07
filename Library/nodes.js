@@ -155,6 +155,62 @@ if (Utils) {
 			return false;
 		}
 
+		function generateTextGetters()
+		{
+			var getters = {};
+			getters[nodeTypes.ELEMENT_NODE] = true;
+			getters[nodeTypes.TEXT_NODE] = true;
+			getters[nodeTypes.PROCESSING_INSTRUCTION_NODE] = true;
+			getters[nodeTypes.COMMENT_NODE] = true;
+			getters[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
+			return getters;
+		}
+
+		function canGetText(node)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if the specified
+                                node can "get" textual content.
+			*/
+			var validNode = isNode(node),
+				getters = generateTextGetters();
+			if (validNode &&
+				typeof getters[node.nodeType] !==
+				"undefined") {
+				return true;
+			}
+			return false;
+		}
+
+		function generateTextSetters()
+		{
+			var setters = {};
+			setters[nodeTypes.ELEMENT_NODE] = true;
+			setters[nodeTypes.TEXT_NODE] = true;
+			setters[nodeTypes.PROCESSING_INSTRUCTION_NODE] = true;
+			setters[nodeTypes.COMMENT_NODE] = true;
+			setters[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
+			return setters;
+		}
+
+		function canSetText(node)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if the specified
+                                node can "set" textual content.
+			*/
+			var validNode = isNode(node),
+				setters = generateTextSetters();
+			if (validNode &&
+				typeof setters[node.nodeType] !==
+				"undefined") {
+				return true;
+			}
+			return false;
+		}
+
 		Utils.nodes = Utils.nodes || {
 			"types": nodeTypes,
 			"isNode": isNode,
@@ -173,7 +229,9 @@ if (Utils) {
 			"isDocumentFragmentNode":
 				isDocumentFragmentNode,
 			"isNotationNode": isNotationNode,
-			"remove": removeNode
+			"remove": removeNode,
+			"canGetText": canGetText,
+			"canSetText": canSetText
 		};
 	}());
 }

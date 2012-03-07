@@ -8,7 +8,9 @@
 		childNodes,
 		childNodesTraversed,
 		children,
-		childrenTraversed;
+		childrenTraversed,
+		textCollected,
+		textOverridden;
 
 	function assignValues()
 	{
@@ -28,6 +30,13 @@
 				commonElements.test,
 				pessimisticFilter
 			);
+		textCollected = Utils.traversal.getText(
+			commonElements.test
+		);
+		textOverridden = Utils.traversal.setText(
+			"NEW TEXTUAL CONTENT",
+			commonElements.test
+		);
 	}
 
 	function pessimisticFilter(node)
@@ -47,7 +56,7 @@
 			str = "[an empty string]";
 		}
 		return document.createTextNode(
-			str + "\n"
+			str + "\r\n"
 		);
 	}
 
@@ -57,11 +66,13 @@
 			Utils.nodes.isTextNode(
 				text
 			),
-			parent = commonElements.results;
+			parent = commonElements.results,
+			separator = createMessage("----------");
 		if (!isText) {
 			text = createMessage(text);
 		}
 		parent.appendChild(text);
+		parent.appendChild(separator);
 	}
 
 	function runTest(evt)
@@ -71,6 +82,8 @@
 		addMessage(childNodesTraversed);
 		addMessage(children);
 		addMessage(childrenTraversed);
+		addMessage(textCollected);
+		addMessage(textOverridden);
 	}
 
 	function clearTest(evt)
