@@ -132,31 +132,13 @@ if (Utils) {
 			return false;
 		}
 
-		function removeNode(node)
-		{
-			/*
-                                Public method with multiple
-                                applicative possibilities:
-                                can be used as a stand-alone
-                                or as a callback for a `traverse*`
-                                method; returns a boolean asserting
-                                the success of the removal.
-			*/
-			var isNode = Utils.nodes.isNode(node);
-			if (isNode) {
-				if (node.parentNode) {
-					node.parentNode.removeChild(
-						node
-					);
-					node = null;
-					return true;
-				}
-			}
-			return false;
-		}
-
 		function generateTextGetters()
 		{
+			/*
+                                Private method that "generates"
+                                an object with keys of `nodeType`s
+                                that can "get" text.
+			*/
 			var getters = {};
 			getters[nodeTypes.ELEMENT_NODE] = true;
 			getters[nodeTypes.TEXT_NODE] = true;
@@ -175,9 +157,7 @@ if (Utils) {
 			*/
 			var validNode = isNode(node),
 				getters = generateTextGetters();
-			if (validNode &&
-				typeof getters[node.nodeType] !==
-				"undefined") {
+			if (validNode && getters[node.nodeType]) {
 				return true;
 			}
 			return false;
@@ -185,6 +165,11 @@ if (Utils) {
 
 		function generateTextSetters()
 		{
+			/*
+                                Private method that "generates"
+                                an object with keys of `nodeType`s
+                                that can "set" text.
+			*/
 			var setters = {};
 			setters[nodeTypes.ELEMENT_NODE] = true;
 			setters[nodeTypes.TEXT_NODE] = true;
@@ -203,12 +188,43 @@ if (Utils) {
 			*/
 			var validNode = isNode(node),
 				setters = generateTextSetters();
-			if (validNode &&
-				typeof setters[node.nodeType] !==
-				"undefined") {
+			if (validNode && setters[node.nodeType]) {
 				return true;
 			}
 			return false;
+		}
+
+		function generateNodeParents()
+		{
+			/*
+                                Private method that "generates"
+                                an object with keys of `nodeType`s
+                                that can append nodes.
+			*/
+			var parents = {};
+			parents[nodeTypes.ELEMENT_NODE] = true;
+			parents[nodeTypes.DOCUMENT_NODE] = true;
+			parents[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
+			return parents;
+		}
+
+		function canAppendNodes(node)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if the specified
+                                node can append nodes.
+			*/
+			var validNode = isNode(node),
+				parents = generateNodeParents(),
+				result = false;
+			if (validNode && parents[node.nodeType]) {
+				result = true;
+			} else if (!parents[node.nodeType]) {
+				Utils.errors.throwHeirarchyRequest(
+				);
+			}
+			return result;
 		}
 
 		Utils.nodes = Utils.nodes || {
@@ -229,9 +245,9 @@ if (Utils) {
 			"isDocumentFragmentNode":
 				isDocumentFragmentNode,
 			"isNotationNode": isNotationNode,
-			"remove": removeNode,
 			"canGetText": canGetText,
-			"canSetText": canSetText
+			"canSetText": canSetText,
+			"canAppendNodes": canAppendNodes
 		};
 	}());
 }

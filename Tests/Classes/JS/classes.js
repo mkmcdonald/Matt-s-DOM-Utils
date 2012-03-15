@@ -7,20 +7,49 @@
 	},
 		canAdd,
 		canDetect,
-		canRemove;
+		canRemove,
+		canToggleOn,
+		canToggleOff,
+		canAddMultiple,
+		canRemoveMultiple,
+		listed;
 
-	function addValues()
+	function addSingleClassValues()
 	{
 		canAdd = Utils.classes.add(
 			"good",
 			commonElements.test
 		);
-		canDetect = Utils.classes.has(
+		canDetect = Utils.classes.contains(
 			"good",
 			commonElements.test
 		);
 		canRemove = Utils.classes.remove(
 			"good",
+			commonElements.test
+		);
+		canToggleOn = Utils.classes.toggle(
+			"good",
+			commonElements.test
+		);
+		canToggleOff = Utils.classes.toggle(
+			"good",
+			commonElements.test
+		);
+	}
+
+	function addValues()
+	{
+		addSingleClassValues();
+		canAddMultiple = Utils.classes.add(
+			["foo", "bar", "baz"],
+			commonElements.test
+		);
+		canRemoveMultiple = Utils.classes.remove(
+			["foo", "bar", "baz"],
+			commonElements.test
+		);
+		listed = Utils.classes.list(
 			commonElements.test
 		);
 	}
@@ -32,7 +61,7 @@
 			str = "[an empty string]";
 		}
 		return document.createTextNode(
-			str + "\n"
+			str + "\r\n"
 		);
 	}
 
@@ -55,6 +84,11 @@
 		addMessage(canAdd);
 		addMessage(canDetect);
 		addMessage(canRemove);
+		addMessage(canToggleOn);
+		addMessage(canToggleOff);
+		addMessage(canAddMultiple);
+		addMessage(canRemoveMultiple);
+		addMessage(listed);
 	}
 
 	function clearTest(evt)

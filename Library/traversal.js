@@ -1,7 +1,177 @@
 if (Utils) {
 	(function () {
-		function makeLinearArray(
+		function getAncestorList(node)
+		{
+			/*
+                                Public method that builds a linked
+                                list of ancestors from `node` all
+                                the way to the top of the document
+                                tree (`document`); returns null
+                                if not applicable.
+
+                                Example result (`node` is
+                                `document.documentElement`):
+
+                                {
+                                        "parent": {
+                                                "parent": null,
+                                                "value": [`document`]
+                                        },
+                                        "value": [`node`]
+                                }
+			*/
+			var isNode = Utils.nodes.isNode(node),
+				result = null;
+			if (isNode) {
+				result = {};
+				result.value = node;
+				result.parent = getAncestorList(
+					node.parentNode
+				);
+			}
+			return result;
+		}
+
+		function listContainsNode(
+			list,
 			node
+		)
+		{
+			/*
+                                Private recursive method returning
+                                a boolean asserting a if a linked
+                                list (preferably created via
+                                `getAncestorList`) contains `node`.
+			*/
+			var isNode = Utils.nodes.isNode(node),
+				result = false;
+			if (isNode && list.parent)  {
+				if (list.value === node) {
+					result = true;
+				} else if (list.value !== node) {
+					result = listContainsNode(
+						list.parent,
+						node
+					);
+				}
+			}
+			return result;
+		}
+
+		function isAncestor(
+			parent,
+			node
+		)
+		{
+			/*
+                                Public method returning a boolean
+                                asserting if `parent` is an
+                                ancestor of `node` (via
+                                `listContainsNode`).
+			*/
+			var isNode = Utils.nodes.isNode(node),
+				list,
+				result = false;
+			if (isNode) {
+				list = getAncestorList(node);
+				result = listContainsNode(
+					list,
+					parent
+				);
+			}
+			return result;
+		}
+
+		function canAppendNode(
+			node,
+			parent
+		)
+		{
+			/*
+                                Private method returning a boolean
+                                asserting if `parent` can append
+                                `node` (via
+                                `Utils.nodes.canAppendNodes` and
+                                `isAncestor`).
+			*/
+			var canAppend = Utils.nodes.canAppendNodes(
+					parent
+				),
+				validParent = !isAncestor(
+					parent,
+					node
+				),
+				result = false;
+			if (canAppend && validParent) {
+				result = true;
+			} else if (!validParent) {
+				Utils.errors.throwHeirarchyRequest(
+				);
+			}
+			return result;
+		}
+
+		function addNode(
+			node,
+			parent
+		)
+		{
+			/*
+                                Public method that appends `node`
+                                to `parent`; returns `null` if not
+                                applicable.
+			*/
+			var isNode = Utils.nodes.isNode(node),
+				canAppend,
+				result = null;
+			if (isNode) {
+				canAppend = canAppendNode(
+					node,
+					parent
+				);
+				if (canAppend) {
+					result = parent.appendChild(
+						node
+					);
+				}
+			}
+			return result;
+		}
+
+		function removeNode(
+			node,
+			parent)
+		{
+			/*
+                                Public method with multiple
+                                applicative possibilities:
+                                can be used as a stand-alone
+                                or as a callback for a `traverse*`
+                                method; returns `null` if not
+                                applicable.
+			*/
+			var isNode = Utils.nodes.isNode(node),
+				result = null,
+				errorKey = "NOT_FOUND_ERROR",
+				error = Utils.errors[errorKey];
+			if (isNode) {
+				if (parent && parent ===
+					node.parentNode) {
+					result = parent.removeChild(
+						node
+					);
+				} else if (parent && parent !==
+					node.parentNode) {
+					Utils.errors.throwNotFound(
+					);
+				}
+			}
+			return result;
+		}
+
+		function makeLinearArray(
+			nodes,
+			index
 		)
 		{
 			/*
@@ -10,16 +180,25 @@ if (Utils) {
                                 creates an array; returns `null`
                                 if not applicable.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.nodes.isNode(nodes),
 				result = null,
-				child;
-			if (!isNode) {
+				node;
+			if (!nodes || isNode || index < 0 ||
+				!nodes.length) {
 				result = [];
-			} else if (isNode) {
-				result = makeLinearArray(
-					node.nextSibling
-				);
-				result.unshift(node);
+			} else if (nodes && nodes.length) {
+				if (typeof index !== "number") {
+					index = nodes.length - 1;
+				}
+				if (index >= 0) {
+					node = nodes[index];
+					index -= 1;
+					result = makeLinearArray(
+						nodes,
+						index
+					);
+					result.push(node);
+				}
 			}
 			return result;
 		}
@@ -38,7 +217,7 @@ if (Utils) {
 				if (typeof node.childNodes ===
 					"object") {
 					nodes = makeLinearArray(
-						node.childNodes[0]
+						node.childNodes
 					);
 				}
 			}
@@ -65,32 +244,6 @@ if (Utils) {
 			}
 		}
 
-		function recurNode(
-			nodes,
-			callback
-		)
-		{
-			/*
-                                Private helper method intended for
-                                `traverseLinear`. Recurs on next
-                                array element if found; returns
-                                `null` if not applicable.
-			*/
-			var node = nodes.shift(),
-				isNode = Utils.nodes.isNode(node),
-				result = null;
-			result = traverseLinear(
-				nodes,
-				callback
-			);
-			handleCallback(
-				node,
-				callback,
-				result
-			);
-			return result;
-		}
-
 		function traverseLinear(
 			nodes,
 			callback
@@ -103,20 +256,28 @@ if (Utils) {
                                 array; returns `null` if not
                                 applicable.
 			*/
-			var result = null;
+			var result = null,
+				nodes,
+				node;
 			if (!nodes || !nodes.length) {
-				return [];
-			}
-			if (typeof nodes.shift === "function") {
-				result = recurNode(
+				result = [];
+			} else if (typeof nodes.shift ===
+				"function") {
+				node = nodes.shift();
+				result = traverseLinear(
 					nodes,
 					callback
+				);
+				handleCallback(
+					node,
+					callback,
+					result
 				);
 			}
 			return result;
 		}
 
-		function makeRecursiveArray(
+		function collectChildNodeTree(
 			node
 		)
 		{
@@ -132,12 +293,12 @@ if (Utils) {
 			if (!isNode) {
 				result = [];
 			} else if (isNode) {
-				result = makeRecursiveArray(
+				result = collectChildNodeTree(
 					node.nextSibling
 				);
 				if (node.childNodes &&
 					node.childNodes.length) {
-					child = makeRecursiveArray(
+					child = collectChildNodeTree(
 						node.childNodes[0]
 					);
 					result.unshift(child);
@@ -147,7 +308,7 @@ if (Utils) {
 			return result;
 		}
 
-		function getRecursiveChildNodes(node)
+		function getChildNodeTree(node)
 		{
 			/*
                                 Public method that exposes a
@@ -156,11 +317,11 @@ if (Utils) {
                                 applicable.
 			*/
 			var isNode = Utils.nodes.isNode(node),
-			nodes = null;
+				nodes = null;
 			if (isNode) {
 				if (typeof node.childNodes ===
 					"object") {
-					nodes = makeRecursiveArray(
+					nodes = collectChildNodeTree(
 						node.childNodes[0]
 					);
 				}
@@ -186,6 +347,19 @@ if (Utils) {
 				result = traverseLinear(
 					nodes,
 					callback
+				);
+			}
+			return result;
+		}
+
+		function forkNativeChildren(node)
+		{
+			var isNode = Utils.nodes.isNode(node),
+				result = null;
+			if (isNode && typeof node.children ===
+				"object") {
+				result = makeLinearArray(
+					node.children
 				);
 			}
 			return result;
@@ -224,7 +398,13 @@ if (Utils) {
 			var isNode = Utils.nodes.isNode(node),
 				nodes = [],
 				result = null;
-			if (isNode) {
+			if (isNode && typeof node.children !==
+				"undefined") {
+				result = forkNativeChildren(
+					node
+				);
+			} else if (isNode && typeof node.children ===
+				"undefined") {
 				nodes = getChildNodes(
 					node
 				);
@@ -272,7 +452,7 @@ if (Utils) {
 			if (isNode) {
 				result = traverseChildNodes(
 					node,
-					Utils.nodes.remove
+					removeNode
 				);
 			}
 			return result;
@@ -320,39 +500,6 @@ if (Utils) {
 			return result;
 		}
 
-		function recurArray(
-			nodes,
-			callback
-		)
-		{
-			/*
-                                Private helper method intended for
-                                `traverseRecursive`. Recurs on
-                                next array element and/or sub-array
-                                if found; returns `null` if not
-                                applicable.
-			*/
-			var node = nodes.shift(),
-				isNode = Utils.nodes.isNode(node),
-				result = null;
-			result = traverseRecursive(
-				nodes,
-				callback
-			);
-			handleCallback(
-				node,
-				callback,
-				result
-			);
-			if (!isNode) {
-				result.unshift(traverseRecursive(
-					node,
-					callback
-				));
-			}
-			return result;
-		}
-
 		function traverseRecursive(
 			nodes,
 			callback
@@ -365,15 +512,33 @@ if (Utils) {
                                 array; returns `null` if not
                                 applicable.
 			*/
-			var result = null;
+			// PONDER: Limit to 30 lines or 25?
+			var result = null,
+				node,
+				isNode;
 			if (!nodes || !nodes.length) {
 				result = [];
 			} else if (typeof nodes.shift ===
 				"function") {
-				result = recurArray(
+				node = nodes.shift();
+				isNode = Utils.nodes.isNode(node);
+				result = traverseRecursive(
 					nodes,
 					callback
 				);
+				handleCallback(
+					node,
+					callback,
+					result
+				);
+				if (!isNode) {
+					result.unshift(
+						traverseRecursive(
+							node,
+							callback
+						)
+					);
+				}
 			}
 			return result;
 		}
@@ -428,7 +593,7 @@ if (Utils) {
 				nodes,
 				result = null;
 			if (isNode) {
-				nodes = getRecursiveChildNodes(
+				nodes = getChildNodeTree(
 					node
 				);
 				nodes = traverseRecursive(
@@ -596,7 +761,13 @@ if (Utils) {
 		}
 
 		Utils.traversal = Utils.traversal || {
+			"getAncestorList": getAncestorList,
+			"isAncestor": isAncestor,
+			"addNode": addNode,
+			"removeNode": removeNode,
+			"makeLinearArray": makeLinearArray,
 			"getChildNodes": getChildNodes,
+			"getChildNodeTree": getChildNodeTree,
 			"traverseChildNodes": traverseChildNodes,
 			"getChildren": getChildren,
 			"traverseChildren": traverseChildren,

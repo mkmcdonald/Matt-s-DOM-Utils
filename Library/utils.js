@@ -5,8 +5,9 @@ var Utils = Utils || {},
 	/*
                 Current Build Order:
 
-                1. nodes.js;
-                2. classes.js;
-                3. traversal.js;
+		1. errors.js
+                2. nodes.js;
+                3. classes.js;
+                4. traversal.js;
 	*/
 }());
