@@ -60,7 +60,8 @@
 		if (str === "") {
 			str = "[an empty string]";
 		}
-		return document.createTextNode(
+		return Utils.nodes.createTextNode(
+			document,
 			str + "\r\n"
 		);
 	}
@@ -71,11 +72,17 @@
 			Utils.nodes.isTextNode(
 				text
 			),
-			parent = commonElements.results;
-		if (!isText) {
-			text = createMessage(text);
-		}
-		parent.appendChild(text);
+			par = commonElements.results,
+			separator = createMessage("----------");
+		text = createMessage(text);
+		Utils.nodes.appendChild(
+			par,
+			text
+		);
+		Utils.nodes.appendChild(
+			par,
+			separator
+		);
 	}
 
 	function runTest(evt)
@@ -95,10 +102,13 @@
 	{
 		var parent = commonElements.results,
 		nodes = parent.childNodes;
-		while(nodes.length) {
-			parent.removeChild(
-				nodes[0]
-			);
+		if (nodes) {
+			while(nodes.length) {
+				Utils.nodes.removeChild(
+					parent,
+					nodes[0]
+				);
+			}
 		}
 	}
 

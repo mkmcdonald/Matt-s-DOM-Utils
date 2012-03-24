@@ -1,5 +1,25 @@
 if (Utils) {
 	(function () {
+
+		/*
+                        Utils.errors
+
+                        Description:
+
+                        DOM Level 4-compliant custom errors and
+                        methods to throw them.
+
+                        Dependencies:
+
+                        * null;
+		*/
+
+
+		/*
+                        Public property exposing errors as specified
+                        in the DOM Level 4 Spec 3.3 (Error types).
+		*/
+
 		var errorTypes = {
 			"INDEX_SIZE_ERROR": "The index is not in " +
 				"the allowed range.",
@@ -50,12 +70,23 @@ if (Utils) {
 				"be cloned."
 		};
 
+
+                /*        PUBLIC METHOD        */
+
+
 		function throwIndexSize()
 		{
 			throw new Error(
 				errorTypes.INDEX_SIZE_ERROR
 			);
 		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
 
 		function throwHeirarchyRequest()
 		{
@@ -64,6 +95,13 @@ if (Utils) {
 			);
 		}
 
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function throwWrongDocument()
 		{
 			throw new Error(
@@ -71,12 +109,26 @@ if (Utils) {
 			);
 		}
 
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function throwInvalidCharacter()
 		{
 			throw new Error(
 				errorTypes.INVALID_CHARACTER_ERROR
 			);
 		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
 
 		function throwNoModificationAllowed()
 		{
@@ -86,12 +138,26 @@ if (Utils) {
 			);
 		}
 
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function throwNotFound()
 		{
 			throw new Error(
 				errorTypes.NOT_FOUND_ERROR
 			);
 		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
 
 		function throwNotSupported()
 		{
@@ -100,12 +166,26 @@ if (Utils) {
 			);
 		}
 
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function throwInvalidState()
 		{
 			throw new Error(
 				errorTypes.INVALID_STATE_ERROR
 			);
 		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
 
 		function throwSyntax()
 		{
@@ -114,12 +194,26 @@ if (Utils) {
 			);
 		}
 
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function throwInvalidModification()
 		{
 			throw new Error(
 				errorTypes.INVALID_MODIFICATION_ERROR
 			);
 		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
 
 		function throwNamespace()
 		{
@@ -128,12 +222,26 @@ if (Utils) {
 			);
 		}
 
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function throwInvalidAccess()
 		{
 			throw new Error(
 				errorTypes.INVALID_ACCESS_ERROR
 			);
 		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
 
 		function throwTypeMismatch()
 		{
@@ -142,12 +250,26 @@ if (Utils) {
 			);
 		}
 
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function throwSecurity()
 		{
 			throw new Error(
 				errorTypes.SECURITY_ERROR
 			);
 		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
 
 		function throwNetwork()
 		{
@@ -156,12 +278,26 @@ if (Utils) {
 			);
 		}
 
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function throwAbort()
 		{
 			throw new Error(
 				errorTypes.ABORT_ERROR
 			);
 		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
 
 		function throwURLMismatch()
 		{
@@ -170,12 +306,26 @@ if (Utils) {
 			);
 		}
 
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function throwQuotaExceeded()
 		{
 			throw new Error(
 				errorTypes.QUOTA_EXCEEDED_ERROR
 			);
 		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
 
 		function throwTimeout()
 		{
@@ -184,12 +334,26 @@ if (Utils) {
 			);
 		}
 
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function throwInvalidNodeType()
 		{
 			throw new Error(
 				errorTypes.INVALID_NODE_TYPE_ERROR
 			);
 		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
 
 		function throwDataClone()
 		{
@@ -198,8 +362,13 @@ if (Utils) {
 			);
 		}
 
+
+                /*        END PUBLIC METHOD        */
+
+
 		Utils.errors = Utils.errors || {
 			"types": errorTypes,
+
 			"throwIndexSize": throwIndexSize,
 			"throwHeirarchyRequest":
 				throwHeirarchyRequest,
@@ -229,3 +398,4 @@ if (Utils) {
 		};
 	}());
 }
+

@@ -1,13 +1,22 @@
 var Utils = Utils || {},
 	global = this;
+/*
+        Matt's DOM Utils
 
-(function () {
-	/*
-                Current Build Order:
+        Description:
 
-		1. errors.js
-                2. nodes.js;
-                3. classes.js;
-                4. traversal.js;
-	*/
-}());
+        A collection of widely-tested DOM utilities and modules
+        that work in a maximal amount of environments.
+
+        Contact:
+
+        Matt McDonald
+        [firstName.toLowerCase()@fortybelow.ca]
+        http://www.fortybelow.ca
+*/
+
+/*
+        jslint browser: true, sloppy: true,
+        white: true, maxerr: 50, indent: 8
+*/
+

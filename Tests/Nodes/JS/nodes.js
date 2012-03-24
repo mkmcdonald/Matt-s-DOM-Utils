@@ -3,50 +3,37 @@
 		"test": document.getElementById("test"),
 		"start": document.getElementById("start"),
 		"stop": document.getElementById("stop"),
-		"results": document.getElementById("results")
+		"results": document.getElementById("results"),
+		"toy": document.getElementById("military_child")
 	},
-		childNodes,
-		childNodesTraversed,
-		children,
-		childrenTraversed,
-		textCollected,
-		textOverridden;
+		childAppended,
+		childRemoved,
+		elementCreated,
+		textNodeCreated,
+		commentCreated;
 
 	function assignValues()
 	{
-		childNodes = Utils.traversal.getChildNodes(
-			commonElements.test
+		childAppended = Utils.nodes.appendChild(
+			commonElements.test,
+			commonElements.toy
 		);
-		childNodesTraversed =
-			Utils.traversal.traverseChildNodes(
-				commonElements.test,
-				optimisticFilter
-			);
-		children = Utils.traversal.getChildren(
-			commonElements.test
+		childRemoved = Utils.nodes.appendChild(
+			commonElements.test,
+			commonElements.toy
 		);
-		childrenTraversed =
-			Utils.traversal.traverseChildren(
-				commonElements.test,
-				pessimisticFilter
-			);
-		textCollected = Utils.traversal.getText(
-			commonElements.test
+		elementCreated = Utils.nodes.createElement(
+			document,
+			"p"
 		);
-		textOverridden = Utils.traversal.setText(
-			"NEW TEXTUAL CONTENT",
-			commonElements.test
+		textNodeCreated = Utils.nodes.createTextNode(
+			document,
+			"The rain in Spain is quite plain."
 		);
-	}
-
-	function pessimisticFilter(node)
-	{
-		return false;
-	}
-
-	function optimisticFilter(node)
-	{
-		return true;
+		commentCreated = Utils.nodes.createComment(
+			document,
+			"No comment."
+		);
 	}
 
 	function createMessage(text)
@@ -83,12 +70,11 @@
 	function runTest(evt)
 	{
 		assignValues();
-		addMessage(childNodes);
-		addMessage(childNodesTraversed);
-		addMessage(children);
-		addMessage(childrenTraversed);
-		addMessage(textCollected);
-		addMessage(textOverridden);
+		addMessage(childAppended);
+		addMessage(childRemoved);
+		addMessage(elementCreated);
+		addMessage(textNodeCreated);
+		addMessage(commentCreated);
 	}
 
 	function clearTest(evt)

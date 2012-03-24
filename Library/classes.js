@@ -1,8 +1,6 @@
 if (Utils) {
 	(function () {
 
-                /* jslint browser: true, sloppy: true, white: true, maxerr: 50, indent: 8 */
-
 		/*
                         Utils.classes
 
@@ -10,19 +8,19 @@ if (Utils) {
 
                         DOM Level 4-compliant `classList`
                         implementation with additional
-                        features. See DOM 4 spec section 5.7
+                        features. See the DOM 4 spec section 5.7
                         (Element, classList) and 9.2
                         (DOMTokenList) for more.
 
                         Dependencies:
 
                         * Utils.nodes;
-                        * Utils.errors;
 		*/
 
 		/*
-                        Invalid characters for a class "token";
-                        presence of any of these will throw
+                        Private object containing invalid
+                        characters for a class "token"; presence
+                        of any will throw
                         `Utils.errors.types.INVALID_CHARACTER_ERROR`.
 		*/
 
@@ -35,7 +33,7 @@ if (Utils) {
 		};
 
 		function checkCharacter(
-			char
+			chr
 		)
 		{
 			/*
@@ -49,12 +47,12 @@ if (Utils) {
 			*/
 			var invalidChar,
 				result = false;
-			char = String(char);
-			invalidChar = INVALID_CHARS[char];
+			chr = String(chr);
+			invalidChar = INVALID_CHARS[chr];
 			if (typeof invalidChar !== "undefined") {
 				Utils.errors.throwInvalidCharacter(
 				);
-			} else if (char === "") {
+			} else if (chr === "") {
 				Utils.errors.throwSyntax();
 			} else if (typeof invalidChar ===
 				"undefined") {
@@ -76,13 +74,13 @@ if (Utils) {
 			*/
 			var index = 0,
 				max,
-				char,
+				chr,
 				result = true;
 			token = String(token);
 			max = token.length;
 			while (index < max) {
-				char = token.charAt(index);
-				result = checkCharacter(char);
+				chr = token.charAt(index);
+				result = checkCharacter(chr);
 				index += 1;
 			}
 			return result;
@@ -106,7 +104,7 @@ if (Utils) {
 		}
 
 		function handleCharacter(
-			char,
+			chr,
 			sequence,
 			tokens
 		)
@@ -119,13 +117,13 @@ if (Utils) {
 			*/
 			var validChar = false,
 				result = "";
-			if (char && char !== " ") {
-				validChar = checkCharacter(char);
+			if (chr && chr !== " ") {
+				validChar = checkCharacter(chr);
 			}
 			if (!validChar && sequence.length) {
 				pushToken(sequence, tokens);
 			} else if (validChar) {
-				result = sequence + char;
+				result = sequence + chr;
 			}
 			return result;
 		}
@@ -137,20 +135,20 @@ if (Utils) {
 			/*
                                 Private method that builds a token
                                 list from a (space-separated)
-                                string. See: DOM Level 4 Spec 2.3.2
+                                string. See the DOM Level 4 Spec 2.3.2
                                 (Space-separated tokens).
 			*/
 			var index = 0,
 				max,
 				sequence = "",
-				char,
+				chr,
 				result = [];
 			chars = String(chars);
 			max = chars.length + 1;
 			while (index < max) {
-				char = chars.charAt(index);
+				chr = chars.charAt(index);
 				sequence = handleCharacter(
-					char,
+					chr,
 					sequence,
 					result
 				);
@@ -169,9 +167,10 @@ if (Utils) {
 			*/
 			var isElement =
 				Utils.nodes.isElementNode(node),
-				result = null,
-				input;
-			if (isElement) {
+				input,
+				result = null;
+			if (isElement && typeof node.className ===
+				"string") {
 				input = node.className;
 				result = buildTokenList(
 					input
@@ -265,6 +264,27 @@ if (Utils) {
 			return result;
 		}
 
+		function overwriteClass(
+			node,
+			list
+		)
+		{
+			/*
+                                Private helper method that
+                                assigns the given token list
+                                to `node`'s `className` property
+                                as a string.
+			*/
+			var isElement =
+				Utils.nodes.isElementNode(node),
+				result;
+			if (isElement && typeof node.className ===
+				"string") {
+				node.className = list.join(" ");
+			}
+			return result;
+		}
+
 		function addSingleClass(
 			token,
 			node
@@ -289,7 +309,7 @@ if (Utils) {
 					node,
 					list
 				);
-				node.className = list.join(" ");
+				overwriteClass(node, list);
 			}
 			return result;
 		}
@@ -306,8 +326,8 @@ if (Utils) {
                                 valid and can be added to a token
                                 list.
 			*/
-			var result = false,
-				validToken;
+			var validToken,
+				result = false;
 			token = String(token);
 			validToken = checkToken(token);
 			if (validToken) {
@@ -348,7 +368,7 @@ if (Utils) {
 					);
 					index += 1;
 				}
-				node.className = list.join(" ");
+				overwriteClass(node, list);
 			}
 			return result;
 		}
@@ -462,7 +482,7 @@ if (Utils) {
 					node,
 					list
 				);
-				node.className = list.join(" ");
+				overwriteClass(node, list);
 			}
 			return result;
 		}
@@ -479,8 +499,8 @@ if (Utils) {
                                 valid and can be removed from a
                                 token list.
 			*/
-			var result = false,
-				validToken;
+			var validToken,
+				result = false;
 			token = String(token);
 			validToken = checkToken(token);
 			if (validToken) {
@@ -520,7 +540,7 @@ if (Utils) {
 					);
 					index -= 1;
 				}
-				node.className = list.join(" ");
+				overwriteClass(node, list);
 			}
 			return result;
 		}
@@ -669,3 +689,4 @@ if (Utils) {
 		};
 	}());
 }
+
