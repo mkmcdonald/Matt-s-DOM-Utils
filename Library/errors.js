@@ -18,6 +18,7 @@ if (Utils) {
 		/*
                         Public property exposing errors as specified
                         in the DOM Level 4 Spec 3.3 (Error types).
+                        http://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html#error-types-0
 		*/
 
 		var errorTypes = {
