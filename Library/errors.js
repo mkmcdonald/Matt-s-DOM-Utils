@@ -14,9 +14,8 @@ if (Utils) {
                         * null;
 		*/
 
-
 		/*
-                        Public property exposing errors as specified
+                        Public object exposing errors as specified
                         in the DOM Level 4 Spec 3.3 (Error types).
 		*/
 

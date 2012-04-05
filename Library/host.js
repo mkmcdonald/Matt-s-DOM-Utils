@@ -6,7 +6,7 @@ if (Utils) {
 
                         Description:
 
-			Host object tests.
+                        Host object tests.
 
                         Dependencies:
 

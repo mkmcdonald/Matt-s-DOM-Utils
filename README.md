@@ -60,6 +60,9 @@ features are not supported.
 `nodeType`. This includes general and type-specific tests along
 with various wrapped methods of the `Node` interface.
 
+See [./Tests/Nodes](./Tests/Nodes "Nodes Tests")
+for examples.
+
 ---
 
 ### Classes
@@ -98,4 +101,4 @@ for examples.
 
 ## Metadata
 
-* Last edited on Friday March 23rd, 2012;
+* Last edited on Saturday March 24th, 2012;

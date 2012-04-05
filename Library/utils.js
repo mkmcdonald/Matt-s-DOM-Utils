@@ -11,7 +11,7 @@ var Utils = Utils || {},
         Contact:
 
         Matt McDonald
-        [firstName.toLowerCase()@fortybelow.ca]
+        [firstName.toLowerCase();]@fortybelow.ca
         http://www.fortybelow.ca
 */
 

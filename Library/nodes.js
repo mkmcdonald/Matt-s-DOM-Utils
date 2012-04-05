@@ -6,8 +6,8 @@ if (Utils) {
 
                         Description:
 
-			DOM node tests along with various
-			method wrappers.
+                        DOM node tests along with various
+                        method wrappers.
 
                         Dependencies:
 
@@ -15,9 +15,8 @@ if (Utils) {
 		*/
 
 		/*
-                        Public property that exposes an object
-                        of documented `nodeType`s. See the DOM 4
-                        Spec 5.3 (Node, nodeType).
+                        Public  object of documented `nodeType`s.
+                        See the DOM 4 Spec 5.3 (Node, nodeType).
 		*/
 
 		var nodeTypes = {

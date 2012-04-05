@@ -11,7 +11,7 @@ var Utils = Utils || {},
         Contact:
 
         Matt McDonald
-        [firstName.toLowerCase()@fortybelow.ca]
+        [firstName.toLowerCase();]@fortybelow.ca
         http://www.fortybelow.ca
 */
 
@@ -36,9 +36,8 @@ if (Utils) {
                         * null;
 		*/
 
-
 		/*
-                        Public property exposing errors as specified
+                        Public object exposing errors as specified
                         in the DOM Level 4 Spec 3.3 (Error types).
 		*/
 
@@ -429,7 +428,7 @@ if (Utils) {
 
                         Description:
 
-			Host object tests.
+                        Host object tests.
 
                         Dependencies:
 
@@ -468,18 +467,19 @@ if (Utils) {
 
                         Description:
 
-			DOM node tests along with various
-			method wrappers.
+                        DOM node tests along with various
+                        method wrappers.
 
                         Dependencies:
 
                         * Utils.host;
 		*/
 
+		"use strict";
+
 		/*
-                        Public property that exposes an object
-                        of documented `nodeType`s. See the DOM 4
-                        Spec 5.3 (Node, nodeType).
+                        Public  object of documented `nodeType`s.
+                        See the DOM 4 Spec 5.3 (Node, nodeType).
 		*/
 
 		var nodeTypes = {
@@ -1274,8 +1274,8 @@ if (Utils) {
 			*/
 			var isNode = Utils.nodes.isNode(node),
 				result = false;
-			while (isNode && typeof list.parent
-				!== "undefined") {
+			while (isNode && typeof list.parent !==
+				"undefined") {
 				if (list.value === node) {
 					result = true;
 					break;
@@ -1336,7 +1336,7 @@ if (Utils) {
 				index = nodes.length - 1;
 				while (index > -1) {
 					node = nodes[index];
-					result.push(node);
+					result.unshift(node);
 					index -= 1;
 				}
 			}
@@ -1751,10 +1751,9 @@ if (Utils) {
 		{
 			/*
                                 Public method that exposes a
-                                static array of `children`—also
-                                known as element nodes—(via
-                                `makeArray`); returns `null` if not
-                                applicable.
+                                static array of `children` (via
+                                `makeArray`); returns `null` if
+                                not applicable.
 			*/
 			var isNode = Utils.nodes.isNode(node),
 				nodes = [],
@@ -1828,7 +1827,7 @@ if (Utils) {
 				),
 				result = false;
 			if (isElementNode) {
-				result = Utils.nodes.remove(
+				result = Utils.nodes.removeChild(
 					node
 				);
 			}

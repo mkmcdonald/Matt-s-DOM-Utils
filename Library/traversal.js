@@ -68,8 +68,8 @@ if (Utils) {
 			*/
 			var isNode = Utils.nodes.isNode(node),
 				result = false;
-			while (isNode && typeof list.parent
-				!== "undefined") {
+			while (isNode && typeof list.parent !==
+				"undefined") {
 				if (list.value === node) {
 					result = true;
 					break;
@@ -130,7 +130,7 @@ if (Utils) {
 				index = nodes.length - 1;
 				while (index > -1) {
 					node = nodes[index];
-					result.push(node);
+					result.unshift(node);
 					index -= 1;
 				}
 			}
@@ -545,10 +545,9 @@ if (Utils) {
 		{
 			/*
                                 Public method that exposes a
-                                static array of `children`—also
-                                known as element nodes—(via
-                                `makeArray`); returns `null` if not
-                                applicable.
+                                static array of `children` (via
+                                `makeArray`); returns `null` if
+                                not applicable.
 			*/
 			var isNode = Utils.nodes.isNode(node),
 				nodes = [],
@@ -622,7 +621,7 @@ if (Utils) {
 				),
 				result = false;
 			if (isElementNode) {
-				result = Utils.nodes.remove(
+				result = Utils.nodes.removeChild(
 					node
 				);
 			}

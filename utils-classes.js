@@ -11,7 +11,7 @@ var Utils = Utils || {},
         Contact:
 
         Matt McDonald
-        [firstName.toLowerCase()@fortybelow.ca]
+        [firstName.toLowerCase();]@fortybelow.ca
         http://www.fortybelow.ca
 */
 
@@ -36,9 +36,8 @@ if (Utils) {
                         * null;
 		*/
 
-
 		/*
-                        Public property exposing errors as specified
+                        Public object exposing errors as specified
                         in the DOM Level 4 Spec 3.3 (Error types).
 		*/
 
@@ -429,7 +428,7 @@ if (Utils) {
 
                         Description:
 
-			Host object tests.
+                        Host object tests.
 
                         Dependencies:
 
@@ -468,18 +467,19 @@ if (Utils) {
 
                         Description:
 
-			DOM node tests along with various
-			method wrappers.
+                        DOM node tests along with various
+                        method wrappers.
 
                         Dependencies:
 
                         * Utils.host;
 		*/
 
+		"use strict";
+
 		/*
-                        Public property that exposes an object
-                        of documented `nodeType`s. See the DOM 4
-                        Spec 5.3 (Node, nodeType).
+                        Public  object of documented `nodeType`s.
+                        See the DOM 4 Spec 5.3 (Node, nodeType).
 		*/
 
 		var nodeTypes = {
