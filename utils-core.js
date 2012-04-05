@@ -475,8 +475,6 @@ if (Utils) {
                         * Utils.host;
 		*/
 
-		"use strict";
-
 		/*
                         Public  object of documented `nodeType`s.
                         See the DOM 4 Spec 5.3 (Node, nodeType).
