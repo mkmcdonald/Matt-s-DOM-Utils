@@ -1206,6 +1206,59 @@ if (Utils) {
 	(function () {
 
 		/*
+                        Utils.helpers
+
+                        Description:
+
+                        Various helper methods for common tasks.
+
+                        Dependencies:
+
+                        * Utils.host;
+                        * Utils.nodes;
+		*/
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function makeLinearArray(
+			obj
+		)
+		{
+			/*
+                                Public method that
+                                takes an iterable object and
+                                creates an array.
+			*/
+			var index,
+				result = [],
+				node;
+			if (obj && obj.length) {
+				index = obj.length - 1;
+				while (index > -1) {
+					node = obj[index];
+					result.unshift(node);
+					index -= 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		Utils.helpers = Utils.helpers || {
+			"makeLinearArray": makeLinearArray
+		};
+	}());
+}
+
+if (Utils) {
+	(function () {
+
+		/*
                         Utils.traversal
 
                         Description:
@@ -1217,6 +1270,7 @@ if (Utils) {
 
                         * Utils.host;
                         * Utils.nodes;
+                        * Utils.helpers;
 		*/
 
 
@@ -1315,34 +1369,14 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-                /*        PUBLIC METHOD        */
-
-
-		function makeLinearArray(
-			nodes
-		)
+		function makeLinearArray(obj)
 		{
 			/*
-                                Private method that
-                                takes iterable objects and
-                                creates an array.
+				Private wrapper for
+				`Utils.helpers.makeLinearArray`.
 			*/
-			var index,
-				result = [],
-				node;
-			if (nodes && nodes.length) {
-				index = nodes.length - 1;
-				while (index > -1) {
-					node = nodes[index];
-					result.unshift(node);
-					index -= 1;
-				}
-			}
-			return result;
+			return Utils.helpers.makeLinearArray(obj);
 		}
-
-
-                /*        END PUBLIC METHOD        */
 
 
                 /*        PUBLIC METHOD        */
@@ -1352,8 +1386,8 @@ if (Utils) {
 		{
 			/*
                                 Public method that exposes a
-                                static array of `childNodes` (via
-                                `makeLinearArray`); returns `null` if
+                                static array of `childNodes`;
+                                returns `null` if
                                 not applicable.
 			*/
 			var isNode = Utils.nodes.isNode(node),
@@ -2097,8 +2131,6 @@ if (Utils) {
 		Utils.traversal = Utils.traversal || {
 			"getAncestorList": getAncestorList,
 			"isAncestor": isAncestor,
-
-			"makeLinearArray": makeLinearArray,
 
 			"getChildNodes": getChildNodes,
 			"getChildNodeTree": getChildNodeTree,

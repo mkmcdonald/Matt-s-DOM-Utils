@@ -1206,6 +1206,59 @@ if (Utils) {
 	(function () {
 
 		/*
+                        Utils.helpers
+
+                        Description:
+
+                        Various helper methods for common tasks.
+
+                        Dependencies:
+
+                        * Utils.host;
+                        * Utils.nodes;
+		*/
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function makeLinearArray(
+			obj
+		)
+		{
+			/*
+                                Public method that
+                                takes an iterable object and
+                                creates an array.
+			*/
+			var index,
+				result = [],
+				node;
+			if (obj && obj.length) {
+				index = obj.length - 1;
+				while (index > -1) {
+					node = obj[index];
+					result.unshift(node);
+					index -= 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		Utils.helpers = Utils.helpers || {
+			"makeLinearArray": makeLinearArray
+		};
+	}());
+}
+
+if (Utils) {
+	(function () {
+
+		/*
                         Utils.classes
 
                         Description:
@@ -1909,6 +1962,7 @@ if (Utils) {
 
                         * Utils.host;
                         * Utils.nodes;
+                        * Utils.helpers;
 		*/
 
 
@@ -2007,34 +2061,14 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-                /*        PUBLIC METHOD        */
-
-
-		function makeLinearArray(
-			nodes
-		)
+		function makeLinearArray(obj)
 		{
 			/*
-                                Private method that
-                                takes iterable objects and
-                                creates an array.
+				Private wrapper for
+				`Utils.helpers.makeLinearArray`.
 			*/
-			var index,
-				result = [],
-				node;
-			if (nodes && nodes.length) {
-				index = nodes.length - 1;
-				while (index > -1) {
-					node = nodes[index];
-					result.unshift(node);
-					index -= 1;
-				}
-			}
-			return result;
+			return Utils.helpers.makeLinearArray(obj);
 		}
-
-
-                /*        END PUBLIC METHOD        */
 
 
                 /*        PUBLIC METHOD        */
@@ -2044,8 +2078,8 @@ if (Utils) {
 		{
 			/*
                                 Public method that exposes a
-                                static array of `childNodes` (via
-                                `makeLinearArray`); returns `null` if
+                                static array of `childNodes`;
+                                returns `null` if
                                 not applicable.
 			*/
 			var isNode = Utils.nodes.isNode(node),
@@ -2790,8 +2824,6 @@ if (Utils) {
 			"getAncestorList": getAncestorList,
 			"isAncestor": isAncestor,
 
-			"makeLinearArray": makeLinearArray,
-
 			"getChildNodes": getChildNodes,
 			"getChildNodeTree": getChildNodeTree,
 
@@ -2807,6 +2839,219 @@ if (Utils) {
 
 			"getText": getText,
 			"setText": setText
+		};
+	}());
+}
+
+if (Utils) {
+	(function () {
+
+		/*
+                        Utils.select
+
+                        Description:
+
+                        Selection wrappers.
+
+                        Dependencies:
+
+                        * Utils.host;
+                        * Utils.nodes;
+                        * Utils.helpers;
+		*/
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getBody(doc)
+		{
+			/*
+                                Public method that returns
+                                the specified document's `body`
+                                element; returns `null` if not
+                                applicable.
+			*/
+			var isDoc = Utils.nodes.isDocumentNode(doc),
+				canUse,
+				result = null;
+			if (isDoc) {
+				canUse = Utils.host.isObject(
+					document.body
+				);
+				if (canUse) {
+					result = document.body;
+				}
+			}
+			return result;
+		}
+
+		function makeLinearArray(obj)
+		{
+			/*
+				Private wrapper for
+				`Utils.helpers.makeLinearArray`.
+			*/
+			return Utils.helpers.makeLinearArray(obj);
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getElementsByName(
+			doc,
+			name
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `getElementsByName`; returns
+                                `null` if not applicable.
+			*/
+			name = String(name);
+			var isDoc = Utils.nodes.isDocumentNode(doc),
+				key = "getElementsByName",
+				canUse,
+				result = null;
+			if (isDoc) {
+				canUse = Utils.host.isObject(
+					doc[key]
+				);
+				if (canUse) {
+					result = makeLinearArray(
+						doc[key](name)
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getElementsByTagName(
+			caller,
+			tag
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `getElementsByTagName`; returns
+                                `null` if not applicable.
+			*/
+			tag = String(tag);
+			var isDoc = Utils.nodes.isDocumentNode(caller),
+				isElement = Utils.nodes.isElementNode(
+					caller
+				),
+				key = "getElementsByTagName",
+				canUse,
+				result = null;
+			if (isDoc || isElement) {
+				canUse = Utils.host.isObject(
+					caller[key]
+				);
+				if (canUse) {
+					result = makeLinearArray(
+						caller[key](tag)
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getElementsByTagNameNS(
+			caller,
+			local,
+			ns
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `getElementsByTagNameNS`; returns
+                                `null` if not applicable.
+			*/
+			local = String(local);
+			ns = String(ns);
+			var isDoc = Utils.nodes.isDocumentNode(caller),
+				isElement = Utils.nodes.isElementNode(
+					caller
+				),
+				key = "getElementsByTagNameNS",
+				value = caller[key],
+				canUse,
+				result = null;
+			if (isDoc || isElement) {
+				canUse = Utils.host.isObject(
+					value
+				);
+				if (canUse) {
+					result = makeLinearArray(
+						value(local, ns)
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getElementById(
+			doc,
+			id
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `getElementById`; returns `null`
+                                if not applicable.
+			*/
+			id = String(id);
+			var isDoc = Utils.nodes.isDocumentNode(doc),
+				key = "getElementById",
+				canUse,
+				result = null;
+			if (isDoc) {
+				canUse = Utils.host.isObject(
+					doc[key]
+				);
+				if (canUse) {
+					result = doc[key](id);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD */
+
+
+		Utils.select = Utils.select || {
+			"body": getBody,
+
+			"byName": getElementsByName,
+
+			"byTagName": getElementsByTagName,
+			"byTagNameNS": getElementsByTagNameNS,
+
+			"byId": getElementById
 		};
 	}());
 }

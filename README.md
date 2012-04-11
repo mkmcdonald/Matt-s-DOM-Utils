@@ -26,10 +26,12 @@
         1. errors.js
         2. host.js;
         3. nodes.js;
+        4. helpers.js;
 
         (independent modules)
         * classes.js;
         * traversal.js;
+        * select.js;
 
 # Matt's DOM Utils (MDU)
 
@@ -65,6 +67,13 @@ for examples.
 
 ---
 
+### Helpers
+
+*MDU* provides public helper methods for common library tasks.
+Most commonly, the module is used for static array conversion.
+
+---
+
 ### Classes
 
 *MDU* provides a DOM Level 4 spec-compliant `classList`
@@ -85,6 +94,11 @@ more general methods of traversal.
 See [./Tests/Traversal](./Tests/Traversal "Traversal Tests")
 for examples.
 
+### Select
+
+*MDU* provides a set of wrappers for various methods of
+selection.
+
 ---
 
 ## Attributions
@@ -101,4 +115,4 @@ for examples.
 
 ## Metadata
 
-* Last edited on Saturday March 24th, 2012;
+* Last edited on Wednesday April 11th 2012;
