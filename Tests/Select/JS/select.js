@@ -8,14 +8,37 @@ global = global || this;
 			"results": doc.getElementById("results")
 		},
 		bodyReturned,
+		headReturned,
 		byNameWrapped,
 		byTagNameWrapped,
-		byIdWrapped;
+		byClassNameWrapped,
+		byIdWrapped,
+		qsWrapped,
+		qsaWrapped;
+
+	function assignGetValues()
+	{
+		headReturned =
+			Utils.select.head(doc);
+		bodyReturned =
+			Utils.select.body(doc);
+	}
+
+	function assignQueryValues()
+	{
+		qsWrapped = Utils.select.query(
+			doc,
+			"input[type=text]"
+		);
+		qsaWrapped = Utils.select.queryAll(
+			doc,
+			"input[type]"
+		);
+	}
 
 	function assignValues()
 	{
-		bodyReturned =
-			Utils.select.body(doc);
+		assignGetValues();
 		byNameWrapped = Utils.select.byName(
 			doc,
 			"control1"
@@ -24,10 +47,15 @@ global = global || this;
 			doc,
 			"input"
 		);
+		byClassNameWrapped = Utils.select.byClassName(
+			doc,
+			"container"
+		);
 		byIdWrapped = Utils.select.byId(
 			doc,
 			"test"
 		);
+		assignQueryValues();
 	}
 
 	function createMessage(text)
@@ -65,9 +93,13 @@ global = global || this;
 	{
 		assignValues();
 		addMessage(bodyReturned);
+		addMessage(headReturned);
 		addMessage(byNameWrapped);
 		addMessage(byTagNameWrapped);
+		addMessage(byClassNameWrapped);
 		addMessage(byIdWrapped);
+		addMessage(qsWrapped);
+		addMessage(qsaWrapped);
 	}
 
 	function clearTest(evt)

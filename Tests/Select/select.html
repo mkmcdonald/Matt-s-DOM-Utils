@@ -13,6 +13,10 @@
 					can be returned;
 			</li>
 			<li>
+				Test if <code>document.head</code>
+					can be returned;
+			</li>
+			<li>
 				Test if <code>getElementsByName</code>
 					can be wrapped;
 			</li>
@@ -21,14 +25,27 @@
 					can be wrapped;
 			</li>
 			<li>
+				Test if <code>getElementsByClassName</code>
+					can be wrapped;
+			</li>
+			<li>
 				Test if <code>getElementById</code>
+					can be wrapped;
+			</li>
+			<li>
+				Test if <code>querySelector</code>
+					can be wrapped;
+			</li>
+			<li>
+				Test if <code>querySelectorAll</code>
 					can be wrapped;
 			</li>
 		</ol>
 		<h2>Test Element</h2>
-		<form action="./" id="test" method="post"
-			name="test" onsubmit="return false;">
-			<fieldset>
+		<form action="./" class="container" id="test"
+			method="post" name="test"
+			onsubmit="return false;">
+			<fieldset class="container">
 				<legend>Test Elements</legend>
 				<input name="control1" type="text">
 				<input name="control2" type="password">
