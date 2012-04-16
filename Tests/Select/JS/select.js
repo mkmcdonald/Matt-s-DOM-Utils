@@ -7,55 +7,82 @@ global = global || this;
 			"stop": doc.getElementById("stop"),
 			"results": doc.getElementById("results")
 		},
-		bodyReturned,
-		headReturned,
-		byNameWrapped,
-		byTagNameWrapped,
-		byClassNameWrapped,
-		byIdWrapped,
-		qsWrapped,
-		qsaWrapped;
+		tests;
 
-	function assignGetValues()
+	function headReturned()
 	{
-		headReturned =
-			Utils.select.head(doc);
-		bodyReturned =
-			Utils.select.body(doc);
+		return Utils.select.head(
+			doc
+		);
 	}
 
-	function assignQueryValues()
+	function bodyReturned()
 	{
-		qsWrapped = Utils.select.query(
+		return Utils.select.body(
+			doc
+		);
+	}
+
+	function byNameWrapped()
+	{
+		return Utils.select.byName(
+			doc,
+			"control1"
+		);
+	}
+
+	function byTagNameWrapped()
+	{
+		return Utils.select.byTagName(
+			doc,
+			"input"
+		);
+	}
+
+	function byClassNameWrapped()
+	{
+		return Utils.select.byClassName(
+			doc,
+			"container"
+		);
+	}
+
+	function byIdWrapped()
+	{
+		return Utils.select.byId(
+			doc,
+			"test"
+		);
+	}
+
+	function qsWrapped()
+	{
+		return Utils.select.query(
 			doc,
 			"input[type=text]"
 		);
-		qsaWrapped = Utils.select.queryAll(
+	}
+
+	function qsaWrapped()
+	{
+		return Utils.select.queryAll(
 			doc,
 			"input[type]"
 		);
 	}
 
-	function assignValues()
+	function generateTests()
 	{
-		assignGetValues();
-		byNameWrapped = Utils.select.byName(
-			doc,
-			"control1"
-		);
-		byTagNameWrapped = Utils.select.byTagName(
-			doc,
-			"input"
-		);
-		byClassNameWrapped = Utils.select.byClassName(
-			doc,
-			"container"
-		);
-		byIdWrapped = Utils.select.byId(
-			doc,
-			"test"
-		);
-		assignQueryValues();
+		return [
+			headReturned,
+			bodyReturned,
+			byNameWrapped,
+			byTagNameWrapped,
+			byClassNameWrapped,
+			byIdWrapped,
+			qsWrapped,
+			qsaWrapped
+		];
 	}
 
 	function createMessage(text)
@@ -64,7 +91,7 @@ global = global || this;
 		if (str === "") {
 			str = "[an empty string]";
 		}
-		return Utils.nodes.createTextNode(
+		return Utils.create.text(
 			doc,
 			str + "\r\n"
 		);
@@ -73,17 +100,17 @@ global = global || this;
 	function addMessage(text)
 	{
 		var isText =
-			Utils.nodes.isTextNode(
+			Utils.is.text(
 				text
 			),
 			par = commonElements.results,
 			separator = createMessage("----------");
 		text = createMessage(text);
-		Utils.nodes.appendChild(
+		Utils.nodes.append(
 			par,
 			text
 		);
-		Utils.nodes.appendChild(
+		Utils.nodes.append(
 			par,
 			separator
 		);
@@ -91,25 +118,29 @@ global = global || this;
 
 	function runTest(evt)
 	{
-		assignValues();
-		addMessage(bodyReturned);
-		addMessage(headReturned);
-		addMessage(byNameWrapped);
-		addMessage(byTagNameWrapped);
-		addMessage(byClassNameWrapped);
-		addMessage(byIdWrapped);
-		addMessage(qsWrapped);
-		addMessage(qsaWrapped);
+		var index = 0,
+			max,
+			test;
+		tests = generateTests();
+		max = tests.length;
+		while (index < max) {
+			test = tests[index];
+			addMessage(
+				test()
+			);
+			index += 1;
+		}
 	}
 
 	function clearTest(evt)
 	{
 		var par = commonElements.results,
 			nodes = par.childNodes;
-			isHostObject = Utils.host.isObject(nodes);
+			isHostObject = Utils.is.hostObject(nodes);
 		if (isHostObject) {
 			while(nodes.length) {
-				par.removeChild(
+				Utils.nodes.remove(
+					par,
 					nodes[0]
 				);
 			}

@@ -2,12 +2,12 @@ if (Utils) {
 	(function () {
 
 		/*
-                        Utils.errors
+                        Utils.raise
 
                         Description:
 
                         DOM Level 4-compliant custom errors and
-                        methods to throw them.
+                        methods to "raise" (throw) them.
 
                         Dependencies:
 
@@ -73,7 +73,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwIndexSize()
+		function raiseIndexSize()
 		{
 			throw new Error(
 				errorTypes.INDEX_SIZE_ERROR
@@ -87,7 +87,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwHeirarchyRequest()
+		function raiseHeirarchyRequest()
 		{
 			throw new Error(
 				errorTypes.HEIRARCHY_REQUEST_ERROR
@@ -101,7 +101,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwWrongDocument()
+		function raiseWrongDocument()
 		{
 			throw new Error(
 				errorTypes.WRONG_DOCUMENT_ERROR
@@ -115,7 +115,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwInvalidCharacter()
+		function raiseInvalidCharacter()
 		{
 			throw new Error(
 				errorTypes.INVALID_CHARACTER_ERROR
@@ -129,7 +129,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwNoModificationAllowed()
+		function raiseNoModificationAllowed()
 		{
 			var key = "NO_MODIFICATION_ALLOWED_ERROR";
 			throw new Error(
@@ -144,7 +144,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwNotFound()
+		function raiseNotFound()
 		{
 			throw new Error(
 				errorTypes.NOT_FOUND_ERROR
@@ -158,7 +158,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwNotSupported()
+		function raiseNotSupported()
 		{
 			throw new Error(
 				errorTypes.NOT_SUPPORTED_ERROR
@@ -172,7 +172,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwInvalidState()
+		function raiseInvalidState()
 		{
 			throw new Error(
 				errorTypes.INVALID_STATE_ERROR
@@ -186,7 +186,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwSyntax()
+		function raiseSyntax()
 		{
 			throw new Error(
 				errorTypes.SYNTAX_ERROR
@@ -200,7 +200,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwInvalidModification()
+		function raiseInvalidModification()
 		{
 			throw new Error(
 				errorTypes.INVALID_MODIFICATION_ERROR
@@ -214,7 +214,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwNamespace()
+		function raiseNamespace()
 		{
 			throw new Error(
 				errorTypes.NAMESPACE_ERROR
@@ -228,7 +228,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwInvalidAccess()
+		function raiseInvalidAccess()
 		{
 			throw new Error(
 				errorTypes.INVALID_ACCESS_ERROR
@@ -242,7 +242,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwTypeMismatch()
+		function raiseTypeMismatch()
 		{
 			throw new Error(
 				errorTypes.TYPE_MISMATCH_ERROR
@@ -256,7 +256,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwSecurity()
+		function raiseSecurity()
 		{
 			throw new Error(
 				errorTypes.SECURITY_ERROR
@@ -270,7 +270,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwNetwork()
+		function raiseNetwork()
 		{
 			throw new Error(
 				errorTypes.NETWORK_ERROR
@@ -284,7 +284,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwAbort()
+		function raiseAbort()
 		{
 			throw new Error(
 				errorTypes.ABORT_ERROR
@@ -298,7 +298,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwURLMismatch()
+		function raiseURLMismatch()
 		{
 			throw new Error(
 				errorTypes.URL_MISMATCH_ERROR
@@ -312,7 +312,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwQuotaExceeded()
+		function raiseQuotaExceeded()
 		{
 			throw new Error(
 				errorTypes.QUOTA_EXCEEDED_ERROR
@@ -326,7 +326,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwTimeout()
+		function raiseTimeout()
 		{
 			throw new Error(
 				errorTypes.TIMEOUT_ERROR
@@ -340,7 +340,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwInvalidNodeType()
+		function raiseInvalidNodeType()
 		{
 			throw new Error(
 				errorTypes.INVALID_NODE_TYPE_ERROR
@@ -354,7 +354,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwDataClone()
+		function raiseDataClone()
 		{
 			throw new Error(
 				errorTypes.DATA_CLONE_ERROR
@@ -365,35 +365,35 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-		Utils.errors = Utils.errors || {
+		Utils.raise = Utils.raise || {
 			"types": errorTypes,
 
-			"throwIndexSize": throwIndexSize,
-			"throwHeirarchyRequest":
-				throwHeirarchyRequest,
-			"throwWrongDocument": throwWrongDocument,
-			"throwInvalidCharacter":
-				throwInvalidCharacter,
-			"throwNoModificationAllowed":
-				throwNoModificationAllowed,
-			"throwNotFound": throwNotFound,
-			"throwNotSupported": throwNotSupported,
-			"throwInvalidState": throwInvalidState,
-			"throwSyntax": throwSyntax,
-			"throwInvalidModification":
-				throwInvalidModification,
-			"throwNamespace": throwNamespace,
-			"throwInvalidAccess": throwInvalidAccess,
-			"throwTypeMismatch": throwTypeMismatch,
-			"throwSecurity": throwSecurity,
-			"throwNetwork": throwNetwork,
-			"throwAbort": throwAbort,
-			"throwURLMismatch": throwURLMismatch,
-			"throwQuotaExceeded": throwQuotaExceeded,
-			"throwTimeout": throwTimeout,
-			"throwInvalidNodeType":
-				throwInvalidNodeType,
-			"throwDataClone": throwDataClone
+			"indexSize": raiseIndexSize,
+			"heirarchyRequest":
+				raiseHeirarchyRequest,
+			"wrongDocument": raiseWrongDocument,
+			"invalidCharacter":
+				raiseInvalidCharacter,
+			"noModificationAllowed":
+				raiseNoModificationAllowed,
+			"notFound": raiseNotFound,
+			"notSupported": raiseNotSupported,
+			"invalidState": raiseInvalidState,
+			"syntax": raiseSyntax,
+			"invalidModification":
+				raiseInvalidModification,
+			"namespace": raiseNamespace,
+			"invalidAccess": raiseInvalidAccess,
+			"typeMismatch": raiseTypeMismatch,
+			"security": raiseSecurity,
+			"network": raiseNetwork,
+			"abort": raiseAbort,
+			"urlMismatch": raiseURLMismatch,
+			"quotaExceeded": raiseQuotaExceeded,
+			"timeout": raiseTimeout,
+			"invalidNodeType":
+				raiseInvalidNodeType,
+			"dataClone": raiseDataClone
 		};
 	}());
 }

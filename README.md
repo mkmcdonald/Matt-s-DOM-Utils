@@ -23,10 +23,14 @@
         Current Build Order:
 
         (core)
-        1. errors.js
-        2. host.js;
-        3. nodes.js;
-        4. helpers.js;
+        1. utils.js
+        2. raise.js
+        3. helpers.js;
+        4. types.js;
+        5. is.js;
+        6. can.js;
+        7. nodes.js;
+        8. create.js;
 
         (independent modules)
         * classes.js;
@@ -40,19 +44,39 @@ it encourages—and nurtures—the growth of DOM skills.
 
 ## Features
 
-### Errors
+### Raise
 
 *MDU* provides error messages based upon the DOM 4 spec. Each
-documented error type has a method provided to throw the
+documented error type has a method provided to "raise" (throw) the
 corresponding error.
 
 ---
 
-### Host
+### Helpers
 
-*MDU* provides feature detection for host objects
-to allow scripts to degrade where certain
-features are not supported.
+*MDU* provides public helper methods for common library tasks.
+Most commonly, the module is used for static array conversion.
+
+---
+
+### Types
+
+*MDU* provides an object for every specified `nodeType` based
+upon the DOM 4 spec;
+
+---
+
+### Is
+
+*MDU* provides identification tests, This includes test for DOM
+nodes as well as "host objects". Utilizing these tests allows
+scripts to degrade gracefully.
+
+---
+
+### Can
+
+*MDU* provides various capability tests.
 
 ---
 
@@ -64,19 +88,19 @@ with various wrapped methods of the `Node` interface.
 
 See [./Tests/Nodes](./Tests/Nodes "Nodes Tests")
 for examples.
-
 ---
 
-### Helpers
+### Create
 
-*MDU* provides public helper methods for common library tasks.
-Most commonly, the module is used for static array conversion.
+*MDU* provides a set of wrappers for various methods of
+creation. In particular, this includes `createElement` and
+`createTextNode`.
 
 ---
 
 ### Classes
 
-*MDU* provides a DOM Level 4 spec-compliant `classList`
+*MDU* provides a DOM Level 4 spec-style `classList`
 implementation. This includes methods for testing, adding,
 removing and retrieving class tokens.
 
@@ -85,19 +109,22 @@ for examples.
 
 ---
 
-### Traversal
+### Traverse
 
 *MDU*'s main focus is diverse DOM traversal. This includes
 utilities for `childNodes`, `children` and text along with
 more general methods of traversal.
 
-See [./Tests/Traversal](./Tests/Traversal "Traversal Tests")
+See [./Tests/Traverse](./Tests/Traverse "Traverse Tests")
 for examples.
+
+---
 
 ### Select
 
 *MDU* provides a set of wrappers for various methods of
-selection.
+selection. This includes popular methods such as `getElementById`,
+`getElementsByTagName` and newer methods such as `querySelectorAll`.
 
 ---
 
@@ -115,4 +142,4 @@ selection.
 
 ## Metadata
 
-* Last edited on Wednesday April 11th 2012;
+* Last edited on Sunday, April 15th 2012;

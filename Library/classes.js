@@ -6,7 +6,7 @@ if (Utils) {
 
                         Description:
 
-                        DOM Level 4-compliant `classList`
+                        DOM Level 4-style `classList`
                         implementation with additional
                         features. See the DOM 4 spec section 5.7
                         (Element, classList) and 9.2
@@ -14,6 +14,8 @@ if (Utils) {
 
                         Dependencies:
 
+                        * Utils.is;
+                        * Utils.can;
                         * Utils.nodes;
 		*/
 
@@ -21,7 +23,7 @@ if (Utils) {
                         Private object containing invalid
                         characters for a class "token"; presence
                         of any will throw
-                        `Utils.errors.types.INVALID_CHARACTER_ERROR`.
+                        `Utils.raise.types.INVALID_CHARACTER_ERROR`.
 		*/
 
 		var INVALID_CHARS = {
@@ -31,6 +33,17 @@ if (Utils) {
 			"\f": true,
 			"\r": true
 		};
+
+		function canUseClassList(node)
+		{
+			/*
+                                Private wrapper for
+                                `Utils.can.useClassList`.
+			*/
+			return Utils.can.useClassList(
+				node
+			);
+		}
 
 		function checkCharacter(
 			chr
@@ -50,10 +63,10 @@ if (Utils) {
 			chr = String(chr);
 			invalidChar = INVALID_CHARS[chr];
 			if (typeof invalidChar !== "undefined") {
-				Utils.errors.throwInvalidCharacter(
+				Utils.raise.invalidCharacter(
 				);
 			} else if (chr === "") {
-				Utils.errors.throwSyntax();
+				Utils.raise.syntax();
 			} else if (typeof invalidChar ===
 				"undefined") {
 				result = true;
@@ -166,9 +179,9 @@ if (Utils) {
                                 null if not applicable.
 			*/
 			var isElement =
-				Utils.nodes.isElementNode(node),
+				Utils.is.element(node),
 				input,
-				result = null;
+				result = [];
 			if (isElement && typeof node.className ===
 				"string") {
 				input = node.className;
@@ -206,6 +219,106 @@ if (Utils) {
 			return result;
 		}
 
+		function attemptTokenSearch(
+			token,
+			list
+		)
+		{
+			/*
+                                Private helper method that returns
+                                a boolean asserting if `token` is
+                                "valid" and is present in the token
+                                list.
+			*/
+			var validToken,
+				result = false;
+			token = String(token);
+			validToken = checkToken(token);
+			if (validToken) {
+				result = findToken(
+					token,
+					list
+				);
+			}
+			return result;
+		}
+
+		function hasSingleClass(
+			token,
+			node
+		)
+		{
+			/*
+                                Private fork of `forkHas` that asserts
+                                if the specified class is contained by
+                                `node`'s "class list".
+			*/
+			var list = buildClassList(node);
+			return attemptTokenSearch(
+				token,
+				list
+			);
+		}
+
+		function searchClassesInList(
+			tokens,
+			node
+		)
+		{
+			/*
+                                Private helper method that iterates
+                                over a list of tokens and detects
+                                their presence in token list.
+			*/
+			var list = buildClassList(node),
+				index = 0,
+				max = tokens.length,
+				result = false;
+			while (index < max) {
+				result = attemptTokenSearch(
+					tokens[index],
+					list
+				);
+				if (!result) {
+					break;
+				}
+				index += 1;
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function hasClasses(
+			tokens,
+			node
+		)
+		{
+			/*
+                                Public method that returns a boolean
+                                asserting if an array of tokens is
+                                contained by a token list
+                                (independent of order).
+			*/
+			var isElement = Utils.is.element(node),
+				result = false;
+			if (isElement) {
+				if (typeof tokens === "object" &&
+					tokens.length) {
+					result = searchClassesInList(
+						tokens,
+						node
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
 
                 /*        PUBLIC METHOD        */
 
@@ -216,25 +329,31 @@ if (Utils) {
 		)
 		{
 			/*
-                                Public method that returns a boolean
-                                asserting if the class passed is
-                                in the token list generated.
+                                Public method that asserts if the
+                                specified class(es) are contained by
+                                `node`'s "class list"; forks to
+                                `hasSingleClass` if `classList` is
+                                unavailable.
 			*/
-			var isElement =
-				Utils.nodes.isElementNode(node),
-				validToken,
-				list,
-				tokenFound,
+			var canUseList = canUseClassList(node),
+				canUseHas,
+				key = "contains",
+				isElement = Utils.is.element(node),
 				result = false;
-			token = String(token);
-			list = buildClassList(node);
-			validToken = checkToken(token);
-			if (isElement && validToken) {
-				tokenFound = findToken(
-					token,
-					list
+			if (canUseList) {
+				canUseHas = Utils.is.hostObject(
+					node.classList[key]
 				);
-				result = tokenFound;
+				if (canUseHas) {
+					result = node.classList[key](
+						token
+					);
+				}
+			} else if (!canUseList && isElement) {
+				result = hasSingleClass(
+					token,
+					node
+				);
 			}
 			return result;
 		}
@@ -276,40 +395,11 @@ if (Utils) {
                                 as a string.
 			*/
 			var isElement =
-				Utils.nodes.isElementNode(node),
+				Utils.is.element(node),
 				result;
 			if (isElement && typeof node.className ===
 				"string") {
 				node.className = list.join(" ");
-			}
-			return result;
-		}
-
-		function addSingleClass(
-			token,
-			node
-		)
-		{
-			/*
-                                Private method forked from
-                                `addClass`; adds single token to
-                                a token list and applies the list
-                                to the node's `className`.
-			*/
-			var isElement =
-				Utils.nodes.isElementNode(node),
-				list = buildClassList(node),
-				validToken,
-				result;
-			token = String(token);
-			validToken = checkToken(token);
-			if (isElement && validToken) {
-				attemptClassAddition(
-					token,
-					node,
-					list
-				);
-				overwriteClass(node, list);
 			}
 			return result;
 		}
@@ -340,36 +430,84 @@ if (Utils) {
 			return result;
 		}
 
+		function addClassesToList(
+			tokens,
+			node
+		)
+		{
+			/*
+                                Private helper method that iterates
+                                over a list of tokens and attempts
+                                to add them to a token list.
+			*/
+			var list = buildClassList(node),
+				index = 0,
+				max = tokens.length,
+				result;
+			while (index < max) {
+				classAdditionCheck(
+					tokens[index],
+					node,
+					list
+				);
+				index += 1;
+			}
+			overwriteClass(node, list);
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function addClasses(
 			tokens,
 			node
 		)
 		{
 			/*
-                                Private method forked from
-                                `addClass`; adds an array of tokens
-                                to a token list and applies the list
-                                to the node's `className`.
+                                Public method that adds an array of
+                                tokens to a token list and applies
+                                the list to the node's `className`.
 			*/
-			var isElement =
-				Utils.nodes.isElementNode(node),
-				list = buildClassList(node),
-				index = 0,
-				max = tokens.length,
-				token,
+			var isElement = Utils.is.element(node),
 				result;
 			if (isElement) {
-				while (index < max) {
-					token = tokens[index];
-					classAdditionCheck(
-						token,
-						node,
-						list
+				if (typeof tokens === "object" &&
+					tokens.length) {
+					addClassesToList(
+						tokens,
+						node
 					);
-					index += 1;
 				}
-				overwriteClass(node, list);
 			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		function addSingleClass(
+			token,
+			node
+		)
+		{
+			/*
+                                Private method forked from
+                                `addClass`; adds single token to
+                                a token list and applies the list
+                                to the node's `className`.
+			*/
+			var list = buildClassList(node),
+				result;
+			token = String(token);
+			attemptClassAddition(
+				token,
+				node,
+				list
+			);
+			overwriteClass(node, list);
 			return result;
 		}
 
@@ -385,20 +523,24 @@ if (Utils) {
 			/*
                                 Public method that attempts to add
                                 the specified class(es) to the node's
-                                "class list"; forks to
-                                `addSingleClass` if String detected;
-                                forks to `addClasses` if "array"
-                                detected.
+                                "class list"; forks to `addSingleClass`
+                                if `classList` is unavailable.
 			*/
-			var result = false;
-			if (typeof token === "string") {
-				result = addSingleClass(
-					token,
-					node
+			var canUseList = canUseClassList(node),
+				canUseAdd,
+				isElement = Utils.is.element(node),
+				result = false;
+			if (canUseList) {
+				canUseAdd = Utils.is.hostObject(
+					node.classList.add
 				);
-			} else if (typeof token === "object" &&
-				token.length) {
-				result = addClasses(
+				if (canUseAdd) {
+					result = node.classList.add(
+						token
+					);
+				}
+			} else if (!canUseList && isElement) {
+				result = addSingleClass(
 					token,
 					node
 				);
@@ -458,35 +600,6 @@ if (Utils) {
 			return result;
 		}
 
-		function removeSingleClass(
-			token,
-			node
-		)
-		{
-			/*
-                                Private method forked from
-                                `removeClass`; removes single token
-                                from a token list and applies the list
-                                to the node's `className`.
-			*/
-			var isElement =
-				Utils.nodes.isElementNode(node),
-				list = buildClassList(node),
-				validToken,
-				result;
-			token = String(token);
-			validToken = checkToken(token);
-			if (isElement && validToken) {
-				attemptClassRemoval(
-					token,
-					node,
-					list
-				);
-				overwriteClass(node, list);
-			}
-			return result;
-		}
-
 		function classRemovalCheck(
 			token,
 			node,
@@ -513,33 +626,86 @@ if (Utils) {
 			return result;
 		}
 
+		function removeClassesFromList(
+			tokens,
+			node
+		)
+		{
+			/*
+                                Private helper method that iterates
+                                over a list of tokens and attempts
+                                to remove them from a token list.
+			*/
+			var list = buildClassList(node),
+				index = tokens.length - 1,
+				result;
+			while (index > -1) {
+				classRemovalCheck(
+					tokens[index],
+					node,
+					list
+				);
+				index -= 1;
+			}
+			overwriteClass(node, list);
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function removeClasses(
 			tokens,
 			node
 		)
 		{
 			/*
-                                Private method forked from
-                                `removeClass`; removes an array of
-                                tokens from a token list and applies
-                                the list to the node's `className`.
+                                Public method that removes an array
+                                of tokens from a token list and
+                                applies the list to the node's
+                                `className`.
 			*/
-			var isElement =
-				Utils.nodes.isElementNode(node),
-				list = buildClassList(node),
-				index = tokens.length - 1,
-				token,
+			var isElement = Utils.is.element(node),
 				result;
 			if (isElement) {
-				while (index > -1) {
-					token = tokens[index];
-					classRemovalCheck(
-						token,
-						node,
-						list
+				if (typeof tokens === "object" &&
+					tokens.length) {
+					removeClassesFromList(
+						tokens,
+						node
 					);
-					index -= 1;
 				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		function removeSingleClass(
+			token,
+			node
+		)
+		{
+			/*
+                                Private method forked from
+                                `removeClass`; removes single token
+                                from a token list and applies the list
+                                to the node's `className`.
+			*/
+			var list = buildClassList(node),
+				validToken,
+				result;
+			token = String(token);
+			validToken = checkToken(token);
+			if (validToken) {
+				attemptClassRemoval(
+					token,
+					node,
+					list
+				);
 				overwriteClass(node, list);
 			}
 			return result;
@@ -555,22 +721,27 @@ if (Utils) {
 		)
 		{
 			/*
-                                Public method that attempts to
-                                remove the specified class(es)
-                                from the node's "class list";
-                                forks to `removeSingleClass` if
-                                String detected; forks to
-                                `removeClasses` if "array" detected.
+                                Public method that attempts to add
+                                the specified class(es) to the node's
+                                "class list"; forks to `addSingleClass`
+                                if `classList` is unavailable.
 			*/
-			var result = false;
-			if (typeof token === "string") {
-				result = removeSingleClass(
-					token,
-					node
+			var canUseList = canUseClassList(node),
+				key = "remove",
+				canUseRemove,
+				isElement = Utils.is.element(node),
+				result = false;
+			if (canUseList) {
+				canUseRemove = Utils.is.hostObject(
+					node.classList[key]
 				);
-			} else if (typeof token === "object" &&
-				token.length) {
-				result = removeClasses(
+				if (canUseRemove) {
+					result = node.classList[key](
+						token
+					);
+				}
+			} else if (!canUseList && isElement) {
+				result = removeSingleClass(
 					token,
 					node
 				);
@@ -580,6 +751,36 @@ if (Utils) {
 
 
                 /*        END PUBLIC METHOD        */
+
+
+		function toggleSingleClass(
+			token,
+			node
+		)
+		{
+			/*
+                                Private helper method that "toggles"
+                                the presence of a single token in a
+                                token list; returns a boolean
+                                asserting the token's presence in
+                                the token list;
+			*/
+			var has = hasClass(token, node),
+				result = false;
+			if (!has) {
+				addClass(
+					token,
+					node
+				);
+				result = true;
+			} else if (has) {
+				removeClass(
+					token,
+					node
+				);
+			}
+			return result;
+		}
 
 
                 /*        PUBLIC METHOD        */
@@ -597,21 +798,77 @@ if (Utils) {
                                 boolean asserting if the token was
                                 added.
 			*/
-			var isElement =
-				Utils.nodes.isElementNode(node),
-				has,
+			var canUseList = canUseClassList(node),
+				canUseToggle,
+				key = "toggle",
+				isElement = Utils.is.element(node),
 				result = false;
-			if (isElement) {
-				has = hasClass(token, node);
-				if (!has) {
-					addClass(
-						token,
-						node
+			if (canUseList) {
+				canUseToggle = Utils.is.hostObject(
+					node.classList[key]
+				);
+				if (canUseToggle) {
+					result = node.classList[key](
+						token
 					);
-					result = true;
-				} else if (has) {
-					removeClass(
-						token,
+				}
+			} else if (!canUseList && isElement) {
+				result = toggleSingleClass(
+					token,
+					node
+				);
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		function toggleClassesInList(
+			tokens,
+			node
+		)
+		{
+			/*
+                                Private helper method that iterates
+                                over a list of tokens and "toggles"
+                                their presence in a token list.
+			*/
+			var index = 0,
+				max = tokens.length,
+				result;
+			while (index < max) {
+				toggleSingleClass(
+					tokens[index],
+					node
+				);
+				index += 1;
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function toggleClasses(
+			tokens,
+			node
+		)
+		{
+			/*
+                                Public method that detects the
+                                presence of tokens in `node`'s
+                                token list.
+			*/
+			var isElement = Utils.is.element(node),
+				result;
+			if (isElement) {
+				if (typeof tokens === "object" &&
+					tokens.length) {
+					toggleClassesInList(
+						tokens,
 						node
 					);
 				}
@@ -626,19 +883,19 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function getToken(
+		function getClass(
 			index,
 			node
 		)
 		{
 			/*
                                 Public method that returns the
-                                specific index in the node's
+                                token at `index` in the node's
                                 "class list"; returns null
                                 if not applicable.
 			*/
 			var isElement =
-				Utils.nodes.isElementNode(node),
+				Utils.is.element(node),
 				tokens,
 				result = null;
 			index = Number(index);
@@ -659,15 +916,14 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function listClasses(node)
+		function getClasses(node)
 		{
 			/*
                                 Public method that returns a node's
-                                "class list" (via
-                                `buildClassList`).
+                                "class list" (via `buildClassList`).
 			*/
 			var isElement =
-				Utils.nodes.isElementNode(node),
+				Utils.is.element(node),
 				result = null;
 			if (isElement) {
 				result = buildClassList(node);
@@ -681,11 +937,19 @@ if (Utils) {
 
 		Utils.classes = Utils.classes || {
 			"add": addClass,
+			"addList": addClasses,
+
 			"contains": hasClass,
+			"containsList": hasClasses,
+
 			"remove": removeClass,
+			"removeList": removeClasses,
+
 			"toggle": toggleClass,
-			"item": getToken,
-			"list": listClasses
+			"toggleList": toggleClasses,
+
+			"item": getClass,
+			"get": getClasses
 		};
 	}());
 }

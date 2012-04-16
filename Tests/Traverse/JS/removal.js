@@ -1,10 +1,11 @@
 (function () {
-	var commonElements = {
-		"test": document.getElementById("test"),
-		"start": document.getElementById("start"),
-		"stop": document.getElementById("stop"),
-		"results": document.getElementById("results")
-	},
+	var doc = global.document,
+		commonElements = {
+			"test": doc.getElementById("test"),
+			"start": doc.getElementById("start"),
+			"stop": doc.getElementById("stop"),
+			"results": doc.getElementById("results")
+		},
 		childRemoved,
 		childrenCleared,
 		childNodesCleared;
@@ -15,11 +16,11 @@
 			commonElements.test.childNodes[0]
 		);
 		childrenCleared =
-			Utils.traversal.clearChildren(
+			Utils.traverse.clearChildren(
 				commonElements.test
 			);
 		childNodesCleared =
-			Utils.traversal.clearChildNodes(
+			Utils.traverse.clearChildNodes(
 				commonElements.test
 			);
 	}
@@ -30,22 +31,23 @@
 		if (str === "") {
 			str = "[an empty string]";
 		}
-		return document.createTextNode(
-			str + "\n"
+		return Utils.create.text(
+			doc,
+			str + "\r\n"
 		);
 	}
 
 	function addMessage(text)
 	{
 		var isText =
-			Utils.nodes.isTextNode(
+			Utils.is.text(
 				text
 			),
-			parent = commonElements.results;
+			par = commonElements.results;
 		if (!isText) {
 			text = createMessage(text);
 		}
-		parent.appendChild(text);
+		par.appendChild(text);
 	}
 
 	function runTest(evt)
@@ -58,10 +60,11 @@
 
 	function clearTest(evt)
 	{
-		var parent = commonElements.results,
-		nodes = parent.childNodes;
+		var par = commonElements.results,
+		nodes = par.childNodes;
 		while(nodes.length) {
-			parent.removeChild(
+			Utils.nodes.remove(
+				par,
 				nodes[0]
 			);
 		}

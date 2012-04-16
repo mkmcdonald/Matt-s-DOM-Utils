@@ -9,95 +9,44 @@ global = global || this;
 		},
 		tests;
 
-	function canAdd()
+	function elementCreated()
 	{
-		return Utils.classes.add(
-			"good",
-			commonElements.test
+		return Utils.create.element(
+			doc,
+			"p"
 		);
 	}
 
-	function canDetect()
+	function textNodeCreated()
 	{
-		return Utils.classes.contains(
-			"good",
-			commonElements.test
+		return Utils.create.text(
+			doc,
+			"The rain in Spain is quite plain."
 		);
 	}
 
-	function canRemove()
+	function commentCreated()
 	{
-		return Utils.classes.remove(
-			"good",
-			commonElements.test
+		return Utils.create.comment(
+			doc,
+			"No comment."
 		);
 	}
 
-	function canToggleOn()
+	function documentFragmentCreated()
 	{
-		return Utils.classes.toggle(
-			"toggle",
-			commonElements.test
-		);
-	}
-
-	function canToggleOff()
-	{
-		return canToggleOn();
-	}
-
-	function canAddMultiple()
-	{
-		return Utils.classes.addList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-	}
-
-	function canDetectMultiple()
-	{
-		return Utils.classes.containsList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-	}
-
-	function canRemoveMultiple()
-	{
-		return Utils.classes.removeList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-	}
-
-	function canToggleMultiple()
-	{
-		return Utils.classes.toggleList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-	}
-
-	function canGet()
-	{
-		return Utils.classes.get(
-			commonElements.test
+		return Utils.create.documentFragment(
+			doc
 		);
 	}
 
 	function generateTests()
 	{
 		return [
-			canAdd,
-			canDetect,
-			canRemove,
-			canToggleOn,
-			canToggleOff,
-			canAddMultiple,
-			canDetectMultiple,
-			canRemoveMultiple,
-			canToggleMultiple,
-			canGet
+			elementCreated,
+			textNodeCreated,
+			commentCreated,
+			documentFragmentCreated
 		];
 	}
 

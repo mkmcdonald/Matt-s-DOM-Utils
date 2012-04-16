@@ -2,7 +2,7 @@ if (Utils) {
 	(function () {
 
 		/*
-                        Utils.traversal
+                        Utils.traverse
 
                         Description:
 
@@ -12,9 +12,14 @@ if (Utils) {
                         Dependencies:
 
                         * Utils.host;
-                        * Utils.nodes;
                         * Utils.helpers;
+                        * Utils.nodes;
+                        * Utils.is;
+                        * Utils.can;
+			* Utils.create;
 		*/
+
+		var nodeTypes = Utils.types;
 
 
                 /*        PUBLIC METHOD        */
@@ -40,7 +45,7 @@ if (Utils) {
                                         "value": [`node`]
                                 }
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				result = null;
 			if (isNode) {
 				result = {};
@@ -67,7 +72,7 @@ if (Utils) {
                                 list (preferably created via
                                 `getAncestorList`) contains `node`.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				result = false;
 			while (isNode && typeof list.parent !==
 				"undefined") {
@@ -95,7 +100,7 @@ if (Utils) {
                                 ancestor of `node` (via
                                 `listContainsNode`).
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				list,
 				result = false;
 			if (isNode) {
@@ -133,12 +138,12 @@ if (Utils) {
                                 returns `null` if
                                 not applicable.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				key = "childNodes",
 				isHostObject,
 				result = null;
 			if (isNode) {
-				isHostObject = Utils.host.isObject(
+				isHostObject = Utils.is.hostObject(
 					node[key]
 				);
 				if (isHostObject) {
@@ -306,15 +311,15 @@ if (Utils) {
                                 `node.childNodes` and
                                 `node.nextSibling`.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				hasChildNodes,
 				hasSibling,
 				result = false;
 			if (isNode) {
-				hasChildNodes = Utils.host.isObject(
+				hasChildNodes = Utils.is.hostObject(
 					node.childNodes
 				);
-				hasSibling = Utils.host.isObject(
+				hasSibling = Utils.is.hostObject(
 					node.nextSibling
 				);
 				if (hasChildNodes && hasSibling
@@ -368,11 +373,11 @@ if (Utils) {
                                 `makeArray`); returns `null` if not
                                 applicable.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				isHostObject,
 				result = null;
 			if (isNode) {
-				isHostObject = Utils.host.isObject(
+				isHostObject = Utils.is.hostObject(
 					node.childNodes
 				);
 				if (isHostObject) {
@@ -427,16 +432,16 @@ if (Utils) {
                                 for `traverse*`; removes `node`;
                                 returns `null` if not applicable.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				key = "parentNode",
 				isHostObject,
 				result = null;
 			if (isNode) {
-				isHostObject = Utils.host.isObject(
+				isHostObject = Utils.is.hostObject(
 					node[key]
 				);
 				if (isHostObject) {
-					Utils.nodes.removeChild(
+					Utils.nodes.remove(
 						node[key],
 						node
 					);
@@ -457,7 +462,7 @@ if (Utils) {
 				them upon successful removal;
 				returns `null` if not applicable.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				result = null;
 			if (isNode) {
 				result = traverseChildNodes(
@@ -480,11 +485,11 @@ if (Utils) {
                                 as a static array; returns `null`
                                 if not applicable.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				isHostObject,
 				result = null;
 			if (isNode) {
-				isHostObject = Utils.host.isObject(
+				isHostObject = Utils.is.hostObject(
 					node.children
 				);
 				if (isHostObject) {
@@ -506,7 +511,7 @@ if (Utils) {
                                 returns `false` otherwise.
                         */
 			var isElementNode =
-				Utils.nodes.isElementNode(
+				Utils.is.element(
 					node
 				),
 				result = false;
@@ -530,7 +535,7 @@ if (Utils) {
                                 `makeArray`); returns `null` if
                                 not applicable.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				nodes = [],
 				result = null;
 			if (isNode && typeof node.children !==
@@ -597,12 +602,12 @@ if (Utils) {
                                 otherwise.
                         */
 			var isElementNode =
-				Utils.nodes.isElementNode(
+				Utils.is.element(
 					node
 				),
 				result = false;
 			if (isElementNode) {
-				result = Utils.nodes.removeChild(
+				result = Utils.nodes.remove(
 					node
 				);
 			}
@@ -621,7 +626,7 @@ if (Utils) {
 				them upon successful removal;
 				returns `null` if not applicable.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				result = null;
 			if (isNode) {
 				result = traverseChildren(
@@ -648,7 +653,7 @@ if (Utils) {
                                 otherwise.
 			*/
 			var validNode =
-				Utils.nodes.isTextNode(node),
+				Utils.is.text(node),
 				result = false;
 			if (validNode) {
 				result = node.nodeValue;
@@ -665,7 +670,7 @@ if (Utils) {
                                 `null` if not applicable. For
                                 more, see `getText`.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				result = null;
 			if (isNode && typeof node.data !==
 				"undefined") {
@@ -684,7 +689,7 @@ if (Utils) {
                                 returns `null` if not applicable.
                                 For more, see `getText`.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				nodes,
 				result = null;
 			if (isNode) {
@@ -708,14 +713,13 @@ if (Utils) {
                                 accepted `nodeType`s for "getting"
                                 textual content.
 			*/
-			var types = Utils.nodes.types,
-				result = {};
-			result[types.ELEMENT_NODE] = collectText;
-			result[types.TEXT_NODE] = grabText;
-			result[types.COMMENT_NODE] = grabText;
-			result[types.DOCUMENT_FRAGMENT_NODE] =
+			var result = {};
+			result[nodeTypes.ELEMENT_NODE] = collectText;
+			result[nodeTypes.TEXT_NODE] = grabText;
+			result[nodeTypes.COMMENT_NODE] = grabText;
+			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] =
 				collectText;
-			result[types.PROCESSING_INSTRUCTION_NODE] =
+			result[nodeTypes.PROCESSING_INSTRUCTION_NODE] =
 				grabText;
 			return result;
 		}
@@ -736,7 +740,7 @@ if (Utils) {
                                 (`Node.textContent`, getting)
                                 for more.
 			*/
-			var canGet = Utils.nodes.canGetText(node),
+			var canGet = Utils.can.getText(node),
 				decisions =
 					generateTextGetterDecisions(),
 				decision,
@@ -768,11 +772,11 @@ if (Utils) {
                                 if not applicable. For more,
                                 see `setText`.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				textNode,
 				result = null;
 			text = String(text);
-			textNode = Utils.nodes.createTextNode(
+			textNode = Utils.create.text(
 				global.document,
 				text
 			);
@@ -797,7 +801,7 @@ if (Utils) {
                                 applicable. For more, see
                                 `setText`.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				result = null;
 			text = String(text);
 			if (isNode && typeof node.data !==
@@ -816,17 +820,16 @@ if (Utils) {
                                 accepted `nodeType`s for "setting"
                                 textual content.
 			*/
-			var types = Utils.nodes.types,
-				result = {};
-			result[types.ELEMENT_NODE] =
+			var result = {};
+			result[nodeTypes.ELEMENT_NODE] =
 				overrideText;
-			result[types.TEXT_NODE] =
+			result[nodeTypes.TEXT_NODE] =
 				replaceText;
-			result[types.COMMENT_NODE] =
+			result[nodeTypes.COMMENT_NODE] =
 				replaceText;
-			result[types.DOCUMENT_FRAGMENT_NODE] =
+			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] =
 				overrideText;
-			result[types.PROCESSING_INSTRUCTION_NODE] =
+			result[nodeTypes.PROCESSING_INSTRUCTION_NODE] =
 				replaceText;
 			return result;
 		}
@@ -849,7 +852,7 @@ if (Utils) {
                                 (`Node.textContent`, setting)
                                 for more.
 			*/
-			var canSet = Utils.nodes.canSetText(node),
+			var canSet = Utils.can.setText(node),
 				decisions =
 					generateTextSetterDecisions(),
 				decision,
@@ -871,21 +874,21 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-		Utils.traversal = Utils.traversal || {
-			"getAncestorList": getAncestorList,
+		Utils.traverse = Utils.traverse || {
+			"getAncestors": getAncestorList,
 			"isAncestor": isAncestor,
 
 			"getChildNodes": getChildNodes,
 			"getChildNodeTree": getChildNodeTree,
 
-			"traverseLinear": traverseLinear,
-			"traverseRecursive": traverseRecursive,
+			"linear": traverseLinear,
+			"recursive": traverseRecursive,
 
-			"traverseChildNodes": traverseChildNodes,
+			"childNodes": traverseChildNodes,
 			"clearChildNodes": clearChildNodes,
 
 			"getChildren": getChildren,
-			"traverseChildren": traverseChildren,
+			"children": traverseChildren,
 			"clearChildren": clearChildren,
 
 			"getText": getText,

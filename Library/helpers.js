@@ -10,8 +10,7 @@ if (Utils) {
 
                         Dependencies:
 
-                        * Utils.host;
-                        * Utils.nodes;
+                        * null;
 		*/
 
 

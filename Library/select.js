@@ -11,9 +11,12 @@ if (Utils) {
                         Dependencies:
 
                         * Utils.host;
-                        * Utils.nodes;
                         * Utils.helpers;
+                        * Utils.nodes;
+                        * Utils.is;
 		*/
+
+		var nodeTypes = Utils.types;
 
 		function makeLinearArray(obj)
 		{
@@ -38,13 +41,13 @@ if (Utils) {
                                 `getElementsByName`; returns
                                 `null` if not applicable.
 			*/
-			name = String(name);
-			var isDoc = Utils.nodes.isDocumentNode(doc),
+			var isDoc = Utils.is.document(doc),
 				key = "getElementsByName",
 				canUse,
 				result = null;
+			name = String(name);
 			if (isDoc) {
-				canUse = Utils.host.isObject(
+				canUse = Utils.is.hostObject(
 					doc[key]
 				);
 				if (canUse) {
@@ -73,16 +76,16 @@ if (Utils) {
                                 `getElementsByTagName`; returns
                                 `null` if not applicable.
 			*/
-			tag = String(tag);
-			var isDoc = Utils.nodes.isDocumentNode(caller),
-				isElement = Utils.nodes.isElementNode(
+			var isDoc = Utils.is.document(caller),
+				isElement = Utils.is.element(
 					caller
 				),
 				key = "getElementsByTagName",
 				canUse,
 				result = null;
+			tag = String(tag);
 			if (isDoc || isElement) {
-				canUse = Utils.host.isObject(
+				canUse = Utils.is.hostObject(
 					caller[key]
 				);
 				if (canUse) {
@@ -112,17 +115,17 @@ if (Utils) {
                                 `getElementsByTagNameNS`; returns
                                 `null` if not applicable.
 			*/
-			local = String(local);
-			ns = String(ns);
-			var isDoc = Utils.nodes.isDocumentNode(caller),
-				isElement = Utils.nodes.isElementNode(
+			var isDoc = Utils.is.document(caller),
+				isElement = Utils.is.element(
 					caller
 				),
 				key = "getElementsByTagNameNS",
 				canUse,
 				result = null;
+			local = String(local);
+			ns = String(ns);
 			if (isDoc || isElement) {
-				canUse = Utils.host.isObject(
+				canUse = Utils.is.hostObject(
 					caller[key]
 				);
 				if (canUse) {
@@ -151,16 +154,16 @@ if (Utils) {
                                 `getElementsByClassName`; returns
                                 `null` if not applicable.
 			*/
-			names = String(names);
-			var isDoc = Utils.nodes.isDocumentNode(caller),
-				isElement = Utils.nodes.isElementNode(
+			var isDoc = Utils.is.document(caller),
+				isElement = Utils.is.element(
 					caller
 				),
 				key = "getElementsByClassName",
 				canUse,
 				result = null;
+			names = String(names);
 			if (isDoc || isElement) {
-				canUse = Utils.host.isObject(
+				canUse = Utils.is.hostObject(
 					caller[key]
 				);
 				if (canUse) {
@@ -189,13 +192,13 @@ if (Utils) {
                                 `getElementById`; returns `null`
                                 if not applicable.
 			*/
-			id = String(id);
-			var isDoc = Utils.nodes.isDocumentNode(doc),
+			var isDoc = Utils.is.document(doc),
 				key = "getElementById",
 				canUse,
 				result = null;
+			id = String(id);
 			if (isDoc) {
-				canUse = Utils.host.isObject(
+				canUse = Utils.is.hostObject(
 					doc[key]
 				);
 				if (canUse) {
@@ -216,11 +219,10 @@ if (Utils) {
                                 object containing applicable
                                 `nodeTypes` for `querySelector*`;
 			*/
-			var types = Utils.nodes.types,
-				result = {};
-			result[types.ELEMENT_NODE] = true;
-			result[types.DOCMENT_NODE] = true;
-			result[types.DOCUMENT_FRAGMENT_NODE] = true;
+			var result = {};
+			result[nodeTypes.ELEMENT_NODE] = true;
+			result[nodeTypes.DOCMENT_NODE] = true;
+			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
 			return result;
 		}
 
@@ -232,7 +234,7 @@ if (Utils) {
                                 asserting if `node` can call
                                 `querySelector*`.
 			*/
-			var isNode = Utils.nodes.isNode(node),
+			var isNode = Utils.is.node(node),
 				types = generateSelectorTypes(),
 				value,
 				result = false;
@@ -258,19 +260,19 @@ if (Utils) {
                                 `querySelector`; returns `null`
                                 if not applicable.
 			*/
-			selectors = String(selectors);
 			var canCall = canCallSelectors(caller),
 				key = "querySelector",
 				canUse,
 				result = null;
+			selectors = String(selectors);
 			if (canCall) {
-				canUse = Utils.host.isObject(
+				canUse = Utils.is.hostObject(
 					caller[key]
 				);
 				if (canUse) {
 					result = caller[key](
-						selectors)
-					;
+						selectors
+					);
 				}
 			}
 			return result;
@@ -293,13 +295,13 @@ if (Utils) {
                                 `querySelectorAll`; returns `null`
                                 if not applicable.
 			*/
-			selectors = String(selectors);
 			var canCall = canCallSelectors(caller),
 				key = "querySelectorAll",
 				canUse,
 				result = null;
+			selectors = String(selectors);
 			if (canCall) {
-				canUse = Utils.host.isObject(
+				canUse = Utils.is.hostObject(
 					caller[key]
 				);
 				if (canUse) {
@@ -346,11 +348,11 @@ if (Utils) {
                                 element; returns `null` if not
                                 applicable.
 			*/
-			var isDoc = Utils.nodes.isDocumentNode(doc),
+			var isDoc = Utils.is.document(doc),
 				headProp,
 				result = null;
 			if (isDoc) {
-				headProp = Utils.host.isObject(
+				headProp = Utils.is.hostObject(
 					global.document.head
 				);
 				if (headProp) {
@@ -397,11 +399,11 @@ if (Utils) {
                                 element; returns `null` if not
                                 applicable.
 			*/
-			var isDoc = Utils.nodes.isDocumentNode(doc),
+			var isDoc = Utils.is.document(doc),
 				bodyProp,
 				result = null;
 			if (isDoc) {
-				bodyProp = Utils.host.isObject(
+				bodyProp = Utils.is.hostObject(
 					global.document.body
 				);
 				if (bodyProp) {

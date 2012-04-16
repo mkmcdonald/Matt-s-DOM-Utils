@@ -7,80 +7,59 @@ global = global || this;
 			"stop": doc.getElementById("stop"),
 			"results": doc.getElementById("results")
 		},
-		tests;
+		test;
 
-	function canAdd()
+	function childNodes()
 	{
-		return Utils.classes.add(
-			"good",
+		return Utils.traverse.getChildNodes(
 			commonElements.test
 		);
 	}
 
-	function canDetect()
+	function optimisticFilter(node)
 	{
-		return Utils.classes.contains(
-			"good",
+		return true;
+	}
+
+	function childNodesTraversed()
+	{
+		return Utils.traverse.childNodes(
+			commonElements.test,
+			optimisticFilter
+		);
+	}
+
+	function children()
+	{
+		return Utils.traverse.getChildren(
 			commonElements.test
 		);
 	}
 
-	function canRemove()
+	function childrenTraversed()
 	{
-		return Utils.classes.remove(
-			"good",
+		return Utils.traverse.children(
+			commonElements.test,
+			pessimisticFilter
+		);
+	}
+
+	function pessimisticFilter(node)
+	{
+		return false;
+	}
+
+	function textCollected()
+	{
+		return Utils.traverse.getText(
 			commonElements.test
 		);
 	}
 
-	function canToggleOn()
+	function textOverridden()
 	{
-		return Utils.classes.toggle(
-			"toggle",
-			commonElements.test
-		);
-	}
-
-	function canToggleOff()
-	{
-		return canToggleOn();
-	}
-
-	function canAddMultiple()
-	{
-		return Utils.classes.addList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-	}
-
-	function canDetectMultiple()
-	{
-		return Utils.classes.containsList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-	}
-
-	function canRemoveMultiple()
-	{
-		return Utils.classes.removeList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-	}
-
-	function canToggleMultiple()
-	{
-		return Utils.classes.toggleList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-	}
-
-	function canGet()
-	{
-		return Utils.classes.get(
+		return Utils.traverse.setText(
+			"NEW TEXTUAL CONTENT",
 			commonElements.test
 		);
 	}
@@ -88,16 +67,12 @@ global = global || this;
 	function generateTests()
 	{
 		return [
-			canAdd,
-			canDetect,
-			canRemove,
-			canToggleOn,
-			canToggleOff,
-			canAddMultiple,
-			canDetectMultiple,
-			canRemoveMultiple,
-			canToggleMultiple,
-			canGet
+			childNodes,
+			childNodesTraversed,
+			children,
+			childrenTraversed,
+			textCollected,
+			textOverridden
 		];
 	}
 

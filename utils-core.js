@@ -24,12 +24,12 @@ if (Utils) {
 	(function () {
 
 		/*
-                        Utils.errors
+                        Utils.raise
 
                         Description:
 
                         DOM Level 4-compliant custom errors and
-                        methods to throw them.
+                        methods to "raise" (throw) them.
 
                         Dependencies:
 
@@ -95,7 +95,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwIndexSize()
+		function raiseIndexSize()
 		{
 			throw new Error(
 				errorTypes.INDEX_SIZE_ERROR
@@ -109,7 +109,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwHeirarchyRequest()
+		function raiseHeirarchyRequest()
 		{
 			throw new Error(
 				errorTypes.HEIRARCHY_REQUEST_ERROR
@@ -123,7 +123,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwWrongDocument()
+		function raiseWrongDocument()
 		{
 			throw new Error(
 				errorTypes.WRONG_DOCUMENT_ERROR
@@ -137,7 +137,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwInvalidCharacter()
+		function raiseInvalidCharacter()
 		{
 			throw new Error(
 				errorTypes.INVALID_CHARACTER_ERROR
@@ -151,7 +151,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwNoModificationAllowed()
+		function raiseNoModificationAllowed()
 		{
 			var key = "NO_MODIFICATION_ALLOWED_ERROR";
 			throw new Error(
@@ -166,7 +166,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwNotFound()
+		function raiseNotFound()
 		{
 			throw new Error(
 				errorTypes.NOT_FOUND_ERROR
@@ -180,7 +180,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwNotSupported()
+		function raiseNotSupported()
 		{
 			throw new Error(
 				errorTypes.NOT_SUPPORTED_ERROR
@@ -194,7 +194,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwInvalidState()
+		function raiseInvalidState()
 		{
 			throw new Error(
 				errorTypes.INVALID_STATE_ERROR
@@ -208,7 +208,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwSyntax()
+		function raiseSyntax()
 		{
 			throw new Error(
 				errorTypes.SYNTAX_ERROR
@@ -222,7 +222,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwInvalidModification()
+		function raiseInvalidModification()
 		{
 			throw new Error(
 				errorTypes.INVALID_MODIFICATION_ERROR
@@ -236,7 +236,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwNamespace()
+		function raiseNamespace()
 		{
 			throw new Error(
 				errorTypes.NAMESPACE_ERROR
@@ -250,7 +250,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwInvalidAccess()
+		function raiseInvalidAccess()
 		{
 			throw new Error(
 				errorTypes.INVALID_ACCESS_ERROR
@@ -264,7 +264,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwTypeMismatch()
+		function raiseTypeMismatch()
 		{
 			throw new Error(
 				errorTypes.TYPE_MISMATCH_ERROR
@@ -278,7 +278,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwSecurity()
+		function raiseSecurity()
 		{
 			throw new Error(
 				errorTypes.SECURITY_ERROR
@@ -292,7 +292,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwNetwork()
+		function raiseNetwork()
 		{
 			throw new Error(
 				errorTypes.NETWORK_ERROR
@@ -306,7 +306,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwAbort()
+		function raiseAbort()
 		{
 			throw new Error(
 				errorTypes.ABORT_ERROR
@@ -320,7 +320,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwURLMismatch()
+		function raiseURLMismatch()
 		{
 			throw new Error(
 				errorTypes.URL_MISMATCH_ERROR
@@ -334,7 +334,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwQuotaExceeded()
+		function raiseQuotaExceeded()
 		{
 			throw new Error(
 				errorTypes.QUOTA_EXCEEDED_ERROR
@@ -348,7 +348,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwTimeout()
+		function raiseTimeout()
 		{
 			throw new Error(
 				errorTypes.TIMEOUT_ERROR
@@ -362,7 +362,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwInvalidNodeType()
+		function raiseInvalidNodeType()
 		{
 			throw new Error(
 				errorTypes.INVALID_NODE_TYPE_ERROR
@@ -376,7 +376,7 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function throwDataClone()
+		function raiseDataClone()
 		{
 			throw new Error(
 				errorTypes.DATA_CLONE_ERROR
@@ -387,35 +387,35 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-		Utils.errors = Utils.errors || {
+		Utils.raise = Utils.raise || {
 			"types": errorTypes,
 
-			"throwIndexSize": throwIndexSize,
-			"throwHeirarchyRequest":
-				throwHeirarchyRequest,
-			"throwWrongDocument": throwWrongDocument,
-			"throwInvalidCharacter":
-				throwInvalidCharacter,
-			"throwNoModificationAllowed":
-				throwNoModificationAllowed,
-			"throwNotFound": throwNotFound,
-			"throwNotSupported": throwNotSupported,
-			"throwInvalidState": throwInvalidState,
-			"throwSyntax": throwSyntax,
-			"throwInvalidModification":
-				throwInvalidModification,
-			"throwNamespace": throwNamespace,
-			"throwInvalidAccess": throwInvalidAccess,
-			"throwTypeMismatch": throwTypeMismatch,
-			"throwSecurity": throwSecurity,
-			"throwNetwork": throwNetwork,
-			"throwAbort": throwAbort,
-			"throwURLMismatch": throwURLMismatch,
-			"throwQuotaExceeded": throwQuotaExceeded,
-			"throwTimeout": throwTimeout,
-			"throwInvalidNodeType":
-				throwInvalidNodeType,
-			"throwDataClone": throwDataClone
+			"indexSize": raiseIndexSize,
+			"heirarchyRequest":
+				raiseHeirarchyRequest,
+			"wrongDocument": raiseWrongDocument,
+			"invalidCharacter":
+				raiseInvalidCharacter,
+			"noModificationAllowed":
+				raiseNoModificationAllowed,
+			"notFound": raiseNotFound,
+			"notSupported": raiseNotSupported,
+			"invalidState": raiseInvalidState,
+			"syntax": raiseSyntax,
+			"invalidModification":
+				raiseInvalidModification,
+			"namespace": raiseNamespace,
+			"invalidAccess": raiseInvalidAccess,
+			"typeMismatch": raiseTypeMismatch,
+			"security": raiseSecurity,
+			"network": raiseNetwork,
+			"abort": raiseAbort,
+			"urlMismatch": raiseURLMismatch,
+			"quotaExceeded": raiseQuotaExceeded,
+			"timeout": raiseTimeout,
+			"invalidNodeType":
+				raiseInvalidNodeType,
+			"dataClone": raiseDataClone
 		};
 	}());
 }
@@ -424,63 +424,24 @@ if (Utils) {
 	(function () {
 
 		/*
-                        Utils.host
+                        Utils.types
 
                         Description:
 
-                        Host object tests.
+                        Documented `nodeType`s. See the DOM 4
+                        Spec 5.3 (Node, nodeType).
 
                         Dependencies:
 
                         * null;
 		*/
 
-
-                /*        PUBLIC METHOD        */
-
-
-		function isHostObject(obj)
-		{
-			var result = false;
-			if (typeof obj === "object" ||
-				typeof obj === "function") {
-				result = true;
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD */
-
-
-		Utils.host = Utils.host || {
-			"isObject": isHostObject
-		};
-	}());
-}
-
-if (Utils) {
-	(function () {
-
 		/*
-                        Utils.nodes
-
-                        Description:
-
-                        DOM node tests along with various
-                        method wrappers.
-
-                        Dependencies:
-
-                        * Utils.host;
-		*/
-
-		/*
-                        Public  object of documented `nodeType`s.
+                        Public object of documented `nodeType`s.
                         See the DOM 4 Spec 5.3 (Node, nodeType).
 		*/
 
-		var nodeTypes = {
+		Utils.types = Utils.types || {
 			"ELEMENT_NODE": 1,
 			"ATTRIBUTE_NODE": 2,
 			"TEXT_NODE": 3,
@@ -494,6 +455,77 @@ if (Utils) {
 			"DOCUMENT_FRAGMENT_NODE": 11,
 			"NOTATION_NODE": 12
 		};
+	}());
+}
+if (Utils) {
+	(function () {
+
+		/*
+                        Utils.helpers
+
+                        Description:
+
+                        Various helper methods for common tasks.
+
+                        Dependencies:
+
+                        * null;
+		*/
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function makeLinearArray(
+			obj
+		)
+		{
+			/*
+                                Public method that
+                                takes an iterable object and
+                                creates an array.
+			*/
+			var index,
+				result = [],
+				node;
+			if (obj && obj.length) {
+				index = obj.length - 1;
+				while (index > -1) {
+					node = obj[index];
+					result.unshift(node);
+					index -= 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		Utils.helpers = Utils.helpers || {
+			"makeLinearArray": makeLinearArray
+		};
+	}());
+}
+
+if (Utils) {
+	(function () {
+
+		/*
+                        Utils.is
+
+                        Description:
+
+                        Various tests
+
+                        Dependencies:
+
+                        * Utils.host;
+                        * Utils.types;
+		*/
+
+		var nodeTypes = Utils.types;
 
 
                 /*        PUBLIC METHOD        */
@@ -751,6 +783,64 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
+                /*        PUBLIC METHOD        */
+
+
+		function isHostObject(obj)
+		{
+			var result = false;
+			if (typeof obj === "object" ||
+				typeof obj === "function") {
+				result = true;
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD */
+
+
+		Utils.is = Utils.is || {
+			"node": isNode,
+			"nodeType": isNodeType,
+			"element": isElementNode,
+			"attribute": isAttributeNode,
+			"text": isTextNode,
+			"cDataSection": isCDataSectionNode,
+			"entityReference":
+				isEntityReferenceNode,
+			"entity": isEntityNode,
+			"processingInstruction":
+				isProcessingInstructionNode,
+			"comment": isCommentNode,
+			"document": isDocumentNode,
+			"documentType": isDocumentTypeNode,
+			"documentFragment":
+				isDocumentFragmentNode,
+			"notation": isNotationNode,
+
+			"hostObject": isHostObject
+		};
+	}());
+}
+
+if (Utils) {
+	(function () {
+
+		/*
+                        Utils.can
+
+                        Description:
+
+                        Various capability tests.
+
+                        Dependencies:
+
+                        * Utils.host;
+                        * Utils.nodes;
+                        * Utils.is;
+		*/
+
 		function generateTextGetterKeys()
 		{
 			/*
@@ -795,7 +885,7 @@ if (Utils) {
                                 boolean asserting if the specified
                                 node can "get" textual content.
 			*/
-			var validNode = isNode(node),
+			var validNode = Utils.is.node(node),
 				getters = generateTextGetters(),
 				getter,
 				result = false;
@@ -856,7 +946,7 @@ if (Utils) {
                                 boolean asserting if the specified
                                 node can "set" textual content.
 			*/
-			var validNode = isNode(node),
+			var validNode = Utils.is.node(node),
 				setters = generateTextSetters(),
 				setter,
 				result = false;
@@ -876,6 +966,153 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
+		function canUseClassList(node)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if the specified
+                                node can "use" the `classList`
+                                object.
+			*/
+			var isElement = Utils.is.element(node),
+				result = false;
+			if (isElement) {
+				result = Utils.is.hostObject(
+					node.classList
+				);
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		Utils.can = Utils.can || {
+			"getText": canGetText,
+			"setText": canSetText,
+			"useClassList": canUseClassList
+		};
+	}());
+}
+
+if (Utils) {
+	(function () {
+
+		/*
+                        Utils.nodes
+
+                        Description:
+
+                        Various DOM node method wrappers.
+
+                        Dependencies:
+
+                        * Utils.host;
+                        * Utils.is;
+		*/
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function appendChild(
+			par,
+			node
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `appendChild`; returns the wrapper
+                                method's result or `null` if not
+                                applicable.
+			*/
+			var validParent = Utils.is.node(par),
+				validNode = Utils.is.node(node),
+				isHostObject,
+				key = "appendChild",
+				result = null;
+			if (validParent && validNode) {
+				isHostObject = Utils.is.hostObject(
+					par[key]
+				);
+				if (isHostObject) {
+					result = par[key](
+						node
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function removeChild(
+			par,
+			node
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `removeChild`; returns the wrapper
+                                method's result or `null` if not
+                                applicable.
+			*/
+			var validParent = Utils.is.node(par),
+				validNode = Utils.is.node(node),
+				isHostObject,
+				key = "removeChild",
+				result = null;
+			if (validParent && validNode) {
+				isHostObject = Utils.is.hostObject(
+					par[key]
+				);
+				if (isHostObject) {
+					result = par[key](
+						node
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		Utils.nodes = Utils.nodes || {
+			"append": appendChild,
+			"remove": removeChild
+		};
+	}());
+}
+
+if (Utils) {
+	(function () {
+
+		/*
+                        Utils.create
+
+                        Description:
+
+                        DOM creation method wrappers.
+
+                        Dependencies:
+
+                        * Utils.host;
+                        * Utils.nodes;
+                        * Utils.is;
+		*/
+
+
+                /*        PUBLIC METHOD        */
+
+
 		function createElement(
 			doc,
 			tag
@@ -887,13 +1124,14 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument = isDocumentNode(doc),
+			var isDocument =
+				Utils.is.document(doc),
 				key = "createElement",
 				isHostObject,
 				result = null;
 			tag = String(tag);
 			if (isDocument) {
-				isHostObject = Utils.host.isObject(
+				isHostObject = Utils.is.hostObject(
 					doc[key]
 				);
 				if (isHostObject) {
@@ -924,14 +1162,15 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument = isDocumentNode(doc),
+			var isDocument =
+				Utils.is.document(doc),
 				key = "createElementNS",
 				isHostObject,
 				result = null;
 			ns = String(ns);
 			tag = String(tag);
 			if (isDocument) {
-				isHostObject = Utils.host.isObject(
+				isHostObject = Utils.is.hostObject(
 					doc[key]
 				);
 				if (isHostObject) {
@@ -961,12 +1200,13 @@ if (Utils) {
                                 the wrapper method's result or
                                 `null` if not applicable.
 			*/
-			var isDocument = isDocumentNode(doc),
+			var isDocument =
+				Utils.is.document(doc),
 				key = "createDocumentFragment",
 				isHostObject,
 				result = null;
 			if (isDocument) {
-				isHostObject = Utils.host.isObject(
+				isHostObject = Utils.is.hostObject(
 					doc[key]
 				);
 				if (isHostObject) {
@@ -994,13 +1234,14 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument = isDocumentNode(doc),
+			var isDocument =
+				Utils.is.document(doc),
 				key = "createTextNode",
 				isHostObject,
 				result = null;
 			text = String(text);
 			if (isDocument) {
-				isHostObject = Utils.host.isObject(
+				isHostObject = Utils.is.hostObject(
 					doc[key]
 				);
 				if (isHostObject) {
@@ -1030,13 +1271,14 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument = isDocumentNode(doc),
+			var isDocument =
+				Utils.is.document(doc),
 				key = "createComment",
 				isHostObject,
 				result = null;
 			text = String(text);
 			if (isDocument) {
-				isHostObject = Utils.host.isObject(
+				isHostObject = Utils.is.hostObject(
 					doc[key]
 				);
 				if (isHostObject) {
@@ -1067,14 +1309,15 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument = isDocumentNode(doc),
+			var isDocument =
+				Utils.is.document(doc),
 				key = "createProcessingInstruction",
 				isHostObject,
 				result = null;
 			target = String(target);
 			text = String(text);
 			if (isDocument) {
-				isHostObject = Utils.host.isObject(
+				isHostObject = Utils.is.hostObject(
 					doc[key]
 				);
 				if (isHostObject) {
@@ -1091,167 +1334,15 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-                /*        PUBLIC METHOD        */
-
-
-		function appendChild(
-			par,
-			node
-		)
-		{
-			/*
-                                Public wrapper method for
-                                `appendChild`; returns the wrapper
-                                method's result or `null` if not
-                                applicable.
-			*/
-			var validParent = Utils.nodes.isNode(par),
-				validNode = Utils.nodes.isNode(node),
-				isHostObject,
-				key = "appendChild",
-				result = null;
-			if (validParent && validNode) {
-				isHostObject = Utils.host.isObject(
-					par[key]
-				);
-				if (isHostObject) {
-					result = par[key](
-						node
-					);
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function removeChild(
-			par,
-			node
-		)
-		{
-			/*
-                                Public wrapper method for
-                                `removeChild`; returns the wrapper
-                                method's result or `null` if not
-                                applicable.
-			*/
-			var validParent = Utils.nodes.isNode(par),
-				validNode = Utils.nodes.isNode(node),
-				isHostObject,
-				key = "removeChild",
-				result = null;
-			if (validParent && validNode) {
-				isHostObject = Utils.host.isObject(
-					par[key]
-				);
-				if (isHostObject) {
-					result = par[key](
-						node
-					);
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		Utils.nodes = Utils.nodes || {
-			"types": nodeTypes,
-
-			"isNode": isNode,
-			"isNodeType": isNodeType,
-			"isElementNode": isElementNode,
-			"isAttributeNode": isAttributeNode,
-			"isTextNode": isTextNode,
-			"isCDataSectionNode": isCDataSectionNode,
-			"isEntityReferenceNode":
-				isEntityReferenceNode,
-			"isEntityNode": isEntityNode,
-			"isProcessingInstructionNode":
-				isProcessingInstructionNode,
-			"isCommentNode": isCommentNode,
-			"isDocumentNode": isDocumentNode,
-			"isDocumentTypeNode": isDocumentTypeNode,
-			"isDocumentFragmentNode":
-				isDocumentFragmentNode,
-			"isNotationNode": isNotationNode,
-
-			"canGetText": canGetText,
-			"canSetText": canSetText,
-
-			"createElement": createElement,
-			"createElementNS": createElementNS,
-			"createDocumentFragment":
+		Utils.create = Utils.create || {
+			"element": createElement,
+			"elementNS": createElementNS,
+			"documentFragment":
 				createDocumentFragment,
-			"createTextNode": createTextNode,
-			"createComment": createComment,
-			"createProcessingInstruction":
-				createProcessingInstruction,
-
-			"appendChild": appendChild,
-			"removeChild": removeChild
+			"text": createTextNode,
+			"comment": createComment,
+			"processingInstruction":
+				createProcessingInstruction
 		};
 	}());
 }
-
-if (Utils) {
-	(function () {
-
-		/*
-                        Utils.helpers
-
-                        Description:
-
-                        Various helper methods for common tasks.
-
-                        Dependencies:
-
-                        * Utils.host;
-                        * Utils.nodes;
-		*/
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function makeLinearArray(
-			obj
-		)
-		{
-			/*
-                                Public method that
-                                takes an iterable object and
-                                creates an array.
-			*/
-			var index,
-				result = [],
-				node;
-			if (obj && obj.length) {
-				index = obj.length - 1;
-				while (index > -1) {
-					node = obj[index];
-					result.unshift(node);
-					index -= 1;
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		Utils.helpers = Utils.helpers || {
-			"makeLinearArray": makeLinearArray
-		};
-	}());
-}
-
