@@ -29,12 +29,12 @@
         4. types.js;
         5. is.js;
         6. can.js;
-        7. nodes.js;
+        7. node.js;
         8. create.js;
 
         (independent modules)
         * classes.js;
-        * traversal.js;
+        * traverse.js;
         * select.js;
 
 # Matt's DOM Utils (MDU)
@@ -80,14 +80,12 @@ scripts to degrade gracefully.
 
 ---
 
-### Nodes
+### Node
 
-*MDU* provides comprehensive node utilities for every documented
-`nodeType`. This includes general and type-specific tests along
-with various wrapped methods of the `Node` interface.
+*MDU* provides a set of wrappers for various methods of
+of the `Node` interface. In particular, this includes
+`appendChild` and `removeChild`.
 
-See [./Tests/Nodes](./Tests/Nodes "Nodes Tests")
-for examples.
 ---
 
 ### Create
@@ -95,6 +93,9 @@ for examples.
 *MDU* provides a set of wrappers for various methods of
 creation. In particular, this includes `createElement` and
 `createTextNode`.
+
+See [./Tests/Create](./Tests/Create "Create Tests")
+for examples.
 
 ---
 
@@ -142,4 +143,4 @@ selection. This includes popular methods such as `getElementById`,
 
 ## Metadata
 
-* Last edited on Sunday, April 15th 2012;
+* Last edited on Friday, April 27th 2012;

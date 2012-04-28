@@ -9,44 +9,81 @@ global = global || this;
 		},
 		tests;
 
-	function elementCreated()
+	function appendChild()
 	{
-		return Utils.create.element(
+		var node = Utils.create.element(
 			doc,
-			"p"
+			"li"
+		);
+		return Utils.node.append(
+			commonElements.test,
+			node
 		);
 	}
 
-	function textNodeCreated()
+	function prepend(node)
 	{
-		return Utils.create.text(
-			doc,
-			"The rain in Spain is quite plain."
+		var par = commonElements.test;
+		return Utils.node.prepend(
+			par,
+			node,
+			par.lastChild
 		);
 	}
 
-	function commentCreated()
+	function insertBefore()
 	{
-		return Utils.create.comment(
+		var node = Utils.create.text(
 			doc,
-			"No comment."
+			"I think; therefore I am"
+		);
+		return prepend(node);
+	}
+
+	function replace(node)
+	{
+		var par = commonElements.test;
+		return Utils.node.replace(
+			par,
+			node,
+			par.lastChild
 		);
 	}
 
-	function documentFragmentCreated()
+	function replaceChild()
 	{
-		return Utils.create.documentFragment(
-			doc
+		var node = Utils.create.text(
+			doc,
+			"c = b^x; x = log(c) / log(b)"
+		);
+		return replace(node);
+	}
+
+	function removeChild()
+	{
+		var par = commonElements.test;
+		return Utils.node.remove(
+			par,
+			par.lastChild
+		);
+	}
+
+	function cloneNode()
+	{
+		return Utils.node.clone(
+			commonElements.test,
+			true
 		);
 	}
 
 	function generateTests()
 	{
 		return [
-			elementCreated,
-			textNodeCreated,
-			commentCreated,
-			documentFragmentCreated
+			appendChild,
+			insertBefore,
+			replaceChild,
+			removeChild,
+			cloneNode
 		];
 	}
 
@@ -97,9 +134,8 @@ global = global || this;
 		}
 	}
 
-	function clearTest(evt)
+	function clearChildNodes(par)
 	{
-		var par = commonElements.results,
 		nodes = par.childNodes;
 		if (nodes) {
 			while(nodes.length) {
@@ -109,6 +145,11 @@ global = global || this;
 				);
 			}
 		}
+	}
+
+	function clearTest(evt)
+	{
+		clearChildNodes(commonElements.results);
 	}
 
 	function addHandlers()

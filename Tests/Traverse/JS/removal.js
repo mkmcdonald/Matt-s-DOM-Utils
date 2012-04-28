@@ -12,7 +12,7 @@
 
 	function assignValues()
 	{
-		childRemoved = Utils.nodes.remove(
+		childRemoved = Utils.node.remove(
 			commonElements.test.childNodes[0]
 		);
 		childrenCleared =
@@ -63,7 +63,7 @@
 		var par = commonElements.results,
 		nodes = par.childNodes;
 		while(nodes.length) {
-			Utils.nodes.remove(
+			Utils.node.remove(
 				par,
 				nodes[0]
 			);

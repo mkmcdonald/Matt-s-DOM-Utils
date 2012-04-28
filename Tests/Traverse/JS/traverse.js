@@ -97,11 +97,11 @@ global = global || this;
 			par = commonElements.results,
 			separator = createMessage("----------");
 		text = createMessage(text);
-		Utils.nodes.append(
+		Utils.node.append(
 			par,
 			text
 		);
-		Utils.nodes.append(
+		Utils.node.append(
 			par,
 			separator
 		);
@@ -129,7 +129,7 @@ global = global || this;
 		nodes = par.childNodes;
 		if (nodes) {
 			while(nodes.length) {
-				Utils.nodes.remove(
+				Utils.node.remove(
 					par,
 					nodes[0]
 				);

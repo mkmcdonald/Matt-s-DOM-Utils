@@ -13,7 +13,7 @@ if (Utils) {
 
                         * Utils.host;
                         * Utils.helpers;
-                        * Utils.nodes;
+                        * Utils.node;
                         * Utils.is;
                         * Utils.can;
 			* Utils.create;
@@ -441,7 +441,7 @@ if (Utils) {
 					node[key]
 				);
 				if (isHostObject) {
-					Utils.nodes.remove(
+					Utils.node.remove(
 						node[key],
 						node
 					);
@@ -607,7 +607,7 @@ if (Utils) {
 				),
 				result = false;
 			if (isElementNode) {
-				result = Utils.nodes.remove(
+				result = Utils.node.remove(
 					node
 				);
 			}

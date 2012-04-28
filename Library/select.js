@@ -12,7 +12,7 @@ if (Utils) {
 
                         * Utils.host;
                         * Utils.helpers;
-                        * Utils.nodes;
+                        * Utils.node;
                         * Utils.is;
 		*/
 

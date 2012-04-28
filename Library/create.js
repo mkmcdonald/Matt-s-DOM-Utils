@@ -11,7 +11,7 @@ if (Utils) {
                         Dependencies:
 
                         * Utils.host;
-                        * Utils.nodes;
+                        * Utils.node;
                         * Utils.is;
 		*/
 

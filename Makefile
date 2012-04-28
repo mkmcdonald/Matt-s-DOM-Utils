@@ -1,6 +1,8 @@
 SHELL = /bin/sh
 
 LIBRARY = ./Library
+BUILDS = ./Builds
+UNCOMPRESSED = $(BUILDS)/Uncompressed
 
 # core
 
@@ -10,7 +12,7 @@ HELPERS = $(LIBRARY)/helpers.js
 TYPES = $(LIBRARY)/types.js
 IS = $(LIBRARY)/is.js
 CAN = $(LIBRARY)/can.js
-NODES = $(LIBRARY)/nodes.js
+NODE = $(LIBRARY)/node.js
 CREATE = $(LIBRARY)/create.js
 
 # additional modules
@@ -25,24 +27,24 @@ MAKE_DEFAULT = $(MAKE_ALL);\
 	$(MAKE_TRAVERSE);\
 	$(MAKE_SELECT)
 
-ALL_FILE = ./utils-all.js
+ALL_FILE = $(UNCOMPRESSED)/utils-all.js
 ALL_DEP = $(CORE_DEP) $(CLASSES) $(TRAVERSE) $(SELECT)
 MAKE_ALL = cat $(ALL_DEP) > $(ALL_FILE)
 
-CORE_FILE = ./utils-core.js
+CORE_FILE = $(UNCOMPRESSED)/utils-core.js
 CORE_DEP = $(UTILS) $(RAISE) $(TYPES) $(HELPERS) $(IS) $(CAN)\
-	$(NODES) $(CREATE)
+	$(NODE) $(CREATE)
 MAKE_CORE = cat $(CORE_DEP) > $(CORE_FILE)
 
-CLASSES_FILE = ./utils-classes.js
+CLASSES_FILE = $(UNCOMPRESSED)/utils-classes.js
 CLASSES_DEP = $(CORE_DEP) $(CLASSES)
 MAKE_CLASSES = cat $(CLASSES_DEP) > $(CLASSES_FILE)
 
-TRAVERSE_FILE = ./utils-traverse.js
+TRAVERSE_FILE = $(UNCOMPRESSED)/utils-traverse.js
 TRAVERSE_DEP = $(CORE_DEP) $(TRAVERSE)
 MAKE_TRAVERSE = cat $(TRAVERSE_DEP) > $(TRAVERSE_FILE)
 
-SELECT_FILE = ./utils-select.js
+SELECT_FILE = $(UNCOMPRESSED)/utils-select.js
 SELECT_DEP = $(CORE_DEP) $(SELECT)
 MAKE_SELECT = cat $(SELECT_DEP) > $(SELECT_FILE)
 

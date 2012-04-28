@@ -16,7 +16,7 @@ if (Utils) {
 
                         * Utils.is;
                         * Utils.can;
-                        * Utils.nodes;
+                        * Utils.node;
 		*/
 
 		/*
@@ -922,10 +922,12 @@ if (Utils) {
                                 Public method that returns a node's
                                 "class list" (via `buildClassList`).
 			*/
-			var isElement =
-				Utils.is.element(node),
+			var canUseList = canUseClassList(node),
+				isElement = Utils.is.element(node),
 				result = null;
-			if (isElement) {
+			if (canUseList) {
+				result = node.classList;
+			} else if (!canUseList && isElement) {
 				result = buildClassList(node);
 			}
 			return result;

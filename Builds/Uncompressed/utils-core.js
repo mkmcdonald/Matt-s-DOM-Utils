@@ -837,7 +837,7 @@ if (Utils) {
                         Dependencies:
 
                         * Utils.host;
-                        * Utils.nodes;
+                        * Utils.node;
                         * Utils.is;
 		*/
 
@@ -1000,7 +1000,7 @@ if (Utils) {
 	(function () {
 
 		/*
-                        Utils.nodes
+                        Utils.node
 
                         Description:
 
@@ -1011,6 +1011,45 @@ if (Utils) {
                         * Utils.host;
                         * Utils.is;
 		*/
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function insertBefore(
+			par,
+			newNode,
+			refNode
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `insertBefore`; returns the wrapper
+                                method's result or `null` if not
+                                applicable.
+			*/
+			var validParent = Utils.is.node(par),
+				newIsNode = Utils.is.node(newNode),
+				refIsNode = Utils.is.node(refNode),
+				isHostObject,
+				key = "insertBefore",
+				result = null;
+			if (validParent && newIsNode && refIsNode) {
+				isHostObject = Utils.is.hostObject(
+					par[key]
+				);
+				if (isHostObject) {
+					result = par[key](
+						newNode,
+						refNode
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
 
 
                 /*        PUBLIC METHOD        */
@@ -1085,9 +1124,88 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-		Utils.nodes = Utils.nodes || {
+                /*        PUBLIC METHOD        */
+
+
+		function replaceChild(
+			par,
+			newNode,
+			oldNode
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `replaceChild`; returns the wrapper
+                                method's result or `null` if not
+                                applicable.
+			*/
+			var validParent = Utils.is.node(par),
+				newIsNode = Utils.is.node(newNode),
+				oldIsNode = Utils.is.node(oldNode),
+				isHostObject,
+				key = "replaceChild",
+				result = null;
+			if (validParent && newIsNode && oldIsNode) {
+				isHostObject = Utils.is.hostObject(
+					par[key]
+				);
+				if (isHostObject) {
+					result = par[key](
+						newNode,
+						oldNode
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function cloneNode(
+			node,
+			deep
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `cloneNode`; returns the wrapper
+                                method's result or `null` if not
+                                applicable.
+			*/
+			var isNode = Utils.is.node(node),
+				isHostObject,
+				key = "cloneNode",
+				result = null;
+			deep = Boolean(deep);
+			if (isNode) {
+				isHostObject = Utils.is.hostObject(
+					node[key]
+				);
+				if (isHostObject) {
+					result = node[key](
+						node,
+						deep
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		Utils.node = Utils.node || {
+			"prepend": insertBefore,
 			"append": appendChild,
-			"remove": removeChild
+			"remove": removeChild,
+			"replace": replaceChild,
+			"clone": cloneNode
 		};
 	}());
 }
@@ -1105,7 +1223,7 @@ if (Utils) {
                         Dependencies:
 
                         * Utils.host;
-                        * Utils.nodes;
+                        * Utils.node;
                         * Utils.is;
 		*/
 

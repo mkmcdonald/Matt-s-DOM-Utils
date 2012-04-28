@@ -837,7 +837,7 @@ if (Utils) {
                         Dependencies:
 
                         * Utils.host;
-                        * Utils.nodes;
+                        * Utils.node;
                         * Utils.is;
 		*/
 
@@ -1000,7 +1000,7 @@ if (Utils) {
 	(function () {
 
 		/*
-                        Utils.nodes
+                        Utils.node
 
                         Description:
 
@@ -1011,6 +1011,45 @@ if (Utils) {
                         * Utils.host;
                         * Utils.is;
 		*/
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function insertBefore(
+			par,
+			newNode,
+			refNode
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `insertBefore`; returns the wrapper
+                                method's result or `null` if not
+                                applicable.
+			*/
+			var validParent = Utils.is.node(par),
+				newIsNode = Utils.is.node(newNode),
+				refIsNode = Utils.is.node(refNode),
+				isHostObject,
+				key = "insertBefore",
+				result = null;
+			if (validParent && newIsNode && refIsNode) {
+				isHostObject = Utils.is.hostObject(
+					par[key]
+				);
+				if (isHostObject) {
+					result = par[key](
+						newNode,
+						refNode
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
 
 
                 /*        PUBLIC METHOD        */
@@ -1085,9 +1124,88 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-		Utils.nodes = Utils.nodes || {
+                /*        PUBLIC METHOD        */
+
+
+		function replaceChild(
+			par,
+			newNode,
+			oldNode
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `replaceChild`; returns the wrapper
+                                method's result or `null` if not
+                                applicable.
+			*/
+			var validParent = Utils.is.node(par),
+				newIsNode = Utils.is.node(newNode),
+				oldIsNode = Utils.is.node(oldNode),
+				isHostObject,
+				key = "replaceChild",
+				result = null;
+			if (validParent && newIsNode && oldIsNode) {
+				isHostObject = Utils.is.hostObject(
+					par[key]
+				);
+				if (isHostObject) {
+					result = par[key](
+						newNode,
+						oldNode
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function cloneNode(
+			node,
+			deep
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `cloneNode`; returns the wrapper
+                                method's result or `null` if not
+                                applicable.
+			*/
+			var isNode = Utils.is.node(node),
+				isHostObject,
+				key = "cloneNode",
+				result = null;
+			deep = Boolean(deep);
+			if (isNode) {
+				isHostObject = Utils.is.hostObject(
+					node[key]
+				);
+				if (isHostObject) {
+					result = node[key](
+						node,
+						deep
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		Utils.node = Utils.node || {
+			"prepend": insertBefore,
 			"append": appendChild,
-			"remove": removeChild
+			"remove": removeChild,
+			"replace": replaceChild,
+			"clone": cloneNode
 		};
 	}());
 }
@@ -1105,7 +1223,7 @@ if (Utils) {
                         Dependencies:
 
                         * Utils.host;
-                        * Utils.nodes;
+                        * Utils.node;
                         * Utils.is;
 		*/
 
@@ -1350,314 +1468,57 @@ if (Utils) {
 	(function () {
 
 		/*
-                        Utils.classes
+                        Utils.select
 
                         Description:
 
-                        DOM Level 4-style `classList`
-                        implementation with additional
-                        features. See the DOM 4 spec section 5.7
-                        (Element, classList) and 9.2
-                        (DOMTokenList) for more.
+                        Selection wrappers.
 
                         Dependencies:
 
+                        * Utils.host;
+                        * Utils.helpers;
+                        * Utils.node;
                         * Utils.is;
-                        * Utils.can;
-                        * Utils.nodes;
 		*/
 
-		/*
-                        Private object containing invalid
-                        characters for a class "token"; presence
-                        of any will throw
-                        `Utils.raise.types.INVALID_CHARACTER_ERROR`.
-		*/
+		var nodeTypes = Utils.types;
 
-		var INVALID_CHARS = {
-			" ": true,
-			"\t": true,
-			"\n": true,
-			"\f": true,
-			"\r": true
-		};
-
-		function canUseClassList(node)
+		function makeLinearArray(obj)
 		{
 			/*
-                                Private wrapper for
-                                `Utils.can.useClassList`.
+				Private wrapper for
+				`Utils.helpers.makeLinearArray`.
 			*/
-			return Utils.can.useClassList(
-				node
-			);
-		}
-
-		function checkCharacter(
-			chr
-		)
-		{
-			/*
-                                Private helper method that returns
-                                a boolean asserting if the character
-                                passed is "valid" for use within a
-                                class "token"; throws an error if
-                                the character is a key of
-                                `INVALID_CHARS` or if it is an empty
-                                string
-			*/
-			var invalidChar,
-				result = false;
-			chr = String(chr);
-			invalidChar = INVALID_CHARS[chr];
-			if (typeof invalidChar !== "undefined") {
-				Utils.raise.invalidCharacter(
-				);
-			} else if (chr === "") {
-				Utils.raise.syntax();
-			} else if (typeof invalidChar ===
-				"undefined") {
-				result = true;
-			}
-			return result;
-		}
-
-		function checkToken(
-			token
-		)
-		{
-			/*
-                                Private method that returns a boolean
-                                asserting if the token passed
-                                contains any invalid characters
-                                (i.e. whitespace); throws an error
-                                if invalid characters are detected.
-			*/
-			var index = 0,
-				max,
-				chr,
-				result = true;
-			token = String(token);
-			max = token.length;
-			while (index < max) {
-				chr = token.charAt(index);
-				result = checkCharacter(chr);
-				index += 1;
-			}
-			return result;
-		}
-
-		function pushToken(
-			token,
-			list
-		)
-		{
-			/*
-                                Private helper method that pushes
-                                a token onto a token list; returns
-                                a boolean asserting if the push
-                                was successful.
-			*/
-			var result = true;
-			token = String(token);
-			list.push(token);
-			return result;
-		}
-
-		function handleCharacter(
-			chr,
-			sequence,
-			tokens
-		)
-		{
-			/*
-                                Private helper method returning
-                                a modified character sequence
-                                depending on the validity of the
-                                character passed; ignores spaces.
-			*/
-			var validChar = false,
-				result = "";
-			if (chr && chr !== " ") {
-				validChar = checkCharacter(chr);
-			}
-			if (!validChar && sequence.length) {
-				pushToken(sequence, tokens);
-			} else if (validChar) {
-				result = sequence + chr;
-			}
-			return result;
-		}
-
-		function buildTokenList(
-			chars
-		)
-		{
-			/*
-                                Private method that builds a token
-                                list from a (space-separated)
-                                string. See the DOM Level 4 Spec 2.3.2
-                                (Space-separated tokens).
-			*/
-			var index = 0,
-				max,
-				sequence = "",
-				chr,
-				result = [];
-			chars = String(chars);
-			max = chars.length + 1;
-			while (index < max) {
-				chr = chars.charAt(index);
-				sequence = handleCharacter(
-					chr,
-					sequence,
-					result
-				);
-				index += 1;
-			}
-			return result;
-		}
-
-		function buildClassList(node)
-		{
-			/*
-                                Private method that checks
-                                if the node passed is an element.
-                                The token list is returned, or
-                                null if not applicable.
-			*/
-			var isElement =
-				Utils.is.element(node),
-				input,
-				result = [];
-			if (isElement && typeof node.className ===
-				"string") {
-				input = node.className;
-				result = buildTokenList(
-					input
-				);
-			}
-			return result;
-		}
-
-		function findToken(
-			find,
-			list
-		)
-		{
-			/*
-                                Private helper method returning
-                                a boolean asserting if a token
-                                can be found in a token list.
-			*/
-			var index = 0,
-				max,
-				token,
-				result = false;
-			find = String(find);
-			max = list.length;
-			while (index < max) {
-				token = list[index];
-				if (find === token) {
-					result = true;
-					break;
-				}
-				index += 1;
-			}
-			return result;
-		}
-
-		function attemptTokenSearch(
-			token,
-			list
-		)
-		{
-			/*
-                                Private helper method that returns
-                                a boolean asserting if `token` is
-                                "valid" and is present in the token
-                                list.
-			*/
-			var validToken,
-				result = false;
-			token = String(token);
-			validToken = checkToken(token);
-			if (validToken) {
-				result = findToken(
-					token,
-					list
-				);
-			}
-			return result;
-		}
-
-		function hasSingleClass(
-			token,
-			node
-		)
-		{
-			/*
-                                Private fork of `forkHas` that asserts
-                                if the specified class is contained by
-                                `node`'s "class list".
-			*/
-			var list = buildClassList(node);
-			return attemptTokenSearch(
-				token,
-				list
-			);
-		}
-
-		function searchClassesInList(
-			tokens,
-			node
-		)
-		{
-			/*
-                                Private helper method that iterates
-                                over a list of tokens and detects
-                                their presence in token list.
-			*/
-			var list = buildClassList(node),
-				index = 0,
-				max = tokens.length,
-				result = false;
-			while (index < max) {
-				result = attemptTokenSearch(
-					tokens[index],
-					list
-				);
-				if (!result) {
-					break;
-				}
-				index += 1;
-			}
-			return result;
+			return Utils.helpers.makeLinearArray(obj);
 		}
 
 
                 /*        PUBLIC METHOD        */
 
 
-		function hasClasses(
-			tokens,
-			node
+		function getElementsByName(
+			doc,
+			name
 		)
 		{
 			/*
-                                Public method that returns a boolean
-                                asserting if an array of tokens is
-                                contained by a token list
-                                (independent of order).
+                                Public wrapper method for
+                                `getElementsByName`; returns
+                                `null` if not applicable.
 			*/
-			var isElement = Utils.is.element(node),
-				result = false;
-			if (isElement) {
-				if (typeof tokens === "object" &&
-					tokens.length) {
-					result = searchClassesInList(
-						tokens,
-						node
+			var isDoc = Utils.is.document(doc),
+				key = "getElementsByName",
+				canUse,
+				result = null;
+			name = String(name);
+			if (isDoc) {
+				canUse = Utils.is.hostObject(
+					doc[key]
+				);
+				if (canUse) {
+					result = makeLinearArray(
+						doc[key](name)
 					);
 				}
 			}
@@ -1665,167 +1526,37 @@ if (Utils) {
 		}
 
 
-                /*        END PUBLIC METHOD        */
+                /*        END PUBLIC METHOD */
 
 
                 /*        PUBLIC METHOD        */
 
 
-		function hasClass(
-			token,
-			node
+		function getElementsByTagName(
+			caller,
+			tag
 		)
 		{
 			/*
-                                Public method that asserts if the
-                                specified class(es) are contained by
-                                `node`'s "class list"; forks to
-                                `hasSingleClass` if `classList` is
-                                unavailable.
+                                Public wrapper method for
+                                `getElementsByTagName`; returns
+                                `null` if not applicable.
 			*/
-			var canUseList = canUseClassList(node),
-				canUseHas,
-				key = "contains",
-				isElement = Utils.is.element(node),
-				result = false;
-			if (canUseList) {
-				canUseHas = Utils.is.hostObject(
-					node.classList[key]
+			var isDoc = Utils.is.document(caller),
+				isElement = Utils.is.element(
+					caller
+				),
+				key = "getElementsByTagName",
+				canUse,
+				result = null;
+			tag = String(tag);
+			if (isDoc || isElement) {
+				canUse = Utils.is.hostObject(
+					caller[key]
 				);
-				if (canUseHas) {
-					result = node.classList[key](
-						token
-					);
-				}
-			} else if (!canUseList && isElement) {
-				result = hasSingleClass(
-					token,
-					node
-				);
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		function attemptClassAddition(
-			add,
-			node,
-			list
-		)
-		{
-			/*
-                                Private helper method that returns
-                                a boolean asserting if a token list
-                                already contains the token passed and
-                                can be added to a token list.
-			*/
-			var has = hasClass(add, node),
-				result = false;
-			if (!has) {
-				list.push(add);
-				result = true;
-			}
-			return result;
-		}
-
-		function overwriteClass(
-			node,
-			list
-		)
-		{
-			/*
-                                Private helper method that
-                                assigns the given token list
-                                to `node`'s `className` property
-                                as a string.
-			*/
-			var isElement =
-				Utils.is.element(node),
-				result;
-			if (isElement && typeof node.className ===
-				"string") {
-				node.className = list.join(" ");
-			}
-			return result;
-		}
-
-		function classAdditionCheck(
-			token,
-			node,
-			list
-		)
-		{
-			/*
-                                Private helper method returning a
-                                boolean asserting if a token is
-                                valid and can be added to a token
-                                list.
-			*/
-			var validToken,
-				result = false;
-			token = String(token);
-			validToken = checkToken(token);
-			if (validToken) {
-				result = attemptClassAddition(
-					token,
-					node,
-					list
-				);
-			}
-			return result;
-		}
-
-		function addClassesToList(
-			tokens,
-			node
-		)
-		{
-			/*
-                                Private helper method that iterates
-                                over a list of tokens and attempts
-                                to add them to a token list.
-			*/
-			var list = buildClassList(node),
-				index = 0,
-				max = tokens.length,
-				result;
-			while (index < max) {
-				classAdditionCheck(
-					tokens[index],
-					node,
-					list
-				);
-				index += 1;
-			}
-			overwriteClass(node, list);
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function addClasses(
-			tokens,
-			node
-		)
-		{
-			/*
-                                Public method that adds an array of
-                                tokens to a token list and applies
-                                the list to the node's `className`.
-			*/
-			var isElement = Utils.is.element(node),
-				result;
-			if (isElement) {
-				if (typeof tokens === "object" &&
-					tokens.length) {
-					addClassesToList(
-						tokens,
-						node
+				if (canUse) {
+					result = makeLinearArray(
+						caller[key](tag)
 					);
 				}
 			}
@@ -1833,195 +1564,39 @@ if (Utils) {
 		}
 
 
-                /*        END PUBLIC METHOD        */
-
-
-		function addSingleClass(
-			token,
-			node
-		)
-		{
-			/*
-                                Private method forked from
-                                `addClass`; adds single token to
-                                a token list and applies the list
-                                to the node's `className`.
-			*/
-			var list = buildClassList(node),
-				result;
-			token = String(token);
-			attemptClassAddition(
-				token,
-				node,
-				list
-			);
-			overwriteClass(node, list);
-			return result;
-		}
+                /*        END PUBLIC METHOD */
 
 
                 /*        PUBLIC METHOD        */
 
 
-		function addClass(
-			token,
-			node
+		function getElementsByTagNameNS(
+			caller,
+			local,
+			ns
 		)
 		{
 			/*
-                                Public method that attempts to add
-                                the specified class(es) to the node's
-                                "class list"; forks to `addSingleClass`
-                                if `classList` is unavailable.
+                                Public wrapper method for
+                                `getElementsByTagNameNS`; returns
+                                `null` if not applicable.
 			*/
-			var canUseList = canUseClassList(node),
-				canUseAdd,
-				isElement = Utils.is.element(node),
-				result = false;
-			if (canUseList) {
-				canUseAdd = Utils.is.hostObject(
-					node.classList.add
+			var isDoc = Utils.is.document(caller),
+				isElement = Utils.is.element(
+					caller
+				),
+				key = "getElementsByTagNameNS",
+				canUse,
+				result = null;
+			local = String(local);
+			ns = String(ns);
+			if (isDoc || isElement) {
+				canUse = Utils.is.hostObject(
+					caller[key]
 				);
-				if (canUseAdd) {
-					result = node.classList.add(
-						token
-					);
-				}
-			} else if (!canUseList && isElement) {
-				result = addSingleClass(
-					token,
-					node
-				);
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		function removeToken(
-			remove,
-			list
-		)
-		{
-			/*
-                                Private helper method that returns
-                                a boolean asserting if a token list
-                                already contains the token passed and
-                                can be removed from a token list.
-			*/
-			var index = list.length - 1,
-				token,
-				result = false;
-			while (index > -1) {
-				token = list[index];
-				if (token === remove) {
-					list.splice(index, 1);
-				}
-				index -= 1;
-			}
-			return result;
-		}
-
-		function attemptClassRemoval(
-			remove,
-			node,
-			list
-		)
-		{
-			/*
-                                Private helper method that returns
-                                a boolean asserting if a token list
-                                already contains the token passed and
-                                can be removed from a token list
-                                (via `removeToken`).
-			*/
-			var has = hasClass(remove, node),
-				result = false;
-			if (has) {
-				result = removeToken(
-					remove,
-					list
-				);
-			}
-			return result;
-		}
-
-		function classRemovalCheck(
-			token,
-			node,
-			list
-		)
-		{
-			/*
-                                Private helper method returning a
-                                boolean asserting if a token is
-                                valid and can be removed from a
-                                token list.
-			*/
-			var validToken,
-				result = false;
-			token = String(token);
-			validToken = checkToken(token);
-			if (validToken) {
-				result = attemptClassRemoval(
-					token,
-					node,
-					list
-				);
-			}
-			return result;
-		}
-
-		function removeClassesFromList(
-			tokens,
-			node
-		)
-		{
-			/*
-                                Private helper method that iterates
-                                over a list of tokens and attempts
-                                to remove them from a token list.
-			*/
-			var list = buildClassList(node),
-				index = tokens.length - 1,
-				result;
-			while (index > -1) {
-				classRemovalCheck(
-					tokens[index],
-					node,
-					list
-				);
-				index -= 1;
-			}
-			overwriteClass(node, list);
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function removeClasses(
-			tokens,
-			node
-		)
-		{
-			/*
-                                Public method that removes an array
-                                of tokens from a token list and
-                                applies the list to the node's
-                                `className`.
-			*/
-			var isElement = Utils.is.element(node),
-				result;
-			if (isElement) {
-				if (typeof tokens === "object" &&
-					tokens.length) {
-					removeClassesFromList(
-						tokens,
-						node
+				if (canUse) {
+					result = makeLinearArray(
+						caller[key](local, ns)
 					);
 				}
 			}
@@ -2029,195 +1604,37 @@ if (Utils) {
 		}
 
 
-                /*        END PUBLIC METHOD        */
-
-
-		function removeSingleClass(
-			token,
-			node
-		)
-		{
-			/*
-                                Private method forked from
-                                `removeClass`; removes single token
-                                from a token list and applies the list
-                                to the node's `className`.
-			*/
-			var list = buildClassList(node),
-				validToken,
-				result;
-			token = String(token);
-			validToken = checkToken(token);
-			if (validToken) {
-				attemptClassRemoval(
-					token,
-					node,
-					list
-				);
-				overwriteClass(node, list);
-			}
-			return result;
-		}
+                /*        END PUBLIC METHOD */
 
 
                 /*        PUBLIC METHOD        */
 
 
-		function removeClass(
-			token,
-			node
+		function getElementsByClassName(
+			caller,
+			names
 		)
 		{
 			/*
-                                Public method that attempts to add
-                                the specified class(es) to the node's
-                                "class list"; forks to `addSingleClass`
-                                if `classList` is unavailable.
+                                Public wrapper method for
+                                `getElementsByClassName`; returns
+                                `null` if not applicable.
 			*/
-			var canUseList = canUseClassList(node),
-				key = "remove",
-				canUseRemove,
-				isElement = Utils.is.element(node),
-				result = false;
-			if (canUseList) {
-				canUseRemove = Utils.is.hostObject(
-					node.classList[key]
+			var isDoc = Utils.is.document(caller),
+				isElement = Utils.is.element(
+					caller
+				),
+				key = "getElementsByClassName",
+				canUse,
+				result = null;
+			names = String(names);
+			if (isDoc || isElement) {
+				canUse = Utils.is.hostObject(
+					caller[key]
 				);
-				if (canUseRemove) {
-					result = node.classList[key](
-						token
-					);
-				}
-			} else if (!canUseList && isElement) {
-				result = removeSingleClass(
-					token,
-					node
-				);
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		function toggleSingleClass(
-			token,
-			node
-		)
-		{
-			/*
-                                Private helper method that "toggles"
-                                the presence of a single token in a
-                                token list; returns a boolean
-                                asserting the token's presence in
-                                the token list;
-			*/
-			var has = hasClass(token, node),
-				result = false;
-			if (!has) {
-				addClass(
-					token,
-					node
-				);
-				result = true;
-			} else if (has) {
-				removeClass(
-					token,
-					node
-				);
-			}
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function toggleClass(
-			token,
-			node
-		)
-		{
-			/*
-                                Public method that attempts to
-                                toggle the specified token on the
-                                node's "class list"; returns a
-                                boolean asserting if the token was
-                                added.
-			*/
-			var canUseList = canUseClassList(node),
-				canUseToggle,
-				key = "toggle",
-				isElement = Utils.is.element(node),
-				result = false;
-			if (canUseList) {
-				canUseToggle = Utils.is.hostObject(
-					node.classList[key]
-				);
-				if (canUseToggle) {
-					result = node.classList[key](
-						token
-					);
-				}
-			} else if (!canUseList && isElement) {
-				result = toggleSingleClass(
-					token,
-					node
-				);
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		function toggleClassesInList(
-			tokens,
-			node
-		)
-		{
-			/*
-                                Private helper method that iterates
-                                over a list of tokens and "toggles"
-                                their presence in a token list.
-			*/
-			var index = 0,
-				max = tokens.length,
-				result;
-			while (index < max) {
-				toggleSingleClass(
-					tokens[index],
-					node
-				);
-				index += 1;
-			}
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function toggleClasses(
-			tokens,
-			node
-		)
-		{
-			/*
-                                Public method that detects the
-                                presence of tokens in `node`'s
-                                token list.
-			*/
-			var isElement = Utils.is.element(node),
-				result;
-			if (isElement) {
-				if (typeof tokens === "object" &&
-					tokens.length) {
-					toggleClassesInList(
-						tokens,
-						node
+				if (canUse) {
+					result = makeLinearArray(
+						caller[key](names)
 					);
 				}
 			}
@@ -2225,33 +1642,33 @@ if (Utils) {
 		}
 
 
-                /*        END PUBLIC METHOD        */
+                /*        END PUBLIC METHOD */
 
 
                 /*        PUBLIC METHOD        */
 
 
-		function getClass(
-			index,
-			node
+		function getElementById(
+			doc,
+			id
 		)
 		{
 			/*
-                                Public method that returns the
-                                token at `index` in the node's
-                                "class list"; returns null
+                                Public wrapper method for
+                                `getElementById`; returns `null`
                                 if not applicable.
 			*/
-			var isElement =
-				Utils.is.element(node),
-				tokens,
+			var isDoc = Utils.is.document(doc),
+				key = "getElementById",
+				canUse,
 				result = null;
-			index = Number(index);
-			if (isElement) {
-				tokens = buildClassList(node);
-				if (index >= 0 && 
-					index < tokens.length) {
-					result = tokens[index];
+			id = String(id);
+			if (isDoc) {
+				canUse = Utils.is.hostObject(
+					doc[key]
+				);
+				if (canUse) {
+					result = doc[key](id);
 				}
 			}
 			return result;
@@ -2261,43 +1678,228 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-                /*        PUBLIC METHOD        */
-
-
-		function getClasses(node)
+		function generateSelectorTypes()
 		{
 			/*
-                                Public method that returns a node's
-                                "class list" (via `buildClassList`).
+                                Private method that generates an
+                                object containing applicable
+                                `nodeTypes` for `querySelector*`;
 			*/
-			var isElement =
-				Utils.is.element(node),
-				result = null;
-			if (isElement) {
-				result = buildClassList(node);
+			var result = {};
+			result[nodeTypes.ELEMENT_NODE] = true;
+			result[nodeTypes.DOCMENT_NODE] = true;
+			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
+			return result;
+		}
+
+		function canCallSelectors(node)
+		{
+			/*
+                                Private helper method for
+                                `querySelector*`; returns a boolean
+                                asserting if `node` can call
+                                `querySelector*`.
+			*/
+			var isNode = Utils.is.node(node),
+				types = generateSelectorTypes(),
+				value,
+				result = false;
+			if (isNode) {
+				value = types[node.nodeType];
+				result = typeof value !==
+					undefined;
 			}
 			return result;
 		}
 
 
-                /*        END PUBLIC METHOD        */
+                /*        PUBLIC METHOD        */
 
 
-		Utils.classes = Utils.classes || {
-			"add": addClass,
-			"addList": addClasses,
+		function querySelector(
+			caller,
+			selectors
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `querySelector`; returns `null`
+                                if not applicable.
+			*/
+			var canCall = canCallSelectors(caller),
+				key = "querySelector",
+				canUse,
+				result = null;
+			selectors = String(selectors);
+			if (canCall) {
+				canUse = Utils.is.hostObject(
+					caller[key]
+				);
+				if (canUse) {
+					result = caller[key](
+						selectors
+					);
+				}
+			}
+			return result;
+		}
 
-			"contains": hasClass,
-			"containsList": hasClasses,
 
-			"remove": removeClass,
-			"removeList": removeClasses,
+                /*        END PUBLIC METHOD */
 
-			"toggle": toggleClass,
-			"toggleList": toggleClasses,
 
-			"item": getClass,
-			"get": getClasses
+                /*        PUBLIC METHOD        */
+
+
+		function querySelectorAll(
+			caller,
+			selectors
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `querySelectorAll`; returns `null`
+                                if not applicable.
+			*/
+			var canCall = canCallSelectors(caller),
+				key = "querySelectorAll",
+				canUse,
+				result = null;
+			selectors = String(selectors);
+			if (canCall) {
+				canUse = Utils.is.hostObject(
+					caller[key]
+				);
+				if (canUse) {
+					result = makeLinearArray(
+						caller[key](selectors)
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD */
+
+
+		function forkHead(doc)
+		{
+			/*
+                                Private helper method
+                                that forks for `document.head`;
+                                returns `null` if not applicable.
+			*/
+			var result = null,
+				heads = getElementsByTagName(
+					doc,
+					"head"
+				);
+			if (typeof heads === "object" &&
+				heads.length) {
+				result = heads[0];
+			}
+			return result;
+		}	
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getHead(doc)
+		{
+			/*
+                                Public method that returns
+                                the specified document's `head`
+                                element; returns `null` if not
+                                applicable.
+			*/
+			var isDoc = Utils.is.document(doc),
+				headProp,
+				result = null;
+			if (isDoc) {
+				headProp = Utils.is.hostObject(
+					global.document.head
+				);
+				if (headProp) {
+					result = global.document.head;
+				} else if (!headProp) {
+					result = forkHead(doc);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD */
+
+
+		function forkBody(doc)
+		{
+			/*
+                                Private helper method that forks
+                                for `document.body`; returns
+                                `null` if not applicable.
+			*/
+			var result = null,
+				bodies = getElementsByTagName(
+					doc,
+					"body"
+				);
+			if (typeof bodies === "object" &&
+				bodies.length) {
+				result = bodies[0];
+			}
+			return result;
+		}	
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getBody(doc)
+		{
+			/*
+                                Public method that returns
+                                the specified document's `body`
+                                element; returns `null` if not
+                                applicable.
+			*/
+			var isDoc = Utils.is.document(doc),
+				bodyProp,
+				result = null;
+			if (isDoc) {
+				bodyProp = Utils.is.hostObject(
+					global.document.body
+				);
+				if (bodyProp) {
+					result = global.document.body;
+				} else if (!bodyProp) {
+					result = forkBody(doc);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD */
+
+
+		Utils.select = Utils.select || {
+			"byName": getElementsByName,
+
+			"byTagName": getElementsByTagName,
+			"byTagNameNS": getElementsByTagNameNS,
+
+			"byClassName": getElementsByClassName,
+
+			"byId": getElementById,
+
+			"query": querySelector,
+			"queryAll": querySelectorAll,
+
+			"body": getBody,
+			"head": getHead
 		};
 	}());
 }
