@@ -10,9 +10,8 @@ if (Utils) {
 
                         Dependencies:
 
-                        * Utils.host;
-                        * Utils.node;
                         * Utils.is;
+                        * Utils.node;
 		*/
 
 
@@ -30,8 +29,7 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createElement",
 				isHostObject,
 				result = null;
@@ -68,8 +66,7 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createElementNS",
 				isHostObject,
 				result = null;
@@ -96,39 +93,6 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function createDocumentFragment(
-			doc
-		)
-		{
-			/*
-                                Public wrapper method for
-                                `createDocumentFragment`; returns
-                                the wrapper method's result or
-                                `null` if not applicable.
-			*/
-			var isDocument =
-				Utils.is.document(doc),
-				key = "createDocumentFragment",
-				isHostObject,
-				result = null;
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
-				);
-				if (isHostObject) {
-					result = doc[key]();
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
 		function createTextNode(
 			doc,
 			text
@@ -140,46 +104,8 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createTextNode",
-				isHostObject,
-				result = null;
-			text = String(text);
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
-				);
-				if (isHostObject) {
-					result = doc[key](
-						text
-					);
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function createComment(
-			doc,
-			text
-		)
-		{
-			/*
-                                Public wrapper method for
-                                `createComment`; returns the
-                                wrapper method's result or `null`
-                                if not applicable.
-			*/
-			var isDocument =
-				Utils.is.document(doc),
-				key = "createComment",
 				isHostObject,
 				result = null;
 			text = String(text);
@@ -215,8 +141,7 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createProcessingInstruction",
 				isHostObject,
 				result = null;
@@ -240,15 +165,83 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
+                /*        PUBLIC METHOD        */
+
+
+		function createComment(
+			doc,
+			text
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `createComment`; returns the
+                                wrapper method's result or `null`
+                                if not applicable.
+			*/
+			var isDocument = Utils.is.document(doc),
+				key = "createComment",
+				isHostObject,
+				result = null;
+			text = String(text);
+			if (isDocument) {
+				isHostObject = Utils.is.hostObject(
+					doc[key]
+				);
+				if (isHostObject) {
+					result = doc[key](
+						text
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function createDocumentFragment(
+			doc
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `createDocumentFragment`; returns
+                                the wrapper method's result or
+                                `null` if not applicable.
+			*/
+			var isDocument = Utils.is.document(doc),
+				key = "createDocumentFragment",
+				isHostObject,
+				result = null;
+			if (isDocument) {
+				isHostObject = Utils.is.hostObject(
+					doc[key]
+				);
+				if (isHostObject) {
+					result = doc[key]();
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
 		Utils.create = Utils.create || {
 			"element": createElement,
 			"elementNS": createElementNS,
-			"documentFragment":
-				createDocumentFragment,
 			"text": createTextNode,
-			"comment": createComment,
 			"processingInstruction":
-				createProcessingInstruction
+				createProcessingInstruction,
+			"comment": createComment,
+			"documentFragment":
+				createDocumentFragment
 		};
 	}());
 }

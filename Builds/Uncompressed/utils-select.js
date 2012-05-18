@@ -14,10 +14,14 @@ var Utils = Utils || {},
         [firstName.toLowerCase();]@fortybelow.ca
         http://www.fortybelow.ca
 */
+/*
+        jslint sloppy: true,
+        white: true, maxerr: 1, indent: 8
+*/
 
 /*
-        jslint browser: true, sloppy: true,
-        white: true, maxerr: 50, indent: 8
+        jshint forin:true, noarg:true, noempty:true, eqeqeq:true,
+        bitwise:true, undef:true, curly:true, indent:4, maxerr:50
 */
 
 if (Utils) {
@@ -52,8 +56,8 @@ if (Utils) {
 			"INVALID_CHARACTER_ERROR": "The string " +
 				"contains invalid characters.",
 			"NO_MODIFICATION_ALLOWED_ERROR": "The " +
-				"cannot be modified.",
-			"NOT_FOUND_ERROR": "The object cannot be " +
+				"object can not be modified.",
+			"NOT_FOUND_ERROR": "The object can not be " +
 				"found here.",
 			"NOT_SUPPORTED_ERROR": "The operation is " +
 				"not supported.",
@@ -457,6 +461,7 @@ if (Utils) {
 		};
 	}());
 }
+
 if (Utils) {
 	(function () {
 
@@ -469,7 +474,7 @@ if (Utils) {
 
                         Dependencies:
 
-                        * null;
+                        * Utils.is;
 		*/
 
 
@@ -486,13 +491,17 @@ if (Utils) {
                                 creates an array.
 			*/
 			var index,
+				arrayLike = Utils.is.arrayLike(
+					obj
+				),
 				result = [],
 				node;
-			if (obj && obj.length) {
+			if (arrayLike) {
+				result.length = obj.length;
 				index = obj.length - 1;
 				while (index > -1) {
 					node = obj[index];
-					result.unshift(node);
+					result[index] = node;
 					index -= 1;
 				}
 			}
@@ -521,7 +530,6 @@ if (Utils) {
 
                         Dependencies:
 
-                        * Utils.host;
                         * Utils.types;
 		*/
 
@@ -531,17 +539,104 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isNode(node)
+		function isType(
+			val,
+			type
+		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if `node` is
-                                not falsey and has a numeric
-                                `nodeType` property.
+                                boolean asserting if `val`
+                                returns `type` from a typeof`
+                                check.
 			*/
-			return !!(node &&
-				typeof node.nodeType ===
-				"number");
+			type = String(type);
+			return typeof val === type;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function isHostObject(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if `obj`
+                                resembles a host object (by having
+                                a "type" of "object", "function" or
+                                "unknown".)
+			*/
+			var isObj,
+				isFunc,
+				isUnknown,
+				result = false;
+			isObj = isType(obj, "object");
+			isFunc = isType(obj, "function");
+			isUnknown = isType(obj, "unknown");
+			if (isObj || isFunc || isUnknown) {
+				result = true;
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function isArrayLike(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if `obj`
+                                is array-like.
+			*/
+			var isObj = isHostObject(obj),
+				result = false;
+			if (obj && isObj) {
+				result = isType(
+					obj.length,
+					"number"
+				);
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function isNodeLike(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if `obj`
+                                is node-like.
+			*/
+			var isObj = isHostObject(obj),
+				result = false;
+			if (obj && isObj) {
+				result = isType(
+					obj.nodeType,
+					"number"
+				);
+			}
+			return result;
 		}
 
 
@@ -552,20 +647,21 @@ if (Utils) {
 
 
 		function isNodeType(
-			node,
+			obj,
 			type
 		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if `node` is
-                                of type (via `nodeType`) `type`.
+                                boolean asserting if a node-like
+                                object has a certain value for
+                                the `nodeType` property.
 			*/
-			var valid = isNode(node),
+			var valid = isNodeLike(obj),
 				result = false;
 			type = Number(type);
 			if (valid) {
-				result = node.nodeType === type;
+				result = obj.nodeType === type;
 			}
 			return result;
 		}
@@ -577,14 +673,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isElementNode(node)
+		function isElementNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.ELEMENT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -594,14 +692,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isAttributeNode(node)
+		function isAttributeNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.ATTRIBUTE_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -611,14 +711,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isTextNode(node)
+		function isTextNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.TEXT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -628,14 +730,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isCDataSectionNode(node)
+		function isCDataSectionNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.CDATA_SECTION_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -645,7 +749,9 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isEntityReferenceNode(node)
+		function isEntityReferenceNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
@@ -653,7 +759,7 @@ if (Utils) {
 			*/
 			var key = "ENTITY_REFERENCE_NODE",
 				type = nodeTypes[key];
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -663,14 +769,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isEntityNode(node)
+		function isEntityNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.ENTITY_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -681,7 +789,7 @@ if (Utils) {
 
 
 		function isProcessingInstructionNode(
-			node
+			obj
 		)
 		{
 			/*
@@ -690,7 +798,7 @@ if (Utils) {
 			*/
 			var key = "PROCESSING_INSTRUCTION_NODE",
 				type = nodeTypes[key];
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -700,14 +808,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isCommentNode(node)
+		function isCommentNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.COMMENT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -717,14 +827,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isDocumentNode(node)
+		function isDocumentNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.DOCUMENT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -734,14 +846,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isDocumentTypeNode(node)
+		function isDocumentTypeNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.DOCUMENT_TYPE_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -751,7 +865,9 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isDocumentFragmentNode(node)
+		function isDocumentFragmentNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
@@ -759,7 +875,7 @@ if (Utils) {
 			*/
 			var key = "DOCUMENT_FRAGMENT_NODE",
 				type = nodeTypes[key];
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -769,40 +885,32 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isNotationNode(node)
+		function isNotationNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.NOTATION_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
                 /*        END PUBLIC METHOD        */
 
 
-                /*        PUBLIC METHOD        */
-
-
-		function isHostObject(obj)
-		{
-			var result = false;
-			if (typeof obj === "object" ||
-				typeof obj === "function") {
-				result = true;
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD */
-
-
 		Utils.is = Utils.is || {
-			"node": isNode,
+			"type": isType,
+
+			"hostObject": isHostObject,
+
+			"arrayLike": isArrayLike,
+
+			"nodeLike": isNodeLike,
 			"nodeType": isNodeType,
+
 			"element": isElementNode,
 			"attribute": isAttributeNode,
 			"text": isTextNode,
@@ -817,9 +925,7 @@ if (Utils) {
 			"documentType": isDocumentTypeNode,
 			"documentFragment":
 				isDocumentFragmentNode,
-			"notation": isNotationNode,
-
-			"hostObject": isHostObject
+			"notation": isNotationNode
 		};
 	}());
 }
@@ -832,129 +938,36 @@ if (Utils) {
 
                         Description:
 
-                        Various capability tests.
+                        Various capability tests for core
+                        modules that follow.
 
                         Dependencies:
 
-                        * Utils.host;
-                        * Utils.node;
+                        * Utils.types;
                         * Utils.is;
 		*/
 
-		function generateTextGetterKeys()
-		{
-			/*
-                                Keys for `generateTextGetters`
-			*/
-			return [
-				"ELEMENT_NODE",
-				"TEXT_NODE",
-				"COMMENT_NODE",
-				"PROCESSING_INSTRUCTION_NODE",
-				"DOCUMENT_FRAGMENT_NODE"
-			];
-		}
-
-		function generateTextGetters()
-		{
-			/*
-                                Private method that "generates"
-                                an object with keys of `nodeType`s
-                                that can "get" text.
-			*/
-			var keys = generateTextGetterKeys(),
-				key,
-				result = {};
-			for (key in keys) {
-				// you win this time JSLint
-				if (keys.hasOwnProperty(key)) {
-					result[key] = true;
-				}
-			}
-			return result;
-		}
-
 
                 /*        PUBLIC METHOD        */
 
 
-		function canGetText(node)
+		function canGetName(
+			obj
+		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if the specified
-                                node can "get" textual content.
+                                boolean asserting if a node-like
+                                object can "use" the `nodeName`
+                                property.
 			*/
-			var validNode = Utils.is.node(node),
-				getters = generateTextGetters(),
-				getter,
+			var isNodeLike = Utils.is.nodeLike(obj),
 				result = false;
-			if (validNode) {
-				getter = getters[node.nodeType];
-				if (getter) {
-					result = true;
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		function generateTextSetterKeys()
-		{
-			/*
-                                Keys for `generateTextSetters`
-			*/
-			return [
-				"ELEMENT_NODE",
-				"TEXT_NODE",
-				"COMMENT_NODE",
-				"PROCESSING_INSTRUCTION_NODE",
-				"DOCUMENT_FRAGMENT_NODE"
-			];
-		}
-
-		function generateTextSetters()
-		{
-			/*
-                                Private method that "generates"
-                                an object with keys of `nodeType`s
-                                that can "set" text.
-			*/
-			var keys = generateTextSetterKeys(),
-				key,
-				result = {};
-			for (key in keys) {
-				// you win this time JSLint
-				if (keys.hasOwnProperty(key)) {
-					result[key] = true;
-				}
-			}
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function canSetText(node)
-		{
-			/*
-                                Public method that returns a
-                                boolean asserting if the specified
-                                node can "set" textual content.
-			*/
-			var validNode = Utils.is.node(node),
-				setters = generateTextSetters(),
-				setter,
-				result = false;
-			if (validNode) {
-				setter = setters[node.nodeType];
-				if (setter) {
-					result = true;
-				}
+			if (isNodeLike) {
+				result = Utils.is.type(
+					obj.nodeName,
+					"string"
+				);
 			}
 			return result;
 		}
@@ -966,19 +979,49 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function canUseClassList(node)
+		function canGetValue(
+			obj
+		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if the specified
-                                node can "use" the `classList`
-                                object.
+                                boolean asserting if a node-like
+                                object can "use" the `nodeValue`
+                                property.
 			*/
-			var isElement = Utils.is.element(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				result = false;
-			if (isElement) {
-				result = Utils.is.hostObject(
-					node.classList
+			if (isNodeLike) {
+				result = Utils.is.type(
+					obj.nodeValue,
+					"string"
+				);
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function canGetOwnerDocument(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if a node-like
+                                object can "use" the
+                                `ownerDocument` property.
+			*/
+			var isNodeLike = Utils.is.nodeLike(obj),
+				result = false;
+			if (isNodeLike) {
+				result = Utils.is.document(
+					obj.ownerDocument
 				);
 			}
 			return result;
@@ -989,9 +1032,9 @@ if (Utils) {
 
 
 		Utils.can = Utils.can || {
-			"getText": canGetText,
-			"setText": canSetText,
-			"useClassList": canUseClassList
+			"getName": canGetName,
+			"getValue": canGetValue,
+			"getOwnerDocument": canGetOwnerDocument
 		};
 	}());
 }
@@ -1018,8 +1061,8 @@ if (Utils) {
 
 		function insertBefore(
 			par,
-			newNode,
-			refNode
+			newObj,
+			refObj
 		)
 		{
 			/*
@@ -1028,9 +1071,9 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				newIsNode = Utils.is.node(newNode),
-				refIsNode = Utils.is.node(refNode),
+			var validParent = Utils.is.nodeLike(par),
+				newIsNode = Utils.is.nodeLike(newObj),
+				refIsNode = Utils.is.nodeLike(refObj),
 				isHostObject,
 				key = "insertBefore",
 				result = null;
@@ -1040,8 +1083,8 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						newNode,
-						refNode
+						newObj,
+						refObj
 					);
 				}
 			}
@@ -1057,7 +1100,7 @@ if (Utils) {
 
 		function appendChild(
 			par,
-			node
+			obj
 		)
 		{
 			/*
@@ -1066,8 +1109,8 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				validNode = Utils.is.node(node),
+			var validParent = Utils.is.nodeLike(par),
+				validNode = Utils.is.nodeLike(obj),
 				isHostObject,
 				key = "appendChild",
 				result = null;
@@ -1077,7 +1120,7 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						node
+						obj
 					);
 				}
 			}
@@ -1093,7 +1136,7 @@ if (Utils) {
 
 		function removeChild(
 			par,
-			node
+			obj
 		)
 		{
 			/*
@@ -1102,8 +1145,8 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				validNode = Utils.is.node(node),
+			var validParent = Utils.is.nodeLike(par),
+				validNode = Utils.is.nodeLike(obj),
 				isHostObject,
 				key = "removeChild",
 				result = null;
@@ -1113,7 +1156,7 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						node
+						obj
 					);
 				}
 			}
@@ -1129,8 +1172,8 @@ if (Utils) {
 
 		function replaceChild(
 			par,
-			newNode,
-			oldNode
+			newObj,
+			oldObj
 		)
 		{
 			/*
@@ -1139,9 +1182,9 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				newIsNode = Utils.is.node(newNode),
-				oldIsNode = Utils.is.node(oldNode),
+			var validParent = Utils.is.nodeLike(par),
+				newIsNode = Utils.is.nodeLike(newObj),
+				oldIsNode = Utils.is.nodeLike(oldObj),
 				isHostObject,
 				key = "replaceChild",
 				result = null;
@@ -1151,8 +1194,8 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						newNode,
-						oldNode
+						newObj,
+						oldObj
 					);
 				}
 			}
@@ -1167,7 +1210,7 @@ if (Utils) {
 
 
 		function cloneNode(
-			node,
+			obj,
 			deep
 		)
 		{
@@ -1177,21 +1220,80 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				isHostObject,
 				key = "cloneNode",
 				result = null;
 			deep = Boolean(deep);
-			if (isNode) {
+			if (isNodeLike) {
 				isHostObject = Utils.is.hostObject(
-					node[key]
+					obj[key]
 				);
 				if (isHostObject) {
-					result = node[key](
-						node,
+					result = obj[key](
+						obj,
 						deep
 					);
 				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getName(
+			obj,
+			lower
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `nodeName`; returns the
+                                property's result or `null`
+                                if not applicable.
+			*/
+			var canGet = Utils.can.getName(obj),
+				lowKey = "toLowerCase",
+				upKey = "toUpperCase",
+				result = null;
+			lower = Boolean(lower);
+			if (canGet) {
+				result = obj.nodeName;
+				if (lower) {
+					result = result[lowKey]();
+				} else if (!lower) {
+					result = result[upKey]();
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getValue(
+			obj
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `nodeValue`; returns the
+                                property's result or `null`
+                                if not applicable.
+			*/
+			var canGet = Utils.can.getValue(obj),
+				result = null;
+			if (canGet) {
+				result = obj.nodeValue;
 			}
 			return result;
 		}
@@ -1205,7 +1307,9 @@ if (Utils) {
 			"append": appendChild,
 			"remove": removeChild,
 			"replace": replaceChild,
-			"clone": cloneNode
+			"clone": cloneNode,
+			"name": getName,
+			"value": getValue
 		};
 	}());
 }
@@ -1222,9 +1326,8 @@ if (Utils) {
 
                         Dependencies:
 
-                        * Utils.host;
-                        * Utils.node;
                         * Utils.is;
+                        * Utils.node;
 		*/
 
 
@@ -1242,8 +1345,7 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createElement",
 				isHostObject,
 				result = null;
@@ -1280,8 +1382,7 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createElementNS",
 				isHostObject,
 				result = null;
@@ -1308,39 +1409,6 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function createDocumentFragment(
-			doc
-		)
-		{
-			/*
-                                Public wrapper method for
-                                `createDocumentFragment`; returns
-                                the wrapper method's result or
-                                `null` if not applicable.
-			*/
-			var isDocument =
-				Utils.is.document(doc),
-				key = "createDocumentFragment",
-				isHostObject,
-				result = null;
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
-				);
-				if (isHostObject) {
-					result = doc[key]();
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
 		function createTextNode(
 			doc,
 			text
@@ -1352,46 +1420,8 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createTextNode",
-				isHostObject,
-				result = null;
-			text = String(text);
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
-				);
-				if (isHostObject) {
-					result = doc[key](
-						text
-					);
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function createComment(
-			doc,
-			text
-		)
-		{
-			/*
-                                Public wrapper method for
-                                `createComment`; returns the
-                                wrapper method's result or `null`
-                                if not applicable.
-			*/
-			var isDocument =
-				Utils.is.document(doc),
-				key = "createComment",
 				isHostObject,
 				result = null;
 			text = String(text);
@@ -1427,8 +1457,7 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createProcessingInstruction",
 				isHostObject,
 				result = null;
@@ -1452,15 +1481,83 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
+                /*        PUBLIC METHOD        */
+
+
+		function createComment(
+			doc,
+			text
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `createComment`; returns the
+                                wrapper method's result or `null`
+                                if not applicable.
+			*/
+			var isDocument = Utils.is.document(doc),
+				key = "createComment",
+				isHostObject,
+				result = null;
+			text = String(text);
+			if (isDocument) {
+				isHostObject = Utils.is.hostObject(
+					doc[key]
+				);
+				if (isHostObject) {
+					result = doc[key](
+						text
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function createDocumentFragment(
+			doc
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `createDocumentFragment`; returns
+                                the wrapper method's result or
+                                `null` if not applicable.
+			*/
+			var isDocument = Utils.is.document(doc),
+				key = "createDocumentFragment",
+				isHostObject,
+				result = null;
+			if (isDocument) {
+				isHostObject = Utils.is.hostObject(
+					doc[key]
+				);
+				if (isHostObject) {
+					result = doc[key]();
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
 		Utils.create = Utils.create || {
 			"element": createElement,
 			"elementNS": createElementNS,
-			"documentFragment":
-				createDocumentFragment,
 			"text": createTextNode,
-			"comment": createComment,
 			"processingInstruction":
-				createProcessingInstruction
+				createProcessingInstruction,
+			"comment": createComment,
+			"documentFragment":
+				createDocumentFragment
 		};
 	}());
 }
@@ -1476,15 +1573,55 @@ if (Utils) {
 
                         Dependencies:
 
-                        * Utils.host;
+                        * Utils.types;
                         * Utils.helpers;
-                        * Utils.node;
                         * Utils.is;
+                        * Utils.can;
 		*/
 
 		var nodeTypes = Utils.types;
 
-		function makeLinearArray(obj)
+		function generateSelectorTypes()
+		{
+			/*
+                                Private method that generates an
+                                object containing applicable
+                                `nodeTypes` for `querySelector*`;
+			*/
+			var result = {};
+			result[nodeTypes.ELEMENT_NODE] = true;
+			result[nodeTypes.DOCMENT_NODE] = true;
+			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
+			return result;
+		}
+
+		function canCallSelectors(
+			obj
+		)
+		{
+			/*
+                                Private helper method for
+                                `querySelector*`; returns a boolean
+                                asserting if a node-like object can
+                                call `querySelector*`.
+			*/
+			var isNodeLike = Utils.is.nodeLike(obj),
+				types = generateSelectorTypes(),
+				value,
+				result = false;
+			if (isNodeLike) {
+				value = types[obj.nodeType];
+				result = Utils.is.type(
+					value,
+					"undefined"
+				);
+			}
+			return result;
+		}
+
+		function makeLinearArray(
+			obj
+		)
 		{
 			/*
 				Private wrapper for
@@ -1678,41 +1815,6 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-		function generateSelectorTypes()
-		{
-			/*
-                                Private method that generates an
-                                object containing applicable
-                                `nodeTypes` for `querySelector*`;
-			*/
-			var result = {};
-			result[nodeTypes.ELEMENT_NODE] = true;
-			result[nodeTypes.DOCMENT_NODE] = true;
-			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
-			return result;
-		}
-
-		function canCallSelectors(node)
-		{
-			/*
-                                Private helper method for
-                                `querySelector*`; returns a boolean
-                                asserting if `node` can call
-                                `querySelector*`.
-			*/
-			var isNode = Utils.is.node(node),
-				types = generateSelectorTypes(),
-				value,
-				result = false;
-			if (isNode) {
-				value = types[node.nodeType];
-				result = typeof value !==
-					undefined;
-			}
-			return result;
-		}
-
-
                 /*        PUBLIC METHOD        */
 
 
@@ -1726,7 +1828,9 @@ if (Utils) {
                                 `querySelector`; returns `null`
                                 if not applicable.
 			*/
-			var canCall = canCallSelectors(caller),
+			var canCall = canCallSelectors(
+					caller
+				),
 				key = "querySelector",
 				canUse,
 				result = null;
@@ -1761,7 +1865,9 @@ if (Utils) {
                                 `querySelectorAll`; returns `null`
                                 if not applicable.
 			*/
-			var canCall = canCallSelectors(caller),
+			var canCall = canCallSelectors(
+					caller
+				),
 				key = "querySelectorAll",
 				canUse,
 				result = null;
@@ -1783,7 +1889,9 @@ if (Utils) {
                 /*        END PUBLIC METHOD */
 
 
-		function forkHead(doc)
+		function forkHead(
+			doc
+		)
 		{
 			/*
                                 Private helper method
@@ -1794,19 +1902,23 @@ if (Utils) {
 				heads = getElementsByTagName(
 					doc,
 					"head"
+				),
+				isArrayLike = Utils.is.arrayLike(
+					heads
 				);
-			if (typeof heads === "object" &&
-				heads.length) {
+			if (isArrayLike) {
 				result = heads[0];
 			}
 			return result;
-		}	
+		}
 
 
                 /*        PUBLIC METHOD        */
 
 
-		function getHead(doc)
+		function getHead(
+			doc
+		)
 		{
 			/*
                                 Public method that returns
@@ -1834,7 +1946,9 @@ if (Utils) {
                 /*        END PUBLIC METHOD */
 
 
-		function forkBody(doc)
+		function forkBody(
+			doc
+		)
 		{
 			/*
                                 Private helper method that forks
@@ -1845,19 +1959,23 @@ if (Utils) {
 				bodies = getElementsByTagName(
 					doc,
 					"body"
+				),
+				isArrayLike = Utils.is.arrayLike(
+					bodies
 				);
-			if (typeof bodies === "object" &&
-				bodies.length) {
+			if (isArrayLike) {
 				result = bodies[0];
 			}
 			return result;
-		}	
+		}
 
 
                 /*        PUBLIC METHOD        */
 
 
-		function getBody(doc)
+		function getBody(
+			doc
+		)
 		{
 			/*
                                 Public method that returns
@@ -1881,8 +1999,436 @@ if (Utils) {
 			return result;
 		}
 
+		function adjustItems(
+			items
+		)
+		{
+			/*
+                                Private helper that converts
+                                an `HTMLCollection` to a "static"
+                                array if necessary; the result is
+                                then returned.
+			*/
+			var isNodeLike = Utils.is.nodeLike(items),
+				isArrayLike = Utils.is.arrayLike(
+					items
+				),
+				result = items;
+			if (!isNodeLike && isArrayLike) {
+				result = makeLinearArray(items);
+			}
+			return result;
+		}
 
-                /*        END PUBLIC METHOD */
+		function getCollection(
+			doc,
+			key
+		)
+		{
+			/*
+                                Private method that returns
+                                an `HTMLCollection` as a "static"
+                                array; returns `null` if not
+                                applicable.
+			*/
+			var isDoc = Utils.is.document(doc),
+				canUse,
+				result = null;
+			key = String(key);
+			if (isDoc) {
+				canUse = Utils.is.hostObject(
+					doc[key]
+				);
+				if (canUse) {
+					result = adjustItems(
+						doc[key]
+					);
+				}
+			}
+			return result;
+		}
+
+		function getNamedItems(
+			doc,
+			key,
+			name
+		)
+		{
+			/*
+                                Private method that returns
+                                nodes from an HTMLCollection
+                                based upon a string key,
+                                which is usually the `id`
+                                or `name` property of a node;
+                                returns `null` if not applicable.
+			*/
+			var isDoc = Utils.is.document(doc),
+				canUse,
+				result = null;
+			key = String(key);
+			name = String(name);
+			if (isDoc) {
+				canUse = Utils.is.hostObject(
+					doc[key]
+				);
+				if (canUse) {
+					result = adjustItems(
+						doc[key][name]
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getImages(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `images` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"images",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllImages(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `images` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"images"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getEmbeds(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `embeds`/`plugins` `HTMLCollection`
+                                as a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"embeds",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllEmbeds(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `embeds` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"embeds"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getLinks(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `links` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"links",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllLinks(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `links` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"links"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getForms(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `forms` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"forms",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllForms(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `forms` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"forms"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getScripts(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `scripts` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"scripts",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllScripts(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `scripts` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"scripts"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getApplets(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `applets` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"applets",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllApplets(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `applets` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"applets"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAnchors(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `anchors` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"anchors",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllAnchors(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `anchors` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"anchors"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
 
 
 		Utils.select = Utils.select || {
@@ -1899,7 +2445,31 @@ if (Utils) {
 			"queryAll": querySelectorAll,
 
 			"body": getBody,
-			"head": getHead
+			"head": getHead,
+
+			"images": getImages,
+			"allImages": getAllImages,
+
+			"embeds": getEmbeds,
+			"allEmbeds": getAllEmbeds,
+
+			"plugins": getEmbeds,
+			"allPlugins": getAllEmbeds,
+
+			"links": getLinks,
+			"allLinks": getAllLinks,
+
+			"forms": getForms,
+			"allForms": getAllForms,
+
+			"scripts": getScripts,
+			"allScripts": getAllScripts,
+		
+			"applets": getApplets,
+			"allApplets": getAllApplets,
+
+			"anchors": getAnchors,
+			"allAnchors": getAllAnchors
 		};
 	}());
 }

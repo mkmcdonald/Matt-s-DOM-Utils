@@ -14,9 +14,13 @@ var Utils = Utils || {},
         [firstName.toLowerCase();]@fortybelow.ca
         http://www.fortybelow.ca
 */
+/*
+        jslint sloppy: true,
+        white: true, maxerr: 1, indent: 8
+*/
 
 /*
-        jslint browser: true, sloppy: true,
-        white: true, maxerr: 50, indent: 8
+        jshint forin:true, noarg:true, noempty:true, eqeqeq:true,
+        bitwise:true, undef:true, curly:true, indent:4, maxerr:50
 */
 

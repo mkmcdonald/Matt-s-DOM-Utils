@@ -10,7 +10,7 @@ if (Utils) {
 
                         Dependencies:
 
-                        * null;
+                        * Utils.is;
 		*/
 
 
@@ -27,13 +27,17 @@ if (Utils) {
                                 creates an array.
 			*/
 			var index,
+				arrayLike = Utils.is.arrayLike(
+					obj
+				),
 				result = [],
 				node;
-			if (obj && obj.length) {
+			if (arrayLike) {
+				result.length = obj.length;
 				index = obj.length - 1;
 				while (index > -1) {
 					node = obj[index];
-					result.unshift(node);
+					result[index] = node;
 					index -= 1;
 				}
 			}

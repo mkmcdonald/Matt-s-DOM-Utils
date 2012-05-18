@@ -11,63 +11,255 @@ global = global || this;
 
 	function headReturned()
 	{
-		return Utils.select.head(
+		var test = Utils.select.head(
 			doc
+		);
+		return Utils.is.nodeLike(
+			test
 		);
 	}
 
 	function bodyReturned()
 	{
-		return Utils.select.body(
+		var test = Utils.select.body(
 			doc
+		);
+		return Utils.is.nodeLike(
+			test
 		);
 	}
 
 	function byNameWrapped()
 	{
-		return Utils.select.byName(
+		var test = Utils.select.byName(
 			doc,
 			"control1"
+		);
+		return Utils.is.arrayLike(
+			test
 		);
 	}
 
 	function byTagNameWrapped()
 	{
-		return Utils.select.byTagName(
+		var test = Utils.select.byTagName(
 			doc,
 			"input"
+		);
+		return Utils.is.arrayLike(
+			test
 		);
 	}
 
 	function byClassNameWrapped()
 	{
-		return Utils.select.byClassName(
+		var test = Utils.select.byClassName(
 			doc,
 			"container"
+		);
+		return Utils.is.arrayLike(
+			test
 		);
 	}
 
 	function byIdWrapped()
 	{
-		return Utils.select.byId(
+		var test = Utils.select.byId(
 			doc,
 			"test"
+		);
+		return Utils.is.nodeLike(
+			test
 		);
 	}
 
 	function qsWrapped()
 	{
-		return Utils.select.query(
+		var test = Utils.select.query(
 			doc,
 			"input[type=text]"
+		);
+		return Utils.is.nodeLike(
+			test
 		);
 	}
 
 	function qsaWrapped()
 	{
-		return Utils.select.queryAll(
+		var test = Utils.select.queryAll(
 			doc,
 			"input[type]"
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function namedImagesWrapped()
+	{
+		var test = Utils.select.images(
+			doc,
+			0
+		);
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function allImagesWrapped()
+	{
+		var test = Utils.select.allImages(
+			doc
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function namedEmbedsWrapped()
+	{
+		var test = Utils.select.embeds(
+			doc,
+			0
+		);
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function allEmbedsWrapped()
+	{
+		var test = Utils.select.allEmbeds(
+			doc
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function namedPluginsWrapped()
+	{
+		var test = Utils.select.plugins(
+			doc,
+			0
+		);
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function allPluginsWrapped()
+	{
+		var test = Utils.select.allPlugins(
+			doc
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function namedLinksWrapped()
+	{
+		var test = Utils.select.links(
+			doc,
+			0
+		);
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function allLinksWrapped()
+	{
+		var test = Utils.select.allLinks(
+			doc
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function namedFormsWrapped()
+	{
+		var test = Utils.select.forms(
+			doc,
+			0
+		);
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function allFormsWrapped()
+	{
+		var test = Utils.select.allForms(
+			doc
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function namedScriptsWrapped()
+	{
+		var test = Utils.select.scripts(
+			doc,
+			0
+		);
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function allScriptsWrapped()
+	{
+		var test = Utils.select.allScripts(
+			doc
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function namedAppletsWrapped()
+	{
+		var test = Utils.select.applets(
+			doc,
+			0
+		);
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function allAppletsWrapped()
+	{
+		var test = Utils.select.allApplets(
+			doc
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function namedAnchorsWrapped()
+	{
+		var test = Utils.select.anchors(
+			doc,
+			0
+		);
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function allAnchorsWrapped()
+	{
+		var test = Utils.select.allAnchors(
+			doc
+		);
+		return Utils.is.arrayLike(
+			test
 		);
 	}
 
@@ -81,7 +273,23 @@ global = global || this;
 			byClassNameWrapped,
 			byIdWrapped,
 			qsWrapped,
-			qsaWrapped
+			qsaWrapped,
+			namedImagesWrapped,
+			allImagesWrapped,
+			namedEmbedsWrapped,
+			allEmbedsWrapped,
+			namedPluginsWrapped,
+			allPluginsWrapped,
+			namedLinksWrapped,
+			allLinksWrapped,
+			namedFormsWrapped,
+			allFormsWrapped,
+			namedScriptsWrapped,
+			allScriptsWrapped,
+			namedAppletsWrapped,
+			allAppletsWrapped,
+			namedAnchorsWrapped,
+			allAnchorsWrapped
 		];
 	}
 
@@ -116,7 +324,25 @@ global = global || this;
 		);
 	}
 
-	function runTest(evt)
+	function runTest(test)
+	{
+		var isFunction = Utils.is.type(
+			test,
+			"function"
+		),
+			result = null;
+		if (isFunction) {
+			try {
+				result = test();
+				String(result);
+			} catch (e) {
+				result = "ERROR";
+			}
+			addMessage(result);
+		}
+	}
+
+	function runTests(evt)
 	{
 		var index = 0,
 			max,
@@ -125,14 +351,12 @@ global = global || this;
 		max = tests.length;
 		while (index < max) {
 			test = tests[index];
-			addMessage(
-				test()
-			);
+			runTest(test);
 			index += 1;
 		}
 	}
 
-	function clearTest(evt)
+	function clearTests(evt)
 	{
 		var par = commonElements.results,
 			nodes = par.childNodes;
@@ -149,8 +373,8 @@ global = global || this;
 
 	function addHandlers()
 	{
-		commonElements.start.onclick = runTest;
-		commonElements.stop.onclick = clearTest;
+		commonElements.start.onclick = runTests;
+		commonElements.stop.onclick = clearTests;
 	}
 
 	addHandlers();

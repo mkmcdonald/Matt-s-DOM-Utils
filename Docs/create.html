@@ -1,0 +1,337 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=utf-8">
+		<meta name="viewport"
+			content="initial-scale=1.0">
+		<meta name="Author"
+			content="Matt McDonald">
+		<title>Matt's DOM Utils (Utils): Documentation—Utils.create</title>
+		<link href="../Assets/Images/favicon.ico"
+			media="all" rel="icon prefetch">
+		<link href="../Assets/CSS/style-main.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+		<link href="can.html" hreflang="en" media="all"
+			rel="prev" title="Utils.node"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="Documentation Index"
+			type="text/html">
+		<link href="classes.html" hreflang="en" media="all"
+			rel="next" title="Utils.classes"
+			type="text/html">
+	</head>
+	<body>
+		<div class="header_row row">
+			<h1 class="cell header_cell heading">
+				<a class="masthead"
+					href="../" title="Matt's DOM Utils"><img alt="Matt's DOM Utils" height="100" src="../Assets/Images/logo.jpg" width="337"></a>
+				<span class="tagline">Matt's DOM Utils (<em>Utils</em>)</span>
+			</h1>
+		</div>
+		<ul class="nav_row row">
+			<li class="cell home nav_cell">
+				<a href="../" title="Home">Home</a>
+			</li>
+			<li class="cell download nav_cell">
+				<a href="../download.html" title="Download">Download</a>
+			</li>
+			<li class="active cell docs nav_cell">
+				<a href="./" title="Documentation">Documentation</a>
+			</li>
+			<li class="cell nav_cell tests">
+				<a href="../Tests" title="Tests">Tests</a>
+			</li>
+			<li class="cell github nav_cell">
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/"
+					title="GitHub">GitHub</a>
+			</li>
+			<li class="about cell nav_cell">
+				<a href="../about.html" title="About">About</a>
+			</li>
+		</ul>
+		<div class="secondary_row row">
+			<div class="cell prev_link secondary_cell">
+				<a href="node.html" rel="prev"
+					title="Previous">&larr;<code>Utils.node</code></a>
+			</div>
+			<div class="cell next_link secondary_cell">
+				<a href="classes.html" rel="next"
+					title="Next"><code>Utils.classes</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Utils.create">
+					<code>Utils.create</code>
+				</h2>
+			</div>
+		</div>
+		<ul class="doc_row row">
+			<li class="cell doc_cell doc_entry" id="element">
+				<h3 class="heading">
+					<a href="#element"
+						title="Utils.create.element"><code>Utils.create.element</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc,  tag) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>element</code>
+					</dt>
+					<dd>
+						Method that wraps <code>createElement</code>,
+						which in turn creates an element node based
+						upon the tag name provided.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>tag</var>
+					</dt>
+					<dd>
+						A string containing the preferred tag name
+						for the created element to use.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="element_ns">
+				<h3 class="heading">
+					<a href="#element_ns"
+						title="Utils.create.elementNS"><code>Utils.create.elementNS</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc,  ns, tag) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>elementNS</code>
+					</dt>
+					<dd>
+						Method that wraps <code>createElementNamespace</code>,
+						which in turn creates a namespaced element node based
+						upon the tag name provided.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>ns</var>
+					</dt>
+					<dd>
+						A string containing the preferred namespace
+						for the created element to use.
+					</dd>
+					<dt>
+						<var>tag</var>
+					</dt>
+					<dd>
+						A string containing the preferred tag name
+						for the created element to use.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="text">
+				<h3 class="heading">
+					<a href="#text"
+						title="Utils.create.text"><code>Utils.create.text</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc,  text) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>text</code>
+					</dt>
+					<dd>
+						Method that wraps <code>createTextNode</code>,
+						which in turn creates a text node based
+						upon the text provided.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>text</var>
+					</dt>
+					<dd>
+						A string containing the preferred text
+						for the created text node to use.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="processing_instruction">
+				<h3 class="heading">
+					<a href="#processing_instruction"
+						title="Utils.create.processingInstruction"><code>Utils.create.processingInstruction</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc,  target, text) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>processingInstruction</code>
+					</dt>
+					<dd>
+						Method that wraps <code>processingInstruction</code>,
+						which in turn creates a processing instruction node
+						based upon the tag name provided.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>target</var>
+					</dt>
+					<dd>
+						A string containing the preferred target
+						for the created processing instruction to use.
+					</dd>
+					<dt>
+						<var>text</var>
+					</dt>
+					<dd>
+						A string containing the preferred text
+						for the created processing instruction to use.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="comment">
+				<h3 class="heading">
+					<a href="#comment"
+						title="Utils.create.comment"><code>Utils.create.comment</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc,  text) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>comment</code>
+					</dt>
+					<dd>
+						Method that wraps <code>createComment</code>,
+						which in turn creates a comment node based
+						upon the text provided.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>text</var>
+					</dt>
+					<dd>
+						A string containing the preferred text
+						for the created comment to use.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="document_fragment">
+				<h3 class="heading">
+					<a href="#document_fragment"
+						title="Utils.create.documentFragment"><code>Utils.create.documentFragment</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>documentFragment</code>
+					</dt>
+					<dd>
+						Method that wraps <code>createDocumentFragment</code>,
+						which in turn creates a document fragment node.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+		</ul>
+		<div class="secondary_row row">
+			<div class="cell prev_link secondary_cell">
+				<a href="node.html" rel="prev"
+					title="Previous">&larr;<code>Utils.node</code></a>
+			</div>
+			<div class="cell index_link secondary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to Documentation Index</a>
+			</div>
+			<div class="cell next_link secondary_cell">
+				<a href="classes.html" rel="next"
+					title="Next"><code>Utils.classes</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="footer_row row">
+			<address class="cell footer_cell">
+				Developed by <a href="http://www.fortybelow.ca"
+					title="Matt McDonald">Matt McDonald</a>;
+			</address>
+			<address class="cell footer_cell">
+				Logo designed by <a href="http://www.weirdurl.com"
+					title="Nathan Malone">Nathan Malone</a>;
+			</address>
+			<div class="cell footer_cell">
+				<a href="http://www.anybrowser.org/campaign"
+					title="Viewable with any browser">Viewable with any browser</a>
+			</div>
+		</div>
+	</body>
+</html>

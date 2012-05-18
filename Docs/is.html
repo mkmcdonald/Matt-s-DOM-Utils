@@ -1,0 +1,613 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=utf-8">
+		<meta name="viewport"
+			content="initial-scale=1.0">
+		<meta name="Author"
+			content="Matt McDonald">
+		<title>Matt's DOM Utils (Utils): Documentation—Utils.is</title>
+		<link href="../Assets/Images/favicon.ico"
+			media="all" rel="icon prefetch">
+		<link href="../Assets/CSS/style-main.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+		<link href="helpers.html" hreflang="en" media="all"
+			rel="prev" title="Utils.helpers"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="Documentation Index"
+			type="text/html">
+		<link href="can.html" hreflang="en" media="all"
+			rel="next" title="Utils.can"
+			type="text/html">
+	</head>
+	<body>
+		<div class="header_row row">
+			<h1 class="cell header_cell heading">
+				<a class="masthead"
+					href="../" title="Matt's DOM Utils"><img alt="Matt's DOM Utils" height="100" src="../Assets/Images/logo.jpg" width="337"></a>
+				<span class="tagline">Matt's DOM Utils (<em>Utils</em>)</span>
+			</h1>
+		</div>
+		<ul class="nav_row row">
+			<li class="cell home nav_cell">
+				<a href="../" title="Home">Home</a>
+			</li>
+			<li class="cell download nav_cell">
+				<a href="../download.html" title="Download">Download</a>
+			</li>
+			<li class="active cell docs nav_cell">
+				<a href="./" title="Documentation">Documentation</a>
+			</li>
+			<li class="cell nav_cell tests">
+				<a href="../Tests" title="Tests">Tests</a>
+			</li>
+			<li class="cell github nav_cell">
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/"
+					title="GitHub">GitHub</a>
+			</li>
+			<li class="about cell nav_cell">
+				<a href="../about.html" title="About">About</a>
+			</li>
+		</ul>
+		<div class="secondary_row row">
+			<div class="cell prev_link secondary_cell">
+				<a href="helpers.html" rel="prev"
+					title="Previous">&larr;<code>Utils.helpers</code></a>
+			</div>
+			<div class="cell next_link secondary_cell">
+				<a href="can.html" rel="next"
+					title="Next"><code>Utils.can</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Utils.is">
+					<code>Utils.is</code>
+				</h2>
+			</div>
+		</div>
+		<ul class="doc_row row">
+			<li class="cell doc_cell doc_entry" id="type">
+				<h3 class="heading">
+					<a href="#type"
+						title="Utils.is.type"><code>Utils.is.type</code></a>
+				</h3>
+				<p class="doc_art function_head">function (val, type) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>type</code>
+					</dt>
+					<dd>
+						Method that performs a <code>typeof</code>
+						check on the given value, then checks if the
+						result is equal to the given type.
+					</dd>
+					<dt>
+						<var>val</var>
+					</dt>
+					<dd>
+						A value.
+					</dd>
+					<dt>
+						<var>type</var>
+					</dt>
+					<dd>
+						A string to be compared against a <code>typeof</code>
+						check of <var>val</var>.
+					</dd>
+					<dt>
+						<code>return typeof val === type;</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="host_object">
+				<h3 class="heading">
+					<a href="#host_object"
+						title="Utils.is.hostObject"><code>Utils.is.hostObject</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>hostObject</code>
+					</dt>
+					<dd>
+						Method that determines if an object resembles
+						a host object.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						An object.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="array_like">
+				<h3 class="heading">
+					<a href="#array_like"
+						title="Utils.is.arrayLike"><code>Utils.is.arrayLike</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>arrayLike</code>
+					</dt>
+					<dd>
+						Method that determines if an object resembles
+						an array-like object.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						An object.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="node_like">
+				<h3 class="heading">
+					<a href="#node_like"
+						title="Utils.is.nodeLike"><code>Utils.is.nodeLike</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>nodeLike</code>
+					</dt>
+					<dd>
+						Method that determines if an object resembles
+						a node-like object.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						An object.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="node_type">
+				<h3 class="heading">
+					<a href="#node_type"
+						title="Utils.is.nodeType"><code>Utils.is.nodeType</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj, type) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>nodeType</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object has
+						a <code>nodeType</code> property with a certain
+						numeric value.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<var>type</var>
+					</dt>
+					<dd>
+						A number that is the suggested <code>nodeType</code>
+						value.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="element">
+				<h3 class="heading">
+					<a href="#element"
+						title="Utils.is.element"><code>Utils.is.element</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>element</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						an element node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="attribute">
+				<h3 class="heading">
+					<a href="#attribute"
+						title="Utils.is.attribute"><code>Utils.is.attribute</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>attribute</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						an attribute node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="text">
+				<h3 class="heading">
+					<a href="#text"
+						title="Utils.is.text"><code>Utils.is.text</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>text</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						a text node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="cdata_section">
+				<h3 class="heading">
+					<a href="#cdata_section"
+						title="Utils.is.cDataSection"><code>Utils.is.cDataSection</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>cDataSection</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						a cDataSection node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="entity_reference">
+				<h3 class="heading">
+					<a href="#entity_reference"
+						title="Utils.is.entityReference"><code>Utils.is.entityReference</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>entityReference</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						an entityReference node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="entity">
+				<h3 class="heading">
+					<a href="#entity"
+						title="Utils.is.entity"><code>Utils.is.entity</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>entity</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						an entity node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="processing_instruction">
+				<h3 class="heading">
+					<a href="#processing_instruction"
+						title="Utils.is.processingInstruction"><code>Utils.is.processingInstruction</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>processingInstruction</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						a processingInstruction node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="comment">
+				<h3 class="heading">
+					<a href="#comment"
+						title="Utils.is.comment"><code>Utils.is.comment</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>comment</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						a comment node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="document">
+				<h3 class="heading">
+					<a href="#document"
+						title="Utils.is.document"><code>Utils.is.document</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>document</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						a document node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="document_type">
+				<h3 class="heading">
+					<a href="#document_type"
+						title="Utils.is.documentType"><code>Utils.is.documentType</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>documentType</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						a documentType node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="document_fragment">
+				<h3 class="heading">
+					<a href="#document_fragment"
+						title="Utils.is.documentFragment"><code>Utils.is.documentFragment</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>documentFragment</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						a documentFragment node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="notation">
+				<h3 class="heading">
+					<a href="#notation"
+						title="Utils.is.notation"><code>Utils.is.notation</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>notation</code>
+					</dt>
+					<dd>
+						Method that determines if a node-like object resembles
+						a notation node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object.
+					</dd>
+					<dt>
+						<code>return isNodeType(obj, type);</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+		</ul>
+		<div class="secondary_row row">
+			<div class="cell prev_link secondary_cell">
+				<a href="helpers.html" rel="prev"
+					title="Previous">&larr;<code>Utils.helpers</code></a>
+			</div>
+			<div class="cell index_link secondary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to Documentation Index</a>
+			</div>
+			<div class="cell next_link secondary_cell">
+				<a href="can.html" rel="next"
+					title="Next"><code>Utils.can</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="footer_row row">
+			<address class="cell footer_cell">
+				Developed by <a href="http://www.fortybelow.ca"
+					title="Matt McDonald">Matt McDonald</a>;
+			</address>
+			<address class="cell footer_cell">
+				Logo designed by <a href="http://www.weirdurl.com"
+					title="Nathan Malone">Nathan Malone</a>;
+			</address>
+			<div class="cell footer_cell">
+				<a href="http://www.anybrowser.org/campaign"
+					title="Viewable with any browser">Viewable with any browser</a>
+			</div>
+		</div>
+	</body>
+</html>

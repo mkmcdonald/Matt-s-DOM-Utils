@@ -1,0 +1,495 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=utf-8">
+		<meta name="viewport"
+			content="initial-scale=1.0">
+		<meta name="Author"
+			content="Matt McDonald">
+		<title>Matt's DOM Utils (Utils): Documentation—Utils.classes</title>
+		<link href="../Assets/Images/favicon.ico"
+			media="all" rel="icon prefetch">
+		<link href="../Assets/CSS/style-main.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+		<link href="create.html" hreflang="en" media="all"
+			rel="prev" title="Utils.create"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="Documentation Index"
+			type="text/html">
+		<link href="traverse.html" hreflang="en" media="all"
+			rel="next" title="Utils.traverse"
+			type="text/html">
+	</head>
+	<body>
+		<div class="header_row row">
+			<h1 class="cell header_cell heading">
+				<a class="masthead"
+					href="../" title="Matt's DOM Utils"><img alt="Matt's DOM Utils" height="100" src="../Assets/Images/logo.jpg" width="337"></a>
+				<span class="tagline">Matt's DOM Utils (<em>Utils</em>)</span>
+			</h1>
+		</div>
+		<ul class="nav_row row">
+			<li class="cell home nav_cell">
+				<a href="../" title="Home">Home</a>
+			</li>
+			<li class="cell download nav_cell">
+				<a href="../download.html" title="Download">Download</a>
+			</li>
+			<li class="active cell docs nav_cell">
+				<a href="./" title="Documentation">Documentation</a>
+			</li>
+			<li class="cell nav_cell tests">
+				<a href="../Tests" title="Tests">Tests</a>
+			</li>
+			<li class="cell github nav_cell">
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/"
+					title="GitHub">GitHub</a>
+			</li>
+			<li class="about cell nav_cell">
+				<a href="../about.html" title="About">About</a>
+			</li>
+		</ul>
+		<div class="secondary_row row">
+			<div class="cell prev_link secondary_cell">
+				<a href="create.html" rel="prev"
+					title="Previous">&larr;<code>Utils.create</code></a>
+			</div>
+			<div class="cell next_link secondary_cell">
+				<a href="traverse.html" rel="next"
+					title="Next"><code>Utils.traverse</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Utils.classes">
+					<code>Utils.classes</code>
+				</h2>
+			</div>
+		</div>
+		<ul class="doc_row row">
+			<li class="cell doc_cell doc_entry" id="contains">
+				<h3 class="heading">
+					<a href="#contains"
+						title="Utils.classes.contains"><code>Utils.classes.contains</code></a>
+				</h3>
+				<p class="doc_art function_head">function (token, obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>contains</code>
+					</dt>
+					<dd>
+						Method that wraps <code>contains</code>,
+						which in turn checks if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						token list contains the token provided.
+					</dd>
+					<dt>
+						<var>token</var>
+					</dt>
+					<dd>
+						A string containing the token to search for.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="contains_list">
+				<h3 class="heading">
+					<a href="#contains_list"
+						title="Utils.classes.containsList"><code>Utils.classes.containsList</code></a>
+				</h3>
+				<p class="doc_art function_head">function (tokens, obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>containsList</code>
+					</dt>
+					<dd>
+						Method that returns a boolean asserting if
+						a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						token list contains an <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						of tokens.
+					</dd>
+					<dt>
+						<var>tokens</var>
+					</dt>
+					<dd>
+						An <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						containing tokens to check for.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="add">
+				<h3 class="heading">
+					<a href="#add"
+						title="Utils.classes.add"><code>Utils.classes.add</code></a>
+				</h3>
+				<p class="doc_art function_head">function (token, obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>add</code>
+					</dt>
+					<dd>
+						Method that wraps <code>add</code>,
+						which in turn adds a token to a 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						token list.
+					</dd>
+					<dt>
+						<var>token</var>
+					</dt>
+					<dd>
+						A string containing the token to add.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>undefined</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="add_list">
+				<h3 class="heading">
+					<a href="#add_list"
+						title="Utils.classes.addList"><code>Utils.classes.addList</code></a>
+				</h3>
+				<p class="doc_art function_head">function (tokens, obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>addList</code>
+					</dt>
+					<dd>
+						Method that adds an
+						<a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						of tokens to a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						token list.
+					</dd>
+					<dt>
+						<var>tokens</var>
+					</dt>
+					<dd>
+						An <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						containing tokens to add.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>undefined</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="remove">
+				<h3 class="heading">
+					<a href="#remove"
+						title="Utils.classes.remove"><code>Utils.classes.remove</code></a>
+				</h3>
+				<p class="doc_art function_head">function (token, obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>remove</code>
+					</dt>
+					<dd>
+						Method that wraps <code>remove</code>,
+						which in turn removes a token from a
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						token list.
+					</dd>
+					<dt>
+						<var>token</var>
+					</dt>
+					<dd>
+						A string containing the token to remove.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>undefined</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="remove_list">
+				<h3 class="heading">
+					<a href="#remove_list"
+						title="Utils.classes.removeList"><code>Utils.classes.removeList</code></a>
+				</h3>
+				<p class="doc_art function_head">function (tokens, obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>removeList</code>
+					</dt>
+					<dd>
+						Method that removes an
+						<a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						of tokens from a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						token list.
+					</dd>
+					<dt>
+						<var>tokens</var>
+					</dt>
+					<dd>
+						An <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						containing tokens to remove.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>undefined</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="toggle">
+				<h3 class="heading">
+					<a href="#toggle"
+						title="Utils.classes.toggle"><code>Utils.classes.toggle</code></a>
+				</h3>
+				<p class="doc_art function_head">function (token, obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>toggle</code>
+					</dt>
+					<dd>
+						Method that wraps <code>toggle</code>,
+						which in turn toggles a token in a
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						token list.
+					</dd>
+					<dt>
+						<var>token</var>
+					</dt>
+					<dd>
+						A string containing the token to toggle.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="toggle_list">
+				<h3 class="heading">
+					<a href="#toggle_list"
+						title="Utils.classes.toggleList"><code>Utils.classes.toggleList</code></a>
+				</h3>
+				<p class="doc_art function_head">function (tokens, obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>toggleList</code>
+					</dt>
+					<dd>
+						Method that toggles an
+						<a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						of tokens on a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						token list.
+					</dd>
+					<dt>
+						<var>tokens</var>
+					</dt>
+					<dd>
+						An <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						containing tokens to toggle.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>undefined</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="item">
+				<h3 class="heading">
+					<a href="#item"
+						title="Utils.classes.item"><code>Utils.classes.item</code></a>
+				</h3>
+				<p class="doc_art function_head">function (index, obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>item</code>
+					</dt>
+					<dd>
+						Method that fetches a token from a 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						token list at the specified index.
+					</dd>
+					<dt>
+						<var>index</var>
+					</dt>
+					<dd>
+						A positive whole number.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>String || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="get">
+				<h3 class="heading">
+					<a href="#get"
+						title="Utils.classes.get"><code>Utils.classes.get</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>get</code>
+					</dt>
+					<dd>
+						Method that returns the token list of a 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+		</ul>
+		<div class="secondary_row row">
+			<div class="cell prev_link secondary_cell">
+				<a href="create.html" rel="prev"
+					title="Previous">&larr;<code>Utils.create</code></a>
+			</div>
+			<div class="cell index_link secondary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to Documentation Index</a>
+			</div>
+			<div class="cell next_link secondary_cell">
+				<a href="traverse.html" rel="next"
+					title="Next"><code>Utils.traverse</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="footer_row row">
+			<address class="cell footer_cell">
+				Developed by <a href="http://www.fortybelow.ca"
+					title="Matt McDonald">Matt McDonald</a>;
+			</address>
+			<address class="cell footer_cell">
+				Logo designed by <a href="http://www.weirdurl.com"
+					title="Nathan Malone">Nathan Malone</a>;
+			</address>
+			<div class="cell footer_cell">
+				<a href="http://www.anybrowser.org/campaign"
+					title="Viewable with any browser">Viewable with any browser</a>
+			</div>
+		</div>
+	</body>
+</html>

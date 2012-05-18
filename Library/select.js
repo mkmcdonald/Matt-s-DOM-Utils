@@ -10,15 +10,55 @@ if (Utils) {
 
                         Dependencies:
 
-                        * Utils.host;
+                        * Utils.types;
                         * Utils.helpers;
-                        * Utils.node;
                         * Utils.is;
+                        * Utils.can;
 		*/
 
 		var nodeTypes = Utils.types;
 
-		function makeLinearArray(obj)
+		function generateSelectorTypes()
+		{
+			/*
+                                Private method that generates an
+                                object containing applicable
+                                `nodeTypes` for `querySelector*`;
+			*/
+			var result = {};
+			result[nodeTypes.ELEMENT_NODE] = true;
+			result[nodeTypes.DOCMENT_NODE] = true;
+			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
+			return result;
+		}
+
+		function canCallSelectors(
+			obj
+		)
+		{
+			/*
+                                Private helper method for
+                                `querySelector*`; returns a boolean
+                                asserting if a node-like object can
+                                call `querySelector*`.
+			*/
+			var isNodeLike = Utils.is.nodeLike(obj),
+				types = generateSelectorTypes(),
+				value,
+				result = false;
+			if (isNodeLike) {
+				value = types[obj.nodeType];
+				result = Utils.is.type(
+					value,
+					"undefined"
+				);
+			}
+			return result;
+		}
+
+		function makeLinearArray(
+			obj
+		)
 		{
 			/*
 				Private wrapper for
@@ -212,41 +252,6 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-		function generateSelectorTypes()
-		{
-			/*
-                                Private method that generates an
-                                object containing applicable
-                                `nodeTypes` for `querySelector*`;
-			*/
-			var result = {};
-			result[nodeTypes.ELEMENT_NODE] = true;
-			result[nodeTypes.DOCMENT_NODE] = true;
-			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
-			return result;
-		}
-
-		function canCallSelectors(node)
-		{
-			/*
-                                Private helper method for
-                                `querySelector*`; returns a boolean
-                                asserting if `node` can call
-                                `querySelector*`.
-			*/
-			var isNode = Utils.is.node(node),
-				types = generateSelectorTypes(),
-				value,
-				result = false;
-			if (isNode) {
-				value = types[node.nodeType];
-				result = typeof value !==
-					undefined;
-			}
-			return result;
-		}
-
-
                 /*        PUBLIC METHOD        */
 
 
@@ -260,7 +265,9 @@ if (Utils) {
                                 `querySelector`; returns `null`
                                 if not applicable.
 			*/
-			var canCall = canCallSelectors(caller),
+			var canCall = canCallSelectors(
+					caller
+				),
 				key = "querySelector",
 				canUse,
 				result = null;
@@ -295,7 +302,9 @@ if (Utils) {
                                 `querySelectorAll`; returns `null`
                                 if not applicable.
 			*/
-			var canCall = canCallSelectors(caller),
+			var canCall = canCallSelectors(
+					caller
+				),
 				key = "querySelectorAll",
 				canUse,
 				result = null;
@@ -317,7 +326,9 @@ if (Utils) {
                 /*        END PUBLIC METHOD */
 
 
-		function forkHead(doc)
+		function forkHead(
+			doc
+		)
 		{
 			/*
                                 Private helper method
@@ -328,19 +339,23 @@ if (Utils) {
 				heads = getElementsByTagName(
 					doc,
 					"head"
+				),
+				isArrayLike = Utils.is.arrayLike(
+					heads
 				);
-			if (typeof heads === "object" &&
-				heads.length) {
+			if (isArrayLike) {
 				result = heads[0];
 			}
 			return result;
-		}	
+		}
 
 
                 /*        PUBLIC METHOD        */
 
 
-		function getHead(doc)
+		function getHead(
+			doc
+		)
 		{
 			/*
                                 Public method that returns
@@ -368,7 +383,9 @@ if (Utils) {
                 /*        END PUBLIC METHOD */
 
 
-		function forkBody(doc)
+		function forkBody(
+			doc
+		)
 		{
 			/*
                                 Private helper method that forks
@@ -379,19 +396,23 @@ if (Utils) {
 				bodies = getElementsByTagName(
 					doc,
 					"body"
+				),
+				isArrayLike = Utils.is.arrayLike(
+					bodies
 				);
-			if (typeof bodies === "object" &&
-				bodies.length) {
+			if (isArrayLike) {
 				result = bodies[0];
 			}
 			return result;
-		}	
+		}
 
 
                 /*        PUBLIC METHOD        */
 
 
-		function getBody(doc)
+		function getBody(
+			doc
+		)
 		{
 			/*
                                 Public method that returns
@@ -415,8 +436,436 @@ if (Utils) {
 			return result;
 		}
 
+		function adjustItems(
+			items
+		)
+		{
+			/*
+                                Private helper that converts
+                                an `HTMLCollection` to a "static"
+                                array if necessary; the result is
+                                then returned.
+			*/
+			var isNodeLike = Utils.is.nodeLike(items),
+				isArrayLike = Utils.is.arrayLike(
+					items
+				),
+				result = items;
+			if (!isNodeLike && isArrayLike) {
+				result = makeLinearArray(items);
+			}
+			return result;
+		}
 
-                /*        END PUBLIC METHOD */
+		function getCollection(
+			doc,
+			key
+		)
+		{
+			/*
+                                Private method that returns
+                                an `HTMLCollection` as a "static"
+                                array; returns `null` if not
+                                applicable.
+			*/
+			var isDoc = Utils.is.document(doc),
+				canUse,
+				result = null;
+			key = String(key);
+			if (isDoc) {
+				canUse = Utils.is.hostObject(
+					doc[key]
+				);
+				if (canUse) {
+					result = adjustItems(
+						doc[key]
+					);
+				}
+			}
+			return result;
+		}
+
+		function getNamedItems(
+			doc,
+			key,
+			name
+		)
+		{
+			/*
+                                Private method that returns
+                                nodes from an HTMLCollection
+                                based upon a string key,
+                                which is usually the `id`
+                                or `name` property of a node;
+                                returns `null` if not applicable.
+			*/
+			var isDoc = Utils.is.document(doc),
+				canUse,
+				result = null;
+			key = String(key);
+			name = String(name);
+			if (isDoc) {
+				canUse = Utils.is.hostObject(
+					doc[key]
+				);
+				if (canUse) {
+					result = adjustItems(
+						doc[key][name]
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getImages(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `images` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"images",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllImages(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `images` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"images"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getEmbeds(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `embeds`/`plugins` `HTMLCollection`
+                                as a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"embeds",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllEmbeds(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `embeds` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"embeds"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getLinks(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `links` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"links",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllLinks(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `links` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"links"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getForms(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `forms` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"forms",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllForms(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `forms` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"forms"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getScripts(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `scripts` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"scripts",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllScripts(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `scripts` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"scripts"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getApplets(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `applets` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"applets",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllApplets(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `applets` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"applets"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAnchors(
+			doc,
+			key
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `anchors` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getNamedItems(
+				doc,
+				"anchors",
+				key
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAllAnchors(
+			doc
+		)
+		{
+			/*
+                                Public method that returns
+                                the specified document's
+                                `anchors` `HTMLCollection` as
+                                a "static" array; returns `null`
+                                if not applicable.
+			*/
+			return getCollection(
+				doc,
+				"anchors"
+			);
+		}
+
+
+                /*        END PUBLIC METHOD        */
 
 
 		Utils.select = Utils.select || {
@@ -433,7 +882,31 @@ if (Utils) {
 			"queryAll": querySelectorAll,
 
 			"body": getBody,
-			"head": getHead
+			"head": getHead,
+
+			"images": getImages,
+			"allImages": getAllImages,
+
+			"embeds": getEmbeds,
+			"allEmbeds": getAllEmbeds,
+
+			"plugins": getEmbeds,
+			"allPlugins": getAllEmbeds,
+
+			"links": getLinks,
+			"allLinks": getAllLinks,
+
+			"forms": getForms,
+			"allForms": getAllForms,
+
+			"scripts": getScripts,
+			"allScripts": getAllScripts,
+		
+			"applets": getApplets,
+			"allApplets": getAllApplets,
+
+			"anchors": getAnchors,
+			"allAnchors": getAllAnchors
 		};
 	}());
 }

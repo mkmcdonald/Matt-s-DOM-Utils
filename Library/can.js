@@ -6,129 +6,36 @@ if (Utils) {
 
                         Description:
 
-                        Various capability tests.
+                        Various capability tests for core
+                        modules that follow.
 
                         Dependencies:
 
-                        * Utils.host;
-                        * Utils.node;
+                        * Utils.types;
                         * Utils.is;
 		*/
 
-		function generateTextGetterKeys()
-		{
-			/*
-                                Keys for `generateTextGetters`
-			*/
-			return [
-				"ELEMENT_NODE",
-				"TEXT_NODE",
-				"COMMENT_NODE",
-				"PROCESSING_INSTRUCTION_NODE",
-				"DOCUMENT_FRAGMENT_NODE"
-			];
-		}
-
-		function generateTextGetters()
-		{
-			/*
-                                Private method that "generates"
-                                an object with keys of `nodeType`s
-                                that can "get" text.
-			*/
-			var keys = generateTextGetterKeys(),
-				key,
-				result = {};
-			for (key in keys) {
-				// you win this time JSLint
-				if (keys.hasOwnProperty(key)) {
-					result[key] = true;
-				}
-			}
-			return result;
-		}
-
 
                 /*        PUBLIC METHOD        */
 
 
-		function canGetText(node)
+		function canGetName(
+			obj
+		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if the specified
-                                node can "get" textual content.
+                                boolean asserting if a node-like
+                                object can "use" the `nodeName`
+                                property.
 			*/
-			var validNode = Utils.is.node(node),
-				getters = generateTextGetters(),
-				getter,
+			var isNodeLike = Utils.is.nodeLike(obj),
 				result = false;
-			if (validNode) {
-				getter = getters[node.nodeType];
-				if (getter) {
-					result = true;
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		function generateTextSetterKeys()
-		{
-			/*
-                                Keys for `generateTextSetters`
-			*/
-			return [
-				"ELEMENT_NODE",
-				"TEXT_NODE",
-				"COMMENT_NODE",
-				"PROCESSING_INSTRUCTION_NODE",
-				"DOCUMENT_FRAGMENT_NODE"
-			];
-		}
-
-		function generateTextSetters()
-		{
-			/*
-                                Private method that "generates"
-                                an object with keys of `nodeType`s
-                                that can "set" text.
-			*/
-			var keys = generateTextSetterKeys(),
-				key,
-				result = {};
-			for (key in keys) {
-				// you win this time JSLint
-				if (keys.hasOwnProperty(key)) {
-					result[key] = true;
-				}
-			}
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function canSetText(node)
-		{
-			/*
-                                Public method that returns a
-                                boolean asserting if the specified
-                                node can "set" textual content.
-			*/
-			var validNode = Utils.is.node(node),
-				setters = generateTextSetters(),
-				setter,
-				result = false;
-			if (validNode) {
-				setter = setters[node.nodeType];
-				if (setter) {
-					result = true;
-				}
+			if (isNodeLike) {
+				result = Utils.is.type(
+					obj.nodeName,
+					"string"
+				);
 			}
 			return result;
 		}
@@ -140,19 +47,49 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function canUseClassList(node)
+		function canGetValue(
+			obj
+		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if the specified
-                                node can "use" the `classList`
-                                object.
+                                boolean asserting if a node-like
+                                object can "use" the `nodeValue`
+                                property.
 			*/
-			var isElement = Utils.is.element(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				result = false;
-			if (isElement) {
-				result = Utils.is.hostObject(
-					node.classList
+			if (isNodeLike) {
+				result = Utils.is.type(
+					obj.nodeValue,
+					"string"
+				);
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function canGetOwnerDocument(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if a node-like
+                                object can "use" the
+                                `ownerDocument` property.
+			*/
+			var isNodeLike = Utils.is.nodeLike(obj),
+				result = false;
+			if (isNodeLike) {
+				result = Utils.is.document(
+					obj.ownerDocument
 				);
 			}
 			return result;
@@ -163,9 +100,9 @@ if (Utils) {
 
 
 		Utils.can = Utils.can || {
-			"getText": canGetText,
-			"setText": canSetText,
-			"useClassList": canUseClassList
+			"getName": canGetName,
+			"getValue": canGetValue,
+			"getOwnerDocument": canGetOwnerDocument
 		};
 	}());
 }

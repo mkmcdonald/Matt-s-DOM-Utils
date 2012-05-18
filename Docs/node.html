@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=utf-8">
+		<meta name="viewport"
+			content="initial-scale=1.0">
+		<meta name="Author"
+			content="Matt McDonald">
+		<title>Matt's DOM Utils (Utils): Documentation—Utils.node</title>
+		<link href="../Assets/Images/favicon.ico"
+			media="all" rel="icon prefetch">
+		<link href="../Assets/CSS/style-main.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+		<link href="can.html" hreflang="en" media="all"
+			rel="prev" title="Utils.can"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="Documentation Index"
+			type="text/html">
+		<link href="create.html" hreflang="en" media="all"
+			rel="next" title="Utils.create"
+			type="text/html">
+	</head>
+	<body>
+		<div class="header_row row">
+			<h1 class="cell header_cell heading">
+				<a class="masthead"
+					href="../" title="Matt's DOM Utils"><img alt="Matt's DOM Utils" height="100" src="../Assets/Images/logo.jpg" width="337"></a>
+				<span class="tagline">Matt's DOM Utils (<em>Utils</em>)</span>
+			</h1>
+		</div>
+		<ul class="nav_row row">
+			<li class="cell home nav_cell">
+				<a href="../" title="Home">Home</a>
+			</li>
+			<li class="cell download nav_cell">
+				<a href="../download.html" title="Download">Download</a>
+			</li>
+			<li class="active cell docs nav_cell">
+				<a href="./" title="Documentation">Documentation</a>
+			</li>
+			<li class="cell nav_cell tests">
+				<a href="../Tests" title="Tests">Tests</a>
+			</li>
+			<li class="cell github nav_cell">
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/"
+					title="GitHub">GitHub</a>
+			</li>
+			<li class="about cell nav_cell">
+				<a href="../about.html" title="About">About</a>
+			</li>
+		</ul>
+		<div class="secondary_row row">
+			<div class="cell prev_link secondary_cell">
+				<a href="can.html" rel="prev"
+					title="Previous">&larr;<code>Utils.can</code></a>
+			</div>
+			<div class="cell next_link secondary_cell">
+				<a href="create.html" rel="next"
+					title="Next"><code>Utils.create</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Utils.node">
+					<code>Utils.node</code>
+				</h2>
+			</div>
+		</div>
+		<ul class="doc_row row">
+			<li class="cell doc_cell doc_entry" id="prepend">
+				<h3 class="heading">
+					<a href="#prepend"
+						title="Utils.node.prepend"><code>Utils.node.prepend</code></a>
+				</h3>
+				<p class="doc_art function_head">function (par, newObj, refObj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>prepend</code>
+					</dt>
+					<dd>
+						Method that wraps <code>insertBefore</code>,
+						which in turn appends a node-like object before
+						another node-like object to a parent node-like object.
+					</dd>
+					<dt>
+						<var>par</var>
+					</dt>
+					<dd>
+						A node-like object that will act as the <code>parentNode</code>.
+					</dd>
+					<dt>
+						<var>newObj</var>
+					</dt>
+					<dd>
+						A node-like object that will be inserted before the referenced
+						node-like object if successful.
+					</dd>
+					<dt>
+						<var>refObj</var>
+					</dt>
+					<dd>
+						A node-like object that will act as the reference node-like
+						object to where the new node-like object will be inserted before.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="append">
+				<h3 class="heading">
+					<a href="#append"
+						title="Utils.node.append"><code>Utils.node.append</code></a>
+				</h3>
+				<p class="doc_art function_head">function (par, obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>append</code>
+					</dt>
+					<dd>
+						Method that "appends" a node-like object
+						(via <code>appendChild</code>) to a parent node-like object.
+					</dd>
+					<dt>
+						<var>par</var>
+					</dt>
+					<dd>
+						A node-like object that will act as the <code>parentNode</code>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object that will be appended to the given parent
+						node-like object.
+						if successful.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="remove">
+				<h3 class="heading">
+					<a href="#remove"
+						title="Utils.node.remove"><code>Utils.node.remove</code></a>
+				</h3>
+				<p class="doc_art function_head">function (par, obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>remove</code>
+					</dt>
+					<dd>
+						Method that "removes" a node-like object
+						(via <code>removeChild</code>) from a parent node-like object.
+					</dd>
+					<dt>
+						<var>par</var>
+					</dt>
+					<dd>
+						A node-like object that will act as the <code>parentNode</code>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object that will be removed from the given
+						parent node-like object if successful.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="replace">
+				<h3 class="heading">
+					<a href="#replace"
+						title="Utils.node.replace"><code>Utils.node.replace</code></a>
+				</h3>
+				<p class="doc_art function_head">function (par, newObj, oldObj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>replace</code>
+					</dt>
+					<dd>
+						Method that "replaces" a node-like object
+						(via <code>replaceChild</code>) with a new
+						node-like object on a parent node-like object.
+					</dd>
+					<dt>
+						<var>par</var>
+					</dt>
+					<dd>
+						A node-like object that will act as the <code>parentNode</code>.
+					</dd>
+					<dt>
+						<var>newObj</var>
+					</dt>
+					<dd>
+						A node-like object that will replace a given node-like object on a
+						parent node-like object if successful.
+					</dd>
+					<dt>
+						<var>oldObj</var>
+					</dt>
+					<dd>
+						A node-like object that will be replaced by a given node-like
+						object on a parent node-like object if successful.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="clone">
+				<h3 class="heading">
+					<a href="#clone"
+						title="Utils.node.clone"><code>Utils.node.clone</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj, deep) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>clone</code>
+					</dt>
+					<dd>
+						Method that "clones" a node-like object
+						(via <code>cloneNode</code>); performs a "shallow"
+						(one level) "clone" if <var>deep</var> is false; performs
+						a "deep" (recursive) "clone" if <var>deep</var> is true.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A node-like object that will be "cloned".
+					</dd>
+					<dt>
+						<var>deep</var>
+					</dt>
+					<dd>
+						A boolean that will determine if a "deep" (recursive)
+						or a "shallow" (one level) "clone" will be performed
+						if successful.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+		</ul>
+		<div class="secondary_row row">
+			<div class="cell prev_link secondary_cell">
+				<a href="is.html" rel="prev"
+					title="Previous">&larr;<code>Utils.is</code></a>
+			</div>
+			<div class="cell index_link secondary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to Documentation Index</a>
+			</div>
+			<div class="cell next_link secondary_cell">
+				<a href="create.html" rel="next"
+					title="Next"><code>Utils.create</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="footer_row row">
+			<address class="cell footer_cell">
+				Developed by <a href="http://www.fortybelow.ca"
+					title="Matt McDonald">Matt McDonald</a>;
+			</address>
+			<address class="cell footer_cell">
+				Logo designed by <a href="http://www.weirdurl.com"
+					title="Nathan Malone">Nathan Malone</a>;
+			</address>
+			<div class="cell footer_cell">
+				<a href="http://www.anybrowser.org/campaign"
+					title="Viewable with any browser">Viewable with any browser</a>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,216 @@
+@charset "UTF-8";
+
+body
+{
+	margin: 0;
+	color: #F1F1F1;
+	font-family: "Georgia", serif;
+	font-size: 100%;
+	background-color: #071526;
+	background-image: url("../Images/bg.gif");
+}
+
+a:link, a:hover, a:active, a:visited
+{
+	color: #F1F1F1;
+}
+
+ul
+{
+	list-style: square inside;
+}
+
+code, pre
+{
+	font-family: "Lucida Console", monospace;
+	font-weight: bold;
+}
+
+dt
+{
+	margin: 1em 0 1em 0;
+}
+
+hr
+{
+	border-style: solid;
+	border-color: #F1F1F1;
+}
+
+img
+{
+	border: 0;
+}
+
+.row
+{
+	width: 100%;
+	float: left;
+	clear: both;
+}
+
+.cell
+{
+	padding: 1em;
+	float: left;
+	clear: both;
+}
+
+.header_cell
+{
+	width: 337px;
+	height: 100px;
+	padding: 0 0 0 .5em;
+	overflow: hidden;
+}
+
+.nav_cell, .secondary_cell, .footer_cell
+{
+	clear: right;
+}
+
+.nav_cell, .secondary_cell
+{
+	margin: 0;
+}
+
+.nav_row, .doc_row
+{
+	padding: 0;
+	margin: 0;
+	list-style: none outside;
+}
+
+.nav_row, .footer_row
+{
+	background-color: #5D7693;
+}
+
+.secondary_cell
+{
+	width: 24.33em;
+}
+
+.nav_cell:hover, .footer_cell:hover
+{
+	background-color: #071526;
+}
+
+.active
+{
+	box-shadow: inset 0 -.25em 0 0 #AEBAC8;
+}
+
+.doc_cell
+{
+	margin: 0 0 0 2em;
+	float: none;
+	clear: none;
+}
+
+.doc_cell .heading
+{
+	margin: 0;
+}
+
+.doc_list
+{
+	margin: 0 0 0 2em;
+}
+
+.doc_art
+{
+	font-size: 1.25em;
+}
+
+.doc_entry
+{
+	overflow-wrap: break-word;
+}
+
+.doc_entry:target
+{
+	background-color: #5D7693;
+}
+
+.warning
+{
+	font-weight: bold
+}
+
+.prev_link
+{
+	text-align: left;
+}
+
+.index_link
+{
+	text-align: center;
+}
+
+.next_link
+{
+	text-align: right;
+}
+
+.footer_row
+{
+	margin-top: 1em;
+}
+
+@media screen and (min-width: 20em) and (max-width: 40em)
+{
+	.primary_cell, .secondary_cell
+	{
+		/* fit within 20em page */
+		width: 18em;
+	}
+
+	.masthead
+	{
+		display: none;
+	}
+
+	.header_cell
+	{
+		width: auto;
+		height: auto;
+	}
+}
+
+@media screen and (min-width: 0em) and (max-width: 20em)
+{
+	body
+	{
+		font-size: .75em;
+	}
+
+	.cell
+	{
+		/*
+			fit within 15 em (at 16px) page
+
+			remember: 1em = 12px because of
+			of the previous declaration
+		*/
+		width: 15em;
+	}
+
+	.header_cell
+	{
+		/* h1 is 2em */
+		width: 7em;
+	}
+
+	.doc_cell
+	{
+		/* 2em left margin */
+		width: 13em;
+	}
+
+	.doc_list
+	{
+		/* 2em left margin */
+		width: 11em;
+	}
+}

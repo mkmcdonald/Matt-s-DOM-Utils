@@ -1,0 +1,1066 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=utf-8">
+		<meta name="viewport"
+			content="initial-scale=1.0">
+		<meta name="Author"
+			content="Matt McDonald">
+		<title>Matt's DOM Utils (Utils): Documentation—Utils.select</title>
+		<link href="../Assets/Images/favicon.ico"
+			media="all" rel="icon prefetch">
+		<link href="../Assets/CSS/style-main.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+		<link href="select.html" hreflang="en" media="all"
+			rel="prev" title="Utils.select"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="Documentation Index"
+			type="text/html">
+		<link href="glossary.html" hreflang="en" media="all"
+			rel="next" title="Glossary"
+			type="text/html">
+	</head>
+	<body>
+		<div class="header_row row">
+			<h1 class="cell header_cell heading">
+				<a class="masthead"
+					href="../" title="Matt's DOM Utils"><img alt="Matt's DOM Utils" height="100" src="../Assets/Images/logo.jpg" width="337"></a>
+				<span class="tagline">Matt's DOM Utils (<em>Utils</em>)</span>
+			</h1>
+		</div>
+		<ul class="nav_row row">
+			<li class="cell home nav_cell">
+				<a href="../" title="Home">Home</a>
+			</li>
+			<li class="cell download nav_cell">
+				<a href="../download.html" title="Download">Download</a>
+			</li>
+			<li class="active cell docs nav_cell">
+				<a href="./" title="Documentation">Documentation</a>
+			</li>
+			<li class="cell nav_cell tests">
+				<a href="../Tests" title="Tests">Tests</a>
+			</li>
+			<li class="cell github nav_cell">
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/"
+					title="GitHub">GitHub</a>
+			</li>
+			<li class="about cell nav_cell">
+				<a href="../about.html" title="About">About</a>
+			</li>
+		</ul>
+		<div class="secondary_row row">
+			<div class="cell prev_link secondary_cell">
+				<a href="traverse.html" rel="prev"
+					title="Previous">&larr;<code>Utils.traverse</code></a>
+			</div>
+			<div class="cell next_link secondary_cell">
+				<a href="glossary.html" rel="next"
+					title="Next">Glossary&rarr;</a>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Utils.select">
+					<code>Utils.select</code>
+				</h2>
+			</div>
+		</div>
+		<ul class="doc_row row">
+			<li class="cell doc_cell doc_entry" id="by_name">
+				<h3 class="heading">
+					<a href="#by_name"
+						title="Utils.select.byName"><code>Utils.select.byName</code></a>
+				</h3>
+				<p class="warning">
+					Warning: <code>getElementsByName</code> has known
+					issues in various Internet Explorer versions.
+					<em>Utils</em> makes no attempt to correct
+					incorrect behavior for this method; avoid if
+					possible.
+				</p>
+				<p class="doc_art function_head">function (doc, name) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>byName</code>
+					</dt>
+					<dd>
+						Method that wraps <code>getElementsByName</code>,
+						which in turn returns element nodes with a matching
+						<code>name</code> property.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>name</var>
+					</dt>
+					<dd>
+						A string containing the name to search for.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="by_tag_name">
+				<h3 class="heading">
+					<a href="#by_tag_name"
+						title="Utils.select.byTagName"><code>Utils.select.byTagName</code></a>
+				</h3>
+				<p class="doc_art function_head">function (caller, tag) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>byTagName</code>
+					</dt>
+					<dd>
+						Method that wraps <code>getElementsByTagName</code>,
+						which in turn returns recursive "children" of the caller
+						with a matching <code>nodeName</code> property.
+					</dd>
+					<dt>
+						<var>caller</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						or an element <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>tag</var>
+					</dt>
+					<dd>
+						A string containing the tag to search for;
+						<code>"*"</code> returns all "children" in
+						the caller's subtree.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="by_tag_name_ns">
+				<h3 class="heading">
+					<a href="#by_tag_name_ns"
+						title="Utils.select.byTagNameNS"><code>Utils.select.byTagNameNS</code></a>
+				</h3>
+				<p class="doc_art function_head">function (caller, local, ns) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>byTagNameNS</code>
+					</dt>
+					<dd>
+						Method that wraps <code>getElementsByTagNameNS</code>,
+						which in turn returns recursive "children" of the caller
+						with a matching local name and namespace.
+					</dd>
+					<dt>
+						<var>caller</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						or an element <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>local</var>
+					</dt>
+					<dd>
+						A string containing the local name to search for.
+						<code>"*"</code> matches all namespaces in the
+						caller's subtree.
+					</dd>
+					<dt>
+						<var>ns</var>
+					</dt>
+					<dd>
+						A string containing the namespace to search for.
+						<code>"*"</code> matches all local names in the
+						caller's subtree.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="by_class_name">
+				<h3 class="heading">
+					<a href="#by_class_name"
+						title="Utils.select.byClassName"><code>Utils.select.byClassName</code></a>
+				</h3>
+				<p class="doc_art function_head">function (caller, names) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>byClassName</code>
+					</dt>
+					<dd>
+						Method that wraps <code>getElementsByClassName</code>,
+						which in turn returns recursive "children" of the caller
+						with matching class "name(s)".
+					</dd>
+					<dt>
+						<var>caller</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						or an element <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>names</var>
+					</dt>
+					<dd>
+						A string containing the class "name(s)" to search for.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="by_id">
+				<h3 class="heading">
+					<a href="#by_id"
+						title="Utils.select.byId"><code>Utils.select.byId</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc, id) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>byId</code>
+					</dt>
+					<dd>
+						Method that wraps <code>getElementById</code>,
+						which in turn returns the first recursive "child"
+						of the caller with a matching <code>id</code>
+						property.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>id</var>
+					</dt>
+					<dd>
+						A string containing the id to search for.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="query">
+				<h3 class="heading">
+					<a href="#query"
+						title="Utils.select.query"><code>Utils.select.query</code></a>
+				</h3>
+				<p class="doc_art function_head">function (caller, selectors) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>query</code>
+					</dt>
+					<dd>
+						Method that wraps <code>querySelector</code>,
+						which in turn returns a recursive child of the caller
+						that matches the selector(s) used.
+					</dd>
+					<dt>
+						<var>caller</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						or an element <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>selectors</var>
+					</dt>
+					<dd>
+						A string containing the selector(s) to use.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="query_all">
+				<h3 class="heading">
+					<a href="#query_all"
+						title="Utils.select.queryAll"><code>Utils.select.queryAll</code></a>
+				</h3>
+				<p class="doc_art function_head">function (caller, selectors) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>queryAll</code>
+					</dt>
+					<dd>
+						Method that wraps <code>querySelectorAll</code>,
+						which in turn returns recursive "children" of the caller
+						that match the selector(s) used.
+					</dd>
+					<dt>
+						<var>caller</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						or an element <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>selectors</var>
+					</dt>
+					<dd>
+						A string containing the selector(s) to use.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="head">
+				<h3 class="heading">
+					<a href="#head"
+						title="Utils.select.head"><code>Utils.select.head</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>head</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.head</code>,
+						which in turn returns the <code>head</code> element
+						of the specified document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="body">
+				<h3 class="heading">
+					<a href="#body"
+						title="Utils.select.body"><code>Utils.select.body</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>body</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.body</code>,
+						which in turn returns the <code>body</code> element
+						of the specified document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="images">
+				<h3 class="heading">
+					<a href="#images"
+						title="Utils.select.images"><code>Utils.select.images</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc, key) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>images</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.images</code>,
+						which in turn returns the
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>(s)
+						registered for the specified key .
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>key</var>
+					</dt>
+					<dd>
+						A string containing the key to search for.
+					</dd>
+					<dt>
+						<pre>return getNamedItems(
+	doc,
+	"images",
+	key
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="all_images">
+				<h3 class="heading">
+					<a href="#all_images"
+						title="Utils.select.allImages"><code>Utils.select.allImages</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>allImages</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.images</code>,
+						which in turn returns the entire
+						<code>HTMLCollection</code>.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<pre>return getCollection(
+	doc,
+	"images"
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="embeds">
+				<h3 class="heading">
+					<a href="#embeds"
+						title="Utils.select.embeds"><code>Utils.select.embeds</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc, key) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>embeds</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.embeds</code>,
+						which in turn returns the 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>(s)
+						registered for the specified key.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>key</var>
+					</dt>
+					<dd>
+						A string containing the key to search for.
+					</dd>
+					<dt>
+						<pre>return getNamedItems(
+	doc,
+	"embeds",
+	key
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="all_embeds">
+				<h3 class="heading">
+					<a href="#all_embeds"
+						title="Utils.select.allEmbeds"><code>Utils.select.allEmbeds</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>allEmbeds</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.embeds</code>,
+						which in turn returns the entire
+						<code>HTMLCollection</code>.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<pre>return getCollection(
+	doc,
+	"embeds"
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="plugins">
+				<h3 class="heading">
+					<a href="#plugins"
+						title="Utils.select.plugins"><code>Utils.select.plugins</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc, key) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>plugins</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.plugins</code>,
+						which in turn returns the <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>(s)
+						registered for the specified key.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>key</var>
+					</dt>
+					<dd>
+						A string containing the key to search for.
+					</dd>
+					<dt>
+						<pre>return getNamedItems(
+	doc,
+	"plugins",
+	key
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="all_plugins">
+				<h3 class="heading">
+					<a href="#all_plugins"
+						title="Utils.select.allPlugins"><code>Utils.select.allPlugins</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>allPlugins</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.plugins</code>,
+						which in turn returns the entire
+						<code>HTMLCollection</code>.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<pre>return getCollection(
+	doc,
+	"plugins"
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="links">
+				<h3 class="heading">
+					<a href="#links"
+						title="Utils.select.links"><code>Utils.select.links</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc, key) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>links</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.links</code>,
+						which in turn returns the <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>(s)
+						registered for the specified key.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>key</var>
+					</dt>
+					<dd>
+						A string containing the key to search for.
+					</dd>
+					<dt>
+						<pre>return getNamedItems(
+	doc,
+	"links",
+	key
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="all_links">
+				<h3 class="heading">
+					<a href="#all_links"
+						title="Utils.select.allLinks"><code>Utils.select.allLinks</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>allLinks</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.links</code>,
+						which in turn returns the entire
+						<code>HTMLCollection</code>.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<pre>return getCollection(
+	doc,
+	"links"
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="forms">
+				<h3 class="heading">
+					<a href="#forms"
+						title="Utils.select.forms"><code>Utils.select.forms</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc, key) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>forms</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.forms</code>,
+						which in turn returns the <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>(s)
+						registered for the specified key.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>key</var>
+					</dt>
+					<dd>
+						A string containing the key to search for.
+					</dd>
+					<dt>
+						<pre>return getNamedItems(
+	doc,
+	"forms",
+	key
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="all_forms">
+				<h3 class="heading">
+					<a href="#all_forms"
+						title="Utils.Forms.allForms"><code>Utils.select.allForms</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>allForms</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.forms</code>,
+						which in turn returns the entire
+						<code>HTMLCollection</code>.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<pre>return getCollection(
+	doc,
+	"forms"
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="scripts">
+				<h3 class="heading">
+					<a href="#scripts"
+						title="Utils.select.scripts"><code>Utils.select.scripts</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc, key) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>scripts</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.scripts</code>,
+						which in turn returns the <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>(s)
+						registered for the specified key.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>key</var>
+					</dt>
+					<dd>
+						A string containing the key to search for.
+					</dd>
+					<dt>
+						<pre>return getNamedItems(
+	doc,
+	"scripts",
+	key
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="all_scripts">
+				<h3 class="heading">
+					<a href="#all_scripts"
+						title="Utils.select.allScripts"><code>Utils.select.allScripts</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>allScripts</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.scripts</code>,
+						which in turn returns the entire
+						<code>HTMLCollection</code>.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<pre>return getCollection(
+	doc,
+	"scripts"
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="applets">
+				<h3 class="heading">
+					<a href="#applets"
+						title="Utils.select.applets"><code>Utils.select.applets</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc, key) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>applets</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.applets</code>,
+						which in turn returns the <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>(s)
+						registered for the specified key.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>key</var>
+					</dt>
+					<dd>
+						A string containing the key to search for.
+					</dd>
+					<dt>
+						<pre>return getNamedItems(
+	doc,
+	"applets",
+	key
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="all_applets">
+				<h3 class="heading">
+					<a href="#all_applets"
+						title="Utils.select.allApplets"><code>Utils.select.allApplets</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>allApplets</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.applets</code>,
+						which in turn returns the entire
+						<code>HTMLCollection</code>.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<pre>return getCollection(
+	doc,
+	"applets"
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="anchors">
+				<h3 class="heading">
+					<a href="#anchors"
+						title="Utils.select.anchors"><code>Utils.select.anchors</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc, key) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>anchors</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.anchors</code>,
+						which in turn returns the <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>(s)
+						registered for the specified key.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>key</var>
+					</dt>
+					<dd>
+						A string containing the key to search for.
+					</dd>
+					<dt>
+						<pre>return getNamedItems(
+	doc,
+	"anchors",
+	key
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="all_anchors">
+				<h3 class="heading">
+					<a href="#all_anchors"
+						title="Utils.select.allAnchors"><code>Utils.select.allAnchors</code></a>
+				</h3>
+				<p class="doc_art function_head">function (doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>allAnchors</code>
+					</dt>
+					<dd>
+						Method that wraps <code>document.anchors</code>,
+						which in turn returns the entire
+						<code>HTMLCollection</code>.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<pre>return getCollection(
+	doc,
+	"anchors"
+);</pre>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+		</ul>
+		<div class="secondary_row row">
+			<div class="cell prev_link secondary_cell">
+				<a href="select.html" rel="prev"
+					title="Previous">&larr;<code>Utils.select</code></a>
+			</div>
+			<div class="cell index_link secondary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to Documentation Index</a>
+			</div>
+			<div class="cell next_link secondary_cell">
+				<a href="glossary.html" rel="next"
+					title="Next">Glossary&rarr;</a>
+			</div>
+		</div>
+		<div class="footer_row row">
+			<address class="cell footer_cell">
+				Developed by <a href="http://www.fortybelow.ca"
+					title="Matt McDonald">Matt McDonald</a>;
+			</address>
+			<address class="cell footer_cell">
+				Logo designed by <a href="http://www.weirdurl.com"
+					title="Nathan Malone">Nathan Malone</a>;
+			</address>
+			<div class="cell footer_cell">
+				<a href="http://www.anybrowser.org/campaign"
+					title="Viewable with any browser">Viewable with any browser</a>
+			</div>
+		</div>
+	</body>
+</html>

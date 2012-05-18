@@ -30,8 +30,8 @@ if (Utils) {
 			"INVALID_CHARACTER_ERROR": "The string " +
 				"contains invalid characters.",
 			"NO_MODIFICATION_ALLOWED_ERROR": "The " +
-				"cannot be modified.",
-			"NOT_FOUND_ERROR": "The object cannot be " +
+				"object can not be modified.",
+			"NOT_FOUND_ERROR": "The object can not be " +
 				"found here.",
 			"NOT_SUPPORTED_ERROR": "The operation is " +
 				"not supported.",

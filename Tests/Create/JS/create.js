@@ -1,4 +1,4 @@
-global = global || this;
+var global = global || this;
 (function () {
 	var doc = global.document,
 		commonElements = {
@@ -11,32 +11,44 @@ global = global || this;
 
 	function elementCreated()
 	{
-		return Utils.create.element(
+		var test = Utils.create.element(
 			doc,
 			"p"
+		);
+		return Utils.is.element(
+			test
 		);
 	}
 
 	function textNodeCreated()
 	{
-		return Utils.create.text(
+		var test = Utils.create.text(
 			doc,
 			"The rain in Spain is quite plain."
+		);
+		return Utils.is.text(
+			test
 		);
 	}
 
 	function commentCreated()
 	{
-		return Utils.create.comment(
+		var test = Utils.create.comment(
 			doc,
 			"No comment."
+		);
+		return Utils.is.comment(
+			test
 		);
 	}
 
 	function documentFragmentCreated()
 	{
-		return Utils.create.documentFragment(
+		var test = Utils.create.documentFragment(
 			doc
+		);
+		return Utils.is.documentFragment(
+			test
 		);
 	}
 
@@ -81,7 +93,25 @@ global = global || this;
 		);
 	}
 
-	function runTest(evt)
+	function runTest(test)
+	{
+		var isFunction = Utils.is.type(
+			test,
+			"function"
+		),
+			result = null;
+		if (isFunction) {
+			try {
+				result = test();
+				String(result);
+			} catch (e) {
+				result = "ERROR";
+			}
+			addMessage(result);
+		}
+	}
+
+	function runTests(evt)
 	{
 		var index = 0,
 			max,
@@ -90,18 +120,17 @@ global = global || this;
 		max = tests.length;
 		while (index < max) {
 			test = tests[index];
-			addMessage(
-				test()
-			);
+			runTest(test);
 			index += 1;
 		}
 	}
 
-	function clearTest(evt)
+	function clearTests(evt)
 	{
 		var par = commonElements.results,
-		nodes = par.childNodes;
-		if (nodes) {
+			nodes = par.childNodes;
+			isHostObject = Utils.is.hostObject(nodes);
+		if (isHostObject) {
 			while(nodes.length) {
 				Utils.node.remove(
 					par,
@@ -113,8 +142,8 @@ global = global || this;
 
 	function addHandlers()
 	{
-		commonElements.start.onclick = runTest;
-		commonElements.stop.onclick = clearTest;
+		commonElements.start.onclick = runTests;
+		commonElements.stop.onclick = clearTests;
 	}
 
 	addHandlers();

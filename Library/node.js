@@ -20,8 +20,8 @@ if (Utils) {
 
 		function insertBefore(
 			par,
-			newNode,
-			refNode
+			newObj,
+			refObj
 		)
 		{
 			/*
@@ -30,9 +30,9 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				newIsNode = Utils.is.node(newNode),
-				refIsNode = Utils.is.node(refNode),
+			var validParent = Utils.is.nodeLike(par),
+				newIsNode = Utils.is.nodeLike(newObj),
+				refIsNode = Utils.is.nodeLike(refObj),
 				isHostObject,
 				key = "insertBefore",
 				result = null;
@@ -42,8 +42,8 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						newNode,
-						refNode
+						newObj,
+						refObj
 					);
 				}
 			}
@@ -59,7 +59,7 @@ if (Utils) {
 
 		function appendChild(
 			par,
-			node
+			obj
 		)
 		{
 			/*
@@ -68,8 +68,8 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				validNode = Utils.is.node(node),
+			var validParent = Utils.is.nodeLike(par),
+				validNode = Utils.is.nodeLike(obj),
 				isHostObject,
 				key = "appendChild",
 				result = null;
@@ -79,7 +79,7 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						node
+						obj
 					);
 				}
 			}
@@ -95,7 +95,7 @@ if (Utils) {
 
 		function removeChild(
 			par,
-			node
+			obj
 		)
 		{
 			/*
@@ -104,8 +104,8 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				validNode = Utils.is.node(node),
+			var validParent = Utils.is.nodeLike(par),
+				validNode = Utils.is.nodeLike(obj),
 				isHostObject,
 				key = "removeChild",
 				result = null;
@@ -115,7 +115,7 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						node
+						obj
 					);
 				}
 			}
@@ -131,8 +131,8 @@ if (Utils) {
 
 		function replaceChild(
 			par,
-			newNode,
-			oldNode
+			newObj,
+			oldObj
 		)
 		{
 			/*
@@ -141,9 +141,9 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				newIsNode = Utils.is.node(newNode),
-				oldIsNode = Utils.is.node(oldNode),
+			var validParent = Utils.is.nodeLike(par),
+				newIsNode = Utils.is.nodeLike(newObj),
+				oldIsNode = Utils.is.nodeLike(oldObj),
 				isHostObject,
 				key = "replaceChild",
 				result = null;
@@ -153,8 +153,8 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						newNode,
-						oldNode
+						newObj,
+						oldObj
 					);
 				}
 			}
@@ -169,7 +169,7 @@ if (Utils) {
 
 
 		function cloneNode(
-			node,
+			obj,
 			deep
 		)
 		{
@@ -179,21 +179,80 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				isHostObject,
 				key = "cloneNode",
 				result = null;
 			deep = Boolean(deep);
-			if (isNode) {
+			if (isNodeLike) {
 				isHostObject = Utils.is.hostObject(
-					node[key]
+					obj[key]
 				);
 				if (isHostObject) {
-					result = node[key](
-						node,
+					result = obj[key](
+						obj,
 						deep
 					);
 				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getName(
+			obj,
+			lower
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `nodeName`; returns the
+                                property's result or `null`
+                                if not applicable.
+			*/
+			var canGet = Utils.can.getName(obj),
+				lowKey = "toLowerCase",
+				upKey = "toUpperCase",
+				result = null;
+			lower = Boolean(lower);
+			if (canGet) {
+				result = obj.nodeName;
+				if (lower) {
+					result = result[lowKey]();
+				} else if (!lower) {
+					result = result[upKey]();
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getValue(
+			obj
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `nodeValue`; returns the
+                                property's result or `null`
+                                if not applicable.
+			*/
+			var canGet = Utils.can.getValue(obj),
+				result = null;
+			if (canGet) {
+				result = obj.nodeValue;
 			}
 			return result;
 		}
@@ -207,7 +266,9 @@ if (Utils) {
 			"append": appendChild,
 			"remove": removeChild,
 			"replace": replaceChild,
-			"clone": cloneNode
+			"clone": cloneNode,
+			"name": getName,
+			"value": getValue
 		};
 	}());
 }

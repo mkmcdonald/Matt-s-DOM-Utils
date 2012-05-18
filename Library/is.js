@@ -10,7 +10,6 @@ if (Utils) {
 
                         Dependencies:
 
-                        * Utils.host;
                         * Utils.types;
 		*/
 
@@ -20,17 +19,104 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isNode(node)
+		function isType(
+			val,
+			type
+		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if `node` is
-                                not falsey and has a numeric
-                                `nodeType` property.
+                                boolean asserting if `val`
+                                returns `type` from a typeof`
+                                check.
 			*/
-			return !!(node &&
-				typeof node.nodeType ===
-				"number");
+			type = String(type);
+			return typeof val === type;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function isHostObject(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if `obj`
+                                resembles a host object (by having
+                                a "type" of "object", "function" or
+                                "unknown".)
+			*/
+			var isObj,
+				isFunc,
+				isUnknown,
+				result = false;
+			isObj = isType(obj, "object");
+			isFunc = isType(obj, "function");
+			isUnknown = isType(obj, "unknown");
+			if (isObj || isFunc || isUnknown) {
+				result = true;
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function isArrayLike(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if `obj`
+                                is array-like.
+			*/
+			var isObj = isHostObject(obj),
+				result = false;
+			if (obj && isObj) {
+				result = isType(
+					obj.length,
+					"number"
+				);
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function isNodeLike(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if `obj`
+                                is node-like.
+			*/
+			var isObj = isHostObject(obj),
+				result = false;
+			if (obj && isObj) {
+				result = isType(
+					obj.nodeType,
+					"number"
+				);
+			}
+			return result;
 		}
 
 
@@ -41,20 +127,21 @@ if (Utils) {
 
 
 		function isNodeType(
-			node,
+			obj,
 			type
 		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if `node` is
-                                of type (via `nodeType`) `type`.
+                                boolean asserting if a node-like
+                                object has a certain value for
+                                the `nodeType` property.
 			*/
-			var valid = isNode(node),
+			var valid = isNodeLike(obj),
 				result = false;
 			type = Number(type);
 			if (valid) {
-				result = node.nodeType === type;
+				result = obj.nodeType === type;
 			}
 			return result;
 		}
@@ -66,14 +153,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isElementNode(node)
+		function isElementNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.ELEMENT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -83,14 +172,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isAttributeNode(node)
+		function isAttributeNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.ATTRIBUTE_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -100,14 +191,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isTextNode(node)
+		function isTextNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.TEXT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -117,14 +210,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isCDataSectionNode(node)
+		function isCDataSectionNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.CDATA_SECTION_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -134,7 +229,9 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isEntityReferenceNode(node)
+		function isEntityReferenceNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
@@ -142,7 +239,7 @@ if (Utils) {
 			*/
 			var key = "ENTITY_REFERENCE_NODE",
 				type = nodeTypes[key];
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -152,14 +249,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isEntityNode(node)
+		function isEntityNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.ENTITY_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -170,7 +269,7 @@ if (Utils) {
 
 
 		function isProcessingInstructionNode(
-			node
+			obj
 		)
 		{
 			/*
@@ -179,7 +278,7 @@ if (Utils) {
 			*/
 			var key = "PROCESSING_INSTRUCTION_NODE",
 				type = nodeTypes[key];
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -189,14 +288,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isCommentNode(node)
+		function isCommentNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.COMMENT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -206,14 +307,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isDocumentNode(node)
+		function isDocumentNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.DOCUMENT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -223,14 +326,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isDocumentTypeNode(node)
+		function isDocumentTypeNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.DOCUMENT_TYPE_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -240,7 +345,9 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isDocumentFragmentNode(node)
+		function isDocumentFragmentNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
@@ -248,7 +355,7 @@ if (Utils) {
 			*/
 			var key = "DOCUMENT_FRAGMENT_NODE",
 				type = nodeTypes[key];
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -258,40 +365,32 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isNotationNode(node)
+		function isNotationNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.NOTATION_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
                 /*        END PUBLIC METHOD        */
 
 
-                /*        PUBLIC METHOD        */
-
-
-		function isHostObject(obj)
-		{
-			var result = false;
-			if (typeof obj === "object" ||
-				typeof obj === "function") {
-				result = true;
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD */
-
-
 		Utils.is = Utils.is || {
-			"node": isNode,
+			"type": isType,
+
+			"hostObject": isHostObject,
+
+			"arrayLike": isArrayLike,
+
+			"nodeLike": isNodeLike,
 			"nodeType": isNodeType,
+
 			"element": isElementNode,
 			"attribute": isAttributeNode,
 			"text": isTextNode,
@@ -306,9 +405,7 @@ if (Utils) {
 			"documentType": isDocumentTypeNode,
 			"documentFragment":
 				isDocumentFragmentNode,
-			"notation": isNotationNode,
-
-			"hostObject": isHostObject
+			"notation": isNotationNode
 		};
 	}());
 }

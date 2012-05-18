@@ -1,4 +1,4 @@
-global = global || this;
+var global = global || this;
 (function () {
 	var doc = global.document,
 		commonElements = {
@@ -9,10 +9,13 @@ global = global || this;
 		},
 		test;
 
-	function childNodes()
+	function ancestors()
 	{
-		return Utils.traverse.getChildNodes(
+		var test = Utils.traverse.getAncestors(
 			commonElements.test
+		);
+		return Utils.is.nodeLike(
+			test.value
 		);
 	}
 
@@ -21,26 +24,45 @@ global = global || this;
 		return true;
 	}
 
-	function childNodesTraversed()
+	function ancestorsTraversed()
 	{
-		return Utils.traverse.childNodes(
+		var test = Utils.traverse.ancestors(
 			commonElements.test,
 			optimisticFilter
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function childNodes()
+	{
+		var test = Utils.traverse.getChildNodes(
+			commonElements.test
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function childNodesTraversed()
+	{
+		var test = Utils.traverse.childNodes(
+			commonElements.test,
+			optimisticFilter
+		);
+		return Utils.is.arrayLike(
+			test
 		);
 	}
 
 	function children()
 	{
-		return Utils.traverse.getChildren(
+		var test = Utils.traverse.getChildren(
 			commonElements.test
 		);
-	}
-
-	function childrenTraversed()
-	{
-		return Utils.traverse.children(
-			commonElements.test,
-			pessimisticFilter
+		return Utils.is.arrayLike(
+			test
 		);
 	}
 
@@ -49,28 +71,73 @@ global = global || this;
 		return false;
 	}
 
+	function childrenTraversed()
+	{
+		var test = Utils.traverse.children(
+			commonElements.test,
+			pessimisticFilter
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function treeCollected()
+	{
+		var test = Utils.traverse.getChildNodeTree(
+			doc
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function treeTraversed()
+	{
+		var test = Utils.traverse.childNodeTree(
+			doc,
+			optimisticFilter
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
 	function textCollected()
 	{
-		return Utils.traverse.getText(
+		var test = Utils.traverse.getText(
 			commonElements.test
+		);
+		return Utils.is.type(
+			test,
+			"string"
 		);
 	}
 
 	function textOverridden()
 	{
-		return Utils.traverse.setText(
+		var test = Utils.traverse.setText(
 			"NEW TEXTUAL CONTENT",
-			commonElements.test
+			commonElements.test,
+			doc
+		);
+		return Utils.is.type(
+			test,
+			"string"
 		);
 	}
 
 	function generateTests()
 	{
 		return [
+			ancestors,
+			ancestorsTraversed,
 			childNodes,
 			childNodesTraversed,
 			children,
 			childrenTraversed,
+			treeCollected,
+			treeTraversed,
 			textCollected,
 			textOverridden
 		];
@@ -107,7 +174,25 @@ global = global || this;
 		);
 	}
 
-	function runTest(evt)
+	function runTest(test)
+	{
+		var isFunction = Utils.is.type(
+			test,
+			"function"
+		),
+			result = null;
+		if (isFunction) {
+			try {
+				result = test();
+				String(result);
+			} catch (e) {
+				result = "ERROR";
+			}
+			addMessage(result);
+		}
+	}
+
+	function runTests(evt)
 	{
 		var index = 0,
 			max,
@@ -116,18 +201,17 @@ global = global || this;
 		max = tests.length;
 		while (index < max) {
 			test = tests[index];
-			addMessage(
-				test()
-			);
+			runTest(test);
 			index += 1;
 		}
 	}
 
-	function clearTest(evt)
+	function clearTests(evt)
 	{
 		var par = commonElements.results,
-		nodes = par.childNodes;
-		if (nodes) {
+			nodes = par.childNodes;
+			isHostObject = Utils.is.hostObject(nodes);
+		if (isHostObject) {
 			while(nodes.length) {
 				Utils.node.remove(
 					par,
@@ -139,8 +223,8 @@ global = global || this;
 
 	function addHandlers()
 	{
-		commonElements.start.onclick = runTest;
-		commonElements.stop.onclick = clearTest;
+		commonElements.start.onclick = runTests;
+		commonElements.stop.onclick = clearTests;
 	}
 
 	addHandlers();

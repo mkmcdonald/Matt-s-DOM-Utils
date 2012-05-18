@@ -40,8 +40,88 @@
 				Test if <code>querySelectorAll</code>
 					can be wrapped;
 			</li>
+			<li>
+				Test if <code>document.images</code>
+					can be wrapped (named items);
+			</li>
+			<li>
+				Test if <code>document.images</code>
+					can be wrapped (entire collection);
+			</li>
+			<li>
+				Test if <code>document.embeds</code>
+					can be wrapped (named items);
+			</li>
+			<li>
+				Test if <code>document.embeds</code>
+					can be wrapped (entire collection);
+			</li>
+			<li>
+				Test if <code>document.plugins</code>
+					can be wrapped (named items);
+			</li>
+			<li>
+				Test if <code>document.plugins</code>
+					can be wrapped (entire collection);
+			</li>
+			<li>
+				Test if <code>document.links</code>
+					can be wrapped (named items);
+			</li>
+			<li>
+				Test if <code>document.links</code>
+					can be wrapped (entire collection);
+			</li>
+			<li>
+				Test if <code>document.forms</code>
+					can be wrapped (named items);
+			</li>
+			<li>
+				Test if <code>document.forms</code>
+					can be wrapped (entire collection);
+			</li>
+			<li>
+				Test if <code>document.scripts</code>
+					can be wrapped (named items);
+			</li>
+			<li>
+				Test if <code>document.scripts</code>
+					can be wrapped (entire collection);
+			</li>
+			<li>
+				Test if <code>document.applets</code>
+					can be wrapped (named items);
+			</li>
+			<li>
+				Test if <code>document.applets</code>
+					can be wrapped (entire collection);
+			</li>
+			<li>
+				Test if <code>document.anchors</code>
+					can be wrapped (named items);
+			</li>
+			<li>
+				Test if <code>document.anchors</code>
+					can be wrapped (entire collection);
+			</li>
 		</ol>
-		<h2>Test Element</h2>
+		<h2>Test Image</h2>
+		<p>
+		<img alt="Test Image" height="100"
+			src="../../Assets/Images/logo.jpg" width="337">
+		</p>
+		<h2>Test Embed</h2>
+		<object id="embedded" height="100"
+			width="100">
+			<embed src="" type="text/html">
+		</object>
+		<h2>Test Links</h2>
+		<p>
+			<a href="./" title="Test One">Test One</a>
+			<a href="./" title="Test Two">Test Two</a>
+			<a href="./" title="Test Three">Test Three</a>
+		</p>
+		<h2>Test Form</h2>
 		<form action="./" class="container" id="test"
 			method="post" name="test"
 			onsubmit="return false;">
@@ -52,6 +132,17 @@
 				<input name="control3" type="submit">
 			</fieldset>
 		</form>
+		<h2>Test Applet</h2>
+		<applet code="HelloWorld.class" codeBase="Applets/"
+			height="100" id="appletcation" width="100">
+			Hello world
+		</applet>
+		<h2>Test Anchors</h2>
+		<p>
+			<a name="anchor1" title="Test One">Test One</a>
+			<a name="anchor2" title="Test Two">Test Two</a>
+			<a name="anchor3" title="Test Three">Test Three</a>
+		</p>
 		<button id="start" type="button">Run Test</button>
 		<button id="stop" type="button">Clear Test</button>
 		<hr>

@@ -1,4 +1,4 @@
-global = global || this;
+var global = global || this;
 (function () {
 	var doc = global.document,
 		commonElements = {
@@ -9,35 +9,87 @@ global = global || this;
 		},
 		tests;
 
-	function canAdd()
+	function canDetect()
 	{
-		return Utils.classes.add(
+		var test = Utils.classes.contains(
 			"good",
 			commonElements.test
 		);
+		return Utils.is.type(
+			test,
+			"boolean"
+		);
 	}
 
-	function canDetect()
+	function canDetectMultiple()
 	{
-		return Utils.classes.contains(
+		var test = Utils.classes.containsList(
+			["a", "b", "c"],
+			commonElements.test
+		);
+		return Utils.is.type(
+			test,
+			"boolean"
+		);
+	}
+
+	function canAdd()
+	{
+		var test = Utils.classes.add(
 			"good",
 			commonElements.test
+		);
+		return Utils.is.type(
+			test,
+			"undefined"
+		);
+	}
+
+	function canAddMultiple()
+	{
+		var test = Utils.classes.addList(
+			["a", "b", "c"],
+			commonElements.test
+		);
+		return Utils.is.type(
+			test,
+			"undefined"
 		);
 	}
 
 	function canRemove()
 	{
-		return Utils.classes.remove(
+		var test = Utils.classes.remove(
 			"good",
 			commonElements.test
+		);
+		return Utils.is.type(
+			test,
+			"undefined"
+		);
+	}
+
+	function canRemoveMultiple()
+	{
+		var test = Utils.classes.removeList(
+			["a", "b", "c"],
+			commonElements.test
+		);
+		return Utils.is.type(
+			test,
+			"undefined"
 		);
 	}
 
 	function canToggleOn()
 	{
-		return Utils.classes.toggle(
+		var test = Utils.classes.toggle(
 			"toggle",
 			commonElements.test
+		);
+		return Utils.is.type(
+			test,
+			"boolean"
 		);
 	}
 
@@ -46,56 +98,39 @@ global = global || this;
 		return canToggleOn();
 	}
 
-	function canAddMultiple()
-	{
-		return Utils.classes.addList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-	}
-
-	function canDetectMultiple()
-	{
-		return Utils.classes.containsList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-	}
-
-	function canRemoveMultiple()
-	{
-		return Utils.classes.removeList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-	}
-
 	function canToggleMultiple()
 	{
-		return Utils.classes.toggleList(
+		var test = Utils.classes.toggleList(
 			["a", "b", "c"],
 			commonElements.test
+		);
+		return Utils.is.type(
+			test,
+			"undefined"
 		);
 	}
 
 	function canGet()
 	{
-		return Utils.classes.get(
+		var test = Utils.classes.get(
 			commonElements.test
+		);
+		return Utils.is.arrayLike(
+			test
 		);
 	}
 
 	function generateTests()
 	{
 		return [
-			canAdd,
 			canDetect,
+			canDetectMultiple,
+			canAdd,
+			canAddMultiple,
 			canRemove,
+			canRemoveMultiple,
 			canToggleOn,
 			canToggleOff,
-			canAddMultiple,
-			canDetectMultiple,
-			canRemoveMultiple,
 			canToggleMultiple,
 			canGet
 		];
@@ -132,7 +167,25 @@ global = global || this;
 		);
 	}
 
-	function runTest(evt)
+	function runTest(test)
+	{
+		var isFunction = Utils.is.type(
+			test,
+			"function"
+		),
+			result = null;
+		if (isFunction) {
+			try {
+				result = test();
+				String(result);
+			} catch (e) {
+				result = "ERROR";
+			}
+			addMessage(result);
+		}
+	}
+
+	function runTests(evt)
 	{
 		var index = 0,
 			max,
@@ -141,18 +194,17 @@ global = global || this;
 		max = tests.length;
 		while (index < max) {
 			test = tests[index];
-			addMessage(
-				test()
-			);
+			runTest(test);
 			index += 1;
 		}
 	}
 
-	function clearTest(evt)
+	function clearTests(evt)
 	{
 		var par = commonElements.results,
-		nodes = par.childNodes;
-		if (nodes) {
+			nodes = par.childNodes;
+			isHostObject = Utils.is.hostObject(nodes);
+		if (isHostObject) {
 			while(nodes.length) {
 				Utils.node.remove(
 					par,
@@ -164,8 +216,8 @@ global = global || this;
 
 	function addHandlers()
 	{
-		commonElements.start.onclick = runTest;
-		commonElements.stop.onclick = clearTest;
+		commonElements.start.onclick = runTests;
+		commonElements.stop.onclick = clearTests;
 	}
 
 	addHandlers();

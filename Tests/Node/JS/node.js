@@ -1,4 +1,4 @@
-global = global || this;
+var global = global || this;
 (function () {
 	var doc = global.document,
 		commonElements = {
@@ -9,45 +9,65 @@ global = global || this;
 		},
 		tests;
 
+	function prepend(node)
+	{
+		var par = commonElements.test,
+			test =  Utils.node.prepend(
+				par,
+				node,
+				par.lastChild
+			);
+		return test;
+	}
+
+	function insertBefore()
+	{
+		var node = Utils.create.element(
+			doc,
+			"li"
+		),
+			test = prepend(node);
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
 	function appendChild()
 	{
 		var node = Utils.create.element(
 			doc,
 			"li"
-		);
-		return Utils.node.append(
-			commonElements.test,
-			node
-		);
-	}
-
-	function prepend(node)
-	{
-		var par = commonElements.test;
-		return Utils.node.prepend(
-			par,
-			node,
-			par.lastChild
+		),
+			test = Utils.node.append(
+				commonElements.test,
+				node
+			);
+		return Utils.is.nodeLike(
+			test
 		);
 	}
 
-	function insertBefore()
+	function removeChild()
 	{
-		var node = Utils.create.text(
-			doc,
-			"I think; therefore I am"
+		var par = commonElements.test,
+			test = Utils.node.remove(
+				par,
+				par.lastChild
+			);
+		return Utils.is.nodeLike(
+			test
 		);
-		return prepend(node);
 	}
 
 	function replace(node)
 	{
-		var par = commonElements.test;
-		return Utils.node.replace(
-			par,
-			node,
-			par.lastChild
-		);
+		var par = commonElements.test,
+			test =  Utils.node.replace(
+				par,
+				node,
+				par.lastChild
+			);
+		return test;
 	}
 
 	function replaceChild()
@@ -55,34 +75,31 @@ global = global || this;
 		var node = Utils.create.text(
 			doc,
 			"c = b^x; x = log(c) / log(b)"
-		);
-		return replace(node);
-	}
-
-	function removeChild()
-	{
-		var par = commonElements.test;
-		return Utils.node.remove(
-			par,
-			par.lastChild
+		),
+			test = replace(node);
+		return Utils.is.nodeLike(
+			test
 		);
 	}
 
 	function cloneNode()
 	{
-		return Utils.node.clone(
+		var test = Utils.node.clone(
 			commonElements.test,
 			true
+		);
+		return Utils.is.nodeLike(
+			test
 		);
 	}
 
 	function generateTests()
 	{
 		return [
-			appendChild,
 			insertBefore,
-			replaceChild,
+			appendChild,
 			removeChild,
+			replaceChild,
 			cloneNode
 		];
 	}
@@ -118,7 +135,25 @@ global = global || this;
 		);
 	}
 
-	function runTest(evt)
+	function runTest(test)
+	{
+		var isFunction = Utils.is.type(
+			test,
+			"function"
+		),
+			result = null;
+		if (isFunction) {
+			try {
+				result = test();
+				String(result);
+			} catch (e) {
+				result = "ERROR";
+			}
+			addMessage(result);
+		}
+	}
+
+	function runTests(evt)
 	{
 		var index = 0,
 			max,
@@ -127,17 +162,17 @@ global = global || this;
 		max = tests.length;
 		while (index < max) {
 			test = tests[index];
-			addMessage(
-				test()
-			);
+			runTest(test);
 			index += 1;
 		}
 	}
 
-	function clearChildNodes(par)
+	function clearTests(evt)
 	{
-		nodes = par.childNodes;
-		if (nodes) {
+		var par = commonElements.results,
+			nodes = par.childNodes;
+			isHostObject = Utils.is.hostObject(nodes);
+		if (isHostObject) {
 			while(nodes.length) {
 				Utils.node.remove(
 					par,
@@ -147,15 +182,10 @@ global = global || this;
 		}
 	}
 
-	function clearTest(evt)
-	{
-		clearChildNodes(commonElements.results);
-	}
-
 	function addHandlers()
 	{
-		commonElements.start.onclick = runTest;
-		commonElements.stop.onclick = clearTest;
+		commonElements.start.onclick = runTests;
+		commonElements.stop.onclick = clearTests;
 	}
 
 	addHandlers();

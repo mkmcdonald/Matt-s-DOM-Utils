@@ -1,15 +1,16 @@
 SHELL = /bin/sh
 
-LIBRARY = ./Library
-BUILDS = ./Builds
+LIBRARY = Library
+BUILDS = Builds
 UNCOMPRESSED = $(BUILDS)/Uncompressed
+COMPRESSED = $(BUILDS)/Compressed
 
 # core
 
 UTILS = $(LIBRARY)/utils.js
 RAISE = $(LIBRARY)/raise.js
-HELPERS = $(LIBRARY)/helpers.js
 TYPES = $(LIBRARY)/types.js
+HELPERS = $(LIBRARY)/helpers.js
 IS = $(LIBRARY)/is.js
 CAN = $(LIBRARY)/can.js
 NODE = $(LIBRARY)/node.js
@@ -21,58 +22,71 @@ TRAVERSE = $(LIBRARY)/traverse.js
 CLASSES = $(LIBRARY)/classes.js
 SELECT = $(LIBRARY)/select.js
 
-MAKE_DEFAULT = $(MAKE_ALL);\
-	$(MAKE_CORE);\
-	$(MAKE_CLASSES);\
-	$(MAKE_TRAVERSE);\
-	$(MAKE_SELECT)
-
 ALL_FILE = $(UNCOMPRESSED)/utils-all.js
 ALL_DEP = $(CORE_DEP) $(CLASSES) $(TRAVERSE) $(SELECT)
-MAKE_ALL = cat $(ALL_DEP) > $(ALL_FILE)
+MAKE_ALL = cat $(ALL_DEP) > $(ALL_FILE);
 
 CORE_FILE = $(UNCOMPRESSED)/utils-core.js
 CORE_DEP = $(UTILS) $(RAISE) $(TYPES) $(HELPERS) $(IS) $(CAN)\
 	$(NODE) $(CREATE)
-MAKE_CORE = cat $(CORE_DEP) > $(CORE_FILE)
+MAKE_CORE = cat $(CORE_DEP) > $(CORE_FILE);
 
 CLASSES_FILE = $(UNCOMPRESSED)/utils-classes.js
 CLASSES_DEP = $(CORE_DEP) $(CLASSES)
-MAKE_CLASSES = cat $(CLASSES_DEP) > $(CLASSES_FILE)
+MAKE_CLASSES = cat $(CLASSES_DEP) > $(CLASSES_FILE);
 
 TRAVERSE_FILE = $(UNCOMPRESSED)/utils-traverse.js
 TRAVERSE_DEP = $(CORE_DEP) $(TRAVERSE)
-MAKE_TRAVERSE = cat $(TRAVERSE_DEP) > $(TRAVERSE_FILE)
+MAKE_TRAVERSE = cat $(TRAVERSE_DEP) > $(TRAVERSE_FILE);
 
 SELECT_FILE = $(UNCOMPRESSED)/utils-select.js
 SELECT_DEP = $(CORE_DEP) $(SELECT)
-MAKE_SELECT = cat $(SELECT_DEP) > $(SELECT_FILE)
+MAKE_SELECT = cat $(SELECT_DEP) > $(SELECT_FILE);
 
-CLEAN_DEP = $(CORE_FILE) $(CLASSES_FILE) $(TRAVERSE_FILE)\
-	$(SELECT_FILE) $(ALL_FILE)
-MAKE_CLEAN = rm -f $(CLEAN_DEP)
+MAKE_INSTALL = ./compress.sh;
 
-.PHONY: all core classes traverse select
+MAKE_CLEAN = find $(UNCOMPRESSED) -type f | xargs rm -f;
 
-.DEFAULT: all core classes traverse select
-	$(MAKE_DEFAULT)
+MAKE_UNINSTALL = find $(COMPRESSED) -type f | xargs rm -f;
 
 all: core classes traverse select
-	$(MAKE_ALL)
+	@echo "building utils-all.js";
+	@$(MAKE_ALL)
+	@echo "utils-all.js built";
+
+install:
+	@echo "compressing builds";
+	@$(MAKE_INSTALL)
+	@echo "builds compressed";
+
+uninstall:
+	@echo "removing compressed builds";
+	@$(MAKE_UNINSTALL);
+	@echo "compressed builds removed";
 
 core:
-	$(MAKE_CORE)
+	@echo "building utils-core.js";
+	@$(MAKE_CORE)
+	@echo "utils-core.js built";
 
 classes:
-	$(MAKE_CLASSES)
+	@echo "building utils-classes.js";
+	@$(MAKE_CLASSES)
+	@echo "utils-classes.js built";
 
 traverse:
-	$(MAKE_TRAVERSE)
+	@echo "building utils-traverse.js";
+	@$(MAKE_TRAVERSE)
+	@echo "utils-traverse.js built";
 
 select:
-	$(MAKE_SELECT)
-
-.PHONY: clean
+	@echo "building utils-select.js";
+	@$(MAKE_SELECT)
+	@echo "utils-select.js built";
 
 clean: 
-	$(MAKE_CLEAN)
+	@echo "removing builds";
+	@$(MAKE_CLEAN)
+	@echo "builds removed";
+
+.PHONY: all install uninstall core classes traverse select clean

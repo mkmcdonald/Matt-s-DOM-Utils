@@ -14,10 +14,14 @@ var Utils = Utils || {},
         [firstName.toLowerCase();]@fortybelow.ca
         http://www.fortybelow.ca
 */
+/*
+        jslint sloppy: true,
+        white: true, maxerr: 1, indent: 8
+*/
 
 /*
-        jslint browser: true, sloppy: true,
-        white: true, maxerr: 50, indent: 8
+        jshint forin:true, noarg:true, noempty:true, eqeqeq:true,
+        bitwise:true, undef:true, curly:true, indent:4, maxerr:50
 */
 
 if (Utils) {
@@ -52,8 +56,8 @@ if (Utils) {
 			"INVALID_CHARACTER_ERROR": "The string " +
 				"contains invalid characters.",
 			"NO_MODIFICATION_ALLOWED_ERROR": "The " +
-				"cannot be modified.",
-			"NOT_FOUND_ERROR": "The object cannot be " +
+				"object can not be modified.",
+			"NOT_FOUND_ERROR": "The object can not be " +
 				"found here.",
 			"NOT_SUPPORTED_ERROR": "The operation is " +
 				"not supported.",
@@ -457,6 +461,7 @@ if (Utils) {
 		};
 	}());
 }
+
 if (Utils) {
 	(function () {
 
@@ -469,7 +474,7 @@ if (Utils) {
 
                         Dependencies:
 
-                        * null;
+                        * Utils.is;
 		*/
 
 
@@ -486,13 +491,17 @@ if (Utils) {
                                 creates an array.
 			*/
 			var index,
+				arrayLike = Utils.is.arrayLike(
+					obj
+				),
 				result = [],
 				node;
-			if (obj && obj.length) {
+			if (arrayLike) {
+				result.length = obj.length;
 				index = obj.length - 1;
 				while (index > -1) {
 					node = obj[index];
-					result.unshift(node);
+					result[index] = node;
 					index -= 1;
 				}
 			}
@@ -521,7 +530,6 @@ if (Utils) {
 
                         Dependencies:
 
-                        * Utils.host;
                         * Utils.types;
 		*/
 
@@ -531,17 +539,104 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isNode(node)
+		function isType(
+			val,
+			type
+		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if `node` is
-                                not falsey and has a numeric
-                                `nodeType` property.
+                                boolean asserting if `val`
+                                returns `type` from a typeof`
+                                check.
 			*/
-			return !!(node &&
-				typeof node.nodeType ===
-				"number");
+			type = String(type);
+			return typeof val === type;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function isHostObject(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if `obj`
+                                resembles a host object (by having
+                                a "type" of "object", "function" or
+                                "unknown".)
+			*/
+			var isObj,
+				isFunc,
+				isUnknown,
+				result = false;
+			isObj = isType(obj, "object");
+			isFunc = isType(obj, "function");
+			isUnknown = isType(obj, "unknown");
+			if (isObj || isFunc || isUnknown) {
+				result = true;
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function isArrayLike(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if `obj`
+                                is array-like.
+			*/
+			var isObj = isHostObject(obj),
+				result = false;
+			if (obj && isObj) {
+				result = isType(
+					obj.length,
+					"number"
+				);
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function isNodeLike(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if `obj`
+                                is node-like.
+			*/
+			var isObj = isHostObject(obj),
+				result = false;
+			if (obj && isObj) {
+				result = isType(
+					obj.nodeType,
+					"number"
+				);
+			}
+			return result;
 		}
 
 
@@ -552,20 +647,21 @@ if (Utils) {
 
 
 		function isNodeType(
-			node,
+			obj,
 			type
 		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if `node` is
-                                of type (via `nodeType`) `type`.
+                                boolean asserting if a node-like
+                                object has a certain value for
+                                the `nodeType` property.
 			*/
-			var valid = isNode(node),
+			var valid = isNodeLike(obj),
 				result = false;
 			type = Number(type);
 			if (valid) {
-				result = node.nodeType === type;
+				result = obj.nodeType === type;
 			}
 			return result;
 		}
@@ -577,14 +673,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isElementNode(node)
+		function isElementNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.ELEMENT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -594,14 +692,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isAttributeNode(node)
+		function isAttributeNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.ATTRIBUTE_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -611,14 +711,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isTextNode(node)
+		function isTextNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.TEXT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -628,14 +730,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isCDataSectionNode(node)
+		function isCDataSectionNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.CDATA_SECTION_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -645,7 +749,9 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isEntityReferenceNode(node)
+		function isEntityReferenceNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
@@ -653,7 +759,7 @@ if (Utils) {
 			*/
 			var key = "ENTITY_REFERENCE_NODE",
 				type = nodeTypes[key];
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -663,14 +769,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isEntityNode(node)
+		function isEntityNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.ENTITY_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -681,7 +789,7 @@ if (Utils) {
 
 
 		function isProcessingInstructionNode(
-			node
+			obj
 		)
 		{
 			/*
@@ -690,7 +798,7 @@ if (Utils) {
 			*/
 			var key = "PROCESSING_INSTRUCTION_NODE",
 				type = nodeTypes[key];
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -700,14 +808,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isCommentNode(node)
+		function isCommentNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.COMMENT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -717,14 +827,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isDocumentNode(node)
+		function isDocumentNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.DOCUMENT_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -734,14 +846,16 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isDocumentTypeNode(node)
+		function isDocumentTypeNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.DOCUMENT_TYPE_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -751,7 +865,9 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isDocumentFragmentNode(node)
+		function isDocumentFragmentNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
@@ -759,7 +875,7 @@ if (Utils) {
 			*/
 			var key = "DOCUMENT_FRAGMENT_NODE",
 				type = nodeTypes[key];
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
@@ -769,40 +885,32 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function isNotationNode(node)
+		function isNotationNode(
+			obj
+		)
 		{
 			/*
                                 Public method that returns
                                 a boolean via `isNodeType`.
 			*/
 			var type = nodeTypes.NOTATION_NODE;
-			return isNodeType(node, type);
+			return isNodeType(obj, type);
 		}
 
 
                 /*        END PUBLIC METHOD        */
 
 
-                /*        PUBLIC METHOD        */
-
-
-		function isHostObject(obj)
-		{
-			var result = false;
-			if (typeof obj === "object" ||
-				typeof obj === "function") {
-				result = true;
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD */
-
-
 		Utils.is = Utils.is || {
-			"node": isNode,
+			"type": isType,
+
+			"hostObject": isHostObject,
+
+			"arrayLike": isArrayLike,
+
+			"nodeLike": isNodeLike,
 			"nodeType": isNodeType,
+
 			"element": isElementNode,
 			"attribute": isAttributeNode,
 			"text": isTextNode,
@@ -817,9 +925,7 @@ if (Utils) {
 			"documentType": isDocumentTypeNode,
 			"documentFragment":
 				isDocumentFragmentNode,
-			"notation": isNotationNode,
-
-			"hostObject": isHostObject
+			"notation": isNotationNode
 		};
 	}());
 }
@@ -832,129 +938,36 @@ if (Utils) {
 
                         Description:
 
-                        Various capability tests.
+                        Various capability tests for core
+                        modules that follow.
 
                         Dependencies:
 
-                        * Utils.host;
-                        * Utils.node;
+                        * Utils.types;
                         * Utils.is;
 		*/
 
-		function generateTextGetterKeys()
-		{
-			/*
-                                Keys for `generateTextGetters`
-			*/
-			return [
-				"ELEMENT_NODE",
-				"TEXT_NODE",
-				"COMMENT_NODE",
-				"PROCESSING_INSTRUCTION_NODE",
-				"DOCUMENT_FRAGMENT_NODE"
-			];
-		}
-
-		function generateTextGetters()
-		{
-			/*
-                                Private method that "generates"
-                                an object with keys of `nodeType`s
-                                that can "get" text.
-			*/
-			var keys = generateTextGetterKeys(),
-				key,
-				result = {};
-			for (key in keys) {
-				// you win this time JSLint
-				if (keys.hasOwnProperty(key)) {
-					result[key] = true;
-				}
-			}
-			return result;
-		}
-
 
                 /*        PUBLIC METHOD        */
 
 
-		function canGetText(node)
+		function canGetName(
+			obj
+		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if the specified
-                                node can "get" textual content.
+                                boolean asserting if a node-like
+                                object can "use" the `nodeName`
+                                property.
 			*/
-			var validNode = Utils.is.node(node),
-				getters = generateTextGetters(),
-				getter,
+			var isNodeLike = Utils.is.nodeLike(obj),
 				result = false;
-			if (validNode) {
-				getter = getters[node.nodeType];
-				if (getter) {
-					result = true;
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		function generateTextSetterKeys()
-		{
-			/*
-                                Keys for `generateTextSetters`
-			*/
-			return [
-				"ELEMENT_NODE",
-				"TEXT_NODE",
-				"COMMENT_NODE",
-				"PROCESSING_INSTRUCTION_NODE",
-				"DOCUMENT_FRAGMENT_NODE"
-			];
-		}
-
-		function generateTextSetters()
-		{
-			/*
-                                Private method that "generates"
-                                an object with keys of `nodeType`s
-                                that can "set" text.
-			*/
-			var keys = generateTextSetterKeys(),
-				key,
-				result = {};
-			for (key in keys) {
-				// you win this time JSLint
-				if (keys.hasOwnProperty(key)) {
-					result[key] = true;
-				}
-			}
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function canSetText(node)
-		{
-			/*
-                                Public method that returns a
-                                boolean asserting if the specified
-                                node can "set" textual content.
-			*/
-			var validNode = Utils.is.node(node),
-				setters = generateTextSetters(),
-				setter,
-				result = false;
-			if (validNode) {
-				setter = setters[node.nodeType];
-				if (setter) {
-					result = true;
-				}
+			if (isNodeLike) {
+				result = Utils.is.type(
+					obj.nodeName,
+					"string"
+				);
 			}
 			return result;
 		}
@@ -966,19 +979,49 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function canUseClassList(node)
+		function canGetValue(
+			obj
+		)
 		{
 			/*
                                 Public method that returns a
-                                boolean asserting if the specified
-                                node can "use" the `classList`
-                                object.
+                                boolean asserting if a node-like
+                                object can "use" the `nodeValue`
+                                property.
 			*/
-			var isElement = Utils.is.element(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				result = false;
-			if (isElement) {
-				result = Utils.is.hostObject(
-					node.classList
+			if (isNodeLike) {
+				result = Utils.is.type(
+					obj.nodeValue,
+					"string"
+				);
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function canGetOwnerDocument(
+			obj
+		)
+		{
+			/*
+                                Public method that returns a
+                                boolean asserting if a node-like
+                                object can "use" the
+                                `ownerDocument` property.
+			*/
+			var isNodeLike = Utils.is.nodeLike(obj),
+				result = false;
+			if (isNodeLike) {
+				result = Utils.is.document(
+					obj.ownerDocument
 				);
 			}
 			return result;
@@ -989,9 +1032,9 @@ if (Utils) {
 
 
 		Utils.can = Utils.can || {
-			"getText": canGetText,
-			"setText": canSetText,
-			"useClassList": canUseClassList
+			"getName": canGetName,
+			"getValue": canGetValue,
+			"getOwnerDocument": canGetOwnerDocument
 		};
 	}());
 }
@@ -1018,8 +1061,8 @@ if (Utils) {
 
 		function insertBefore(
 			par,
-			newNode,
-			refNode
+			newObj,
+			refObj
 		)
 		{
 			/*
@@ -1028,9 +1071,9 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				newIsNode = Utils.is.node(newNode),
-				refIsNode = Utils.is.node(refNode),
+			var validParent = Utils.is.nodeLike(par),
+				newIsNode = Utils.is.nodeLike(newObj),
+				refIsNode = Utils.is.nodeLike(refObj),
 				isHostObject,
 				key = "insertBefore",
 				result = null;
@@ -1040,8 +1083,8 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						newNode,
-						refNode
+						newObj,
+						refObj
 					);
 				}
 			}
@@ -1057,7 +1100,7 @@ if (Utils) {
 
 		function appendChild(
 			par,
-			node
+			obj
 		)
 		{
 			/*
@@ -1066,8 +1109,8 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				validNode = Utils.is.node(node),
+			var validParent = Utils.is.nodeLike(par),
+				validNode = Utils.is.nodeLike(obj),
 				isHostObject,
 				key = "appendChild",
 				result = null;
@@ -1077,7 +1120,7 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						node
+						obj
 					);
 				}
 			}
@@ -1093,7 +1136,7 @@ if (Utils) {
 
 		function removeChild(
 			par,
-			node
+			obj
 		)
 		{
 			/*
@@ -1102,8 +1145,8 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				validNode = Utils.is.node(node),
+			var validParent = Utils.is.nodeLike(par),
+				validNode = Utils.is.nodeLike(obj),
 				isHostObject,
 				key = "removeChild",
 				result = null;
@@ -1113,7 +1156,7 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						node
+						obj
 					);
 				}
 			}
@@ -1129,8 +1172,8 @@ if (Utils) {
 
 		function replaceChild(
 			par,
-			newNode,
-			oldNode
+			newObj,
+			oldObj
 		)
 		{
 			/*
@@ -1139,9 +1182,9 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var validParent = Utils.is.node(par),
-				newIsNode = Utils.is.node(newNode),
-				oldIsNode = Utils.is.node(oldNode),
+			var validParent = Utils.is.nodeLike(par),
+				newIsNode = Utils.is.nodeLike(newObj),
+				oldIsNode = Utils.is.nodeLike(oldObj),
 				isHostObject,
 				key = "replaceChild",
 				result = null;
@@ -1151,8 +1194,8 @@ if (Utils) {
 				);
 				if (isHostObject) {
 					result = par[key](
-						newNode,
-						oldNode
+						newObj,
+						oldObj
 					);
 				}
 			}
@@ -1167,7 +1210,7 @@ if (Utils) {
 
 
 		function cloneNode(
-			node,
+			obj,
 			deep
 		)
 		{
@@ -1177,21 +1220,80 @@ if (Utils) {
                                 method's result or `null` if not
                                 applicable.
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				isHostObject,
 				key = "cloneNode",
 				result = null;
 			deep = Boolean(deep);
-			if (isNode) {
+			if (isNodeLike) {
 				isHostObject = Utils.is.hostObject(
-					node[key]
+					obj[key]
 				);
 				if (isHostObject) {
-					result = node[key](
-						node,
+					result = obj[key](
+						obj,
 						deep
 					);
 				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getName(
+			obj,
+			lower
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `nodeName`; returns the
+                                property's result or `null`
+                                if not applicable.
+			*/
+			var canGet = Utils.can.getName(obj),
+				lowKey = "toLowerCase",
+				upKey = "toUpperCase",
+				result = null;
+			lower = Boolean(lower);
+			if (canGet) {
+				result = obj.nodeName;
+				if (lower) {
+					result = result[lowKey]();
+				} else if (!lower) {
+					result = result[upKey]();
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getValue(
+			obj
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `nodeValue`; returns the
+                                property's result or `null`
+                                if not applicable.
+			*/
+			var canGet = Utils.can.getValue(obj),
+				result = null;
+			if (canGet) {
+				result = obj.nodeValue;
 			}
 			return result;
 		}
@@ -1205,7 +1307,9 @@ if (Utils) {
 			"append": appendChild,
 			"remove": removeChild,
 			"replace": replaceChild,
-			"clone": cloneNode
+			"clone": cloneNode,
+			"name": getName,
+			"value": getValue
 		};
 	}());
 }
@@ -1222,9 +1326,8 @@ if (Utils) {
 
                         Dependencies:
 
-                        * Utils.host;
-                        * Utils.node;
                         * Utils.is;
+                        * Utils.node;
 		*/
 
 
@@ -1242,8 +1345,7 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createElement",
 				isHostObject,
 				result = null;
@@ -1280,8 +1382,7 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createElementNS",
 				isHostObject,
 				result = null;
@@ -1308,39 +1409,6 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function createDocumentFragment(
-			doc
-		)
-		{
-			/*
-                                Public wrapper method for
-                                `createDocumentFragment`; returns
-                                the wrapper method's result or
-                                `null` if not applicable.
-			*/
-			var isDocument =
-				Utils.is.document(doc),
-				key = "createDocumentFragment",
-				isHostObject,
-				result = null;
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
-				);
-				if (isHostObject) {
-					result = doc[key]();
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
 		function createTextNode(
 			doc,
 			text
@@ -1352,46 +1420,8 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createTextNode",
-				isHostObject,
-				result = null;
-			text = String(text);
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
-				);
-				if (isHostObject) {
-					result = doc[key](
-						text
-					);
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function createComment(
-			doc,
-			text
-		)
-		{
-			/*
-                                Public wrapper method for
-                                `createComment`; returns the
-                                wrapper method's result or `null`
-                                if not applicable.
-			*/
-			var isDocument =
-				Utils.is.document(doc),
-				key = "createComment",
 				isHostObject,
 				result = null;
 			text = String(text);
@@ -1427,8 +1457,7 @@ if (Utils) {
                                 wrapper method's result or `null`
                                 if not applicable.
 			*/
-			var isDocument =
-				Utils.is.document(doc),
+			var isDocument = Utils.is.document(doc),
 				key = "createProcessingInstruction",
 				isHostObject,
 				result = null;
@@ -1452,15 +1481,83 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
+                /*        PUBLIC METHOD        */
+
+
+		function createComment(
+			doc,
+			text
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `createComment`; returns the
+                                wrapper method's result or `null`
+                                if not applicable.
+			*/
+			var isDocument = Utils.is.document(doc),
+				key = "createComment",
+				isHostObject,
+				result = null;
+			text = String(text);
+			if (isDocument) {
+				isHostObject = Utils.is.hostObject(
+					doc[key]
+				);
+				if (isHostObject) {
+					result = doc[key](
+						text
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function createDocumentFragment(
+			doc
+		)
+		{
+			/*
+                                Public wrapper method for
+                                `createDocumentFragment`; returns
+                                the wrapper method's result or
+                                `null` if not applicable.
+			*/
+			var isDocument = Utils.is.document(doc),
+				key = "createDocumentFragment",
+				isHostObject,
+				result = null;
+			if (isDocument) {
+				isHostObject = Utils.is.hostObject(
+					doc[key]
+				);
+				if (isHostObject) {
+					result = doc[key]();
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
 		Utils.create = Utils.create || {
 			"element": createElement,
 			"elementNS": createElementNS,
-			"documentFragment":
-				createDocumentFragment,
 			"text": createTextNode,
-			"comment": createComment,
 			"processingInstruction":
-				createProcessingInstruction
+				createProcessingInstruction,
+			"comment": createComment,
+			"documentFragment":
+				createDocumentFragment
 		};
 	}());
 }
@@ -1477,48 +1574,135 @@ if (Utils) {
 
                         Dependencies:
 
-                        * Utils.host;
+                        * Utils.types;
                         * Utils.helpers;
-                        * Utils.node;
                         * Utils.is;
                         * Utils.can;
+                        * Utils.node;
 			* Utils.create;
 		*/
 
 		var nodeTypes = Utils.types;
 
+		function generateTextGetters()
+		{
+			/*
+                                Private method that "generates"
+                                an object with keys of `nodeType`s
+                                that can "get" text.
+			*/
+			var result = {};
+			result[nodeTypes.ELEMENT_NODE] = true;
+			result[nodeTypes.TEXT_NODE] = true;
+			result[nodeTypes.PROCESSING_INSTRUCTION_NODE] =
+				true;
+			result[nodeTypes.COMMENT_NODE] = true;
+			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] =
+				true;
+			return result;
+		}
+
+		function canGetText(
+			obj
+		)
+		{
+			/*
+                                Private method that returns a
+                                boolean asserting if the specified
+                                node can "get" textual content.
+			*/
+			var validNode = Utils.is.nodeLike(obj),
+				getters = generateTextGetters(),
+				getter,
+				result = false;
+			if (validNode) {
+				getter = getters[obj.nodeType];
+				if (getter) {
+					result = true;
+				}
+			}
+			return result;
+		}
+
+		function generateTextSetters()
+		{
+			/*
+                                Private method that "generates"
+                                an object with keys of `nodeType`s
+                                that can "set" text.
+			*/
+			var result = {};
+			result[nodeTypes.ELEMENT_NODE] = true;
+			result[nodeTypes.TEXT_NODE] = true;
+			result[nodeTypes.PROCESSING_INSTRUCTION_NODE] =
+				true;
+			result[nodeTypes.COMMENT_NODE] = true;
+			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] =
+				true;
+			return result;
+		}
+
+		function canSetText(
+			obj
+		)
+		{
+			/*
+                                Private method that returns a
+                                boolean asserting if the specified
+                                node can "set" textual content.
+			*/
+			var validNode = Utils.is.nodeLike(obj),
+				setters = generateTextSetters(),
+				setter,
+				result = false;
+			if (validNode) {
+				setter = setters[obj.nodeType];
+				if (setter) {
+					result = true;
+				}
+			}
+			return result;
+		}
+
 
                 /*        PUBLIC METHOD        */
 
 
-		function getAncestorList(node)
+		function getAncestorList(
+			obj
+		)
 		{
 			/*
                                 Public method that builds a linked
-                                list of ancestors from `node` all
-                                the way to the top of the document
-                                tree (`document`); returns null
-                                if not applicable.
+                                list of ancestors from a node-like
+                                object to the top of the document
+                                tree (`document`); returns null if
+                                not applicable.
 
-                                Example result (`node` is
-                                `document.documentElement`):
+                                Example result (`obj` is
+                                `document.body`):
 
                                 {
                                         "parent": {
                                                 "parent": null,
                                                 "value": [`document`]
                                         },
-                                        "value": [`node`]
+                                        "value": [`documentElement`]
                                 }
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
+				key = "parent",
 				result = null;
-			if (isNode) {
-				result = {};
-				result.value = node;
-				result.parent = getAncestorList(
-					node.parentNode
-				);
+			if (isNodeLike) {
+				if (obj.parentNode) {
+					result = {};
+					result.value = obj.parentNode;
+					result[key] = getAncestorList(
+						obj.parentNode
+					);
+				} else if (!obj.parentNode) {
+					result = null;
+				}
 			}
 			return result;
 		}
@@ -1529,24 +1713,27 @@ if (Utils) {
 
 		function listContainsNode(
 			list,
-			node
+			obj
 		)
 		{
 			/*
                                 Private method returning
                                 a boolean asserting a if a linked
                                 list (preferably created via
-                                `getAncestorList`) contains `node`.
+                                `getAncestorList`) contains a
+                                node-like object.
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
+				key = "parent",
 				result = false;
-			while (isNode && typeof list.parent !==
-				"undefined") {
-				if (list.value === node) {
-					result = true;
-					break;
+			if (isNodeLike) {
+				while (list) {
+					if (list.value === obj) {
+						result = true;
+						break;
+					}
+					list = list[key];
 				}
-				list = list.parent;
 			}
 			return result;
 		}
@@ -1557,20 +1744,21 @@ if (Utils) {
 
 		function isAncestor(
 			par,
-			node
+			obj
 		)
 		{
 			/*
                                 Public method returning a boolean
-                                asserting if `par` is an
-                                ancestor of `node` (via
-                                `listContainsNode`).
+                                asserting if a given node-like
+                                object is an ancestor of another
+                                node-like object (via
+                                `listContainsNode`.)
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				list,
 				result = false;
-			if (isNode) {
-				list = getAncestorList(node);
+			if (isNodeLike) {
+				list = getAncestorList(obj);
 				result = listContainsNode(
 					list,
 					par
@@ -1583,38 +1771,160 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-		function makeLinearArray(obj)
+		function canTraverseList(
+			list
+		)
 		{
 			/*
-				Private wrapper for
-				`Utils.helpers.makeLinearArray`.
+                                Private helper method for
+                                `traverseList`; returns a boolean
+                                asserting if a linked list can be
+                                traversed.
 			*/
-			return Utils.helpers.makeLinearArray(obj);
+			var isObj = Utils.is.type(list, "object"),
+				hasVal,
+				result = false;
+			if (list && isObj) {
+				hasVal = Utils.is.type(
+					list.value,
+					"object"
+				);
+				result = hasVal;
+			}
+			return result;
+		}
+
+		function pushCallback(
+			obj,
+			callback,
+			result
+		)
+		{
+			/*
+                                Private helper method for `traverse*`
+                                methods; calls callback with
+                                a node-like object passed.
+			*/
+			var isCallback = Utils.is.type(
+					callback,
+					"function"
+				),
+				called;
+			if (isCallback) {
+				called = callback(obj);
+				if (called === true) {
+					result.push(obj);
+				} else if (called) {
+					result.push(called);
+				}
+			}
 		}
 
 
                 /*        PUBLIC METHOD        */
 
 
-		function getChildNodes(node)
+		function traverseList(
+			list,
+			callback
+		)
+		{
+			/*
+                                Public method that traverses a
+                                linked list, running a callback
+                                on each node in the list.
+			*/
+			var canUse = canTraverseList(list),
+				key = "parent",
+				result = [];
+			if (canUse) {
+				while (list) {
+					pushCallback(
+						list.value,
+						callback,
+						result
+					);
+					list = list[key];
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function traverseAncestors(
+			obj,
+			callback
+		)
+		{
+			/*
+                                Public method that traverses
+                                a node-like object's "ancestor
+                                list" (via `traverseLinkedList`).
+			*/
+			var isCallback = Utils.is.type(
+					callback,
+					"function"
+				),
+				list,
+				result = [];
+			if (isCallback) {
+				list = getAncestorList(obj);
+				result = traverseList(
+					list,
+					callback
+				);
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		function makeLinearArray(
+			obj
+		)
+		{
+			/*
+                                Private wrapper for
+                                `Utils.helpers.makeLinearArray`.
+			*/
+			return Utils.helpers.makeLinearArray(
+				obj
+			);
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getChildNodes(
+			obj
+		)
 		{
 			/*
                                 Public method that exposes a
-                                static array of `childNodes`;
-                                returns `null` if
-                                not applicable.
+                                static array of `childNodes`
+                                collected from a node-like object;
+                                returns `null` if not applicable.
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				key = "childNodes",
 				isHostObject,
 				result = null;
-			if (isNode) {
+			if (isNodeLike) {
 				isHostObject = Utils.is.hostObject(
-					node[key]
+					obj[key]
 				);
 				if (isHostObject) {
 					result = makeLinearArray(
-						node[key]
+						obj[key]
 					);
 				}
 			}
@@ -1625,22 +1935,26 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-		function handleCallback(
-			node,
+		function unshiftCallback(
+			obj,
 			callback,
 			result
 		)
 		{
 			/*
-                                Helper method for `traverse*`
+                                Private helper method for `traverse*`
                                 methods; calls callback with
-                                specified node passed;
+                                a node-like object passed.
 			*/
-			var called;
-			if (typeof callback === "function") {
-				called = callback(node);
+			var isCallback = Utils.is.type(
+					callback,
+					"function"
+				),
+				called;
+			if (isCallback) {
+				called = callback(obj);
 				if (called === true) {
-					result.unshift(node);
+					result.unshift(obj);
 				} else if (called) {
 					result.unshift(called);
 				}
@@ -1652,204 +1966,30 @@ if (Utils) {
 
 
 		function traverseLinear(
-			nodes,
+			obj,
 			callback
 		)
 		{
 			/*
                                 Public method that traverses
-                                an array-like objects, running
+                                an array-like object, running
                                 a callback on each node in the
                                 array.
 			*/
-			var index,
+			var isArrayLike = Utils.is.arrayLike(obj),
+				index,
 				node,
 				result = [];
-			if (nodes && nodes.length) {
-				index = nodes.length - 1;
+			if (isArrayLike) {
+				index = obj.length - 1;
 				while (index > -1) {
-					node = nodes[index];
-					handleCallback(
+					node = obj[index];
+					unshiftCallback(
 						node,
 						callback,
 						result
 					);
 					index -= 1;
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		function addRecursiveTree(
-			tree,
-			par
-		)
-		{
-			/*
-                                Private helper method for
-                                `traverseRecursive`; returns
-                                boolean asserting if tree
-                                can be added to `par`.
-			*/
-			var result = false;
-			if (tree.length) {
-				par.unshift(tree);
-				result = true;
-			}
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function traverseRecursive(
-			nodes,
-			callback
-		)
-		{
-			/*
-                                Public recursive method that
-                                traverses an array-like object,
-                                running a callback on each node
-                                in the array.
-			*/
-			var result = [],
-				index = -1,
-				node,
-				tree;
-			if (nodes && nodes.length) {
-				index = nodes.length - 1;
-				while (index > -1) {
-					node = nodes[index];
-					tree = traverseRecursive(
-						node.childNodes,
-						callback
-					);
-					addRecursiveTree(
-						tree,
-						result
-					);
-					handleCallback(
-						node,
-						callback,
-						result
-					);
-					index -= 1;
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		function addChildNodeTree(
-			tree,
-			par
-		)
-		{
-			/*
-                                Private helper method for
-                                `collectChildNodeTree`; returns
-                                a boolean asserting if the tree
-                                passed could be added.
-			*/
-			var result = false;
-			if (tree.length) {
-				par.push(tree);
-				result = true;
-			}
-			return result;
-		}
-
-		function canTraverse(node)
-		{
-			/*
-                                Private method returning a
-                                boolean asserting if a node
-                                can be traversed via
-                                `node.childNodes` and
-                                `node.nextSibling`.
-			*/
-			var isNode = Utils.is.node(node),
-				hasChildNodes,
-				hasSibling,
-				result = false;
-			if (isNode) {
-				hasChildNodes = Utils.is.hostObject(
-					node.childNodes
-				);
-				hasSibling = Utils.is.hostObject(
-					node.nextSibling
-				);
-				if (hasChildNodes && hasSibling
-					&& node.childNodes.length) {
-					result = true;
-				}
-			}
-			return result;
-		}
-
-		function collectChildNodeTree(
-			node
-		)
-		{
-			/*
-                                Private recursive method
-                                that takes a node and creates an
-                                array from its "childNode tree";
-                                returns `null` if not applicable.
-			*/
-			var hasNodes = canTraverse(node),
-				child,
-				result = [],
-				tree;
-			if (hasNodes) {
-				child = node.childNodes[0];
-				while (child) {
-					result.push(child);
-					tree = collectChildNodeTree(
-						child
-					);
-					addChildNodeTree(
-						tree,
-						result
-					);
-					child = child.nextSibling;
-				}
-			}
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getChildNodeTree(node)
-		{
-			/*
-                                Public method that exposes a
-                                static array of `childNodes` (via
-                                `makeArray`); returns `null` if not
-                                applicable.
-			*/
-			var isNode = Utils.is.node(node),
-				isHostObject,
-				result = null;
-			if (isNode) {
-				isHostObject = Utils.is.hostObject(
-					node.childNodes
-				);
-				if (isHostObject) {
-					result = collectChildNodeTree(
-						node
-					);
 				}
 			}
 			return result;
@@ -1863,20 +2003,23 @@ if (Utils) {
 
 
 		function traverseChildNodes(
-			node,
+			obj,
 			callback
 		)
 		{
 			/*
                                 Public method that traverses
-                                a node's `childNodes` (via
-                                `traverseLinear`); returns `null` if
-                                not applicable.
+                                a node-like object's `childNodes`
+                                (via `traverseLinear`).
 			*/
-			var nodes,
-				result = null;
-			if (typeof callback === "function") {
-				nodes = getChildNodes(node);
+			var isCallback = Utils.is.type(
+					callback,
+					"function"
+				),
+				nodes,
+				result = [];
+			if (isCallback) {
+				nodes = getChildNodes(obj);
 				result = traverseLinear(
 					nodes,
 					callback
@@ -1890,28 +2033,22 @@ if (Utils) {
 
 
 		function removeNode(
-			node
+			obj
 		)
 		{
 			/*
                                 Private method used as a callback
-                                for `traverse*`; removes `node`;
+                                for `traverse*`; removes a node-like
+                                object from the document tree;
                                 returns `null` if not applicable.
 			*/
-			var isNode = Utils.is.node(node),
-				key = "parentNode",
-				isHostObject,
+			var isNodeLike = Utils.is.nodeLike(obj),
 				result = null;
-			if (isNode) {
-				isHostObject = Utils.is.hostObject(
-					node[key]
+			if (isNodeLike) {
+				Utils.node.remove(
+					obj.parentNode,
+					obj
 				);
-				if (isHostObject) {
-					Utils.node.remove(
-						node[key],
-						node
-					);
-				}
 			}
 			return result;
 		}
@@ -1920,19 +2057,22 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function clearChildNodes(node)
+		function clearChildNodes(
+			obj
+		)
 		{
 			/*
                                 Public method that clears a
-				a node's `childNodes`, returning
-				them upon successful removal;
-				returns `null` if not applicable.
+                                a node-like object's `childNodes`,
+                                returning them upon successful
+                                removal; returns `null` if not
+                                applicable.
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				result = null;
-			if (isNode) {
+			if (isNodeLike) {
 				result = traverseChildNodes(
-					node,
+					obj,
 					removeNode
 				);
 			}
@@ -1943,46 +2083,71 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-		function forkNativeChildren(node)
+		function forkNativeChildren(
+			obj
+		)
 		{
 			/*
                                 Private helper method that
-                                builds a node's "native" `children`
-                                as a static array; returns `null`
-                                if not applicable.
+                                collects a node-like object's
+                                "native" `children` as a static
+                                array; returns `null` if not
+                                applicable.
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				isHostObject,
 				result = null;
-			if (isNode) {
+			if (isNodeLike) {
 				isHostObject = Utils.is.hostObject(
-					node.children
+					obj.children
 				);
 				if (isHostObject) {
 					result = makeLinearArray(
-						node.children
+						obj.children
 					);
 				}
 			}
 			return result;
 		}
 
-		function filterElementNode(node)
+		function filterElementNode(
+			obj
+		)
 		{
                         /*
                                 Private callback method intended
                                 to be used in conjunction with
                                 `traverse*` methods; returns `true`
-                                if node passed is an element node;
-                                returns `false` otherwise.
+                                if node-like object passed is an
+                                element node; returns `false`
+                                otherwise.
                         */
 			var isElementNode =
 				Utils.is.element(
-					node
+					obj
 				),
 				result = false;
 			if (isElementNode) {
 				result = true;
+			}
+			return result;
+		}
+
+		function canGetChildren(
+			obj
+		)
+		{
+			/*
+                                Private method that returns a
+                                boolean asserting if `obj` can
+                                "use" the `children` property.
+			*/
+			var isElement = Utils.is.element(obj),
+				result = false;
+			if (isElement) {
+				result = Utils.is.hostObject(
+					obj.children
+				);
 			}
 			return result;
 		}
@@ -1992,27 +2157,26 @@ if (Utils) {
 
 
 		function getChildren(
-			node
+			obj
 		)
 		{
 			/*
-                                Public method that exposes a
+                                Public method that collects a
                                 static array of `children` (via
-                                `makeArray`); returns `null` if
-                                not applicable.
+                                `makeArray`) from a node-like
+                                object ; returns `null` if not
+                                applicable.
 			*/
-			var isNode = Utils.is.node(node),
+			var canGet = canGetChildren(obj),
 				nodes = [],
 				result = null;
-			if (isNode && typeof node.children !==
-				"undefined") {
+			if (canGet) {
 				result = forkNativeChildren(
-					node
+					obj
 				);
-			} else if (isNode && typeof node.children ===
-				"undefined") {
+			} else if (!canGet) {
 				nodes = getChildNodes(
-					node
+					obj
 				);
 				result = traverseLinear(
 					nodes,
@@ -2023,7 +2187,6 @@ if (Utils) {
 		}
 
 
-
                 /*        END PUBLIC METHOD        */
 
 
@@ -2031,20 +2194,23 @@ if (Utils) {
 
 
 		function traverseChildren(
-			node,
+			obj,
 			callback
 		)
 		{
 			/*
                                 Public method that traverses
-                                a node's `children` (via
-                                `traverseLinear`); returns `null` if
-                                not applicable.
+                                a node-like object's `children`
+                                (via `traverseLinear`);
 			*/
-			var nodes,
-				result = null;
-			if (typeof callback === "function") {
-				nodes = getChildren(node);
+			var isCallback = Utils.is.type(
+					callback,
+					"function"
+				),
+				nodes,
+				result = [];
+			if (isCallback) {
+				nodes = getChildren(obj);
 				result = traverseLinear(
 					nodes,
 					callback
@@ -2057,24 +2223,26 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-		function removeElementNode(node)
+		function removeElementNode(
+			obj
+		)
 		{
                         /*
                                 Private callback method intended
                                 to be used in conjunction with
                                 `traverse*` methods; returns `true`
-                                if node passed is an element node
-                                and can be removed; returns `false`
-                                otherwise.
+                                if node-like object passed is an
+                                element node and can be removed;
+                                returns `false` otherwise.
                         */
 			var isElementNode =
 				Utils.is.element(
-					node
+					obj
 				),
 				result = false;
 			if (isElementNode) {
 				result = Utils.node.remove(
-					node
+					obj
 				);
 			}
 			return result;
@@ -2084,19 +2252,22 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function clearChildren(node)
+		function clearChildren(
+			obj
+		)
 		{
 			/*
                                 Public method that clears a
-				a node's `children`, returning
-				them upon successful removal;
-				returns `null` if not applicable.
+                                a node-like object's `children`,
+                                returning them upon successful
+                                removal; returns `null` if not
+                                applicable.
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				result = null;
-			if (isNode) {
+			if (isNodeLike) {
 				result = traverseChildren(
-					node,
+					obj,
 					removeElementNode
 				);
 			}
@@ -2104,63 +2275,276 @@ if (Utils) {
 		}
 
 
-
                 /*        END PUBLIC METHOD        */
 
 
-		function filterTextData(node)
+		function filterTextData(
+			obj
+		)
 		{
 			/*
                                 Private callback method intended
                                 to be used in conjunction with
                                 `traverse*` methods; returns
-                                `node.nodeValue` if node passed
-                                is a text node; returns `false`
-                                otherwise.
+                                `node.nodeValue` if node-like
+                                object passed is a text node;
+                                returns `false` otherwise.
 			*/
 			var validNode =
-				Utils.is.text(node),
+				Utils.is.text(obj),
 				result = false;
 			if (validNode) {
-				result = node.nodeValue;
+				result = obj.nodeValue;
 			}
 			return result;
 		}
 
-		function grabText(node)
+		function grabText(
+			obj
+		)
 		{
 			/*
                                 Private helper method for
-                                `getText` that grabs the `data`
-                                property of a node; returns
-                                `null` if not applicable. For
-                                more, see `getText`.
+                                `getText` that gets the
+                                `nodeValue` property of a
+                                node-like object; returns `null`
+                                if not applicable. For more, see
+                                `getText`.
 			*/
-			var isNode = Utils.is.node(node),
+			var canGet = Utils.can.getValue(obj),
 				result = null;
-			if (isNode && typeof node.data !==
-				"undefined") {
-				result = node.data;
+			if (canGet) {
+				result = obj.nodeValue;
 			}
 			return result;
 		}
 
-		function collectText(node)
+		function addChildNodeTree(
+			tree,
+			obj,
+			par
+		)
+		{
+			/*
+                                Private helper method for
+                                `collectChildNodeTree`; returns
+                                a boolean asserting if the tree
+                                passed could be added.
+			*/
+			var result;
+			if (tree.length) {
+				par.unshift(tree);
+			}
+			par.unshift(obj);
+			return result;
+		}
+
+		function canTraverse(
+			obj
+		)
+		{
+			/*
+                                Private method returning a
+                                boolean asserting if a node-like
+                                object can be traversed via
+                                `node.childNodes`.
+			*/
+			var isNodeLike = Utils.is.nodeLike(obj),
+				result = false;
+			if (isNodeLike) {
+				result = Utils.is.hostObject(
+					obj.childNodes
+				);
+			}
+			return result;
+		}
+
+		function collectChildNodeTree(
+			obj
+		)
+		{
+			/*
+                                Private recursive method
+                                that takes a node-like object and
+                                creates an array from its "childNode
+                                tree"; returns `null` if not
+                                applicable.
+			*/
+			var hasNodes = canTraverse(obj),
+				index = -1,
+				tree,
+				result = [];
+			if (hasNodes) {
+				index = obj.childNodes.length - 1;
+				while (index > -1) {
+					tree = collectChildNodeTree(
+						obj.childNodes[index]
+					);
+					addChildNodeTree(
+						tree,
+						obj.childNodes[index],
+						result
+					);
+					index -= 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getChildNodeTree(
+			obj
+		)
+		{
+			/*
+                                Public method that collects a
+                                static array of `childNodes` (via
+                                `makeArray`) from a node-like object;
+                                returns `null` if not applicable.
+			*/
+			var isNodeLike = Utils.is.nodeLike(obj),
+				isHostObject,
+				result = null;
+			if (isNodeLike) {
+				isHostObject = Utils.is.hostObject(
+					obj.childNodes
+				);
+				if (isHostObject) {
+					result = collectChildNodeTree(
+						obj
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		function handleRecursiveTree(
+			obj,
+			callback,
+			par
+		)
+		{
+			/*
+                                Private helper method for
+                                recursive `traverse*` methods.
+			*/
+			var result;
+			unshiftCallback(
+				obj,
+				callback,
+				par		
+			);
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function traverseRecursive(
+			obj,
+			callback,
+			result
+		)
+		{
+			/*
+                                Public recursive method that
+                                traverses an array-like object,
+                                running a callback on each item
+                                in the array-like object.
+			*/
+			var isArrayLike = Utils.is.arrayLike(obj),
+				index = -1;
+			result = result || [];
+			if (isArrayLike) {
+				index = obj.length - 1;
+				while (index > -1) {
+					traverseRecursive(
+						obj[index],
+						callback,
+						result
+					);
+					handleRecursiveTree(
+						obj[index],
+						callback,
+						result
+					);
+					index -= 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function traverseChildNodeTree(
+			obj,
+			callback,
+			result
+		)
+		{
+			/*
+                                Public method that traverses
+                                a node-like object's `childNode`
+                                tree.
+			*/
+			var hasNodes = canTraverse(obj),
+				index = -1;
+			result = result || [];
+			if (hasNodes) {
+				index = obj.childNodes.length - 1;
+				while (index > -1) {
+					traverseChildNodeTree(
+						obj.childNodes[index],
+						callback,
+						result
+					);
+					handleRecursiveTree(
+						obj.childNodes[index],
+						callback,
+						result
+					);
+					index -= 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		function collectText(
+			obj
+		)
 		{
 			/*
                                 Private helper method for
                                 `getText` that recursively
-                                concatenates text node data
+                                concatenates the `nodeValue`
+                                property of text node-like objects
                                 (via `traverseRecursive`);
                                 returns `null` if not applicable.
                                 For more, see `getText`.
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
 				nodes,
 				result = null;
-			if (isNode) {
+			if (isNodeLike) {
 				nodes = getChildNodeTree(
-					node
+					obj
 				);
 				nodes = traverseRecursive(
 					nodes,
@@ -2171,7 +2555,7 @@ if (Utils) {
 			return result;
 		}
 
-		function generateTextGetterDecisions()
+		function grabTextGetterTable()
 		{
 			/*
                                 Private method that returns a
@@ -2194,28 +2578,34 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
-		function getText(node)
+		function getText(
+			obj
+		)
 		{
 			/*
                                 Public method that exposes a
                                 string consisting of concatenated
-                                text node data or node `data` (via
-                                `traverseRecursive`); returns
+                                or singular text node-like object
+                                data from the `nodeValue` property
+                                (via `traverseRecursive`); returns
                                 `null` if not applicable. See
                                 the DOM 4 Spec section 5.3
                                 (`Node.textContent`, getting)
                                 for more.
 			*/
-			var canGet = Utils.can.getText(node),
-				decisions =
-					generateTextGetterDecisions(),
+			var canGet = canGetText(obj),
+				decisions = grabTextGetterTable(),
 				decision,
+				isDecision,
 				result = null;
 			if (canGet) {
-				decision = decisions[node.nodeType];
-				if (typeof decision !==
-					"undefined") {
-					result = decision(node);
+				decision = decisions[obj.nodeType];
+				isDecision = Utils.is.type(
+					decision,
+					"function"
+				);
+				if (isDecision) {
+					result = decision(obj);
 				}
 			}
 			return result;
@@ -2227,28 +2617,33 @@ if (Utils) {
 
 		function overrideText(
 			text,
-			node
+			obj,
+			doc
 		)
 		{
 			/*
                                 Private helper method for
                                 `setText` that overrides
                                 existing `childNodes` with a
-                                text node; returns `null`
-                                if not applicable. For more,
+                                text node-like object; returns
+                                `null` if not applicable. For more,
                                 see `setText`.
 			*/
-			var isNode = Utils.is.node(node),
+			var isNodeLike = Utils.is.nodeLike(obj),
+				isDoc = Utils.is.document(doc),
 				textNode,
 				result = null;
 			text = String(text);
-			textNode = Utils.create.text(
-				global.document,
-				text
-			);
-			if (isNode) {
-				clearChildNodes(node);
-				node.appendChild(textNode);
+			if (isNodeLike && isDoc) {
+				textNode = Utils.create.text(
+					doc,
+					text
+				);
+				clearChildNodes(obj);
+				Utils.node.append(
+					obj,
+					textNode
+				);
 				result = text;
 			}
 			return result;
@@ -2256,29 +2651,31 @@ if (Utils) {
 
 		function replaceText(
 			text,
-			node
+			obj
 		)
 		{
 			/*
                                 Private helper method for
                                 `setText` that replaces
-                                `node.data` with `text`;
+                                the `nodeValue` property of a
+                                node-like object with `text`;
                                 returns `null` if not
                                 applicable. For more, see
                                 `setText`.
 			*/
-			var isNode = Utils.is.node(node),
+			var canGetValue = Utils.can.getValue(
+					obj
+				),
 				result = null;
 			text = String(text);
-			if (isNode && typeof node.data !==
-				"undefined") {
-				node.data = text;
-				result = node.data;
+			if (canGetValue) {
+				obj.nodeValue = text;
+				result = obj.nodeValue;
 			}
 			return result;
 		}
 
-		function generateTextSetterDecisions()
+		function grabTextSetterTable()
 		{
 			/*
                                 Private method that returns a
@@ -2306,30 +2703,36 @@ if (Utils) {
 
 		function setText(
 			text,
-			node
+			obj,
+			doc
 		)
 		{
 			/*
                                 Public method that either
-                                overrides a node's (textual)
-                                content or its `data`; returns
-                                `null` if not applicable. See
-                                the DOM 4 Spec section 5.3
-                                (`Node.textContent`, setting)
+                                sets the `nodeValue` property of
+                                a text node-like object or the
+                                descendants of a node-like object;
+                                returns `null` if not applicable.
+                                See the DOM 4 Spec section 5.3
+                                (`Node::textContent`, setting)
                                 for more.
 			*/
-			var canSet = Utils.can.setText(node),
-				decisions =
-					generateTextSetterDecisions(),
+			var canSet = canSetText(obj),
+				decisions = grabTextSetterTable(),
 				decision,
+				isDecision,
 				result = null;
 			if (canSet) {
-				decision = decisions[node.nodeType];
-				if (typeof decision !==
-					"undefined") {
+				decision = decisions[obj.nodeType];
+				isDecision = Utils.is.type(
+					decision,
+					"function"
+				);
+				if (isDecision) {
 					result = decision(
 						text,
-						node
+						obj,
+						doc
 					);
 				}
 			}
@@ -2343,19 +2746,23 @@ if (Utils) {
 		Utils.traverse = Utils.traverse || {
 			"getAncestors": getAncestorList,
 			"isAncestor": isAncestor,
+			"list": traverseList,
+			"ancestors": traverseAncestors,
 
 			"getChildNodes": getChildNodes,
-			"getChildNodeTree": getChildNodeTree,
 
 			"linear": traverseLinear,
-			"recursive": traverseRecursive,
-
 			"childNodes": traverseChildNodes,
 			"clearChildNodes": clearChildNodes,
 
 			"getChildren": getChildren,
 			"children": traverseChildren,
 			"clearChildren": clearChildren,
+
+			"getChildNodeTree": getChildNodeTree,
+
+			"recursive": traverseRecursive,
+			"childNodeTree": traverseChildNodeTree,
 
 			"getText": getText,
 			"setText": setText
