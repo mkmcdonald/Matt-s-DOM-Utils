@@ -416,6 +416,7 @@ if (Utils) {
 
                 /*        END PUBLIC METHOD        */ 
 
+
 		function forkAddClass(
 			token,
 			obj

@@ -61,8 +61,8 @@ if (Utils) {
 		)
 		{
 			/*
-				Private wrapper for
-				`Utils.helpers.makeLinearArray`.
+                                Private wrapper for
+                                `Utils.helpers.makeLinearArray`.
 			*/
 			return Utils.helpers.makeLinearArray(obj);
 		}

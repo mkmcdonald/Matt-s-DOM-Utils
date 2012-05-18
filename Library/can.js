@@ -72,37 +72,9 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-                /*        PUBLIC METHOD        */
-
-
-		function canGetOwnerDocument(
-			obj
-		)
-		{
-			/*
-                                Public method that returns a
-                                boolean asserting if a node-like
-                                object can "use" the
-                                `ownerDocument` property.
-			*/
-			var isNodeLike = Utils.is.nodeLike(obj),
-				result = false;
-			if (isNodeLike) {
-				result = Utils.is.document(
-					obj.ownerDocument
-				);
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
 		Utils.can = Utils.can || {
 			"getName": canGetName,
-			"getValue": canGetValue,
-			"getOwnerDocument": canGetOwnerDocument
+			"getValue": canGetValue
 		};
 	}());
 }

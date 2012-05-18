@@ -10,6 +10,7 @@
 
 
         Matt's DOM Utils
+        http://www.fortybelow.ca/projects/JavaScript/Utils/
 
         Description:
 
@@ -117,7 +118,7 @@ for examples.
 *Utils* provides a set of wrappers for various methods of
 selection. This includes popular methods such as `getElementById`,
 `getElementsByTagName` and newer methods such as `querySelectorAll`.
-j
+
 See [./Tests/Select](./Tests/Select "Select Tests")
 for examples.
 
