@@ -14,6 +14,7 @@ var Utils = Utils || {},
         [firstName.toLowerCase();]@fortybelow.ca
         http://www.fortybelow.ca
 */
+
 /*
         jslint sloppy: true,
         white: true, maxerr: 1, indent: 8
@@ -1004,37 +1005,9 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-                /*        PUBLIC METHOD        */
-
-
-		function canGetOwnerDocument(
-			obj
-		)
-		{
-			/*
-                                Public method that returns a
-                                boolean asserting if a node-like
-                                object can "use" the
-                                `ownerDocument` property.
-			*/
-			var isNodeLike = Utils.is.nodeLike(obj),
-				result = false;
-			if (isNodeLike) {
-				result = Utils.is.document(
-					obj.ownerDocument
-				);
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
 		Utils.can = Utils.can || {
 			"getName": canGetName,
-			"getValue": canGetValue,
-			"getOwnerDocument": canGetOwnerDocument
+			"getValue": canGetValue
 		};
 	}());
 }
@@ -1624,8 +1597,8 @@ if (Utils) {
 		)
 		{
 			/*
-				Private wrapper for
-				`Utils.helpers.makeLinearArray`.
+                                Private wrapper for
+                                `Utils.helpers.makeLinearArray`.
 			*/
 			return Utils.helpers.makeLinearArray(obj);
 		}

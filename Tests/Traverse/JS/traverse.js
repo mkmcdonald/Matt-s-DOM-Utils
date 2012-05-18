@@ -9,13 +9,13 @@ var global = global || this;
 		},
 		test;
 
-	function ancestors()
+	function childNodes()
 	{
-		var test = Utils.traverse.getAncestors(
+		var test = Utils.traverse.getNodes(
 			commonElements.test
 		);
-		return Utils.is.nodeLike(
-			test.value
+		return Utils.is.arrayLike(
+			test
 		);
 	}
 
@@ -24,30 +24,9 @@ var global = global || this;
 		return true;
 	}
 
-	function ancestorsTraversed()
-	{
-		var test = Utils.traverse.ancestors(
-			commonElements.test,
-			optimisticFilter
-		);
-		return Utils.is.arrayLike(
-			test
-		);
-	}
-
-	function childNodes()
-	{
-		var test = Utils.traverse.getChildNodes(
-			commonElements.test
-		);
-		return Utils.is.arrayLike(
-			test
-		);
-	}
-
 	function childNodesTraversed()
 	{
-		var test = Utils.traverse.childNodes(
+		var test = Utils.traverse.nodes(
 			commonElements.test,
 			optimisticFilter
 		);
@@ -58,7 +37,7 @@ var global = global || this;
 
 	function children()
 	{
-		var test = Utils.traverse.getChildren(
+		var test = Utils.traverse.getElements(
 			commonElements.test
 		);
 		return Utils.is.arrayLike(
@@ -73,7 +52,7 @@ var global = global || this;
 
 	function childrenTraversed()
 	{
-		var test = Utils.traverse.children(
+		var test = Utils.traverse.elements(
 			commonElements.test,
 			pessimisticFilter
 		);
@@ -84,7 +63,7 @@ var global = global || this;
 
 	function treeCollected()
 	{
-		var test = Utils.traverse.getChildNodeTree(
+		var test = Utils.traverse.getNodeTree(
 			doc
 		);
 		return Utils.is.arrayLike(
@@ -94,7 +73,7 @@ var global = global || this;
 
 	function treeTraversed()
 	{
-		var test = Utils.traverse.childNodeTree(
+		var test = Utils.traverse.nodeTree(
 			doc,
 			optimisticFilter
 		);
@@ -127,11 +106,51 @@ var global = global || this;
 		);
 	}
 
+	function childrenTreeCollected()
+	{
+		var test = Utils.traverse.getElementTree(
+			doc
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function childrenTreeTraversed()
+	{
+		var test = Utils.traverse.elementTree(
+			doc,
+			optimisticFilter
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function ancestors()
+	{
+		var test = Utils.traverse.getAncestors(
+			commonElements.test
+		);
+		return Utils.is.nodeLike(
+			test.value
+		);
+	}
+
+	function ancestorsTraversed()
+	{
+		var test = Utils.traverse.ancestors(
+			commonElements.test,
+			optimisticFilter
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
 	function generateTests()
 	{
 		return [
-			ancestors,
-			ancestorsTraversed,
 			childNodes,
 			childNodesTraversed,
 			children,
@@ -139,7 +158,11 @@ var global = global || this;
 			treeCollected,
 			treeTraversed,
 			textCollected,
-			textOverridden
+			textOverridden,
+			childrenTreeCollected,
+			childrenTreeTraversed,
+			ancestors,
+			ancestorsTraversed
 		];
 	}
 

@@ -14,6 +14,7 @@ var Utils = Utils || {},
         [firstName.toLowerCase();]@fortybelow.ca
         http://www.fortybelow.ca
 */
+
 /*
         jslint sloppy: true,
         white: true, maxerr: 1, indent: 8
@@ -1004,37 +1005,9 @@ if (Utils) {
                 /*        END PUBLIC METHOD        */
 
 
-                /*        PUBLIC METHOD        */
-
-
-		function canGetOwnerDocument(
-			obj
-		)
-		{
-			/*
-                                Public method that returns a
-                                boolean asserting if a node-like
-                                object can "use" the
-                                `ownerDocument` property.
-			*/
-			var isNodeLike = Utils.is.nodeLike(obj),
-				result = false;
-			if (isNodeLike) {
-				result = Utils.is.document(
-					obj.ownerDocument
-				);
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
 		Utils.can = Utils.can || {
 			"getName": canGetName,
-			"getValue": canGetValue,
-			"getOwnerDocument": canGetOwnerDocument
+			"getValue": canGetValue
 		};
 	}());
 }
@@ -1979,6 +1952,7 @@ if (Utils) {
 
                 /*        END PUBLIC METHOD        */ 
 
+
 		function forkAddClass(
 			token,
 			obj
@@ -2741,228 +2715,6 @@ if (Utils) {
 		}
 
 
-                /*        PUBLIC METHOD        */
-
-
-		function getAncestorList(
-			obj
-		)
-		{
-			/*
-                                Public method that builds a linked
-                                list of ancestors from a node-like
-                                object to the top of the document
-                                tree (`document`); returns null if
-                                not applicable.
-
-                                Example result (`obj` is
-                                `document.body`):
-
-                                {
-                                        "parent": {
-                                                "parent": null,
-                                                "value": [`document`]
-                                        },
-                                        "value": [`documentElement`]
-                                }
-			*/
-			var isNodeLike = Utils.is.nodeLike(obj),
-				key = "parent",
-				result = null;
-			if (isNodeLike) {
-				if (obj.parentNode) {
-					result = {};
-					result.value = obj.parentNode;
-					result[key] = getAncestorList(
-						obj.parentNode
-					);
-				} else if (!obj.parentNode) {
-					result = null;
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		function listContainsNode(
-			list,
-			obj
-		)
-		{
-			/*
-                                Private method returning
-                                a boolean asserting a if a linked
-                                list (preferably created via
-                                `getAncestorList`) contains a
-                                node-like object.
-			*/
-			var isNodeLike = Utils.is.nodeLike(obj),
-				key = "parent",
-				result = false;
-			if (isNodeLike) {
-				while (list) {
-					if (list.value === obj) {
-						result = true;
-						break;
-					}
-					list = list[key];
-				}
-			}
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function isAncestor(
-			par,
-			obj
-		)
-		{
-			/*
-                                Public method returning a boolean
-                                asserting if a given node-like
-                                object is an ancestor of another
-                                node-like object (via
-                                `listContainsNode`.)
-			*/
-			var isNodeLike = Utils.is.nodeLike(obj),
-				list,
-				result = false;
-			if (isNodeLike) {
-				list = getAncestorList(obj);
-				result = listContainsNode(
-					list,
-					par
-				);
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-		function canTraverseList(
-			list
-		)
-		{
-			/*
-                                Private helper method for
-                                `traverseList`; returns a boolean
-                                asserting if a linked list can be
-                                traversed.
-			*/
-			var isObj = Utils.is.type(list, "object"),
-				hasVal,
-				result = false;
-			if (list && isObj) {
-				hasVal = Utils.is.type(
-					list.value,
-					"object"
-				);
-				result = hasVal;
-			}
-			return result;
-		}
-
-		function pushCallback(
-			obj,
-			callback,
-			result
-		)
-		{
-			/*
-                                Private helper method for `traverse*`
-                                methods; calls callback with
-                                a node-like object passed.
-			*/
-			var isCallback = Utils.is.type(
-					callback,
-					"function"
-				),
-				called;
-			if (isCallback) {
-				called = callback(obj);
-				if (called === true) {
-					result.push(obj);
-				} else if (called) {
-					result.push(called);
-				}
-			}
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function traverseList(
-			list,
-			callback
-		)
-		{
-			/*
-                                Public method that traverses a
-                                linked list, running a callback
-                                on each node in the list.
-			*/
-			var canUse = canTraverseList(list),
-				key = "parent",
-				result = [];
-			if (canUse) {
-				while (list) {
-					pushCallback(
-						list.value,
-						callback,
-						result
-					);
-					list = list[key];
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function traverseAncestors(
-			obj,
-			callback
-		)
-		{
-			/*
-                                Public method that traverses
-                                a node-like object's "ancestor
-                                list" (via `traverseLinkedList`).
-			*/
-			var isCallback = Utils.is.type(
-					callback,
-					"function"
-				),
-				list,
-				result = [];
-			if (isCallback) {
-				list = getAncestorList(obj);
-				result = traverseList(
-					list,
-					callback
-				);
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
 		function makeLinearArray(
 			obj
 		)
@@ -3395,7 +3147,7 @@ if (Utils) {
 			return result;
 		}
 
-		function addChildNodeTree(
+		function addTree(
 			tree,
 			obj,
 			par
@@ -3456,7 +3208,7 @@ if (Utils) {
 					tree = collectChildNodeTree(
 						obj.childNodes[index]
 					);
-					addChildNodeTree(
+					addTree(
 						tree,
 						obj.childNodes[index],
 						result
@@ -3477,7 +3229,7 @@ if (Utils) {
 		{
 			/*
                                 Public method that collects a
-                                static array of `childNodes` (via
+                                tree of `childNodes` (via
                                 `makeArray`) from a node-like object;
                                 returns `null` if not applicable.
 			*/
@@ -3504,7 +3256,7 @@ if (Utils) {
 		function handleRecursiveTree(
 			obj,
 			callback,
-			par
+			collection
 		)
 		{
 			/*
@@ -3515,51 +3267,10 @@ if (Utils) {
 			unshiftCallback(
 				obj,
 				callback,
-				par		
+				collection		
 			);
 			return result;
 		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function traverseRecursive(
-			obj,
-			callback,
-			result
-		)
-		{
-			/*
-                                Public recursive method that
-                                traverses an array-like object,
-                                running a callback on each item
-                                in the array-like object.
-			*/
-			var isArrayLike = Utils.is.arrayLike(obj),
-				index = -1;
-			result = result || [];
-			if (isArrayLike) {
-				index = obj.length - 1;
-				while (index > -1) {
-					traverseRecursive(
-						obj[index],
-						callback,
-						result
-					);
-					handleRecursiveTree(
-						obj[index],
-						callback,
-						result
-					);
-					index -= 1;
-				}
-			}
-			return result;
-		}
-
-
-                /*        END PUBLIC METHOD        */
 
 
                 /*        PUBLIC METHOD        */
@@ -3619,11 +3330,7 @@ if (Utils) {
 				nodes,
 				result = null;
 			if (isNodeLike) {
-				nodes = getChildNodeTree(
-					obj
-				);
-				nodes = traverseRecursive(
-					nodes,
+				nodes = traverseChildNodeTree(
 					filterTextData
 				);
 				result = nodes.join("");
@@ -3816,32 +3523,460 @@ if (Utils) {
 		}
 
 
+                /*        PUBLIC METHOD        */
+
+
+		function traverseRecursive(
+			obj,
+			callback,
+			result
+		)
+		{
+			/*
+                                Public recursive method that
+                                traverses an array-like object,
+                                running a callback on each item
+                                in the array-like object.
+			*/
+			var isArrayLike = Utils.is.arrayLike(obj),
+				index = -1;
+			result = result || [];
+			if (isArrayLike) {
+				index = obj.length - 1;
+				while (index > -1) {
+					traverseRecursive(
+						obj[index],
+						callback,
+						result
+					);
+					handleRecursiveTree(
+						obj[index],
+						callback,
+						result
+					);
+					index -= 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		function addRecursiveChild(
+			tree,
+			obj,
+			collection
+		)
+		{
+			/*
+                                Private helper method for
+                                `collectChildrenTree` that
+                                passes a node-like object
+                                for processing if it resembles
+                                an element node-like object.
+			*/
+			var isElement = Utils.is.element(obj),
+				result;
+			if (isElement) {
+				addTree(
+					tree,
+					obj,
+					collection
+				);
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function collectChildrenTree(
+			obj
+		)
+		{
+			/*
+                                Private recursive method
+                                that takes a node-like object and
+                                creates a tree from its "children
+                                tree"; returns `null` if not
+                                applicable.
+			*/
+			var hasNodes = canTraverse(obj),
+				index = -1,
+				tree,
+				result = [];
+			if (hasNodes) {
+				index = obj.childNodes.length - 1;
+				while (index > -1) {
+					tree = collectChildrenTree(
+						obj.childNodes[index]
+					);
+					addRecursiveChild(
+						tree,
+						obj.childNodes[index],
+						result
+					);
+					index -= 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getChildrenTree(
+			obj
+		)
+		{
+			/*
+                                Public method that collects a
+                                tree of `children` (via
+                                `makeArray`) from a node-like object;
+                                returns `null` if not applicable.
+			*/
+			var isNodeLike = Utils.is.nodeLike(obj),
+				isHostObject,
+				result = null;
+			if (isNodeLike) {
+				isHostObject = Utils.is.hostObject(
+					obj.childNodes
+				);
+				if (isHostObject) {
+					result = collectChildrenTree(
+						obj
+					);
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		function handleRecursiveChild(
+			obj,
+			callback,
+			collection
+		)
+		{
+			/*
+                                Private helper method for
+                                `traverseChildrenTree` that
+                                passes a node-like object
+                                for processing if it resembles
+                                an element node-like object.
+			*/
+			var isElement = Utils.is.element(obj),
+				result;
+			if (isElement) {
+				handleRecursiveTree(
+					obj,
+					callback,
+					collection
+				);
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function traverseChildrenTree(
+			obj,
+			callback,
+			result
+		)
+		{
+			/*
+                                Public method that traverses
+                                a node-like object's `children`
+                                tree.
+			*/
+			var hasNodes = canTraverse(obj),
+				index = -1;
+			result = result || [];
+			if (hasNodes) {
+				index = obj.childNodes.length - 1;
+				while (index > -1) {
+					traverseChildrenTree(
+						obj.childNodes[index],
+						callback,
+						result
+					);
+					handleRecursiveChild(
+						obj.childNodes[index],
+						callback,
+						result
+					);
+					index -= 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function getAncestorList(
+			obj
+		)
+		{
+			/*
+                                Public method that builds a linked
+                                list of ancestors from a node-like
+                                object to the top of the document
+                                tree (`document`); returns null if
+                                not applicable.
+
+                                Example result (`obj` is
+                                `document.body`):
+
+                                {
+                                        "parent": {
+                                                "parent": null,
+                                                "value": [`document`]
+                                        },
+                                        "value": [`documentElement`]
+                                }
+			*/
+			var isNodeLike = Utils.is.nodeLike(obj),
+				key = "parent",
+				result = null;
+			if (isNodeLike) {
+				if (obj.parentNode) {
+					result = {};
+					result.value = obj.parentNode;
+					result[key] = getAncestorList(
+						obj.parentNode
+					);
+				} else if (!obj.parentNode) {
+					result = null;
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		function listContainsNode(
+			list,
+			obj
+		)
+		{
+			/*
+                                Private method returning
+                                a boolean asserting a if a linked
+                                list (preferably created via
+                                `getAncestorList`) contains a
+                                node-like object.
+			*/
+			var isNodeLike = Utils.is.nodeLike(obj),
+				key = "parent",
+				result = false;
+			if (isNodeLike) {
+				while (list) {
+					if (list.value === obj) {
+						result = true;
+						break;
+					}
+					list = list[key];
+				}
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function isAncestor(
+			par,
+			obj
+		)
+		{
+			/*
+                                Public method returning a boolean
+                                asserting if a given node-like
+                                object is an ancestor of another
+                                node-like object (via
+                                `listContainsNode`.)
+			*/
+			var isNodeLike = Utils.is.nodeLike(obj),
+				list,
+				result = false;
+			if (isNodeLike) {
+				list = getAncestorList(obj);
+				result = listContainsNode(
+					list,
+					par
+				);
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+		function canTraverseList(
+			list
+		)
+		{
+			/*
+                                Private helper method for
+                                `traverseList`; returns a boolean
+                                asserting if a linked list can be
+                                traversed.
+			*/
+			var isObj = Utils.is.type(list, "object"),
+				hasVal,
+				result = false;
+			if (list && isObj) {
+				hasVal = Utils.is.type(
+					list.value,
+					"object"
+				);
+				result = hasVal;
+			}
+			return result;
+		}
+
+		function pushCallback(
+			obj,
+			callback,
+			result
+		)
+		{
+			/*
+                                Private helper method for `traverse*`
+                                methods; calls callback with
+                                a node-like object passed.
+			*/
+			var isCallback = Utils.is.type(
+					callback,
+					"function"
+				),
+				called;
+			if (isCallback) {
+				called = callback(obj);
+				if (called === true) {
+					result.push(obj);
+				} else if (called) {
+					result.push(called);
+				}
+			}
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function traverseList(
+			list,
+			callback
+		)
+		{
+			/*
+                                Public method that traverses a
+                                linked list, running a callback
+                                on each node in the list.
+			*/
+			var canUse = canTraverseList(list),
+				key = "parent",
+				result = [];
+			if (canUse) {
+				while (list) {
+					pushCallback(
+						list.value,
+						callback,
+						result
+					);
+					list = list[key];
+				}
+			}
+			return result;
+		}
+
+
+                /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function traverseAncestors(
+			obj,
+			callback
+		)
+		{
+			/*
+                                Public method that traverses
+                                a node-like object's "ancestor
+                                list" (via `traverseLinkedList`).
+			*/
+			var isCallback = Utils.is.type(
+					callback,
+					"function"
+				),
+				list,
+				result = [];
+			if (isCallback) {
+				list = getAncestorList(obj);
+				result = traverseList(
+					list,
+					callback
+				);
+			}
+			return result;
+		}
+
+
                 /*        END PUBLIC METHOD        */
 
 
 		Utils.traverse = Utils.traverse || {
+			"getNodes": getChildNodes,
+
+			"linear": traverseLinear,
+			"nodes": traverseChildNodes,
+			"clearNodes": clearChildNodes,
+
+			"getElements": getChildren,
+			"elements": traverseChildren,
+			"clearElements": clearChildren,
+
+			"getNodeTree": getChildNodeTree,
+
+			"nodeTree": traverseChildNodeTree,
+
+			"getText": getText,
+			"setText": setText,
+
+			"recursive": traverseRecursive,
+
+			"getElementTree": getChildrenTree,
+			"elementTree": traverseChildrenTree,
+
 			"getAncestors": getAncestorList,
 			"isAncestor": isAncestor,
 			"list": traverseList,
-			"ancestors": traverseAncestors,
-
-			"getChildNodes": getChildNodes,
-
-			"linear": traverseLinear,
-			"childNodes": traverseChildNodes,
-			"clearChildNodes": clearChildNodes,
-
-			"getChildren": getChildren,
-			"children": traverseChildren,
-			"clearChildren": clearChildren,
-
-			"getChildNodeTree": getChildNodeTree,
-
-			"recursive": traverseRecursive,
-			"childNodeTree": traverseChildNodeTree,
-
-			"getText": getText,
-			"setText": setText
+			"ancestors": traverseAncestors
 		};
 	}());
 }
@@ -3909,8 +4044,8 @@ if (Utils) {
 		)
 		{
 			/*
-				Private wrapper for
-				`Utils.helpers.makeLinearArray`.
+                                Private wrapper for
+                                `Utils.helpers.makeLinearArray`.
 			*/
 			return Utils.helpers.makeLinearArray(obj);
 		}

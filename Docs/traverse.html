@@ -70,6 +70,545 @@
 			</div>
 		</div>
 		<ul class="doc_row row">
+			<li class="cell doc_cell doc_entry" id="get_nodes">
+				<h3 class="heading">
+					<a href="#get_nodes"
+						title="Utils.traverse.getNodes"><code>Utils.traverse.getNodes</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>getNodes</code>
+					</dt>
+					<dd>
+						Method that traverses a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						child nodes and collects them in a static array.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="linear">
+				<h3 class="heading">
+					<a href="#linear"
+						title="Utils.traverse.linear"><code>Utils.traverse.linear</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj, callback) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>linear</code>
+					</dt>
+					<dd>
+						Method that traverses an 
+						<a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>,
+						calling a callback on each item.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						An <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>.
+					</dd>
+					<dt>
+						<var>callback</var>
+					</dt>
+					<dd>
+						A function to be used as a callback.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="nodes">
+				<h3 class="heading">
+					<a href="#nodes"
+						title="Utils.traverse.nodes"><code>Utils.traverse.nodes</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj, callback) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>nodes</code>
+					</dt>
+					<dd>
+						Method that traverses a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						child nodes and calls a callback with the
+						current node passed.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>callback</var>
+					</dt>
+					<dd>
+						A function to be used as a callback.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="clear_nodes">
+				<h3 class="heading">
+					<a href="#clear_nodes"
+						title="Utils.traverse.clearNodes"><code>Utils.traverse.clearNodes</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>clearNodes</code>
+					</dt>
+					<dd>
+						Method that traverses a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						child nodes and removes them.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="get_elements">
+				<h3 class="heading">
+					<a href="#get_elements"
+						title="Utils.traverse.getElements"><code>Utils.traverse.getElements</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>getElements</code>
+					</dt>
+					<dd>
+						Method that traverses a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						"children" and collects them in a static
+						array.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>callback</var>
+					</dt>
+					<dd>
+						A function to be used as a callback.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="elements">
+				<h3 class="heading">
+					<a href="#elements"
+						title="Utils.traverse.elements"><code>Utils.traverse.elements</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj, callback) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>elements</code>
+					</dt>
+					<dd>
+						Method that traverses a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						"children" and calls a callback with the
+						current node passed.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>callback</var>
+					</dt>
+					<dd>
+						A function to be used as a callback.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="clear_elements">
+				<h3 class="heading">
+					<a href="#clear_elements"
+						title="Utils.traverse.clearElements"><code>Utils.traverse.clearElements</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>clearElements</code>
+					</dt>
+					<dd>
+						Method that traverses a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						"children" and removes them.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="get_node_tree">
+				<h3 class="heading">
+					<a href="#get_node_tree"
+						title="Utils.traverse.getNodeTree"><code>Utils.traverse.getNodeTree</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>getNodeTree</code>
+					</dt>
+					<dd>
+						Method that recursively traverses a
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						<code>childNodes</code> tree, collecting each
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						in the <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="node_tree">
+				<h3 class="heading">
+					<a href="#node_tree"
+						title="Utils.traverse.nodeTree"><code>Utils.traverse.nodeTree</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj, callback, result) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>nodeTree</code>
+					</dt>
+					<dd>
+						Method that traverses a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						<code>childNodes</code> tree, calling a callback on
+						each <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						in the <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						An <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>.
+					</dd>
+					<dt>
+						<var>callback</var>
+					</dt>
+					<dd>
+						A function to be used as a callback.
+					</dd>
+					<dt>
+						<var>result</var>
+					</dt>
+					<dd>
+						An optional parameter used to override
+						the initial return value (<code>[]</code>);
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="get_text">
+				<h3 class="heading">
+					<a href="#get_text"
+						title="Utils.traverse.getText"><code>Utils.traverse.getText</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>getText</code>
+					</dt>
+					<dd>
+						Method that collects text node data
+						from a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						<code>childNodes</code> tree and returns the concatenated data.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>String || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="set_text">
+				<h3 class="heading">
+					<a href="#set_text"
+						title="Utils.traverse.setText"><code>Utils.traverse.setText</code></a>
+				</h3>
+				<p class="doc_art function_head">function (text, obj, doc) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>setText</code>
+					</dt>
+					<dd>
+						Method that clears a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						<code>childNodes</code> tree and replaces it with a
+						text node containing the string provided.
+					</dd>
+					<dt>
+						<var>text</var>
+					</dt>
+					<dd>
+						A string that will be provided to a
+						text node, which will in turn replace
+						a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						<code>childNodes</code> tree.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>String || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="recursive">
+				<h3 class="heading">
+					<a href="#recursive"
+						title="Utils.traverse.recursive"><code>Utils.traverse.recursive</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj, callback, result) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>recursive</code>
+					</dt>
+					<dd>
+						Method that recursively traverses an
+						<a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>,
+						calling a callback on each item.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						An <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>.
+					</dd>
+					<dt>
+						<var>callback</var>
+					</dt>
+					<dd>
+						A function to be used as a callback.
+					</dd>
+					<dt>
+						<var>result</var>
+					</dt>
+					<dd>
+						An optional parameter used to override
+						the initial return value (<code>[]</code>);
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="get_element_tree">
+				<h3 class="heading">
+					<a href="#get_element_tree"
+						title="Utils.traverse.getElementTree"><code>Utils.traverse.getElementTree</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>getElementTree</code>
+					</dt>
+					<dd>
+						Method that recursively traverses a
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						child node tree, collecting each element
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						in the <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="element_tree">
+				<h3 class="heading">
+					<a href="#element_tree"
+						title="Utils.traverse.elementTree"><code>Utils.traverse.elementTree</code></a>
+				</h3>
+				<p class="doc_art function_head">function (obj, callback, result) {</p>
+				<dl class="doc_list">
+					<dt>
+						<code>elementTree</code>
+					</dt>
+					<dd>
+						Method that traverses a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						child node tree, calling a callback on
+						each element <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						in the <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						An <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>.
+					</dd>
+					<dt>
+						<var>callback</var>
+					</dt>
+					<dd>
+						A function to be used as a callback.
+					</dd>
+					<dt>
+						<var>result</var>
+					</dt>
+					<dd>
+						An optional parameter used to override
+						the initial return value (<code>[]</code>);
+					</dd>
+					<dt>
+						<code>return result;</code>
+					</dt>
+					<dd>
+						<code>Array</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
 			<li class="cell doc_cell doc_entry" id="get_ancestors">
 				<h3 class="heading">
 					<a href="#get_ancestors"
@@ -214,455 +753,6 @@
 					</dt>
 					<dd>
 						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="get_child_nodes">
-				<h3 class="heading">
-					<a href="#get_child_nodes"
-						title="Utils.traverse.getChildNodes"><code>Utils.traverse.getChildNodes</code></a>
-				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>getChildNodes</code>
-					</dt>
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						child nodes and collects them in a static array.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="linear">
-				<h3 class="heading">
-					<a href="#linear"
-						title="Utils.traverse.linear"><code>Utils.traverse.linear</code></a>
-				</h3>
-				<p class="doc_art function_head">function (obj, callback) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>linear</code>
-					</dt>
-					<dd>
-						Method that traverses an 
-						<a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>,
-						calling a callback on each item.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						An <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="child_nodes">
-				<h3 class="heading">
-					<a href="#child_nodes"
-						title="Utils.traverse.childNodes"><code>Utils.traverse.childNodes</code></a>
-				</h3>
-				<p class="doc_art function_head">function (obj, callback) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>childNodes</code>
-					</dt>
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						child nodes and calls a callback with the
-						current node passed.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="clear_child_nodes">
-				<h3 class="heading">
-					<a href="#clear_child_nodes"
-						title="Utils.traverse.clearChildNodes"><code>Utils.traverse.clearChildNodes</code></a>
-				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>clearChildNodes</code>
-					</dt>
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						child nodes and removes them.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="get_children">
-				<h3 class="heading">
-					<a href="#get_children"
-						title="Utils.traverse.getChildren"><code>Utils.traverse.getChildren</code></a>
-				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>getChildren</code>
-					</dt>
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						"children" and collects them in a static
-						array.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="children">
-				<h3 class="heading">
-					<a href="#children"
-						title="Utils.traverse.children"><code>Utils.traverse.children</code></a>
-				</h3>
-				<p class="doc_art function_head">function (obj, callback) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>children</code>
-					</dt>
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						"children" and calls a callback with the
-						current node passed.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="clear_children">
-				<h3 class="heading">
-					<a href="#clear_children"
-						title="Utils.traverse.clearChildren"><code>Utils.traverse.clearChildren</code></a>
-				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>clearChildren</code>
-					</dt>
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						"children" and removes them.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="get_child_node_tree">
-				<h3 class="heading">
-					<a href="#get_child_node_tree"
-						title="Utils.traverse.getChildNodeTree"><code>Utils.traverse.getChildNodeTree</code></a>
-				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>getChildNodeTree</code>
-					</dt>
-					<dd>
-						Method that recursively traverses a
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						child nodes and collects them in a static array.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="recursive">
-				<h3 class="heading">
-					<a href="#recursive"
-						title="Utils.traverse.recursive"><code>Utils.traverse.recursive</code></a>
-				</h3>
-				<p class="doc_art function_head">function (obj, callback, result) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>recursive</code>
-					</dt>
-					<dd>
-						Method that recursively traverses an
-						<a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>,
-						calling a callback on each item.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						An <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					<dt>
-						<var>result</var>
-					</dt>
-					<dd>
-						An optional parameter used to override
-						the initial return value (<code>[]</code>);
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="child_node_tree">
-				<h3 class="heading">
-					<a href="#child_node_tree"
-						title="Utils.traverse.childNodeTree"><code>Utils.traverse.childNodeTree</code></a>
-				</h3>
-				<p class="doc_art function_head">function (obj, callback, result) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>childNodeTree</code>
-					</dt>
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						child node tree, calling a callback on
-						each item in the <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						An <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					<dt>
-						<var>result</var>
-					</dt>
-					<dd>
-						An optional parameter used to override
-						the initial return value (<code>[]</code>);
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="get_text">
-				<h3 class="heading">
-					<a href="#get_text"
-						title="Utils.traverse.getText"><code>Utils.traverse.getText</code></a>
-				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>getText</code>
-					</dt>
-					<dd>
-						Method that collects text node data
-						from a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						child node tree and returns the concatenated data.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>String || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry" id="set_text">
-				<h3 class="heading">
-					<a href="#set_text"
-						title="Utils.traverse.setText"><code>Utils.traverse.setText</code></a>
-				</h3>
-				<p class="doc_art function_head">function (text, obj, doc) {</p>
-				<dl class="doc_list">
-					<dt>
-						<code>setText</code>
-					</dt>
-					<dd>
-						Method that clears a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						child node tree and replaces it with a
-						text node containing the string provided.
-					</dd>
-					<dt>
-						<var>text</var>
-					</dt>
-					<dd>
-						A string that will be provided to a
-						text node, which will in turn replace
-						a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						child node tree.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					<dd>
-						<code>String || null</code>
 					</dd>
 				</dl>
 				<p class="doc_art function_tail">}</p>
