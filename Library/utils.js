@@ -2,6 +2,7 @@ var Utils = Utils || {},
 	global = this;
 /*
         Matt's DOM Utils
+        http://www.fortybelow.ca/projects/JavaScript/Utils/
 
         Description:
 

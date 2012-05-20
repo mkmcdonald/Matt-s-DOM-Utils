@@ -85,7 +85,6 @@ if (Utils) {
 				key = "getElementsByName",
 				canUse,
 				result = null;
-			name = String(name);
 			if (isDoc) {
 				canUse = Utils.is.hostObject(
 					doc[key]
@@ -123,7 +122,6 @@ if (Utils) {
 				key = "getElementsByTagName",
 				canUse,
 				result = null;
-			tag = String(tag);
 			if (isDoc || isElement) {
 				canUse = Utils.is.hostObject(
 					caller[key]
@@ -162,8 +160,6 @@ if (Utils) {
 				key = "getElementsByTagNameNS",
 				canUse,
 				result = null;
-			local = String(local);
-			ns = String(ns);
 			if (isDoc || isElement) {
 				canUse = Utils.is.hostObject(
 					caller[key]
@@ -201,7 +197,6 @@ if (Utils) {
 				key = "getElementsByClassName",
 				canUse,
 				result = null;
-			names = String(names);
 			if (isDoc || isElement) {
 				canUse = Utils.is.hostObject(
 					caller[key]
@@ -236,7 +231,6 @@ if (Utils) {
 				key = "getElementById",
 				canUse,
 				result = null;
-			id = String(id);
 			if (isDoc) {
 				canUse = Utils.is.hostObject(
 					doc[key]
@@ -271,7 +265,6 @@ if (Utils) {
 				key = "querySelector",
 				canUse,
 				result = null;
-			selectors = String(selectors);
 			if (canCall) {
 				canUse = Utils.is.hostObject(
 					caller[key]
@@ -308,7 +301,6 @@ if (Utils) {
 				key = "querySelectorAll",
 				canUse,
 				result = null;
-			selectors = String(selectors);
 			if (canCall) {
 				canUse = Utils.is.hostObject(
 					caller[key]
@@ -471,7 +463,6 @@ if (Utils) {
 			var isDoc = Utils.is.document(doc),
 				canUse,
 				result = null;
-			key = String(key);
 			if (isDoc) {
 				canUse = Utils.is.hostObject(
 					doc[key]
@@ -502,8 +493,6 @@ if (Utils) {
 			var isDoc = Utils.is.document(doc),
 				canUse,
 				result = null;
-			key = String(key);
-			name = String(name);
 			if (isDoc) {
 				canUse = Utils.is.hostObject(
 					doc[key]

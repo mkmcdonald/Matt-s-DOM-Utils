@@ -2,6 +2,7 @@ var Utils = Utils || {},
 	global = this;
 /*
         Matt's DOM Utils
+        http://www.fortybelow.ca/projects/JavaScript/Utils/
 
         Description:
 
@@ -551,7 +552,6 @@ if (Utils) {
                                 returns `type` from a typeof`
                                 check.
 			*/
-			type = String(type);
 			return typeof val === type;
 		}
 
@@ -660,7 +660,6 @@ if (Utils) {
 			*/
 			var valid = isNodeLike(obj),
 				result = false;
-			type = Number(type);
 			if (valid) {
 				result = obj.nodeType === type;
 			}
@@ -1322,7 +1321,6 @@ if (Utils) {
 				key = "createElement",
 				isHostObject,
 				result = null;
-			tag = String(tag);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1359,8 +1357,6 @@ if (Utils) {
 				key = "createElementNS",
 				isHostObject,
 				result = null;
-			ns = String(ns);
-			tag = String(tag);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1397,7 +1393,6 @@ if (Utils) {
 				key = "createTextNode",
 				isHostObject,
 				result = null;
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1434,8 +1429,6 @@ if (Utils) {
 				key = "createProcessingInstruction",
 				isHostObject,
 				result = null;
-			target = String(target);
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1472,7 +1465,6 @@ if (Utils) {
 				key = "createComment",
 				isHostObject,
 				result = null;
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -2331,15 +2323,14 @@ if (Utils) {
                                 Private helper method for
                                 `setText` that overrides
                                 existing `childNodes` with a
-                                text node-like object; returns
-                                `null` if not applicable. For more,
+                                text node-like object. For more,
                                 see `setText`.
 			*/
 			var isNodeLike = Utils.is.nodeLike(obj),
 				isDoc = Utils.is.document(doc),
 				textNode,
 				result = null;
-			text = String(text);
+			text = text || "";
 			if (isNodeLike && isDoc) {
 				textNode = Utils.create.text(
 					doc,
@@ -2350,7 +2341,9 @@ if (Utils) {
 					obj,
 					textNode
 				);
-				result = text;
+				result = Utils.node.value(
+					textNode
+				);
 			}
 			return result;
 		}
@@ -2364,16 +2357,14 @@ if (Utils) {
                                 Private helper method for
                                 `setText` that replaces
                                 the `nodeValue` property of a
-                                node-like object with `text`;
-                                returns `null` if not
-                                applicable. For more, see
-                                `setText`.
+                                node-like object with `text` For
+                                more, see `setText`.
 			*/
 			var canGetValue = Utils.can.getValue(
 					obj
 				),
 				result = null;
-			text = String(text);
+			text = text || "";
 			if (canGetValue) {
 				obj.nodeValue = text;
 				result = obj.nodeValue;
@@ -2417,8 +2408,7 @@ if (Utils) {
                                 Public method that either
                                 sets the `nodeValue` property of
                                 a text node-like object or the
-                                descendants of a node-like object;
-                                returns `null` if not applicable.
+                                descendants of a node-like object.
                                 See the DOM 4 Spec section 5.3
                                 (`Node::textContent`, setting)
                                 for more.
@@ -2783,7 +2773,7 @@ if (Utils) {
 		function pushCallback(
 			obj,
 			callback,
-			result
+			collection
 		)
 		{
 			/*
@@ -2799,9 +2789,9 @@ if (Utils) {
 			if (isCallback) {
 				called = callback(obj);
 				if (called === true) {
-					result.push(obj);
+					collection.push(obj);
 				} else if (called) {
-					result.push(called);
+					collection.push(called);
 				}
 			}
 		}

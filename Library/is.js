@@ -30,7 +30,6 @@ if (Utils) {
                                 returns `type` from a typeof`
                                 check.
 			*/
-			type = String(type);
 			return typeof val === type;
 		}
 
@@ -139,7 +138,6 @@ if (Utils) {
 			*/
 			var valid = isNodeLike(obj),
 				result = false;
-			type = Number(type);
 			if (valid) {
 				result = obj.nodeType === type;
 			}

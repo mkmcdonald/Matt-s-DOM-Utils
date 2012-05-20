@@ -33,7 +33,6 @@ if (Utils) {
 				key = "createElement",
 				isHostObject,
 				result = null;
-			tag = String(tag);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -70,8 +69,6 @@ if (Utils) {
 				key = "createElementNS",
 				isHostObject,
 				result = null;
-			ns = String(ns);
-			tag = String(tag);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -108,7 +105,6 @@ if (Utils) {
 				key = "createTextNode",
 				isHostObject,
 				result = null;
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -145,8 +141,6 @@ if (Utils) {
 				key = "createProcessingInstruction",
 				isHostObject,
 				result = null;
-			target = String(target);
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -183,7 +177,6 @@ if (Utils) {
 				key = "createComment",
 				isHostObject,
 				result = null;
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]

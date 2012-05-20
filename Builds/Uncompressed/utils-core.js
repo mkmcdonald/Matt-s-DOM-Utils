@@ -2,6 +2,7 @@ var Utils = Utils || {},
 	global = this;
 /*
         Matt's DOM Utils
+        http://www.fortybelow.ca/projects/JavaScript/Utils/
 
         Description:
 
@@ -551,7 +552,6 @@ if (Utils) {
                                 returns `type` from a typeof`
                                 check.
 			*/
-			type = String(type);
 			return typeof val === type;
 		}
 
@@ -660,7 +660,6 @@ if (Utils) {
 			*/
 			var valid = isNodeLike(obj),
 				result = false;
-			type = Number(type);
 			if (valid) {
 				result = obj.nodeType === type;
 			}
@@ -1322,7 +1321,6 @@ if (Utils) {
 				key = "createElement",
 				isHostObject,
 				result = null;
-			tag = String(tag);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1359,8 +1357,6 @@ if (Utils) {
 				key = "createElementNS",
 				isHostObject,
 				result = null;
-			ns = String(ns);
-			tag = String(tag);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1397,7 +1393,6 @@ if (Utils) {
 				key = "createTextNode",
 				isHostObject,
 				result = null;
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1434,8 +1429,6 @@ if (Utils) {
 				key = "createProcessingInstruction",
 				isHostObject,
 				result = null;
-			target = String(target);
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1472,7 +1465,6 @@ if (Utils) {
 				key = "createComment",
 				isHostObject,
 				result = null;
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]

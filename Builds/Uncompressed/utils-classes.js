@@ -2,6 +2,7 @@ var Utils = Utils || {},
 	global = this;
 /*
         Matt's DOM Utils
+        http://www.fortybelow.ca/projects/JavaScript/Utils/
 
         Description:
 
@@ -551,7 +552,6 @@ if (Utils) {
                                 returns `type` from a typeof`
                                 check.
 			*/
-			type = String(type);
 			return typeof val === type;
 		}
 
@@ -660,7 +660,6 @@ if (Utils) {
 			*/
 			var valid = isNodeLike(obj),
 				result = false;
-			type = Number(type);
 			if (valid) {
 				result = obj.nodeType === type;
 			}
@@ -1322,7 +1321,6 @@ if (Utils) {
 				key = "createElement",
 				isHostObject,
 				result = null;
-			tag = String(tag);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1359,8 +1357,6 @@ if (Utils) {
 				key = "createElementNS",
 				isHostObject,
 				result = null;
-			ns = String(ns);
-			tag = String(tag);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1397,7 +1393,6 @@ if (Utils) {
 				key = "createTextNode",
 				isHostObject,
 				result = null;
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1434,8 +1429,6 @@ if (Utils) {
 				key = "createProcessingInstruction",
 				isHostObject,
 				result = null;
-			target = String(target);
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1472,7 +1465,6 @@ if (Utils) {
 				key = "createComment",
 				isHostObject,
 				result = null;
-			text = String(text);
 			if (isDocument) {
 				isHostObject = Utils.is.hostObject(
 					doc[key]
@@ -1627,7 +1619,6 @@ if (Utils) {
 					obj.classList[key]
 				),
 				result = false;
-			token = String(token);
 			if (canUseHas) {
 				result = obj.classList[key](
 					token
@@ -1652,7 +1643,6 @@ if (Utils) {
 			var invalidChar,
 				isGood,
 				result = false;
-			chr = String(chr);
 			invalidChar = INVALID_CHARS[chr];
 			isGood = Utils.is.type(
 				invalidChar,
@@ -1684,12 +1674,13 @@ if (Utils) {
 				max,
 				chr,
 				result = true;
-			token = String(token);
-			max = token.length;
-			while (index < max) {
-				chr = token.charAt(index);
-				result = checkCharacter(chr);
-				index += 1;
+			if (token && token.length) {
+				max = token.length;
+				while (index < max) {
+					chr = token.charAt(index);
+					result = checkCharacter(chr);
+					index += 1;
+				}
 			}
 			return result;
 		}
@@ -1706,7 +1697,6 @@ if (Utils) {
                                 was successful.
 			*/
 			var result = true;
-			token = String(token);
 			list.push(token);
 			return result;
 		}
@@ -1751,16 +1741,17 @@ if (Utils) {
 				sequence = "",
 				chr,
 				result = [];
-			chars = String(chars);
-			max = chars.length + 1;
-			while (index < max) {
-				chr = chars.charAt(index);
-				sequence = handleCharacter(
-					chr,
-					sequence,
-					result
-				);
-				index += 1;
+			if (chars && chars.length) {
+				max = chars.length + 1;
+				while (index < max) {
+					chr = chars.charAt(index);
+					sequence = handleCharacter(
+						chr,
+						sequence,
+						result
+					);
+					index += 1;
+				}
 			}
 			return result;
 		}
@@ -1800,7 +1791,6 @@ if (Utils) {
 				max,
 				token,
 				result = false;
-			find = String(find);
 			max = list.length;
 			while (index < max) {
 				token = list[index];
@@ -1826,7 +1816,6 @@ if (Utils) {
 			*/
 			var validToken,
 				result = false;
-			token = String(token);
 			validToken = checkToken(token);
 			if (validToken) {
 				result = findToken(
@@ -1967,7 +1956,6 @@ if (Utils) {
 					obj.classList.add
 				),
 				result = false;
-			token = String(token);
 			if (canUseAdd) {
 				result = obj.classList.add(
 					token
@@ -2011,7 +1999,6 @@ if (Utils) {
 			*/
 			var validToken,
 				result = false;
-			token = String(token);
 			validToken = checkToken(token);
 			if (validToken) {
 				result = attemptClassAddition(
@@ -2056,7 +2043,6 @@ if (Utils) {
 			*/
 			var list = buildClassList(obj),
 				result;
-			token = String(token);
 			classAdditionCheck(
 				token,
 				obj,
@@ -2178,7 +2164,6 @@ if (Utils) {
 					obj.classList[key]
 				),
 				result = false;
-			token = String(token);
 			if (canUseRemove) {
 				result = obj.classList[key](
 					token
@@ -2249,7 +2234,6 @@ if (Utils) {
 			*/
 			var validToken,
 				result = false;
-			token = String(token);
 			validToken = checkToken(token);
 			if (validToken) {
 				result = attemptClassRemoval(
@@ -2276,7 +2260,6 @@ if (Utils) {
 			var list = buildClassList(obj),
 				validToken,
 				result;
-			token = String(token);
 			validToken = checkToken(token);
 			if (validToken) {
 				classRemovalCheck(
@@ -2400,7 +2383,6 @@ if (Utils) {
 					obj.classList[key]
 				),
 				result = false;
-			token = String(token);
 			if (canUseToggle) {
 				result = obj.classList[key](
 					token
@@ -2550,7 +2532,6 @@ if (Utils) {
 				Utils.is.element(obj),
 				tokens,
 				result = null;
-			index = Number(index);
 			if (isElement) {
 				tokens = buildClassList(obj);
 				if (index >= 0 && 
