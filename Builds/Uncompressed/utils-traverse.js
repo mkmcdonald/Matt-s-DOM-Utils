@@ -17,13 +17,14 @@ var Utils = Utils || {},
 */
 
 /*
-        jslint sloppy: true,
-        white: true, maxerr: 1, indent: 8
+        jslint sloppy: true, white: true, maxerr: 1,
+        indent: 8
 */
 
 /*
-        jshint forin:true, noarg:true, noempty:true, eqeqeq:true,
-        bitwise:true, undef:true, curly:true, indent:4, maxerr:50
+        jshint forin: true, noarg: true, noempty: true,
+        eqeqeq: true, bitwise: true, undef: true, curly: true,
+        indent: 8, maxerr: 1
 */
 
 if (Utils) {
@@ -1070,6 +1071,44 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
+		function insertListBefore(
+			par,
+			list,
+			refObj
+		)
+		{
+			/*
+                                Public method that takes an
+                                array-like object and passes
+                                each element to `insertBefore`.
+			*/
+			var isArrayLike = Utils.is.arrayLike(
+				list
+			),
+				index = 0,
+				max,
+				result;
+			if (isArrayLike) {
+				max = list.length;
+				while (index < max) {
+					insertBefore(
+						par,
+						list[index],
+						refObj
+					);
+					index += 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+                /*        END PUBLIC METHOD        */
+
+
 		function appendChild(
 			par,
 			obj
@@ -1101,6 +1140,42 @@ if (Utils) {
 
 
                 /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function appendList(
+			par,
+			list
+		)
+		{
+			/*
+                                Public method that takes an
+                                array-like object and passes
+                                each element to `appendChild`.
+			*/
+			var isArrayLike = Utils.is.arrayLike(
+				list
+			),
+				index = 0,
+				max,
+				result;
+			if (isArrayLike) {
+				max = list.length;
+				while (index < max) {
+					appendChild(
+						par,
+						list[index]
+					);
+					index += 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
 
 
                 /*        PUBLIC METHOD        */
@@ -1276,7 +1351,9 @@ if (Utils) {
 
 		Utils.node = Utils.node || {
 			"prepend": insertBefore,
+			"prependList": insertListBefore,
 			"append": appendChild,
+			"appendList": appendList,
 			"remove": removeChild,
 			"replace": replaceChild,
 			"clone": cloneNode,
@@ -1285,7 +1362,6 @@ if (Utils) {
 		};
 	}());
 }
-
 if (Utils) {
 	(function () {
 

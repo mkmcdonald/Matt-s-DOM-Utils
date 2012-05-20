@@ -32,6 +32,42 @@ var global = global || this;
 		);
 	}
 
+	function generateList(
+		num
+	)
+	{
+		var index = num - 1,
+			list = [];
+		while (index > -1) {
+			list[index] = Utils.create.element(
+				doc,
+				"li"
+			);
+			list.length += 1;
+			index -= 1;
+		}
+		return list;
+	}
+
+	function generatePrependList()
+	{
+		return generateList(3);
+	}
+
+	function insertBeforeList()
+	{
+		var list = generatePrependList(),
+			test = Utils.node.prependList(
+				commonElements.test,
+				list,
+				commonElements.test.lastChild
+			);
+		return Utils.is.type(
+			test,
+			"undefined"
+		);
+	}
+
 	function appendChild()
 	{
 		var node = Utils.create.element(
@@ -44,6 +80,24 @@ var global = global || this;
 			);
 		return Utils.is.nodeLike(
 			test
+		);
+	}
+
+	function generateAppendList()
+	{
+		return generateList(3);
+	}
+
+	function appendList()
+	{
+		var list = generateAppendList(),
+			test = Utils.node.appendList(
+				commonElements.test,
+				list
+			);
+		return Utils.is.type(
+			test,
+			"undefined"
 		);
 	}
 
@@ -97,7 +151,9 @@ var global = global || this;
 	{
 		return [
 			insertBefore,
+			insertBeforeList,
 			appendChild,
+			appendList,
 			removeChild,
 			replaceChild,
 			cloneNode

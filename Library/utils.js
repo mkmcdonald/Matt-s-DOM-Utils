@@ -17,12 +17,13 @@ var Utils = Utils || {},
 */
 
 /*
-        jslint sloppy: true,
-        white: true, maxerr: 1, indent: 8
+        jslint sloppy: true, white: true, maxerr: 1,
+        indent: 8
 */
 
 /*
-        jshint forin:true, noarg:true, noempty:true, eqeqeq:true,
-        bitwise:true, undef:true, curly:true, indent:4, maxerr:50
+        jshint forin: true, noarg: true, noempty: true,
+        eqeqeq: true, bitwise: true, undef: true, curly: true,
+        indent: 8, maxerr: 1
 */
 

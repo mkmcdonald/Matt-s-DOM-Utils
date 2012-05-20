@@ -57,6 +57,44 @@ if (Utils) {
                 /*        PUBLIC METHOD        */
 
 
+		function insertListBefore(
+			par,
+			list,
+			refObj
+		)
+		{
+			/*
+                                Public method that takes an
+                                array-like object and passes
+                                each element to `insertBefore`.
+			*/
+			var isArrayLike = Utils.is.arrayLike(
+				list
+			),
+				index = 0,
+				max,
+				result;
+			if (isArrayLike) {
+				max = list.length;
+				while (index < max) {
+					insertBefore(
+						par,
+						list[index],
+						refObj
+					);
+					index += 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
+
+
+                /*        END PUBLIC METHOD        */
+
+
 		function appendChild(
 			par,
 			obj
@@ -88,6 +126,42 @@ if (Utils) {
 
 
                 /*        END PUBLIC METHOD        */
+
+
+                /*        PUBLIC METHOD        */
+
+
+		function appendList(
+			par,
+			list
+		)
+		{
+			/*
+                                Public method that takes an
+                                array-like object and passes
+                                each element to `appendChild`.
+			*/
+			var isArrayLike = Utils.is.arrayLike(
+				list
+			),
+				index = 0,
+				max,
+				result;
+			if (isArrayLike) {
+				max = list.length;
+				while (index < max) {
+					appendChild(
+						par,
+						list[index]
+					);
+					index += 1;
+				}
+			}
+			return result;
+		}
+
+
+                /*        PUBLIC METHOD        */
 
 
                 /*        PUBLIC METHOD        */
@@ -263,7 +337,9 @@ if (Utils) {
 
 		Utils.node = Utils.node || {
 			"prepend": insertBefore,
+			"prependList": insertListBefore,
 			"append": appendChild,
+			"appendList": appendList,
 			"remove": removeChild,
 			"replace": replaceChild,
 			"clone": cloneNode,
@@ -272,4 +348,3 @@ if (Utils) {
 		};
 	}());
 }
-
