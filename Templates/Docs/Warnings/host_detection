@@ -1,0 +1,6 @@
+				<p class="warning">
+					Warning: this property will return <code>null</code>
+					if the host environment is detected to be unsuitable;
+					an <code>if</code> block or a similar construct should
+					be used for detection. An example follows.
+				</p>

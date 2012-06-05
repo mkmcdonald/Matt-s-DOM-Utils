@@ -7,14 +7,14 @@
 			content="initial-scale=1.0">
 		<meta name="Author"
 			content="Matt McDonald">
-		<title>Matt's DOM Utils (Utils): Documentation—Utils.is</title>
-		<link href="../Assets/Images/favicon.ico"
-			media="all" rel="icon prefetch">
+		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.is</title>
 		<link href="../Assets/CSS/style-main.css"
 			media="all" rel="stylesheet"
 			type="text/css">
-		<link href="helpers.html" hreflang="en" media="all"
-			rel="prev" title="Utils.helpers"
+		<link href="../favicon.ico"
+			media="all" rel="icon prefetch">
+		<link href="types.html" hreflang="en" media="all"
+			rel="prev" title="Utils.types"
 			type="text/html">
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
@@ -36,28 +36,27 @@
 				<a href="../" title="Home">Home</a>
 			</li>
 			<li class="cell download nav_cell">
-				<a href="../download.html" title="Download">Download</a>
+				<a href="../Download" title="Download">Download</a>
 			</li>
 			<li class="active cell docs nav_cell">
 				<a href="./" title="Documentation">Documentation</a>
 			</li>
-			<li class="cell nav_cell tests">
+			<li class="cell nav_cell tests ">
 				<a href="../Tests" title="Tests">Tests</a>
 			</li>
 			<li class="cell github nav_cell">
-				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/"
-					title="GitHub">GitHub</a>
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/" title="GitHub">GitHub</a>
 			</li>
 			<li class="about cell nav_cell">
 				<a href="../about.html" title="About">About</a>
 			</li>
 		</ul>
-		<div class="secondary_row row">
-			<div class="cell prev_link secondary_cell">
-				<a href="helpers.html" rel="prev"
-					title="Previous">&larr;<code>Utils.helpers</code></a>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="types.html" rel="prev"
+					title="Previous">&larr;<code>Utils.types</code></a>
 			</div>
-			<div class="cell next_link secondary_cell">
+			<div class="cell next_link primary_cell">
 				<a href="can.html" rel="next"
 					title="Next"><code>Utils.can</code>&rarr;</a>
 			</div>
@@ -67,6 +66,18 @@
 				<h2 class="heading" title="Utils.is">
 					<code>Utils.is</code>
 				</h2>
+				<div class="module_info" id="dependencies">
+					<h3 class="heading">
+						<a href="#dependencies"
+							title="Dependencies">Dependencies</a>
+					</h3>
+					<ol>
+						<li>
+							<a href="./types.html"
+								title="Utils.types"><code>Utils.types</code></a>
+						</li>
+					</ol>
+				</div>
 			</div>
 		</div>
 		<ul class="doc_row row">
@@ -75,11 +86,9 @@
 					<a href="#type"
 						title="Utils.is.type"><code>Utils.is.type</code></a>
 				</h3>
-				<p class="doc_art function_head">function (val, type) {</p>
+				<p class="doc_art function_head">function (<var>val</var>, <var>type</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>type</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that performs a <code>typeof</code>
 						check on the given value, then checks if the
@@ -98,9 +107,7 @@
 						A string to be compared against a <code>typeof</code>
 						check of <var>val</var>.
 					</dd>
-					<dt>
-						<code>return typeof val === type;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -112,11 +119,9 @@
 					<a href="#host_object"
 						title="Utils.is.hostObject"><code>Utils.is.hostObject</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>hostObject</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if an object resembles
 						a host object.
@@ -127,9 +132,7 @@
 					<dd>
 						An object.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -141,11 +144,9 @@
 					<a href="#array_like"
 						title="Utils.is.arrayLike"><code>Utils.is.arrayLike</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>arrayLike</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if an object resembles
 						an <a href="glossary.html#array_like_object"
@@ -157,9 +158,7 @@
 					<dd>
 						An object.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -171,11 +170,9 @@
 					<a href="#node_like"
 						title="Utils.is.nodeLike"><code>Utils.is.nodeLike</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>nodeLike</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if an object resembles
 						a <a href="glossary.html#node_like_object"
@@ -187,10 +184,7 @@
 					<dd>
 						An object.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -202,11 +196,9 @@
 					<a href="#node_type"
 						title="Utils.is.nodeType"><code>Utils.is.nodeType</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj, type) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>type</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>nodeType</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -227,9 +219,7 @@
 						A number that is the suggested <code>nodeType</code>
 						value.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -241,11 +231,9 @@
 					<a href="#element"
 						title="Utils.is.element"><code>Utils.is.element</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>element</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -258,9 +246,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -272,11 +258,9 @@
 					<a href="#attribute"
 						title="Utils.is.attribute"><code>Utils.is.attribute</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>attribute</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -289,9 +273,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -303,11 +285,9 @@
 					<a href="#text"
 						title="Utils.is.text"><code>Utils.is.text</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>text</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -322,9 +302,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -336,11 +314,9 @@
 					<a href="#cdata_section"
 						title="Utils.is.cDataSection"><code>Utils.is.cDataSection</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>cDataSection</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -353,9 +329,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -367,11 +341,9 @@
 					<a href="#entity_reference"
 						title="Utils.is.entityReference"><code>Utils.is.entityReference</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>entityReference</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -384,9 +356,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -398,11 +368,9 @@
 					<a href="#entity"
 						title="Utils.is.entity"><code>Utils.is.entity</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>entity</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -415,9 +383,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -429,11 +395,9 @@
 					<a href="#processing_instruction"
 						title="Utils.is.processingInstruction"><code>Utils.is.processingInstruction</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>processingInstruction</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -446,9 +410,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -460,11 +422,9 @@
 					<a href="#comment"
 						title="Utils.is.comment"><code>Utils.is.comment</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>comment</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -477,9 +437,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -491,11 +449,9 @@
 					<a href="#document"
 						title="Utils.is.document"><code>Utils.is.document</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>document</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -508,9 +464,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -522,11 +476,9 @@
 					<a href="#document_type"
 						title="Utils.is.documentType"><code>Utils.is.documentType</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>documentType</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -539,9 +491,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -553,11 +503,9 @@
 					<a href="#document_fragment"
 						title="Utils.is.documentFragment"><code>Utils.is.documentFragment</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (ob<var>j</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>documentFragment</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -570,9 +518,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -584,11 +530,9 @@
 					<a href="#notation"
 						title="Utils.is.notation"><code>Utils.is.notation</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>notation</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that determines if a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -601,9 +545,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return isNodeType(obj, type);</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -611,16 +553,16 @@
 				<p class="doc_art function_tail">}</p>
 			</li>
 		</ul>
-		<div class="secondary_row row">
-			<div class="cell prev_link secondary_cell">
-				<a href="helpers.html" rel="prev"
-					title="Previous">&larr;<code>Utils.helpers</code></a>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="types.html" rel="prev"
+					title="Previous">&larr;<code>Utils.types</code></a>
 			</div>
-			<div class="cell index_link secondary_cell">
+			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"
 					title="Up">&uarr;Back to Documentation Index</a>
 			</div>
-			<div class="cell next_link secondary_cell">
+			<div class="cell next_link primary_cell">
 				<a href="can.html" rel="next"
 					title="Next"><code>Utils.can</code>&rarr;</a>
 			</div>

@@ -11,11 +11,11 @@ var global = global || this;
 
 	function childNodes()
 	{
-		var test = Utils.traverse.getNodes(
+		var nodes = Utils.traverse.getNodes(
 			commonElements.test
 		);
 		return Utils.is.arrayLike(
-			test
+			nodes
 		);
 	}
 
@@ -26,20 +26,23 @@ var global = global || this;
 
 	function childNodesTraversed()
 	{
-		var test = Utils.traverse.nodes(
+		var nodes = Utils.traverse.nodes(
 			commonElements.test,
 			optimisticFilter
 		);
 		return Utils.is.arrayLike(
-			test
+			nodes
 		);
 	}
 
 	function children()
 	{
-		var test = Utils.traverse.getElements(
-			commonElements.test
-		);
+		var test;
+		if (Utils.traverse.getElements) {
+			test = Utils.traverse.getElements(
+				commonElements.test
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
@@ -52,119 +55,131 @@ var global = global || this;
 
 	function childrenTraversed()
 	{
-		var test = Utils.traverse.elements(
+		var nodes = Utils.traverse.elements(
 			commonElements.test,
 			pessimisticFilter
 		);
 		return Utils.is.arrayLike(
-			test
+			nodes
 		);
 	}
 
-	function treeCollected()
+	function tree()
 	{
-		var test = Utils.traverse.getNodeTree(
+		var nodes = Utils.traverse.getNodeTree(
 			doc
 		);
 		return Utils.is.arrayLike(
-			test
+			nodes
 		);
 	}
 
 	function treeTraversed()
 	{
-		var test = Utils.traverse.nodeTree(
+		var nodes = Utils.traverse.nodeTree(
 			doc,
 			optimisticFilter
 		);
 		return Utils.is.arrayLike(
-			test
+			nodes
 		);
 	}
 
-	function textCollected()
+	function getText()
 	{
-		var test = Utils.traverse.getText(
+		var text = Utils.traverse.getText(
 			commonElements.test
 		);
 		return Utils.is.type(
-			test,
+			text,
 			"string"
 		);
 	}
 
-	function textOverridden()
+	function setText()
 	{
-		var test = Utils.traverse.setText(
+		var text = Utils.traverse.setText(
 			"NEW TEXTUAL CONTENT",
 			commonElements.test,
 			doc
 		);
 		return Utils.is.type(
-			test,
+			text,
 			"string"
 		);
 	}
 
-	function childrenTreeCollected()
+	function childrenTree()
 	{
-		var test = Utils.traverse.getElementTree(
+		var tree = Utils.traverse.getElementTree(
 			doc
 		);
 		return Utils.is.arrayLike(
-			test
+			tree
 		);
 	}
 
 	function childrenTreeTraversed()
 	{
-		var test = Utils.traverse.elementTree(
+		var nodes = Utils.traverse.elementTree(
 			doc,
 			optimisticFilter
 		);
 		return Utils.is.arrayLike(
-			test
+			nodes
+		);
+	}
+
+	function isAncestor()
+	{
+		var node = Utils.traverse.isAncestor(
+			document.documentElement,
+			commonElements.test
+		);
+		return Utils.is.type(
+			node,
+			"boolean"
 		);
 	}
 
 	function ancestors()
 	{
-		var test = Utils.traverse.getAncestors(
+		var list = Utils.traverse.getAncestors(
 			commonElements.test
 		);
 		return Utils.is.nodeLike(
-			test.value
+			list.value
 		);
 	}
 
 	function ancestorsTraversed()
 	{
-		var test = Utils.traverse.ancestors(
+		var nodes = Utils.traverse.ancestors(
 			commonElements.test,
 			optimisticFilter
 		);
 		return Utils.is.arrayLike(
-			test
+			nodes
 		);
 	}
 
-	function generateTests()
-	{
+	tests = (function () {
 		return [
-			childNodes,
-			childNodesTraversed,
-			children,
-			childrenTraversed,
-			treeCollected,
-			treeTraversed,
-			textCollected,
-			textOverridden,
-			childrenTreeCollected,
-			childrenTreeTraversed,
-			ancestors,
-			ancestorsTraversed
+			{"test": childNodes, "key": "one"},
+			{"test": childNodesTraversed, "key": "two"},
+			{"test": children, "key": "three"},
+			{"test": childrenTraversed, "key": "four"},
+			{"test": tree, "key": "five"},
+			{"test": treeTraversed, "key": "six"},
+			{"test": getText, "key": "seven"},
+			{"test": setText, "key": "eight"},
+			{"test": childrenTree, "key": "nine"},
+			{"test": childrenTreeTraversed, "key": "ten"},
+			{"test": isAncestor, "key": "eleven"},
+			{"test": ancestors, "key": "twelve"},
+			{"test": ancestorsTraversed, "key": "thirteen"}
 		];
-	}
+	}());
 
 	function createMessage(text)
 	{
@@ -174,30 +189,39 @@ var global = global || this;
 		}
 		return Utils.create.text(
 			doc,
-			str + "\r\n"
+			str
 		);
 	}
 
-	function addMessage(text)
+	function addMessage(
+		msg,
+		key
+	)
 	{
-		var isText =
-			Utils.is.text(
+		var cell = document.getElementById("result_" + key),
+			row = document.getElementById("test_" + key),
+			text = createMessage(msg);
+		if (cell) {
+			Utils.node.append(
+				cell,
 				text
-			),
-			par = commonElements.results,
-			separator = createMessage("----------");
-		text = createMessage(text);
-		Utils.node.append(
-			par,
-			text
-		);
-		Utils.node.append(
-			par,
-			separator
-		);
+			);
+		}
+		if (row) {
+			if (msg === "true") {
+				row.className = "pass";
+			} else if (msg === "false") {
+				row.className = "fail";
+			} else if (msg === "ERROR") {
+				row.className = "error";
+			}
+		}
 	}
 
-	function runTest(test)
+	function runTest(
+		test,
+		key
+	)
 	{
 		var isFunction = Utils.is.type(
 			test,
@@ -207,11 +231,11 @@ var global = global || this;
 		if (isFunction) {
 			try {
 				result = test();
-				String(result);
+				result = String(result);
 			} catch (e) {
 				result = "ERROR";
 			}
-			addMessage(result);
+			addMessage(result, key);
 		}
 	}
 
@@ -220,27 +244,40 @@ var global = global || this;
 		var index = 0,
 			max,
 			test;
-		tests = generateTests();
 		max = tests.length;
 		while (index < max) {
-			test = tests[index];
-			runTest(test);
+			runTest(
+				tests[index].test,
+				tests[index].key
+			);
 			index += 1;
+		}
+	}
+
+
+	function clearResult(key)
+	{
+		var cell = doc.getElementById("result_" + key),
+			row = doc.getElementById("test_" + key),
+			index;
+		if (cell && row) {
+			index = cell.childNodes.length;
+			for (index; index > -1; index -= 1) {
+				Utils.node.remove(
+					cell,
+					cell.childNodes[index]
+				);
+			}
+			row.className = "";
 		}
 	}
 
 	function clearTests(evt)
 	{
-		var par = commonElements.results,
-			nodes = par.childNodes;
-			isHostObject = Utils.is.hostObject(nodes);
-		if (isHostObject) {
-			while(nodes.length) {
-				Utils.node.remove(
-					par,
-					nodes[0]
-				);
-			}
+		var index = 0,
+			max = tests.length;
+		for (index; index < max; index += 1) {
+			clearResult(tests[index].key);
 		}
 	}
 

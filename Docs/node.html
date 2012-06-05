@@ -7,14 +7,14 @@
 			content="initial-scale=1.0">
 		<meta name="Author"
 			content="Matt McDonald">
-		<title>Matt's DOM Utils (Utils): Documentation—Utils.node</title>
-		<link href="../Assets/Images/favicon.ico"
-			media="all" rel="icon prefetch">
+		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.node</title>
 		<link href="../Assets/CSS/style-main.css"
 			media="all" rel="stylesheet"
 			type="text/css">
-		<link href="can.html" hreflang="en" media="all"
-			rel="prev" title="Utils.can"
+		<link href="../favicon.ico"
+			media="all" rel="icon prefetch">
+		<link href="helpers.html" hreflang="en" media="all"
+			rel="prev" title="Utils.helpers"
 			type="text/html">
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
@@ -36,28 +36,27 @@
 				<a href="../" title="Home">Home</a>
 			</li>
 			<li class="cell download nav_cell">
-				<a href="../download.html" title="Download">Download</a>
+				<a href="../Download" title="Download">Download</a>
 			</li>
 			<li class="active cell docs nav_cell">
 				<a href="./" title="Documentation">Documentation</a>
 			</li>
-			<li class="cell nav_cell tests">
+			<li class="cell nav_cell tests ">
 				<a href="../Tests" title="Tests">Tests</a>
 			</li>
 			<li class="cell github nav_cell">
-				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/"
-					title="GitHub">GitHub</a>
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/" title="GitHub">GitHub</a>
 			</li>
 			<li class="about cell nav_cell">
 				<a href="../about.html" title="About">About</a>
 			</li>
 		</ul>
-		<div class="secondary_row row">
-			<div class="cell prev_link secondary_cell">
-				<a href="can.html" rel="prev"
-					title="Previous">&larr;<code>Utils.can</code></a>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="helpers.html" rel="prev"
+					title="Previous">&larr;<code>Utils.helpers</code></a>
 			</div>
-			<div class="cell next_link secondary_cell">
+			<div class="cell next_link primary_cell">
 				<a href="create.html" rel="next"
 					title="Next"><code>Utils.create</code>&rarr;</a>
 			</div>
@@ -67,6 +66,22 @@
 				<h2 class="heading" title="Utils.node">
 					<code>Utils.node</code>
 				</h2>
+				<div class="module_info" id="dependencies">
+					<h3 class="heading">
+						<a href="#dependencies"
+							title="Dependencies">Dependencies</a>
+					</h3>
+					<ol>
+						<li>
+							<a href="./is.html"
+								title="Utils.is"><code>Utils.is</code></a>
+						</li>
+						<li>
+							<a href="./can.html"
+								title="Utils.can"><code>Utils.can</code></a>
+						</li>
+					</ol>
+				</div>
 			</div>
 		</div>
 		<ul class="doc_row row">
@@ -75,11 +90,9 @@
 					<a href="#prepend"
 						title="Utils.node.prepend"><code>Utils.node.prepend</code></a>
 				</h3>
-				<p class="doc_art function_head">function (par, newObj, refObj) {</p>
+				<p class="doc_art function_head">function (<var>par</var>, <var>newObj</var>, <var>refObj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>prepend</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that wraps <code>insertBefore</code>,
 						which in turn appends a <a href="glossary.html#node_like_object"
@@ -120,9 +133,7 @@
 							title="Node-like Object">node-like object</a>
 						will be inserted before.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -134,11 +145,9 @@
 					<a href="#prepend_list"
 						title="Utils.node.prependList"><code>Utils.node.prependList</code></a>
 				</h3>
-				<p class="doc_art function_head">function (par, list, refObj) {</p>
+				<p class="doc_art function_head">function (<var>par</var>, <var>list</var>, <var>refObj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>prependList</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method takes an <a href="glossary.html#array_like_object"
 							title="Array-like Object">array-like object</a>
@@ -175,9 +184,7 @@
 							title="Node-like Object">node-like object</a>
 						will be inserted before.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -189,11 +196,9 @@
 					<a href="#append"
 						title="Utils.node.append"><code>Utils.node.append</code></a>
 				</h3>
-				<p class="doc_art function_head">function (par, obj) {</p>
+				<p class="doc_art function_head">function (<var>par</var>, <var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>append</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that "appends" a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -219,9 +224,7 @@
 							title="Node-like Object">node-like object</a>.
 						if successful.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -233,11 +236,9 @@
 					<a href="#append_list"
 						title="Utils.node.appendList"><code>Utils.node.appendList</code></a>
 				</h3>
-				<p class="doc_art function_head">function (par, list) {</p>
+				<p class="doc_art function_head">function (<var>par</var>, <var>list</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>appendList</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method takes an <a href="glossary.html#array_like_object"
 							title="Array-like Object">array-like object</a>
@@ -262,9 +263,7 @@
 							title="Node-like Object">node-like object</a>s
 						to be "appended".
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -276,11 +275,9 @@
 					<a href="#remove"
 						title="Utils.node.remove"><code>Utils.node.remove</code></a>
 				</h3>
-				<p class="doc_art function_head">function (par, obj) {</p>
+				<p class="doc_art function_head">function (<var>par</var>, <var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>remove</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that "removes" a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -307,9 +304,7 @@
 							title="Node-like Object">node-like object</a>
 						if successful.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -321,11 +316,9 @@
 					<a href="#replace"
 						title="Utils.node.replace"><code>Utils.node.replace</code></a>
 				</h3>
-				<p class="doc_art function_head">function (par, newObj, oldObj) {</p>
+				<p class="doc_art function_head">function (<var>par</var>, <var>newObj</var>, <var>oldObj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>replace</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that "replaces" a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -367,9 +360,7 @@
 							title="Node-like Object">node-like object</a>
 						if successful.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -381,11 +372,9 @@
 					<a href="#clone"
 						title="Utils.node.clone"><code>Utils.node.clone</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj, deep) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>deep</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>clone</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that "clones" a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
@@ -409,9 +398,7 @@
 						or a "shallow" (one level) "clone" will be performed
 						if successful.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -419,16 +406,16 @@
 				<p class="doc_art function_tail">}</p>
 			</li>
 		</ul>
-		<div class="secondary_row row">
-			<div class="cell prev_link secondary_cell">
-				<a href="is.html" rel="prev"
-					title="Previous">&larr;<code>Utils.is</code></a>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="helpers.html" rel="prev"
+					title="Previous">&larr;<code>Utils.helpers</code></a>
 			</div>
-			<div class="cell index_link secondary_cell">
+			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"
 					title="Up">&uarr;Back to Documentation Index</a>
 			</div>
-			<div class="cell next_link secondary_cell">
+			<div class="cell next_link primary_cell">
 				<a href="create.html" rel="next"
 					title="Next"><code>Utils.create</code>&rarr;</a>
 			</div>

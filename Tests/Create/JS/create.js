@@ -9,58 +9,71 @@ var global = global || this;
 		},
 		tests;
 
-	function elementCreated()
+	doc = null;
+
+	function createElement()
 	{
-		var test = Utils.create.element(
-			doc,
-			"p"
-		);
+		var test;
+		if (Utils.create.element) {
+			test = Utils.create.element(
+				global.document,
+				"p"
+			);
+		}
 		return Utils.is.element(
 			test
 		);
 	}
 
-	function textNodeCreated()
+	function createTextNode()
 	{
-		var test = Utils.create.text(
-			doc,
-			"The rain in Spain is quite plain."
-		);
+		var test;
+		if (Utils.create.text) {
+			test = Utils.create.text(
+				global.document,
+				"The rain in Spain is quite plain."
+			);
+		}
 		return Utils.is.text(
 			test
 		);
 	}
 
-	function commentCreated()
+	function createComment()
 	{
-		var test = Utils.create.comment(
-			doc,
-			"No comment."
-		);
+		var test;
+		if (Utils.create.comment) {
+			test = Utils.create.comment(
+				global.document,
+				"No comment."
+			);
+		}
 		return Utils.is.comment(
 			test
 		);
 	}
 
-	function documentFragmentCreated()
+	function createDocumentFragment()
 	{
-		var test = Utils.create.documentFragment(
-			doc
-		);
+		var test;
+		if (Utils.create.documentFragment) {
+			test = Utils.create.documentFragment(
+				global.document
+			);
+		}
 		return Utils.is.documentFragment(
 			test
 		);
 	}
 
-	function generateTests()
-	{
+	tests = (function () {
 		return [
-			elementCreated,
-			textNodeCreated,
-			commentCreated,
-			documentFragmentCreated
+			{"test": createElement, "key": "one"},
+			{"test": createTextNode, "key": "two"},
+			{"test": createComment, "key": "three"},
+			{"test": createDocumentFragment, "key": "four"}
 		];
-	}
+	}());
 
 	function createMessage(text)
 	{
@@ -69,81 +82,118 @@ var global = global || this;
 			str = "[an empty string]";
 		}
 		return Utils.create.text(
-			doc,
-			str + "\r\n"
+			global.document,
+			str
 		);
 	}
 
-	function addMessage(text)
+	function addMessage(
+		msg,
+		key
+	)
 	{
-		var isText =
-			Utils.is.text(
+		var cell = document.getElementById("result_" + key),
+			row = document.getElementById("test_" + key),
+			text = createMessage(msg);
+		if (cell) {
+			Utils.node.append(
+				cell,
 				text
-			),
-			par = commonElements.results,
-			separator = createMessage("----------");
-		text = createMessage(text);
-		Utils.node.append(
-			par,
-			text
-		);
-		Utils.node.append(
-			par,
-			separator
-		);
+			);
+		}
+		if (row) {
+			if (msg === "true") {
+				row.className = "pass";
+			} else if (msg === "false") {
+				row.className = "fail";
+			} else if (msg === "ERROR") {
+				row.className = "error";
+			}
+		}
 	}
 
-	function runTest(test)
+	function runTest(
+		test,
+		key
+	)
 	{
-		var isFunction = Utils.is.type(
-			test,
-			"function"
-		),
-			result = null;
-		if (isFunction) {
+		var result = null;
+		if (typeof test === "function") {
 			try {
 				result = test();
-				String(result);
+				result = String(result);
 			} catch (e) {
 				result = "ERROR";
 			}
-			addMessage(result);
+			addMessage(result, key);
 		}
 	}
 
-	function runTests(evt)
+	runTests = (function () {
+		var max = tests.length;
+		return function () {
+			if (testIndex < max) {
+				runTest(
+					tests[testIndex],
+					testIndex + 1
+				);
+				testIndex += 1;
+				tester = global.setTimeout(
+					runTests,
+					100
+				);
+			} else if (testIndex >= max) {
+				testIndex = 0;
+			}
+		};
+	}());
+
+	function startTests(evt)
 	{
-		var index = 0,
-			max,
-			test;
-		tests = generateTests();
-		max = tests.length;
-		while (index < max) {
-			test = tests[index];
-			runTest(test);
-			index += 1;
-		}
+		testIndex = 0;
+		runTests();
+		this.disabled = true;
+		this.onclick = function () {};
 	}
 
-	function clearTests(evt)
+	function clearResult(key)
 	{
-		var par = commonElements.results,
-			nodes = par.childNodes;
-			isHostObject = Utils.is.hostObject(nodes);
-		if (isHostObject) {
-			while(nodes.length) {
-				Utils.node.remove(
-					par,
-					nodes[0]
+		var cell = document.getElementById("result_" + key),
+			row = document.getElementById("test_" + key),
+			index;
+		if (cell && row) {
+			index = cell.childNodes.length - 1;
+			for (index; index > -1; index -= 1) {
+				cell.removeChild(
+					cell.childNodes[index]
 				);
 			}
+			row.className = "";
 		}
+	}
+
+	function clearTests()
+	{
+		var index = 0,
+			max = tests.length;
+		for (index; index < max; index += 1) {
+			clearResult(index + 1);
+		}
+	}
+
+	function endTests(evt)
+	{
+		clearTimeout(tester);
+		tester = null;
+		clearTests();
+		commonElements.start.disabled = false;
+		commonElements.start.onclick = startTests;
 	}
 
 	function addHandlers()
 	{
-		commonElements.start.onclick = runTests;
-		commonElements.stop.onclick = clearTests;
+		commonElements.start.onclick = startTests;
+		commonElements.stop.onclick = endTests;
 	}
 
 	addHandlers();

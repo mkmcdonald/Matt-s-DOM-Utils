@@ -1,19 +1,16 @@
 var Utils = Utils || {},
-	global = this;
-/*
-        Matt's DOM Utils
-        http://www.fortybelow.ca/projects/JavaScript/Utils/
-
-        Description:
-
-        A collection of widely-tested DOM utilities and modules
-        that work in a maximal amount of environments.
-
-        Contact:
-
-        Matt McDonald
-        [firstName.toLowerCase();]@fortybelow.ca
-        http://www.fortybelow.ca
+	global = global || this;
+/**
+ * @title Matt's DOM Utils
+ * @see http://www.fortybelow.ca/projects/JavaScript/Utils/
+ *
+ * @description
+ * A collection of widely-tested DOM utilities and modules
+ * that work in a maximal amount of environments.
+ *
+ * @author Matt McDonald
+ * @contact [firstName.toLowerCase();]@fortybelow.ca
+ * @see http://www.fortybelow.ca
 */
 
 /*
@@ -30,23 +27,26 @@ var Utils = Utils || {},
 if (Utils) {
 	(function () {
 
-		/*
-                        Utils.raise
+               /**
+                * @module
+                * Utils.raise
+                *
+                * @description
+                * DOM Level 4-compliant custom errors and
+                * methods to "raise" (throw) them.
+                *
+                * @dependencies
+                * * null
+                */
 
-                        Description:
-
-                        DOM Level 4-compliant custom errors and
-                        methods to "raise" (throw) them.
-
-                        Dependencies:
-
-                        * null;
-		*/
-
-		/*
-                        Public object exposing errors as specified
-                        in the DOM Level 4 Spec 3.3 (Error types).
-		*/
+               /**
+                * @public `Utils.raise.types`.
+                *
+                * @description
+                * Object exposing errors.
+                *
+                * @see DOM Level 4 Spec 3.3 (Error types).
+                */
 
 		var errorTypes = {
 			"INDEX_SIZE_ERROR": "The index is not in " +
@@ -98,9 +98,9 @@ if (Utils) {
 				"be cloned."
 		};
 
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.indexSize`.
+                */
 
 		function raiseIndexSize()
 		{
@@ -109,12 +109,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.heirarchyRequest`.
+                */
 
 		function raiseHeirarchyRequest()
 		{
@@ -123,12 +120,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.wrongDocument`.
+                */
 
 		function raiseWrongDocument()
 		{
@@ -137,12 +131,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.invalidCharacter`.
+                */
 
 		function raiseInvalidCharacter()
 		{
@@ -151,12 +142,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.noModificationAllowed`.
+                */
 
 		function raiseNoModificationAllowed()
 		{
@@ -166,12 +154,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.notFound`.
+                */
 
 		function raiseNotFound()
 		{
@@ -180,12 +165,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.notSupported`.
+                */
 
 		function raiseNotSupported()
 		{
@@ -194,12 +176,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.invalidState`.
+                */
 
 		function raiseInvalidState()
 		{
@@ -208,12 +187,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.syntax`.
+                */
 
 		function raiseSyntax()
 		{
@@ -222,12 +198,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.invalidModification`.
+                */
 
 		function raiseInvalidModification()
 		{
@@ -236,12 +209,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.namespace`.
+                */
 
 		function raiseNamespace()
 		{
@@ -250,12 +220,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.invalidAccess`.
+                */
 
 		function raiseInvalidAccess()
 		{
@@ -264,12 +231,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.typeMismatch`.
+                */
 
 		function raiseTypeMismatch()
 		{
@@ -278,12 +242,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.security`.
+                */
 
 		function raiseSecurity()
 		{
@@ -292,12 +253,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.network`.
+                */
 
 		function raiseNetwork()
 		{
@@ -306,12 +264,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.abort`.
+                */
 
 		function raiseAbort()
 		{
@@ -320,26 +275,20 @@ if (Utils) {
 			);
 		}
 
+               /**
+                * @public `Utils.raise.urlMismatch`.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function raiseURLMismatch()
+		function raiseUrlMismatch()
 		{
 			throw new Error(
 				errorTypes.URL_MISMATCH_ERROR
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.quotaExceeded`.
+                */
 
 		function raiseQuotaExceeded()
 		{
@@ -348,12 +297,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.timeout`.
+                */
 
 		function raiseTimeout()
 		{
@@ -362,12 +308,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.invalidNodeType`.
+                */
 
 		function raiseInvalidNodeType()
 		{
@@ -376,12 +319,9 @@ if (Utils) {
 			);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.raise.dataClone`.
+                */
 
 		function raiseDataClone()
 		{
@@ -389,10 +329,6 @@ if (Utils) {
 				errorTypes.DATA_CLONE_ERROR
 			);
 		}
-
-
-                /*        END PUBLIC METHOD        */
-
 
 		Utils.raise = Utils.raise || {
 			"types": errorTypes,
@@ -417,7 +353,7 @@ if (Utils) {
 			"security": raiseSecurity,
 			"network": raiseNetwork,
 			"abort": raiseAbort,
-			"urlMismatch": raiseURLMismatch,
+			"urlMismatch": raiseUrlMismatch,
 			"quotaExceeded": raiseQuotaExceeded,
 			"timeout": raiseTimeout,
 			"invalidNodeType":
@@ -430,23 +366,27 @@ if (Utils) {
 if (Utils) {
 	(function () {
 
-		/*
-                        Utils.types
+               /**
+                * @module
+                * Utils.types
+                *
+                * @description
+                * Documented `nodeType` property values.
+                *
+                * @see DOM 4 Spec 5.3 (Node, nodeType).
+                *
+                * @dependencies
+                * * null
+                */
 
-                        Description:
-
-                        Documented `nodeType`s. See the DOM 4
-                        Spec 5.3 (Node, nodeType).
-
-                        Dependencies:
-
-                        * null;
-		*/
-
-		/*
-                        Public object of documented `nodeType`s.
-                        See the DOM 4 Spec 5.3 (Node, nodeType).
-		*/
+               /**
+                * @public `Utils.types`.
+                *
+                * @description
+                * Object of documented `nodeType`s.
+                *
+                * @see DOM 4 Spec 5.3 (Node, nodeType).
+                */
 
 		Utils.types = Utils.types || {
 			"ELEMENT_NODE": 1,
@@ -468,439 +408,457 @@ if (Utils) {
 if (Utils) {
 	(function () {
 
-		/*
-                        Utils.helpers
+               /**
+                * @module
+                * Utils.is
+                *
+                * @description
+                * Various tests.
+                *
+                * @dependencies
+                * * Utils.types
+                */
 
-                        Description:
+		var nodeTypes = Utils.types,
+			hostTypes,
 
-                        Various helper methods for common tasks.
+			doc,
 
-                        Dependencies:
+			isDocument;
 
-                        * Utils.is;
-		*/
+               /**
+                * @private
+                *
+                * @description
+                * Object containing types considered associated with
+                * host objects.
+                */
 
+		hostTypes = {
+			"object": true,
+			"function": true,
+			"unknown": true
+		};
 
-                /*        PUBLIC METHOD        */
+               /**
+                * @private
+                *
+                * @closure
+                *
+                * @description
+                * Object containing the current document
+                * node-like object or `null`.
+                */
 
-
-		function makeLinearArray(
-			obj
-		)
-		{
-			/*
-                                Public method that
-                                takes an iterable object and
-                                creates an array.
-			*/
-			var index,
-				arrayLike = Utils.is.arrayLike(
-					obj
-				),
-				result = [],
-				node;
-			if (arrayLike) {
-				result.length = obj.length;
-				index = obj.length - 1;
-				while (index > -1) {
-					node = obj[index];
-					result[index] = node;
-					index -= 1;
+		doc = (function () {
+			var result = null;
+			if (global.document) {
+				if (typeof global.document ===
+					"object") {
+					result = global.document;
 				}
 			}
 			return result;
-		}
+		}());
 
-
-                /*        END PUBLIC METHOD        */
-
-
-		Utils.helpers = Utils.helpers || {
-			"makeLinearArray": makeLinearArray
-		};
-	}());
-}
-
-if (Utils) {
-	(function () {
-
-		/*
-                        Utils.is
-
-                        Description:
-
-                        Various tests
-
-                        Dependencies:
-
-                        * Utils.types;
-		*/
-
-		var nodeTypes = Utils.types;
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.type`.
+                *
+                * @description
+                * Method that returns a boolean asserting
+                * if the specified value returns a specific
+                * string from a `typeof` check.
+                *
+                * @param val *
+                * A value to use for a `typeof` check.
+                *
+                * @param type String
+                * A string to assert for equality against the
+                * `typeof` check.
+                */
 
 		function isType(
 			val,
 			type
 		)
 		{
-			/*
-                                Public method that returns a
-                                boolean asserting if `val`
-                                returns `type` from a typeof`
-                                check.
-			*/
 			return typeof val === type;
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.hostObject`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a host-like object (by having
+                * a "type" of "object", "function" or "unknown").
+                */
 
 		function isHostObject(
 			obj
 		)
 		{
-			/*
-                                Public method that returns a
-                                boolean asserting if `obj`
-                                resembles a host object (by having
-                                a "type" of "object", "function" or
-                                "unknown".)
-			*/
-			var isObj,
-				isFunc,
-				isUnknown,
-				result = false;
-			isObj = isType(obj, "object");
-			isFunc = isType(obj, "function");
-			isUnknown = isType(obj, "unknown");
-			if (isObj || isFunc || isUnknown) {
-				result = true;
-			}
-			return result;
+			var type = typeof obj;
+			return hostTypes[type];
 		}
 
-
-                /*        END PUBLIC METHOD */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.arrayLike`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is array-like.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isArrayLike(
 			obj
 		)
 		{
-			/*
-                                Public method that returns a
-                                boolean asserting if `obj`
-                                is array-like.
-			*/
-			var isObj = isHostObject(obj),
+			var type = typeof obj,
 				result = false;
-			if (obj && isObj) {
-				result = isType(
-					obj.length,
-					"number"
-				);
+			if (obj && hostTypes[type]) {
+				result = typeof obj.length ===
+					"number";
 			}
 			return result;
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.nodeLike`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is node-like.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isNodeLike(
 			obj
 		)
 		{
-			/*
-                                Public method that returns a
-                                boolean asserting if `obj`
-                                is node-like.
-			*/
-			var isObj = isHostObject(obj),
+			var type = typeof obj,
 				result = false;
-			if (obj && isObj) {
-				result = isType(
-					obj.nodeType,
-					"number"
-				);
+			if (obj && hostTypes[type]) {
+				result = typeof obj.nodeType ===
+					"number";
 			}
 			return result;
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.nodeType`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object has a certain value for the
+                * `nodeType` property.
+                *
+                * @param obj Object
+                * An object which will have its `nodeType`
+                * property checked.
+                *
+                * @param num Number
+                * A number to assert.
+                */
 
 		function isNodeType(
 			obj,
-			type
+			num
 		)
 		{
-			/*
-                                Public method that returns a
-                                boolean asserting if a node-like
-                                object has a certain value for
-                                the `nodeType` property.
-			*/
-			var valid = isNodeLike(obj),
+			var type = typeof obj,
 				result = false;
-			if (valid) {
-				result = obj.nodeType === type;
+			if (obj && hostTypes[type]) {
+				result = obj.nodeType === num;
 			}
 			return result;
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.element`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is an element node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isElementNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var type = nodeTypes.ELEMENT_NODE;
 			return isNodeType(obj, type);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.attribute`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is an attribute node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isAttributeNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var type = nodeTypes.ATTRIBUTE_NODE;
 			return isNodeType(obj, type);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.text`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a text node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isTextNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var type = nodeTypes.TEXT_NODE;
 			return isNodeType(obj, type);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.cDataSection`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a cData section node-like
+                * object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isCDataSectionNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var type = nodeTypes.CDATA_SECTION_NODE;
 			return isNodeType(obj, type);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.entityReference`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is an entity reference node-like
+                * object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isEntityReferenceNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var key = "ENTITY_REFERENCE_NODE",
 				type = nodeTypes[key];
 			return isNodeType(obj, type);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.entity`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is an entity node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isEntityNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var type = nodeTypes.ENTITY_NODE;
 			return isNodeType(obj, type);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.processingInstruction`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a processing instruction
+                * node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isProcessingInstructionNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var key = "PROCESSING_INSTRUCTION_NODE",
 				type = nodeTypes[key];
 			return isNodeType(obj, type);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.comment`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a comment node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isCommentNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var type = nodeTypes.COMMENT_NODE;
 			return isNodeType(obj, type);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a document node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isDocumentNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var type = nodeTypes.DOCUMENT_NODE;
 			return isNodeType(obj, type);
 		}
 
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is the current document.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
-                /*        END PUBLIC METHOD        */
+		function isAlmostDocument(
+			obj
+		)
+		{
+			return obj === global.document;
+		}
 
+               /**
+                * @public `Utils.is.document`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure) a
+                * boolean asserting if the specified object is a
+                * document node-like object or the current document.
+                *
+                * @param obj Object
+                * An object to assert.
+                *
+                * @see `isDocumentNode`.
+                * @see `isAlmostDocument`.
+                */
 
-                /*        PUBLIC METHOD        */
+		isDocument = (function () {
+			var result = isDocumentNode;
+			if (!isNodeLike(doc)) {
+				result = isAlmostDocument;
+			}
+			return result;
+		}());
 
+               /**
+                * @public `Utils.is.documentType`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a document type node-like
+                * object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isDocumentTypeNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var type = nodeTypes.DOCUMENT_TYPE_NODE;
 			return isNodeType(obj, type);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.documentFragment`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a document fragment node-like
+                * object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isDocumentFragmentNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var key = "DOCUMENT_FRAGMENT_NODE",
 				type = nodeTypes[key];
 			return isNodeType(obj, type);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.is.notation`.
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a notation node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function isNotationNode(
 			obj
 		)
 		{
-			/*
-                                Public method that returns
-                                a boolean via `isNodeType`.
-			*/
 			var type = nodeTypes.NOTATION_NODE;
 			return isNodeType(obj, type);
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
+		doc = null;
 
 		Utils.is = Utils.is || {
 			"type": isType,
@@ -922,7 +880,7 @@ if (Utils) {
 			"processingInstruction":
 				isProcessingInstructionNode,
 			"comment": isCommentNode,
-			"document": isDocumentNode,
+			"document": isDocument,
 			"documentType": isDocumentTypeNode,
 			"documentFragment":
 				isDocumentFragmentNode,
@@ -934,76 +892,67 @@ if (Utils) {
 if (Utils) {
 	(function () {
 
-		/*
-                        Utils.can
+               /**
+                * @module
+                * Utils.can
+                *
+                * @description
+                * Various capability tests for core modules that
+                * follow.
+                *
+                * @dependencies
+                * * Utils.is
+                */
 
-                        Description:
+		var isNodeLike = Utils.is.nodeLike;
 
-                        Various capability tests for core
-                        modules that follow.
-
-                        Dependencies:
-
-                        * Utils.types;
-                        * Utils.is;
-		*/
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.can.getName`.
+                *
+                * @description
+                * Method that returns a boolean asserting if a
+                * specified object can retrieve the `nodeName`
+                * property.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function canGetName(
 			obj
 		)
 		{
-			/*
-                                Public method that returns a
-                                boolean asserting if a node-like
-                                object can "use" the `nodeName`
-                                property.
-			*/
-			var isNodeLike = Utils.is.nodeLike(obj),
-				result = false;
-			if (isNodeLike) {
-				result = Utils.is.type(
-					obj.nodeName,
-					"string"
-				);
+			var result = false;
+			if (isNodeLike(obj)) {
+				result = typeof obj.nodeName ===
+					"string";
 			}
 			return result;
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.can.getValue`.
+                *
+                * @description
+                * Method that returns a boolean asserting if a
+                * specified object can retrieve the `nodeValue`
+                * property.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
 
 		function canGetValue(
 			obj
 		)
 		{
-			/*
-                                Public method that returns a
-                                boolean asserting if a node-like
-                                object can "use" the `nodeValue`
-                                property.
-			*/
-			var isNodeLike = Utils.is.nodeLike(obj),
-				result = false;
-			if (isNodeLike) {
-				result = Utils.is.type(
-					obj.nodeValue,
-					"string"
-				);
+			var result = false;
+			if (isNodeLike(obj)) {
+				result = typeof obj.nodeValue ===
+					"string";
 			}
 			return result;
 		}
-
-
-                /*        END PUBLIC METHOD        */
-
 
 		Utils.can = Utils.can || {
 			"getName": canGetName,
@@ -1015,22 +964,96 @@ if (Utils) {
 if (Utils) {
 	(function () {
 
-		/*
-                        Utils.node
+               /**
+                * @module
+                * Utils.helpers
+                *
+                * @description
+                * Various helper methods for common tasks.
+                *
+                * @dependencies
+                * * Utils.is
+                */
 
-                        Description:
+		var isArrayLike = Utils.is.arrayLike;
 
-                        Various DOM node method wrappers.
+               /**
+                * @public `Utils.helpers.makeArray`.
+                *
+                * @description
+                * Method that returns an array produced from an
+                * iterable object.
+                *
+                * @param obj Object
+                * An object to iterate.
+                */
 
-                        Dependencies:
+		function makeArray(
+			obj
+		)
+		{
+			var max,
+				aux,
+				diff,
+				result = [];
+			if (isArrayLike(obj)) {
+				result.length = obj.length;
+				max = obj.length - 1;
+				for (aux = max; aux > -1; aux -= 1) {
+					diff = max - aux;
+					result[diff] = obj[diff];
+				}
+			}
+			return result;
+		}
 
-                        * Utils.host;
-                        * Utils.is;
-		*/
+		Utils.helpers = Utils.helpers || {
+			"makeArray": makeArray
+		};
+	}());
+}
 
+if (Utils) {
+	(function () {
 
-                /*        PUBLIC METHOD        */
+               /**
+                * @module
+                * Utils.node
+                *
+                * @description
+                * Various DOM node method wrappers.
+                *
+                * @dependencies
+                * * Utils.is
+                * * Utils.can
+                */
 
+		var isNodeLike = Utils.is.nodeLike,
+			isHostObject = Utils.is.hostObject,
+			isArrayLike = Utils.is.arrayLike,
+			canGetName = Utils.can.getName,
+			canGetValue = Utils.can.getValue;
+
+               /**
+                * @public `Utils.node.prepend`.
+                *
+                * @description
+                * Wrapper method for `insertBefore`; returns the
+                * wrapped method's result or `null` if not
+                * applicable.
+                *
+                * @see `Node::insertBefore`.
+                * 
+                * @param par Object
+                * A node-like object that will attempt to prefix
+                * a node-like object.
+                *
+                * @param newObj Object
+                * A node-like object to prefix.
+                * 
+                * @param refObj Object
+                * A node-like object to insert before.
+                */
 
 		function insertBefore(
 			par,
@@ -1038,23 +1061,11 @@ if (Utils) {
 			refObj
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `insertBefore`; returns the wrapper
-                                method's result or `null` if not
-                                applicable.
-			*/
-			var validParent = Utils.is.nodeLike(par),
-				newIsNode = Utils.is.nodeLike(newObj),
-				refIsNode = Utils.is.nodeLike(refObj),
-				isHostObject,
-				key = "insertBefore",
+			var key = "insertBefore",
 				result = null;
-			if (validParent && newIsNode && refIsNode) {
-				isHostObject = Utils.is.hostObject(
-					par[key]
-				);
-				if (isHostObject) {
+			if (isNodeLike(par) && isNodeLike(newObj) &&
+				isNodeLike(refObj)) {
+				if (isHostObject(par[key])) {
 					result = par[key](
 						newObj,
 						refObj
@@ -1064,12 +1075,25 @@ if (Utils) {
 			return result;
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.node.prependList`.
+                *
+                * @description
+                * Method that passes each element of an array-like
+                * object to `insertBefore`.
+                *
+                * @see `insertBefore`.
+                * 
+                * @param par Object
+                * A node-like object that will attempt to prepend
+                * a list of node-like objects.
+                *
+                * @param list Array
+                * A list of node-like objects to prepend.
+                * 
+                * @param refObj Object
+                * A node-like object to prepend before.
+                */
 
 		function insertListBefore(
 			par,
@@ -1077,59 +1101,51 @@ if (Utils) {
 			refObj
 		)
 		{
-			/*
-                                Public method that takes an
-                                array-like object and passes
-                                each element to `insertBefore`.
-			*/
-			var isArrayLike = Utils.is.arrayLike(
-				list
-			),
-				index = 0,
-				max,
+			var max,
+				aux,
+				diff,
 				result;
-			if (isArrayLike) {
-				max = list.length;
-				while (index < max) {
+			if (isArrayLike(list)) {
+				max = list.length - 1;
+				for (aux = max; aux > -1; aux -= 1) {
+					diff = max - aux;
 					insertBefore(
 						par,
-						list[index],
+						list[diff],
 						refObj
 					);
-					index += 1;
 				}
 			}
 			return result;
 		}
 
-
-                /*        PUBLIC METHOD        */
-
-
-                /*        END PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.node.append`
+                *
+                * @description
+                * Wrapper method for `appendChild`; returns the
+                * wrapped method's result or `null` if not
+                * applicable.
+                *
+                * @see `Node::appendChild`.
+                * 
+                * @param par Object
+                * A node-like object that will attempt to append
+                * a node-like object.
+                * 
+                * @param obj Object
+                * A node-like object to append.
+                */
 
 		function appendChild(
 			par,
 			obj
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `appendChild`; returns the wrapper
-                                method's result or `null` if not
-                                applicable.
-			*/
-			var validParent = Utils.is.nodeLike(par),
-				validNode = Utils.is.nodeLike(obj),
-				isHostObject,
-				key = "appendChild",
+			var key = "appendChild",
 				result = null;
-			if (validParent && validNode) {
-				isHostObject = Utils.is.hostObject(
-					par[key]
-				);
-				if (isHostObject) {
+			if (isNodeLike(par) && isNodeLike(obj)) {
+				if (isHostObject(par[key])) {
 					result = par[key](
 						obj
 					);
@@ -1138,70 +1154,72 @@ if (Utils) {
 			return result;
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.node.appendList`.
+                *
+                * @description
+                * Method that passes each element of an array-like
+                * object to `appendChild`.
+                *
+                * @see `appendChild`.
+                * 
+                * @param par Object
+                * A node-like object that will attempt to append
+                * a list of node-like objects.
+                * 
+                * @param list Array
+                * A list of node-like objects to append.
+                */
 
 		function appendList(
 			par,
 			list
 		)
 		{
-			/*
-                                Public method that takes an
-                                array-like object and passes
-                                each element to `appendChild`.
-			*/
-			var isArrayLike = Utils.is.arrayLike(
-				list
-			),
-				index = 0,
-				max,
+			var max,
+				aux,
+				diff,
 				result;
-			if (isArrayLike) {
-				max = list.length;
-				while (index < max) {
+			if (isArrayLike(list)) {
+				max = list.length - 1;
+				for (aux = max; aux > -1; aux -= 1) {
+					diff = max - aux;
 					appendChild(
 						par,
-						list[index]
+						list[diff]
 					);
-					index += 1;
 				}
 			}
 			return result;
 		}
 
-
-                /*        PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.node.remove`.
+                *
+                * @description
+                * Wrapper method for `appendChild`; returns the
+                * wrapped method's result or `null` if not
+                * applicable.
+                *
+                * @see `Node::removeChild`.
+                * 
+                * @param par Object
+                * A node-like object that will attempt to remove
+                * another node-like object.
+                * 
+                * @param obj Object
+                * A node-like object to be removed.
+                */
 
 		function removeChild(
 			par,
 			obj
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `removeChild`; returns the wrapper
-                                method's result or `null` if not
-                                applicable.
-			*/
-			var validParent = Utils.is.nodeLike(par),
-				validNode = Utils.is.nodeLike(obj),
-				isHostObject,
-				key = "removeChild",
+			var key = "removeChild",
 				result = null;
-			if (validParent && validNode) {
-				isHostObject = Utils.is.hostObject(
-					par[key]
-				);
-				if (isHostObject) {
+			if (isNodeLike(par) && isNodeLike(obj)) {
+				if (isHostObject(par[key])) {
 					result = par[key](
 						obj
 					);
@@ -1210,12 +1228,27 @@ if (Utils) {
 			return result;
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.node.replace`.
+                *
+                * @description
+                * Wrapper method for `replaceChild`; returns the
+                * wrapped method's result or `null` if not
+                * applicable.
+                *
+                * @see `Node::replaceChild`.
+                * 
+                * @param par Object
+                * A node-like object that will attempt to replace
+                * another node-like object.
+                * 
+                * @param newObj Object
+                * A node-like object to replace a node-like object
+                * with.
+                * 
+                * @param oldObj Object
+                * A node-like object to be replaced.
+                */
 
 		function replaceChild(
 			par,
@@ -1223,23 +1256,11 @@ if (Utils) {
 			oldObj
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `replaceChild`; returns the wrapper
-                                method's result or `null` if not
-                                applicable.
-			*/
-			var validParent = Utils.is.nodeLike(par),
-				newIsNode = Utils.is.nodeLike(newObj),
-				oldIsNode = Utils.is.nodeLike(oldObj),
-				isHostObject,
-				key = "replaceChild",
+			var key = "replaceChild",
 				result = null;
-			if (validParent && newIsNode && oldIsNode) {
-				isHostObject = Utils.is.hostObject(
-					par[key]
-				);
-				if (isHostObject) {
+			if (isNodeLike(par) && isNodeLike(newObj) &&
+				isNodeLike(oldObj)) {
+				if (isHostObject(par[key])) {
 					result = par[key](
 						newObj,
 						oldObj
@@ -1249,34 +1270,33 @@ if (Utils) {
 			return result;
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.node.clone`.
+                *
+                * @description
+                * Wrapper method for `cloneNode`; returns the
+                * wrapped method's result or `null` if not
+                * applicable.
+                *
+                * @see `Node::cloneNode`.
+                * 
+                * @param obj Object
+                * A node-like object to be cloned.
+                * 
+                * @param deep Boolean
+                * A boolean determining if a "deep" (recursive)
+                * clone will occur.
+                */
 
 		function cloneNode(
 			obj,
 			deep
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `cloneNode`; returns the wrapper
-                                method's result or `null` if not
-                                applicable.
-			*/
-			var isNodeLike = Utils.is.nodeLike(obj),
-				isHostObject,
-				key = "cloneNode",
+			var key = "cloneNode",
 				result = null;
-			deep = Boolean(deep);
-			if (isNodeLike) {
-				isHostObject = Utils.is.hostObject(
-					obj[key]
-				);
-				if (isHostObject) {
+			if (isNodeLike(obj)) {
+				if (isHostObject(obj[key])) {
 					result = obj[key](
 						obj,
 						deep
@@ -1286,30 +1306,35 @@ if (Utils) {
 			return result;
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.node.name`.
+                *
+                * @description
+                * Wrapper method for `nodeName`; returns the
+                * wrapped property's result or `null` if not
+                * applicable.
+                *
+                * @see `Node::nodeName`.
+                * @see `Element::tagName`.
+                * 
+                * @param obj Object
+                * A node-like object to retrieve the `nodeName`
+                * property from.
+                * 
+                * @param lower Boolean
+                * A boolean determining if a the `nodeName` will
+                * be returned in lower case form.
+                */
 
 		function getName(
 			obj,
 			lower
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `nodeName`; returns the
-                                property's result or `null`
-                                if not applicable.
-			*/
-			var canGet = Utils.can.getName(obj),
-				lowKey = "toLowerCase",
+			var lowKey = "toLowerCase",
 				upKey = "toUpperCase",
 				result = null;
-			lower = Boolean(lower);
-			if (canGet) {
+			if (canGetName(obj)) {
 				result = obj.nodeName;
 				if (lower) {
 					result = result[lowKey]();
@@ -1320,34 +1345,33 @@ if (Utils) {
 			return result;
 		}
 
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @public `Utils.node.value`.
+                *
+                * @description
+                * Wrapper method for `nodeValue`; returns the
+                * wrapped property's result or `null` if not
+                * applicable.
+                *
+                * @see `Node::nodeValue`.
+                * @see `CharacterData::data`.
+                * @see `Text::data` (inherited from above).
+                * 
+                * @param obj Object
+                * A node-like object to retrieve the `nodeValue`
+                * property from.
+                */
 
 		function getValue(
 			obj
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `nodeValue`; returns the
-                                property's result or `null`
-                                if not applicable.
-			*/
-			var canGet = Utils.can.getValue(obj),
-				result = null;
-			if (canGet) {
+			var result = null;
+			if (canGetValue(obj)) {
 				result = obj.nodeValue;
 			}
 			return result;
 		}
-
-
-                /*        END PUBLIC METHOD        */
-
 
 		Utils.node = Utils.node || {
 			"prepend": insertBefore,
@@ -1365,235 +1389,460 @@ if (Utils) {
 if (Utils) {
 	(function () {
 
-		/*
-                        Utils.create
+               /**
+                * @module
+                * Utils.create
+                *
+                * @description
+                * Various creation method wrappers.
+                *
+                * @dependencies
+                * * Utils.is
+                */
 
-                        Description:
+		var isDocument = Utils.is.document,
+			isHostObject = Utils.is.hostObject,
 
-                        DOM creation method wrappers.
+			doc,
 
-                        Dependencies:
+			createElement,
+			createElementNS,
+			createText,
+			createProcessingInstruction,
+			createComment,
+			createDocumentFragment;
 
-                        * Utils.is;
-                        * Utils.node;
-		*/
+               /**
+                * @private
+                *
+                * @closure
+                *
+                * @description
+                * Variable containing the current document
+                * node-like object or `null`.
+                */
 
+		doc = (function () {
+			var result = null;
+			if (global.document) {
+				if (typeof global.document ===
+					"object") {
+					result = global.document;
+				}
+			}
+			return result;
+		}());
 
-                /*        PUBLIC METHOD        */
+               /**
+                * @private
+                *
+                * @description
+                * Wrapper method for `createElement`; returns the
+                * wrapped method's result or `null` if not
+                * applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create an element
+                * node-like object in.
+                *
+                * @param tag String
+                * A string representing the `tagName` of the created
+                * element node-like object.
+                *
+                * @see `Document::createElement`.
+                */
 
-
-		function createElement(
+		function createElementNode(
 			doc,
 			tag
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `createElement`; returns the
-                                wrapper method's result or `null`
-                                if not applicable.
-			*/
-			var isDocument = Utils.is.document(doc),
-				key = "createElement",
-				isHostObject,
+			var key = "createElement",
 				result = null;
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
+			if (isDocument(doc)) {
+				result = doc[key](
+					tag
 				);
-				if (isHostObject) {
-					result = doc[key](
-						tag
-					);
-				}
 			}
 			return result;
 		}
 
+               /**
+                * @public `Utils.create.element`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure)
+                * the result of `createElementNode` or `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create an element
+                * node-like object in.
+                *
+                * @param tag String
+                * A string representing the `tagName` of the created
+                * element node-like object.
+                *
+                * @see `createElementNode`.
+                */
 
-                /*        END PUBLIC METHOD        */
+		createElement = (function () {
+			var key = "createElement",
+				result = null;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = createElementNode;
+				}
+			}
+			return result;
+		}());
 
+               /**
+                * @private
+                *
+                * @description
+                * Wrapper method for `createElementNS`; returns the
+                * wrapped method's result or `null` if not
+                * applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create an element
+                * node-like object in.
+                *
+                * @param uri String
+                * A string representing the namespace URI of the
+                * element node-like object to be created.
+                *
+                * @param name String
+                * A string representing the qualified name
+                * ([namespace:]local) of the element node-like object
+                * to be created.
+                *
+                * @see `Document::createElementNS`.
+                */
 
-                /*        PUBLIC METHOD        */
-
-
-		function createElementNS(
+		function createElementNodeNS(
 			doc,
-			ns,
-			tag
+			uri,
+			name
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `createElementNS`; returns the
-                                wrapper method's result or `null`
-                                if not applicable.
-			*/
-			var isDocument = Utils.is.document(doc),
-				key = "createElementNS",
-				isHostObject,
+			var key = "createElementNS",
 				result = null;
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
+			if (isDocument(doc)) {
+				result = doc[key](
+					uri,
+					name
 				);
-				if (isHostObject) {
-					result = doc[key](
-						ns,
-						tag
-					);
-				}
 			}
 			return result;
 		}
 
+               /**
+                * @public `Utils.create.elementNS`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure)
+                * the result of `createElementNodeNS` or `null`
+                * if not applicable.
+                *
+                * @param uri String
+                * A string representing the namespace URI of the
+                * element node-like object to be created.
+                *
+                * @param name String
+                * A string representing the qualified name
+                * ([namespace:]local) of the element node-like object
+                * to be created.
+                *
+                * @see `createElementNodeNS`.
+                */
 
-                /*        END PUBLIC METHOD        */
+		createElementNS = (function () {
+			var key = "createElementNS",
+				result = null;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = createElementNodeNS;
+				}
+			}
+			return result;
+		}());
 
-
-                /*        PUBLIC METHOD        */
-
+               /**
+                * @private
+                *
+                * @description
+                * Wrapper method for `createTextNode`; returns the
+                * wrapped method's result or `null` if not
+                * applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create a text
+                * node-like object in.
+                *
+                * @param text String
+                * A string representing the `nodeValue` of the
+                * text node-like object to be created.
+                *
+                * @see `Document::createTextNode`.
+                */
 
 		function createTextNode(
 			doc,
 			text
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `createTextNode`; returns the
-                                wrapper method's result or `null`
-                                if not applicable.
-			*/
-			var isDocument = Utils.is.document(doc),
-				key = "createTextNode",
-				isHostObject,
+			var key = "createTextNode",
 				result = null;
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
+			if (isDocument(doc)) {
+				result = doc[key](
+					text
 				);
-				if (isHostObject) {
-					result = doc[key](
-						text
-					);
-				}
 			}
 			return result;
 		}
 
+               /**
+                * @public `Utils.create.text`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure)
+                * the result of `createTextNode` or `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create a text
+                * node-like object in.
+                *
+                * @param text String
+                * A string representing the `nodeValue` of the
+                * text node-like object to be created.
+                *
+                * @see `createTextNode`.
+                */
 
-                /*        END PUBLIC METHOD        */
+		createText = (function () {
+			var key = "createTextNode",
+				result = null;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = createTextNode;
+				}
+			}
+			return result;
+		}());
 
+               /**
+                * @private
+                *
+                * @description
+                * Wrapper method for `createProcessingInstruction`;
+                * returns the wrapped method's result or `null` if
+                * not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create a
+                * processing instruction node-like object in.
+                *
+                * @param target String
+                * A string representing the `target` of the created
+                * processing instruction node-like object.
+                *
+                * @param text String
+                * A string representing the `nodeValue` of the created
+                * processing instruction node-like object.
+                *
+                * @see `Document::createProcessingInstruction`.
+                */
 
-                /*        PUBLIC METHOD        */
-
-
-		function createProcessingInstruction(
+		function createPINode(
 			doc,
 			target,
 			text
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `createTextNode`; returns the
-                                wrapper method's result or `null`
-                                if not applicable.
-			*/
-			var isDocument = Utils.is.document(doc),
-				key = "createProcessingInstruction",
-				isHostObject,
+			var key = "createProcessingInstruction",
 				result = null;
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
+			if (isDocument(doc)) {
+				result = doc[key](
+					target,
+					text
 				);
-				if (isHostObject) {
-					result = doc[key](
-						target,
-						text
-					);
-				}
 			}
 			return result;
 		}
 
+               /**
+                * @public `Utils.create.processingInstruction`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure)
+                * the result of `createPINode` or
+                * `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create a
+                * processing instruction node-like object in.
+                *
+                * @param target String
+                * A string representing the `target` of the created
+                * processing instruction node-like object.
+                *
+                * @param text String
+                * A string representing the `nodeValue` of the created
+                * processing instruction node-like object.
+                *
+                * @see `createPINode`.
+                */
 
-                /*        END PUBLIC METHOD        */
+		createProcessingInstruction = (function () {
+			var key = "createProcessingInstruction",
+				result = null;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = createPINode;
+				}
+			}
+			return result;
+		}());
 
+               /**
+                * @private
+                *
+                * @description
+                * Wrapper method for `createComment`; returns the
+                * wrapped method's result or `null` if not
+                * applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create a comment
+                * node-like object in.
+                *
+                * @param text String
+                * A string representing the `nodeValue` of the created
+                * comment node-like object.
+                *
+                * @see `Document::createComment`.
+                */
 
-                /*        PUBLIC METHOD        */
-
-
-		function createComment(
+		function createCommentNode(
 			doc,
 			text
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `createComment`; returns the
-                                wrapper method's result or `null`
-                                if not applicable.
-			*/
-			var isDocument = Utils.is.document(doc),
-				key = "createComment",
-				isHostObject,
+			var key = "createComment",
 				result = null;
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
+			if (isDocument(doc)) {
+				result = doc[key](
+					text
 				);
-				if (isHostObject) {
-					result = doc[key](
-						text
-					);
-				}
 			}
 			return result;
 		}
 
+               /**
+                * @public `Utils.create.comment`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure)
+                * the result of `createCommentNode` or `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create a comment
+                * node-like object in.
+                *
+                * @param text String
+                * A string representing the `nodeValue` of the created
+                * comment node-like object.
+                *
+                * @see `createCommentNode`.
+                */
 
-                /*        END PUBLIC METHOD        */
+		createComment = (function () {
+			var key = "createComment",
+				result = null;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = createCommentNode;
+				}
+			}
+			return result;
+		}());
 
+               /**
+                * @private
+                *
+                * @description
+                * Wrapper method for `createDocumentFragment`;
+                * returns the wrapped method's result or `null` if
+                * not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create a
+                * document fragment node-like object in.
+                *
+                * @see `Document::createDocumentFragment`.
+                */
 
-                /*        PUBLIC METHOD        */
-
-
-		function createDocumentFragment(
+		function createDocFragNode(
 			doc
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `createDocumentFragment`; returns
-                                the wrapper method's result or
-                                `null` if not applicable.
-			*/
-			var isDocument = Utils.is.document(doc),
-				key = "createDocumentFragment",
-				isHostObject,
+			// FIXME: in IE 5, doc.cDF is uncallable.
+			var key = "createDocumentFragment",
 				result = null;
-			if (isDocument) {
-				isHostObject = Utils.is.hostObject(
-					doc[key]
-				);
-				if (isHostObject) {
-					result = doc[key]();
-				}
+			if (isDocument(doc)) {
+				result = doc[key]();
 			}
 			return result;
 		}
 
+               /**
+                * @public `Utils.create.documentFragment`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure)
+                * the result of `createDocFragNode` or `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create a
+                * document fragment node-like object in.
+                *
+                * @see `createDocFragNode`.
+                */
 
-                /*        END PUBLIC METHOD        */
+		createDocumentFragment = (function () {
+			var key = "createDocumentFragment",
+				result = null;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = createDocFragNode;
+				}
+			}
+			return result;
+		}());
 
+		doc = null;
 
 		Utils.create = Utils.create || {
 			"element": createElement,
 			"elementNS": createElementNS,
-			"text": createTextNode,
+			"text": createText,
 			"processingInstruction":
 				createProcessingInstruction,
 			"comment": createComment,
@@ -1602,864 +1851,1154 @@ if (Utils) {
 		};
 	}());
 }
+
 if (Utils) {
 	(function () {
 
-		/*
-                        Utils.select
+               /**
+                * @module
+                * Utils.select
+                *
+                * @description
+                * Various selection wrappers.
+                *
+                * @dependencies
+                * * Utils.types
+                * * Utils.is
+                * * Utils.helpers
+                */
 
-                        Description:
+		var nodeTypes = Utils.types,
+			isNodeLike = Utils.is.nodeLike,
+			makeArray = Utils.helpers.makeArray,
+			isDocument = Utils.is.document,
+			isHostObject = Utils.is.hostObject,
+			isElement = Utils.is.element,
+			isArrayLike = Utils.is.arrayLike,
 
-                        Selection wrappers.
+			doc,
 
-                        Dependencies:
+			selectorTypes,
 
-                        * Utils.types;
-                        * Utils.helpers;
-                        * Utils.is;
-                        * Utils.can;
-		*/
+			getHead,
+			getBody,
+			getElementsByName,
+			getElementsByTagName,
+			getElementsByTagNameNS,
+			getElementsByClassName,
+			getElementById,
+			querySelector,
+			querySelectorAll,
+			getImages,
+			getAllImages,
+			getEmbeds,
+			getAllEmbeds,
+			getLinks,
+			getAllLinks,
+			getForms,
+			getAllForms,
+			getScripts,
+			getAllScripts,
+			getApplets,
+			getAllApplets,
+			getAnchors,
+			getAllAnchors;
 
-		var nodeTypes = Utils.types;
+               /**
+                * @private
+                *
+                * @closure
+                *
+                * @description
+                * Variable containing the current document
+                * node-like object or `null`.
+                */
 
-		function generateSelectorTypes()
-		{
-			/*
-                                Private method that generates an
-                                object containing applicable
-                                `nodeTypes` for `querySelector*`;
-			*/
+		doc = (function () {
+			var result = null;
+			if (isDocument(global.document)) {
+				result = global.document;
+			}
+			return result;
+		}());
+
+               /**
+                * @private
+                *
+                * @closure
+                *
+                * @description
+                * Object containing applicable `nodeType` property
+                * values for `querySelector*`.
+                */
+
+		selectorTypes = (function () {
 			var result = {};
 			result[nodeTypes.ELEMENT_NODE] = true;
 			result[nodeTypes.DOCMENT_NODE] = true;
 			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
 			return result;
-		}
+		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Helper method that returns a boolean asserting if
+                * a node-like object can call `querySelector*`.
+                *
+                * @param obj Object
+                * A node-like object to assert.
+                */
 
 		function canCallSelectors(
 			obj
 		)
 		{
-			/*
-                                Private helper method for
-                                `querySelector*`; returns a boolean
-                                asserting if a node-like object can
-                                call `querySelector*`.
-			*/
-			var isNodeLike = Utils.is.nodeLike(obj),
-				types = generateSelectorTypes(),
-				value,
+			var types = selectorTypes,
 				result = false;
-			if (isNodeLike) {
-				value = types[obj.nodeType];
-				result = Utils.is.type(
-					value,
-					"undefined"
-				);
+			if (isNodeLike(obj)) {
+				result = typeof types[obj.nodeType] ===
+					"undefined";
 			}
 			return result;
 		}
 
-		function makeLinearArray(
-			obj
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a closure that wraps the
+                * specified key, and calls it as a method.
+                *
+                * @param method String
+                * A string containing the key to call as a method of
+                * a document node-like object.
+                */
+
+		function getByName(
+			method
 		)
 		{
-			/*
-                                Private wrapper for
-                                `Utils.helpers.makeLinearArray`.
-			*/
-			return Utils.helpers.makeLinearArray(obj);
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getElementsByName(
-			doc,
-			name
-		)
-		{
-			/*
-                                Public wrapper method for
-                                `getElementsByName`; returns
-                                `null` if not applicable.
-			*/
-			var isDoc = Utils.is.document(doc),
-				key = "getElementsByName",
-				canUse,
-				result = null;
-			if (isDoc) {
-				canUse = Utils.is.hostObject(
-					doc[key]
-				);
-				if (canUse) {
-					result = makeLinearArray(
+			var key = method;
+			return function (doc, name) {
+				var result = null;
+				if (isDocument(doc)) {
+					result = makeArray(
 						doc[key](name)
 					);
 				}
-			}
-			return result;
+				return result;
+			};
 		}
 
+               /**
+                * @public `Utils.select.byName`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns an array-like object
+                * of node-like objects that match the specified
+                * "name"; returns `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                *
+                * @param name String
+                * A string containing the "name" to find.
+                */
 
-                /*        END PUBLIC METHOD */
+		getElementsByName = (function () {
+			var key = "getElementsByName",
+				result = null;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = getByName(
+						key
+					);
+				}
+			}
+			return result;
+		}());
 
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a closure that wraps the
+                * specified key, and calls it as a method.
+                *
+                * @param method String
+                * A string containing the key to call as a method of
+                * a document node-like object or an element
+                * node-like object.
+                */
 
-                /*        PUBLIC METHOD        */
-
-
-		function getElementsByTagName(
-			caller,
-			tag
+		function getByTagName(
+			method
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `getElementsByTagName`; returns
-                                `null` if not applicable.
-			*/
-			var isDoc = Utils.is.document(caller),
-				isElement = Utils.is.element(
-					caller
-				),
-				key = "getElementsByTagName",
-				canUse,
-				result = null;
-			if (isDoc || isElement) {
-				canUse = Utils.is.hostObject(
-					caller[key]
-				);
-				if (canUse) {
-					result = makeLinearArray(
+			var key = method;
+			return function (caller, tag) {
+				var result = null;
+				if (isDocument(caller) ||
+					isElement(caller)) {
+					result = makeArray(
 						caller[key](tag)
 					);
 				}
-			}
-			return result;
+				return result;
+			};
 		}
 
+               /**
+                * @public `Utils.select.byTagName`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns an array-like object
+                * of node-like objects that match the specified
+                * "tag"; returns `null` if not applicable.
+                *
+                * @param caller Object
+                * A document node-like object or element node-like
+                * object to access.
+                *
+                * @param tag String
+                * A string containing the "tag" to find.
+                */
 
-                /*        END PUBLIC METHOD */
+		getElementsByTagName = (function () {
+			var key = "getElementsByTagName",
+				result = null;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = getByTagName(
+						key
+					);
+				}
+			}
+			return result;
+		}());
 
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a closure that wraps the
+                * specified key, and calls it as a method.
+                *
+                * @param method String
+                * A string containing the key to call as a method of
+                * a document node-like object or an element
+                * node-like object.
+                */
 
-                /*        PUBLIC METHOD        */
-
-
-		function getElementsByTagNameNS(
-			caller,
-			local,
-			ns
+		function getByTagNameNS(
+			method
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `getElementsByTagNameNS`; returns
-                                `null` if not applicable.
-			*/
-			var isDoc = Utils.is.document(caller),
-				isElement = Utils.is.element(
-					caller
-				),
-				key = "getElementsByTagNameNS",
-				canUse,
-				result = null;
-			if (isDoc || isElement) {
-				canUse = Utils.is.hostObject(
-					caller[key]
-				);
-				if (canUse) {
-					result = makeLinearArray(
+			var key = method;
+			return function (caller, local, ns) {
+				var result = null;
+				if (isDocument(caller) ||
+					isElement(caller)) {
+					result = makeArray(
 						caller[key](local, ns)
 					);
 				}
-			}
-			return result;
+				return result;
+			};
 		}
 
+               /**
+                * @public `Utils.select.byTagNameNS`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns an array-like object
+                * of node-like objects that match the specified
+                * "namespace" and/or "local name"; returns `null`
+                * if not applicable.
+                *
+                * @param caller Object
+                * A document node-like object or element node-like
+                * object to access.
+                *
+                * @param local String
+                * A string containing the "local name" to find.
+                *
+                * @param ns String
+                * A string containing the "namespace" to find.
+                */
 
-                /*        END PUBLIC METHOD */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getElementsByClassName(
-			caller,
-			names
-		)
-		{
-			/*
-                                Public wrapper method for
-                                `getElementsByClassName`; returns
-                                `null` if not applicable.
-			*/
-			var isDoc = Utils.is.document(caller),
-				isElement = Utils.is.element(
-					caller
-				),
-				key = "getElementsByClassName",
-				canUse,
+		getElementsByTagNameNS = (function () {
+			var key = "getElementsByTagNameNS",
 				result = null;
-			if (isDoc || isElement) {
-				canUse = Utils.is.hostObject(
-					caller[key]
-				);
-				if (canUse) {
-					result = makeLinearArray(
-						caller[key](names)
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = getByTagNameNS(
+						key
 					);
 				}
 			}
 			return result;
-		}
+		}());
 
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a closure that wraps the
+                * specified key, and calls it as a method.
+                *
+                * @param method String
+                * A string containing the key to call as a method of
+                * a document node-like object or an element
+                * node-like object.
+                */
 
-                /*        END PUBLIC METHOD */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getElementById(
-			doc,
-			id
+		function getByClassName(
+			method
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `getElementById`; returns `null`
-                                if not applicable.
-			*/
-			var isDoc = Utils.is.document(doc),
-				key = "getElementById",
-				canUse,
+			var key = method;
+			return function (caller, names) {
+				var result = null;
+				if (isDocument(caller) ||
+					isElement(caller)) {
+					result = makeArray(
+						caller[key](names)
+					);
+				}
+				return result;
+			};
+		}
+
+               /**
+                * @public `Utils.select.byClassName`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns an array-like object
+                * of node-like objects that match the specified
+                * "class name(s)"; returns `null` if not applicable.
+                *
+                * @param caller Object
+                * A document node-like object or element node-like
+                * object to access.
+                *
+                * @param names String
+                * A string containing the "class name(s)" to find.
+                */
+
+		getElementsByClassName = (function () {
+			var key = "getElementsByClassName",
 				result = null;
-			if (isDoc) {
-				canUse = Utils.is.hostObject(
-					doc[key]
-				);
-				if (canUse) {
-					result = doc[key](id);
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = getByClassName(
+						key
+					);
 				}
 			}
 			return result;
-		}
+		}());
 
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a closure that wraps the
+                * specified key, and calls it as a method.
+                *
+                * @param method String
+                * A string containing the key to call as a method of
+                * a document node-like object.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function querySelector(
-			caller,
-			selectors
+		function getById(
+			method
 		)
 		{
-			/*
-                                Public wrapper method for
-                                `querySelector`; returns `null`
-                                if not applicable.
-			*/
-			var canCall = canCallSelectors(
-					caller
-				),
-				key = "querySelector",
-				canUse,
+			var key = method;
+			return function (doc, id) {
+				var result = null;
+				if (isDocument(doc)) {
+					result = doc[key](id);
+				}
+				return result;
+			};
+		}
+
+               /**
+                * @public `Utils.select.byId`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns a node-like object. 
+                * that matches the specified "id"; returns `null` if
+                * not applicable.
+                *
+                * @param doc Object
+                * A document node-like object object to access.
+                *
+                * @param id String
+                * A string containing the "id" to find.
+                */
+
+		getElementById = (function () {
+			var key = "getElementById",
 				result = null;
-			if (canCall) {
-				canUse = Utils.is.hostObject(
-					caller[key]
-				);
-				if (canUse) {
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = getById(
+						key
+					);
+				}
+			}
+			return result;
+		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a closure that wraps the
+                * specified key, and calls it as a method.
+                *
+                * @param method String
+                * A string containing the key to call as a method of
+                * a node-like object.
+                */
+
+		function getQuerySelector(
+			method
+		)
+		{
+			var key = method;
+			return function (caller, selectors) {
+				var result = null;
+				if (canCallSelectors(caller)) {
 					result = caller[key](
 						selectors
 					);
 				}
-			}
-			return result;
+				return result;
+			};
 		}
 
+               /**
+                * @public `Utils.select.query`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns a node-like object. 
+                * that matches the specified "selectors"; returns
+                * `null` if not applicable.
+                *
+                * @param caller Object
+                * A node-like object object to access.
+                *
+                * @param selectors String
+                * A string containing the "selectors" to find.
+                */
 
-                /*        END PUBLIC METHOD */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function querySelectorAll(
-			caller,
-			selectors
-		)
-		{
-			/*
-                                Public wrapper method for
-                                `querySelectorAll`; returns `null`
-                                if not applicable.
-			*/
-			var canCall = canCallSelectors(
-					caller
-				),
-				key = "querySelectorAll",
-				canUse,
+		querySelector = (function () {
+			var key = "querySelector",
 				result = null;
-			if (canCall) {
-				canUse = Utils.is.hostObject(
-					caller[key]
-				);
-				if (canUse) {
-					result = makeLinearArray(
-						caller[key](selectors)
+			if (canCallSelectors(doc)) {
+				if (isHostObject(doc[key])) {
+					result = getQuerySelector(
+						key
 					);
 				}
 			}
 			return result;
+		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a closure that wraps the
+                * specified key, and calls it as a method.
+                *
+                * @param method String
+                * A string containing the key to call as a method of
+                * a node-like object.
+                */
+
+		function getQuerySelectorAll(
+			method
+		)
+		{
+			var key = method;
+			return function (caller, selectors) {
+				var result = null;
+				if (canCallSelectors(caller)) {
+					result = makeArray(
+						caller[key](selectors)
+					);
+				}
+				return result;
+			};
 		}
 
+               /**
+                * @public `Utils.select.queryAll`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns an array-like object
+                * of node-like objects that match the specified
+                * "selectors"; returns `null` if not applicable.
+                *
+                * @param caller Object
+                * A node-like object object to access.
+                *
+                * @param selectors String
+                * A string containing the "selectors" to find.
+                */
 
-                /*        END PUBLIC METHOD */
+		querySelectorAll = (function () {
+			var key = "querySelectorAll",
+				result = null;
+			if (canCallSelectors(doc)) {
+				if (isHostObject(doc[key])) {
+					result = getQuerySelectorAll(
+						key
+					);
+				}
+			}
+			return result;
+		}());
 
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns the "head" element node-like
+                * object for the specified document; returns
+                * `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
+
+		function getNativeHead(
+			doc
+		)
+		{
+			var result = null;
+			if (isDocument(doc)) {
+				result = doc.head;
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns the "head" element node-like
+                * object for the specified document; returns
+                * `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
 
 		function forkHead(
 			doc
 		)
 		{
-			/*
-                                Private helper method
-                                that forks for `document.head`;
-                                returns `null` if not applicable.
-			*/
-			var result = null,
+			var heads,
+				result = null;
+			if (isDocument(doc)) {
 				heads = getElementsByTagName(
 					doc,
 					"head"
-				),
-				isArrayLike = Utils.is.arrayLike(
-					heads
 				);
-			if (isArrayLike) {
-				result = heads[0];
-			}
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getHead(
-			doc
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's `head`
-                                element; returns `null` if not
-                                applicable.
-			*/
-			var isDoc = Utils.is.document(doc),
-				headProp,
-				result = null;
-			if (isDoc) {
-				headProp = Utils.is.hostObject(
-					global.document.head
-				);
-				if (headProp) {
-					result = global.document.head;
-				} else if (!headProp) {
-					result = forkHead(doc);
+				if (isArrayLike(heads)) {
+					result = heads[0];
 				}
 			}
 			return result;
 		}
 
+               /**
+                * @public `Utils.select.head`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure) the
+                * "head" element node-like object for the specified
+                * document node-like object; returns `null` if not
+                * applicable.
+                *
+                * @see `getNativeHead`.
+                * @see `forkHead`.
+                */
 
-                /*        END PUBLIC METHOD */
+		getHead = (function () {
+			var headProp,
+				result = null;
+			if (isDocument(doc)) {
+				headProp = isHostObject(doc.head);
+				if (headProp) {
+					result = getNativeHead;
+				} else if (!headProp) {
+					result = forkHead;
+				}
+			}
+			return result;
+		}());
 
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns the "body" element node-like
+                * object for the specified document; returns
+                * `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
+
+		function getNativeBody(
+			doc
+		)
+		{
+			var result = null;
+			if (isDocument(doc)) {
+				result = doc.body;
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns the "body" element node-like
+                * object for the specified document; returns
+                * `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
 
 		function forkBody(
 			doc
 		)
 		{
-			/*
-                                Private helper method that forks
-                                for `document.body`; returns
-                                `null` if not applicable.
-			*/
-			var result = null,
+			var bodies,
+				result = null;
+			if (isDocument(doc)) {
 				bodies = getElementsByTagName(
 					doc,
 					"body"
-				),
-				isArrayLike = Utils.is.arrayLike(
-					bodies
 				);
-			if (isArrayLike) {
-				result = bodies[0];
-			}
-			return result;
-		}
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getBody(
-			doc
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's `body`
-                                element; returns `null` if not
-                                applicable.
-			*/
-			var isDoc = Utils.is.document(doc),
-				bodyProp,
-				result = null;
-			if (isDoc) {
-				bodyProp = Utils.is.hostObject(
-					global.document.body
-				);
-				if (bodyProp) {
-					result = global.document.body;
-				} else if (!bodyProp) {
-					result = forkBody(doc);
+				if (isArrayLike(bodies)) {
+					result = bodies[0];
 				}
 			}
 			return result;
 		}
+
+               /**
+                * @public `Utils.select.body`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure) the
+                * "body" element node-like object for the specified
+                * document node-like object; returns `null` if not
+                * applicable.
+                *
+                * @see `getNativeBody`.
+                * @see `forkBody`.
+                */
+
+		getBody = (function () {
+			var bodyProp,
+				result = null;
+			if (isDocument(doc)) {
+				bodyProp = isHostObject(doc.body);
+				if (bodyProp) {
+					result = getNativeBody;
+				} else if (!bodyProp) {
+					result = forkBody;
+				}
+			}
+			return result;
+		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Helper method that converts an `HTMLCollection` to
+                * an array-like object if necessary and returns it.
+                *
+                * @param items Object
+                * An array-like or node-like object to examine.
+                */
 
 		function adjustItems(
 			items
 		)
 		{
-			/*
-                                Private helper that converts
-                                an `HTMLCollection` to a "static"
-                                array if necessary; the result is
-                                then returned.
-			*/
-			var isNodeLike = Utils.is.nodeLike(items),
-				isArrayLike = Utils.is.arrayLike(
-					items
-				),
-				result = items;
-			if (!isNodeLike && isArrayLike) {
-				result = makeLinearArray(items);
+			var result = items;
+			if (!isNodeLike(items) &&
+				isArrayLike(items)) {
+				result = makeArray(items);
 			}
 			return result;
 		}
 
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a closure that wraps the
+                * specified collection, and converts it to an
+                * array-like object.
+                *
+                * @param collection String
+                * A string containing the key to access as a
+                * property of a document node-like object.
+                */
+
 		function getCollection(
+			collection
+		)
+		{
+			var key = collection;
+			return function (doc) {
+				var result = null;
+				if (isDocument(doc)) {
+					result = makeArray(
+						doc[key]
+					);
+				}
+				return result;
+			};
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a closure that wraps the
+                * specified key; returns `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                *
+                * @param key String
+                * A string containing the key to access as a
+                * property of a document node-like object.
+                */
+
+		function wrapCollection(
 			doc,
 			key
 		)
 		{
-			/*
-                                Private method that returns
-                                an `HTMLCollection` as a "static"
-                                array; returns `null` if not
-                                applicable.
-			*/
-			var isDoc = Utils.is.document(doc),
-				canUse,
-				result = null;
-			if (isDoc) {
-				canUse = Utils.is.hostObject(
-					doc[key]
-				);
-				if (canUse) {
-					result = adjustItems(
-						doc[key]
+			var result = null;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = getCollection(
+						key
 					);
 				}
 			}
 			return result;
 		}
 
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns node-like objects from an
+                * `HTMLCollection` based upon a key; returns `null`
+                * if not applicable.
+                *
+                * @param collection String
+                * A string containing the key to access as a
+                * property of a document node-like object.
+                */
+
 		function getNamedItems(
-			doc,
-			key,
-			name
+			collection
 		)
 		{
-			/*
-                                Private method that returns
-                                nodes from an HTMLCollection
-                                based upon a string key,
-                                which is usually the `id`
-                                or `name` property of a node;
-                                returns `null` if not applicable.
-			*/
-			var isDoc = Utils.is.document(doc),
-				canUse,
-				result = null;
-			if (isDoc) {
-				canUse = Utils.is.hostObject(
-					doc[key]
-				);
-				if (canUse) {
+			var key = collection;
+			return function (doc, name) {
+				var result = null;
+				if (isDocument(doc)) {
 					result = adjustItems(
 						doc[key][name]
 					);
 				}
+				return result;
+			};
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a closure that wraps the
+                * specified key; returns `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                *
+                * @param key String
+                * A string containing the key to access as a
+                * property of a document node-like object.
+                */
+
+		function wrapNamedItems(
+			doc,
+			key
+		)
+		{
+			var result = null;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = getNamedItems(
+						key
+					);
+				}
 			}
 			return result;
 		}
 
+               /**
+                * @public `Utils.select.images`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the node-like objects that match the
+                * specified "name" in a specific document node-like
+                * object's `images` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                *
+                * @param name String
+                * A string containing the "name" to find.
+                */
 
-                /*        PUBLIC METHOD        */
-
-
-		function getImages(
-			doc,
-			key
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `images` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getNamedItems(
-				doc,
-				"images",
-				key
-			);
-		}
-
-
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getAllImages(
-			doc
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `images` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getCollection(
+		getImages = (function () {
+			return wrapNamedItems(
 				doc,
 				"images"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.allImages`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the specified document node-like
+                * object's `images` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getEmbeds(
-			doc,
-			key
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `embeds`/`plugins` `HTMLCollection`
-                                as a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getNamedItems(
+		getAllImages = (function () {
+			return wrapCollection(
 				doc,
-				"embeds",
-				key
+				"images"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.embeds`.
+                * @public `Utils.select.plugins`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the node-like objects that match the
+                * specified "name" in a specific document node-like
+                * object's `embeds` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                *
+                * @param name String
+                * A string containing the "name" to find.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getAllEmbeds(
-			doc
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `embeds` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getCollection(
+		getEmbeds = (function () {
+			return wrapNamedItems(
 				doc,
 				"embeds"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.allEmbeds`.
+                * @public `Utils.select.allPlugins`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the specified document node-like
+                * object's `embeds` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getLinks(
-			doc,
-			key
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `links` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getNamedItems(
+		getAllEmbeds = (function () {
+			return wrapCollection(
 				doc,
-				"links",
-				key
+				"embeds"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.links`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the node-like objects that match the
+                * specified "name" in a specific document node-like
+                * object's `links` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                *
+                * @param name String
+                * A string containing the "name" to find.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getAllLinks(
-			doc
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `links` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getCollection(
+		getLinks = (function () {
+			return wrapNamedItems(
 				doc,
 				"links"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.allLinks`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the specified document node-like
+                * object's `links` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getForms(
-			doc,
-			key
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `forms` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getNamedItems(
+		getAllLinks = (function () {
+			return wrapCollection(
 				doc,
-				"forms",
-				key
+				"links"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.forms`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the node-like objects that match the
+                * specified "name" in a specific document node-like
+                * object's `forms` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                *
+                * @param name String
+                * A string containing the "name" to find.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getAllForms(
-			doc
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `forms` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getCollection(
+		getForms = (function () {
+			return wrapNamedItems(
 				doc,
 				"forms"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.allForms`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the specified document node-like
+                * object's `forms` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getScripts(
-			doc,
-			key
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `scripts` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getNamedItems(
+		getAllForms = (function () {
+			return wrapCollection(
 				doc,
-				"scripts",
-				key
+				"forms"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.scripts`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the node-like objects that match the
+                * specified "name" in a specific document node-like
+                * object's `scripts` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                *
+                * @param name String
+                * A string containing the "name" to find.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getAllScripts(
-			doc
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `scripts` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getCollection(
+		getScripts = (function () {
+			return wrapNamedItems(
 				doc,
 				"scripts"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.allScripts`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the specified document node-like
+                * object's `scripts` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getApplets(
-			doc,
-			key
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `applets` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getNamedItems(
+		getAllScripts = (function () {
+			return wrapCollection(
 				doc,
-				"applets",
-				key
+				"scripts"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.applets`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the node-like objects that match the
+                * specified "name" in a specific document node-like
+                * object's `applets` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                *
+                * @param name String
+                * A string containing the "name" to find.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getAllApplets(
-			doc
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `applets` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getCollection(
+		getApplets = (function () {
+			return wrapNamedItems(
 				doc,
 				"applets"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.allApplets`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the specified document node-like
+                * object's `applets` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getAnchors(
-			doc,
-			key
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `anchors` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getNamedItems(
+		getAllApplets = (function () {
+			return wrapCollection(
 				doc,
-				"anchors",
-				key
+				"applets"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.anchors`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the node-like objects that match the
+                * specified "name" in a specific document node-like
+                * object's `anchors` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                *
+                * @param name String
+                * A string containing the "name" to find.
+                */
 
-                /*        END PUBLIC METHOD        */
-
-
-                /*        PUBLIC METHOD        */
-
-
-		function getAllAnchors(
-			doc
-		)
-		{
-			/*
-                                Public method that returns
-                                the specified document's
-                                `anchors` `HTMLCollection` as
-                                a "static" array; returns `null`
-                                if not applicable.
-			*/
-			return getCollection(
+		getAnchors = (function () {
+			return wrapNamedItems(
 				doc,
 				"anchors"
 			);
-		}
+		}());
 
+               /**
+                * @public `Utils.select.allAnchors`.
+                *
+                * @description
+                * Method that returns an array-like object
+                * containing the specified document node-like
+                * object's `anchors` `HTMLCollection`; returns `null`
+                * if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
 
-                /*        END PUBLIC METHOD        */
+		getAllAnchors = (function () {
+			return wrapCollection(
+				doc,
+				"anchors"
+			);
+		}());
 
+		doc = null;
 
 		Utils.select = Utils.select || {
 			"byName": getElementsByName,

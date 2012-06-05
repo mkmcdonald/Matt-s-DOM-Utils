@@ -7,17 +7,22 @@ var global = global || this;
 			"stop": doc.getElementById("stop"),
 			"results": doc.getElementById("results")
 		},
-		tests;
+		tests,
+
+		runTests,
+
+		testIndex,
+		tester;
 
 	function prepend(node)
 	{
 		var par = commonElements.test,
-			test =  Utils.node.prepend(
+			node =  Utils.node.prepend(
 				par,
 				node,
 				par.lastChild
 			);
-		return test;
+		return node;
 	}
 
 	function insertBefore()
@@ -25,10 +30,10 @@ var global = global || this;
 		var node = Utils.create.element(
 			doc,
 			"li"
-		),
-			test = prepend(node);
+		);
+		node = prepend(node);
 		return Utils.is.nodeLike(
-			test
+			node
 		);
 	}
 
@@ -54,16 +59,16 @@ var global = global || this;
 		return generateList(3);
 	}
 
-	function insertBeforeList()
+	function insertList()
 	{
 		var list = generatePrependList(),
-			test = Utils.node.prependList(
+			nodes = Utils.node.prependList(
 				commonElements.test,
 				list,
 				commonElements.test.lastChild
 			);
 		return Utils.is.type(
-			test,
+			nodes,
 			"undefined"
 		);
 	}
@@ -73,13 +78,13 @@ var global = global || this;
 		var node = Utils.create.element(
 			doc,
 			"li"
-		),
-			test = Utils.node.append(
-				commonElements.test,
-				node
-			);
+		);
+		node = Utils.node.append(
+			commonElements.test,
+			node
+		);
 		return Utils.is.nodeLike(
-			test
+			node
 		);
 	}
 
@@ -91,12 +96,12 @@ var global = global || this;
 	function appendList()
 	{
 		var list = generateAppendList(),
-			test = Utils.node.appendList(
+			nodes = Utils.node.appendList(
 				commonElements.test,
 				list
 			);
 		return Utils.is.type(
-			test,
+			nodes,
 			"undefined"
 		);
 	}
@@ -104,24 +109,24 @@ var global = global || this;
 	function removeChild()
 	{
 		var par = commonElements.test,
-			test = Utils.node.remove(
+			node = Utils.node.remove(
 				par,
 				par.lastChild
 			);
 		return Utils.is.nodeLike(
-			test
+			node
 		);
 	}
 
 	function replace(node)
 	{
 		var par = commonElements.test,
-			test =  Utils.node.replace(
+			node =  Utils.node.replace(
 				par,
 				node,
 				par.lastChild
 			);
-		return test;
+		return node;
 	}
 
 	function replaceChild()
@@ -129,36 +134,33 @@ var global = global || this;
 		var node = Utils.create.text(
 			doc,
 			"c = b^x; x = log(c) / log(b)"
-		),
-			test = replace(node);
+		);
+		node = replace(node);
 		return Utils.is.nodeLike(
-			test
+			node
 		);
 	}
 
 	function cloneNode()
 	{
-		var test = Utils.node.clone(
+		var node = Utils.node.clone(
 			commonElements.test,
 			true
 		);
 		return Utils.is.nodeLike(
-			test
+			node
 		);
 	}
 
-	function generateTests()
-	{
-		return [
-			insertBefore,
-			insertBeforeList,
-			appendChild,
-			appendList,
-			removeChild,
-			replaceChild,
-			cloneNode
-		];
-	}
+	tests = [
+		insertBefore,
+		insertList,
+		appendChild,
+		appendList,
+		removeChild,
+		replaceChild,
+		cloneNode
+	];
 
 	function createMessage(text)
 	{
@@ -168,80 +170,116 @@ var global = global || this;
 		}
 		return Utils.create.text(
 			doc,
-			str + "\r\n"
+			str
 		);
 	}
 
-	function addMessage(text)
+	function addMessage(
+		msg,
+		key
+	)
 	{
-		var isText =
-			Utils.is.text(
+		var cell = document.getElementById("result_" + key),
+			row = document.getElementById("test_" + key),
+			text = createMessage(msg);
+		if (cell) {
+			cell.appendChild(
 				text
-			),
-			par = commonElements.results,
-			separator = createMessage("----------");
-		text = createMessage(text);
-		Utils.node.append(
-			par,
-			text
-		);
-		Utils.node.append(
-			par,
-			separator
-		);
+			);
+		}
+		if (row) {
+			if (msg === "true") {
+				row.className = "pass";
+			} else if (msg === "false") {
+				row.className = "fail";
+			} else if (msg === "ERROR") {
+				row.className = "error";
+			}
+		}
 	}
 
-	function runTest(test)
+	function runTest(
+		test,
+		key
+	)
 	{
-		var isFunction = Utils.is.type(
-			test,
-			"function"
-		),
-			result = null;
-		if (isFunction) {
+		var result = null;
+		if (typeof test === "function") {
 			try {
 				result = test();
-				String(result);
+				result = String(result);
 			} catch (e) {
 				result = "ERROR";
 			}
-			addMessage(result);
+			addMessage(result, key);
 		}
 	}
 
-	function runTests(evt)
+	runTests = (function () {
+		var max = tests.length;
+		return function () {
+			if (testIndex < max) {
+				runTest(
+					tests[testIndex],
+					testIndex + 1
+				);
+				testIndex += 1;
+				tester = global.setTimeout(
+					runTests,
+					100
+				);
+			} else if (testIndex >= max) {
+				testIndex = 0;
+			}
+		};
+	}());
+
+	function startTests(evt)
 	{
-		var index = 0,
-			max,
-			test;
-		tests = generateTests();
-		max = tests.length;
-		while (index < max) {
-			test = tests[index];
-			runTest(test);
-			index += 1;
-		}
+		testIndex = 0;
+		runTests();
+		this.disabled = true;
+		this.onclick = function () {};
 	}
 
-	function clearTests(evt)
+	function clearResult(key)
 	{
-		var par = commonElements.results,
-			nodes = par.childNodes;
-			isHostObject = Utils.is.hostObject(nodes);
-		if (isHostObject) {
-			while(nodes.length) {
-				Utils.node.remove(
-					par,
-					nodes[0]
+		var cell = doc.getElementById("result_" + key),
+			row = doc.getElementById("test_" + key),
+			index;
+		if (cell && row) {
+			index = cell.childNodes.length - 1;
+			for (index; index > -1; index -= 1) {
+				cell.removeChild(
+					cell.childNodes[index]
 				);
 			}
+			row.className = "";
 		}
+	}
+
+	function clearTests()
+	{
+		var index = 0,
+			max = tests.length;
+		for (index; index < max; index += 1) {
+			clearResult(index + 1);
+		}
+	}
+
+	function endTests(evt)
+	{
+		clearTimeout(tester);
+		tester = null;
+		clearTests();
+		commonElements.start.disabled = false;
+		commonElements.start.onclick = startTests;
 	}
 
 	function addHandlers()
 	{
-		commonElements.start.onclick = runTests;
-		commonElements.stop.onclick = clearTests;
+		commonElements.start.onclick = startTests;
+		commonElements.stop.onclick = endTests;
 	}
 
 	addHandlers();

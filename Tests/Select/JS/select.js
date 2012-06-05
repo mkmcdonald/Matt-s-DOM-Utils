@@ -9,289 +9,360 @@ global = global || this;
 		},
 		tests;
 
-	function headReturned()
+	function byName()
 	{
-		var test = Utils.select.head(
-			doc
-		);
-		return Utils.is.nodeLike(
-			test
-		);
-	}
-
-	function bodyReturned()
-	{
-		var test = Utils.select.body(
-			doc
-		);
-		return Utils.is.nodeLike(
-			test
-		);
-	}
-
-	function byNameWrapped()
-	{
-		var test = Utils.select.byName(
-			doc,
-			"control1"
-		);
+		var test;
+		if (Utils.select.byName) {
+			test = Utils.select.byName(
+				doc,
+				"control1"
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
 	}
 
-	function byTagNameWrapped()
+	function byTagName()
 	{
-		var test = Utils.select.byTagName(
-			doc,
-			"input"
-		);
+		var test;
+		if (Utils.select.byTagName) {
+			test = Utils.select.byTagName(
+				doc,
+				"input"
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
 	}
 
-	function byClassNameWrapped()
+	function byClassName()
 	{
-		var test = Utils.select.byClassName(
-			doc,
-			"container"
-		);
+		var test;
+		if (Utils.select.byClassName) {
+			test = Utils.select.byClassName(
+				doc,
+				"container"
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
 	}
 
-	function byIdWrapped()
+	function byId()
 	{
-		var test = Utils.select.byId(
-			doc,
-			"test"
-		);
+		var test;
+		if (Utils.select.byId) {
+			test = Utils.select.byId(
+				doc,
+				"test"
+			);
+		}
 		return Utils.is.nodeLike(
 			test
 		);
 	}
 
-	function qsWrapped()
+	function query()
 	{
-		var test = Utils.select.query(
-			doc,
-			"input[type=text]"
-		);
+		var test;
+		if (Utils.select.query) {
+			test = Utils.select.query(
+				doc,
+				"input[type=text]"
+			);
+		}
 		return Utils.is.nodeLike(
 			test
 		);
 	}
 
-	function qsaWrapped()
+	function queryAll()
 	{
-		var test = Utils.select.queryAll(
-			doc,
-			"input[type]"
-		);
+		var test;
+		if (Utils.select.queryAll) {
+			test = Utils.select.queryAll(
+				doc,
+				"input[type]"
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
 	}
 
-	function namedImagesWrapped()
+	function head()
 	{
-		var test = Utils.select.images(
-			doc,
-			0
-		);
+		var test;
+		if (Utils.select.head) {
+			test = Utils.select.head(
+				doc
+			);
+		}
 		return Utils.is.nodeLike(
 			test
 		);
 	}
 
-	function allImagesWrapped()
+	function body()
 	{
-		var test = Utils.select.allImages(
-			doc
-		);
-		return Utils.is.arrayLike(
-			test
-		);
-	}
-
-	function namedEmbedsWrapped()
-	{
-		var test = Utils.select.embeds(
-			doc,
-			0
-		);
+		var test;
+		if (Utils.select.body) {
+			test = Utils.select.body(
+				doc
+			);
+		}
 		return Utils.is.nodeLike(
 			test
 		);
 	}
 
-	function allEmbedsWrapped()
+	function images()
 	{
-		var test = Utils.select.allEmbeds(
-			doc
-		);
-		return Utils.is.arrayLike(
-			test
-		);
-	}
-
-	function namedPluginsWrapped()
-	{
-		var test = Utils.select.plugins(
-			doc,
-			0
-		);
+		var test;
+		if (Utils.select.images) {
+			test = Utils.select.images(
+				doc,
+				"0"
+			);
+		}
 		return Utils.is.nodeLike(
 			test
 		);
 	}
 
-	function allPluginsWrapped()
+	function allImages()
 	{
-		var test = Utils.select.allPlugins(
-			doc
-		);
+		var test;
+		if (Utils.select.allImages) {
+			test = Utils.select.allImages(
+				doc
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
 	}
 
-	function namedLinksWrapped()
+	function embeds()
 	{
-		var test = Utils.select.links(
-			doc,
-			0
-		);
+		var test;
+		if (Utils.select.embeds) {
+			test = Utils.select.embeds(
+				doc,
+				"0"
+			);
+		}
 		return Utils.is.nodeLike(
 			test
 		);
 	}
 
-	function allLinksWrapped()
+	function allEmbeds()
 	{
-		var test = Utils.select.allLinks(
-			doc
-		);
+		var test;
+		if (Utils.select.allEmbeds) {
+			test = Utils.select.allEmbeds(
+				doc
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
 	}
 
-	function namedFormsWrapped()
+	function plugins()
 	{
-		var test = Utils.select.forms(
-			doc,
-			0
-		);
+		var test;
+		if (Utils.select.plugins) {
+			test = Utils.select.plugins(
+				doc,
+				"0"
+			);
+		}
 		return Utils.is.nodeLike(
 			test
 		);
 	}
 
-	function allFormsWrapped()
+	function allPlugins()
 	{
-		var test = Utils.select.allForms(
-			doc
-		);
+		var test;
+		if (Utils.select.allPlugins) {
+			test = Utils.select.allPlugins(
+				doc
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
 	}
 
-	function namedScriptsWrapped()
+	function links()
 	{
-		var test = Utils.select.scripts(
-			doc,
-			0
-		);
+		var test;
+		if (Utils.select.links) {
+			test = Utils.select.links(
+				doc,
+				"0"
+			);
+		}
 		return Utils.is.nodeLike(
 			test
 		);
 	}
 
-	function allScriptsWrapped()
+	function allLinks()
 	{
-		var test = Utils.select.allScripts(
-			doc
-		);
+		var test;
+		if (Utils.select.allLinks) {
+			test = Utils.select.allLinks(
+				doc
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
 	}
 
-	function namedAppletsWrapped()
+	function forms()
 	{
-		var test = Utils.select.applets(
-			doc,
-			0
-		);
+		var test;
+		if (Utils.select.forms) {
+			test = Utils.select.forms(
+				doc,
+				"0"
+			);
+		}
 		return Utils.is.nodeLike(
 			test
 		);
 	}
 
-	function allAppletsWrapped()
+	function allForms()
 	{
-		var test = Utils.select.allApplets(
-			doc
-		);
+		var test;
+		if (Utils.select.allForms) {
+			test = Utils.select.allForms(
+				doc
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
 	}
 
-	function namedAnchorsWrapped()
+	function scripts()
 	{
-		var test = Utils.select.anchors(
-			doc,
-			0
-		);
+		var test;
+		if (Utils.select.scripts) {
+			test = Utils.select.scripts(
+				doc,
+				"0"
+			);
+		}
 		return Utils.is.nodeLike(
 			test
 		);
 	}
 
-	function allAnchorsWrapped()
+	function allScripts()
 	{
-		var test = Utils.select.allAnchors(
-			doc
-		);
+		var test;
+		if (Utils.select.allScripts) {
+			test = Utils.select.allScripts(
+				doc
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
 	}
 
-	function generateTests()
+	function applets()
 	{
+		var test;
+		if (Utils.select.applets) {
+			test = Utils.select.applets(
+				doc,
+				"0"
+			);
+		}
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function allApplets()
+	{
+		var test;
+		if (Utils.select.allApplets) {
+			test = Utils.select.allApplets(
+				doc
+			);
+		}
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	function anchors()
+	{
+		var test;
+		if (Utils.select.anchors) {
+			test = Utils.select.anchors(
+				doc,
+				"0"
+			);
+		}
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function allAnchors()
+	{
+		var test;
+		if (Utils.select.allAnchors) {
+			test = Utils.select.allAnchors(
+				doc
+			);
+		}
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
+	tests = (function () {
 		return [
-			headReturned,
-			bodyReturned,
-			byNameWrapped,
-			byTagNameWrapped,
-			byClassNameWrapped,
-			byIdWrapped,
-			qsWrapped,
-			qsaWrapped,
-			namedImagesWrapped,
-			allImagesWrapped,
-			namedEmbedsWrapped,
-			allEmbedsWrapped,
-			namedPluginsWrapped,
-			allPluginsWrapped,
-			namedLinksWrapped,
-			allLinksWrapped,
-			namedFormsWrapped,
-			allFormsWrapped,
-			namedScriptsWrapped,
-			allScriptsWrapped,
-			namedAppletsWrapped,
-			allAppletsWrapped,
-			namedAnchorsWrapped,
-			allAnchorsWrapped
+			{"test": byName, "key": "one"},
+			{"test": byTagName, "key": "two"},
+			{"test": byClassName, "key": "three"},
+			{"test": byId, "key": "four"},
+			{"test": query, "key": "five"},
+			{"test": queryAll, "key": "six"},
+			{"test": head, "key": "seven"},
+			{"test": body, "key": "eight"},
+			{"test": images, "key": "nine"},
+			{"test": allImages, "key": "ten"},
+			{"test": embeds, "key": "eleven"},
+			{"test": allEmbeds, "key": "twelve"},
+			{"test": plugins, "key": "thirteen"},
+			{"test": allPlugins, "key": "fourteen"},
+			{"test": links, "key": "fifteen"},
+			{"test": allLinks, "key": "sixteen"},
+			{"test": forms, "key": "seventeen"},
+			{"test": allForms, "key": "eighteen"},
+			{"test": scripts, "key": "nineteen"},
+			{"test": allScripts, "key": "twenty"},
+			{"test": applets, "key": "twenty_one"},
+			{"test": allApplets, "key": "twenty_two"},
+			{"test": anchors, "key": "twenty_three"},
+			{"test": allAnchors, "key": "twenty_four"}
 		];
-	}
+	}());
 
 	function createMessage(text)
 	{
@@ -301,30 +372,39 @@ global = global || this;
 		}
 		return Utils.create.text(
 			doc,
-			str + "\r\n"
+			str
 		);
 	}
 
-	function addMessage(text)
+	function addMessage(
+		msg,
+		key
+	)
 	{
-		var isText =
-			Utils.is.text(
+		var cell = document.getElementById("result_" + key),
+			row = document.getElementById("test_" + key),
+			text = createMessage(msg);
+		if (cell) {
+			Utils.node.append(
+				cell,
 				text
-			),
-			par = commonElements.results,
-			separator = createMessage("----------");
-		text = createMessage(text);
-		Utils.node.append(
-			par,
-			text
-		);
-		Utils.node.append(
-			par,
-			separator
-		);
+			);
+		}
+		if (row) {
+			if (msg === "true") {
+				row.className = "pass";
+			} else if (msg === "false") {
+				row.className = "fail";
+			} else if (msg === "ERROR") {
+				row.className = "error";
+			}
+		}
 	}
 
-	function runTest(test)
+	function runTest(
+		test,
+		key
+	)
 	{
 		var isFunction = Utils.is.type(
 			test,
@@ -334,11 +414,11 @@ global = global || this;
 		if (isFunction) {
 			try {
 				result = test();
-				String(result);
+				result = String(result);
 			} catch (e) {
 				result = "ERROR";
 			}
-			addMessage(result);
+			addMessage(result, key);
 		}
 	}
 
@@ -347,27 +427,40 @@ global = global || this;
 		var index = 0,
 			max,
 			test;
-		tests = generateTests();
 		max = tests.length;
 		while (index < max) {
-			test = tests[index];
-			runTest(test);
+			runTest(
+				tests[index].test,
+				tests[index].key
+			);
 			index += 1;
+		}
+	}
+
+
+	function clearResult(key)
+	{
+		var cell = doc.getElementById("result_" + key),
+			row = doc.getElementById("test_" + key),
+			index;
+		if (cell && row) {
+			index = cell.childNodes.length;
+			for (index; index > -1; index -= 1) {
+				Utils.node.remove(
+					cell,
+					cell.childNodes[index]
+				);
+			}
+			row.className = "";
 		}
 	}
 
 	function clearTests(evt)
 	{
-		var par = commonElements.results,
-			nodes = par.childNodes;
-			isHostObject = Utils.is.hostObject(nodes);
-		if (isHostObject) {
-			while(nodes.length) {
-				Utils.node.remove(
-					par,
-					nodes[0]
-				);
-			}
+		var index = 0,
+			max = tests.length;
+		for (index; index < max; index += 1) {
+			clearResult(tests[index].key);
 		}
 	}
 

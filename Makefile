@@ -10,25 +10,28 @@ COMPRESSED = $(BUILDS)/Compressed
 UTILS = $(LIBRARY)/utils.js
 RAISE = $(LIBRARY)/raise.js
 TYPES = $(LIBRARY)/types.js
-HELPERS = $(LIBRARY)/helpers.js
 IS = $(LIBRARY)/is.js
+HELPERS = $(LIBRARY)/helpers.js
 CAN = $(LIBRARY)/can.js
 NODE = $(LIBRARY)/node.js
 CREATE = $(LIBRARY)/create.js
 
 # additional modules
 
-TRAVERSE = $(LIBRARY)/traverse.js
 CLASSES = $(LIBRARY)/classes.js
+TRAVERSE = $(LIBRARY)/traverse.js
 SELECT = $(LIBRARY)/select.js
+
+CORE_DEP = $(UTILS) $(RAISE) $(TYPES) $(IS) $(CAN)\
+	$(HELPERS) $(NODE) $(CREATE)
 
 ALL_FILE = $(UNCOMPRESSED)/utils-all.js
 ALL_DEP = $(CORE_DEP) $(CLASSES) $(TRAVERSE) $(SELECT)
-MAKE_ALL = cat $(ALL_DEP) > $(ALL_FILE);
+COPY_LIB = find $(LIBRARY) -name "*.js" -type f | xargs\
+	cp -t $(UNCOMPRESSED)
+MAKE_ALL = cat $(ALL_DEP) > $(ALL_FILE); $(COPY_LIB);
 
 CORE_FILE = $(UNCOMPRESSED)/utils-core.js
-CORE_DEP = $(UTILS) $(RAISE) $(TYPES) $(HELPERS) $(IS) $(CAN)\
-	$(NODE) $(CREATE)
 MAKE_CORE = cat $(CORE_DEP) > $(CORE_FILE);
 
 CLASSES_FILE = $(UNCOMPRESSED)/utils-classes.js
@@ -45,9 +48,9 @@ MAKE_SELECT = cat $(SELECT_DEP) > $(SELECT_FILE);
 
 MAKE_INSTALL = ./compress.sh;
 
-MAKE_CLEAN = find $(UNCOMPRESSED) -type f | xargs rm -f;
+MAKE_CLEAN = find $(BUILDS) -type f | xargs rm -f;
 
-MAKE_UNINSTALL = find $(COMPRESSED) -type f | xargs rm -f;
+MAKE_UNINSTALL = find $(BUILDS) -type f | xargs rm -f;
 
 all: core classes traverse select
 	@echo "building utils-all.js";

@@ -9,132 +9,141 @@ var global = global || this;
 		},
 		tests;
 
-	function canDetect()
+	function contains()
 	{
-		var test = Utils.classes.contains(
-			"good",
-			commonElements.test
-		);
+		var test;
+		if (Utils.classes.contains) {
+			test = Utils.classes.contains(
+				commonElements.test,
+				"good"
+			);
+		}
 		return Utils.is.type(
 			test,
 			"boolean"
 		);
 	}
 
-	function canDetectMultiple()
+	function containsList()
 	{
-		var test = Utils.classes.containsList(
-			["a", "b", "c"],
-			commonElements.test
+		var tokens = Utils.classes.containsList(
+			commonElements.test,
+			["a", "b", "c"]
 		);
+		return Utils.is.type(
+			tokens,
+			"boolean"
+		);
+	}
+
+	function add()
+	{
+		var test = null;
+		if (Utils.classes.add) {
+			test = Utils.classes.add(
+				commonElements.test,
+				"good"
+			);
+		}
+		return Utils.is.type(
+			test,
+			"undefined"
+		);
+	}
+
+	function addList()
+	{
+		var tokens = Utils.classes.addList(
+			commonElements.test,
+			["a", "b", "c"]
+		);
+		return Utils.is.type(
+			tokens,
+			"undefined"
+		);
+	}
+
+	function remove()
+	{
+		var test = null;
+		if (Utils.classes.remove) {
+			test = Utils.classes.remove(
+				commonElements.test,
+				"good"
+			);
+		}
+		return Utils.is.type(
+			test,
+			"undefined"
+		);
+	}
+
+	function removeList()
+	{
+		var tokens = Utils.classes.removeList(
+			commonElements.test,
+			["a", "b", "c"]
+		);
+		return Utils.is.type(
+			tokens,
+			"undefined"
+		);
+	}
+
+	function toggle()
+	{
+		var test = null;
+		if (Utils.classes.toggle) {
+			test = Utils.classes.toggle(
+				commonElements.test,
+				"toggle"
+			);
+		}
 		return Utils.is.type(
 			test,
 			"boolean"
 		);
 	}
 
-	function canAdd()
+	function toggleList()
 	{
-		var test = Utils.classes.add(
-			"good",
-			commonElements.test
+		var tokens = Utils.classes.toggleList(
+			commonElements.test,
+			["a", "b", "c"]
 		);
 		return Utils.is.type(
-			test,
+			tokens,
 			"undefined"
 		);
 	}
 
-	function canAddMultiple()
+	function get()
 	{
-		var test = Utils.classes.addList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-		return Utils.is.type(
-			test,
-			"undefined"
-		);
-	}
-
-	function canRemove()
-	{
-		var test = Utils.classes.remove(
-			"good",
-			commonElements.test
-		);
-		return Utils.is.type(
-			test,
-			"undefined"
-		);
-	}
-
-	function canRemoveMultiple()
-	{
-		var test = Utils.classes.removeList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-		return Utils.is.type(
-			test,
-			"undefined"
-		);
-	}
-
-	function canToggleOn()
-	{
-		var test = Utils.classes.toggle(
-			"toggle",
-			commonElements.test
-		);
-		return Utils.is.type(
-			test,
-			"boolean"
-		);
-	}
-
-	function canToggleOff()
-	{
-		return canToggleOn();
-	}
-
-	function canToggleMultiple()
-	{
-		var test = Utils.classes.toggleList(
-			["a", "b", "c"],
-			commonElements.test
-		);
-		return Utils.is.type(
-			test,
-			"undefined"
-		);
-	}
-
-	function canGet()
-	{
-		var test = Utils.classes.get(
-			commonElements.test
-		);
+		var test;
+		if (Utils.classes.get) {
+			test = Utils.classes.get(
+				commonElements.test
+			);
+		}
 		return Utils.is.arrayLike(
 			test
 		);
 	}
 
-	function generateTests()
-	{
+	tests = (function () {
 		return [
-			canDetect,
-			canDetectMultiple,
-			canAdd,
-			canAddMultiple,
-			canRemove,
-			canRemoveMultiple,
-			canToggleOn,
-			canToggleOff,
-			canToggleMultiple,
-			canGet
+			{"test": contains, "key": "one"},
+			{"test": containsList, "key": "two"},
+			{"test": add, "key": "three"},
+			{"test": addList, "key": "four"},
+			{"test": remove, "key": "five"},
+			{"test": removeList, "key": "six"},
+			{"test": toggle, "key": "seven"},
+			{"test": toggle, "key": "eight"},
+			{"test": toggleList, "key": "nine"},
+			{"test": get, "key": "ten"}
 		];
-	}
+	}());
 
 	function createMessage(text)
 	{
@@ -144,30 +153,39 @@ var global = global || this;
 		}
 		return Utils.create.text(
 			doc,
-			str + "\r\n"
+			str
 		);
 	}
 
-	function addMessage(text)
+	function addMessage(
+		msg,
+		key
+	)
 	{
-		var isText =
-			Utils.is.text(
+		var cell = document.getElementById("result_" + key),
+			row = document.getElementById("test_" + key),
+			text = createMessage(msg);
+		if (cell) {
+			Utils.node.append(
+				cell,
 				text
-			),
-			par = commonElements.results,
-			separator = createMessage("----------");
-		text = createMessage(text);
-		Utils.node.append(
-			par,
-			text
-		);
-		Utils.node.append(
-			par,
-			separator
-		);
+			);
+		}
+		if (row) {
+			if (msg === "true") {
+				row.className = "pass";
+			} else if (msg === "false") {
+				row.className = "fail";
+			} else if (msg === "ERROR") {
+				row.className = "error";
+			}
+		}
 	}
 
-	function runTest(test)
+	function runTest(
+		test,
+		key
+	)
 	{
 		var isFunction = Utils.is.type(
 			test,
@@ -177,11 +195,11 @@ var global = global || this;
 		if (isFunction) {
 			try {
 				result = test();
-				String(result);
+				result = String(result);
 			} catch (e) {
 				result = "ERROR";
 			}
-			addMessage(result);
+			addMessage(result, key);
 		}
 	}
 
@@ -190,27 +208,40 @@ var global = global || this;
 		var index = 0,
 			max,
 			test;
-		tests = generateTests();
 		max = tests.length;
 		while (index < max) {
-			test = tests[index];
-			runTest(test);
+			runTest(
+				tests[index].test,
+				tests[index].key
+			);
 			index += 1;
+		}
+	}
+
+
+	function clearResult(key)
+	{
+		var cell = doc.getElementById("result_" + key),
+			row = doc.getElementById("test_" + key),
+			index;
+		if (cell && row) {
+			index = cell.childNodes.length;
+			for (index; index > -1; index -= 1) {
+				Utils.node.remove(
+					cell,
+					cell.childNodes[index]
+				);
+			}
+			row.className = "";
 		}
 	}
 
 	function clearTests(evt)
 	{
-		var par = commonElements.results,
-			nodes = par.childNodes;
-			isHostObject = Utils.is.hostObject(nodes);
-		if (isHostObject) {
-			while(nodes.length) {
-				Utils.node.remove(
-					par,
-					nodes[0]
-				);
-			}
+		var index = 0,
+			max = tests.length;
+		for (index; index < max; index += 1) {
+			clearResult(tests[index].key);
 		}
 	}
 

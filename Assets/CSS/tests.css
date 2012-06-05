@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+body
+{
+	font-size: 100%;
+}
+
+th
+{
+	text-align: center;
+}
+
+td
+{
+	padding: 1em;
+}
+
+.pass
+{
+	background-color: #00FF00;
+}
+
+.fail
+{
+	background-color: #CCCCCC;
+}
+
+.error
+{
+	background-color: #FF0000;
+}

@@ -3,108 +3,13 @@
 	<head>
 		<meta http-equiv="Content-Type"
 			content="text/html;charset=UTF-8">
-		<title>Select</title>
+		<title>Select Test</title>
+		<link href="../../Assets/CSS/tests.css"
+			media="all" rel="stylesheet"
+			type="text/css">
 	</head>
 	<body>
 		<h1>Select Test</h1>
-		<ol>
-			<li>
-				Test if <code>document.head</code>
-					can be returned;
-			</li>
-			<li>
-				Test if <code>document.body</code>
-					can be returned;
-			</li>
-			<li>
-				Test if <code>getElementsByName</code>
-					can be wrapped;
-			</li>
-			<li>
-				Test if <code>getElementsByTagName</code>
-					can be wrapped;
-			</li>
-			<li>
-				Test if <code>getElementsByClassName</code>
-					can be wrapped;
-			</li>
-			<li>
-				Test if <code>getElementById</code>
-					can be wrapped;
-			</li>
-			<li>
-				Test if <code>querySelector</code>
-					can be wrapped;
-			</li>
-			<li>
-				Test if <code>querySelectorAll</code>
-					can be wrapped;
-			</li>
-			<li>
-				Test if <code>document.images</code>
-					can be wrapped (named items);
-			</li>
-			<li>
-				Test if <code>document.images</code>
-					can be wrapped (entire collection);
-			</li>
-			<li>
-				Test if <code>document.embeds</code>
-					can be wrapped (named items);
-			</li>
-			<li>
-				Test if <code>document.embeds</code>
-					can be wrapped (entire collection);
-			</li>
-			<li>
-				Test if <code>document.plugins</code>
-					can be wrapped (named items);
-			</li>
-			<li>
-				Test if <code>document.plugins</code>
-					can be wrapped (entire collection);
-			</li>
-			<li>
-				Test if <code>document.links</code>
-					can be wrapped (named items);
-			</li>
-			<li>
-				Test if <code>document.links</code>
-					can be wrapped (entire collection);
-			</li>
-			<li>
-				Test if <code>document.forms</code>
-					can be wrapped (named items);
-			</li>
-			<li>
-				Test if <code>document.forms</code>
-					can be wrapped (entire collection);
-			</li>
-			<li>
-				Test if <code>document.scripts</code>
-					can be wrapped (named items);
-			</li>
-			<li>
-				Test if <code>document.scripts</code>
-					can be wrapped (entire collection);
-			</li>
-			<li>
-				Test if <code>document.applets</code>
-					can be wrapped (named items);
-			</li>
-			<li>
-				Test if <code>document.applets</code>
-					can be wrapped (entire collection);
-			</li>
-			<li>
-				Test if <code>document.anchors</code>
-					can be wrapped (named items);
-			</li>
-			<li>
-				Test if <code>document.anchors</code>
-					can be wrapped (entire collection);
-			</li>
-		</ol>
 		<h2>Test Image</h2>
 		<p>
 		<img alt="Test Image" height="100"
@@ -133,7 +38,7 @@
 			</fieldset>
 		</form>
 		<h2>Test Applet</h2>
-		<applet code="HelloWorld.class" codeBase="Applets/"
+		<applet code="HelloWorld.class" codeBase="../Applets/"
 			height="100" id="appletcation" width="100">
 			Hello world
 		</applet>
@@ -147,7 +52,210 @@
 		<button id="stop" type="button">Clear Test</button>
 		<hr>
 		<h2>Results</h2>
-		<pre id="results"></pre>
+		<table id="results">
+			<caption>Tabulated Results</caption>
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Description</th>
+					<th>Assertion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="test_one">
+					<td>1.</td>
+					<td>
+						<code>Utils.select.byName</code> returns an
+							array-like object.
+					</td>
+					<td id="result_one"></td>
+				</tr>
+				<tr id="test_two">
+					<td>2.</td>
+					<td>
+						<code>Utils.select.byTagName</code> returns an
+							array-like object.
+					</td>
+					<td id="result_two"></td>
+				</tr>
+				<tr id="test_three">
+					<td>3.</td>
+					<td>
+						<code>Utils.select.byClassName</code> returns an
+							array-like object.
+					</td>
+					<td id="result_three"></td>
+				</tr>
+				<tr id="test_four">
+					<td>4.</td>
+					<td>
+						<code>Utils.select.byId</code> returns an
+							array-like object.
+					</td>
+					<td id="result_four"></td>
+				</tr>
+				<tr id="test_five">
+					<td>5.</td>
+					<td>
+						<code>Utils.select.query</code> returns an
+							array-like object.
+					</td>
+					<td id="result_five"></td>
+				</tr>
+				<tr id="test_six">
+					<td>6.</td>
+					<td>
+						<code>Utils.select.queryAll</code> returns an
+							array-like object.
+					</td>
+					<td id="result_six"></td>
+				</tr>
+				<tr id="test_seven">
+					<td>7.</td>
+					<td>
+						<code>Utils.select.head</code> returns a
+							node-like object.
+					</td>
+					<td id="result_seven"></td>
+				</tr>
+				<tr id="test_eight">
+					<td>8.</td>
+					<td>
+						<code>Utils.select.body</code> returns a
+							node-like object.
+					</td>
+					<td id="result_eight"></td>
+				</tr>
+				<tr id="test_nine">
+					<td>9.</td>
+					<td>
+						<code>Utils.select.images</code> returns a
+							node-like object.
+					</td>
+					<td id="result_nine"></td>
+				</tr>
+				<tr id="test_ten">
+					<td>10.</td>
+					<td>
+						<code>Utils.select.allImages</code> returns an
+							array-like object.
+					</td>
+					<td id="result_ten"></td>
+				</tr>
+				<tr id="test_eleven">
+					<td>11.</td>
+					<td>
+						<code>Utils.select.embeds</code> returns a
+							node-like object.
+					</td>
+					<td id="result_eleven"></td>
+				</tr>
+				<tr id="test_twelve">
+					<td>12.</td>
+					<td>
+						<code>Utils.select.allEmbeds</code> returns an
+							array-like object.
+					</td>
+					<td id="result_twelve"></td>
+				</tr>
+				<tr id="test_thirteen">
+					<td>13.</td>
+					<td>
+						<code>Utils.select.plugins</code> returns a
+							node-like object.
+					</td>
+					<td id="result_thirteen"></td>
+				</tr>
+				<tr id="test_fourteen">
+					<td>14.</td>
+					<td>
+						<code>Utils.select.allPlugins</code> returns an
+							array-like object.
+					</td>
+					<td id="result_fourteen"></td>
+				</tr>
+				<tr id="test_fifteen">
+					<td>15.</td>
+					<td>
+						<code>Utils.select.links</code> returns a
+							node-like object.
+					</td>
+					<td id="result_fifteen"></td>
+				</tr>
+				<tr id="test_sixteen">
+					<td>16.</td>
+					<td>
+						<code>Utils.select.allLinks</code> returns an
+							array-like object.
+					</td>
+					<td id="result_sixteen"></td>
+				</tr>
+				<tr id="test_seventeen">
+					<td>17.</td>
+					<td>
+						<code>Utils.select.forms</code> returns a
+							node-like object.
+					</td>
+					<td id="result_seventeen"></td>
+				</tr>
+				<tr id="test_eighteen">
+					<td>18.</td>
+					<td>
+						<code>Utils.select.allForms</code> returns an
+							array-like object.
+					</td>
+					<td id="result_eighteen"></td>
+				</tr>
+				<tr id="test_nineteen">
+					<td>19.</td>
+					<td>
+						<code>Utils.select.scripts</code> returns a
+							node-like object.
+					</td>
+					<td id="result_nineteen"></td>
+				</tr>
+				<tr id="test_twenty">
+					<td>20.</td>
+					<td>
+						<code>Utils.select.allScripts</code> returns an
+							array-like object.
+					</td>
+					<td id="result_twenty"></td>
+				</tr>
+				<tr id="test_twenty_one">
+					<td>21.</td>
+					<td>
+						<code>Utils.select.applets</code> returns a
+							node-like object.
+					</td>
+					<td id="result_twenty_one"></td>
+				</tr>
+				<tr id="test_twenty_two">
+					<td>22.</td>
+					<td>
+						<code>Utils.select.allApplets</code> returns an
+							array-like object.
+					</td>
+					<td id="result_twenty_two"></td>
+				</tr>
+				<tr id="test_twenty_three">
+					<td>23.</td>
+					<td>
+						<code>Utils.select.anchors</code> returns a
+							node-like object.
+					</td>
+					<td id="result_twenty_three"></td>
+				</tr>
+				<tr id="test_twenty_four">
+					<td>24.</td>
+					<td>
+						<code>Utils.select.allAnchors</code> returns an
+							array-like object.
+					</td>
+					<td id="result_twenty_four"></td>
+				</tr>
+			</tbody>
+		</table>
 		<script src="../../Builds/Uncompressed/utils-select.js"
 			type="text/javascript"></script>
 		<script src="JS/select.js"

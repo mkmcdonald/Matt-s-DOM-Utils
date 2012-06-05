@@ -15,15 +15,31 @@ a:link, a:hover, a:active, a:visited
 	color: #F1F1F1;
 }
 
+ul, ol
+{
+	margin: 1em 0 1em 0;
+	padding: 0 0 0 2.5em;
+}
+
 ul
 {
 	list-style: square inside;
 }
 
-code, pre
+ol
+{
+	list-style: decimal inside;
+}
+
+code, pre, var
 {
 	font-family: "Lucida Console", monospace;
 	font-weight: bold;
+}
+
+fieldset
+{
+	display: block;
 }
 
 dt
@@ -36,6 +52,16 @@ img
 	border: 0;
 }
 
+legend
+{
+	border: 0;
+	padding: 0;
+	/* h3 size */
+	font-size: 1.13em;
+	font-weight: bold;
+	color: #F1F1F1;
+}
+
 .row
 {
 	width: 100%;
@@ -43,11 +69,45 @@ img
 	clear: both;
 }
 
+.nav_row, .doc_row, .fact_list, .file_list, .feature_list
+{
+	padding: 0;
+}
+
+.nav_row, .doc_row
+{
+	margin: 0;
+	list-style: none outside;
+}
+
+.nav_row, .footer_row
+{
+	background-color: #5D7693;
+}
+
+.column
+{
+	width: 100%;
+	float: left;
+	clear: none;
+}
+
+.secondary_column
+{
+	width: 24.33em;
+}
+
 .cell
 {
 	padding: 1em;
+	border: 0;
 	float: left;
 	clear: both;
+}
+
+.primary_cell
+{
+	float: none;
 }
 
 .header_cell
@@ -58,7 +118,7 @@ img
 	overflow: hidden;
 }
 
-.nav_cell, .secondary_cell, .footer_cell
+.nav_cell, .footer_cell
 {
 	clear: right;
 }
@@ -68,26 +128,15 @@ img
 	margin: 0;
 }
 
-.nav_row, .doc_row
+.nav_cell:hover, .footer_cell:hover
 {
-	padding: 0;
-	margin: 0;
-	list-style: none outside;
-}
-
-.nav_row, .footer_row
-{
-	background-color: #5D7693;
+	background-color: #071526;
 }
 
 .secondary_cell
 {
-	width: 24.33em;
-}
-
-.nav_cell:hover, .footer_cell:hover
-{
-	background-color: #071526;
+	float: none;
+	clear: none;
 }
 
 .active
@@ -95,9 +144,33 @@ img
 	box-shadow: inset 0 -.25em 0 0 #AEBAC8;
 }
 
-.doc_cell
+.fact_list, .file_list, .module_list
+{
+	list-style: none outside;
+}
+
+.module_list
+{
+	padding: 0 0 0 2.5em;
+}
+
+.module_list li, .feature_list li
+{
+	margin: 1em 0 0 0;
+}
+
+.doc_cell, .doc_list
 {
 	margin: 0 0 0 2em;
+}
+
+.test_list
+{
+	list-style: square outside;
+}
+
+.doc_cell
+{
 	float: none;
 	clear: none;
 }
@@ -105,11 +178,6 @@ img
 .doc_cell .heading
 {
 	margin: 0;
-}
-
-.doc_list
-{
-	margin: 0 0 0 2em;
 }
 
 .doc_art
@@ -120,17 +188,21 @@ img
 .doc_entry
 {
 	word-wrap: break-word;
-	overflow-wrap: break-word;
 }
 
-.doc_entry:target
+.doc_entry:target, .module_info:target
 {
 	background-color: #5D7693;
 }
 
 .warning
 {
-	font-weight: bold;
+	font-family: "Courier", monospace;
+}
+
+.info
+{
+	font-style: italic;
 }
 
 .prev_link

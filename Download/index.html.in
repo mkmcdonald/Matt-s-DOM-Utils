@@ -1,0 +1,82 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (Utils): Download</title>
+@DOWNLOAD_STYLESHEET@
+@DOWNLOAD_RESOURCES@
+@BODY@
+@DOWNLOAD_HEADER@
+@DOWNLOAD_NAV@
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Download">Download</h2>
+			</div>
+		</div>
+		<form action="build.php" class="primary_row row" method="get">
+			<fieldset class="build_set cell primary_cell">
+				<legend>Core Modules (required)</legend>
+				<ul class="file_list">
+					<li>
+						<input checked id="core_file"
+							disabled
+							name="core_file"
+							type="checkbox"
+							value="core">
+						<label for="core_file">Core</label>
+						<ul class="module_list">
+							<li>Utils.raise</li>
+							<li>Utils.types</li>
+							<li>Utils.helpers</li>
+							<li>Utils.is</li>
+							<li>Utils.can</li>
+							<li>Utils.node</li>
+							<li>Utils.create</li>
+						</ul>
+					</li>
+					
+				</ul>
+			</fieldset>
+			<fieldset class="build_set cell primary_cell">
+				<legend>Optional Modules</legend>
+				<p>
+					<input id="classes_file" name="classes_file"
+						type="checkbox" value="classes">
+					<label for="classes_file">
+						Utils.classes
+					</label>
+				</p>
+				<p>
+					<input id="traverse_file" name="traverse_file"
+						type="checkbox" value="traverse">
+					<label for="traverse_file">
+						Utils.traverse
+					</label>
+				</p>
+				<p>
+					<input id="select_file" name="select_file"
+						type="checkbox" value="select">
+					<label for="select_file">
+						Utils.select
+					</label>
+				</p>
+			</fieldset>
+			<fieldset class="cell build_set primary_cell">
+				<legend>Checkout</legend>
+				<p>
+					<input id="minify_build" name="minify_build"
+						type="checkbox" value="minify">
+					<label for="minify_build">
+						Minify build
+					</label>
+				</p>
+				<p>
+					<input id="gzip_build" name="gzip_build"
+						type="checkbox" value="gzip">
+					<label for="gzip_build">
+						Gzip build
+					</label>
+				</p>
+				<input type="submit" value="Submit Build">
+			</fieldset>
+		</form>
+@FOOTER@
+@END@

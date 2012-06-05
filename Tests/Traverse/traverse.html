@@ -3,59 +3,13 @@
 	<head>
 		<meta http-equiv="Content-Type"
 			content="text/html;charset=UTF-8">
-		<title>Traverse</title>
+		<title>Traverse Test</title>
+		<link href="../../Assets/CSS/tests.css"
+			media="all" rel="stylesheet"
+			type="text/css">
 	</head>
 	<body>
 		<h1>Traverse Test</h1>
-		<ol>
-			<li>
-				Test if <code>childNodes</code>
-					can be collected;
-			</li>
-			<li>
-				Test if <code>childNodes</code>
-					can be traversed;
-			</li>
-			<li>
-				Test if <code>children</code>
-					can be collected;
-			</li>
-			<li>
-				Test if <code>children</code>
-					can be traversed;
-			</li>
-			<li>
-				Test if <code>childNode</code> tree
-					can can be collected;
-			</li>
-			<li>
-				Test if <code>childNode</code> tree
-					can can be traversed;
-			</li>
-			<li>
-				Test if textual content can be
-					collected;
-			</li>
-			<li>
-				Test if textual content can be
-					overridden;
-			</li>
-			<li>
-				Test if <code>children</code> tree
-					can be collected;
-			</li>
-			<li>
-				Test if <code>children</code> tree
-					can be traversed;
-			</li>
-			<li>
-				Test if ancestors can be built
-					into a linked list;
-			</li>
-			<li>
-				Test if ancestors can be traversed;
-			</li>
-		</ol>
 		<h2>Test Element</h2>
 		<ul id="test">
 			<li>1</li>
@@ -66,7 +20,119 @@
 		<button id="stop" type="button">Clear Test</button>
 		<hr>
 		<h2>Results</h2>
-		<pre id="results"></pre>
+		<table id="results">
+			<caption>Tabulated Results</caption>
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Description</th>
+					<th>Assertion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="test_one">
+					<td>1.</td>
+					<td>
+						<code>Utils.traverse.getNodes</code> returns an
+							array-like object.
+					</td>
+					<td id="result_one"></td>
+				</tr>
+				<tr id="test_two">
+					<td>2.</td>
+					<td>
+						<code>Utils.traverse.nodes</code> returns an
+							array-like object.
+					</td>
+					<td id="result_two"></td>
+				</tr>
+				<tr id="test_three">
+					<td>3.</td>
+					<td>
+						<code>Utils.traverse.getElements</code> returns an
+							array-like object.
+					</td>
+					<td id="result_three"></td>
+				</tr>
+				<tr id="test_four">
+					<td>4.</td>
+					<td>
+						<code>Utils.traverse.elements</code> returns an
+							array-like object.
+					</td>
+					<td id="result_four"></td>
+				</tr>
+				<tr id="test_five">
+					<td>5.</td>
+					<td>
+						<code>Utils.traverse.getNodeTree</code> returns an
+							array-like object.
+					</td>
+					<td id="result_five"></td>
+				</tr>
+				<tr id="test_six">
+					<td>6.</td>
+					<td>
+						<code>Utils.traverse.nodeTree</code> returns an
+							array-like object.
+					</td>
+					<td id="result_six"></td>
+				</tr>
+				<tr id="test_seven">
+					<td>7.</td>
+					<td>
+						<code>Utils.traverse.getText</code> returns a string.
+					</td>
+					<td id="result_seven"></td>
+				</tr>
+				<tr id="test_eight">
+					<td>8.</td>
+					<td>
+						<code>Utils.traverse.setText</code> returns a string.
+					</td>
+					<td id="result_eight"></td>
+				</tr>
+				<tr id="test_nine">
+					<td>9.</td>
+					<td>
+						<code>Utils.traverse.getElementTree</code> returns an
+							array-like object.
+					</td>
+					<td id="result_nine"></td>
+				</tr>
+				<tr id="test_ten">
+					<td>10.</td>
+					<td>
+						<code>Utils.traverse.elementTree</code> returns an
+							array-like object.
+					</td>
+					<td id="result_ten"></td>
+				</tr>
+				<tr id="test_eleven">
+					<td>11.</td>
+					<td>
+						<code>Utils.traverse.isAncestor</code> returns a boolean.
+					</td>
+					<td id="result_eleven"></td>
+				</tr>
+				<tr id="test_twelve">
+					<td>12.</td>
+					<td>
+						<code>Utils.traverse.getAncestors</code> returns a
+							linked list-like object.
+					</td>
+					<td id="result_twelve"></td>
+				</tr>
+				<tr id="test_thirteen">
+					<td>13.</td>
+					<td>
+						<code>Utils.traverse.ancestors</code> returns an
+							array-like object.
+					</td>
+					<td id="result_thirteen"></td>
+				</tr>
+			</tbody>
+		</table>
 		<script src="../../Builds/Uncompressed/utils-traverse.js"
 			type="text/javascript"></script>
 		<script src="JS/traverse.js"

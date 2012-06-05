@@ -1,0 +1,182 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (Utils)</title>
+@ROOT_STYLESHEET@
+@ROOT_RESOURCES@
+@BODY@
+@ROOT_HEADER@
+		<ul class="nav_row row">
+			<li class="active cell home nav_cell">
+				<a href="./" title="Home">Home</a>
+			</li>
+			<li class="cell download nav_cell">
+				<a href="./Download" title="Download">Download</a>
+			</li>
+			<li class="cell docs nav_cell">
+				<a href="./Docs" title="Documentation">Documentation</a>
+			</li>
+			<li class="cell nav_cell tests">
+				<a href="./Tests" title="Tests">Tests</a>
+			</li>
+			<li class="cell github nav_cell">
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/" title="GitHub">GitHub</a>
+			</li>
+			<li class="about cell nav_cell">
+				<a href="about.html" title="About">About</a>
+			</li>
+		</ul>
+		<div class="primary_row row ">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Home">Home</h2>
+			</div>
+		</div>
+		<div class="column secondary_column">
+			<div class="cell secondary_cell">
+				<h3 class="heading"
+					title="Introduction">Introduction</h3>
+				<p>
+					<em>Utils</em> is a modular DOM library with the explicit
+					objective of facilitating defensive HTML DOM scripting.
+					It has been widely tested in browsers both new and old in
+					order to maximize compatibility.
+				</p>
+				<p>
+					<em>Utils</em> contains <strong>zero</strong> lines of
+					environment-specific code; this approach maximizes
+					compatibility. Each morsel of feature testing logic is
+					based upon substantial research of various environments.
+				</p>
+			</div>
+			<div class="cell secondary_cell">
+				<h3 class="heading"
+					title="Quick Facts">Quick Facts</h3>
+				<ul class="fact_list">
+					<li>
+						<h4 class="heading"
+							title="Standards-based">Standards-based</h4>
+						<p>
+							<em>Utils</em> is developed with standards in mind.
+							Most "forks" used in the API implement algorithms
+							specified in both the DOM 4 and HTML 5 specifications.
+						</p>
+					</li>
+					<li>
+						<h4 class="heading"
+							title="Developer Friendly">Developer Friendly</h4>
+						<p>
+							<em>Utils</em> is heavily documented and contains
+							only clean code. This means that both developers
+							and users alike can easily study the API.
+						</p>
+					</li>
+					<li>
+						<h4 class="heading"
+							title="Portable">Portable</h4>
+						<p>
+							<em>Utils</em> is developed to work in a maximal
+							amount of environments. Because documentation is
+							provided within the script itself, developers
+							have no need to consult the full documentation.
+							The web site itself is built to be accessible
+							to as many browsers as possible; mobile browsers
+							are encouraged.
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="column secondary_column">
+			<div class="cell secondary_cell">
+				<h3 class="heading"
+					title="Tenets">Tenets</h3>
+				<p>
+					<em>Utils</em> is developed with the following core
+					tenets in mind:
+				</p>
+				<ul>
+					<li>Graceful Degradation;</li>
+					<li>Namespacing;</li>
+					<li>Modularity;</li>
+					<li>Minimal DOM Abstraction.</li>
+				</ul>
+			</div>
+			<div class="cell secondary_cell">
+				<h3 class="heading"
+					title="Support">Support</h3>
+				<p>
+					<em>Utils</em> is developed to gracefully degrade in as many
+					environments as possible.
+				</p>
+				<p>
+					The following environments have been explicitly tested
+					(permitting sufficient DOM support to run tests):
+				</p>
+				<ul>
+					<li>Internet Explorer 6-9;</li>
+					<li>Firefox 1-12;</li>
+					<li>Opera 7-11;</li>
+					<li>Safari 3.1-5;</li>
+					<li>Chrome 1-4<a href="#footnote_0"
+						title="Footnote Zero"><sup>0</sup></a>.</li>
+				</ul>
+				<p>
+					<em>Utils</em> has been tested in older versions of
+					the above along with miscellaneous browsers. Support
+					for the preceding is positive, but not qualitative.
+				</p>
+				<p>
+					Tests are conducted with a basic subset of the DOM
+					Level 1 Core API. Any browser that does not support
+					the preceding API cannot have its support qualitatively
+					evaluated.
+				</p>
+			</div>
+		</div>
+		<div class="column secondary_column">
+			<div class="cell secondary_cell">
+				<h3 class="heading"
+					title="Style">Style</h3>
+				<p>
+					<em>Utils</em> is written in a style that's subjectively
+					easy to read and follow. No line of code exceeds 72 columns;
+					every function's body is 25<a href="#footnote_1"
+						title="Footnote One"><sup>1</sup></a> lines of code or
+					less; each function contains documentation for portability and
+					clarity.  Furthermore, the code is intended to be reliable and
+					friendly; zero corners are cut.
+				</p>
+				<p>
+					<em>Utils</em> passes <a href="http://www.jslint.com"
+						title="JSLint">JSLint</a> with only two options
+					selected: whitespace and <code>"use strict";</code>.
+				</p>
+				<p>
+					<em>Utils</em> also passes <a href="http://www.jshint.com"
+						title="JSHint">JSHint</a> with only
+					<code>"use strict";</code> disabled and
+					no environmental assumptions.
+				</p>
+			</div>
+		</div>
+		<dl class="row secondary_row">
+			<dt class="cell secondary_cell" id="footnote_0">
+				<sup>0</sup>
+			</dt>
+			<dd>
+				<em>Utils</em> is presumed to work well on Chrome versions
+				4 and up. However, due to Chrome's intrusive installation,
+				only one version can be installed per virtual machine.
+				As only four virtual machines utilized for the testing of
+				<em>Utils</em> can run Chrome, only four versions can be tested.
+			</dd>
+			<dt class="cell secondary_cell" id="footnote_1">
+				<sup>1</sup>
+			</dt>
+			<dd>
+				This figure excludes documentation. <em>Utils</em> is authored
+				with a strict ceiling of 20 lines of code per function body,
+				but some difficult cases remain.
+			</dd>
+		</dl>
+@FOOTER@
+@END@

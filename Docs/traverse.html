@@ -7,12 +7,12 @@
 			content="initial-scale=1.0">
 		<meta name="Author"
 			content="Matt McDonald">
-		<title>Matt's DOM Utils (Utils): Documentation—Utils.traverse</title>
-		<link href="../Assets/Images/favicon.ico"
-			media="all" rel="icon prefetch">
+		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.traverse</title>
 		<link href="../Assets/CSS/style-main.css"
 			media="all" rel="stylesheet"
 			type="text/css">
+		<link href="../favicon.ico"
+			media="all" rel="icon prefetch">
 		<link href="classes.html" hreflang="en" media="all"
 			rel="prev" title="Utils.classes"
 			type="text/html">
@@ -36,28 +36,27 @@
 				<a href="../" title="Home">Home</a>
 			</li>
 			<li class="cell download nav_cell">
-				<a href="../download.html" title="Download">Download</a>
+				<a href="../Download" title="Download">Download</a>
 			</li>
 			<li class="active cell docs nav_cell">
 				<a href="./" title="Documentation">Documentation</a>
 			</li>
-			<li class="cell nav_cell tests">
+			<li class="cell nav_cell tests ">
 				<a href="../Tests" title="Tests">Tests</a>
 			</li>
 			<li class="cell github nav_cell">
-				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/"
-					title="GitHub">GitHub</a>
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/" title="GitHub">GitHub</a>
 			</li>
 			<li class="about cell nav_cell">
 				<a href="../about.html" title="About">About</a>
 			</li>
 		</ul>
-		<div class="secondary_row row">
-			<div class="cell prev_link secondary_cell">
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
 				<a href="classes.html" rel="prev"
 					title="Previous">&larr;<code>Utils.classes</code></a>
 			</div>
-			<div class="cell next_link secondary_cell">
+			<div class="cell next_link primary_cell">
 				<a href="select.html" rel="next"
 					title="Next"><code>Utils.select</code>&rarr;</a>
 			</div>
@@ -67,6 +66,38 @@
 				<h2 class="heading" title="Utils.traverse">
 					<code>Utils.traverse</code>
 				</h2>
+				<div class="module_info" id="dependencies">
+					<h3 class="heading">
+						<a href="#dependencies"
+							title="Dependencies">Dependencies</a>
+					</h3>
+					<ol>
+						<li>
+							<a href="./types.html"
+								title="Utils.types"><code>Utils.types</code></a>
+						</li>
+						<li>
+							<a href="./is.html"
+								title="Utils.is"><code>Utils.is</code></a>
+						</li>
+						<li>
+							<a href="./can.html"
+								title="Utils.can"><code>Utils.can</code></a>
+						</li>
+						<li>
+							<a href="./helpers.html"
+								title="Utils.helpers"><code>Utils.helpers</code></a>
+						</li>
+						<li>
+							<a href="./node.html"
+								title="Utils.node"><code>Utils.node</code></a>
+						</li>
+						<li>
+							<a href="./create.html"
+								title="Utils.create"><code>Utils.create</code></a>
+						</li>
+					</ol>
+				</div>
 			</div>
 		</div>
 		<ul class="doc_row row">
@@ -75,11 +106,9 @@
 					<a href="#get_nodes"
 						title="Utils.traverse.getNodes"><code>Utils.traverse.getNodes</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>getNodes</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
@@ -92,9 +121,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array || null</code>
 					</dd>
@@ -106,11 +133,9 @@
 					<a href="#linear"
 						title="Utils.traverse.linear"><code>Utils.traverse.linear</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj, callback) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>linear</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses an 
 						<a href="glossary.html#array_like_object"
@@ -130,9 +155,7 @@
 					<dd>
 						A function to be used as a callback.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array</code>
 					</dd>
@@ -144,11 +167,9 @@
 					<a href="#nodes"
 						title="Utils.traverse.nodes"><code>Utils.traverse.nodes</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj, callback) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>nodes</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
@@ -168,9 +189,7 @@
 					<dd>
 						A function to be used as a callback.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array</code>
 					</dd>
@@ -182,11 +201,9 @@
 					<a href="#clear_nodes"
 						title="Utils.traverse.clearNodes"><code>Utils.traverse.clearNodes</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>clearNodes</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
@@ -199,9 +216,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array || null</code>
 					</dd>
@@ -213,11 +228,22 @@
 					<a href="#get_elements"
 						title="Utils.traverse.getElements"><code>Utils.traverse.getElements</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="warning">
+					Warning: this property will return <code>null</code>
+					if the host environment is detected to be unsuitable;
+					an <code>if</code> block or a similar construct should
+					be used for detection. An example follows.
+				</p>
+				<pre class="example">
+var children;
+if (Utils.traverse.getElements) {
+	children = Utils.traverse.getElements(
+		document.body
+	);
+}</pre>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>getElements</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
@@ -237,9 +263,7 @@
 					<dd>
 						A function to be used as a callback.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array || null</code>
 					</dd>
@@ -251,11 +275,9 @@
 					<a href="#elements"
 						title="Utils.traverse.elements"><code>Utils.traverse.elements</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj, callback) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>elements</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
@@ -275,9 +297,7 @@
 					<dd>
 						A function to be used as a callback.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array</code>
 					</dd>
@@ -289,11 +309,9 @@
 					<a href="#clear_elements"
 						title="Utils.traverse.clearElements"><code>Utils.traverse.clearElements</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>clearElements</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
@@ -306,9 +324,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array || null</code>
 					</dd>
@@ -320,11 +336,9 @@
 					<a href="#get_node_tree"
 						title="Utils.traverse.getNodeTree"><code>Utils.traverse.getNodeTree</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>getNodeTree</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that recursively traverses a
 						<a href="glossary.html#node_like_object"
@@ -342,9 +356,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array || null</code>
 					</dd>
@@ -356,11 +368,9 @@
 					<a href="#node_tree"
 						title="Utils.traverse.nodeTree"><code>Utils.traverse.nodeTree</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj, callback, result) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>nodeTree</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
@@ -390,9 +400,7 @@
 						An optional parameter used to override
 						the initial return value (<code>[]</code>);
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array</code>
 					</dd>
@@ -404,11 +412,9 @@
 					<a href="#get_text"
 						title="Utils.traverse.getText"><code>Utils.traverse.getText</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>getText</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that collects text node data
 						from a <a href="glossary.html#node_like_object"
@@ -422,9 +428,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>String || null</code>
 					</dd>
@@ -436,11 +440,9 @@
 					<a href="#set_text"
 						title="Utils.traverse.setText"><code>Utils.traverse.setText</code></a>
 				</h3>
-				<p class="doc_art function_head">function (text, obj, doc) {</p>
+				<p class="doc_art function_head">function (<var>text</var>, <var>obj</var>, <var>doc</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>setText</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that clears a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
@@ -471,9 +473,7 @@
 						A document <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>String || null</code>
 					</dd>
@@ -485,11 +485,9 @@
 					<a href="#recursive"
 						title="Utils.traverse.recursive"><code>Utils.traverse.recursive</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj, callback, result) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>recursive</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that recursively traverses an
 						<a href="glossary.html#array_like_object"
@@ -516,9 +514,7 @@
 						An optional parameter used to override
 						the initial return value (<code>[]</code>);
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array</code>
 					</dd>
@@ -530,11 +526,9 @@
 					<a href="#get_element_tree"
 						title="Utils.traverse.getElementTree"><code>Utils.traverse.getElementTree</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>getElementTree</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that recursively traverses a
 						<a href="glossary.html#node_like_object"
@@ -552,9 +546,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array || null</code>
 					</dd>
@@ -566,11 +558,9 @@
 					<a href="#element_tree"
 						title="Utils.traverse.elementTree"><code>Utils.traverse.elementTree</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj, callback, result) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>elementTree</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
@@ -600,9 +590,7 @@
 						An optional parameter used to override
 						the initial return value (<code>[]</code>);
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array</code>
 					</dd>
@@ -614,11 +602,9 @@
 					<a href="#get_ancestors"
 						title="Utils.traverse.getAncestors"><code>Utils.traverse.getAncestors</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>getAncestors</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses the parent nodes
 						of a <a href="glossary.html#node_like_object"
@@ -632,9 +618,7 @@
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -646,11 +630,9 @@
 					<a href="#is_ancestor"
 						title="Utils.traverse.isAncestor"><code>Utils.traverse.isAncestor</code></a>
 				</h3>
-				<p class="doc_art function_head">function (par, obj) {</p>
+				<p class="doc_art function_head">function (<var>par</var>, <var>obj</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>isAncestor</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that checks if a
 						<a href="glossary.html#node_like_object"
@@ -675,9 +657,7 @@
 						to be used to generate
 						an ancestral list and searched.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Boolean</code>
 					</dd>
@@ -689,11 +669,9 @@
 					<a href="#list"
 						title="Utils.traverse.list"><code>Utils.traverse.list</code></a>
 				</h3>
-				<p class="doc_art function_head">function (list, callback) {</p>
+				<p class="doc_art function_head">function (<var>list</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>list</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses a linked list
 						and calls a callback with the current
@@ -711,9 +689,7 @@
 					<dd>
 						A function to be used as a callback.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array</code>
 					</dd>
@@ -725,11 +701,9 @@
 					<a href="#ancestors"
 						title="Utils.traverse.ancestors"><code>Utils.traverse.ancestors</code></a>
 				</h3>
-				<p class="doc_art function_head">function (obj, callback) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>ancestors</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that traverses a linked list
 						of a node's parent nodes and calls a
@@ -748,9 +722,7 @@
 					<dd>
 						A function to be used as a callback.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Array</code>
 					</dd>
@@ -758,16 +730,16 @@
 				<p class="doc_art function_tail">}</p>
 			</li>
 		</ul>
-		<div class="secondary_row row">
-			<div class="cell prev_link secondary_cell">
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
 				<a href="classes.html" rel="prev"
 					title="Previous">&larr;<code>Utils.classes</code></a>
 			</div>
-			<div class="cell index_link secondary_cell">
+			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"
 					title="Up">&uarr;Back to Documentation Index</a>
 			</div>
-			<div class="cell next_link secondary_cell">
+			<div class="cell next_link primary_cell">
 				<a href="select.html" rel="next"
 					title="Next"><code>Utils.select</code>&rarr;</a>
 			</div>

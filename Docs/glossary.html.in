@@ -1,0 +1,126 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (Utils): Documentation&mdash;Glossary</title>
+@DOCS_STYLESHEET@
+@DOCS_RESOURCES@
+		<link href="select.html" hreflang="en" media="all"
+			rel="prev" title="Utils.select"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="Documentation Index"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="next" title="Documentation Index"
+			type="text/html">
+@BODY@
+@DOCS_HEADER@
+@DOCS_NAV@
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="select.html" rel="prev"
+					title="Previous">&larr;<code>Utils.select</code></a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="./" rel="next"
+					title="Next">Documentation Index&rarr;</a>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Glossary">
+					Glossary
+				</h2>
+			</div>
+		</div>
+		<ul class="doc_row row">
+			<li class="cell doc_cell doc_entry" id="truthy">
+				<h3 class="heading">
+					<a href="#truthy"
+						title="Truthy">Truthy</a>
+				</h3>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						A value that when coerced to a <code>Boolean</code>
+						equals <code>true</code>.
+					</dd>
+				</dl>
+			</li>
+			<li class="cell doc_cell doc_entry" id="falsey">
+				<h3 class="heading">
+					<a href="#falsey"
+						title="Falsey">Falsey</a>
+				</h3>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						A value that when coerced to a <code>Boolean</code>
+						equals <code>false</code>.
+					</dd>
+				</dl>
+			</li>
+			<li class="cell doc_cell doc_entry" id="host_like_object">
+				<h3 class="heading">
+					<a href="#host_like_object"
+						title="Host-like Object">Host-like Object</a>
+				</h3>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						An object resembling a host object, meaning
+						a <code>typeof</code> result of <code>"object"</code>,
+						<code>"function"</code> or <code>"unknown"</code>.
+					</dd>
+				</dl>
+			</li>
+			<li class="cell doc_cell doc_entry" id="array_like_object">
+				<h3 class="heading">
+					<a href="#array_like_object"
+						title="Array-like Object">Array-like Object</a>
+				</h3>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						An object resembling an array, meaning
+						a <a href="#truthy"
+							title="Truthy">truthy</a>
+						<a href="#host_like_object"
+							title="Host-like Object">host-like object</a>
+						with a numeric <code>length</code> property.
+					</dd>
+				</dl>
+			</li>
+			<li class="cell doc_cell doc_entry" id="node_like_object">
+				<h3 class="heading">
+					<a href="#node_like_object"
+						title="Node-like Object">Node-like Object</a>
+				</h3>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						An object resembling a node, meaning
+						a <a href="#truthy"
+							title="Truthy">truthy</a>
+						<a href="#host_like_object"
+							title="Host-like Object">host-like object</a>
+						with a numeric <code>nodeType</code> property.
+					</dd>
+				</dl>
+			</li>
+		</ul>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="select.html" rel="prev"
+					title="Previous">&larr;<code>Utils.select</code></a>
+			</div>
+			<div class="cell index_link primary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to Documentation Index</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="./" rel="next"
+					title="Next">Documentation Index&rarr;</a>
+			</div>
+		</div>
+@FOOTER@
+@END@

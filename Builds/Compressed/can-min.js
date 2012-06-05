@@ -1,0 +1,1 @@
+if(Utils){(function(){var a=Utils.is.nodeLike;function b(e){var d=false;if(a(e)){d=typeof e.nodeName==="string"}return d}function c(e){var d=false;if(a(e)){d=typeof e.nodeValue==="string"}return d}Utils.can=Utils.can||{getName:b,getValue:c}}())};

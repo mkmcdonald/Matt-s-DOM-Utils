@@ -1,0 +1,388 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.node</title>
+@DOCS_STYLESHEET@
+@DOCS_RESOURCES@
+		<link href="helpers.html" hreflang="en" media="all"
+			rel="prev" title="Utils.helpers"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="Documentation Index"
+			type="text/html">
+		<link href="create.html" hreflang="en" media="all"
+			rel="next" title="Utils.create"
+			type="text/html">
+@BODY@
+@DOCS_HEADER@
+@DOCS_NAV@
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="helpers.html" rel="prev"
+					title="Previous">&larr;<code>Utils.helpers</code></a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="create.html" rel="next"
+					title="Next"><code>Utils.create</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Utils.node">
+					<code>Utils.node</code>
+				</h2>
+				<div class="module_info" id="dependencies">
+					<h3 class="heading">
+						<a href="#dependencies"
+							title="Dependencies">Dependencies</a>
+					</h3>
+					<ol>
+						<li>
+							<a href="./is.html"
+								title="Utils.is"><code>Utils.is</code></a>
+						</li>
+						<li>
+							<a href="./can.html"
+								title="Utils.can"><code>Utils.can</code></a>
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+		<ul class="doc_row row">
+			<li class="cell doc_cell doc_entry" id="prepend">
+				<h3 class="heading">
+					<a href="#prepend"
+						title="Utils.node.prepend"><code>Utils.node.prepend</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>par</var>, <var>newObj</var>, <var>refObj</var>) {</p>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						Method that wraps <code>insertBefore</code>,
+						which in turn appends a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a> before
+						another <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a> to a
+						parent <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>par</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will act as the <code>parentNode</code>.
+					</dd>
+					<dt>
+						<var>newObj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will be inserted before the referenced
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						if successful.
+					</dd>
+					<dt>
+						<var>refObj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will act as the reference <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						to where the new <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						will be inserted before.
+					</dd>
+					@DOCS_RETURN_VALUE@
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="prepend_list">
+				<h3 class="heading">
+					<a href="#prepend_list"
+						title="Utils.node.prependList"><code>Utils.node.prependList</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>par</var>, <var>list</var>, <var>refObj</var>) {</p>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						Method takes an <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						and passes each element to <a href="#prepend"
+							title="Utils.node.prepend"><code>prepend</code></a>.
+					</dd>
+					<dt>
+						<var>par</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will act as the <code>parentNode</code>.
+					</dd>
+					<dt>
+						<var>list</var>
+					</dt>
+					<dd>
+						An <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						containing <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>s
+						to be "prepended".
+					</dd>
+					<dt>
+						<var>refObj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will act as the reference <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						to where the new <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						will be inserted before.
+					</dd>
+					@DOCS_RETURN_VALUE@
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="append">
+				<h3 class="heading">
+					<a href="#append"
+						title="Utils.node.append"><code>Utils.node.append</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>par</var>, <var>obj</var>) {</p>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						Method that "appends" a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						(via <code>appendChild</code>) to a parent <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>par</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will act as the <code>parentNode</code>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will be appended to the given parent
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+						if successful.
+					</dd>
+					@DOCS_RETURN_VALUE@
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="append_list">
+				<h3 class="heading">
+					<a href="#append_list"
+						title="Utils.node.appendList"><code>Utils.node.appendList</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>par</var>, <var>list</var>) {</p>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						Method takes an <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						and passes each element to <a href="#append"
+							title="Utils.node.append"><code>append</code></a>.
+					</dd>
+					<dt>
+						<var>par</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will act as the <code>parentNode</code>.
+					</dd>
+					<dt>
+						<var>list</var>
+					</dt>
+					<dd>
+						An <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						containing <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>s
+						to be "appended".
+					</dd>
+					@DOCS_RETURN_VALUE@
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="remove">
+				<h3 class="heading">
+					<a href="#remove"
+						title="Utils.node.remove"><code>Utils.node.remove</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>par</var>, <var>obj</var>) {</p>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						Method that "removes" a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						(via <code>removeChild</code>) from a parent
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>par</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will act as the <code>parentNode</code>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will be removed from the given parent
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						if successful.
+					</dd>
+					@DOCS_DESCRIPTION@
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="replace">
+				<h3 class="heading">
+					<a href="#replace"
+						title="Utils.node.replace"><code>Utils.node.replace</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>par</var>, <var>newObj</var>, <var>oldObj</var>) {</p>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						Method that "replaces" a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						(via <code>replaceChild</code>) with a new
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a> on a parent
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>par</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will act as the <code>parentNode</code>.
+					</dd>
+					<dt>
+						<var>newObj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will replace a given <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						on a parent <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						if successful.
+					</dd>
+					<dt>
+						<var>oldObj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will be replaced by a given <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						on a parent <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						if successful.
+					</dd>
+					@DOCS_RETURN_VALUE@
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="clone">
+				<h3 class="heading">
+					<a href="#clone"
+						title="Utils.node.clone"><code>Utils.node.clone</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>deep</var>) {</p>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						Method that "clones" a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						(via <code>cloneNode</code>); performs a "shallow"
+						(one level) "clone" if <var>deep</var> is false; performs
+						a "deep" (recursive) "clone" if <var>deep</var> is true.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						that will be "cloned".
+					</dd>
+					<dt>
+						<var>deep</var>
+					</dt>
+					<dd>
+						A boolean that will determine if a "deep" (recursive)
+						or a "shallow" (one level) "clone" will be performed
+						if successful.
+					</dd>
+					@DOCS_RETURN_VALUE@
+					<dd>
+						<code>Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+		</ul>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="helpers.html" rel="prev"
+					title="Previous">&larr;<code>Utils.helpers</code></a>
+			</div>
+			<div class="cell index_link primary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to Documentation Index</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="create.html" rel="next"
+					title="Next"><code>Utils.create</code>&rarr;</a>
+			</div>
+		</div>
+@FOOTER@
+@END@

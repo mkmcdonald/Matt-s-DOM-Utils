@@ -24,6 +24,17 @@ begin_compress ()
 init ()
 {
 	FILES=(
+		"utils"
+		"raise"
+		"types"
+		"helpers"
+		"is"
+		"can"
+		"node"
+		"create"
+		"classes"
+		"traverse"
+		"select"
 		"utils-core"
 		"utils-classes"
 		"utils-traverse"

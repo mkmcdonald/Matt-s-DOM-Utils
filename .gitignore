@@ -1,2 +1,8 @@
 *.sw*
 *~
+
+# autoconf
+
+autom4te.cache
+config.status
+config.log

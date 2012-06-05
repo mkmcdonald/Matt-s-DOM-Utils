@@ -7,12 +7,12 @@
 			content="initial-scale=1.0">
 		<meta name="Author"
 			content="Matt McDonald">
-		<title>Matt's DOM Utils (Utils): Documentation—Utils.create</title>
-		<link href="../Assets/Images/favicon.ico"
-			media="all" rel="icon prefetch">
+		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.create</title>
 		<link href="../Assets/CSS/style-main.css"
 			media="all" rel="stylesheet"
 			type="text/css">
+		<link href="../favicon.ico"
+			media="all" rel="icon prefetch">
 		<link href="can.html" hreflang="en" media="all"
 			rel="prev" title="Utils.node"
 			type="text/html">
@@ -36,28 +36,27 @@
 				<a href="../" title="Home">Home</a>
 			</li>
 			<li class="cell download nav_cell">
-				<a href="../download.html" title="Download">Download</a>
+				<a href="../Download" title="Download">Download</a>
 			</li>
 			<li class="active cell docs nav_cell">
 				<a href="./" title="Documentation">Documentation</a>
 			</li>
-			<li class="cell nav_cell tests">
+			<li class="cell nav_cell tests ">
 				<a href="../Tests" title="Tests">Tests</a>
 			</li>
 			<li class="cell github nav_cell">
-				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/"
-					title="GitHub">GitHub</a>
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/" title="GitHub">GitHub</a>
 			</li>
 			<li class="about cell nav_cell">
 				<a href="../about.html" title="About">About</a>
 			</li>
 		</ul>
-		<div class="secondary_row row">
-			<div class="cell prev_link secondary_cell">
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
 				<a href="node.html" rel="prev"
 					title="Previous">&larr;<code>Utils.node</code></a>
 			</div>
-			<div class="cell next_link secondary_cell">
+			<div class="cell next_link primary_cell">
 				<a href="classes.html" rel="next"
 					title="Next"><code>Utils.classes</code>&rarr;</a>
 			</div>
@@ -67,6 +66,18 @@
 				<h2 class="heading" title="Utils.create">
 					<code>Utils.create</code>
 				</h2>
+				<div class="module_info" id="dependencies">
+					<h3 class="heading">
+						<a href="#dependencies"
+							title="Dependencies">Dependencies</a>
+					</h3>
+					<ol>
+						<li>
+							<a href="./is.html"
+								title="Utils.is"><code>Utils.is</code></a>
+						</li>
+					</ol>
+				</div>
 			</div>
 		</div>
 		<ul class="doc_row row">
@@ -75,15 +86,29 @@
 					<a href="#element"
 						title="Utils.create.element"><code>Utils.create.element</code></a>
 				</h3>
-				<p class="doc_art function_head">function (doc,  tag) {</p>
+				<p class="warning">
+					Warning: this property will return <code>null</code>
+					if the host environment is detected to be unsuitable;
+					an <code>if</code> block or a similar construct should
+					be used for detection. An example follows.
+				</p>
+				<pre class="example">
+var div;
+if (Utils.create.element) {
+	div = Utils.create.element(
+		document,
+		"div"
+	);
+}</pre>
+				<p class="doc_art function_head">function (<var>doc</var>,  <var>tag</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>element</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that wraps <code>createElement</code>,
-						which in turn creates an element node based
-						upon the tag name provided.
+						which in turn creates an element 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						based upon the tag name provided.
 					</dd>
 					<dt>
 						<var>doc</var>
@@ -97,11 +122,12 @@
 					</dt>
 					<dd>
 						A string containing the preferred tag name
-						for the created element to use.
+						for the created element
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						to use.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -113,15 +139,30 @@
 					<a href="#element_ns"
 						title="Utils.create.elementNS"><code>Utils.create.elementNS</code></a>
 				</h3>
-				<p class="doc_art function_head">function (doc,  ns, tag) {</p>
+				<p class="warning">
+					Warning: this property will return <code>null</code>
+					if the host environment is detected to be unsuitable;
+					an <code>if</code> block or a similar construct should
+					be used for detection. An example follows.
+				</p>
+				<pre class="example">
+var namespaced;
+if (Utils.create.elementNS) {
+	namespaced = Utils.create.elementNS(
+		document,
+		"http://localhost/schema/",
+		"object"
+	);
+}</pre>
+				<p class="doc_art function_head">function (<var>doc</var>,  <var>ns</var>, <var>tag</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>elementNS</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that wraps <code>createElementNamespace</code>,
-						which in turn creates a namespaced element node based
-						upon the tag name provided.
+						which in turn creates a namespaced element 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						based upon the tag name provided.
 					</dd>
 					<dt>
 						<var>doc</var>
@@ -131,22 +172,26 @@
 							title="Node-like Object">node-like object</a>.
 					</dd>
 					<dt>
-						<var>ns</var>
+						<var>uri</var>
 					</dt>
 					<dd>
-						A string containing the preferred namespace
-						for the created element to use.
+						A string containing namespace URI
+						for the created element 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						to use.
 					</dd>
 					<dt>
-						<var>tag</var>
+						<var>name</var>
 					</dt>
 					<dd>
-						A string containing the preferred tag name
-						for the created element to use.
+						A string containing the qualified name
+						for the created element 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						to use.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -158,15 +203,29 @@
 					<a href="#text"
 						title="Utils.create.text"><code>Utils.create.text</code></a>
 				</h3>
-				<p class="doc_art function_head">function (doc,  text) {</p>
+				<p class="warning">
+					Warning: this property will return <code>null</code>
+					if the host environment is detected to be unsuitable;
+					an <code>if</code> block or a similar construct should
+					be used for detection. An example follows.
+				</p>
+				<pre class="example">
+var text;
+if (Utils.create.text) {
+	namespaced = Utils.create.text(
+		document,
+		"Iron Maiden? Excellent!"
+	);
+}</pre>
+				<p class="doc_art function_head">function (<var>doc</var>,  <var>text</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>text</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that wraps <code>createTextNode</code>,
-						which in turn creates a text node based
-						upon the text provided.
+						which in turn creates a text 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						based upon the text provided.
 					</dd>
 					<dt>
 						<var>doc</var>
@@ -180,11 +239,12 @@
 					</dt>
 					<dd>
 						A string containing the preferred text
-						for the created text node to use.
+						for the created text 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						to use.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -196,15 +256,30 @@
 					<a href="#processing_instruction"
 						title="Utils.create.processingInstruction"><code>Utils.create.processingInstruction</code></a>
 				</h3>
-				<p class="doc_art function_head">function (doc,  target, text) {</p>
+				<p class="warning">
+					Warning: this property will return <code>null</code>
+					if the host environment is detected to be unsuitable;
+					an <code>if</code> block or a similar construct should
+					be used for detection. An example follows.
+				</p>
+				<pre class="example">
+var pi;
+if (Utils.create.processingInstruction) {
+	pi = Utils.create.processingInstruction(
+		document,
+		"xml-stylesheet",
+		"type=\"text/xsl\" href=\"style.xsl\""
+	);
+}</pre>
+				<p class="doc_art function_head">function (<var>doc</var>,  <var>target</var>, <var>text</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>processingInstruction</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that wraps <code>processingInstruction</code>,
-						which in turn creates a processing instruction node
-						based upon the tag name provided.
+						which in turn creates a processing instruction 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						based upon the target and text provided.
 					</dd>
 					<dt>
 						<var>doc</var>
@@ -218,18 +293,22 @@
 					</dt>
 					<dd>
 						A string containing the preferred target
-						for the created processing instruction to use.
+						for the created processing instruction
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						to use.
 					</dd>
 					<dt>
 						<var>text</var>
 					</dt>
 					<dd>
 						A string containing the preferred text
-						for the created processing instruction to use.
+						for the created processing instruction
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						to use.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -241,21 +320,36 @@
 					<a href="#comment"
 						title="Utils.create.comment"><code>Utils.create.comment</code></a>
 				</h3>
-				<p class="doc_art function_head">function (doc,  text) {</p>
+				<p class="warning">
+					Warning: this property will return <code>null</code>
+					if the host environment is detected to be unsuitable;
+					an <code>if</code> block or a similar construct should
+					be used for detection. An example follows.
+				</p>
+				<pre class="example">
+var comment;
+if (Utils.create.comment) {
+	comment = Utils.create.comment(
+		document,
+		"No comment.",
+	);
+}</pre>
+				<p class="doc_art function_head">function (<var>doc</var>,  <var>text</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>comment</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that wraps <code>createComment</code>,
-						which in turn creates a comment node based
-						upon the text provided.
+						which in turn creates a comment 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						based upon the text provided.
 					</dd>
 					<dt>
 						<var>doc</var>
 					</dt>
 					<dd>
-						A document <a href="glossary.html#node_like_object"
+						A document
+						<a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
 					<dt>
@@ -263,11 +357,12 @@
 					</dt>
 					<dd>
 						A string containing the preferred text
-						for the created comment to use.
+						for the created comment
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						to use.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -279,14 +374,26 @@
 					<a href="#document_fragment"
 						title="Utils.create.documentFragment"><code>Utils.create.documentFragment</code></a>
 				</h3>
-				<p class="doc_art function_head">function (doc) {</p>
+				<p class="warning">
+					Warning: this property will return <code>null</code>
+					if the host environment is detected to be unsuitable;
+					an <code>if</code> block or a similar construct should
+					be used for detection. An example follows.
+				</p>
+				<pre class="example">
+var fragment;
+if (Utils.create.documentFragment) {
+	comment = Utils.create.documentFragment(
+	);
+}</pre>
+				<p class="doc_art function_head">function (<var>doc</var>) {</p>
 				<dl class="doc_list">
-					<dt>
-						<code>documentFragment</code>
-					</dt>
+					<dt>description</dt>
 					<dd>
 						Method that wraps <code>createDocumentFragment</code>,
-						which in turn creates a document fragment node.
+						which in turn creates a document fragment 
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
 					</dd>
 					<dt>
 						<var>doc</var>
@@ -295,9 +402,7 @@
 						A document <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
 					</dd>
-					<dt>
-						<code>return result;</code>
-					</dt>
+					<dt>return value</dt>
 					<dd>
 						<code>Object || null</code>
 					</dd>
@@ -305,16 +410,16 @@
 				<p class="doc_art function_tail">}</p>
 			</li>
 		</ul>
-		<div class="secondary_row row">
-			<div class="cell prev_link secondary_cell">
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
 				<a href="node.html" rel="prev"
 					title="Previous">&larr;<code>Utils.node</code></a>
 			</div>
-			<div class="cell index_link secondary_cell">
+			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"
 					title="Up">&uarr;Back to Documentation Index</a>
 			</div>
-			<div class="cell next_link secondary_cell">
+			<div class="cell next_link primary_cell">
 				<a href="classes.html" rel="next"
 					title="Next"><code>Utils.classes</code>&rarr;</a>
 			</div>

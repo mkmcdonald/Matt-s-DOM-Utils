@@ -29,9 +29,9 @@
         1. utils.js
         2. raise.js
         3. types.js;
-        4. helpers.js;
-        5. is.js;
-        6. can.js;
+        4. is.js;
+        5. can.js;
+        6. helpers.js;
         7. node.js;
         8. create.js;
 
@@ -58,11 +58,6 @@ corresponding error.
 *Utils* provides an object for every specified `nodeType` based
 upon the DOM 4 spec
 
-### Helpers
-
-*Utils* provides public helper methods for common library tasks.
-Most commonly, the module is used for static array conversion.
-
 ### Is
 
 *Utils* provides identification tests, This includes test for DOM
@@ -72,6 +67,11 @@ scripts to degrade gracefully.
 ### Can
 
 *Utils* provides various capability tests.
+
+### Helpers
+
+*Utils* provides public helper methods for common library tasks.
+Most commonly, the module is used for static array conversion.
 
 ### Node
 
@@ -138,4 +138,4 @@ for examples.
 
 ## Metadata
 
-* Last edited on Friday, May 18th 2012
+* Last edited on Thursday, May 24th 2012
