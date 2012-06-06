@@ -14,14 +14,18 @@
 
         Description:
 
-        A collection of widely-tested DOM utilities and modules
+        A collection of widely tested DOM utilities and modules
         that work in a maximal amount of environments.
 
         Contact:
 
         Matt McDonald
-        [firstName.toLowerCase()@fortybelow.ca]
+        ["utils".toLowerCase();]@fortybelow.ca
         http://www.fortybelow.ca
+
+        Twitter: @mattsdomutils.
+
+        IRC: #mattsdomutils (FreeNode).
 
         Current Build Order:
 
@@ -43,7 +47,8 @@
 # Matt's DOM Utils (Utils)
 
 *Utils* is a toolbox for the HTML DOM. By minimally wrapping the DOM,
-it encourages—and nurtures—the growth of DOM skills.
+it enables developers to learn about the API without the fog of heavy
+abtractions.
 
 ## Core Modules
 
@@ -55,29 +60,30 @@ corresponding error.
 
 ### Types
 
-*Utils* provides an object for every specified `nodeType` based
-upon the DOM 4 spec
+*Utils* provides an object containing every specified `nodeType` based
+upon the DOM 4 spec.
 
 ### Is
 
-*Utils* provides identification tests, This includes test for DOM
-nodes as well as "host objects". Utilizing these tests allows
-scripts to degrade gracefully.
+*Utils* provides identification tests. These include tests for
+document tree node-like objects as well as "host objects". Utilizing
+these tests allows scripts to degrade gracefully.
 
 ### Can
 
-*Utils* provides various capability tests.
+*Utils* provides various capability tests for core features.
 
 ### Helpers
 
 *Utils* provides public helper methods for common library tasks.
-Most commonly, the module is used for static array conversion.
+Most commonly, the module is used for array-like object
+conversion.
 
 ### Node
 
 *Utils* provides a set of wrappers for various methods of
 of the `Node` interface. In particular, this includes
-`appendChild` and `removeChild`.
+`Node::appendChild` and `Node::removeChild`.
 
 See [./Tests/Node](./Tests/Node "Node Tests")
 for examples.
@@ -85,8 +91,8 @@ for examples.
 ### Create
 
 *Utils* provides a set of wrappers for various methods of
-creation. In particular, this includes `createElement` and
-`createTextNode`.
+creation. In particular, this includes `Node::createElement` and
+`Node::createTextNode`.
 
 See [./Tests/Create](./Tests/Create "Create Tests")
 for examples.
@@ -97,7 +103,7 @@ for examples.
 
 ### Classes
 
-*Utils* provides a DOM Level 4 spec-style `classList`
+*Utils* provides a DOM Level 4 spec-style `Element::classList`
 implementation. This includes methods for testing, adding,
 removing and retrieving class tokens.
 
@@ -107,8 +113,8 @@ for examples.
 ### Traverse
 
 *Utils*'s main focus is diverse DOM traversal. This includes
-utilities for `childNodes`, `children` and text along with
-more general methods of traversal.
+utilities for `Node::childNodes`, `Node::children` and text along
+with more general methods of traversal.
 
 See [./Tests/Traverse](./Tests/Traverse "Traverse Tests")
 for examples.
@@ -116,11 +122,56 @@ for examples.
 ### Select
 
 *Utils* provides a set of wrappers for various methods of
-selection. This includes popular methods such as `getElementById`,
-`getElementsByTagName` and newer methods such as `querySelectorAll`.
+selection. This includes popular methods such as
+`Document::getElementById`, `getElementsByTagName` and newer
+methods such as `NodeSelector::querySelectorAll`.
 
 See [./Tests/Select](./Tests/Select "Select Tests")
 for examples.
+
+---
+
+## Builds
+
+*Utils* provides a Makefile along with a custom server-side
+builder.
+
+### Makefile
+
+*Utils* provides some simple options for build creation via
+[./Makefile](./Makefile "Makefile").
+
+#### Core
+
+`make core` (exports to [utils-core.js](./Builds/Uncompressed/utils-core.js "Build File")).
+
+#### Classes
+
+`make classes` (exports to [utils-classes.js](./Builds/Uncompressed/utils-classes.js "Build File")).
+
+#### Traverse
+
+`make traverse` (exports to [utils-traverse.js](./Builds/Uncompressed/utils-traverse.js "Build File")).
+
+#### All
+
+`make all` or `make` (exports to [utils-all.js](./Builds/Uncompressed/utils-all.js "Build File")).
+
+#### Minified
+
+`make install` (runs all hard-coded builds through the YUI Compressor to [Compressed](./Builds/Compressed "Compressed Directory")).
+
+### Custom Builder
+
+*Utils* provides a custom server-side builder to create
+more flexible builds. This option allows one to
+select multiple modules instead of the hard-coded
+one-or-none-or-all Makefile approach.
+
+#### Options
+
+* Minfication
+* Gzip
 
 ---
 
@@ -135,7 +186,11 @@ for examples.
 
 * [David Mark & My Library](http://www.cinsoft.net "cinsoft.net")
 
+### Analyses and Advice
+
+* [Thomas "PointedEars" Lahn](http://www.pointedears.de "pointedears.de")
+
 
 ## Metadata
 
-* Last edited on Thursday, May 24th 2012
+* Last edited on Tuesday, June 5th 2012

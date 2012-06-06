@@ -114,7 +114,12 @@ if (Utils.select.byTagName) {
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method that wraps <code>getElementsByTagName</code>,
-						which in turn returns recursive "children" of the caller
+						which in turn returns element
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>s
+						from the caller's
+						<a href="glossary.html#subtree"
+							title="Subtree">subtree</a>
 						with a matching <code>nodeName</code> property.
 					</dd>
 					<dt>
@@ -131,8 +136,12 @@ if (Utils.select.byTagName) {
 					</dt>
 					<dd>
 						A string containing the tag to search for;
-						<code>"*"</code> returns all "children" in
-						the caller's subtree.
+						<code>"*"</code> returns all element
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>s
+						from the caller's
+						<a href="glossary.html#subtree"
+							title="Subtree">subtree</a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -161,7 +170,12 @@ if (Utils.select.byTagNameNS) {
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method that wraps <code>getElementsByTagNameNS</code>,
-						which in turn returns recursive "children" of the caller
+						which in turn returns element
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>s
+						from the caller's
+						<a href="glossary.html#subtree"
+							title="Subtree">subtree</a>
 						with a matching local name and namespace.
 					</dd>
 					<dt>
@@ -178,8 +192,9 @@ if (Utils.select.byTagNameNS) {
 					</dt>
 					<dd>
 						A string containing the local name to search for.
-						<code>"*"</code> matches all namespaces in the
-						caller's subtree.
+						<code>"*"</code> matches all namespaces from the caller's
+						<a href="glossary.html#subtree"
+							title="Subtree">subtree</a>.
 					</dd>
 					<dt>
 						<var>ns</var>
@@ -215,7 +230,12 @@ if (Utils.select.byClassName) {
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method that wraps <code>getElementsByClassName</code>,
-						which in turn returns recursive "children" of the caller
+						which in turn returns element
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>s
+						from the caller's
+						<a href="glossary.html#subtree"
+							title="Subtree">subtree</a>
 						with matching class "name(s)".
 					</dd>
 					<dt>
@@ -259,8 +279,13 @@ if (Utils.select.byId) {
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method that wraps <code>getElementById</code>,
-						which in turn returns the first recursive "child"
-						of the caller with a matching <code>id</code>
+						which in turn returns the first element
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						from the caller's
+						<a href="glossary.html#subtree"
+							title="Subtree">subtree</a>
+						with a matching <code>id</code>
 						property.
 					</dd>
 					<dt>
@@ -302,7 +327,12 @@ if (Utils.select.query) {
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method that wraps <code>querySelector</code>,
-						which in turn returns a recursive child of the caller
+						which in turn returns an element
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						from the caller's
+						<a href="glossary.html#subtree"
+							title="Subtree">subtree</a>
 						that matches the selector(s) used.
 					</dd>
 					<dt>
@@ -346,7 +376,12 @@ if (Utils.select.queryAll) {
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method that wraps <code>querySelectorAll</code>,
-						which in turn returns recursive "children" of the caller
+						which in turn returns element
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>s
+						from the caller's
+						<a href="glossary.html#subtree"
+							title="Subtree">subtree</a>
 						that match the selector(s) used.
 					</dd>
 					<dt>
@@ -1062,6 +1097,85 @@ if (Utils.select.allAnchors) {
 					<dd>
 						A document <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
+					</dd>
+					@DOCS_RETURN_VALUE@
+					<dd>
+						<code>Array || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="named_items">
+				<h3 class="heading">
+					<a href="#named_items"
+						title="Utils.select.namedItem"><code>Utils.select.namedItem</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>key</var>, <var>name</var>) {</p>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						Method that returns either an
+						<a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						or a
+						<a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						representing the specified name of a specified
+						<code>HTMLCollection</code>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>key</var>
+					</dt>
+					<dd>
+						A string containing the key of the collection to be accessed.
+					</dd>
+					<dt>
+						<var>name</var>
+					</dt>
+					<dd>
+						A string containing the name to be accessed from the specified
+						<code>HTMLCollection</code>.
+					</dd>
+					@DOCS_RETURN_VALUE@
+					<dd>
+						<code>Array || Object || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="collection">
+				<h3 class="heading">
+					<a href="#collection"
+						title="Utils.select.collection"><code>Utils.select.collection</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>key</var>) {</p>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						Method that returns an
+						<a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>
+						representing the specified <code>HTMLCollection</code>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>key</var>
+					</dt>
+					<dd>
+						A string containing the key of the collection to be accessed.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>

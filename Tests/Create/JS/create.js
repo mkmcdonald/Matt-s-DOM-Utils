@@ -68,10 +68,10 @@ var global = global || this;
 
 	tests = (function () {
 		return [
-			{"test": createElement, "key": "one"},
-			{"test": createTextNode, "key": "two"},
-			{"test": createComment, "key": "three"},
-			{"test": createDocumentFragment, "key": "four"}
+			createElement,
+			createTextNode,
+			createComment,
+			createDocumentFragment
 		];
 	}());
 

@@ -6,6 +6,7 @@ var global = global || this;
 			"create_test": doc.getElementById("create_test"),
 			"classes_test": doc.getElementById("classes_test"),
 			"traverse_test": doc.getElementById("traverse_test"),
+			"test_form": doc.getElementById("test_form"),
 			"start": doc.getElementById("start"),
 			"stop": doc.getElementById("stop"),
 			"results": doc.getElementById("results")
@@ -813,6 +814,29 @@ var global = global || this;
 		);
 	}
 
+	function namedItem()
+	{
+		var test = Utils.select.namedItem(
+			commonElements.test_form,
+			"elements",
+			"control1"
+		);
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function collection()
+	{
+		var test = Utils.select.collection(
+			commonElements.test_form,
+			"elements"
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
 	tests = [
 			insertBefore,
 			insertList,
@@ -871,7 +895,9 @@ var global = global || this;
 			applets,
 			allApplets,
 			anchors,
-			allAnchors
+			allAnchors,
+			namedItem,
+			collection
 	];
 
 	function createMessage(text)

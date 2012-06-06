@@ -107,6 +107,38 @@
 					</dd>
 				</dl>
 			</li>
+			<li class="cell doc_cell doc_entry" id="document_tree">
+				<h3 class="heading">
+					<a href="#document_tree"
+						title="Document Tree">Document Tree</a>
+				</h3>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						A parsed tree representing the current document;
+						interfaced with via the DOM; often confused for
+						"the DOM".
+					</dd>
+				</dl>
+			</li>
+			<li class="cell doc_cell doc_entry" id="subtree">
+				<h3 class="heading">
+					<a href="#subtree"
+						title="Subtree">Subtree</a>
+				</h3>
+				<dl class="doc_list">
+					@DOCS_DESCRIPTION@
+					<dd>
+						An object representing a 
+						<a href="#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						recursive <code>childNodes</code>; a tree that's  a
+						branch of the
+						<a href="#document_tree"
+							title="Document Tree">document tree</a>.
+					</dd>
+				</dl>
+			</li>
 		</ul>
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">

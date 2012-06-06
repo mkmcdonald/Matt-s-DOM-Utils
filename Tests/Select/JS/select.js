@@ -335,32 +335,57 @@ global = global || this;
 		);
 	}
 
+	function namedItem()
+	{
+		var test = Utils.select.namedItem(
+			commonElements.test,
+			"elements",
+			"control1"
+		);
+		return Utils.is.nodeLike(
+			test
+		);
+	}
+
+	function collection()
+	{
+		var test = Utils.select.collection(
+			commonElements.test,
+			"elements"
+		);
+		return Utils.is.arrayLike(
+			test
+		);
+	}
+
 	tests = (function () {
 		return [
-			{"test": byName, "key": "one"},
-			{"test": byTagName, "key": "two"},
-			{"test": byClassName, "key": "three"},
-			{"test": byId, "key": "four"},
-			{"test": query, "key": "five"},
-			{"test": queryAll, "key": "six"},
-			{"test": head, "key": "seven"},
-			{"test": body, "key": "eight"},
-			{"test": images, "key": "nine"},
-			{"test": allImages, "key": "ten"},
-			{"test": embeds, "key": "eleven"},
-			{"test": allEmbeds, "key": "twelve"},
-			{"test": plugins, "key": "thirteen"},
-			{"test": allPlugins, "key": "fourteen"},
-			{"test": links, "key": "fifteen"},
-			{"test": allLinks, "key": "sixteen"},
-			{"test": forms, "key": "seventeen"},
-			{"test": allForms, "key": "eighteen"},
-			{"test": scripts, "key": "nineteen"},
-			{"test": allScripts, "key": "twenty"},
-			{"test": applets, "key": "twenty_one"},
-			{"test": allApplets, "key": "twenty_two"},
-			{"test": anchors, "key": "twenty_three"},
-			{"test": allAnchors, "key": "twenty_four"}
+			byName,
+			byTagName,
+			byClassName,
+			byId,
+			query,
+			queryAll,
+			head,
+			body,
+			images,
+			allImages,
+			embeds,
+			allEmbeds,
+			plugins,
+			allPlugins,
+			links,
+			allLinks,
+			forms,
+			allForms,
+			scripts,
+			allScripts,
+			applets,
+			allApplets,
+			anchors,
+			allAnchors,
+			namedItem,
+			collection
 		];
 	}());
 
@@ -371,7 +396,7 @@ global = global || this;
 			str = "[an empty string]";
 		}
 		return Utils.create.text(
-			doc,
+			global.document,
 			str
 		);
 	}
@@ -406,12 +431,8 @@ global = global || this;
 		key
 	)
 	{
-		var isFunction = Utils.is.type(
-			test,
-			"function"
-		),
-			result = null;
-		if (isFunction) {
+		var result = null;
+		if (typeof test === "function") {
 			try {
 				result = test();
 				result = String(result);
@@ -422,32 +443,42 @@ global = global || this;
 		}
 	}
 
-	function runTests(evt)
-	{
-		var index = 0,
-			max,
-			test;
-		max = tests.length;
-		while (index < max) {
-			runTest(
-				tests[index].test,
-				tests[index].key
-			);
-			index += 1;
-		}
-	}
+	runTests = (function () {
+		var max = tests.length;
+		return function () {
+			if (testIndex < max) {
+				runTest(
+					tests[testIndex],
+					testIndex + 1
+				);
+				testIndex += 1;
+				tester = global.setTimeout(
+					runTests,
+					100
+				);
+			} else if (testIndex >= max) {
+				testIndex = 0;
+			}
+		};
+	}());
 
+	function startTests(evt)
+	{
+		testIndex = 0;
+		runTests();
+		this.disabled = true;
+		this.onclick = function () {};
+	}
 
 	function clearResult(key)
 	{
-		var cell = doc.getElementById("result_" + key),
-			row = doc.getElementById("test_" + key),
+		var cell = document.getElementById("result_" + key),
+			row = document.getElementById("test_" + key),
 			index;
 		if (cell && row) {
-			index = cell.childNodes.length;
+			index = cell.childNodes.length - 1;
 			for (index; index > -1; index -= 1) {
-				Utils.node.remove(
-					cell,
+				cell.removeChild(
 					cell.childNodes[index]
 				);
 			}
@@ -455,19 +486,28 @@ global = global || this;
 		}
 	}
 
-	function clearTests(evt)
+	function clearTests()
 	{
 		var index = 0,
 			max = tests.length;
 		for (index; index < max; index += 1) {
-			clearResult(tests[index].key);
+			clearResult(index + 1);
 		}
+	}
+
+	function endTests(evt)
+	{
+		clearTimeout(tester);
+		tester = null;
+		clearTests();
+		commonElements.start.disabled = false;
+		commonElements.start.onclick = startTests;
 	}
 
 	function addHandlers()
 	{
-		commonElements.start.onclick = runTests;
-		commonElements.stop.onclick = clearTests;
+		commonElements.start.onclick = startTests;
+		commonElements.stop.onclick = endTests;
 	}
 
 	addHandlers();

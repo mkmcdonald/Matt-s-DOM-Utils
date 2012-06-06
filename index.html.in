@@ -109,6 +109,7 @@
 				</p>
 				<p>
 					The following environments have been explicitly tested
+					and passed tests with a 100% grade
 					(permitting sufficient DOM support to run tests):
 				</p>
 				<ul>
@@ -173,7 +174,7 @@
 				<sup>1</sup>
 			</dt>
 			<dd>
-				This figure excludes documentation. <em>Utils</em> is authored
+				<em>Utils</em> is authored
 				with a strict ceiling of 20 lines of code per function body,
 				but some difficult cases remain.
 			</dd>

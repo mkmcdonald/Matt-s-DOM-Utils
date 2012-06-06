@@ -165,19 +165,21 @@ var global = global || this;
 
 	tests = (function () {
 		return [
-			{"test": childNodes, "key": "one"},
-			{"test": childNodesTraversed, "key": "two"},
-			{"test": children, "key": "three"},
-			{"test": childrenTraversed, "key": "four"},
-			{"test": tree, "key": "five"},
-			{"test": treeTraversed, "key": "six"},
-			{"test": getText, "key": "seven"},
-			{"test": setText, "key": "eight"},
-			{"test": childrenTree, "key": "nine"},
-			{"test": childrenTreeTraversed, "key": "ten"},
-			{"test": isAncestor, "key": "eleven"},
-			{"test": ancestors, "key": "twelve"},
-			{"test": ancestorsTraversed, "key": "thirteen"}
+			childNodes,
+			childNodesTraversed,
+			children,
+			childrenTraversed,
+			tree,
+			treeTraversed,
+			tree,
+			treeTraversed,
+			getText,
+			setText,
+			childrenTree,
+			childrenTreeTraversed,
+			isAncestor,
+			ancestors,
+			ancestorsTraversed
 		];
 	}());
 
@@ -188,7 +190,7 @@ var global = global || this;
 			str = "[an empty string]";
 		}
 		return Utils.create.text(
-			doc,
+			global.document,
 			str
 		);
 	}
@@ -223,12 +225,8 @@ var global = global || this;
 		key
 	)
 	{
-		var isFunction = Utils.is.type(
-			test,
-			"function"
-		),
-			result = null;
-		if (isFunction) {
+		var result = null;
+		if (typeof test === "function") {
 			try {
 				result = test();
 				result = String(result);
@@ -239,32 +237,42 @@ var global = global || this;
 		}
 	}
 
-	function runTests(evt)
-	{
-		var index = 0,
-			max,
-			test;
-		max = tests.length;
-		while (index < max) {
-			runTest(
-				tests[index].test,
-				tests[index].key
-			);
-			index += 1;
-		}
-	}
+	runTests = (function () {
+		var max = tests.length;
+		return function () {
+			if (testIndex < max) {
+				runTest(
+					tests[testIndex],
+					testIndex + 1
+				);
+				testIndex += 1;
+				tester = global.setTimeout(
+					runTests,
+					100
+				);
+			} else if (testIndex >= max) {
+				testIndex = 0;
+			}
+		};
+	}());
 
+	function startTests(evt)
+	{
+		testIndex = 0;
+		runTests();
+		this.disabled = true;
+		this.onclick = function () {};
+	}
 
 	function clearResult(key)
 	{
-		var cell = doc.getElementById("result_" + key),
-			row = doc.getElementById("test_" + key),
+		var cell = document.getElementById("result_" + key),
+			row = document.getElementById("test_" + key),
 			index;
 		if (cell && row) {
-			index = cell.childNodes.length;
+			index = cell.childNodes.length - 1;
 			for (index; index > -1; index -= 1) {
-				Utils.node.remove(
-					cell,
+				cell.removeChild(
 					cell.childNodes[index]
 				);
 			}
@@ -272,19 +280,28 @@ var global = global || this;
 		}
 	}
 
-	function clearTests(evt)
+	function clearTests()
 	{
 		var index = 0,
 			max = tests.length;
 		for (index; index < max; index += 1) {
-			clearResult(tests[index].key);
+			clearResult(index + 1);
 		}
+	}
+
+	function endTests(evt)
+	{
+		clearTimeout(tester);
+		tester = null;
+		clearTests();
+		commonElements.start.disabled = false;
+		commonElements.start.onclick = startTests;
 	}
 
 	function addHandlers()
 	{
-		commonElements.start.onclick = runTests;
-		commonElements.stop.onclick = clearTests;
+		commonElements.start.onclick = startTests;
+		commonElements.stop.onclick = endTests;
 	}
 
 	addHandlers();

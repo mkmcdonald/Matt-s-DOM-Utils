@@ -9,7 +9,7 @@ var Utils = Utils || {},
  * that work in a maximal amount of environments.
  *
  * @author Matt McDonald
- * @contact [firstName.toLowerCase();]@fortybelow.ca
+ * @contact ["Utils".toLowerCase();]@fortybelow.ca
  * @see http://www.fortybelow.ca
 */
 

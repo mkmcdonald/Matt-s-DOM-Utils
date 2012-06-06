@@ -9,7 +9,7 @@ var Utils = Utils || {},
  * that work in a maximal amount of environments.
  *
  * @author Matt McDonald
- * @contact [firstName.toLowerCase();]@fortybelow.ca
+ * @contact ["Utils".toLowerCase();]@fortybelow.ca
  * @see http://www.fortybelow.ca
 */
 
@@ -5468,7 +5468,7 @@ if (Utils) {
                 * property of a document node-like object.
                 */
 
-		function getCollection(
+		function getDocumentCollection(
 			collection
 		)
 		{
@@ -5507,7 +5507,7 @@ if (Utils) {
 			var result = null;
 			if (isDocument(doc)) {
 				if (isHostObject(doc[key])) {
-					result = getCollection(
+					result = getDocumentCollection(
 						key
 					);
 				}
@@ -5528,7 +5528,7 @@ if (Utils) {
                 * property of a document node-like object.
                 */
 
-		function getNamedItems(
+		function getNamedDocumentItem(
 			collection
 		)
 		{
@@ -5567,7 +5567,7 @@ if (Utils) {
 			var result = null;
 			if (isDocument(doc)) {
 				if (isHostObject(doc[key])) {
-					result = getNamedItems(
+					result = getNamedDocumentItem(
 						key
 					);
 				}
@@ -5885,6 +5885,70 @@ if (Utils) {
 			);
 		}());
 
+               /**
+                * @public `Utils.select.namedItem`.
+                *
+                * @description
+                * Method that returns either a node-like object or
+		* an array-like object representing the specified
+		* name result of a specific `HTMLCollection`.
+                *
+                * @param obj Object
+                * A node-like object to access.
+                *
+                * @param key String
+                * A string containing the key to access as a
+                * property of a node-like object.
+                *
+                * @param name String
+                * A string containing the name to access
+                * from the specified collection.
+                */
+
+		function getNamedItem(
+			obj,
+			key,
+			name
+		)
+		{
+			var result = null;
+			if (obj && isHostObject(obj[key])) {
+				result = adjustItems(
+					obj[key][name]
+				);
+			}
+			return result;
+		}
+
+               /**
+                * @public `Utils.select.collection`.
+                *
+                * @description
+                * Method that returns an `HTMLCollection` from the
+                * specified object converted to an array-like object.
+                *
+                * @param obj Object
+                * A node-like object to access.
+                *
+                * @param key String
+                * A string containing the key to access as a
+                * property of a node-like object.
+                */
+
+		function getCollection(
+			obj,
+			key
+		)
+		{
+			var result = null;
+			if (obj && isHostObject(obj[key])) {
+				result = makeArray(
+					obj[key]
+				);
+			}
+			return result;
+		}
+
 		doc = null;
 
 		Utils.select = Utils.select || {
@@ -5925,7 +5989,10 @@ if (Utils) {
 			"allApplets": getAllApplets,
 
 			"anchors": getAnchors,
-			"allAnchors": getAllAnchors
+			"allAnchors": getAllAnchors,
+
+			"namedItem": getNamedItem,
+			"collection": getCollection
 		};
 	}());
 }

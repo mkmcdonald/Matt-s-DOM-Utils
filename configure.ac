@@ -1,4 +1,4 @@
-AC_INIT([Utils], [0.0], [matt@fortybelow.ca])
+AC_INIT([Utils], [0.0], [utils@fortybelow.ca])
 AC_CONFIG_FILES([
 	index.html
 	Download/index.html
