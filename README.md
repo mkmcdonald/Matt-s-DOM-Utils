@@ -20,7 +20,7 @@
         Contact:
 
         Matt McDonald
-        ["utils".toLowerCase();]@fortybelow.ca
+        ["Utils".toLowerCase();]@fortybelow.ca
         http://www.fortybelow.ca
 
         Twitter: @mattsdomutils.
@@ -143,23 +143,23 @@ builder.
 
 #### Core
 
-`make core` (exports to [utils-core.js](./Builds/Uncompressed/utils-core.js "Build File")).
+`make core` (exports to [./Builds/Uncompressed/utils-core.js](./Builds/Uncompressed/utils-core.js "Build File")).
 
 #### Classes
 
-`make classes` (exports to [utils-classes.js](./Builds/Uncompressed/utils-classes.js "Build File")).
+`make classes` (exports to [./Builds/Uncompressed/utils-classes.js](./Builds/Uncompressed/utils-classes.js "Build File")).
 
 #### Traverse
 
-`make traverse` (exports to [utils-traverse.js](./Builds/Uncompressed/utils-traverse.js "Build File")).
+`make traverse` (exports to [./Builds/Uncompressed/utils-traverse.js](./Builds/Uncompressed/utils-traverse.js "Build File")).
 
 #### All
 
-`make all` or `make` (exports to [utils-all.js](./Builds/Uncompressed/utils-all.js "Build File")).
+`make all` or `make` (exports to [./Builds/Uncompressed/utils-all.js](./Builds/Uncompressed/utils-all.js "Build File")).
 
 #### Minified
 
-`make install` (runs all hard-coded builds through the YUI Compressor to [Compressed](./Builds/Compressed "Compressed Directory")).
+`make install` (runs all hard-coded builds through the YUI Compressor to [./Builds/Compressed](./Builds/Compressed "Compressed Directory")).
 
 ### Custom Builder
 
