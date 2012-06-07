@@ -73,7 +73,7 @@
 				$file,
 				FILTER_SANITIZE_URL
 			);
-			$fetched = null;
+			$fetched = "";
 			if (file_exists($file)) {
 				$fetched = file_get_contents(
 					$file
@@ -174,6 +174,26 @@
 			return $build;
 		}
 
+		function sendStatusHeader()
+		{
+			header("HTTP/1.1 200: OK");
+		}
+
+		function sendTypeHeader()
+		{
+			$type = "application/javascript;";
+			header("Content-Type: " . $type .
+				"charset=utf-8");
+		}
+
+		function sendLengthHeader(
+			$build
+		)
+		{
+			header("Content-Length: " .
+				strlen($build));
+		}
+
 		function determineBuildName(
 			$min,
 			$gzip
@@ -209,12 +229,10 @@
 			$gzip
 		)
 		{
-			$type = "application/javascript;";
-			header("HTTP/1.1 200: OK");
 			$build = encodeBuild($gzip, $build);
-			header("Content-Type: " . $type .
-				"charset=utf-8");
-			header("Content-Length: " . strlen($build));
+			sendStatusHeader();
+			sendTypeHeader();
+			sendLengthHeader($build);
 			sendDispositionHeader(
 				$min,
 				$gzip

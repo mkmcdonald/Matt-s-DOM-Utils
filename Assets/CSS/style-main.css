@@ -92,6 +92,12 @@ legend
 	clear: none;
 }
 
+.primary_column
+{
+	width: 40em;
+	clear: both;
+}
+
 .secondary_column
 {
 	width: 24.33em;

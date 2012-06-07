@@ -878,6 +878,48 @@ if (Utils) {
                 * @private
                 *
                 * @description
+                * Helper method that returns the result of the
+                * creation and suffixion of a text node-like object
+                * to the specified node-like object; returns `null`
+                * if not applicable.
+                *
+                * @param text String
+                * A string containing textual content to add.
+                *
+                * @param obj Object
+                * A node-like object to append the created text node
+                * like object to.
+                *
+                * @param doc Object
+                * A document node-like object used to create a text
+                * node-like object.
+                */
+
+		function appendText(
+			text,
+			obj,
+			doc
+		)
+		{
+			var node,
+				result = null;
+			if (createText) {
+				node = createText(
+					doc,
+					text
+				);
+				result = Utils.node.append(
+					obj,
+					node
+				);
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
                 * Helper method that clears the specified
                 * node-like object's subtree and appends a text
                 * node-like object with a specific string;
@@ -908,14 +950,11 @@ if (Utils) {
 			text = text || "";
 			if (isNodeLike(obj)) {
 				if (isDocument(doc)) {
-					textNode = createText(
-						doc,
-						text
-					);
 					clearChildNodes(obj);
-					Utils.node.append(
+					textNode = appendText(
+						text,
 						obj,
-						textNode
+						doc
 					);
 					result = Utils.node.value(
 						textNode

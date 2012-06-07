@@ -11,16 +11,16 @@ if (Utils) {
 			tester;
 
 		commonElements = (function () {
-			var key = "getElementById",
-				obj = {};
-			obj.node_test = doc[key]("node_test");
-			obj.create_test = doc[key]("create_test");
-			obj.classes_test = doc[key]("classes_test");
-			obj.traverse_test = doc[key]("traverse_test");
-			obj.test_form = doc[key]("test_form");
-			obj.start = doc[key]("start");
-			obj.stop = doc[key]("stop");
-			obj.results = doc[key]("results");
+			var obj = {},
+				form = doc.forms.test_form;
+			obj.node_test = doc.links[0];
+			obj.create_test = doc.links[1];
+			obj.classes_test = doc.links[2];
+			obj.traverse_test = doc.links[3];
+			obj.test_form = form;
+			obj.start = form.elements.start;
+			obj.stop = form.elements.stop;
+			form = null;
 			return obj;
 		}());
 
@@ -39,6 +39,23 @@ if (Utils) {
 			return node;
 		}
 
+		function insertBefore()
+		{
+			var node;
+			if (Utils.create.element) {
+				node = Utils.create.element(
+					global.document,
+					"span"
+				);
+			}
+			if (node) {
+				node = prepend(node);
+			}
+			return Utils.is.nodeLike(
+				node
+			);
+		}
+
 		function makeElement(
 			doc,
 			tag
@@ -54,23 +71,6 @@ if (Utils) {
 			return result;
 		}
 
-		function insertBefore()
-		{
-			var node;
-			if (Utils.create.element) {
-				node = makeElement(
-					global.document,
-					"li"
-				);
-			}
-			if (node) {
-				node = prepend(node);
-			}
-			return Utils.is.nodeLike(
-				node
-			);
-		}
-
 		function generateList(
 			num
 		)
@@ -81,7 +81,7 @@ if (Utils) {
 			while (index > -1) {
 				node = makeElement(
 					global.document,
-					"li"
+					"span"
 				);
 				if (node) {
 					list[index] = node;
@@ -101,7 +101,7 @@ if (Utils) {
 			var list = generatePrependList(),
 				par = commonElements.node_test,
 				nodes;
-			if (par && list && list.length) {
+			if (list && list.length && par) {
 				nodes = Utils.node.prependList(
 					par,
 					list,
@@ -118,12 +118,15 @@ if (Utils) {
 		{
 			var node = makeElement(
 				global.document,
-				"li"
-			);
-			node = Utils.node.append(
-				commonElements.node_test,
-				node
-			);
+				"span"
+			),
+				par = commonElements.node_test;
+			if (node) {
+				node = Utils.node.append(
+					par,
+					node
+				);
+			}
 			return Utils.is.nodeLike(
 				node
 			);
@@ -137,8 +140,8 @@ if (Utils) {
 		function appendList()
 		{
 			var list = generateAppendList(),
-				nodes,
-				par = commonElements.node_test;
+				par = commonElements.node_test,
+				nodes;
 			if (list && list.length) {
 				nodes = Utils.node.appendList(
 					par,
@@ -169,7 +172,7 @@ if (Utils) {
 		function replace(node)
 		{
 			var par = commonElements.node_test;
-			if (par) {
+			if (par && node) {
 				node =  Utils.node.replace(
 					par,
 					node,
@@ -223,7 +226,7 @@ if (Utils) {
 		{
 			var test = makeElement(
 				global.document,
-				"p"
+				"span"
 			);
 			return Utils.is.element(
 				test
@@ -915,12 +918,11 @@ if (Utils) {
 
 		function namedItem()
 		{
-			var node = commonElements.test_form,
-				test = Utils.select.namedItem(
-					node,
-					"elements",
-					"control1"
-				);
+			var test = Utils.select.namedItem(
+				commonElements.test_form,
+				"elements",
+				"result_1"
+			);
 			return Utils.is.nodeLike(
 				test
 			);
@@ -928,9 +930,8 @@ if (Utils) {
 
 		function collection()
 		{
-			var node = commonElements.test_form,
-				test = Utils.select.collection(
-				node,
+			var test = Utils.select.collection(
+				commonElements.test_form,
 				"elements"
 			);
 			return Utils.is.arrayLike(
@@ -1013,37 +1014,16 @@ if (Utils) {
 			);
 		}
 
-		function grabById(
-			id
-		)
-		{
-			return global.document.getElementById(
-				id
-			);
-		}
-
 		function addMessage(
 			msg,
-			num
+			key
 		)
 		{
-			var cell = grabById("result_" + num),
-				row = grabById("test_" + num),
-				text = createMessage(msg);
-			if (cell) {
-				Utils.node.append(
-					cell,
-					text
-				);
-			}
-			if (row) {
-				if (msg === "true") {
-					row.className = "pass";
-				} else if (msg === "false") {
-					row.className = "fail";
-				} else if (msg === "ERROR") {
-					row.className = "error";
-				}
+			var par = commonElements.test_form,
+				pre = "result_",
+				control = par.elements[pre + key];
+			if (control) {
+				control.value = msg;
 			}
 		}
 
@@ -1083,9 +1063,7 @@ if (Utils) {
 			};
 		}());
 
-		function startTests(
-			evt
-		)
+		function startTests(evt)
 		{
 			testIndex = 0;
 			runTests();
@@ -1093,38 +1071,10 @@ if (Utils) {
 			this.onclick = function () {};
 		}
 
-		function clearResult(
-			num
-		)
-		{
-			var cell = grabById("result_" + num),
-				row = grabById("test_" + num),
-				index;
-			if (cell && row) {
-				index = cell.childNodes.length - 1;
-				for (index; index > -1; index -= 1) {
-					cell.removeChild(
-						cell.childNodes[index]
-					);
-				}
-				row.className = "";
-			}
-		}
-
-		function clearTests()
-		{
-			var index = 0,
-				max = tests.length;
-			for (index; index < max; index += 1) {
-				clearResult(index + 1);
-			}
-		}
-
 		function endTests(evt)
 		{
 			global.clearTimeout(tester);
 			tester = null;
-			clearTests();
 			commonElements.start.disabled = false;
 			commonElements.start.onclick = startTests;
 		}

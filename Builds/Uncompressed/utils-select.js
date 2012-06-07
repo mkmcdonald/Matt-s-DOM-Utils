@@ -2451,12 +2451,13 @@ if (Utils) {
 
 		getHead = (function () {
 			var headProp,
+				key = "getElementsByTagName",
 				result = null;
 			if (isDocument(doc)) {
 				headProp = isHostObject(doc.head);
 				if (headProp) {
 					result = getNativeHead;
-				} else if (!headProp) {
+				} else if (isHostObject(doc[key])) {
 					result = forkHead;
 				}
 			}
@@ -2533,12 +2534,13 @@ if (Utils) {
 
 		getBody = (function () {
 			var bodyProp,
+				key = "getElementsByTagName",
 				result = null;
 			if (isDocument(doc)) {
 				bodyProp = isHostObject(doc.body);
 				if (bodyProp) {
 					result = getNativeBody;
-				} else if (!bodyProp) {
+				} else if (isHostObject(doc[key])) {
 					result = forkBody;
 				}
 			}

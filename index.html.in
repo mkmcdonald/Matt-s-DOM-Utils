@@ -93,13 +93,34 @@
 					<em>Utils</em> is developed with the following core
 					tenets in mind:
 				</p>
-				<ul>
-					<li>Graceful Degradation;</li>
-					<li>Namespacing;</li>
-					<li>Modularity;</li>
-					<li>Minimal DOM Abstraction.</li>
-				</ul>
+				<dl>
+					<dt>Graceful Degradation;</dt>
+					<dd>
+						Code will not execute if an incapable environment is detected.
+						Coupled with defensive programming, this is the most powerful
+						way to write "cross-browser" scripts.
+					</dd>
+					<dt>Namespacing;</dt>
+					<dd>
+						Code is split up into objects with distinctive names which encapsulate
+						internal methods and properties.
+					</dd>
+					<dt>Modularity;</dt>
+					<dd>
+						Code is split into files with minimal dependencies. This enables
+						developers to easily swap out "modules" that are undesired or
+						irrelevant.
+					</dd>
+					<dt>Minimal DOM Abstraction.</dt>
+					<dd>
+						API design largely sticks to the nomenclature of the DOM API.
+						This enables a flat learning curve, as developers should be
+						somewhat familiar with the DOM API.
+					</dd>
+				</dl>
 			</div>
+		</div>
+		<div class="column secondary_column">
 			<div class="cell secondary_cell">
 				<h3 class="heading"
 					title="Support">Support</h3>
@@ -115,25 +136,27 @@
 				<ul>
 					<li>Internet Explorer 6-9;</li>
 					<li>Firefox 1-12;</li>
-					<li>Opera 7-11;</li>
+					<li>Opera 5-11;</li>
 					<li>Safari 3.1-5;</li>
 					<li>Chrome 1-4<a href="#footnote_0"
 						title="Footnote Zero"><sup>0</sup></a>.</li>
 				</ul>
 				<p>
 					<em>Utils</em> has been tested in older versions of
-					the above along with miscellaneous browsers. Support
+					the above along with miscellaneous environments. Support
 					for the preceding is positive, but not qualitative.
 				</p>
 				<p>
 					Tests are conducted with a basic subset of the DOM
-					Level 1 Core API. Any browser that does not support
-					the preceding API cannot have its support qualitatively
-					evaluated.
+					Level 1 Core API. Any environment that does not support
+					the preceding API will then be tested with a basic
+					subset of the "DOM 0" API. ECMAScript language features
+					such as <code>throw</code> and
+					<code> try { ... } catch (e) { ... }</code> are required
+					to evaluate an environment. Environments without these
+					features currently cannot have qualitative testing performed.
 				</p>
 			</div>
-		</div>
-		<div class="column secondary_column">
 			<div class="cell secondary_cell">
 				<h3 class="heading"
 					title="Style">Style</h3>
@@ -159,25 +182,27 @@
 				</p>
 			</div>
 		</div>
-		<dl class="row secondary_row">
-			<dt class="cell secondary_cell" id="footnote_0">
-				<sup>0</sup>
-			</dt>
-			<dd>
-				<em>Utils</em> is presumed to work well on Chrome versions
-				4 and up. However, due to Chrome's intrusive installation,
-				only one version can be installed per virtual machine.
-				As only four virtual machines utilized for the testing of
-				<em>Utils</em> can run Chrome, only four versions can be tested.
-			</dd>
-			<dt class="cell secondary_cell" id="footnote_1">
-				<sup>1</sup>
-			</dt>
-			<dd>
-				<em>Utils</em> is authored
-				with a strict ceiling of 20 lines of code per function body,
-				but some difficult cases remain.
-			</dd>
-		</dl>
+		<div class="column primary_column">
+			<dl class="cell primary_cell">
+				<dt id="footnote_0">
+					<sup>0</sup>
+				</dt>
+				<dd>
+					<em>Utils</em> is presumed to work well on Chrome versions
+					4 and up. However, due to Chrome's intrusive installation,
+					only one version can be installed per virtual machine.
+					As only four virtual machines utilized for the testing of
+					<em>Utils</em> can run Chrome, only four versions can be tested.
+				</dd>
+				<dt id="footnote_1">
+					<sup>1</sup>
+				</dt>
+				<dd>
+					<em>Utils</em> is authored
+					with a strict ceiling of 20 lines of code per function body,
+					but some difficult cases remain.
+				</dd>
+			</dl>
+		</div>
 @FOOTER@
 @END@

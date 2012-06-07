@@ -10,48 +10,9 @@
 	</head>
 	<body>
 		<h1>Select Test</h1>
-		<h2>Test Image</h2>
-		<p>
-		<img alt="Test Image" height="100"
-			src="../../Assets/Images/logo.jpg" width="337">
-		</p>
-		<h2>Test Embed</h2>
-		<object id="embedded" height="100"
-			width="100">
-			<embed src="" type="text/html">
-		</object>
-		<h2>Test Links</h2>
-		<p>
-			<a href="./" title="Test One">Test One</a>
-			<a href="./" title="Test Two">Test Two</a>
-			<a href="./" title="Test Three">Test Three</a>
-		</p>
-		<h2>Test Form</h2>
-		<form action="./" class="container" id="test"
-			method="post" name="test"
-			onsubmit="return false;">
-			<fieldset class="container">
-				<legend>Test Elements</legend>
-				<input name="control1" type="text">
-				<input name="control2" type="password">
-				<input name="control3" type="submit">
-			</fieldset>
-		</form>
-		<h2>Test Applet</h2>
-		<applet code="HelloWorld.class" codeBase="../Applets/"
-			height="100" id="appletcation" width="100">
-			Hello world
-		</applet>
-		<h2>Test Anchors</h2>
-		<p>
-			<a name="anchor1" title="Test One">Test One</a>
-			<a name="anchor2" title="Test Two">Test Two</a>
-			<a name="anchor3" title="Test Three">Test Three</a>
-		</p>
 		<button id="start" type="button">Run Test</button>
 		<button id="stop" type="button">Clear Test</button>
-		<hr>
-		<h2>Results</h2>
+		<h2>Test Results</h2>
 		<table id="results">
 			<caption>Tabulated Results</caption>
 			<thead>
@@ -89,8 +50,8 @@
 				<tr id="test_4">
 					<td>4.</td>
 					<td>
-						<code>Utils.select.byId</code> returns an
-							array-like object.
+						<code>Utils.select.byId</code> returns a
+							node-like object.
 					</td>
 					<td id="result_4"></td>
 				</tr>
@@ -272,6 +233,45 @@
 				</tr>
 			</tbody>
 		</table>
+		<hr>
+		<h2>Test Image</h2>
+		<p>
+			<img alt="Test Image" height="100"
+			src="../../Assets/Images/logo.jpg" width="337">
+		</p>
+		<h2>Test Embed</h2>
+		<object id="embedded" height="100"
+			width="100">
+			<embed src="" type="text/html">
+		</object>
+		<h2>Test Links</h2>
+		<p>
+			<a href="./" title="Test One">Test One</a>
+			<a href="./" title="Test Two">Test Two</a>
+			<a href="./" title="Test Three">Test Three</a>
+		</p>
+		<h2>Test Form</h2>
+		<form action="./" class="container" id="test"
+			method="post" name="test"
+			onsubmit="return false;">
+			<fieldset class="container">
+				<legend>Test Elements</legend>
+				<input name="control1" type="text">
+				<input name="control2" type="password">
+				<input name="control3" type="submit">
+			</fieldset>
+		</form>
+		<h2>Test Applet</h2>
+		<applet code="HelloWorld.class" codeBase="../Applets/"
+			height="100" id="appletcation" width="100">
+			Hello world
+		</applet>
+		<h2>Test Anchors</h2>
+		<p>
+			<a name="anchor1" title="Test One">Test One</a>
+			<a name="anchor2" title="Test Two">Test Two</a>
+			<a name="anchor3" title="Test Three">Test Three</a>
+		</p>
 		<script src="../../Builds/Uncompressed/utils-select.js"
 			type="text/javascript"></script>
 		<script src="JS/select.js"

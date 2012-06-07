@@ -47,11 +47,12 @@
 				<p>
 					Furthermore, <em>Utils</em> was created to transform
 					HTML DOM scripting. By eschewing DOM "selectors" for
-					highly customizable callbacks, developers regain control
-					of traversal and are freed from the behest of 
-					<code>RegExp</code> string parsers and CSS engines. This
-					strategy allows for very powerful traversal, which is
-					easy to understand and far more "native" to developers.
+					wrapped DOM selection methods and highly customizable callbacks,
+					developers regain control of traversal and are freed from the
+					behest of <code>RegExp</code> string parsers and CSS engines.
+					This strategy allows for very powerful traversal, which is
+					subjectively easy to understand and far more "native" to
+					developers.
 				</p>
 			</div>
 		</div>
