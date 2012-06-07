@@ -128,6 +128,8 @@
 					<em>Utils</em> is developed to gracefully degrade in as many
 					environments as possible.
 				</p>
+				<h4 class="heading"
+					title="Supported Environments">Supported Environments</h4>
 				<p>
 					The following environments have been explicitly tested
 					and passed tests with a 100% grade
@@ -141,6 +143,8 @@
 					<li>Chrome 1-4<a href="#footnote_0"
 						title="Footnote Zero"><sup>0</sup></a>.</li>
 				</ul>
+				<h4 class="heading"
+					title="Testing">Testing</h4>
 				<p>
 					<em>Utils</em> has been tested in older versions of
 					the above along with miscellaneous environments. Support
@@ -169,6 +173,8 @@
 					clarity.  Furthermore, the code is intended to be reliable and
 					friendly; zero corners are cut.
 				</p>
+				<h4 class="heading"
+					title="Linters">Linters</h4>
 				<p>
 					<em>Utils</em> passes <a href="http://www.jslint.com"
 						title="JSLint">JSLint</a> with only two options
