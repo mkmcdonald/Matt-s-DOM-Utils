@@ -17,7 +17,6 @@ a:link, a:hover, a:active, a:visited
 
 ul, ol
 {
-	margin: 1em 0 1em 0;
 	padding: 0 0 0 2.5em;
 }
 
@@ -35,6 +34,11 @@ code, pre, var
 {
 	font-family: "Lucida Console", monospace;
 	font-weight: bold;
+}
+
+pre, .doc_entry
+{
+	word-wrap: break-word;
 }
 
 fieldset
@@ -62,11 +66,22 @@ legend
 	color: #F1F1F1;
 }
 
+hr
+{
+	width: 50%;
+	margin: .5em 0;
+	text-align: left;
+}
+
+hr, .row
+{
+	clear: both;
+}
+
 .row
 {
-	width: 100%;
 	float: left;
-	clear: both;
+	width: 100%;
 }
 
 .nav_row, .doc_row, .fact_list, .file_list, .feature_list
@@ -85,6 +100,11 @@ legend
 	background-color: #5D7693;
 }
 
+.footer_row
+{
+	margin-top: 1em;
+}
+
 .column
 {
 	width: 100%;
@@ -94,7 +114,7 @@ legend
 
 .primary_column
 {
-	width: 40em;
+	width: 73em;
 	clear: both;
 }
 
@@ -155,11 +175,6 @@ legend
 	list-style: none outside;
 }
 
-.module_list
-{
-	padding: 0 0 0 2.5em;
-}
-
 .module_list li, .feature_list li
 {
 	margin: 1em 0 0 0;
@@ -189,11 +204,6 @@ legend
 .doc_art
 {
 	font-size: 1.25em;
-}
-
-.doc_entry
-{
-	word-wrap: break-word;
 }
 
 .doc_entry:target, .module_info:target
@@ -226,14 +236,25 @@ legend
 	text-align: right;
 }
 
-.footer_row
+.quotation::before, .quotation::after
 {
-	margin-top: 1em;
+	font-size: 2em;
+	vertical-align: sub;
+}
+
+.quotation::before
+{
+	content: "\201C";
+}
+
+.quotation::after
+{
+	content: "\201D";
 }
 
 @media screen and (max-width: 40em)
 {
-	.primary_cell, .secondary_cell
+	.primary_cell, .secondary_cell, hr
 	{
 		/* fit within 20em page */
 		width: 18em;
@@ -258,7 +279,7 @@ legend
 		font-size: .75em;
 	}
 
-	.cell
+	.cell, hr
 	{
 		/*
 			fit within 15 em (at 16px) page

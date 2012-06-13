@@ -1,16 +1,16 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.is</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation&mdash;@LIBRARY_NAME@.is</title>
 @DOCS_STYLESHEET@
 @DOCS_RESOURCES@
 		<link href="types.html" hreflang="en" media="all"
-			rel="prev" title="Utils.types"
+			rel="prev" title="@LIBRARY_NAME@.types"
 			type="text/html">
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
 			type="text/html">
-		<link href="can.html" hreflang="en" media="all"
-			rel="next" title="Utils.can"
+		<link href="helpers.html" hreflang="en" media="all"
+			rel="next" title="@LIBRARY_NAME@.helpers"
 			type="text/html">
 @BODY@
 @DOCS_HEADER@
@@ -18,17 +18,17 @@
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="types.html" rel="prev"
-					title="Previous">&larr;<code>Utils.types</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.types</code></a>
 			</div>
 			<div class="cell next_link primary_cell">
-				<a href="can.html" rel="next"
-					title="Next"><code>Utils.can</code>&rarr;</a>
+				<a href="helpers.html" rel="next"
+					title="Next"><code>@LIBRARY_NAME@.helpers</code>&rarr;</a>
 			</div>
 		</div>
 		<div class="primary_row row">
 			<div class="cell primary_cell">
-				<h2 class="heading" title="Utils.is">
-					<code>Utils.is</code>
+				<h2 class="heading" title="@LIBRARY_NAME@.is">
+					<code>@LIBRARY_NAME@.is</code>
 				</h2>
 				<div class="module_info" id="dependencies">
 					<h3 class="heading">
@@ -38,7 +38,7 @@
 					<ol>
 						<li>
 							<a href="./types.html"
-								title="Utils.types"><code>Utils.types</code></a>
+								title="@LIBRARY_NAME@.types"><code>@LIBRARY_NAME@.types</code></a>
 						</li>
 					</ol>
 				</div>
@@ -48,7 +48,7 @@
 			<li class="cell doc_cell doc_entry" id="type">
 				<h3 class="heading">
 					<a href="#type"
-						title="Utils.is.type"><code>Utils.is.type</code></a>
+						title="@LIBRARY_NAME@.is.type"><code>@LIBRARY_NAME@.is.type</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>val</var>, <var>type</var>) {</p>
 				<dl class="doc_list">
@@ -81,7 +81,7 @@
 			<li class="cell doc_cell doc_entry" id="host_object">
 				<h3 class="heading">
 					<a href="#host_object"
-						title="Utils.is.hostObject"><code>Utils.is.hostObject</code></a>
+						title="@LIBRARY_NAME@.is.hostObject"><code>@LIBRARY_NAME@.is.hostObject</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -106,7 +106,7 @@
 			<li class="cell doc_cell doc_entry" id="array_like">
 				<h3 class="heading">
 					<a href="#array_like"
-						title="Utils.is.arrayLike"><code>Utils.is.arrayLike</code></a>
+						title="@LIBRARY_NAME@.is.arrayLike"><code>@LIBRARY_NAME@.is.arrayLike</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -132,7 +132,7 @@
 			<li class="cell doc_cell doc_entry" id="node_like">
 				<h3 class="heading">
 					<a href="#node_like"
-						title="Utils.is.nodeLike"><code>Utils.is.nodeLike</code></a>
+						title="@LIBRARY_NAME@.is.nodeLike"><code>@LIBRARY_NAME@.is.nodeLike</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -158,7 +158,7 @@
 			<li class="cell doc_cell doc_entry" id="node_type">
 				<h3 class="heading">
 					<a href="#node_type"
-						title="Utils.is.nodeType"><code>Utils.is.nodeType</code></a>
+						title="@LIBRARY_NAME@.is.nodeType"><code>@LIBRARY_NAME@.is.nodeType</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>type</var>) {</p>
 				<dl class="doc_list">
@@ -193,7 +193,7 @@
 			<li class="cell doc_cell doc_entry" id="element">
 				<h3 class="heading">
 					<a href="#element"
-						title="Utils.is.element"><code>Utils.is.element</code></a>
+						title="@LIBRARY_NAME@.is.element"><code>@LIBRARY_NAME@.is.element</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -220,7 +220,7 @@
 			<li class="cell doc_cell doc_entry" id="attribute">
 				<h3 class="heading">
 					<a href="#attribute"
-						title="Utils.is.attribute"><code>Utils.is.attribute</code></a>
+						title="@LIBRARY_NAME@.is.attribute"><code>@LIBRARY_NAME@.is.attribute</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -247,7 +247,7 @@
 			<li class="cell doc_cell doc_entry" id="text">
 				<h3 class="heading">
 					<a href="#text"
-						title="Utils.is.text"><code>Utils.is.text</code></a>
+						title="@LIBRARY_NAME@.is.text"><code>@LIBRARY_NAME@.is.text</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -276,7 +276,7 @@
 			<li class="cell doc_cell doc_entry" id="cdata_section">
 				<h3 class="heading">
 					<a href="#cdata_section"
-						title="Utils.is.cDataSection"><code>Utils.is.cDataSection</code></a>
+						title="@LIBRARY_NAME@.is.cDataSection"><code>@LIBRARY_NAME@.is.cDataSection</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -303,7 +303,7 @@
 			<li class="cell doc_cell doc_entry" id="entity_reference">
 				<h3 class="heading">
 					<a href="#entity_reference"
-						title="Utils.is.entityReference"><code>Utils.is.entityReference</code></a>
+						title="@LIBRARY_NAME@.is.entityReference"><code>@LIBRARY_NAME@.is.entityReference</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -330,7 +330,7 @@
 			<li class="cell doc_cell doc_entry" id="entity">
 				<h3 class="heading">
 					<a href="#entity"
-						title="Utils.is.entity"><code>Utils.is.entity</code></a>
+						title="@LIBRARY_NAME@.is.entity"><code>@LIBRARY_NAME@.is.entity</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -357,7 +357,7 @@
 			<li class="cell doc_cell doc_entry" id="processing_instruction">
 				<h3 class="heading">
 					<a href="#processing_instruction"
-						title="Utils.is.processingInstruction"><code>Utils.is.processingInstruction</code></a>
+						title="@LIBRARY_NAME@.is.processingInstruction"><code>@LIBRARY_NAME@.is.processingInstruction</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -384,7 +384,7 @@
 			<li class="cell doc_cell doc_entry" id="comment">
 				<h3 class="heading">
 					<a href="#comment"
-						title="Utils.is.comment"><code>Utils.is.comment</code></a>
+						title="@LIBRARY_NAME@.is.comment"><code>@LIBRARY_NAME@.is.comment</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -411,7 +411,7 @@
 			<li class="cell doc_cell doc_entry" id="document">
 				<h3 class="heading">
 					<a href="#document"
-						title="Utils.is.document"><code>Utils.is.document</code></a>
+						title="@LIBRARY_NAME@.is.document"><code>@LIBRARY_NAME@.is.document</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -438,7 +438,7 @@
 			<li class="cell doc_cell doc_entry" id="document_type">
 				<h3 class="heading">
 					<a href="#document_type"
-						title="Utils.is.documentType"><code>Utils.is.documentType</code></a>
+						title="@LIBRARY_NAME@.is.documentType"><code>@LIBRARY_NAME@.is.documentType</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -465,7 +465,7 @@
 			<li class="cell doc_cell doc_entry" id="document_fragment">
 				<h3 class="heading">
 					<a href="#document_fragment"
-						title="Utils.is.documentFragment"><code>Utils.is.documentFragment</code></a>
+						title="@LIBRARY_NAME@.is.documentFragment"><code>@LIBRARY_NAME@.is.documentFragment</code></a>
 				</h3>
 				<p class="doc_art function_head">function (ob<var>j</var>) {</p>
 				<dl class="doc_list">
@@ -492,7 +492,7 @@
 			<li class="cell doc_cell doc_entry" id="notation">
 				<h3 class="heading">
 					<a href="#notation"
-						title="Utils.is.notation"><code>Utils.is.notation</code></a>
+						title="@LIBRARY_NAME@.is.notation"><code>@LIBRARY_NAME@.is.notation</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -520,15 +520,15 @@
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="types.html" rel="prev"
-					title="Previous">&larr;<code>Utils.types</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.types</code></a>
 			</div>
 			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"
 					title="Up">&uarr;Back to Documentation Index</a>
 			</div>
 			<div class="cell next_link primary_cell">
-				<a href="can.html" rel="next"
-					title="Next"><code>Utils.can</code>&rarr;</a>
+				<a href="helpers.html" rel="next"
+					title="Next"><code>@LIBRARY_NAME@.helpers</code>&rarr;</a>
 			</div>
 		</div>
 @FOOTER@

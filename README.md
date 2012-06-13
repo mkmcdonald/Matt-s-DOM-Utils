@@ -34,10 +34,9 @@
         2. raise.js
         3. types.js;
         4. is.js;
-        5. can.js;
-        6. helpers.js;
-        7. node.js;
-        8. create.js;
+        5. helpers.js;
+        6. node.js;
+        7. create.js;
 
         (optional modules)
         * classes.js;
@@ -48,7 +47,7 @@
 
 *Utils* is a toolbox for the HTML DOM. By minimally wrapping the DOM,
 it enables developers to learn about the API without the fog of heavy
-abtractions.
+abstractions.
 
 ## Core Modules
 
@@ -68,10 +67,6 @@ upon the DOM 4 spec.
 *Utils* provides identification tests. These include tests for
 document tree node-like objects as well as "host objects". Utilizing
 these tests allows scripts to degrade gracefully.
-
-### Can
-
-*Utils* provides various capability tests for core features.
 
 ### Helpers
 

@@ -1,6 +1,6 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.raise</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation&mdash;@LIBRARY_NAME@.raise</title>
 @DOCS_STYLESHEET@
 @DOCS_RESOURCES@
 		<link href="./" hreflang="en" media="all"
@@ -10,7 +10,7 @@
 			rel="index" title="Documentation Index"
 			type="text/html">
 		<link href="types.html" hreflang="en" media="all"
-			rel="next" title="Utils.types"
+			rel="next" title="@LIBRARY_NAME@.types"
 			type="text/html">
 @BODY@
 @DOCS_HEADER@
@@ -22,13 +22,13 @@
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="types.html" rel="next"
-					title="Next"><code>Utils.types</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.types</code>&rarr;</a>
 			</div>
 		</div>
 		<div class="primary_row row">
 			<div class="cell primary_cell">
-				<h2 class="heading" title="Utils.raise">
-					<code>Utils.raise</code>
+				<h2 class="heading" title="@LIBRARY_NAME@.raise">
+					<code>@LIBRARY_NAME@.raise</code>
 				</h2>
 				<div class="module_info" id="dependencies">
 					<h3 class="heading">
@@ -47,7 +47,7 @@
 			<li class="cell doc_cell doc_entry" id="types">
 				<h3 class="heading">
 					<a href="#types"
-						title="types"><code>Utils.raise.types</code></a>
+						title="types"><code>@LIBRARY_NAME@.raise.types</code></a>
 				</h3>
 				<p class="doc_art left_brace">{</p>
 				<dl class="doc_list">
@@ -163,14 +163,14 @@
 			<li class="cell doc_cell doc_entry" id="index_size">
 				<h3 class="heading">
 					<a href="#index_size"
-						title="Utils.raise.indexSize"><code>Utils.raise.indexSize</code></a>
+						title="@LIBRARY_NAME@.raise.indexSize"><code>@LIBRARY_NAME@.raise.indexSize</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#index_size_error"
-							title="Utils.raise.types.INDEX_SIZE_ERROR"><code>Utils.raise.types.INDEX_SIZE_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.INDEX_SIZE_ERROR"><code>@LIBRARY_NAME@.raise.types.INDEX_SIZE_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -182,14 +182,14 @@
 			<li class="cell doc_cell doc_entry" id="heirarchy_request">
 				<h3 class="heading">
 					<a href="#heirarchy_request"
-						title="Utils.raise.heirarchyRequest"><code>Utils.raise.heirarchyRequest</code></a>
+						title="@LIBRARY_NAME@.raise.heirarchyRequest"><code>@LIBRARY_NAME@.raise.heirarchyRequest</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#heirarchy_request_error"
-							title="Utils.raise.types.HEIRARCHY_REQUEST_ERROR"><code>Utils.raise.types.HEIRARCHY_REQUEST_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.HEIRARCHY_REQUEST_ERROR"><code>@LIBRARY_NAME@.raise.types.HEIRARCHY_REQUEST_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -201,14 +201,14 @@
 			<li class="cell doc_cell doc_entry" id="wrong_document">
 				<h3 class="heading">
 					<a href="#wrong_document"
-						title="Utils.raise.wrongDocument"><code>Utils.raise.wrongDocument</code></a>
+						title="@LIBRARY_NAME@.raise.wrongDocument"><code>@LIBRARY_NAME@.raise.wrongDocument</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#wrong_document_error"
-							title="Utils.raise.types.WRONG_DOCUMENT_ERROR"><code>Utils.raise.types.WRONG_DOCUMENT_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.WRONG_DOCUMENT_ERROR"><code>@LIBRARY_NAME@.raise.types.WRONG_DOCUMENT_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -220,14 +220,14 @@
 			<li class="cell doc_cell doc_entry" id="invalid_character">
 				<h3 class="heading">
 					<a href="#invalid_character"
-						title="Utils.raise.invalidCharacter"><code>Utils.raise.invalidCharacter</code></a>
+						title="@LIBRARY_NAME@.raise.invalidCharacter"><code>@LIBRARY_NAME@.raise.invalidCharacter</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#invalid_character_error"
-							title="Utils.raise.types.INVALID_CHARACTER_ERROR"><code>Utils.raise.types.INVALID_CHARACTER_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.INVALID_CHARACTER_ERROR"><code>@LIBRARY_NAME@.raise.types.INVALID_CHARACTER_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -239,14 +239,14 @@
 			<li class="cell doc_cell doc_entry" id="no_modification_allowed">
 				<h3 class="heading">
 					<a href="#no_modification_allowed"
-						title="Utils.raise.noModificationAllowed"><code>Utils.raise.noModificationAllowed</code></a>
+						title="@LIBRARY_NAME@.raise.noModificationAllowed"><code>@LIBRARY_NAME@.raise.noModificationAllowed</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#no_modification_allowed_error"
-							title="Utils.raise.types.NO_MODIFICATION_ALLOWED_ERROR"><code>Utils.raise.types.NO_MODIFICATION_ALLOWED_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.NO_MODIFICATION_ALLOWED_ERROR"><code>@LIBRARY_NAME@.raise.types.NO_MODIFICATION_ALLOWED_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -258,14 +258,14 @@
 			<li class="cell doc_cell doc_entry" id="not_found">
 				<h3 class="heading">
 					<a href="#not_found"
-						title="Utils.raise.notFound"><code>Utils.raise.notFound</code></a>
+						title="@LIBRARY_NAME@.raise.notFound"><code>@LIBRARY_NAME@.raise.notFound</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#not_found_error"
-							title="Utils.raise.types.NOT_FOUND_ERROR"><code>Utils.raise.types.NOT_FOUND_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.NOT_FOUND_ERROR"><code>@LIBRARY_NAME@.raise.types.NOT_FOUND_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -277,14 +277,14 @@
 			<li class="cell doc_cell doc_entry" id="not_supported">
 				<h3 class="heading">
 					<a href="#not_supported"
-						title="Utils.raise.notSupported"><code>Utils.raise.notSupported</code></a>
+						title="@LIBRARY_NAME@.raise.notSupported"><code>@LIBRARY_NAME@.raise.notSupported</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#not_supported_error"
-							title="Utils.raise.types.NOT_SUPPORTED_ERROR"><code>Utils.raise.types.NOT_SUPPORTED_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.NOT_SUPPORTED_ERROR"><code>@LIBRARY_NAME@.raise.types.NOT_SUPPORTED_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -296,14 +296,14 @@
 			<li class="cell doc_cell doc_entry" id="invalid_state">
 				<h3 class="heading">
 					<a href="#invalid_state"
-						title="Utils.raise.invalidState"><code>Utils.raise.invalidState</code></a>
+						title="@LIBRARY_NAME@.raise.invalidState"><code>@LIBRARY_NAME@.raise.invalidState</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#invalid_state_error"
-							title="Utils.raise.types.INVALID_STATE_ERROR"><code>Utils.raise.types.INVALID_STATE_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.INVALID_STATE_ERROR"><code>@LIBRARY_NAME@.raise.types.INVALID_STATE_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -315,14 +315,14 @@
 			<li class="cell doc_cell doc_entry" id="syntax">
 				<h3 class="heading">
 					<a href="#syntax"
-						title="Utils.raise.syntax"><code>Utils.raise.syntax</code></a>
+						title="@LIBRARY_NAME@.raise.syntax"><code>@LIBRARY_NAME@.raise.syntax</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#syntax_error"
-							title="Utils.raise.types.SYNTAX_ERROR"><code>Utils.raise.types.SYNTAX_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.SYNTAX_ERROR"><code>@LIBRARY_NAME@.raise.types.SYNTAX_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -334,14 +334,14 @@
 			<li class="cell doc_cell doc_entry" id="invalid_modification">
 				<h3 class="heading">
 					<a href="#invalid_modification"
-						title="Utils.raise.invalidModification"><code>Utils.raise.invalidModification</code></a>
+						title="@LIBRARY_NAME@.raise.invalidModification"><code>@LIBRARY_NAME@.raise.invalidModification</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#invalid_modification_error"
-							title="Utils.raise.types.INVALID_MODIFICATION_ERROR"><code>Utils.raise.types.INVALID_MODIFICATION_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.INVALID_MODIFICATION_ERROR"><code>@LIBRARY_NAME@.raise.types.INVALID_MODIFICATION_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -353,14 +353,14 @@
 			<li class="cell doc_cell doc_entry" id="namespace">
 				<h3 class="heading">
 					<a href="#namespace"
-						title="Utils.raise.namespace"><code>Utils.raise.namespace</code></a>
+						title="@LIBRARY_NAME@.raise.namespace"><code>@LIBRARY_NAME@.raise.namespace</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#namespace_error"
-							title="Utils.raise.types.NAMESPACE_ERROR"><code>Utils.raise.types.NAMESPACE_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.NAMESPACE_ERROR"><code>@LIBRARY_NAME@.raise.types.NAMESPACE_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -372,14 +372,14 @@
 			<li class="cell doc_cell doc_entry" id="invalid_access">
 				<h3 class="heading">
 					<a href="#invalid_access"
-						title="Utils.raise.invalidAccess"><code>Utils.raise.invalidAccess</code></a>
+						title="@LIBRARY_NAME@.raise.invalidAccess"><code>@LIBRARY_NAME@.raise.invalidAccess</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#invalid_access_error"
-							title="Utils.raise.types.INVALID_ACCESS_ERROR"><code>Utils.raise.types.INVALID_ACCESS_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.INVALID_ACCESS_ERROR"><code>@LIBRARY_NAME@.raise.types.INVALID_ACCESS_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -391,14 +391,14 @@
 			<li class="cell doc_cell doc_entry" id="type_mismatch">
 				<h3 class="heading">
 					<a href="#type_mismatch"
-						title="Utils.raise.typeMismatch"><code>Utils.raise.typeMismatch</code></a>
+						title="@LIBRARY_NAME@.raise.typeMismatch"><code>@LIBRARY_NAME@.raise.typeMismatch</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#type_mismatch_error"
-							title="Utils.raise.types.TYPE_MISMATCH_ERROR"><code>Utils.raise.types.TYPE_MISMATCH_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.TYPE_MISMATCH_ERROR"><code>@LIBRARY_NAME@.raise.types.TYPE_MISMATCH_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -410,14 +410,14 @@
 			<li class="cell doc_cell doc_entry" id="security">
 				<h3 class="heading">
 					<a href="#security"
-						title="Utils.raise.security"><code>Utils.raise.security</code></a>
+						title="@LIBRARY_NAME@.raise.security"><code>@LIBRARY_NAME@.raise.security</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#security_error"
-							title="Utils.raise.types.SECURITY_ERROR"><code>Utils.raise.types.SECURITY_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.SECURITY_ERROR"><code>@LIBRARY_NAME@.raise.types.SECURITY_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -429,14 +429,14 @@
 			<li class="cell doc_cell doc_entry" id="network">
 				<h3 class="heading">
 					<a href="#network"
-						title="Utils.raise.network"><code>Utils.raise.network</code></a>
+						title="@LIBRARY_NAME@.raise.network"><code>@LIBRARY_NAME@.raise.network</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#network_error"
-							title="Utils.raise.types.NETWORK_ERROR"><code>Utils.raise.types.NETWORK_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.NETWORK_ERROR"><code>@LIBRARY_NAME@.raise.types.NETWORK_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -448,14 +448,14 @@
 			<li class="cell doc_cell doc_entry" id="abort">
 				<h3 class="heading">
 					<a href="#abort"
-						title="Utils.raise.abort"><code>Utils.raise.abort</code></a>
+						title="@LIBRARY_NAME@.raise.abort"><code>@LIBRARY_NAME@.raise.abort</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#abort_error"
-							title="Utils.raise.types.ABORT_ERROR"><code>Utils.raise.types.ABORT_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.ABORT_ERROR"><code>@LIBRARY_NAME@.raise.types.ABORT_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -467,14 +467,14 @@
 			<li class="cell doc_cell doc_entry" id="url_mismatch">
 				<h3 class="heading">
 					<a href="#url_mismatch"
-						title="Utils.raise.urlMismatch"><code>Utils.raise.urlMismatch</code></a>
+						title="@LIBRARY_NAME@.raise.urlMismatch"><code>@LIBRARY_NAME@.raise.urlMismatch</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#url_mismatch_error"
-							title="Utils.raise.types.URL_MISMATCH_ERROR"><code>Utils.raise.types.URL_MISMATCH_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.URL_MISMATCH_ERROR"><code>@LIBRARY_NAME@.raise.types.URL_MISMATCH_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -486,14 +486,14 @@
 			<li class="cell doc_cell doc_entry" id="quota_exceeded">
 				<h3 class="heading">
 					<a href="#quota_exceeded"
-						title="Utils.raise.quotaExceeded"><code>Utils.raise.quotaExceeded</code></a>
+						title="@LIBRARY_NAME@.raise.quotaExceeded"><code>@LIBRARY_NAME@.raise.quotaExceeded</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#quota_exceeded_error"
-							title="Utils.raise.types.QUOTA_EXCEEDED_ERROR"><code>Utils.raise.types.QUOTA_EXCEEDED_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.QUOTA_EXCEEDED_ERROR"><code>@LIBRARY_NAME@.raise.types.QUOTA_EXCEEDED_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -505,14 +505,14 @@
 			<li class="cell doc_cell doc_entry" id="timeout">
 				<h3 class="heading">
 					<a href="#timeout"
-						title="Utils.raise.timeout"><code>Utils.raise.timeout</code></a>
+						title="@LIBRARY_NAME@.raise.timeout"><code>@LIBRARY_NAME@.raise.timeout</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#timeout_error"
-							title="Utils.raise.types.TIMEOUT_ERROR"><code>Utils.raise.types.TIMEOUT_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.TIMEOUT_ERROR"><code>@LIBRARY_NAME@.raise.types.TIMEOUT_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -524,14 +524,14 @@
 			<li class="cell doc_cell doc_entry" id="invalid_node_type">
 				<h3 class="heading">
 					<a href="#invalid_node_type"
-						title="Utils.raise.invalidNodeType"><code>Utils.raise.invalidNodeType</code></a>
+						title="@LIBRARY_NAME@.raise.invalidNodeType"><code>@LIBRARY_NAME@.raise.invalidNodeType</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#invalid_node_type_error"
-							title="Utils.raise.types.INVALID_NODE_TYPE_ERROR"><code>Utils.raise.types.INVALID_NODE_TYPE_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.INVALID_NODE_TYPE_ERROR"><code>@LIBRARY_NAME@.raise.types.INVALID_NODE_TYPE_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -543,14 +543,14 @@
 			<li class="cell doc_cell doc_entry" id="data_clone">
 				<h3 class="heading">
 					<a href="#data_clone"
-						title="Utils.raise.dataClone"><code>Utils.raise.dataClone</code></a>
+						title="@LIBRARY_NAME@.raise.dataClone"><code>@LIBRARY_NAME@.raise.dataClone</code></a>
 				</h3>
 				<p class="doc_art function_head">function () {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
 						Method to throw <a href="#data_clone_error"
-							title="Utils.raise.types.DATA_CLONE_ERROR"><code>Utils.raise.types.DATA_CLONE_ERROR</code></a>.
+							title="@LIBRARY_NAME@.raise.types.DATA_CLONE_ERROR"><code>@LIBRARY_NAME@.raise.types.DATA_CLONE_ERROR</code></a>.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>
@@ -571,7 +571,7 @@
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="types.html" rel="next"
-					title="Next"><code>Utils.types</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.types</code>&rarr;</a>
 			</div>
 		</div>
 @FOOTER@

@@ -1,0 +1,1162 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=utf-8">
+		<meta name="viewport"
+			content="initial-scale=1.0">
+		<meta name="Author"
+			content="Matt McDonald">
+		<title>Matt's DOM Utils (Utils): HOWTO&mdash;Graceful Degradation</title>
+		<link href="../../Assets/CSS/style-main.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+		<link href="../../favicon.ico"
+			media="all" rel="icon prefetch">
+	</head>
+	<body>
+		<div class="header_row row">
+			<h1 class="cell header_cell heading">
+				<a class="masthead"
+					href="../../" title="Matt's DOM Utils"><img alt="Matt's DOM Utils" height="100" src="../../Assets/Images/logo.jpg" width="337"></a>
+				<span class="tagline">Matt's DOM Utils (<em>Utils</em>)</span>
+			</h1>
+		</div>
+		<ul class="nav_row row">
+			<li class="cell home nav_cell">
+				<a href="../../" title="Home">Home</a>
+			</li>
+			<li class="cell download nav_cell">
+				<a href="../../Download" title="Download">Download</a>
+			</li>
+			<li class="active cell docs nav_cell">
+				<a href="../" title="Documentation">Documentation</a>
+			</li>
+			<li class="cell nav_cell tests ">
+				<a href="../../Tests" title="Tests">Tests</a>
+			</li>
+			<li class="cell github nav_cell">
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/" title="GitHub">GitHub</a>
+			</li>
+			<li class="about cell nav_cell">
+				<a href="../../about.html" title="About">About</a>
+			</li>
+		</ul>
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading"
+					title="HOWTO: Graceful Degradation">
+					HOWTO: Graceful Degradation
+				</h2>
+			</div>
+		</div>
+		<div class="column primary_column">
+			<div class="cell primary_cell" id="table_of_contents">
+				<h3 class="heading">
+					<a href="#table_of_contents"
+						title="Table of Contents">Table of Contents</a>
+				</h3>
+				<ol class="contents_list">
+					<li>
+						<a href="#introduction"
+							title="Introduction">Introduction</a>
+						<ol>
+							<li>
+								<a href="#progressive_enhancement"
+									title="Relation to Progressive Enhancement">Relation to Progressive Enhancement</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#variables"
+							title="Variables in the Web Client">Variables in the Web Client</a>
+						<ol>
+							<li>
+								<a href="#variables_http"
+									title="HTTP">HTTP</a>
+								<ol>
+									<li>
+										<a href="#host"
+											title="HTTP Host"><samp>Host</samp></a>
+									</li>
+									<li>
+										<a href="#status_codes"
+											title="HTTP 4xx and 5xx Status Codes">4xx and 5xx Status Codes</a>
+									</li>
+								</ol>
+							</li>
+							<li>
+								<a href="#variables_html"
+									title="HTML">HTML</a>
+								<ol>
+									<li>
+										<a href="#doctype"
+											title="Doctype">Doctype</a>
+									</li>
+									<li>
+										<a href="#alien_features"
+											title="Alien Features">Alien Features</a>
+									</li>
+								</ol>
+							</li>
+							<li>
+								<a href="#variables_css"
+									title="CSS">CSS</a>
+								<ol>
+									<li>
+										<a href="#alien_properties"
+											title="Alien Properties">Alien Properties</a>
+									</li>
+									<li>
+										<a href="#proprietary_properties"
+											title="Proprietary Properties">Proprietary Properties</a>
+									</li>
+								</ol>
+							</li>
+							<li>
+								<a href="#variables_javascript"
+									title="JavaScript">JavaScript</a>
+								<ol>
+									<li>
+										<a href="#native_features"
+											title="Native Features">Native Features</a>
+									</li>
+									<li>
+										<a href="#host_features"
+											title="Host Features">Host Features</a>
+									</li>
+								</ol>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#defense"
+							title="Defense">Defense</a>
+						<ol>
+							<li>
+								<a href="#defense_html"
+									title="HTML">HTML</a>
+								<ol>
+									<li>
+										<a href="#default_state"
+											title="Default State">Default State</a>
+									</li>
+									<li>
+										<a href="#default_style"
+											title="Default Style">Default Style</a>
+									</li>
+								</ol>
+							</li>
+							<li>
+								<a href="#defense_css"
+									title="CSS">CSS</a>
+								<ol>
+									<li>
+										<a href="#media_queries"
+											title="Media Queries">Media Queries</a>
+									</li>
+								</ol>
+							</li>
+							<li>
+								<a href="#defense_javascript"
+									title="JavaScript">JavaScript</a>
+								<ol>
+									<li>
+										<a href="#is_host_method"
+											title="isHostMethod"><code>isHostMethod</code></a>
+									</li>
+								</ol>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#conclusion"
+							title="Conclusion">Conclusion</a>
+						<ol>
+							<li>
+								<a href="#javascript_library"
+									title="JavaScript Library">JavaScript Library</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#footnotes"
+							title="Footnotes">Footnotes</a>
+					</li>
+				</ol>
+			</div>
+			<hr>
+			<div class="cell primary_cell" id="introduction">
+				<h3 class="heading">
+					<a href="#introduction"
+						title="Introduction">Introduction</a>
+				</h3>
+				<p>
+					&ldquo;Graceful Degradation&rdquo; is a phrase that describes a process
+					triggered by a web client at runtime. To grasp <em>Graceful Degradation</em>,
+					one must first grasp the web client.
+				</p>
+				<blockquote cite="http://groups.google.com/group/comp.lang.javascript/msg/60a6bb437e54f282">
+					<p class="quotation">
+						There is only a trade off in accommodating ancient browsers if
+						it is necessary to write code to actively accommodate them. If
+						a system is being designed to facilitate [Graceful Degradation]
+						then the work needed to accommodate the most modern browsers with
+						[JavaScript] disabled has effectively accommodated those ancient
+						browsers in some sense.
+					</p>
+					&mdash;Richard Cornford (on <em>Graceful Degradation</em>)<a href="#footnote_0" title="Footnote Zero">[0]</a>
+				</blockquote>
+				<p>
+					The web client is one of the most hostile environments that a software
+					developer can face. Many variables can cause a page to falter. Each layer
+					of the web client has variables which can trigger differing behavior in a
+					page. They are outlined in detail below.
+				</p>
+				<div id="progressive_enhancement">
+					<h4 class="heading">
+						<a href="#progressive_enhancement"
+							title="Relation to Progressive Enchancement">Relation to Progressive Enchancement</a>
+					</h4>
+					<p>
+						Contrary to what some<a href="#footnote_1"
+							title="Footnote One">[1]</a> have written,
+						&ldquo;Progressive Enhancement&rdquo; differs from
+						<em>Graceful Degradation</em>. <em>Progressive Enhancement</em>
+						is a phrase that describes a build process undertaken by a developer
+						while building a web page. A default state is first created with HTML;
+						CSS is then layered on to decorate. Finally, JavaScript is added
+						to give the page dynamic behavior. This incremental process
+						allows web pages to be stable should variables change.
+					</p>
+				</div>
+			</div>
+			<hr>
+			<div class="cell primary_cell" id="variables">
+				<h3 class="heading">
+					<a href="#variables"
+						title="Variables in the Web Client">Variables in the Web Client</a>
+				</h3>
+				<div id="variables_http">
+					<h4 class="heading">
+						<a href="#variables_http"
+							title="HTTP">HTTP</a>
+					</h4>
+					<p>
+						On the Internet, HTTP is how text (n&eacute;e &ldquo;hypertext&rdquo;) is
+						transmitted. Colloquially, it's how resources (read: files) are
+						transmitted. However, there are many ways that a user or client
+						can modify transmission of resources. The following list contains
+						some common caveats.
+					</p>
+					<div id="host">
+						<h5 class="heading">
+							<a href="#host"
+								title="HTTP Host"><samp>Host</samp></a>
+						</h5>
+						<p>
+							The <samp>Host</samp> header (specified in HTTP/1.1)<a href="#footnote_2"
+								title="Footnote Two">[2]</a>
+							is specified to contain the host of the resource
+							requested. Colloquially, one might refer to
+							a &ldquo;host&rdquo; as a &ldquo;domain&rdquo; or
+							&ldquo;domain name&rdquo;. Hosts can be blocked by web
+							clients through a preferences panel or the user through a hosts
+							file. Quite often, this feature is used to block advertising
+							hosts, and by proxy, advertising. Therefore, it is wise
+							to anticipate an external resource being blocked (Google Analytics
+							is a common target). Some examples would include: images, CSS
+							stylesheets and JavaScript files. Sometimes, a client will
+							block a host without the user's explicit consent. This can be caused
+							by a &ldquo;web filter&rdquo;, which is used by many administrators
+							to prevent users from browsing undesired or lewd content.
+						</p>
+					</div>
+					<div id="status_codes">
+						<h5 class="heading">
+							<a href="#status_codes"
+								title="HTTP 4xx and 5xx Status Codes">4xx and 5xx Status Codes</a>
+						</h5>
+						<p>
+							The 4xx range of status codes (specified in HTTP/1.1)<a href="#footnote_3"
+								title="Footnote Three">[3]</a> denotes an error on the part
+							of the web client. Conversely, the 5xx range of status codes (also
+							specified in HTTP/1.1)<a href="#footnote_4" title="Footnote Four">[4]</a>
+							denotes an error on the part of the web server. When applied to
+							external resources in a web page, they can encumber an entire page
+							unless dealt with judiciously. One such example is the following
+							JavaScript snippet:
+						</p>
+						<pre>/*
+	NOTE: use absolute paths to avoid problems
+	with the `src` property (absolute) not
+	reflecting the `src` attribute
+	(relative or absolute).
+*/
+var img = document.createElement("img");
+img.onload = function (evt) {
+	this.alt = "Image loaded successfully";
+	this.src = "http://localhost/success.gif";
+};
+img.onerror = function (evt) {
+	this.alt = "Image could not be loaded";
+	// necessary to avoid infinite event loop
+	if (img.src !== "http://localhost/error.gif") {
+		this.src = "http://localhost/error.gif";
+	}
+};
+img.alt = "Image is loading";
+img.width = 250;
+img.height = 250;
+img.src = "http://localhost/placeholder.gif";
+document.body.appendChild(img);</pre>
+						<p>
+							which will replace an image's <code>src</code> property with an image
+							indicative of its current state. The <code>alt</code> property is
+							populated with a message for each state. In the event that the error
+							image doesn't load, a message will still be available for the user
+							to read. Another example is an external script file that fails to load.
+							This snippet is an example:
+						</p>
+						<pre>if (typeof Library === "object") {
+	// `Library` script was loaded.
+	(function () {
+		// application code here
+	}());
+}</pre>
+						<p>
+							which prevents errors caused by referencing an object (read: API)
+							that is <code>undefined</code>. <em>Utils</em> uses this
+							pattern for both modules and unit tests.
+						</p>
+					</div>
+				</div>
+				<div id="variables_html">
+					<h4 class="heading">
+						<a href="#variables_html"
+							title="HTML">HTML</a>
+					</h4>
+					<p>
+						HTML is a markup language derived from SGML that allows one to
+						author web content. It contains variables which can be modified
+						by the web client. Some examples follow.
+					</p>
+					<div id="doctype">
+						<h5 class="heading">
+							<a href="#doctype"
+								title="Doctype">Doctype</a>
+						</h5>
+						<p>
+							Within an HTML (along with XHTML and XML) document, a
+							doctype is used to notify the client of what type the
+							document is to be parsed as. Doctypes usually contain
+							the version of the mark-up language used along with
+							a category (such as &ldquo;transitional&rdquo; or
+							&ldquo;strict&rdquo;). With the entrance of HTML 5,
+							a version number and category are no longer necessary.
+							This snippet:
+						</p>
+						<code>&lt;!DOCTYPE HTML&gt;</code>
+						<p>
+							is a sufficient identifier of an HTML 5 document.
+							Omission of a doctype can cause a client to parse
+							the page in &ldquo;Quirks Mode&rdquo;. <em>Quirks Mode</em>
+							is a parsing mode wherein a client attempts to parse a
+							document to conform to a legacy, or outdated style.
+						</p>
+						<blockquote cite="http://hsivonen.iki.fi/doctype/">
+							<p class="quotation">
+								Please don’t [design for Quirks Mode]. Willfully designing
+								for the Quirks [Mode] will come and haunt you, your coworkers
+								or your successors in the future [...] . Designing for the
+								Quirks [Mode] is a bad idea. Trust me.
+							</p>
+							&mdash;Henri Sivonen (on <em>Quirks Mode</em>)<a href="#footnote_5" title="Footnote Five">[5]</a>
+						</blockquote>
+					</div>
+					<div id="alien_features">
+						<h5 class="heading">
+							<a href="#alien_features"
+								title="Alien Features">Alien Features</a>
+						</h5>
+						<p>
+							Environments that do not recognize a particular
+							element will render textual content inside. This
+							behavior can be used to leave messages to the user
+							that the feature is unsupported. In HTML 5,
+							a snippet such as:
+						</p>
+						<pre>&lt;video src="eggn.ogg"&gt;
+	The video element is unsupported in this environment.
+&lt;/video&gt;</pre>
+						<p>
+							is a good starting point. In supported environments, the
+							textual content is not rendered.
+						</p>
+						<p>
+							Environments that do not recognize a particular
+							property will ignore it. This snippet:
+						</p>
+						<pre>
+&lt;input name="first_name"
+	placeholder="First Name"
+	type="text"&gt;</pre>
+						<p>
+							is an example wherein an unrecognized attribute
+							(the <code>placeholder</code> attribute)
+							will often be ignored.
+						</p>
+					</div>
+				</div>
+				<div id="variables_css">
+					<h4 class="heading">
+						<a href="#variables_css"
+							title="CSS">CSS</a>
+					</h4>
+					<p>
+						CSS is a style sheet language used to visually format HTML.
+						Like HTML, it also contains variables which can by modified by
+						the web client. What follows is a set of examples.
+					</p>
+					<div id="alien_properties">
+						<h5 class="heading">
+							<a href="#alien_properties"
+								title="Alien Properties">Alien Properties</a>
+						</h5>
+						<p>
+							Unrecognized properties will be ignored by
+							an environment. This facilitates the use
+							of newer features while having little
+							effect on outdated environments. For example,
+							this snippet:
+						</p>
+						<pre>.featured
+{
+	background-color: #FFEE77;
+	/* ignored in older browsers such as IE 7 */
+	border-radius: 1em;
+}</pre>
+						<p>
+							exemplifies how visual effects can be stacked
+							to accommodate supportive environments.
+						</p>
+					</div>
+					<div id="proprietary_properties">
+						<h5 class="heading">
+							<a href="#proprietary_properties"
+								title="Proprietary Properties">Proprietary Properties</a>
+						</h5>
+						<p>
+							Proprietary properties pertain to a specific environment.
+							They are non-standard and are thus discouraged unless only
+							that particular environment is desired. Quite often, they
+							are prefixed with a prefix representing the environment
+							to be targeted (e.g. "-ms" for Microsoft). The following snippet:
+						</p>
+						<pre>.highlighted
+{
+	/* proprietary webkit property */
+	-webkit-text-stroke: 1px #FF0000;
+}</pre>
+						<p>
+							is an example of a proprietary property (specific to the
+							Webkit engine) that is non-standard and tailored for
+							a specific environment.
+						</p>
+					</div>
+				</div>
+				<div id="variables_javascript">
+					<h4 class="heading">
+						<a href="#variables_javascript"
+							title="JavaScript">JavaScript</a>
+					</h4>
+					<p>
+						JavaScript is a scripting language and a subset of the ECMAScript language.
+						Unfortunately, it contains many variables that can by modified by
+						a web client. Common problem points are outlined below.
+					</p>
+					<div id="native_features">
+						<h5 class="heading">
+							<a href="#native_features"
+								title="Native Features">Native Features</a>
+						</h5>
+						<p>
+							Unrecognized native features will err upon use in
+							an environment. As a result, newer features should
+							be used with caution. The following snippet:
+						</p>
+						<pre>// errs in IE 8
+var keys = Object.keys({});</pre>
+						<p>
+							is an example of a newer feature that will cause
+							problems for older environments. As a result,
+							older core features with the widest amount
+							of support are encouraged over newer features.
+							This snippet:
+						</p>
+						<pre>function grabKeys(
+	obj
+)
+{
+	var keys = [],
+		key;
+	for (key in obj) {
+		if (obj.hasOwnProperty(key)) {
+			keys[keys.length] = key;
+		}
+	}
+	return obj;
+}</pre>
+						<p>
+							could be used as an alternative in order
+							to support more environments, though its
+							behavior deviates slightly from the
+							native method.
+						</p>
+					</div>
+					<div id="host_features">
+						<h5 class="heading">
+							<a href="#host_features"
+								title="Host Features">Host Features</a>
+						</h5>
+						<p>
+							Like native features, unrecognized host features
+							will err upon use in an environment. However,
+							host features are even more volatile as their
+							implementation in ECMAScript is largely undefined.
+							A common example is the Document Object Model (DOM),
+							which is designed to be language-independent.
+							Furthermore, host objects are very unreliable
+							when used for &ldquo;type&rdquo; inferences,
+							as their &ldquo;types&rdquo; vary between environments.
+							Code such as this:
+						</p>
+						<pre>// "function" in Opera 8
+// "object" in Opera 9
+typeof document.childNodes;</pre>
+						<p>
+							illustrates just one inconsistency between environments.
+							There are numerous predatory bugs lying underneath older
+							environments, but due dilligence can defeat many of them.
+							One example is this snippet:
+						</p>
+						<pre>// "Type Mismatch" in IE 6
+xhr.onreadystatechange = null;</pre>
+						<p>
+							which can be replaced with the following snippet:
+						</p>
+						<pre>// type match
+xhr.onreadystatechange = function () {};</pre>
+						<p>
+							thereby removing the &ldquo;type mismatch&rdquo;, as a
+							function was expected. However, some are more difficult,
+							such as this snippet:
+						</p>
+						<pre>// "object" in IE 5
+typeof document.createDocumentFragment;
+// Error: "Not Implemented" in IE 5
+document.createDocumentFragment();</pre>
+						<p>
+							which would also be called an &ldquo;uncallable
+							function&rdquo;. One solution to the preceding is to
+							use the following snippet:
+						</p>
+						<pre>
+var canCallDocFrag = (function () {
+	var result = true;
+	try {
+		document.createDocumentFragment();
+	} catch (err) {
+		result = false;
+	}
+	return result;
+}());</pre>
+						<p>
+							which will catch the error thrown from the invocation
+							of the specified method. An immediate closure is used
+							to reduce repetition. A derivative of this strategy is
+							used in <em>Utils</em> to complete IE 5 support.
+						</p>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="cell primary_cell" id="defense">
+				<h3 class="heading">
+					<a href="#defense"
+						title="Defense">Defense</a>
+				</h3>
+				<p>
+					Once one has learned of the follies that populate the web client,
+					one can then learn how to safeguard against them. A wide array
+					of strategies exist to author defensively for the web. They are
+					explained below.
+				</p>
+				<div id="defense_html">
+					<h4 class="heading">
+						<a href="#defense_html"
+							title="HTML">HTML</a>
+					</h4>
+					<p>
+						HTML does not explicitly contain tools for defensive
+						authoring, but its status as the building blocks of
+						a web page allows it to be used defensively.
+					</p>
+					<div id="default_state">
+						<h5 class="heading">
+							<a href="#default_state"
+								title="Default State">Default State</a>
+						</h5>
+						<p>
+							A default state is the first state in which a
+							web client is presented with upon loading a page.
+							For HTML pages, this means static HTML. Default
+							states are used to provide clients with forms of
+							pages while not patronizing users of these clients.
+							Messages such as: &ldquo;Please upgrade your browser;
+							this one is insufficient&rdquo; and &ldquo;Please enable
+							JavaScript to view this page&rdquo; only insult the
+							user's choice (or often a lack thereof) of environment.
+						</p>
+						<p>
+							An optimal approach is to provide a static alternative.
+							For example, consider a proposal to create a rotating image
+							slideshow for the home page of a large web site. JavaScript
+							would be the presumptive choice to rotate images at the
+							behest of a timer. However, consider a scenario wherein
+							scripting is disabled. Perhaps an administrator has disabled
+							scripting out of security concerns. The user may be left
+							with an empty &ldquo;slide show&rdquo; depending on the
+							default state written. A defensive strategy would be to
+							write one image directly into the HTML mark-up and
+							provide a link to a page containing all proposed feature links
+							in static form. Consider this snippet:
+						</p>
+						<pre>
+&lt;div id="slideshow"&gt;
+	&lt;a href="slides.html" id="slide_link"
+		title="Feature Slideshow"&gt;&lt;img alt="Feature 1"
+			height="480" id="current_slide"
+			name="current_slide"
+			src="images/feature1.jpg" width="640"&gt;&lt;/a&gt;
+&lt;div&gt;</pre>
+						<p>
+							which would then be followed by this theoretical JavaScript
+							snippet:
+						</p>
+						<pre>
+var link = document.getElementById("slide_link"),
+	slide = document.images.current_slide,
+	slideIndex,
+	slideTimer,
+	maxIndex = 3;
+
+function playSlide()
+{
+	slide.alt = "Feature" + slideIndex;
+	slide.src = "images/feature" +
+		slideIndex + ".jpg";
+	link.href = "http://localhost/feature" +
+		slideIndex + ".html";
+	link.title = "Feature" + slideIndex;
+}
+
+function endShow()
+{
+	clearTimeout(slideTimer);
+	slideTimer = null;
+	startShow();
+}
+
+function runTimer()
+{
+	if (slideIndex &lt;= maxIndex) {
+		slideTimer = setTimeout(
+			runTimer,
+			3000
+		);
+		playSlide();
+		slideIndex += 1;
+	} else if (slideIndex &gt; maxIndex) {
+		endShow();
+	}
+}
+
+function startShow()
+{
+	slideIndex = 1;
+	runTimer();
+}
+
+startShow();</pre>
+						<p>
+							which is a na&iuml;ve slide show that provides a
+							default state for the user should the script fail
+							to execute (be it a preference or a failed load).
+						</p>
+					</div>
+					<div id="default_style">
+						<h5 class="heading">
+							<a href="#default_style"
+								title="Default Style">Default Style</a>
+						</h5>
+						<p>
+							Default styles are often overlooked by developers.
+							When respected, they can yield a defensive foundation
+							for web pages. One such case is the <code>&lt;p&gt;</code>
+							element, which has a top and bottom margin specified<a href="#footnote_6"
+								title="Footnote Six">[6]</a> in CSS 2.1. It
+							can be used to easily style and separate form controls.
+							The following snippet is an example:
+						</p>
+						<pre>
+&lt;form action="http://localhost/" id="test_form"
+	method="post" name="test_form"&gt;
+	&lt;fieldset&gt;
+		&lt;legend&gt;Enter Your Credentials&lt;/legend&gt;
+		&lt;p&gt;
+			&lt;label&gt;
+				&lt;input name="username_control" type="text"&gt;
+				Username
+			&lt;/label&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label&gt;
+				&lt;input name="password_control" type="password"&gt;
+				Password
+			&lt;/label&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;input name="submit_control" type="submit" value="Log in"&gt;
+		&lt;/p&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+						<p>
+							which eschews <code>&lt;table&gt;</code> elements for
+							<code>&lt;p&gt;</code> elements; this provides a quicker,
+							flexible solution.
+						</p>
+					</div>
+				</div>
+				<div id="defense_css">
+					<h4 class="heading">
+						<a href="#defense_css"
+							title="CSS">CSS</a>
+					</h4>
+					<p>
+						CSS can be written defensively to minimize loopholes
+						created by deficient environments. By testing a wide
+						range of browsers and studying standards, one can
+						acquire knowledge of defensive CSS strategies. Some
+						examples follow.
+					</p>
+					<div id="media_queries">
+						<h5 class="heading">
+							<a href="#media_queries"
+								title="Media Queries">Media Queries</a>
+						</h5>
+						<p>
+							Media types were first introduced<a href="#footnote_7"
+								title="Footnote Seven">[7]</a> in CSS 2.1.
+							They have been expanded to provide complex logical
+							assertions, or &ldquo;queries&rdquo;, and are
+							specified as a module<a href="#footnote_8"
+								title="Footnote Eight">[8]</a> of CSS 3.
+						</p>
+						<p>
+							Querying for the current display width can be used
+							as a strategy to facilitate a &ldquo;responsive&rdquo;
+							page. This means that the page will adjust to differing
+							screen widths. For example, a page that uses pseudo-columns
+							floated next to each other may remove those floats if a
+							certain width range is detected. The result is one
+							singular pseudo-column, which is optimal for cramped
+							display widths. The project web site for <em>Utils</em>
+							uses this strategy; its use is most evident on the home page.
+							An example would be the following snippet:
+
+						</p>
+						<pre>@media screen and (max-width: 20em)
+{
+	body
+	{
+		font-size: .75em;
+	}
+}</pre>
+						<p>
+							which will shrink the font size to 12px if the display's maximum
+							width is 320px (given 16px ems).
+						</p>
+					</div>
+				</div>
+				<div id="defense_javascript">
+					<h4 class="heading">
+						<a href="#defense_javascript"
+							title="JavaScript">JavaScript</a>
+					</h4>
+					<p>
+						&ldquo;Defensive Programming&rdquo; is a phrase that describes
+						a style of programming that makes few assumptions and tests
+						heavily. It has been studied
+						and espoused by denizens of the comp.lang.javascript<a href="#footnote_9"
+								title="Footnote Nine">[9]</a> newsgroup
+						for over a decade. Most often, the practice is used
+						in browser scripting with JavaScript, particularly HTML DOM
+						scripting.  By programming defensively, one makes few assumptions
+						and tests frequently. By testing frequently, one
+						acquires knowledge of environmental &ldquo;quirks&rdquo;,
+						and how to avoid them.
+					</p>
+					<blockquote cite="http://groups.google.com/group/comp.lang.javascript/msg/5333f12001527114">
+						<p class="quotation">
+							There's lots of [browsers with unknown bugs] out there. You 
+							can't know all of their quirks and you can't code for all of their 
+							quirks.  All you can do is follow standards, use sound practices, keep 
+							things simple as possible and test on as many agents as is feasible.
+						</p>
+						&mdash;David Mark (on <em>Defensive Programming</em>)<a href="#footnote_10"
+							title="Footnote Ten">[10]</a>
+					</blockquote>
+					<div id="is_host_method">
+						<h5 class="heading">
+							<a href="#is_host_method"
+								title="isHostMethod"><code>isHostMethod</code></a>
+						</h5>
+						<p>
+							&ldquo;isHostMethod&rdquo; is a method that has been
+							referenced<a href="#footnote_11"
+								title="Footnote Eleven">[11]</a>
+							in the comp.lang.javascript newsgroup innumerable
+							times. It searches for a <code>typeof</code> result of
+							<code>"function"</code>, <code>"object"</code> or
+							<code>"unknown"</code>. The first two have been covered
+							in an example earlier. If the specified property matches
+							either of those two, 
+							it must be <a href="../glossary.html#truthy"
+								title="Truthy">&ldquo;truthy&rdquo;</a>
+							to pass. The final &ldquo;type&rdquo;
+							refers to a special case wherein ActiveX objects
+							will return the preceding &ldquo;type&rdquo; in
+							earlier versions of Internet Explorer. It cannot
+							have its <a href="../glossary.html#truthy"
+								title="Truthiness">&ldquo;truthiness&rdquo;</a>
+							examined, as doing so can throw an error. <em>Utils</em>
+							uses a derivative of <code>isHostMethod</code> called
+							&ldquo;isHostObject&rdquo;. <code>isHostMethod</code>'s seminal
+							form is the following:
+						</p>
+						<pre>function isHostMethod(o, m) 
+{ 
+  var t = typeof o[m]; 
+  return (/^(function|object)$/.test(t) &amp;&amp; o[m]) 
+    || t == "unknown"; 
+}
+</pre>
+						<p>
+							which is a snippet from David Mark's &ldquo;My Library&rdquo;<a href="#footnote_12"
+								title="My Library">[12]</a>.
+							<code>isHostMethod</code> was derived from a function created
+							by Thomas Lahn, entitled &ldquo;isMethodType&rdquo;.
+						</p>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="cell primary_cell" id="conclusion">
+				<h3 class="heading">
+					<a href="#conclusion"
+						title="Conclusion">Conclusion</a>
+				</h3>
+				<p>
+					Two different environments can, and probably will
+					produce two different results. Instead of striving
+					for a multiplicity of identical results, strive
+					for a multiplicity of acceptable results that
+					present a user with a respectable interface
+					regardless of the environment.
+				</p>
+				<div id="javascript_library">
+					<h4 class="heading">
+						<a href="#javascript_library"
+							title="JavaScript Library">JavaScript Library</a>
+					</h4>
+					<p>
+						Earlier, code for an example &ldquo;slideshow&rdquo; 
+						was written. However, it doesn't quite gracefully degrade.
+						Using <em>@LIBRARY_NAME</em>, <em>Graceful Degradation</em>
+						can be achieved. Here is a revised version:
+					</p>
+					<pre>
+var global = global || this;
+if (typeof Utils === "object" &amp;&amp; Utils) {
+	(function () {
+		var commonElements,
+			slideIndex,
+			slideTimer,
+			maxIndex = 3;
+
+		function grabById(
+			id
+		)
+		{
+			var result = null;
+			// method is part of a "dynamic interface"
+			if (Utils.select.byId) {
+				result = Utils.select.byId(
+					global.document,
+					id
+				);
+			}
+			return result;
+		}
+
+		function grabNamedImage(
+			name
+		)
+		{
+			var result = null;
+			// method is part of a "dynamic interface"
+			if (Utils.select.images) {
+				result = Utils.select.images(
+					global.document,
+					name
+				);
+			}
+			return result;
+		}
+
+		commonElements = (function () {
+			var result = {};
+			result.link = grabById("slide_link");
+			result.slide = grabNamedImage("current_slide");
+			return result;
+		}());
+
+		function playSlide()
+		{
+			var slide = commonElements.slide,
+				link = commonElements.link;
+			if (slide &amp;&amp; link) {
+				slide.alt = "Feature" + slideIndex;
+				slide.src = "images/feature" +
+					slideIndex + ".jpg";
+				link.href = "http://localhost/feature" +
+					slideIndex + ".html";
+				link.title = "Feature" + slideIndex;
+			}
+		}
+
+		function removeTimeout(
+			ref
+		)
+		{
+			var key = "clearTimeout",
+				result = null;
+			if (Utils.is.hostObject) {
+				if (Utils.is.hostObject(global[key])) {
+					result = global[key](
+						ref
+					);
+				}
+			}
+			return result;
+		}
+
+		function endShow()
+		{
+			removeTimeout(slideTimer);
+			slideTimer = null;
+			startShow();
+		}
+
+		function makeTimeout(
+			callback,
+			time
+		)
+		{
+			var key = "setTimeout",
+				result = null;
+			if (Utils.is.hostObject) {
+				if (Utils.is.hostObject(global[key])) {
+					result = global[key](
+						callback,
+						time
+					);
+				}
+			}
+			return result;
+		}
+
+		function runTimer()
+		{
+			var timeout;
+			if (slideIndex &lt;= maxIndex) {
+				timeout = makeTimeout(
+					runTimer,
+					3000
+				);
+				if (timeout) {
+					slideTimer = timeout;
+					playSlide();
+					slideIndex += 1;
+				}
+			} else if (slideIndex &gt; maxIndex) {
+				endShow();
+			}
+			timeout = null;
+		}
+
+		function startShow()
+		{
+			slideIndex = 1;
+			runTimer();
+		}
+
+		startShow();
+	}());
+}
+</pre>
+					<p>
+						which is far more defensive and degrades cleanly. Note the
+						use of wrapper functions and result checks, enabling a more
+						defensive approach.
+					</p>
+					<p>
+						The preceding code is used in a functional demo located
+						at the following link: <a href="../../Tests/HOWTO/slideshow.html"
+							title="Slideshow">../../Tests/HOWTO/slideshow.html</a>.
+						It has been tested successfully and degrades gracefully
+						in IE 4+.
+					</p>
+				</div>
+			</div>
+			<hr>
+			<div class="cell primary_cell" id="footnotes">
+				<h3 class="heading">
+					<a href="#footnotes"
+						title="Footnotes">Footnotes</a>
+				</h3>
+				<dl>
+					<dt class="doc_entry" id="footnote_0">
+						<a href="#footnote_0"
+							title="Footnote Zero">[0]</a>
+					</dt>
+					<dd>
+						<a href="http://groups.google.com/group/comp.lang.javascript/msg/60a6bb437e54f282"
+							title="Richard Cornford on Graceful Degradation">Richard Cornford on Graceful Degradation</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_1">
+						<a href="#footnote_1"
+							title="Footnote One">[1]</a>
+					</dt>
+					<dd>
+						<a href="http://darcyclarke.me/development/front-end-job-interview-questions/"
+							title="Darcy Clarke: Front-end Job Interview Questions">Darcy Clarke: Front-end Job Interview Questions</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_2">
+						<a href="#footnote_2"
+							title="Footnote Two">[2]</a>
+					</dt>
+					<dd>
+						<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23"
+							title="HTTP/1.1: Host Header">HTTP/1.1: Host Header</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_3">
+						<a href="#footnote_3"
+							title="Footnote Three">[3]</a>
+					</dt>
+					<dd>
+						<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4"
+							title="HTTP/1.1: 4xx Status Codes">HTTP/1.1: 4xx Status Codes</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_4">
+						<a href="#footnote_4"
+							title="Footnote Four">[4]</a>
+					</dt>
+					<dd>
+						<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5"
+							title="HTTP/1.1: 5xx Status Codes">HTTP/1.1: 5xx Status Codes</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_5">
+						<a href="#footnote_5"
+							title="Footnote Five">[5]</a>
+					</dt>
+					<dd>
+						<a href="http://hsivonen.iki.fi/doctype/"
+							title="Henri Sivonen on Quirks Mode">Henri Sivonen on Quirks Mode</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_6">
+						<a href="#footnote_6"
+							title="Footnote Six">[6]</a>
+					</dt>
+					<dd>
+						<a href="http://www.w3.org/TR/CSS21/sample.html"
+							title="CSS 2.1: Default Stylesheet for HTML 4">CSS 2.1: Default Stylesheet for HTML 4</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_7">
+						<a href="#footnote_7"
+							title="Footnote Seven">[7]</a>
+					</dt>
+					<dd>
+						<a href="http://www.w3.org/TR/CSS21/media.html"
+							title="CSS 2.1: Media Types">CSS 2.1: Media Types</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_8">
+						<a href="#footnote_8"
+							title="Footnote Eight">[8]</a>
+					</dt>
+					<dd>
+						<a href="http://www.w3.org/TR/css3-mediaqueries/"
+							title="CSS 3: Media Queries">CSS 3: Media Queries</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_9">
+						<a href="#footnote_9"
+							title="Footnote Nine">[9]</a>
+					</dt>
+					<dd>
+						<a href="news:comp.lang.javascript"
+							title="comp.lang.javascript Newsgroup">comp.lang.javascript Newsgroup</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_10">
+						<a href="#footnote_10"
+							title="Footnote Ten">[10]</a>
+					</dt>
+					<dd>
+						<a href="http://groups.google.com/group/comp.lang.javascript/msg/5333f12001527114"
+							title="David Mark on Defensive Programming">David Mark on Defensive Programming</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_11">
+						<a href="#footnote_11"
+							title="Footnote Eleven">[11]</a>
+					</dt>
+					<dd>
+						<a href="http://groups.google.com/group/comp.lang.javascript/browse_thread/thread/36580a49ca956e25/2ae322410a8aea48"
+							title="Google Groups: Should isHostMethod be added to the FAQ?">Google Groups: Should isHostMethod be added to the FAQ?</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_12">
+						<a href="#footnote_12"
+							title="Footnote Twelve">[12]</a>
+					</dt>
+					<dd>
+						<a href="http://www.cinsoft.net/mylib.html"
+							title="My Library">My Library</a>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="footer_row row">
+			<address class="cell footer_cell">
+				Developed by <a href="http://www.fortybelow.ca"
+					title="Matt McDonald">Matt McDonald</a>;
+			</address>
+			<address class="cell footer_cell">
+				Logo designed by <a href="http://www.weirdurl.com"
+					title="Nathan Malone">Nathan Malone</a>;
+			</address>
+			<div class="cell footer_cell">
+				<a href="http://www.anybrowser.org/campaign"
+					title="Viewable with any browser">Viewable with any browser</a>
+			</div>
+		</div>
+	</body>
+</html>

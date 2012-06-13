@@ -1,10 +1,10 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.select</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation&mdash;@LIBRARY_NAME@.select</title>
 @DOCS_STYLESHEET@
 @DOCS_RESOURCES@
 		<link href="select.html" hreflang="en" media="all"
-			rel="prev" title="Utils.select"
+			rel="prev" title="@LIBRARY_NAME@.select"
 			type="text/html">
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
@@ -18,7 +18,7 @@
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="traverse.html" rel="prev"
-					title="Previous">&larr;<code>Utils.traverse</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.traverse</code></a>
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="glossary.html" rel="next"
@@ -27,8 +27,8 @@
 		</div>
 		<div class="primary_row row">
 			<div class="cell primary_cell">
-				<h2 class="heading" title="Utils.select">
-					<code>Utils.select</code>
+				<h2 class="heading" title="@LIBRARY_NAME@.select">
+					<code>@LIBRARY_NAME@.select</code>
 				</h2>
 				<div class="module_info" id="dependencies">
 					<h3 class="heading">
@@ -38,15 +38,15 @@
 					<ol>
 						<li>
 							<a href="./types.html"
-								title="Utils.types"><code>Utils.types</code></a>
+								title="@LIBRARY_NAME@.types"><code>@LIBRARY_NAME@.types</code></a>
 						</li>
 						<li>
 							<a href="./is.html"
-								title="Utils.is"><code>Utils.is</code></a>
+								title="@LIBRARY_NAME@.is"><code>@LIBRARY_NAME@.is</code></a>
 						</li>
 						<li>
 							<a href="./helpers.html"
-								title="Utils.helpers"><code>Utils.helpers</code></a>
+								title="@LIBRARY_NAME@.helpers"><code>@LIBRARY_NAME@.helpers</code></a>
 						</li>
 					</ol>
 				</div>
@@ -56,13 +56,13 @@
 			<li class="cell doc_cell doc_entry" id="by_name">
 				<h3 class="heading">
 					<a href="#by_name"
-						title="Utils.select.byName"><code>Utils.select.byName</code></a>
+						title="@LIBRARY_NAME@.select.byName"><code>@LIBRARY_NAME@.select.byName</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var named;
-if (Utils.select.byName) {
-	named = Utils.select.byName(
+if (@LIBRARY_NAME@.select.byName) {
+	named = @LIBRARY_NAME@.select.byName(
 		document,
 		"test"
 	);
@@ -98,13 +98,13 @@ if (Utils.select.byName) {
 			<li class="cell doc_cell doc_entry" id="by_tag_name">
 				<h3 class="heading">
 					<a href="#by_tag_name"
-						title="Utils.select.byTagName"><code>Utils.select.byTagName</code></a>
+						title="@LIBRARY_NAME@.select.byTagName"><code>@LIBRARY_NAME@.select.byTagName</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var tagged;
-if (Utils.select.byTagName) {
-	tagged = Utils.select.byTagName(
+if (@LIBRARY_NAME@.select.byTagName) {
+	tagged = @LIBRARY_NAME@.select.byTagName(
 		document,
 		"test"
 	);
@@ -153,13 +153,13 @@ if (Utils.select.byTagName) {
 			<li class="cell doc_cell doc_entry" id="by_tag_name_ns">
 				<h3 class="heading">
 					<a href="#by_tag_name_ns"
-						title="Utils.select.byTagNameNS"><code>Utils.select.byTagNameNS</code></a>
+						title="@LIBRARY_NAME@.select.byTagNameNS"><code>@LIBRARY_NAME@.select.byTagNameNS</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var namespaced;
-if (Utils.select.byTagNameNS) {
-	namespaced = Utils.select.byTagNameNS(
+if (@LIBRARY_NAME@.select.byTagNameNS) {
+	namespaced = @LIBRARY_NAME@.select.byTagNameNS(
 		document,
 		"foo",
 		"bar"
@@ -214,13 +214,13 @@ if (Utils.select.byTagNameNS) {
 			<li class="cell doc_cell doc_entry" id="by_class_name">
 				<h3 class="heading">
 					<a href="#by_class_name"
-						title="Utils.select.byClassName"><code>Utils.select.byClassName</code></a>
+						title="@LIBRARY_NAME@.select.byClassName"><code>@LIBRARY_NAME@.select.byClassName</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var classed;
-if (Utils.select.byClassName) {
-	classed = Utils.select.byClassName(
+if (@LIBRARY_NAME@.select.byClassName) {
+	classed = @LIBRARY_NAME@.select.byClassName(
 		document,
 		"test"
 	);
@@ -263,13 +263,13 @@ if (Utils.select.byClassName) {
 			<li class="cell doc_cell doc_entry" id="by_id">
 				<h3 class="heading">
 					<a href="#by_id"
-						title="Utils.select.byId"><code>Utils.select.byId</code></a>
+						title="@LIBRARY_NAME@.select.byId"><code>@LIBRARY_NAME@.select.byId</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var node;
-if (Utils.select.byId) {
-	node = Utils.select.byId(
+if (@LIBRARY_NAME@.select.byId) {
+	node = @LIBRARY_NAME@.select.byId(
 		document,
 		"test"
 	);
@@ -311,13 +311,13 @@ if (Utils.select.byId) {
 			<li class="cell doc_cell doc_entry" id="query">
 				<h3 class="heading">
 					<a href="#query"
-						title="Utils.select.query"><code>Utils.select.query</code></a>
+						title="@LIBRARY_NAME@.select.query"><code>@LIBRARY_NAME@.select.query</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var node;
-if (Utils.select.query) {
-	node = Utils.select.query(
+if (@LIBRARY_NAME@.select.query) {
+	node = @LIBRARY_NAME@.select.query(
 		document,
 		"div.test"
 	);
@@ -360,13 +360,13 @@ if (Utils.select.query) {
 			<li class="cell doc_cell doc_entry" id="query_all">
 				<h3 class="heading">
 					<a href="#query_all"
-						title="Utils.select.queryAll"><code>Utils.select.queryAll</code></a>
+						title="@LIBRARY_NAME@.select.queryAll"><code>@LIBRARY_NAME@.select.queryAll</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var node;
-if (Utils.select.queryAll) {
-	node = Utils.select.queryAll(
+if (@LIBRARY_NAME@.select.queryAll) {
+	node = @LIBRARY_NAME@.select.queryAll(
 		document,
 		"div[class]"
 	);
@@ -409,13 +409,13 @@ if (Utils.select.queryAll) {
 			<li class="cell doc_cell doc_entry" id="head">
 				<h3 class="heading">
 					<a href="#head"
-						title="Utils.select.head"><code>Utils.select.head</code></a>
+						title="@LIBRARY_NAME@.select.head"><code>@LIBRARY_NAME@.select.head</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var head;
-if (Utils.select.head) {
-	head = Utils.select.head(
+if (@LIBRARY_NAME@.select.head) {
+	head = @LIBRARY_NAME@.select.head(
 		document
 	);
 }</pre>
@@ -445,13 +445,13 @@ if (Utils.select.head) {
 			<li class="cell doc_cell doc_entry" id="body">
 				<h3 class="heading">
 					<a href="#body"
-						title="Utils.select.body"><code>Utils.select.body</code></a>
+						title="@LIBRARY_NAME@.select.body"><code>@LIBRARY_NAME@.select.body</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var body;
-if (Utils.select.body) {
-	body = Utils.select.body(
+if (@LIBRARY_NAME@.select.body) {
+	body = @LIBRARY_NAME@.select.body(
 		document
 	);
 }</pre>
@@ -481,13 +481,13 @@ if (Utils.select.body) {
 			<li class="cell doc_cell doc_entry" id="images">
 				<h3 class="heading">
 					<a href="#images"
-						title="Utils.select.images"><code>Utils.select.images</code></a>
+						title="@LIBRARY_NAME@.select.images"><code>@LIBRARY_NAME@.select.images</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var image;
-if (Utils.select.images) {
-	image = Utils.select.images(
+if (@LIBRARY_NAME@.select.images) {
+	image = @LIBRARY_NAME@.select.images(
 		document,
 		0
 	);
@@ -525,13 +525,13 @@ if (Utils.select.images) {
 			<li class="cell doc_cell doc_entry" id="all_images">
 				<h3 class="heading">
 					<a href="#all_images"
-						title="Utils.select.allImages"><code>Utils.select.allImages</code></a>
+						title="@LIBRARY_NAME@.select.allImages"><code>@LIBRARY_NAME@.select.allImages</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var images;
-if (Utils.select.allImages) {
-	images = Utils.select.allImages(
+if (@LIBRARY_NAME@.select.allImages) {
+	images = @LIBRARY_NAME@.select.allImages(
 		document
 	);
 }</pre>
@@ -560,13 +560,13 @@ if (Utils.select.allImages) {
 			<li class="cell doc_cell doc_entry" id="embeds">
 				<h3 class="heading">
 					<a href="#embeds"
-						title="Utils.select.embeds"><code>Utils.select.embeds</code></a>
+						title="@LIBRARY_NAME@.select.embeds"><code>@LIBRARY_NAME@.select.embeds</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var embed;
-if (Utils.select.embeds) {
-	embed = Utils.select.embeds(
+if (@LIBRARY_NAME@.select.embeds) {
+	embed = @LIBRARY_NAME@.select.embeds(
 		document,
 		0
 	);
@@ -604,13 +604,13 @@ if (Utils.select.embeds) {
 			<li class="cell doc_cell doc_entry" id="all_embeds">
 				<h3 class="heading">
 					<a href="#all_embeds"
-						title="Utils.select.allEmbeds"><code>Utils.select.allEmbeds</code></a>
+						title="@LIBRARY_NAME@.select.allEmbeds"><code>@LIBRARY_NAME@.select.allEmbeds</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var embeds;
-if (Utils.select.allEmbeds) {
-	embeds = Utils.select.allEmbeds(
+if (@LIBRARY_NAME@.select.allEmbeds) {
+	embeds = @LIBRARY_NAME@.select.allEmbeds(
 		document
 	);
 }</pre>
@@ -639,13 +639,13 @@ if (Utils.select.allEmbeds) {
 			<li class="cell doc_cell doc_entry" id="plugins">
 				<h3 class="heading">
 					<a href="#plugins"
-						title="Utils.select.plugins"><code>Utils.select.plugins</code></a>
+						title="@LIBRARY_NAME@.select.plugins"><code>@LIBRARY_NAME@.select.plugins</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var plugin;
-if (Utils.select.plugins) {
-	plugin = Utils.select.plugins(
+if (@LIBRARY_NAME@.select.plugins) {
+	plugin = @LIBRARY_NAME@.select.plugins(
 		document,
 		0
 	);
@@ -682,13 +682,13 @@ if (Utils.select.plugins) {
 			<li class="cell doc_cell doc_entry" id="all_plugins">
 				<h3 class="heading">
 					<a href="#all_plugins"
-						title="Utils.select.allPlugins"><code>Utils.select.allPlugins</code></a>
+						title="@LIBRARY_NAME@.select.allPlugins"><code>@LIBRARY_NAME@.select.allPlugins</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var plugins;
-if (Utils.select.allPlugins) {
-	plugins = Utils.select.allPlugins(
+if (@LIBRARY_NAME@.select.allPlugins) {
+	plugins = @LIBRARY_NAME@.select.allPlugins(
 		document
 	);
 }</pre>
@@ -717,13 +717,13 @@ if (Utils.select.allPlugins) {
 			<li class="cell doc_cell doc_entry" id="links">
 				<h3 class="heading">
 					<a href="#links"
-						title="Utils.select.links"><code>Utils.select.links</code></a>
+						title="@LIBRARY_NAME@.select.links"><code>@LIBRARY_NAME@.select.links</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var link;
-if (Utils.select.links) {
-	link = Utils.select.links(
+if (@LIBRARY_NAME@.select.links) {
+	link = @LIBRARY_NAME@.select.links(
 		document,
 		0
 	);
@@ -760,13 +760,13 @@ if (Utils.select.links) {
 			<li class="cell doc_cell doc_entry" id="all_links">
 				<h3 class="heading">
 					<a href="#all_links"
-						title="Utils.select.allLinks"><code>Utils.select.allLinks</code></a>
+						title="@LIBRARY_NAME@.select.allLinks"><code>@LIBRARY_NAME@.select.allLinks</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var links;
-if (Utils.select.allLinks) {
-	links = Utils.select.allLinks(
+if (@LIBRARY_NAME@.select.allLinks) {
+	links = @LIBRARY_NAME@.select.allLinks(
 		document
 	);
 }</pre>
@@ -795,13 +795,13 @@ if (Utils.select.allLinks) {
 			<li class="cell doc_cell doc_entry" id="forms">
 				<h3 class="heading">
 					<a href="#forms"
-						title="Utils.select.forms"><code>Utils.select.forms</code></a>
+						title="@LIBRARY_NAME@.select.forms"><code>@LIBRARY_NAME@.select.forms</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var form;
-if (Utils.select.forms) {
-	form = Utils.select.forms(
+if (@LIBRARY_NAME@.select.forms) {
+	form = @LIBRARY_NAME@.select.forms(
 		document,
 		0
 	);
@@ -838,13 +838,13 @@ if (Utils.select.forms) {
 			<li class="cell doc_cell doc_entry" id="all_forms">
 				<h3 class="heading">
 					<a href="#all_forms"
-						title="Utils.Forms.allForms"><code>Utils.select.allForms</code></a>
+						title="@LIBRARY_NAME@.Forms.allForms"><code>@LIBRARY_NAME@.select.allForms</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var forms;
-if (Utils.select.allForms) {
-	forms = Utils.select.allForms(
+if (@LIBRARY_NAME@.select.allForms) {
+	forms = @LIBRARY_NAME@.select.allForms(
 		document
 	);
 }</pre>
@@ -873,13 +873,13 @@ if (Utils.select.allForms) {
 			<li class="cell doc_cell doc_entry" id="scripts">
 				<h3 class="heading">
 					<a href="#scripts"
-						title="Utils.select.scripts"><code>Utils.select.scripts</code></a>
+						title="@LIBRARY_NAME@.select.scripts"><code>@LIBRARY_NAME@.select.scripts</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var script;
-if (Utils.select.scripts) {
-	script = Utils.select.scripts(
+if (@LIBRARY_NAME@.select.scripts) {
+	script = @LIBRARY_NAME@.select.scripts(
 		document,
 		0
 	);
@@ -916,13 +916,13 @@ if (Utils.select.scripts) {
 			<li class="cell doc_cell doc_entry" id="all_scripts">
 				<h3 class="heading">
 					<a href="#all_scripts"
-						title="Utils.select.allScripts"><code>Utils.select.allScripts</code></a>
+						title="@LIBRARY_NAME@.select.allScripts"><code>@LIBRARY_NAME@.select.allScripts</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var scripts;
-if (Utils.select.allScripts) {
-	scripts = Utils.select.allScripts(
+if (@LIBRARY_NAME@.select.allScripts) {
+	scripts = @LIBRARY_NAME@.select.allScripts(
 		document
 	);
 }</pre>
@@ -951,13 +951,13 @@ if (Utils.select.allScripts) {
 			<li class="cell doc_cell doc_entry" id="applets">
 				<h3 class="heading">
 					<a href="#applets"
-						title="Utils.select.applets"><code>Utils.select.applets</code></a>
+						title="@LIBRARY_NAME@.select.applets"><code>@LIBRARY_NAME@.select.applets</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var applet;
-if (Utils.select.applets) {
-	applet = Utils.select.applets(
+if (@LIBRARY_NAME@.select.applets) {
+	applet = @LIBRARY_NAME@.select.applets(
 		document,
 		0
 	);
@@ -994,13 +994,13 @@ if (Utils.select.applets) {
 			<li class="cell doc_cell doc_entry" id="all_applets">
 				<h3 class="heading">
 					<a href="#all_applets"
-						title="Utils.select.allApplets"><code>Utils.select.allApplets</code></a>
+						title="@LIBRARY_NAME@.select.allApplets"><code>@LIBRARY_NAME@.select.allApplets</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var applets;
-if (Utils.select.allApplets) {
-	applets = Utils.select.allApplets(
+if (@LIBRARY_NAME@.select.allApplets) {
+	applets = @LIBRARY_NAME@.select.allApplets(
 		document
 	);
 }</pre>
@@ -1030,13 +1030,13 @@ if (Utils.select.allApplets) {
 			<li class="cell doc_cell doc_entry" id="anchors">
 				<h3 class="heading">
 					<a href="#anchors"
-						title="Utils.select.anchors"><code>Utils.select.anchors</code></a>
+						title="@LIBRARY_NAME@.select.anchors"><code>@LIBRARY_NAME@.select.anchors</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var anchor;
-if (Utils.select.anchors) {
-	anchor = Utils.select.anchors(
+if (@LIBRARY_NAME@.select.anchors) {
+	anchor = @LIBRARY_NAME@.select.anchors(
 		document,
 		0
 	);
@@ -1073,13 +1073,13 @@ if (Utils.select.anchors) {
 			<li class="cell doc_cell doc_entry" id="all_anchors">
 				<h3 class="heading">
 					<a href="#all_anchors"
-						title="Utils.select.allAnchors"><code>Utils.select.allAnchors</code></a>
+						title="@LIBRARY_NAME@.select.allAnchors"><code>@LIBRARY_NAME@.select.allAnchors</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var anchors;
-if (Utils.select.allAnchors) {
-	anchors = Utils.select.allAnchors(
+if (@LIBRARY_NAME@.select.allAnchors) {
+	anchors = @LIBRARY_NAME@.select.allAnchors(
 		document
 	);
 }</pre>
@@ -1108,7 +1108,7 @@ if (Utils.select.allAnchors) {
 			<li class="cell doc_cell doc_entry" id="named_items">
 				<h3 class="heading">
 					<a href="#named_items"
-						title="Utils.select.namedItem"><code>Utils.select.namedItem</code></a>
+						title="@LIBRARY_NAME@.select.namedItem"><code>@LIBRARY_NAME@.select.namedItem</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>key</var>, <var>name</var>) {</p>
 				<dl class="doc_list">
@@ -1153,7 +1153,7 @@ if (Utils.select.allAnchors) {
 			<li class="cell doc_cell doc_entry" id="collection">
 				<h3 class="heading">
 					<a href="#collection"
-						title="Utils.select.collection"><code>Utils.select.collection</code></a>
+						title="@LIBRARY_NAME@.select.collection"><code>@LIBRARY_NAME@.select.collection</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>key</var>) {</p>
 				<dl class="doc_list">
@@ -1188,7 +1188,7 @@ if (Utils.select.allAnchors) {
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="traverse.html" rel="prev"
-					title="Previous">&larr;<code>Utils.traverse</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.traverse</code></a>
 			</div>
 			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"

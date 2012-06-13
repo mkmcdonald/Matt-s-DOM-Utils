@@ -894,78 +894,6 @@ if (Utils) {
 
                /**
                 * @module
-                * Utils.can
-                *
-                * @description
-                * Various capability tests for core modules that
-                * follow.
-                *
-                * @dependencies
-                * * Utils.is
-                */
-
-		var isNodeLike = Utils.is.nodeLike;
-
-               /**
-                * @public `Utils.can.getName`.
-                *
-                * @description
-                * Method that returns a boolean asserting if a
-                * specified object can retrieve the `nodeName`
-                * property.
-                *
-                * @param obj Object
-                * An object to assert.
-                */
-
-		function canGetName(
-			obj
-		)
-		{
-			var result = false;
-			if (isNodeLike(obj)) {
-				result = typeof obj.nodeName ===
-					"string";
-			}
-			return result;
-		}
-
-               /**
-                * @public `Utils.can.getValue`.
-                *
-                * @description
-                * Method that returns a boolean asserting if a
-                * specified object can retrieve the `nodeValue`
-                * property.
-                *
-                * @param obj Object
-                * An object to assert.
-                */
-
-		function canGetValue(
-			obj
-		)
-		{
-			var result = false;
-			if (isNodeLike(obj)) {
-				result = typeof obj.nodeValue ===
-					"string";
-			}
-			return result;
-		}
-
-		Utils.can = Utils.can || {
-			"getName": canGetName,
-			"getValue": canGetValue
-		};
-	}());
-}
-
-if (Utils) {
-	(function () {
-
-               /**
-                * @module
                 * Utils.helpers
                 *
                 * @description
@@ -1025,14 +953,11 @@ if (Utils) {
                 *
                 * @dependencies
                 * * Utils.is
-                * * Utils.can
                 */
 
 		var isNodeLike = Utils.is.nodeLike,
 			isHostObject = Utils.is.hostObject,
-			isArrayLike = Utils.is.arrayLike,
-			canGetName = Utils.can.getName,
-			canGetValue = Utils.can.getValue;
+			isArrayLike = Utils.is.arrayLike;
 
                /**
                 * @public `Utils.node.prepend`.
@@ -1307,6 +1232,30 @@ if (Utils) {
 		}
 
                /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if a
+                * specified object can retrieve the `nodeName`
+                * property.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function canGetName(
+			obj
+		)
+		{
+			var result = false;
+			if (isNodeLike(obj)) {
+				result = typeof obj.nodeName ===
+					"string";
+			}
+			return result;
+		}
+
+               /**
                 * @public `Utils.node.name`.
                 *
                 * @description
@@ -1341,6 +1290,30 @@ if (Utils) {
 				} else if (!lower) {
 					result = result[upKey]();
 				}
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if a
+                * specified object can retrieve the `nodeValue`
+                * property.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function canGetValue(
+			obj
+		)
+		{
+			var result = false;
+			if (isNodeLike(obj)) {
+				result = typeof obj.nodeValue ===
+					"string";
 			}
 			return result;
 		}
@@ -1410,6 +1383,10 @@ if (Utils) {
 			createText,
 			createProcessingInstruction,
 			createComment,
+
+			canUseDocFrag,
+			canCallDocFrag,
+
 			createDocumentFragment;
 
                /**
@@ -1784,6 +1761,51 @@ if (Utils) {
                /**
                 * @private
                 *
+                * @closure
+                *
+                * @description
+                * Boolean asserting if `createDocumentFragment`
+		* is available.
+                */
+
+		canUseDocFrag = (function () {
+			var key = "createDocumentFragment",
+				result = false;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = true;
+				}
+			}
+			return result;
+		}());
+
+               /**
+                * @private
+                *
+                * @closure
+                *
+                * @description
+                * Boolean asserting if `createDocumentFragment`
+		* does not err when called.
+                */
+
+		canCallDocFrag = (function () {
+			var key = "createDocumentFragment",
+				result = canUseDocFrag;
+			// NOTE: in IE 5, doc.cDF is uncallable.
+			if (canUseDocFrag) {
+				try {
+					doc[key]();
+				} catch (err) {
+					result = false;
+				}
+			}
+			return result;
+		}());
+
+               /**
+                * @private
+                *
                 * @description
                 * Wrapper method for `createDocumentFragment`;
                 * returns the wrapped method's result or `null` if
@@ -1800,7 +1822,6 @@ if (Utils) {
 			doc
 		)
 		{
-			// FIXME: in IE 5, doc.cDF is uncallable.
 			var key = "createDocumentFragment",
 				result = null;
 			if (isDocument(doc)) {
@@ -1827,12 +1848,9 @@ if (Utils) {
                 */
 
 		createDocumentFragment = (function () {
-			var key = "createDocumentFragment",
-				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = createDocFragNode;
-				}
+			var result = null;
+			if (canCallDocFrag) {
+				result = createDocFragNode;
 			}
 			return result;
 		}());

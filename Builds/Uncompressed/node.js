@@ -10,14 +10,11 @@ if (Utils) {
                 *
                 * @dependencies
                 * * Utils.is
-                * * Utils.can
                 */
 
 		var isNodeLike = Utils.is.nodeLike,
 			isHostObject = Utils.is.hostObject,
-			isArrayLike = Utils.is.arrayLike,
-			canGetName = Utils.can.getName,
-			canGetValue = Utils.can.getValue;
+			isArrayLike = Utils.is.arrayLike;
 
                /**
                 * @public `Utils.node.prepend`.
@@ -292,6 +289,30 @@ if (Utils) {
 		}
 
                /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if a
+                * specified object can retrieve the `nodeName`
+                * property.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function canGetName(
+			obj
+		)
+		{
+			var result = false;
+			if (isNodeLike(obj)) {
+				result = typeof obj.nodeName ===
+					"string";
+			}
+			return result;
+		}
+
+               /**
                 * @public `Utils.node.name`.
                 *
                 * @description
@@ -326,6 +347,30 @@ if (Utils) {
 				} else if (!lower) {
 					result = result[upKey]();
 				}
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if a
+                * specified object can retrieve the `nodeValue`
+                * property.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function canGetValue(
+			obj
+		)
+		{
+			var result = false;
+			if (isNodeLike(obj)) {
+				result = typeof obj.nodeValue ===
+					"string";
 			}
 			return result;
 		}

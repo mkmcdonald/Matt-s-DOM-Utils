@@ -1,0 +1,29 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): HOWTO</title>
+@HOWTO_STYLESHEET@
+@HOWTO_RESOURCES@
+@BODY@
+@HOWTO_HEADER@
+@HOWTO_NAV@
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="HOWTO">HOWTO</h2>
+			</div>
+		</div>
+		<div class="column secondary_column">
+			<div class="cell secondary_cell" id="defensive_programming">
+				<h3 class="heading">
+					<a href="#defensive_programming"
+						title="Defensive Programming">Defensive Programming</a>
+				</h3>
+				<ol class="feature_list">
+					<li>
+						<a href="degradation.html"
+							title="Graceful Degradation">Graceful Degradation</a>
+					</li>
+				</ol>
+			</div>
+		</div>
+@FOOTER@
+@END@

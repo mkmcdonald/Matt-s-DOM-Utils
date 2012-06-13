@@ -22,6 +22,10 @@ if (Utils) {
 			createText,
 			createProcessingInstruction,
 			createComment,
+
+			canUseDocFrag,
+			canCallDocFrag,
+
 			createDocumentFragment;
 
                /**
@@ -396,6 +400,51 @@ if (Utils) {
                /**
                 * @private
                 *
+                * @closure
+                *
+                * @description
+                * Boolean asserting if `createDocumentFragment`
+		* is available.
+                */
+
+		canUseDocFrag = (function () {
+			var key = "createDocumentFragment",
+				result = false;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = true;
+				}
+			}
+			return result;
+		}());
+
+               /**
+                * @private
+                *
+                * @closure
+                *
+                * @description
+                * Boolean asserting if `createDocumentFragment`
+		* does not err when called.
+                */
+
+		canCallDocFrag = (function () {
+			var key = "createDocumentFragment",
+				result = canUseDocFrag;
+			// NOTE: in IE 5, doc.cDF is uncallable.
+			if (canUseDocFrag) {
+				try {
+					doc[key]();
+				} catch (err) {
+					result = false;
+				}
+			}
+			return result;
+		}());
+
+               /**
+                * @private
+                *
                 * @description
                 * Wrapper method for `createDocumentFragment`;
                 * returns the wrapped method's result or `null` if
@@ -412,7 +461,6 @@ if (Utils) {
 			doc
 		)
 		{
-			// FIXME: in IE 5, doc.cDF is uncallable.
 			var key = "createDocumentFragment",
 				result = null;
 			if (isDocument(doc)) {
@@ -439,12 +487,9 @@ if (Utils) {
                 */
 
 		createDocumentFragment = (function () {
-			var key = "createDocumentFragment",
-				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = createDocFragNode;
-				}
+			var result = null;
+			if (canCallDocFrag) {
+				result = createDocFragNode;
 			}
 			return result;
 		}());

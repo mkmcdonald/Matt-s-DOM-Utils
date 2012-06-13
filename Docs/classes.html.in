@@ -1,16 +1,16 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.classes</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation&mdash;@LIBRARY_NAME@.classes</title>
 @DOCS_STYLESHEET@
 @DOCS_RESOURCES@
 		<link href="create.html" hreflang="en" media="all"
-			rel="prev" title="Utils.create"
+			rel="prev" title="@LIBRARY_NAME@.create"
 			type="text/html">
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
 			type="text/html">
 		<link href="traverse.html" hreflang="en" media="all"
-			rel="next" title="Utils.traverse"
+			rel="next" title="@LIBRARY_NAME@.traverse"
 			type="text/html">
 @BODY@
 @DOCS_HEADER@
@@ -18,17 +18,17 @@
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="create.html" rel="prev"
-					title="Previous">&larr;<code>Utils.create</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.create</code></a>
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="traverse.html" rel="next"
-					title="Next"><code>Utils.traverse</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.traverse</code>&rarr;</a>
 			</div>
 		</div>
 		<div class="primary_row row">
 			<div class="cell primary_cell">
-				<h2 class="heading" title="Utils.classes">
-					<code>Utils.classes</code>
+				<h2 class="heading" title="@LIBRARY_NAME@.classes">
+					<code>@LIBRARY_NAME@.classes</code>
 				</h2>
 				<div class="module_info" id="dependencies">
 					<h3 class="heading">
@@ -38,15 +38,15 @@
 					<ol>
 						<li>
 							<a href="./raise.html"
-								title="Utils.raise"><code>Utils.raise</code></a>
+								title="@LIBRARY_NAME@.raise"><code>@LIBRARY_NAME@.raise</code></a>
 						</li>
 						<li>
 							<a href="./is.html"
-								title="Utils.is"><code>Utils.is</code></a>
+								title="@LIBRARY_NAME@.is"><code>@LIBRARY_NAME@.is</code></a>
 						</li>
 						<li>
 							<a href="./helpers.html"
-								title="Utils.helpers"><code>Utils.helpers</code></a>
+								title="@LIBRARY_NAME@.helpers"><code>@LIBRARY_NAME@.helpers</code></a>
 						</li>
 					</ol>
 				</div>
@@ -56,13 +56,13 @@
 			<li class="cell doc_cell doc_entry" id="contains">
 				<h3 class="heading">
 					<a href="#contains"
-						title="Utils.classes.contains"><code>Utils.classes.contains</code></a>
+						title="@LIBRARY_NAME@.classes.contains"><code>@LIBRARY_NAME@.classes.contains</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var has;
-if (Utils.classes.contains) {
-	has = Utils.classes.contains(
+if (@LIBRARY_NAME@.classes.contains) {
+	has = @LIBRARY_NAME@.classes.contains(
 		document.body,
 		"test"
 	);
@@ -99,7 +99,7 @@ if (Utils.classes.contains) {
 			<li class="cell doc_cell doc_entry" id="contains_list">
 				<h3 class="heading">
 					<a href="#contains_list"
-						title="Utils.classes.containsList"><code>Utils.classes.containsList</code></a>
+						title="@LIBRARY_NAME@.classes.containsList"><code>@LIBRARY_NAME@.classes.containsList</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>tokens</var>) {</p>
 				<dl class="doc_list">
@@ -137,12 +137,12 @@ if (Utils.classes.contains) {
 			<li class="cell doc_cell doc_entry" id="add">
 				<h3 class="heading">
 					<a href="#add"
-						title="Utils.classes.add"><code>Utils.classes.add</code></a>
+						title="@LIBRARY_NAME@.classes.add"><code>@LIBRARY_NAME@.classes.add</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
-if (Utils.classes.add) {
-	Utils.classes.add(
+if (@LIBRARY_NAME@.classes.add) {
+	@LIBRARY_NAME@.classes.add(
 		document.body,
 		"test"
 	);
@@ -180,7 +180,7 @@ if (Utils.classes.add) {
 			<li class="cell doc_cell doc_entry" id="add_list">
 				<h3 class="heading">
 					<a href="#add_list"
-						title="Utils.classes.addList"><code>Utils.classes.addList</code></a>
+						title="@LIBRARY_NAME@.classes.addList"><code>@LIBRARY_NAME@.classes.addList</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>tokens</var>) {</p>
 				<dl class="doc_list">
@@ -218,12 +218,12 @@ if (Utils.classes.add) {
 			<li class="cell doc_cell doc_entry" id="remove">
 				<h3 class="heading">
 					<a href="#remove"
-						title="Utils.classes.remove"><code>Utils.classes.remove</code></a>
+						title="@LIBRARY_NAME@.classes.remove"><code>@LIBRARY_NAME@.classes.remove</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
-if (Utils.classes.remove) {
-	Utils.classes.remove(
+if (@LIBRARY_NAME@.classes.remove) {
+	@LIBRARY_NAME@.classes.remove(
 		document.body,
 		"test"
 	);
@@ -261,7 +261,7 @@ if (Utils.classes.remove) {
 			<li class="cell doc_cell doc_entry" id="remove_list">
 				<h3 class="heading">
 					<a href="#remove_list"
-						title="Utils.classes.removeList"><code>Utils.classes.removeList</code></a>
+						title="@LIBRARY_NAME@.classes.removeList"><code>@LIBRARY_NAME@.classes.removeList</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>tokens</var>) {</p>
 				<dl class="doc_list">
@@ -299,13 +299,13 @@ if (Utils.classes.remove) {
 			<li class="cell doc_cell doc_entry" id="toggle">
 				<h3 class="heading">
 					<a href="#toggle"
-						title="Utils.classes.toggle"><code>Utils.classes.toggle</code></a>
+						title="@LIBRARY_NAME@.classes.toggle"><code>@LIBRARY_NAME@.classes.toggle</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var toggled;
-if (Utils.classes.toggle) {
-	toggled = Utils.classes.toggle(
+if (@LIBRARY_NAME@.classes.toggle) {
+	toggled = @LIBRARY_NAME@.classes.toggle(
 		document.body,
 		"test"
 	);
@@ -343,7 +343,7 @@ if (Utils.classes.toggle) {
 			<li class="cell doc_cell doc_entry" id="toggle_list">
 				<h3 class="heading">
 					<a href="#toggle_list"
-						title="Utils.classes.toggleList"><code>Utils.classes.toggleList</code></a>
+						title="@LIBRARY_NAME@.classes.toggleList"><code>@LIBRARY_NAME@.classes.toggleList</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>tokens</var>) {</p>
 				<dl class="doc_list">
@@ -381,7 +381,7 @@ if (Utils.classes.toggle) {
 			<li class="cell doc_cell doc_entry" id="item">
 				<h3 class="heading">
 					<a href="#item"
-						title="Utils.classes.item"><code>Utils.classes.item</code></a>
+						title="@LIBRARY_NAME@.classes.item"><code>@LIBRARY_NAME@.classes.item</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>index</var>) {</p>
 				<dl class="doc_list">
@@ -415,13 +415,13 @@ if (Utils.classes.toggle) {
 			<li class="cell doc_cell doc_entry" id="get">
 				<h3 class="heading">
 					<a href="#get"
-						title="Utils.classes.get"><code>Utils.classes.get</code></a>
+						title="@LIBRARY_NAME@.classes.get"><code>@LIBRARY_NAME@.classes.get</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var tokens;
-if (Utils.classes.get) {
-	tokens = Utils.classes.get(
+if (@LIBRARY_NAME@.classes.get) {
+	tokens = @LIBRARY_NAME@.classes.get(
 		document.body
 	);
 }</pre>
@@ -451,7 +451,7 @@ if (Utils.classes.get) {
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="create.html" rel="prev"
-					title="Previous">&larr;<code>Utils.create</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.create</code></a>
 			</div>
 			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"
@@ -459,7 +459,7 @@ if (Utils.classes.get) {
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="traverse.html" rel="next"
-					title="Next"><code>Utils.traverse</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.traverse</code>&rarr;</a>
 			</div>
 		</div>
 @FOOTER@

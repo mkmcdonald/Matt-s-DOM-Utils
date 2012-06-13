@@ -12,7 +12,6 @@ RAISE = $(LIBRARY)/raise.js
 TYPES = $(LIBRARY)/types.js
 IS = $(LIBRARY)/is.js
 HELPERS = $(LIBRARY)/helpers.js
-CAN = $(LIBRARY)/can.js
 NODE = $(LIBRARY)/node.js
 CREATE = $(LIBRARY)/create.js
 
@@ -22,7 +21,7 @@ CLASSES = $(LIBRARY)/classes.js
 TRAVERSE = $(LIBRARY)/traverse.js
 SELECT = $(LIBRARY)/select.js
 
-CORE_DEP = $(UTILS) $(RAISE) $(TYPES) $(IS) $(CAN)\
+CORE_DEP = $(UTILS) $(RAISE) $(TYPES) $(IS)\
 	$(HELPERS) $(NODE) $(CREATE)
 
 ALL_FILE = $(UNCOMPRESSED)/utils-all.js

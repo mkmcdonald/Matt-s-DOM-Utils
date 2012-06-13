@@ -29,7 +29,6 @@ init ()
 		"types"
 		"helpers"
 		"is"
-		"can"
 		"node"
 		"create"
 		"classes"

@@ -3,19 +3,18 @@ if (Utils) {
 
                /**
                 * @module
-                * Utils.classes
+                * Utils.traverse
                 *
                 * @description
-                * DOM Level 4-style `classList` implementation with
-                * additional features.
-                *
-                * @see DOM 4 Spec section 5.7 (Element, classList).
-                * @see DOM 4 Spec section 9.2 (DOMTokenList).
+                * Various methods used to traverse document tree
+                * nodes.
                 *
                 * @dependencies
-                * * Utils.raise
+                * * Utils.types
                 * * Utils.is
                 * * Utils.helpers
+                * * Utils.node
+                * * Utils.create
                 */
 
 		var isDocument = Utils.is.document,
@@ -27,7 +26,7 @@ if (Utils) {
 			isElement = Utils.is.element,
 			removeNode = Utils.node.remove,
 			isText = Utils.is.text,
-			canGetValue = Utils.can.getValue,
+			getValue = Utils.node.value,
 			createText = Utils.create.text,
 
 			doc,
@@ -606,11 +605,7 @@ if (Utils) {
 			obj
 		)
 		{
-			var result = null;
-			if (canGetValue(obj)) {
-				result = obj.nodeValue;
-			}
-			return result;
+			return getValue(obj);
 		}
 
                /**
@@ -1432,7 +1427,7 @@ if (Utils) {
 		}
 
                /**
-                * @public `Utils.traverse.list`.
+                * @public `Utils.traverse.linkedList`.
                 *
                 * @description
                 * Method that traverses a linked list-like
@@ -1447,7 +1442,7 @@ if (Utils) {
                 * A function to call.
                 */
 
-		function traverseList(
+		function traverseLinkedList(
 			list,
 			callback
 		)
@@ -1472,8 +1467,8 @@ if (Utils) {
                 *
                 * @description
                 * Method that traverses a node-like object's
-                * ancestral tree (via `traverseList`), calling a
-                * callback on each node in the list-like object;
+                * ancestral tree (via `traverseLinkedList`), calling
+                * a callback on each node in the list-like object;
                 * results are returned as an array-like object.
                 *
                 * @param obj Object
@@ -1482,7 +1477,7 @@ if (Utils) {
                 * @param callback Function
                 * A function to call.
                 *
-                * @see `traverseList`.
+                * @see `traverseLinkedList`.
                 */
 
 		function traverseAncestors(
@@ -1492,7 +1487,7 @@ if (Utils) {
 		{
 			var result = [];
 			if (typeof callback === "function") {
-				result = traverseList(
+				result = traverseLinkedList(
 					getAncestorList(obj),
 					callback
 				);
@@ -1527,7 +1522,7 @@ if (Utils) {
 
 			"getAncestors": getAncestorList,
 			"isAncestor": isAncestor,
-			"list": traverseList,
+			"list": traverseLinkedList,
 			"ancestors": traverseAncestors
 		};
 	}());

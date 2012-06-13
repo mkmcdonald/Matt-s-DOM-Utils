@@ -1,6 +1,6 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils): About</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): About</title>
 @ROOT_STYLESHEET@
 @ROOT_RESOURCES@
 @BODY@
@@ -19,7 +19,7 @@
 				<a href="./Tests" title="Tests">Tests</a>
 			</li>
 			<li class="cell github nav_cell">
-				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/" title="GitHub">GitHub</a>
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-@LIBRARY_NAME@/" title="GitHub">GitHub</a>
 			</li>
 			<li class="about active cell nav_cell">
 				<a href="about.html" title="About">About</a>
@@ -33,7 +33,7 @@
 		<div class="column secondary_column">
 			<div class="cell secondary_cell">
 				<p>
-					<em>Utils</em> was created for a multitude of reasons.
+					<em>@LIBRARY_NAME@</em> was created for a multitude of reasons.
 					The first of which was a disgust for the current state
 					of "popular" HTML DOM scripting (i.e. DOM "selectors");
 					the second of which was to allow developers everywhere
@@ -45,7 +45,7 @@
 					of unemployment with a glaring need for a showcase project.
 				</p>
 				<p>
-					Furthermore, <em>Utils</em> was created to transform
+					Furthermore, <em>@LIBRARY_NAME@</em> was created to transform
 					HTML DOM scripting. By eschewing DOM "selectors" for
 					wrapped DOM selection methods and highly customizable callbacks,
 					developers regain control of traversal and are freed from the
@@ -59,18 +59,18 @@
 		<div class="column secondary_column">
 			<div class="cell secondary_cell">
 				<p>
-					Moreover, <em>Utils</em> treats non-element nodes with
+					Moreover, <em>@LIBRARY_NAME@</em> treats non-element nodes with
 					care and respect. Traversal methods are provided for
 					unfiltered trees, allowing for a full, representative
 					view of the document tree.
 				</p>
 				<p>
-					The primary tenet of <em>Utils</em> is graceful degradation.
+					The primary tenet of <em>@LIBRARY_NAME@</em> is graceful degradation.
 					Whereas graceful degradation is easily achieved with HTML and CSS,
 					graceful degradation with HTML DOM scriping is far more difficult.
 				</p>
 				<p>
-					<em>Utils</em> is written in a very defensive style borne of
+					<em>@LIBRARY_NAME@</em> is written in a very defensive style borne of
 					research both from tests and documentation. Every environment
 					is treated with an objective eye; there is no code written to
 					specifically pander to or castigate an environment.

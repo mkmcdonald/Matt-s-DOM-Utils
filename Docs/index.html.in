@@ -1,6 +1,6 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils): Documentation</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation</title>
 @DOCS_STYLESHEET@
 @DOCS_RESOURCES@
 @BODY@
@@ -17,31 +17,27 @@
 				<ol class="feature_list">
 					<li>
 						<a href="raise.html"
-							title="Utils.raise"><code>Utils.raise</code></a>
+							title="@LIBRARY_NAME@.raise"><code>@LIBRARY_NAME@.raise</code></a>
 					</li>
 					<li>
 						<a href="types.html"
-							title="Utils.types"><code>Utils.types</code></a>
+							title="@LIBRARY_NAME@.types"><code>@LIBRARY_NAME@.types</code></a>
 					</li>
 					<li>
 						<a href="is.html"
-							title="Utils.is"><code>Utils.is</code></a>
-					</li>
-					<li>
-						<a href="can.html"
-							title="Utils.can"><code>Utils.can</code></a>
+							title="@LIBRARY_NAME@.is"><code>@LIBRARY_NAME@.is</code></a>
 					</li>
 					<li>
 						<a href="helpers.html"
-							title="Utils.helpers"><code>Utils.helpers</code></a>
+							title="@LIBRARY_NAME@.helpers"><code>@LIBRARY_NAME@.helpers</code></a>
 					</li>
 					<li>
 						<a href="node.html"
-							title="Utils.node"><code>Utils.node</code></a>
+							title="@LIBRARY_NAME@.node"><code>@LIBRARY_NAME@.node</code></a>
 					</li>
 					<li>
 						<a href="create.html"
-							title="Utils.create"><code>Utils.create</code></a>
+							title="@LIBRARY_NAME@.create"><code>@LIBRARY_NAME@.create</code></a>
 					</li>
 				</ol>
 			</div>
@@ -52,15 +48,15 @@
 				<ul class="feature_list">
 					<li>
 						<a href="classes.html"
-							title="Utils.classes"><code>Utils.classes</code></a>
+							title="@LIBRARY_NAME@.classes"><code>@LIBRARY_NAME@.classes</code></a>
 					</li>
 					<li>
 						<a href="traverse.html"
-							title="Utils.traverse"><code>Utils.traverse</code></a>
+							title="@LIBRARY_NAME@.traverse"><code>@LIBRARY_NAME@.traverse</code></a>
 					</li>
 					<li>
 						<a href="select.html"
-							title="Utils.select"><code>Utils.select</code></a>
+							title="@LIBRARY_NAME@.select"><code>@LIBRARY_NAME@.select</code></a>
 					</li>
 				</ul>
 			</div>
@@ -72,6 +68,13 @@
 					<li>
 						<a href="glossary.html"
 							title="Glossary">Glossary</a>
+					</li>
+				</ul>
+				<h4 class="heading" title="HOWTOs">HOWTOs</h4>
+				<ul class="feature_list">
+					<li>
+						<a href="./HOWTO/#defensive_programming"
+							title="Defensive Programming">Defensive Programming</a>
 					</li>
 				</ul>
 			</div>

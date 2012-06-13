@@ -1,5 +1,5 @@
 var global = global || this;
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 		var doc = global.document,
 			commonElements,

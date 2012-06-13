@@ -1,16 +1,16 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.traverse</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation&mdash;@LIBRARY_NAME@.traverse</title>
 @DOCS_STYLESHEET@
 @DOCS_RESOURCES@
 		<link href="classes.html" hreflang="en" media="all"
-			rel="prev" title="Utils.classes"
+			rel="prev" title="@LIBRARY_NAME@.classes"
 			type="text/html">
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
 			type="text/html">
 		<link href="select.html" hreflang="en" media="all"
-			rel="next" title="Utils.select"
+			rel="next" title="@LIBRARY_NAME@.select"
 			type="text/html">
 @BODY@
 @DOCS_HEADER@
@@ -18,17 +18,17 @@
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="classes.html" rel="prev"
-					title="Previous">&larr;<code>Utils.classes</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.classes</code></a>
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="select.html" rel="next"
-					title="Next"><code>Utils.select</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.select</code>&rarr;</a>
 			</div>
 		</div>
 		<div class="primary_row row">
 			<div class="cell primary_cell">
-				<h2 class="heading" title="Utils.traverse">
-					<code>Utils.traverse</code>
+				<h2 class="heading" title="@LIBRARY_NAME@.traverse">
+					<code>@LIBRARY_NAME@.traverse</code>
 				</h2>
 				<div class="module_info" id="dependencies">
 					<h3 class="heading">
@@ -38,27 +38,23 @@
 					<ol>
 						<li>
 							<a href="./types.html"
-								title="Utils.types"><code>Utils.types</code></a>
+								title="@LIBRARY_NAME@.types"><code>@LIBRARY_NAME@.types</code></a>
 						</li>
 						<li>
 							<a href="./is.html"
-								title="Utils.is"><code>Utils.is</code></a>
-						</li>
-						<li>
-							<a href="./can.html"
-								title="Utils.can"><code>Utils.can</code></a>
+								title="@LIBRARY_NAME@.is"><code>@LIBRARY_NAME@.is</code></a>
 						</li>
 						<li>
 							<a href="./helpers.html"
-								title="Utils.helpers"><code>Utils.helpers</code></a>
+								title="@LIBRARY_NAME@.helpers"><code>@LIBRARY_NAME@.helpers</code></a>
 						</li>
 						<li>
 							<a href="./node.html"
-								title="Utils.node"><code>Utils.node</code></a>
+								title="@LIBRARY_NAME@.node"><code>@LIBRARY_NAME@.node</code></a>
 						</li>
 						<li>
 							<a href="./create.html"
-								title="Utils.create"><code>Utils.create</code></a>
+								title="@LIBRARY_NAME@.create"><code>@LIBRARY_NAME@.create</code></a>
 						</li>
 					</ol>
 				</div>
@@ -68,7 +64,7 @@
 			<li class="cell doc_cell doc_entry" id="get_nodes">
 				<h3 class="heading">
 					<a href="#get_nodes"
-						title="Utils.traverse.getNodes"><code>Utils.traverse.getNodes</code></a>
+						title="@LIBRARY_NAME@.traverse.getNodes"><code>@LIBRARY_NAME@.traverse.getNodes</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -97,7 +93,7 @@
 			<li class="cell doc_cell doc_entry" id="linear">
 				<h3 class="heading">
 					<a href="#linear"
-						title="Utils.traverse.linear"><code>Utils.traverse.linear</code></a>
+						title="@LIBRARY_NAME@.traverse.linear"><code>@LIBRARY_NAME@.traverse.linear</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
@@ -131,7 +127,7 @@
 			<li class="cell doc_cell doc_entry" id="nodes">
 				<h3 class="heading">
 					<a href="#nodes"
-						title="Utils.traverse.nodes"><code>Utils.traverse.nodes</code></a>
+						title="@LIBRARY_NAME@.traverse.nodes"><code>@LIBRARY_NAME@.traverse.nodes</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
@@ -165,7 +161,7 @@
 			<li class="cell doc_cell doc_entry" id="clear_nodes">
 				<h3 class="heading">
 					<a href="#clear_nodes"
-						title="Utils.traverse.clearNodes"><code>Utils.traverse.clearNodes</code></a>
+						title="@LIBRARY_NAME@.traverse.clearNodes"><code>@LIBRARY_NAME@.traverse.clearNodes</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -192,13 +188,13 @@
 			<li class="cell doc_cell doc_entry" id="get_elements">
 				<h3 class="heading">
 					<a href="#get_elements"
-						title="Utils.traverse.getElements"><code>Utils.traverse.getElements</code></a>
+						title="@LIBRARY_NAME@.traverse.getElements"><code>@LIBRARY_NAME@.traverse.getElements</code></a>
 				</h3>
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var children;
-if (Utils.traverse.getElements) {
-	children = Utils.traverse.getElements(
+if (@LIBRARY_NAME@.traverse.getElements) {
+	children = @LIBRARY_NAME@.traverse.getElements(
 		document.body
 	);
 }</pre>
@@ -234,7 +230,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="elements">
 				<h3 class="heading">
 					<a href="#elements"
-						title="Utils.traverse.elements"><code>Utils.traverse.elements</code></a>
+						title="@LIBRARY_NAME@.traverse.elements"><code>@LIBRARY_NAME@.traverse.elements</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
@@ -268,7 +264,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="clear_elements">
 				<h3 class="heading">
 					<a href="#clear_elements"
-						title="Utils.traverse.clearElements"><code>Utils.traverse.clearElements</code></a>
+						title="@LIBRARY_NAME@.traverse.clearElements"><code>@LIBRARY_NAME@.traverse.clearElements</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -295,7 +291,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="get_node_tree">
 				<h3 class="heading">
 					<a href="#get_node_tree"
-						title="Utils.traverse.getNodeTree"><code>Utils.traverse.getNodeTree</code></a>
+						title="@LIBRARY_NAME@.traverse.getNodeTree"><code>@LIBRARY_NAME@.traverse.getNodeTree</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -329,7 +325,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="node_tree">
 				<h3 class="heading">
 					<a href="#node_tree"
-						title="Utils.traverse.nodeTree"><code>Utils.traverse.nodeTree</code></a>
+						title="@LIBRARY_NAME@.traverse.nodeTree"><code>@LIBRARY_NAME@.traverse.nodeTree</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
 				<dl class="doc_list">
@@ -375,7 +371,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="get_text">
 				<h3 class="heading">
 					<a href="#get_text"
-						title="Utils.traverse.getText"><code>Utils.traverse.getText</code></a>
+						title="@LIBRARY_NAME@.traverse.getText"><code>@LIBRARY_NAME@.traverse.getText</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -405,7 +401,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="set_text">
 				<h3 class="heading">
 					<a href="#set_text"
-						title="Utils.traverse.setText"><code>Utils.traverse.setText</code></a>
+						title="@LIBRARY_NAME@.traverse.setText"><code>@LIBRARY_NAME@.traverse.setText</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>text</var>, <var>obj</var>, <var>doc</var>) {</p>
 				<dl class="doc_list">
@@ -452,7 +448,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="recursive">
 				<h3 class="heading">
 					<a href="#recursive"
-						title="Utils.traverse.recursive"><code>Utils.traverse.recursive</code></a>
+						title="@LIBRARY_NAME@.traverse.recursive"><code>@LIBRARY_NAME@.traverse.recursive</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
 				<dl class="doc_list">
@@ -493,7 +489,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="get_element_tree">
 				<h3 class="heading">
 					<a href="#get_element_tree"
-						title="Utils.traverse.getElementTree"><code>Utils.traverse.getElementTree</code></a>
+						title="@LIBRARY_NAME@.traverse.getElementTree"><code>@LIBRARY_NAME@.traverse.getElementTree</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -527,7 +523,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="element_tree">
 				<h3 class="heading">
 					<a href="#element_tree"
-						title="Utils.traverse.elementTree"><code>Utils.traverse.elementTree</code></a>
+						title="@LIBRARY_NAME@.traverse.elementTree"><code>@LIBRARY_NAME@.traverse.elementTree</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
 				<dl class="doc_list">
@@ -573,7 +569,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="get_ancestors">
 				<h3 class="heading">
 					<a href="#get_ancestors"
-						title="Utils.traverse.getAncestors"><code>Utils.traverse.getAncestors</code></a>
+						title="@LIBRARY_NAME@.traverse.getAncestors"><code>@LIBRARY_NAME@.traverse.getAncestors</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -601,7 +597,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="is_ancestor">
 				<h3 class="heading">
 					<a href="#is_ancestor"
-						title="Utils.traverse.isAncestor"><code>Utils.traverse.isAncestor</code></a>
+						title="@LIBRARY_NAME@.traverse.isAncestor"><code>@LIBRARY_NAME@.traverse.isAncestor</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>par</var>, <var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -640,7 +636,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="list">
 				<h3 class="heading">
 					<a href="#list"
-						title="Utils.traverse.list"><code>Utils.traverse.list</code></a>
+						title="@LIBRARY_NAME@.traverse.linkedList"><code>@LIBRARY_NAME@.traverse.linkedList</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>list</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
@@ -672,7 +668,7 @@ if (Utils.traverse.getElements) {
 			<li class="cell doc_cell doc_entry" id="ancestors">
 				<h3 class="heading">
 					<a href="#ancestors"
-						title="Utils.traverse.ancestors"><code>Utils.traverse.ancestors</code></a>
+						title="@LIBRARY_NAME@.traverse.ancestors"><code>@LIBRARY_NAME@.traverse.ancestors</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
@@ -706,7 +702,7 @@ if (Utils.traverse.getElements) {
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="classes.html" rel="prev"
-					title="Previous">&larr;<code>Utils.classes</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.classes</code></a>
 			</div>
 			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"
@@ -714,7 +710,7 @@ if (Utils.traverse.getElements) {
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="select.html" rel="next"
-					title="Next"><code>Utils.select</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.select</code>&rarr;</a>
 			</div>
 		</div>
 @FOOTER@

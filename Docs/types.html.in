@@ -1,16 +1,16 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.types</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation&mdash;@LIBRARY_NAME@.types</title>
 @DOCS_STYLESHEET@
 @DOCS_RESOURCES@
 		<link href="raise.html" hreflang="en" media="all"
-			rel="prev" title="Utils.raise"
+			rel="prev" title="@LIBRARY_NAME@.raise"
 			type="text/html">
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
 			type="text/html">
 		<link href="is.html" hreflang="en" media="all"
-			rel="next" title="Utils.is"
+			rel="next" title="@LIBRARY_NAME@.is"
 			type="text/html">
 @BODY@
 @DOCS_HEADER@
@@ -18,17 +18,17 @@
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="raise.html" rel="prev"
-					title="Previous">&larr;<code>Utils.raise</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.raise</code></a>
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="is.html" rel="next"
-					title="Next"><code>Utils.is</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.is</code>&rarr;</a>
 			</div>
 		</div>
 		<div class="primary_row row">
 			<div class="cell primary_cell">
-				<h2 class="heading" title="Utils.types">
-					<code>Utils.types</code>
+				<h2 class="heading" title="@LIBRARY_NAME@.types">
+					<code>@LIBRARY_NAME@.types</code>
 				</h2>
 				<div class="module_info" id="dependencies">
 					<h3 class="heading">
@@ -47,7 +47,7 @@
 			<li class="cell doc_cell doc_entry" id="element_node">
 				<h3 class="heading">
 					<a href="#element_node"
-						title="Utils.types.ELEMENT_NODE"><code>Utils.types.ELEMENT_NODE</code></a>
+						title="@LIBRARY_NAME@.types.ELEMENT_NODE"><code>@LIBRARY_NAME@.types.ELEMENT_NODE</code></a>
 				</h3>
 				<p class="doc_art number">1</p>
 				<dl class="doc_list">
@@ -64,7 +64,7 @@
 			<li class="cell doc_cell doc_entry" id="attribute_node">
 				<h3 class="heading">
 					<a href="#attribute_node"
-						title="Utils.types.ATTRIBUTE_NODE"><code>Utils.types.ATTRIBUTE_NODE</code></a>
+						title="@LIBRARY_NAME@.types.ATTRIBUTE_NODE"><code>@LIBRARY_NAME@.types.ATTRIBUTE_NODE</code></a>
 				</h3>
 				<p class="doc_art number">2</p>
 				<dl class="doc_list">
@@ -81,7 +81,7 @@
 			<li class="cell doc_cell doc_entry" id="text_node">
 				<h3 class="heading">
 					<a href="#text_node"
-						title="Utils.types.TEXT_NODE"><code>Utils.types.TEXT_NODE</code></a>
+						title="@LIBRARY_NAME@.types.TEXT_NODE"><code>@LIBRARY_NAME@.types.TEXT_NODE</code></a>
 				</h3>
 				<p class="doc_art number">3</p>
 				<dl class="doc_list">
@@ -98,7 +98,7 @@
 			<li class="cell doc_cell doc_entry" id="cdata_section_node">
 				<h3 class="heading">
 					<a href="#cdata_section_node"
-						title="Utils.types.CDATA_SECTION_NODE"><code>Utils.types.CDATA_SECTION_NODE</code></a>
+						title="@LIBRARY_NAME@.types.CDATA_SECTION_NODE"><code>@LIBRARY_NAME@.types.CDATA_SECTION_NODE</code></a>
 				</h3>
 				<p class="doc_art number">4</p>
 				<dl class="doc_list">
@@ -115,7 +115,7 @@
 			<li class="cell doc_cell doc_entry" id="entity_reference_node">
 				<h3 class="heading">
 					<a href="#entity_reference_node"
-						title="Utils.types.ENTITY_REFERENCE_NODE"><code>Utils.types.ENTITY_REFERENCE_NODE</code></a>
+						title="@LIBRARY_NAME@.types.ENTITY_REFERENCE_NODE"><code>@LIBRARY_NAME@.types.ENTITY_REFERENCE_NODE</code></a>
 				</h3>
 				<p class="doc_art number">5</p>
 				<dl class="doc_list">
@@ -132,7 +132,7 @@
 			<li class="cell doc_cell doc_entry" id="entity_node">
 				<h3 class="heading">
 					<a href="#entity_node"
-						title="Utils.types.ENTITY_NODE"><code>Utils.types.ENTITY_NODE</code></a>
+						title="@LIBRARY_NAME@.types.ENTITY_NODE"><code>@LIBRARY_NAME@.types.ENTITY_NODE</code></a>
 				</h3>
 				<p class="doc_art number">6</p>
 				<dl class="doc_list">
@@ -149,7 +149,7 @@
 			<li class="cell doc_cell doc_entry" id="processing_instruction_node">
 				<h3 class="heading">
 					<a href="#processing_instruction_node"
-						title="Utils.types.PROCESSING_INSTRUCTION_NODE"><code>Utils.types.PROCESSING_INSTRUCTION_NODE</code></a>
+						title="@LIBRARY_NAME@.types.PROCESSING_INSTRUCTION_NODE"><code>@LIBRARY_NAME@.types.PROCESSING_INSTRUCTION_NODE</code></a>
 				</h3>
 				<p class="doc_art number">7</p>
 				<dl class="doc_list">
@@ -166,7 +166,7 @@
 			<li class="cell doc_cell doc_entry" id="comment_node">
 				<h3 class="heading">
 					<a href="#comment_node"
-						title="Utils.types.COMMENT_NODE"><code>Utils.types.COMMENT_NODE</code></a>
+						title="@LIBRARY_NAME@.types.COMMENT_NODE"><code>@LIBRARY_NAME@.types.COMMENT_NODE</code></a>
 				</h3>
 				<p class="doc_art number">8</p>
 				<dl class="doc_list">
@@ -183,7 +183,7 @@
 			<li class="cell doc_cell doc_entry" id="document_node">
 				<h3 class="heading">
 					<a href="#document_node"
-						title="Utils.types.DOCUMENT_NODE"><code>Utils.types.DOCUMENT_NODE</code></a>
+						title="@LIBRARY_NAME@.types.DOCUMENT_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_NODE</code></a>
 				</h3>
 				<p class="doc_art number">9</p>
 				<dl class="doc_list">
@@ -200,7 +200,7 @@
 			<li class="cell doc_cell doc_entry" id="document_type_node">
 				<h3 class="heading">
 					<a href="#document_type_node"
-						title="Utils.types.DOCUMENT_TYPE_NODE"><code>Utils.types.DOCUMENT_TYPE_NODE</code></a>
+						title="@LIBRARY_NAME@.types.DOCUMENT_TYPE_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_TYPE_NODE</code></a>
 				</h3>
 				<p class="doc_art number">10</p>
 				<dl class="doc_list">
@@ -217,7 +217,7 @@
 			<li class="cell doc_cell doc_entry" id="document_fragment_node">
 				<h3 class="heading">
 					<a href="#document_fragment_node"
-						title="Utils.types.DOCUMENT_FRAGMENT_NODE"><code>Utils.types.DOCUMENT_FRAGMENT_NODE</code></a>
+						title="@LIBRARY_NAME@.types.DOCUMENT_FRAGMENT_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_FRAGMENT_NODE</code></a>
 				</h3>
 				<p class="doc_art number">11</p>
 				<dl class="doc_list">
@@ -234,7 +234,7 @@
 			<li class="cell doc_cell doc_entry" id="notation_node">
 				<h3 class="heading">
 					<a href="#notation_node"
-						title="Utils.types.NOTATION_NODE"><code>Utils.types.NOTATION_NODE</code></a>
+						title="@LIBRARY_NAME@.types.NOTATION_NODE"><code>@LIBRARY_NAME@.types.NOTATION_NODE</code></a>
 				</h3>
 				<p class="doc_art number">12</p>
 				<dl class="doc_list">
@@ -252,7 +252,7 @@
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="raise.html" rel="prev"
-					title="Previous">&larr;<code>Utils.raise</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.raise</code></a>
 			</div>
 			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"
@@ -260,7 +260,7 @@
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="is.html" rel="next"
-					title="Next"><code>Utils.is</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.is</code>&rarr;</a>
 			</div>
 		</div>
 @FOOTER@

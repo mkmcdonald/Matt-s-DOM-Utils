@@ -1,0 +1,52 @@
+if (@LIBRARY_NAME@) {
+	(function () {
+
+               /**
+                * @module
+                * @LIBRARY_NAME@.helpers
+                *
+                * @description
+                * Various helper methods for common tasks.
+                *
+                * @dependencies
+                * * @LIBRARY_NAME@.is
+                */
+
+		var isArrayLike = @LIBRARY_NAME@.is.arrayLike;
+
+               /**
+                * @public `@LIBRARY_NAME@.helpers.makeArray`.
+                *
+                * @description
+                * Method that returns an array produced from an
+                * iterable object.
+                *
+                * @param obj Object
+                * An object to iterate.
+                */
+
+		function makeArray(
+			obj
+		)
+		{
+			var max,
+				aux,
+				diff,
+				result = [];
+			if (isArrayLike(obj)) {
+				result.length = obj.length;
+				max = obj.length - 1;
+				for (aux = max; aux > -1; aux -= 1) {
+					diff = max - aux;
+					result[diff] = obj[diff];
+				}
+			}
+			return result;
+		}
+
+		@LIBRARY_NAME@.helpers = @LIBRARY_NAME@.helpers || {
+			"makeArray": makeArray
+		};
+	}());
+}
+

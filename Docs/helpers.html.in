@@ -1,34 +1,34 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.helpers</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation&mdash;@LIBRARY_NAME@.helpers</title>
 @DOCS_STYLESHEET@
 @DOCS_RESOURCES@
-		<link href="can.html" hreflang="en" media="all"
-			rel="prev" title="Utils.can"
+		<link href="is.html" hreflang="en" media="all"
+			rel="prev" title="@LIBRARY_NAME@.is"
 			type="text/html">
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
 			type="text/html">
 		<link href="node.html" hreflang="en" media="all"
-			rel="next" title="Utils.node"
+			rel="next" title="@LIBRARY_NAME@.node"
 			type="text/html">
 @BODY@
 @DOCS_HEADER@
 @DOCS_NAV@
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
-				<a href="can.html" rel="prev"
-					title="Previous">&larr;<code>Utils.can</code></a>
+				<a href="is.html" rel="prev"
+					title="Previous">&larr;<code>@LIBRARY_NAME@.is</code></a>
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="node.html" rel="next"
-					title="Next"><code>Utils.node</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.node</code>&rarr;</a>
 			</div>
 		</div>
 		<div class="primary_row row">
 			<div class="cell primary_cell">
-				<h2 class="heading" title="Utils.helpers">
-					<code>Utils.helpers</code>
+				<h2 class="heading" title="@LIBRARY_NAME@.helpers">
+					<code>@LIBRARY_NAME@.helpers</code>
 				</h2>
 				<div class="module_info" id="dependencies">
 					<h3 class="heading">
@@ -38,7 +38,7 @@
 					<ol>
 						<li>
 							<a href="./is.html"
-								title="Utils.is"><code>Utils.is</code></a>
+								title="@LIBRARY_NAME@.is"><code>@LIBRARY_NAME@.is</code></a>
 						</li>
 					</ol>
 				</div>
@@ -48,7 +48,7 @@
 			<li class="cell doc_cell doc_entry" id="make_array">
 				<h3 class="heading">
 					<a href="#make_array"
-						title="Utils.helpers.makeArray"><code>Utils.helpers.makeArray</code></a>
+						title="@LIBRARY_NAME@.helpers.makeArray"><code>@LIBRARY_NAME@.helpers.makeArray</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -78,8 +78,8 @@
 		</ul>
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
-				<a href="can.html" rel="prev"
-					title="Previous">&larr;<code>Utils.can</code></a>
+				<a href="is.html" rel="prev"
+					title="Previous">&larr;<code>@LIBRARY_NAME@.is</code></a>
 			</div>
 			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"
@@ -87,7 +87,7 @@
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="node.html" rel="next"
-					title="Next"><code>Utils.node</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.node</code>&rarr;</a>
 			</div>
 		</div>
 @FOOTER@

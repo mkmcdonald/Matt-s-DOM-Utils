@@ -1,16 +1,16 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.node</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation&mdash;@LIBRARY_NAME@.node</title>
 @DOCS_STYLESHEET@
 @DOCS_RESOURCES@
 		<link href="helpers.html" hreflang="en" media="all"
-			rel="prev" title="Utils.helpers"
+			rel="prev" title="@LIBRARY_NAME@.helpers"
 			type="text/html">
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
 			type="text/html">
 		<link href="create.html" hreflang="en" media="all"
-			rel="next" title="Utils.create"
+			rel="next" title="@LIBRARY_NAME@.create"
 			type="text/html">
 @BODY@
 @DOCS_HEADER@
@@ -18,17 +18,17 @@
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="helpers.html" rel="prev"
-					title="Previous">&larr;<code>Utils.helpers</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.helpers</code></a>
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="create.html" rel="next"
-					title="Next"><code>Utils.create</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.create</code>&rarr;</a>
 			</div>
 		</div>
 		<div class="primary_row row">
 			<div class="cell primary_cell">
-				<h2 class="heading" title="Utils.node">
-					<code>Utils.node</code>
+				<h2 class="heading" title="@LIBRARY_NAME@.node">
+					<code>@LIBRARY_NAME@.node</code>
 				</h2>
 				<div class="module_info" id="dependencies">
 					<h3 class="heading">
@@ -38,11 +38,7 @@
 					<ol>
 						<li>
 							<a href="./is.html"
-								title="Utils.is"><code>Utils.is</code></a>
-						</li>
-						<li>
-							<a href="./can.html"
-								title="Utils.can"><code>Utils.can</code></a>
+								title="@LIBRARY_NAME@.is"><code>@LIBRARY_NAME@.is</code></a>
 						</li>
 					</ol>
 				</div>
@@ -52,7 +48,7 @@
 			<li class="cell doc_cell doc_entry" id="prepend">
 				<h3 class="heading">
 					<a href="#prepend"
-						title="Utils.node.prepend"><code>Utils.node.prepend</code></a>
+						title="@LIBRARY_NAME@.node.prepend"><code>@LIBRARY_NAME@.node.prepend</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>par</var>, <var>newObj</var>, <var>refObj</var>) {</p>
 				<dl class="doc_list">
@@ -107,7 +103,7 @@
 			<li class="cell doc_cell doc_entry" id="prepend_list">
 				<h3 class="heading">
 					<a href="#prepend_list"
-						title="Utils.node.prependList"><code>Utils.node.prependList</code></a>
+						title="@LIBRARY_NAME@.node.prependList"><code>@LIBRARY_NAME@.node.prependList</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>par</var>, <var>list</var>, <var>refObj</var>) {</p>
 				<dl class="doc_list">
@@ -116,7 +112,7 @@
 						Method takes an <a href="glossary.html#array_like_object"
 							title="Array-like Object">array-like object</a>
 						and passes each element to <a href="#prepend"
-							title="Utils.node.prepend"><code>prepend</code></a>.
+							title="@LIBRARY_NAME@.node.prepend"><code>prepend</code></a>.
 					</dd>
 					<dt>
 						<var>par</var>
@@ -158,7 +154,7 @@
 			<li class="cell doc_cell doc_entry" id="append">
 				<h3 class="heading">
 					<a href="#append"
-						title="Utils.node.append"><code>Utils.node.append</code></a>
+						title="@LIBRARY_NAME@.node.append"><code>@LIBRARY_NAME@.node.append</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>par</var>, <var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -198,7 +194,7 @@
 			<li class="cell doc_cell doc_entry" id="append_list">
 				<h3 class="heading">
 					<a href="#append_list"
-						title="Utils.node.appendList"><code>Utils.node.appendList</code></a>
+						title="@LIBRARY_NAME@.node.appendList"><code>@LIBRARY_NAME@.node.appendList</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>par</var>, <var>list</var>) {</p>
 				<dl class="doc_list">
@@ -207,7 +203,7 @@
 						Method takes an <a href="glossary.html#array_like_object"
 							title="Array-like Object">array-like object</a>
 						and passes each element to <a href="#append"
-							title="Utils.node.append"><code>append</code></a>.
+							title="@LIBRARY_NAME@.node.append"><code>append</code></a>.
 					</dd>
 					<dt>
 						<var>par</var>
@@ -237,7 +233,7 @@
 			<li class="cell doc_cell doc_entry" id="remove">
 				<h3 class="heading">
 					<a href="#remove"
-						title="Utils.node.remove"><code>Utils.node.remove</code></a>
+						title="@LIBRARY_NAME@.node.remove"><code>@LIBRARY_NAME@.node.remove</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>par</var>, <var>obj</var>) {</p>
 				<dl class="doc_list">
@@ -278,7 +274,7 @@
 			<li class="cell doc_cell doc_entry" id="replace">
 				<h3 class="heading">
 					<a href="#replace"
-						title="Utils.node.replace"><code>Utils.node.replace</code></a>
+						title="@LIBRARY_NAME@.node.replace"><code>@LIBRARY_NAME@.node.replace</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>par</var>, <var>newObj</var>, <var>oldObj</var>) {</p>
 				<dl class="doc_list">
@@ -334,7 +330,7 @@
 			<li class="cell doc_cell doc_entry" id="clone">
 				<h3 class="heading">
 					<a href="#clone"
-						title="Utils.node.clone"><code>Utils.node.clone</code></a>
+						title="@LIBRARY_NAME@.node.clone"><code>@LIBRARY_NAME@.node.clone</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>deep</var>) {</p>
 				<dl class="doc_list">
@@ -373,7 +369,7 @@
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="helpers.html" rel="prev"
-					title="Previous">&larr;<code>Utils.helpers</code></a>
+					title="Previous">&larr;<code>@LIBRARY_NAME@.helpers</code></a>
 			</div>
 			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"
@@ -381,7 +377,7 @@
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="create.html" rel="next"
-					title="Next"><code>Utils.create</code>&rarr;</a>
+					title="Next"><code>@LIBRARY_NAME@.create</code>&rarr;</a>
 			</div>
 		</div>
 @FOOTER@

@@ -1,6 +1,6 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils): Download</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Download</title>
 @DOWNLOAD_STYLESHEET@
 @DOWNLOAD_RESOURCES@
 @BODY@
@@ -23,13 +23,13 @@
 							value="core">
 						<label for="core_file">Core</label>
 						<ul class="module_list">
-							<li>Utils.raise</li>
-							<li>Utils.types</li>
-							<li>Utils.helpers</li>
-							<li>Utils.is</li>
-							<li>Utils.can</li>
-							<li>Utils.node</li>
-							<li>Utils.create</li>
+							<li>@LIBRARY_NAME@.raise</li>
+							<li>@LIBRARY_NAME@.types</li>
+							<li>@LIBRARY_NAME@.helpers</li>
+							<li>@LIBRARY_NAME@.is</li>
+							<li>@LIBRARY_NAME@.can</li>
+							<li>@LIBRARY_NAME@.node</li>
+							<li>@LIBRARY_NAME@.create</li>
 						</ul>
 					</li>
 					
@@ -41,21 +41,21 @@
 					<input id="classes_file" name="classes_file"
 						type="checkbox" value="classes">
 					<label for="classes_file">
-						Utils.classes
+						@LIBRARY_NAME@.classes
 					</label>
 				</p>
 				<p>
 					<input id="traverse_file" name="traverse_file"
 						type="checkbox" value="traverse">
 					<label for="traverse_file">
-						Utils.traverse
+						@LIBRARY_NAME@.traverse
 					</label>
 				</p>
 				<p>
 					<input id="select_file" name="select_file"
 						type="checkbox" value="select">
 					<label for="select_file">
-						Utils.select
+						@LIBRARY_NAME@.select
 					</label>
 				</p>
 			</fieldset>
@@ -65,7 +65,8 @@
 					<input id="minify_build" name="minify_build"
 						type="checkbox" value="minify">
 					<label for="minify_build">
-						Minify build
+						Minify build<a href="#footnote_0"
+							title="Footnote Zero"><sup>0</sup></a>
 					</label>
 				</p>
 				<p>
@@ -78,5 +79,17 @@
 				<input type="submit" value="Submit Build">
 			</fieldset>
 		</form>
+		<div class="column primary_column">
+			<dl class="cell primary_cell">
+				<dt id="footnote_0">
+					<sup>0</sup>
+				</dt>
+				<dd>
+					Due to the heavy amount of inline documentation in
+					<em>@LIBRARY_NAME@</em>, minification is recommended for
+					&ldquo;production&rdquo; usage.
+				</dd>
+			</dl>
+		</div>
 @FOOTER@
 @END@

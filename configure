@@ -566,6 +566,7 @@ PACKAGE_URL=''
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+LIBRARY_NAME
 target_alias
 host_alias
 build_alias
@@ -609,18 +610,22 @@ HEAD
 ROOT_STYLESHEET
 DOWNLOAD_STYLESHEET
 DOCS_STYLESHEET
+HOWTO_STYLESHEET
 TESTS_STYLESHEET
 ROOT_RESOURCES
 DOWNLOAD_RESOURCES
 DOCS_RESOURCES
+HOWTO_RESOURCES
 TESTS_RESOURCES
 BODY
 ROOT_HEADER
 DOWNLOAD_HEADER
 DOCS_HEADER
+HOWTO_HEADER
 TESTS_HEADER
 DOWNLOAD_NAV
 DOCS_NAV
+HOWTO_NAV
 TESTS_NAV
 DOCS_HOST_DETECTION_WARNING
 DOCS_DESCRIPTION
@@ -1668,7 +1673,11 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
-ac_config_files="$ac_config_files index.html Download/index.html Docs/index.html Docs/raise.html Docs/types.html Docs/helpers.html Docs/is.html Docs/can.html Docs/node.html Docs/create.html Docs/classes.html Docs/traverse.html Docs/select.html Docs/glossary.html Tests/index.html about.html"
+ac_config_files="$ac_config_files "Library/utils.js" "Library/raise.js" "Library/types.js" "Library/is.js" "Library/helpers.js" "Library/node.js" "Library/create.js" "Library/classes.js" "Library/traverse.js" "Library/select.js" "index.html" "Download/index.html" "Docs/index.html" "Docs/raise.html" "Docs/types.html" "Docs/helpers.html" "Docs/is.html" "Docs/node.html" "Docs/create.html" "Docs/classes.html" "Docs/traverse.html" "Docs/select.html" "Docs/glossary.html" "Docs/HOWTO/index.html" "Docs/HOWTO/degradation.html" "Tests/index.html" "Tests/Node/node.html" "Tests/Node/JS/node.js" "Tests/Create/create.html" "Tests/Create/JS/create.js" "Tests/Classes/classes.html" "Tests/Classes/JS/classes.js" "Tests/HOWTO/JS/slideshow.js" "Tests/Traverse/traverse.html" "Tests/Traverse/JS/traverse.js" "Tests/Select/select.html" "Tests/Select/JS/select.js" "Tests/All/all.html" "Tests/All/JS/all.js" "Tests/All/all-min.html" "Tests/All/JS/all-min.js" "about.html" "README.md""
+
+
+
+LIBRARY_NAME="Utils";
 
 
 BEGIN="Templates/begin";
@@ -1686,6 +1695,9 @@ DOWNLOAD_STYLESHEET="Templates/Download/stylesheet";
 DOCS_STYLESHEET="Templates/Docs/stylesheet";
 
 
+HOWTO_STYLESHEET="Templates/Docs/HowTo/stylesheet";
+
+
 TESTS_STYLESHEET="Templates/Tests/stylesheet";
 
 
@@ -1696,6 +1708,9 @@ DOWNLOAD_RESOURCES="Templates/Download/resources";
 
 
 DOCS_RESOURCES="Templates/Docs/resources";
+
+
+HOWTO_RESOURCES="Templates/Docs/HowTo/resources";
 
 
 TESTS_RESOURCES="Templates/Tests/resources";
@@ -1713,6 +1728,9 @@ DOWNLOAD_HEADER="Templates/Download/header";
 DOCS_HEADER="Templates/Docs/header";
 
 
+HOWTO_HEADER="Templates/Docs/HowTo/header";
+
+
 TESTS_HEADER="Templates/Tests/header";
 
 
@@ -1720,6 +1738,9 @@ DOWNLOAD_NAV="Templates/Download/nav";
 
 
 DOCS_NAV="Templates/Docs/nav";
+
+
+HOWTO_NAV="Templates/Docs/HowTo/nav";
 
 
 TESTS_NAV="Templates/Tests/nav";
@@ -2456,22 +2477,49 @@ cat >>$CONFIG_STATUS <<\_ACEOF || ac_write_fail=1
 for ac_config_target in $ac_config_targets
 do
   case $ac_config_target in
-    "index.html") CONFIG_FILES="$CONFIG_FILES index.html" ;;
-    "Download/index.html") CONFIG_FILES="$CONFIG_FILES Download/index.html" ;;
-    "Docs/index.html") CONFIG_FILES="$CONFIG_FILES Docs/index.html" ;;
-    "Docs/raise.html") CONFIG_FILES="$CONFIG_FILES Docs/raise.html" ;;
-    "Docs/types.html") CONFIG_FILES="$CONFIG_FILES Docs/types.html" ;;
-    "Docs/helpers.html") CONFIG_FILES="$CONFIG_FILES Docs/helpers.html" ;;
-    "Docs/is.html") CONFIG_FILES="$CONFIG_FILES Docs/is.html" ;;
-    "Docs/can.html") CONFIG_FILES="$CONFIG_FILES Docs/can.html" ;;
-    "Docs/node.html") CONFIG_FILES="$CONFIG_FILES Docs/node.html" ;;
-    "Docs/create.html") CONFIG_FILES="$CONFIG_FILES Docs/create.html" ;;
-    "Docs/classes.html") CONFIG_FILES="$CONFIG_FILES Docs/classes.html" ;;
-    "Docs/traverse.html") CONFIG_FILES="$CONFIG_FILES Docs/traverse.html" ;;
-    "Docs/select.html") CONFIG_FILES="$CONFIG_FILES Docs/select.html" ;;
-    "Docs/glossary.html") CONFIG_FILES="$CONFIG_FILES Docs/glossary.html" ;;
-    "Tests/index.html") CONFIG_FILES="$CONFIG_FILES Tests/index.html" ;;
-    "about.html") CONFIG_FILES="$CONFIG_FILES about.html" ;;
+    ""Library/utils.js"") CONFIG_FILES="$CONFIG_FILES "Library/utils.js"" ;;
+    ""Library/raise.js"") CONFIG_FILES="$CONFIG_FILES "Library/raise.js"" ;;
+    ""Library/types.js"") CONFIG_FILES="$CONFIG_FILES "Library/types.js"" ;;
+    ""Library/is.js"") CONFIG_FILES="$CONFIG_FILES "Library/is.js"" ;;
+    ""Library/helpers.js"") CONFIG_FILES="$CONFIG_FILES "Library/helpers.js"" ;;
+    ""Library/node.js"") CONFIG_FILES="$CONFIG_FILES "Library/node.js"" ;;
+    ""Library/create.js"") CONFIG_FILES="$CONFIG_FILES "Library/create.js"" ;;
+    ""Library/classes.js"") CONFIG_FILES="$CONFIG_FILES "Library/classes.js"" ;;
+    ""Library/traverse.js"") CONFIG_FILES="$CONFIG_FILES "Library/traverse.js"" ;;
+    ""Library/select.js"") CONFIG_FILES="$CONFIG_FILES "Library/select.js"" ;;
+    ""index.html"") CONFIG_FILES="$CONFIG_FILES "index.html"" ;;
+    ""Download/index.html"") CONFIG_FILES="$CONFIG_FILES "Download/index.html"" ;;
+    ""Docs/index.html"") CONFIG_FILES="$CONFIG_FILES "Docs/index.html"" ;;
+    ""Docs/raise.html"") CONFIG_FILES="$CONFIG_FILES "Docs/raise.html"" ;;
+    ""Docs/types.html"") CONFIG_FILES="$CONFIG_FILES "Docs/types.html"" ;;
+    ""Docs/helpers.html"") CONFIG_FILES="$CONFIG_FILES "Docs/helpers.html"" ;;
+    ""Docs/is.html"") CONFIG_FILES="$CONFIG_FILES "Docs/is.html"" ;;
+    ""Docs/node.html"") CONFIG_FILES="$CONFIG_FILES "Docs/node.html"" ;;
+    ""Docs/create.html"") CONFIG_FILES="$CONFIG_FILES "Docs/create.html"" ;;
+    ""Docs/classes.html"") CONFIG_FILES="$CONFIG_FILES "Docs/classes.html"" ;;
+    ""Docs/traverse.html"") CONFIG_FILES="$CONFIG_FILES "Docs/traverse.html"" ;;
+    ""Docs/select.html"") CONFIG_FILES="$CONFIG_FILES "Docs/select.html"" ;;
+    ""Docs/glossary.html"") CONFIG_FILES="$CONFIG_FILES "Docs/glossary.html"" ;;
+    ""Docs/HOWTO/index.html"") CONFIG_FILES="$CONFIG_FILES "Docs/HOWTO/index.html"" ;;
+    ""Docs/HOWTO/degradation.html"") CONFIG_FILES="$CONFIG_FILES "Docs/HOWTO/degradation.html"" ;;
+    ""Tests/index.html"") CONFIG_FILES="$CONFIG_FILES "Tests/index.html"" ;;
+    ""Tests/Node/node.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Node/node.html"" ;;
+    ""Tests/Node/JS/node.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Node/JS/node.js"" ;;
+    ""Tests/Create/create.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Create/create.html"" ;;
+    ""Tests/Create/JS/create.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Create/JS/create.js"" ;;
+    ""Tests/Classes/classes.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Classes/classes.html"" ;;
+    ""Tests/Classes/JS/classes.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Classes/JS/classes.js"" ;;
+    ""Tests/HOWTO/JS/slideshow.js"") CONFIG_FILES="$CONFIG_FILES "Tests/HOWTO/JS/slideshow.js"" ;;
+    ""Tests/Traverse/traverse.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Traverse/traverse.html"" ;;
+    ""Tests/Traverse/JS/traverse.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Traverse/JS/traverse.js"" ;;
+    ""Tests/Select/select.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Select/select.html"" ;;
+    ""Tests/Select/JS/select.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Select/JS/select.js"" ;;
+    ""Tests/All/all.html"") CONFIG_FILES="$CONFIG_FILES "Tests/All/all.html"" ;;
+    ""Tests/All/JS/all.js"") CONFIG_FILES="$CONFIG_FILES "Tests/All/JS/all.js"" ;;
+    ""Tests/All/all-min.html"") CONFIG_FILES="$CONFIG_FILES "Tests/All/all-min.html"" ;;
+    ""Tests/All/JS/all-min.js"") CONFIG_FILES="$CONFIG_FILES "Tests/All/JS/all-min.js"" ;;
+    ""about.html"") CONFIG_FILES="$CONFIG_FILES "about.html"" ;;
+    ""README.md"") CONFIG_FILES="$CONFIG_FILES "README.md"" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

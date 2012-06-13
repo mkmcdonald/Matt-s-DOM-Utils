@@ -1,6 +1,6 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (Utils)</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@)</title>
 @ROOT_STYLESHEET@
 @ROOT_RESOURCES@
 @BODY@
@@ -19,7 +19,7 @@
 				<a href="./Tests" title="Tests">Tests</a>
 			</li>
 			<li class="cell github nav_cell">
-				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/" title="GitHub">GitHub</a>
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-@LIBRARY_NAME@/" title="GitHub">GitHub</a>
 			</li>
 			<li class="about cell nav_cell">
 				<a href="about.html" title="About">About</a>
@@ -35,13 +35,13 @@
 				<h3 class="heading"
 					title="Introduction">Introduction</h3>
 				<p>
-					<em>Utils</em> is a modular DOM library with the explicit
+					<em>@LIBRARY_NAME@</em> is a modular DOM library with the explicit
 					objective of facilitating defensive HTML DOM scripting.
 					It has been widely tested in browsers both new and old in
 					order to maximize compatibility.
 				</p>
 				<p>
-					<em>Utils</em> contains <strong>zero</strong> lines of
+					<em>@LIBRARY_NAME@</em> contains <strong>zero</strong> lines of
 					environment-specific code; this approach maximizes
 					compatibility. Each morsel of feature testing logic is
 					based upon substantial research of various environments.
@@ -55,7 +55,7 @@
 						<h4 class="heading"
 							title="Standards-based">Standards-based</h4>
 						<p>
-							<em>Utils</em> is developed with standards in mind.
+							<em>@LIBRARY_NAME@</em> is developed with standards in mind.
 							Most "forks" used in the API implement algorithms
 							specified in both the DOM 4 and HTML 5 specifications.
 						</p>
@@ -64,7 +64,7 @@
 						<h4 class="heading"
 							title="Developer Friendly">Developer Friendly</h4>
 						<p>
-							<em>Utils</em> is heavily documented and contains
+							<em>@LIBRARY_NAME@</em> is heavily documented and contains
 							only clean code. This means that both developers
 							and users alike can easily study the API.
 						</p>
@@ -73,7 +73,7 @@
 						<h4 class="heading"
 							title="Portable">Portable</h4>
 						<p>
-							<em>Utils</em> is developed to work in a maximal
+							<em>@LIBRARY_NAME@</em> is developed to work in a maximal
 							amount of environments. Because documentation is
 							provided within the script itself, developers
 							have no need to consult the full documentation.
@@ -90,7 +90,7 @@
 				<h3 class="heading"
 					title="Tenets">Tenets</h3>
 				<p>
-					<em>Utils</em> is developed with the following core
+					<em>@LIBRARY_NAME@</em> is developed with the following core
 					tenets in mind:
 				</p>
 				<dl>
@@ -125,7 +125,7 @@
 				<h3 class="heading"
 					title="Support">Support</h3>
 				<p>
-					<em>Utils</em> is developed to gracefully degrade in as many
+					<em>@LIBRARY_NAME@</em> is developed to gracefully degrade in as many
 					environments as possible.
 				</p>
 				<h4 class="heading"
@@ -136,7 +136,7 @@
 					(permitting sufficient DOM support to run tests):
 				</p>
 				<ul>
-					<li>Internet Explorer 6-9;</li>
+					<li>Internet Explorer 5-9;</li>
 					<li>Firefox 1-12;</li>
 					<li>Opera 5-11;</li>
 					<li>Safari 3.1-5;</li>
@@ -146,7 +146,7 @@
 				<h4 class="heading"
 					title="Testing">Testing</h4>
 				<p>
-					<em>Utils</em> has been tested in older versions of
+					<em>@LIBRARY_NAME@</em> has been tested in older versions of
 					the above along with miscellaneous environments. Support
 					for the preceding is positive, but not qualitative.
 				</p>
@@ -165,7 +165,7 @@
 				<h3 class="heading"
 					title="Style">Style</h3>
 				<p>
-					<em>Utils</em> is written in a style that's subjectively
+					<em>@LIBRARY_NAME@</em> is written in a style that's subjectively
 					easy to read and follow. No line of code exceeds 72 columns;
 					every function's body is 25<a href="#footnote_1"
 						title="Footnote One"><sup>1</sup></a> lines of code or
@@ -176,12 +176,12 @@
 				<h4 class="heading"
 					title="Linters">Linters</h4>
 				<p>
-					<em>Utils</em> passes <a href="http://www.jslint.com"
+					<em>@LIBRARY_NAME@</em> passes <a href="http://www.jslint.com"
 						title="JSLint">JSLint</a> with only two options
 					selected: whitespace and <code>"use strict";</code>.
 				</p>
 				<p>
-					<em>Utils</em> also passes <a href="http://www.jshint.com"
+					<em>@LIBRARY_NAME@</em> also passes <a href="http://www.jshint.com"
 						title="JSHint">JSHint</a> with only
 					<code>"use strict";</code> disabled and
 					no environmental assumptions.
@@ -194,17 +194,17 @@
 					<sup>0</sup>
 				</dt>
 				<dd>
-					<em>Utils</em> is presumed to work well on Chrome versions
+					<em>@LIBRARY_NAME@</em> is presumed to work well on Chrome versions
 					4 and up. However, due to Chrome's intrusive installation,
 					only one version can be installed per virtual machine.
 					As only four virtual machines utilized for the testing of
-					<em>Utils</em> can run Chrome, only four versions can be tested.
+					<em>@LIBRARY_NAME@</em> can run Chrome, only four versions can be tested.
 				</dd>
 				<dt id="footnote_1">
 					<sup>1</sup>
 				</dt>
 				<dd>
-					<em>Utils</em> is authored
+					<em>@LIBRARY_NAME@</em> is authored
 					with a strict ceiling of 20 lines of code per function body,
 					but some difficult cases remain.
 				</dd>
