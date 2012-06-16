@@ -160,7 +160,7 @@
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
-						Method that "appends" a <a href="glossary.html#node_like_object"
+						Method that &ldquo;appends&rdquo; a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
 						(via <code>appendChild</code>) to a parent <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>.
@@ -239,7 +239,7 @@
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
-						Method that "removes" a <a href="glossary.html#node_like_object"
+						Method that &ldquo;removes&rdquo; a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
 						(via <code>removeChild</code>) from a parent
 						<a href="glossary.html#node_like_object"
@@ -280,7 +280,7 @@
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
-						Method that "replaces" a <a href="glossary.html#node_like_object"
+						Method that &ldquo;replaces&rdquo; a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
 						(via <code>replaceChild</code>) with a new
 						<a href="glossary.html#node_like_object"
@@ -336,11 +336,11 @@
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
-						Method that "clones" a <a href="glossary.html#node_like_object"
+						Method that &ldquo;clones&rdquo; a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
-						(via <code>cloneNode</code>); performs a "shallow"
-						(one level) "clone" if <var>deep</var> is false; performs
-						a "deep" (recursive) "clone" if <var>deep</var> is true.
+						(via <code>cloneNode</code>); performs a &ldquo;shallow&rdquo;
+						(one level) &ldquo;clone&rdquo; if <var>deep</var> is false; performs
+						a &ldquo;deep&rdquo; (recursive) &ldquo;clone&rdquo; if <var>deep</var> is true.
 					</dd>
 					<dt>
 						<var>obj</var>
@@ -348,14 +348,14 @@
 					<dd>
 						A <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
-						that will be "cloned".
+						that will be &ldquo;cloned&rdquo;.
 					</dd>
 					<dt>
 						<var>deep</var>
 					</dt>
 					<dd>
-						A boolean that will determine if a "deep" (recursive)
-						or a "shallow" (one level) "clone" will be performed
+						A boolean that will determine if a &ldquo;deep&rdquo; (recursive)
+						or a &ldquo;shallow&rdquo; (one level) &ldquo;clone&rdquo; will be performed
 						if successful.
 					</dd>
 					@DOCS_RETURN_VALUE@

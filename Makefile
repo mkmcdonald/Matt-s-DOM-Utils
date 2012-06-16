@@ -7,7 +7,9 @@ COMPRESSED = $(BUILDS)/Compressed
 
 # core
 
+LICENSE = $(LIBRARY)/license.js
 UTILS = $(LIBRARY)/utils.js
+METADATA = $(LIBRARY)/metadata.js
 RAISE = $(LIBRARY)/raise.js
 TYPES = $(LIBRARY)/types.js
 IS = $(LIBRARY)/is.js
@@ -21,7 +23,7 @@ CLASSES = $(LIBRARY)/classes.js
 TRAVERSE = $(LIBRARY)/traverse.js
 SELECT = $(LIBRARY)/select.js
 
-CORE_DEP = $(UTILS) $(RAISE) $(TYPES) $(IS)\
+CORE_DEP = $(LICENSE) $(UTILS) $(METADATA) $(RAISE) $(TYPES) $(IS)\
 	$(HELPERS) $(NODE) $(CREATE)
 
 ALL_FILE = $(UNCOMPRESSED)/utils-all.js

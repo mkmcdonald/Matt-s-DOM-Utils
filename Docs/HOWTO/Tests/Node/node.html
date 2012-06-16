@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=UTF-8">
+		<title>Node Test</title>
+		<link href="../../Assets/CSS/tests.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+	</head>
+	<body>
+		<h1>Node Test</h1>
+		<button id="start" type="button">Run Test</button>
+		<button id="stop" type="button">Clear Test</button>
+		<h2>Test Results</h2>
+		<table id="results">
+			<caption>Tabulated Results</caption>
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Description</th>
+					<th>Assertion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="test_1">
+					<td>1.</td>
+					<td><code>Utils.node.prepend</code> returns a node-like object</td>
+					<td id="result_1"></td>
+				</tr>
+				<tr id="test_2">
+					<td>2.</td>
+					<td><code>Utils.node.prependList</code> returns <code>undefined</code></td>
+					<td id="result_2"></td>
+				</tr>
+				<tr id="test_3">
+					<td>3.</td>
+					<td><code>Utils.node.append</code> returns <code>undefined</code></td>
+					<td id="result_3"></td>
+				</tr>
+				<tr id="test_4">
+					<td>4.</td>
+					<td><code>Utils.node.appendList</code> returns <code>undefined</code></td>
+					<td id="result_4"></td>
+				</tr>
+				<tr id="test_5">
+					<td>5.</td>
+					<td><code>Utils.node.remove</code> returns a node-like object</td>
+					<td id="result_5"></td>
+				</tr>
+				<tr id="test_6">
+					<td>6.</td>
+					<td><code>Utils.node.replace</code> returns a node-like object</td>
+					<td id="result_6"></td>
+				</tr>
+				<tr id="test_7">
+					<td>7.</td>
+					<td><code>Utils.node.clone</code> returns a node-like object</td>
+					<td id="result_7"></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>Test Element</h2>
+		<ul id="test">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<script src="../../Builds/Uncompressed/utils-core.js"
+			type="text/javascript"></script>
+		<script src="JS/node.js"
+			type="text/javascript"></script>
+	</body>
+</html>

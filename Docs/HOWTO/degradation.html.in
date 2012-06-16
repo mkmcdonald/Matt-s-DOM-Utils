@@ -3,6 +3,15 @@
 		<title>Matt's DOM Utils (@LIBRARY_NAME@): HOWTO&mdash;Graceful Degradation</title>
 @HOWTO_STYLESHEET@
 @HOWTO_RESOURCES@
+		<link href="./" hreflang="en" media="all"
+			rel="prev" title="HOWTO Index"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="HOWTO Index"
+			type="text/html">
+		<link href="implementation.html" hreflang="en" media="all"
+			rel="next" title="HOWTO: Implementation"
+			type="text/html">
 @BODY@
 @HOWTO_HEADER@
 @HOWTO_NAV@
@@ -12,6 +21,16 @@
 					title="HOWTO: Graceful Degradation">
 					HOWTO: Graceful Degradation
 				</h2>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="./" rel="prev"
+					title="Previous">&larr;HOWTO Index</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="implementation.html" rel="next"
+					title="Next">HOWTO: Implementation&rarr;</a>
 			</div>
 		</div>
 		<div class="column primary_column">
@@ -135,7 +154,7 @@
 					</li>
 					<li>
 						<a href="#conclusion"
-							title="Conclusion">Conclusion</a>
+							title="Conclusions">Conclusions</a>
 						<ol>
 							<li>
 								<a href="#javascript_library"
@@ -157,8 +176,10 @@
 				</h3>
 				<p>
 					&ldquo;Graceful Degradation&rdquo; is a phrase that describes a process
-					triggered by a web client at runtime. To grasp <em>Graceful Degradation</em>,
-					one must first grasp the web client.
+					triggered by a web client at runtime. The process enables a page to continue
+					working even after erring. A page thereby often reverts to static content because
+					insufficient support was detected. To grasp <em>Graceful Degradation</em>, one
+					must first grasp the web client.
 				</p>
 				<blockquote cite="http://groups.google.com/group/comp.lang.javascript/msg/60a6bb437e54f282">
 					<p class="quotation">
@@ -282,7 +303,7 @@ document.body.appendChild(img);</pre>
 							to read. Another example is an external script file that fails to load.
 							This snippet is an example:
 						</p>
-						<pre>if (typeof Library === "object") {
+						<pre>if (typeof Library === "object" &amp;&amp; Library) {
 	// `Library` script was loaded.
 	(function () {
 		// application code here
@@ -469,7 +490,7 @@ var keys = Object.keys({});</pre>
 			keys[keys.length] = key;
 		}
 	}
-	return obj;
+	return keys;
 }</pre>
 						<p>
 							could be used as an alternative in order
@@ -826,10 +847,10 @@ startShow();</pre>
 				</div>
 			</div>
 			<hr>
-			<div class="cell primary_cell" id="conclusion">
+			<div class="cell primary_cell" id="conclusions">
 				<h3 class="heading">
-					<a href="#conclusion"
-						title="Conclusion">Conclusion</a>
+					<a href="#conclusions"
+						title="Conclusions">Conclusions</a>
 				</h3>
 				<p>
 					Two different environments can, and probably will
@@ -847,7 +868,7 @@ startShow();</pre>
 					<p>
 						Earlier, code for an example &ldquo;slideshow&rdquo; 
 						was written. However, it doesn't quite gracefully degrade.
-						Using <em>@LIBRARY_NAME</em>, <em>Graceful Degradation</em>
+						Using <em>@LIBRARY_NAME@</em>, <em>Graceful Degradation</em>
 						can be achieved. Here is a revised version:
 					</p>
 					<pre>
@@ -916,12 +937,10 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 		{
 			var key = "clearTimeout",
 				result = null;
-			if (@LIBRARY_NAME@.is.hostObject) {
-				if (@LIBRARY_NAME@.is.hostObject(global[key])) {
-					result = global[key](
-						ref
-					);
-				}
+			if (@LIBRARY_NAME@.is.hostObject(global[key])) {
+				result = global[key](
+					ref
+				);
 			}
 			return result;
 		}
@@ -940,13 +959,11 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 		{
 			var key = "setTimeout",
 				result = null;
-			if (@LIBRARY_NAME@.is.hostObject) {
-				if (@LIBRARY_NAME@.is.hostObject(global[key])) {
-					result = global[key](
-						callback,
-						time
-					);
-				}
+			if (@LIBRARY_NAME@.is.hostObject(global[key])) {
+				result = global[key](
+					callback,
+					time
+				);
 			}
 			return result;
 		}
@@ -1106,6 +1123,20 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 							title="My Library">My Library</a>
 					</dd>
 				</dl>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="./" rel="prev"
+					title="Previous">&larr;HOWTO Index</a>
+			</div>
+			<div class="cell index_link primary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to HOWTO Index</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="implementation.html" rel="next"
+					title="Next">HOWTO: Implementation&rarr;</a>
 			</div>
 		</div>
 @FOOTER@

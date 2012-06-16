@@ -1,56 +1,60 @@
 <?php
 	namespace
 	{
-		define("LIBRARY", "../Library");
 		define("BUILDS", "../Builds");
+		define("UNCOMPRESSED", BUILDS . "/Uncompressed");
 		define("COMPRESSED", BUILDS . "/Compressed");
 
 		$core = array(
+			"license" => array(
+				"full" => UNCOMPRESSED . "/license.js",
+				"min" => UNCOMPRESSED . "/license.js"
+			),
 			"utils" => array(
-				"full" => LIBRARY . "/utils.js",
+				"full" => UNCOMPRESSED . "/utils.js",
 				"min" => COMPRESSED . "/utils-min.js"
 			),
+			"metadata" => array(
+				"full" => UNCOMPRESSED . "/metadata.js",
+				"min" => COMPRESSED . "/metadata-min.js"
+			),
 			"raise" => array(
-				"full" => LIBRARY . "/raise.js",
+				"full" => UNCOMPRESSED . "/raise.js",
 				"min" => COMPRESSED . "/raise-min.js"
 			),
 			"types" => array(
-				"full" => LIBRARY . "/types.js",
+				"full" => UNCOMPRESSED . "/types.js",
 				"min" => COMPRESSED . "/types-min.js"
 			),
 			"is" => array(
-				"full" => LIBRARY . "/is.js",
+				"full" => UNCOMPRESSED . "/is.js",
 				"min" => COMPRESSED . "/is-min.js"
 			),
-			"can" => array(
-				"full" => LIBRARY . "/can.js",
-				"min" => COMPRESSED . "/can-min.js"
-			),
 			"helpers" => array(
-				"full" => LIBRARY . "/helpers.js",
+				"full" => UNCOMPRESSED . "/helpers.js",
 				"min" => COMPRESSED . "/helpers-min.js"
 			),
 			"node" => array(
-				"full" => LIBRARY . "/node.js",
+				"full" => UNCOMPRESSED . "/node.js",
 				"min" => COMPRESSED . "/node-min.js"
 			),
 			"create" => array(
-				"full" => LIBRARY . "/create.js",
+				"full" => UNCOMPRESSED . "/create.js",
 				"min" => COMPRESSED . "/create-min.js"
 			)
 		);
 
 		$optional = array(
 			"classes" => array(
-				"full" => LIBRARY . "/classes.js",
+				"full" => UNCOMPRESSED . "/classes.js",
 				"min" => COMPRESSED . "/classes-min.js"
 			),
 			"traverse" => array(
-				"full" => LIBRARY . "/traverse.js",
+				"full" => UNCOMPRESSED . "/traverse.js",
 				"min" => COMPRESSED . "/traverse-min.js"
 			),
 			"select" => array(
-				"full" => LIBRARY . "/select.js",
+				"full" => UNCOMPRESSED . "/select.js",
 				"min" => COMPRESSED . "/select-min.js"
 			)
 		);
@@ -85,10 +89,19 @@
 			return $fetched;
 		}
 
+		function fetchMinStatus()
+		{
+			return array_key_exists(
+				"minify_build",
+				$_GET
+			);
+		}
+
 		function determineBuildForm(
 			$min
 		)
 		{
+			$min = fetchMinStatus();
 			$form = "";
 			if ($min) {
 				$form = "min";
@@ -99,7 +112,6 @@
 		}
 
 		function queueCore(
-			$min,
 			$core,
 			$queue
 		)
@@ -116,7 +128,6 @@
 		}
 
 		function queueOptional(
-			$min,
 			$optional,
 			$queue
 		)
@@ -142,36 +153,20 @@
 		}
 
 		function runQueues(
-			$min,
 			$core,
 			$optional
 		)
 		{
 			$queue = "";
 			$queue = queueCore(
-				$min,
 				$core,
 				$queue
 			);
 			$queue = queueOptional(
-				$min,
 				$optional,
 				$queue
 			);
 			return $queue;
-		}
-
-		function encodeBuild(
-			$gzip,
-			$build
-		)
-		{
-			$data = "Content-Encoding: gzip, deflate";
-			if ($gzip) {
-				$build = gzencode($build, 9);
-				header($data);
-			}
-			return $build;
 		}
 
 		function sendStatusHeader()
@@ -194,66 +189,34 @@
 				strlen($build));
 		}
 
-		function determineBuildName(
-			$min,
-			$gzip
-		)
+		function determineBuildName()
 		{
+			$min = fetchMinStatus();
 			$name = "utils-build";
 			if ($min) {
 				$name .= "-min";
-			}
-			if ($gzip) {
-				$name .= "-gzip";
 			}
 			$name .= ".js";
 			return $name;
 		}
 
-		function sendDispositionHeader(
-			$min,
-			$gzip
-		)
+		function sendDispositionHeader()
 		{
-			$name = determineBuildName(
-				$min,
-				$gzip
-			);
+			$name = determineBuildName();
 			header("Content-Disposition: attachment;" .
 				"filename=" . $name);
 		}
 
 		function deliverBuild(
-			$build,
-			$min,
-			$gzip
+			$build
 		)
 		{
-			$build = encodeBuild($gzip, $build);
 			sendStatusHeader();
 			sendTypeHeader();
 			sendLengthHeader($build);
-			sendDispositionHeader(
-				$min,
-				$gzip
-			);
+			sendDispositionHeader();
+			ob_start("ob_gzhandler");
 			echo $build;
-		}
-
-		function fetchMinStatus()
-		{
-			return array_key_exists(
-				"minify_build",
-				$_GET
-			);
-		}
-
-		function fetchGzipStatus()
-		{
-			return array_key_exists(
-				"gzip_build",
-				$_GET
-			);
 		}
 
 		function checkPost(
@@ -261,17 +224,12 @@
 			$optional
 		)
 		{
-			$min = fetchMinStatus();
-			$gzip = fetchGzipStatus();
 			$queue = runQueues(
-				$min,
 				$core,
 				$optional
 			);
 			deliverBuild(
-				$queue,
-				$min,
-				$gzip
+				$queue
 			);
 		}
 

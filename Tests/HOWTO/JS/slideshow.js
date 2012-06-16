@@ -49,7 +49,7 @@ if (typeof Utils === "object" && Utils) {
 				link = commonElements.link;
 			if (slide && link) {
 				slide.alt = "Feature" + slideIndex;
-				slide.src = "images/feature" +
+				slide.src = "../../Assets/Images/Tests/feature" +
 					slideIndex + ".jpg";
 				link.href = "http://localhost/feature" +
 					slideIndex + ".html";
@@ -63,12 +63,10 @@ if (typeof Utils === "object" && Utils) {
 		{
 			var key = "clearTimeout",
 				result = null;
-			if (Utils.is.hostObject) {
-				if (Utils.is.hostObject(global[key])) {
-					result = global[key](
-						ref
-					);
-				}
+			if (Utils.is.hostObject(global[key])) {
+				result = global[key](
+					ref
+				);
 			}
 			return result;
 		}
@@ -87,13 +85,11 @@ if (typeof Utils === "object" && Utils) {
 		{
 			var key = "setTimeout",
 				result = null;
-			if (Utils.is.hostObject) {
-				if (Utils.is.hostObject(global[key])) {
-					result = global[key](
-						callback,
-						time
-					);
-				}
+			if (Utils.is.hostObject(global[key])) {
+				result = global[key](
+					callback,
+					time
+				);
 			}
 			return result;
 		}

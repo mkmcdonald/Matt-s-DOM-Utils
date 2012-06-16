@@ -1,17 +1,39 @@
+/**
+ * Copyright (C) 2012 Matt McDonald.
+ *
+ * Matt's DOM Utils (Utils) is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * Lesser General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Matt's DOM Utils (Utils) is distributed in the hope
+ * that it will be useful, but WITHOUT ANY WARRANTY; without
+ * even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General
+ * Public License along with Matt's DOM Utils (Utils).
+ * If not, see <http://www.gnu.org/licenses/>.
+ */
+
 var Utils = Utils || {},
 	global = global || this;
+
+
 /**
  * @title Matt's DOM Utils
  * @see http://www.fortybelow.ca/projects/JavaScript/Utils/
  *
  * @description
- * A collection of widely-tested DOM utilities and modules
+ * A collection of widely tested DOM utilities and modules
  * that work in a maximal amount of environments.
  *
  * @author Matt McDonald
  * @contact ["Utils".toLowerCase();]@fortybelow.ca
  * @see http://www.fortybelow.ca
-*/
+ */
 
 /*
         jslint sloppy: true, white: true, maxerr: 1,
@@ -430,14 +452,13 @@ if (Utils) {
                 * @private
                 *
                 * @description
-                * Object containing types considered associated with
-                * host objects.
+                * Object containing "normal" types associated with
+                * host objects (exludes "unknown").
                 */
 
 		hostTypes = {
 			"object": true,
-			"function": true,
-			"unknown": true
+			"function": true
 		};
 
                /**
@@ -490,16 +511,23 @@ if (Utils) {
                 *
                 * @description
                 * Method that returns a boolean asserting if the
-                * specified object is a host-like object (by having
-                * a "type" of "object", "function" or "unknown").
+                * specified object is a host-like object (by passing
+                * one of two assertions:
+		* a) a `typeof` result of "object" or "function"
+		* along with "truthiness";
+		* b) a `typeof` result of "unknown".
+		*
+                * @param obj Object
+                * An object to assert.
                 */
 
 		function isHostObject(
 			obj
 		)
 		{
-			var type = typeof obj;
-			return hostTypes[type];
+			var type = typeof obj,
+				normal = hostTypes[type] && obj;
+			return !!(normal || type === "unknown");
 		}
 
                /**
@@ -518,8 +546,9 @@ if (Utils) {
 		)
 		{
 			var type = typeof obj,
+				normal = hostTypes[type] && obj,
 				result = false;
-			if (obj && hostTypes[type]) {
+			if (normal || type === "unknown") {
 				result = typeof obj.length ===
 					"number";
 			}
@@ -542,8 +571,9 @@ if (Utils) {
 		)
 		{
 			var type = typeof obj,
+				normal = hostTypes[type] && obj,
 				result = false;
-			if (obj && hostTypes[type]) {
+			if (normal || type === "unknown") {
 				result = typeof obj.nodeType ===
 					"number";
 			}
@@ -572,8 +602,9 @@ if (Utils) {
 		)
 		{
 			var type = typeof obj,
+				normal = hostTypes[type] && obj,
 				result = false;
-			if (obj && hostTypes[type]) {
+			if (normal || type === "unknown") {
 				result = obj.nodeType === num;
 			}
 			return result;
@@ -1792,7 +1823,6 @@ if (Utils) {
 		canCallDocFrag = (function () {
 			var key = "createDocumentFragment",
 				result = canUseDocFrag;
-			// NOTE: in IE 5, doc.cDF is uncallable.
 			if (canUseDocFrag) {
 				try {
 					doc[key]();

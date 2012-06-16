@@ -1,6 +1,9 @@
 AC_INIT([Utils], [0.0], [utils@fortybelow.ca])
 AC_CONFIG_FILES([
+	"Templates/license"
+	"Library/license.js"
 	"Library/utils.js"
+	"Library/metadata.js"
 	"Library/raise.js"
 	"Library/types.js"
 	"Library/is.js"
@@ -25,6 +28,7 @@ AC_CONFIG_FILES([
 	"Docs/glossary.html"
 	"Docs/HOWTO/index.html"
 	"Docs/HOWTO/degradation.html"
+	"Docs/HOWTO/implementation.html"
 	"Tests/index.html"
 	"Tests/Node/node.html"
 	"Tests/Node/JS/node.js"
@@ -47,6 +51,9 @@ AC_CONFIG_FILES([
 
 AC_SUBST(LIBRARY_NAME)
 LIBRARY_NAME="Utils";
+
+AC_SUBST_FILE(LICENSE)
+LICENSE="Templates/license";
 
 AC_SUBST_FILE(BEGIN)
 BEGIN="Templates/begin";

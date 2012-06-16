@@ -188,7 +188,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 				try {
 					result = test();
 					result = String(result);
-				} catch (e) {
+				} catch (err) {
 					result = "ERROR";
 				}
 				addMessage(result, key);

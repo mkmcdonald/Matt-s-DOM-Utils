@@ -431,7 +431,6 @@ if (Utils) {
 		canCallDocFrag = (function () {
 			var key = "createDocumentFragment",
 				result = canUseDocFrag;
-			// NOTE: in IE 5, doc.cDF is uncallable.
 			if (canUseDocFrag) {
 				try {
 					doc[key]();

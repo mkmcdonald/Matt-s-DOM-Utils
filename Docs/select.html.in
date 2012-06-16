@@ -236,7 +236,7 @@ if (@LIBRARY_NAME@.select.byClassName) {
 						from the caller's
 						<a href="glossary.html#subtree"
 							title="Subtree">subtree</a>
-						with matching class "name(s)".
+						with matching class &ldquo;name(s)&rdquo;.
 					</dd>
 					<dt>
 						<var>caller</var>
@@ -251,7 +251,7 @@ if (@LIBRARY_NAME@.select.byClassName) {
 						<var>names</var>
 					</dt>
 					<dd>
-						A string containing the class "name(s)" to search for.
+						A string containing the class &ldquo;name(s)&rdquo; to search for.
 					</dd>
 					@DOCS_RETURN_VALUE@
 					<dd>

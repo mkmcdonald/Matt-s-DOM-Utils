@@ -54,7 +54,7 @@
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
 					<dd>
-						Method to create a "static"
+						Method to create a &ldquo;static&rdquo;
 						<a href="glossary.html#array_like_object"
 							title="Array-like Object">array-like object</a>
 						from

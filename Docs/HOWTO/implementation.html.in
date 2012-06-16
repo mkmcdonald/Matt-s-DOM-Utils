@@ -1,0 +1,336 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): HOWTO&mdash;Implementation</title>
+@HOWTO_STYLESHEET@
+@HOWTO_RESOURCES@
+		<link href="degradation.html" hreflang="en" media="all"
+			rel="prev" title="HOWTO: Graceful Degradation"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="HOWTO Index"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="next" title="HOWTO Index"
+			type="text/html">
+@BODY@
+@HOWTO_HEADER@
+@HOWTO_NAV@
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading"
+					title="HOWTO: Implementation">
+					HOWTO: Implementation
+				</h2>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="degradation.html" rel="prev"
+					title="Previous">&larr;HOWTO: Graceful Degradation</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="./" rel="next"
+					title="Next">HOWTO Index&rarr;</a>
+			</div>
+		</div>
+		<div class="column primary_column">
+			<div class="cell primary_cell" id="table_of_contents">
+				<h3 class="heading">
+					<a href="#table_of_contents"
+						title="Table of Contents">Table of Contents</a>
+				</h3>
+				<ol class="contents_list">
+					<li>
+						<a href="#introduction"
+							title="Introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="#defense"
+							title="Defense">Defense</a>
+						<ol>
+							<li>
+								<a href="#initial_assertion"
+									title="Initial Assertion">Initial Assertion</a>
+							</li>
+							<li>
+								<a href="#wrappers"
+									title="Wrappers">Wrappers</a>
+								<ol>
+									<li>
+										<a href="#result_assertions"
+											title="Result Assertions">Result Assertions</a>
+									</li>
+								</ol>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#conclusions"
+							title="Conclusions">Conclusions</a>
+						<ol>
+							<li>
+								<a href="#demo"
+									title="Demo">Demo</a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</div>
+			<hr>
+			<div class="cell primary_cell" id="introduction">
+				<h3 class="heading">
+					<a href="#introduction"
+						title="Introduction">Introduction</a>
+				</h3>
+				<p>
+					Implementing a DOM library can be as simple as
+					a method invocation. However, <em>@LIBRARY_NAME@</em>
+					requires care to implement properly.
+				</p>
+			</div>
+			<hr>
+			<div class="cell primary_cell" id="defense">
+				<h3 class="heading">
+					<a href="#defense"
+						title="Defense">Defense</a>
+				</h3>
+				<p>
+					In order to derive optimal success from <em>@LIBRARY_NAME@</em>,
+					defensive tactics must be used. They are listed below.
+				</p>
+				<div id="initial_assertion">
+					<h4 class="heading">
+						<a href="#initial_assertion"
+							title="Initial Assertion">Initial Assertion</a>
+					</h4>
+					<p>
+						The most important step in implementing <em>@LIBRARY_NAME@</em>
+						is asserting its existence before running application code.
+						The following example:
+					</p>
+					<pre>if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
+	(function () {
+		// application code
+	}());
+}</pre>
+					<p>
+						illustrates how one assertion can enable a script to gracefully
+						degrade when its core dependency does not exist; whereas a
+						similar script without the assertion can err.
+					</p>
+				</div>
+				<div id="wrappers">
+					<h4 class="heading">
+						<a href="#wrappers"
+							title="Wrappers">Wrappers</a>
+					</h4>
+					<p>
+						Wrappers are an important step in implementing <em>@LIBRARY_NAME@</em>.
+						Their use enables safe degradation of the &ldquo;dynamic interface&rdquo;,
+						meaning properties whose value is determined at run time. This example:
+					</p>
+					<pre>function createText(
+	doc,
+	text
+)
+{
+	var result = null;
+	if (@LIBRARY_NAME@.create.text) {
+		result = @LIBRARY_NAME@.create.text(
+			doc,
+			text
+		);
+	}
+	return result;
+}</pre>
+					<p>
+						is one instance wherein a method of the &ldquo;dynamic interface&rdquo;
+						can safely be called, and degrade if unavailable.
+					</p>
+					<div id="result_assertions">
+						<h5 class="heading">
+							<a href="#result_assertions"
+								title="Result Assertions">Result Assertions</a>
+						</h5>
+						<p>
+							However, results of API invocations should also be
+							asserted before use. In conjunction with wrappers,
+							this strategy should be a large factor in an implementation
+							of <em>@LIBRARY_NAME@</em>. The snippet below:
+						</p>
+						<pre>function createText(
+	doc,
+	text
+)
+{
+	var result = null;
+	if (@LIBRARY_NAME@.create.text) {
+		result = @LIBRARY_NAME@.create.text(
+			doc,
+			text
+		);
+	}
+	return result;
+}
+
+function appendNode(
+	par,
+	node
+)
+{
+	return @LIBRARY_NAME@.node.append(
+		par,
+		node
+	);
+}
+
+function appendText(
+	text,
+	par
+)
+{
+	var node = createText(
+		global.document,
+		text
+	);
+	if (node) {
+		appendNode(
+			par,
+			node
+		);
+	}
+}</pre>
+						<p>
+							is an example of wrappers used in conjuction with result
+							assertions. A text <a href="../glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							is appended to a <a href="../glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							if the specified creational method exists with a successful
+							result.
+						</p>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="cell primary_cell" id="conclusions">
+				<h3 class="heading">
+					<a href="#conclusions"
+						title="Conclusions">Conclusions</a>
+				</h3>
+				<p>
+					Whilst <em>Graceful Degradation</em> requires a great amount of effort
+					to achieve, use of <em>@LIBRARY_NAME@</em> simplifies degradation of
+					scripts. The result is highly flexible code, which is unencumbered
+					by respectable environments.
+				</p>
+				<div id="demo">
+					<h4 class="heading">
+						<a href="#demo"
+							title="Demo">Demo</a>
+					</h4>
+					<p>
+						To demonstrate an implementation of <em>@LIBRARY_NAME@</em>,
+						a full example is provided below:
+					</p>
+					<pre>var global = global || this;
+if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
+	(function () {
+		function createText(
+			doc,
+			text
+		)
+		{
+			var result = null;
+			if (@LIBRARY_NAME@.create.text) {
+				result = @LIBRARY_NAME@.create.text(
+					doc,
+					text
+				);
+			}
+			return result;
+		}
+
+		function appendNode(
+			par,
+			node
+		)
+		{
+			return @LIBRARY_NAME@.node.append(
+				par,
+				node
+			);
+		}
+
+		function appendText(
+			par,
+			text
+		)
+		{
+			var node = createText(
+				global.document,
+				text
+			);
+			if (node) {
+				appendNode(
+					par,
+					node
+				);
+			}
+		}
+
+		function selectBody(
+			doc
+		)	
+		{
+			var result = null;
+			if (@LIBRARY_NAME@.select.body) {
+				result = @LIBRARY_NAME@.select.body(
+					doc
+				);
+			}
+			return result;
+		}
+
+		function addBodyText(
+			text
+		)
+		{
+			var body = selectBody(global.document);
+			if (body) {
+				appendText(
+					body,
+					text
+				);
+			}
+		}
+
+		addBodyText("foo\r\n");
+		addBodyText("bar\r\n");
+		addBodyText("baz\r\n");
+	}());
+}</pre>
+				<p>
+					which can be found in a test page at the following
+					link: <a href="../../Tests/HOWTO/text.html"
+							title="Slideshow">../../Tests/HOWTO/text.html</a>.
+				</p>
+				</div>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="degradation.html" rel="prev"
+					title="Previous">&larr;HOWTO: Graceful Degradation</a>
+			</div>
+			<div class="cell index_link primary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to HOWTO Index</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="./" rel="next"
+					title="Next">HOWTO Index&rarr;</a>
+			</div>
+		</div>
+@FOOTER@
+@END@

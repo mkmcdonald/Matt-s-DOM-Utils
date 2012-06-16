@@ -72,7 +72,7 @@
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
-						child nodes and collects them in a "static"
+						child nodes and collects them in a &ldquo;static&rdquo;
 						<a href="glossary.html#array_like_object"
 							title="Array-like Object">array-like object</a>.
 					</dd>
@@ -204,7 +204,7 @@ if (@LIBRARY_NAME@.traverse.getElements) {
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
-						"children" and collects them in a static
+						&ldquo;children&rdquo; and collects them in a &ldquo;static&rdquo;
 						array.
 					</dd>
 					<dt>
@@ -238,7 +238,7 @@ if (@LIBRARY_NAME@.traverse.getElements) {
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
-						"children" and calls a callback with the
+						&ldquo;children&rdquo; and calls a callback with the
 						current node passed.
 					</dd>
 					<dt>
@@ -272,7 +272,7 @@ if (@LIBRARY_NAME@.traverse.getElements) {
 					<dd>
 						Method that traverses a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
-						"children" and removes them.
+						&ldquo;children&rdquo; and removes them.
 					</dd>
 					<dt>
 						<var>obj</var>

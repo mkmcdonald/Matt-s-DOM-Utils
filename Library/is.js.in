@@ -23,14 +23,13 @@ if (@LIBRARY_NAME@) {
                 * @private
                 *
                 * @description
-                * Object containing types considered associated with
-                * host objects.
+                * Object containing "normal" types associated with
+                * host objects (exludes "unknown").
                 */
 
 		hostTypes = {
 			"object": true,
-			"function": true,
-			"unknown": true
+			"function": true
 		};
 
                /**
@@ -83,16 +82,23 @@ if (@LIBRARY_NAME@) {
                 *
                 * @description
                 * Method that returns a boolean asserting if the
-                * specified object is a host-like object (by having
-                * a "type" of "object", "function" or "unknown").
+                * specified object is a host-like object (by passing
+                * one of two assertions:
+		* a) a `typeof` result of "object" or "function"
+		* along with "truthiness";
+		* b) a `typeof` result of "unknown".
+		*
+                * @param obj Object
+                * An object to assert.
                 */
 
 		function isHostObject(
 			obj
 		)
 		{
-			var type = typeof obj;
-			return hostTypes[type];
+			var type = typeof obj,
+				normal = hostTypes[type] && obj;
+			return !!(normal || type === "unknown");
 		}
 
                /**
@@ -111,8 +117,9 @@ if (@LIBRARY_NAME@) {
 		)
 		{
 			var type = typeof obj,
+				normal = hostTypes[type] && obj,
 				result = false;
-			if (obj && hostTypes[type]) {
+			if (normal || type === "unknown") {
 				result = typeof obj.length ===
 					"number";
 			}
@@ -135,8 +142,9 @@ if (@LIBRARY_NAME@) {
 		)
 		{
 			var type = typeof obj,
+				normal = hostTypes[type] && obj,
 				result = false;
-			if (obj && hostTypes[type]) {
+			if (normal || type === "unknown") {
 				result = typeof obj.nodeType ===
 					"number";
 			}
@@ -165,8 +173,9 @@ if (@LIBRARY_NAME@) {
 		)
 		{
 			var type = typeof obj,
+				normal = hostTypes[type] && obj,
 				result = false;
-			if (obj && hostTypes[type]) {
+			if (normal || type === "unknown") {
 				result = obj.nodeType === num;
 			}
 			return result;

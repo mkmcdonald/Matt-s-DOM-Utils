@@ -1,30 +1,52 @@
 #!/bin/bash
 
+FULL="Builds/Uncompressed/";
+MIN="Builds/Compressed/";
+
 compress ()
 {
-	FULL="Builds/Uncompressed/";
-	MIN="Builds/Compressed/";
 	INPUT="$1.js";
-	OUTPUT="$1-min.js";
+	MIN_OUTPUT="${MIN}$1-min.js";
 	yui-compressor --type js --charset utf-8\
-		-o ${MIN}$OUTPUT ${FULL}$INPUT;
+		-o $MIN_OUTPUT ${FULL}$INPUT;
 	echo "$INPUT compressed";
 }
 
-begin_compress ()
+compress_parts ()
 {
-	FILES=${@};
-	INDEX=0;
-	while [ $INDEX -lt ${#FILES[@]} ]; do
-		compress ${FILES[$INDEX]};
-		INDEX=$[ $INDEX + 1 ];
+	PARTS="${@}";
+	PART_INDEX=0;
+	while [ $PART_INDEX -lt ${#PARTS[@]} ]; do
+		compress ${PARTS[$PART_INDEX]};
+		PART_INDEX=$[ $PART_INDEX + 1 ];
 	done
 }
 
-init ()
+add_license ()
 {
-	FILES=(
+	NAME="$1-min.js";
+	INPUT="${MIN}$NAME";
+	LICENSE="${FULL}license.js";
+	cat $LICENSE $INPUT > "${MIN}temp";
+	mv "${MIN}temp" $INPUT;
+}
+
+compress_builds ()
+{
+	BUILDS="${@}";
+	BUILD_INDEX=0;
+	while [ $BUILD_INDEX -lt ${#BUILDS[@]} ]; do
+		compress ${BUILDS[$BUILD_INDEX]};
+		add_license ${BUILDS[$BUILD_INDEX]};
+		BUILD_INDEX=$[ $BUILD_INDEX + 1 ];
+	done
+}
+
+begin_parts ()
+{
+	PARTS=(
 		"utils"
+		"metadata"
 		"raise"
 		"types"
 		"helpers"
@@ -34,13 +56,26 @@ init ()
 		"classes"
 		"traverse"
 		"select"
+	);
+	compress_parts "${PARTS[@]}";
+}
+
+begin_builds ()
+{
+	BUILDS=(
 		"utils-core"
 		"utils-classes"
 		"utils-traverse"
 		"utils-select"
 		"utils-all"
 	);
-	begin_compress ${FILES[@]};
+	compress_builds "${BUILDS[@]}";
+}
+
+init ()
+{
+	begin_parts;
+	begin_builds;
 }
 
 init;

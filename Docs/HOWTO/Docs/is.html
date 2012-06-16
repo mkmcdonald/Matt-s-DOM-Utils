@@ -1,0 +1,493 @@
+		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.is</title>
+		<link href="types.html" hreflang="en" media="all"
+			rel="prev" title="Utils.types"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="Documentation Index"
+			type="text/html">
+		<link href="helpers.html" hreflang="en" media="all"
+			rel="next" title="Utils.helpers"
+			type="text/html">
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="types.html" rel="prev"
+					title="Previous">&larr;<code>Utils.types</code></a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="helpers.html" rel="next"
+					title="Next"><code>Utils.helpers</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Utils.is">
+					<code>Utils.is</code>
+				</h2>
+				<div class="module_info" id="dependencies">
+					<h3 class="heading">
+						<a href="#dependencies"
+							title="Dependencies">Dependencies</a>
+					</h3>
+					<ol>
+						<li>
+							<a href="./types.html"
+								title="Utils.types"><code>Utils.types</code></a>
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+		<ul class="doc_row row">
+			<li class="cell doc_cell doc_entry" id="type">
+				<h3 class="heading">
+					<a href="#type"
+						title="Utils.is.type"><code>Utils.is.type</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>val</var>, <var>type</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that performs a <code>typeof</code>
+						check on the given value, then checks if the
+						result is equal to the given type.
+					</dd>
+					<dt>
+						<var>val</var>
+					</dt>
+					<dd>
+						A value.
+					</dd>
+					<dt>
+						<var>type</var>
+					</dt>
+					<dd>
+						A string to be compared against a <code>typeof</code>
+						check of <var>val</var>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="host_object">
+				<h3 class="heading">
+					<a href="#host_object"
+						title="Utils.is.hostObject"><code>Utils.is.hostObject</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if an object resembles
+						a <a href="glossary.html#host_like_object"
+							title="Host-like Object">host-like object</a>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						An object.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="array_like">
+				<h3 class="heading">
+					<a href="#array_like"
+						title="Utils.is.arrayLike"><code>Utils.is.arrayLike</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if an object resembles
+						an <a href="glossary.html#array_like_object"
+							title="Array-like Object">array-like object</a>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						An object.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="node_like">
+				<h3 class="heading">
+					<a href="#node_like"
+						title="Utils.is.nodeLike"><code>Utils.is.nodeLike</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if an object resembles
+						a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						An object.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="node_type">
+				<h3 class="heading">
+					<a href="#node_type"
+						title="Utils.is.nodeType"><code>Utils.is.nodeType</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>type</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						has a <code>nodeType</code> property with a certain
+						numeric value.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>type</var>
+					</dt>
+					<dd>
+						A number that is the suggested <code>nodeType</code>
+						value.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="element">
+				<h3 class="heading">
+					<a href="#element"
+						title="Utils.is.element"><code>Utils.is.element</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles an element node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="attribute">
+				<h3 class="heading">
+					<a href="#attribute"
+						title="Utils.is.attribute"><code>Utils.is.attribute</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles an attribute node (via a <code>nodeType</code> check).
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="text">
+				<h3 class="heading">
+					<a href="#text"
+						title="Utils.is.text"><code>Utils.is.text</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles a text <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						(via a <code>nodeType</code> check.)
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="cdata_section">
+				<h3 class="heading">
+					<a href="#cdata_section"
+						title="Utils.is.cDataSection"><code>Utils.is.cDataSection</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles a cDataSection node (via a <code>nodeType</code> check.)
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="entity_reference">
+				<h3 class="heading">
+					<a href="#entity_reference"
+						title="Utils.is.entityReference"><code>Utils.is.entityReference</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles an entityReference node (via a <code>nodeType</code> check.)
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="entity">
+				<h3 class="heading">
+					<a href="#entity"
+						title="Utils.is.entity"><code>Utils.is.entity</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles an entity node (via a <code>nodeType</code> check.)
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="processing_instruction">
+				<h3 class="heading">
+					<a href="#processing_instruction"
+						title="Utils.is.processingInstruction"><code>Utils.is.processingInstruction</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles a processingInstruction node (via a <code>nodeType</code> check.)
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="comment">
+				<h3 class="heading">
+					<a href="#comment"
+						title="Utils.is.comment"><code>Utils.is.comment</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles a comment node (via a <code>nodeType</code> check.)
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="document">
+				<h3 class="heading">
+					<a href="#document"
+						title="Utils.is.document"><code>Utils.is.document</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles a document node (via a <code>nodeType</code> check.)
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="document_type">
+				<h3 class="heading">
+					<a href="#document_type"
+						title="Utils.is.documentType"><code>Utils.is.documentType</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles a documentType node (via a <code>nodeType</code> check.)
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="document_fragment">
+				<h3 class="heading">
+					<a href="#document_fragment"
+						title="Utils.is.documentFragment"><code>Utils.is.documentFragment</code></a>
+				</h3>
+				<p class="doc_art function_head">function (ob<var>j</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles a documentFragment node (via a <code>nodeType</code> check.)
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry" id="notation">
+				<h3 class="heading">
+					<a href="#notation"
+						title="Utils.is.notation"><code>Utils.is.notation</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>) {</p>
+				<dl class="doc_list">
+					<dd>
+						Method that determines if a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>
+						resembles a notation node (via a <code>nodeType</code> check.)
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dd>
+						<code>Boolean</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+		</ul>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="types.html" rel="prev"
+					title="Previous">&larr;<code>Utils.types</code></a>
+			</div>
+			<div class="cell index_link primary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to Documentation Index</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="helpers.html" rel="next"
+					title="Next"><code>Utils.helpers</code>&rarr;</a>
+			</div>
+		</div>

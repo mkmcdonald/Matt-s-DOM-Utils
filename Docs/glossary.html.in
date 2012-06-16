@@ -68,8 +68,20 @@
 					@DOCS_DESCRIPTION@
 					<dd>
 						An object resembling a host object, meaning
-						a <code>typeof</code> result of <code>"object"</code>,
-						<code>"function"</code> or <code>"unknown"</code>.
+						an object that passes one of the following two
+						assertions:
+						<ol>
+							<li>
+								A <code>typeof</code> result of
+								&ldquo;object&rdquo; or &ldquo;function&rdquo;
+								along with <a href="#truthy"
+									title="truthiness">&ldquo;truthiness&rdquo;</a>;
+							</li>
+							<li>
+								A <code>typeof</code> result of
+								&ldquo;unknown&rdquo;.
+							</li>
+						</ol>
 					</dd>
 				</dl>
 			</li>
@@ -117,7 +129,7 @@
 					<dd>
 						A parsed tree representing the current document;
 						interfaced with via the DOM; often confused for
-						"the DOM".
+						&ldquo;the DOM&rdquo;.
 					</dd>
 				</dl>
 			</li>

@@ -18,6 +18,7 @@ a:link, a:hover, a:active, a:visited
 ul, ol
 {
 	padding: 0 0 0 2.5em;
+	margin: 0;
 }
 
 ul

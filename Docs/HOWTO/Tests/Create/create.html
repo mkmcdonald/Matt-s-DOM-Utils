@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=UTF-8">
+		<title>Create Test</title>
+		<link href="../../Assets/CSS/tests.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+	</head>
+	<body>
+		<h1>Creation Test</h1>
+		<button id="start" type="button">Run Test</button>
+		<button id="stop" type="button">Clear Test</button>
+		<h2>Test Results</h2>
+		<table id="results">
+			<caption>Tabulated Results</caption>
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Description</th>
+					<th>Assertion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="test_1">
+					<td>1.</td>
+					<td>
+						<code>Utils.create.element</code> returns an element
+							node-like object.
+					</td>
+					<td id="result_1"></td>
+				</tr>
+				<tr id="test_2">
+					<td>2.</td>
+					<td>
+						<code>Utils.create.text</code> returns a text
+							node-like object.
+					</td>
+					<td id="result_2"></td>
+				</tr>
+				<tr id="test_3">
+					<td>3.</td>
+					<td>
+						<code>Utils.create.comment</code> returns a comment
+							node-like object.
+					</td>
+					<td id="result_3"></td>
+				</tr>
+				<tr id="test_4">
+					<td>4.</td>
+					<td>
+						<code>Utils.create.documentFragment</code> returns a
+							document fragment node-like object.
+					</td>
+					<td id="result_4"></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h2>Test Element</h2>
+		<div id="test">
+			<p>
+				The rain in Spain is quite plain.
+			</p>
+		</div>
+		<script src="../../Builds/Uncompressed/utils-core.js"
+			type="text/javascript"></script>
+		<script src="JS/create.js"
+			type="text/javascript"></script>
+	</body>
+</html>
