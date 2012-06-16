@@ -163,7 +163,7 @@
 					<p>
 						Wrappers are an important step in implementing <em>Utils</em>.
 						Their use enables safe degradation of the &ldquo;dynamic interface&rdquo;,
-						meaning properties whose value is determined at runtime. This example:
+						meaning properties whose value is determined at run time. This example:
 					</p>
 					<pre>function createText(
 	doc,
@@ -191,8 +191,8 @@
 						<p>
 							However, results of API invocations should also be
 							asserted before use. In conjunction with wrappers,
-							this strategy should consume most of the interaction
-							with <em>Utils</em>. The snippet below:
+							this strategy should be a large factor in an implementation
+							of <em>Utils</em>. The snippet below:
 						</p>
 						<pre>function createText(
 	doc,
@@ -257,8 +257,8 @@ function appendText(
 				<p>
 					Whilst <em>Graceful Degradation</em> requires a great amount of effort
 					to achieve, use of <em>Utils</em> simplifies degradation of
-					scripts. The result is highly flexible code, which will have little
-					trouble with respectable environments.
+					scripts. The result is highly flexible code, which is unencumbered
+					by respectable environments.
 				</p>
 				<div id="demo">
 					<h4 class="heading">
