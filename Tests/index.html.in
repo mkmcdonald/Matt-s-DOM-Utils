@@ -58,15 +58,15 @@
 				</ul>
 			</li>
 			<li class="cell doc_cell">
-				<a href="./All" title="All Tests">./All</a>	
+				<a href="./Complete" title="Complete Tests">./Complete</a>	
 				<ul class="test_list">
 					<li>
-						<a href="./All/all.html"
-							title="all.html">./All/all.html</a>
+						<a href="./Complete/complete.html"
+							title="complete.html">./Complete/complete.html</a>
 					</li>
 					<li>
-						<a href="./All/all-min.html"
-							title="all-min.html">./All/all-min.html</a>
+						<a href="./Complete/complete-min.html"
+							title="complete-min.html">./Complete/complete-min.html</a>
 					</li>
 				</ul>
 			</li>

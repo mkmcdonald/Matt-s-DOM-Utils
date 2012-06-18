@@ -4,21 +4,26 @@ if (typeof Utils === "object" && Utils) {
 		var doc = global.document,
 			commonElements,
 			tests,
+			testIndex,
+
+			score,
+			testsRun,
 
 			runTests,
 
-			testIndex,
 			tester;
 
-			commonElements = (function () {
-				var key = "getElementById",
-					obj = {};
-				obj.test = doc[key]("test");
-				obj.start = doc[key]("start");
-				obj.stop = doc[key]("stop");
-				obj.results = doc[key]("results");
-				return obj;
-			}());
+		commonElements = (function () {
+			var key = "getElementById",
+				obj = {};
+			obj.test = doc[key]("test");
+			obj.start = doc[key]("start");
+			obj.stop = doc[key]("stop");
+			obj.results = doc[key]("results");
+			obj.tests = doc[key]("tests");
+			obj.score = doc[key]("score");
+			return obj;
+		}());
 
 		doc = null;
 
@@ -132,13 +137,54 @@ if (typeof Utils === "object" && Utils) {
 			];
 		}());
 
+		function resetTestData()
+		{
+			testIndex = 0;
+			score = 0;
+			testsRun = 0;
+		}
+
+		function disableStartButton()
+		{
+			var par = commonElements,
+				button = par.start;
+			button.disabled = true;
+			button.onclick = function () {};
+		}
+
+		function createText(
+			doc,
+			text
+		)
+		{
+			var result = null;
+			if (Utils.create.text) {
+				result = Utils.create.text(
+					doc,
+					text
+				);
+			}
+			return result;
+		}
+
+		function appendNode(
+			par,
+			node
+		)
+		{
+			return Utils.node.append(
+				par,
+				node
+			);
+		}
+
 		function createMessage(text)
 		{
 			var str = String(text);
 			if (str === "") {
 				str = "[an empty string]";
 			}
-			return Utils.create.text(
+			return createText(
 				global.document,
 				str
 			);
@@ -148,7 +194,8 @@ if (typeof Utils === "object" && Utils) {
 			id
 		)
 		{
-			return global.document.getElementById(
+			var key = "getElementById";
+			return global.document[key](
 				id
 			);
 		}
@@ -159,23 +206,66 @@ if (typeof Utils === "object" && Utils) {
 		)
 		{
 			var cell = grabById("result_" + num),
-				row = grabById("test_" + num),
 				text = createMessage(msg);
 			if (cell) {
-				Utils.node.append(
+				appendNode(
 					cell,
 					text
 				);
 			}
+		}
+
+		function updateScore()
+		{
+			var par = commonElements,
+				element = par.score,
+				total = score + " / " + testsRun,
+				text = createMessage(total);
+			if (element && !element.firstChild) {
+				appendNode(
+					element,
+					text
+				);
+			} else if (element && element.firstChild) {
+				element.firstChild.nodeValue = total;
+			}
+		}
+
+		function adjustScore(
+			result,
+			num
+		)
+		{
+
+			var row = grabById("test_" + num);
 			if (row) {
-				if (msg === "true") {
+				if (result === "true") {
 					row.className = "pass";
-				} else if (msg === "false") {
+					score += 1;
+					testsRun += 1;
+				} else if (result === "false") {
 					row.className = "fail";
-				} else if (msg === "ERROR") {
+				} else if (result === "ERROR") {
 					row.className = "error";
+					testsRun += 1;
 				}
 			}
+			updateScore();
+		}
+
+		function addResult(
+			result,
+			num
+		)
+		{
+			addMessage(
+				result,
+				num
+			);
+			adjustScore(
+				result,
+				num
+			);
 		}
 
 		function runTest(
@@ -187,12 +277,33 @@ if (typeof Utils === "object" && Utils) {
 			if (typeof test === "function") {
 				try {
 					result = test();
-					result = String(result);
+					result = String(
+						result
+					);
 				} catch (err) {
 					result = "ERROR";
 				}
-				addMessage(result, key);
+				addResult(
+					result,
+					key
+				);
 			}
+		}
+
+		function makeTimeout(
+			ref,
+			ms
+		)
+		{
+			var key = "setTimeout",
+				result;
+			if (Utils.is.hostObject(global[key])) {
+				result = global[key](
+					ref,
+					ms
+				);
+			}
+			return result;
 		}
 
 		runTests = (function () {
@@ -204,7 +315,7 @@ if (typeof Utils === "object" && Utils) {
 						testIndex + 1
 					);
 					testIndex += 1;
-					tester = global.setTimeout(
+					tester = makeTimeout(
 						runTests,
 						100
 					);
@@ -218,10 +329,32 @@ if (typeof Utils === "object" && Utils) {
 			evt
 		)
 		{
-			testIndex = 0;
+			resetTestData();
 			runTests();
-			this.disabled = true;
-			this.onclick = function () {};
+			disableStartButton();
+		}
+
+		function removeNode(
+			par,
+			node
+		)
+		{
+			return Utils.node.remove(
+				par,
+				par.firstChild
+			);
+		}
+
+		function clearChildNodes(
+			par
+		)
+		{
+			while (par && par.firstChild) {
+				removeNode(
+					par,
+					par.firstChild
+				);
+			}
 		}
 
 		function clearResult(
@@ -232,13 +365,10 @@ if (typeof Utils === "object" && Utils) {
 				row = grabById("test_" + num),
 				index;
 			if (cell && row) {
-				index = cell.childNodes.length - 1;
-				for (index; index > -1; index -= 1) {
-					cell.removeChild(
-						cell.childNodes[index]
-					);
-				}
 				row.className = "";
+				clearChildNodes(
+					cell
+				);
 			}
 		}
 
@@ -247,23 +377,59 @@ if (typeof Utils === "object" && Utils) {
 			var index = 0,
 				max = tests.length;
 			for (index; index < max; index += 1) {
-				clearResult(index + 1);
+				clearResult(
+					index + 1
+				);
 			}
 		}
 
-		function endTests(evt)
+		function resetScore()
 		{
-			global.clearTimeout(tester);
+			var par = commonElements,
+				cell = par.score;
+			clearChildNodes(
+				cell
+			);
+		}
+
+		function enableStartButton()
+		{
+			var par = commonElements,
+				button = par.start;
+			button.disabled = false;
+			button.onclick = startTests;
+		}
+
+		function removeTimeout(
+			ref
+		)
+		{
+			var key = "clearTimeout";
+			if (Utils.is.hostObject(global[key])) {
+				global[key](
+					ref
+				);
+			}
+		}
+
+		function endTests(
+			evt
+		)
+		{
+			removeTimeout(
+				tester
+			);
 			tester = null;
 			clearTests();
-			commonElements.start.disabled = false;
-			commonElements.start.onclick = startTests;
+			resetScore();
+			enableStartButton();
 		}
 
 		function addHandlers()
 		{
-			commonElements.start.onclick = startTests;
-			commonElements.stop.onclick = endTests;
+			var par = commonElements;
+			par.start.onclick = startTests;
+			par.stop.onclick = endTests;
 		}
 
 		addHandlers();

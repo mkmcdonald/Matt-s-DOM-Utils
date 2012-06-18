@@ -102,6 +102,19 @@
 					<a href="#get_nodes"
 						title="Utils.traverse.getNodes"><code>Utils.traverse.getNodes</code></a>
 				</h3>
+				<p class="warning">
+					Warning: this property will return <code>null</code>
+					if the host environment is detected to be unsuitable;
+					an <code>if</code> block or a similar construct should
+					be used for detection. An example follows.
+				</p>
+				<pre class="example">
+var nodes;
+if (Utils.traverse.getNodes) {
+	nodes = Utils.traverse.getNodes(
+		document.body
+	);
+}</pre>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
 					<dt>description</dt>
@@ -444,7 +457,7 @@ if (Utils.traverse.getElements) {
 					<a href="#set_text"
 						title="Utils.traverse.setText"><code>Utils.traverse.setText</code></a>
 				</h3>
-				<p class="doc_art function_head">function (<var>text</var>, <var>obj</var>, <var>doc</var>) {</p>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>text</var>, <var>doc</var>) {</p>
 				<dl class="doc_list">
 					<dt>description</dt>
 					<dd>
@@ -456,6 +469,13 @@ if (Utils.traverse.getElements) {
 						text node containing the string provided.
 					</dd>
 					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
 						<var>text</var>
 					</dt>
 					<dd>
@@ -464,13 +484,6 @@ if (Utils.traverse.getElements) {
 						a <a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>'s
 						<code>childNodes</code> tree.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
 					</dd>
 					<dt>
 						<var>doc</var>

@@ -16,6 +16,8 @@
  * You should have received a copy of the GNU Lesser General
  * Public License along with Matt's DOM Utils (Utils).
  * If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @see http://www.fortybelow.ca/projects/JavaScript/Utils/
  */
 
 var Utils = Utils || {},
@@ -46,7 +48,7 @@ var Utils = Utils || {},
         indent: 8, maxerr: 1
 */
 
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -385,7 +387,7 @@ if (Utils) {
 	}());
 }
 
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -427,7 +429,7 @@ if (Utils) {
 	}());
 }
 
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -626,7 +628,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.ELEMENT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -645,7 +650,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.ATTRIBUTE_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -664,7 +672,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.TEXT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -684,7 +695,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.CDATA_SECTION_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -705,7 +719,10 @@ if (Utils) {
 		{
 			var key = "ENTITY_REFERENCE_NODE",
 				type = nodeTypes[key];
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -724,7 +741,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.ENTITY_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -745,7 +765,10 @@ if (Utils) {
 		{
 			var key = "PROCESSING_INSTRUCTION_NODE",
 				type = nodeTypes[key];
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -764,7 +787,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.COMMENT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -783,7 +809,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.DOCUMENT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -846,7 +875,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.DOCUMENT_TYPE_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -867,7 +899,10 @@ if (Utils) {
 		{
 			var key = "DOCUMENT_FRAGMENT_NODE",
 				type = nodeTypes[key];
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -886,7 +921,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.NOTATION_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
 		doc = null;
@@ -920,7 +958,7 @@ if (Utils) {
 	}());
 }
 
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -972,7 +1010,7 @@ if (Utils) {
 	}());
 }
 
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -986,9 +1024,21 @@ if (Utils) {
                 * * Utils.is
                 */
 
-		var isNodeLike = Utils.is.nodeLike,
+		var nodeTypes = Utils.types,
+			isNodeLike = Utils.is.nodeLike,
 			isHostObject = Utils.is.hostObject,
-			isArrayLike = Utils.is.arrayLike;
+			isArrayLike = Utils.is.arrayLike,
+
+			valueSetters;
+
+		valueSetters = (function () {
+			var result = {};
+			result[nodeTypes.TEXT_NODE] = true;
+			result[nodeTypes.PROCESSING_INSTRUCTION_NODE] =
+				true;
+			result[nodeTypes.COMMENT_NODE] = true;
+			return result;
+		}());
 
                /**
                 * @public `Utils.node.prepend`.
@@ -1287,10 +1337,10 @@ if (Utils) {
 		}
 
                /**
-                * @public `Utils.node.name`.
+                * @public `Utils.node.getName`.
                 *
                 * @description
-                * Wrapper method for `nodeName`; returns the
+                * Getter method for `nodeName`; returns the
                 * wrapped property's result or `null` if not
                 * applicable.
                 *
@@ -1350,10 +1400,10 @@ if (Utils) {
 		}
 
                /**
-                * @public `Utils.node.value`.
+                * @public `Utils.node.getValue`.
                 *
                 * @description
-                * Wrapper method for `nodeValue`; returns the
+                * Getter method for `nodeValue`; returns the
                 * wrapped property's result or `null` if not
                 * applicable.
                 *
@@ -1377,6 +1427,42 @@ if (Utils) {
 			return result;
 		}
 
+               /**
+                * @public `Utils.node.setValue`.
+                *
+                * @description
+                * Setter method for `nodeValue`; returns the
+                * wrapped property's result or `null` if not
+                * applicable.
+                *
+                * @see `Node::nodeValue`.
+                * @see `CharacterData::data`.
+                * @see `Text::data`.
+                * 
+                * @param obj Object
+                * A node-like object to retrieve the `nodeValue`
+                * property from.
+                * 
+                * @param newValue String
+                * A string containing the new value for the
+		* `nodeValue` property.
+                */
+
+		function setValue(
+			obj,
+			newValue
+		)
+		{
+			var key = "nodeValue",
+				result = null;
+			if (isNodeLike(obj)) {
+				if (valueSetters[obj.nodeType]) {
+					result = obj[key] = newValue;
+				}
+			}
+			return result;
+		}
+
 		Utils.node = Utils.node || {
 			"prepend": insertBefore,
 			"prependList": insertListBefore,
@@ -1385,12 +1471,13 @@ if (Utils) {
 			"remove": removeChild,
 			"replace": replaceChild,
 			"clone": cloneNode,
-			"name": getName,
-			"value": getValue
+			"getName": getName,
+			"getValue": getValue,
+			"setValue": setValue
 		};
 	}());
 }
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**

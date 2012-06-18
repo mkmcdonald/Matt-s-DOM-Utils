@@ -1003,9 +1003,11 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						defensive approach.
 					</p>
 					<p>
-						The preceding code is used in a functional demo located
-						at the following link: <a href="../../Tests/HOWTO/slideshow.html"
-							title="Slideshow">../../Tests/HOWTO/slideshow.html</a>.
+						The preceding code is used in a functional demo<a href="#footnote_13"
+							title="Footnote Thirteen">[13]</a>.
+					</p>
+					<p>
+						for viewing.
 						It has been tested successfully and degrades gracefully
 						in IE 4+.
 					</p>
@@ -1121,6 +1123,14 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 					<dd>
 						<a href="http://www.cinsoft.net/mylib.html"
 							title="My Library">My Library</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_13">
+						<a href="#footnote_13"
+							title="Footnote Thirteen">[13]</a>
+					</dt>
+					<dd>
+						<a href="../../Tests/HOWTO/slideshow.html"
+							title="Slideshow Test">Slideshow Test</a>
 					</dd>
 				</dl>
 			</div>

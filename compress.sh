@@ -67,7 +67,7 @@ begin_builds ()
 		"utils-classes"
 		"utils-traverse"
 		"utils-select"
-		"utils-all"
+		"utils-complete"
 	);
 	compress_builds "${BUILDS[@]}";
 }

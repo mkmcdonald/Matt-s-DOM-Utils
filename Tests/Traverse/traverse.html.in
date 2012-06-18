@@ -74,14 +74,14 @@
 				<tr id="test_7">
 					<td>7.</td>
 					<td>
-						<code>@LIBRARY_NAME@.traverse.getText</code> returns a string.
+						<code>@LIBRARY_NAME@.traverse.getText</code> returns a String.
 					</td>
 					<td id="result_7"></td>
 				</tr>
 				<tr id="test_8">
 					<td>8.</td>
 					<td>
-						<code>@LIBRARY_NAME@.traverse.setText</code> returns a string.
+						<code>@LIBRARY_NAME@.traverse.setText</code> returns a String.
 					</td>
 					<td id="result_8"></td>
 				</tr>
@@ -104,7 +104,7 @@
 				<tr id="test_11">
 					<td>11.</td>
 					<td>
-						<code>@LIBRARY_NAME@.traverse.isAncestor</code> returns a boolean.
+						<code>@LIBRARY_NAME@.traverse.isAncestor</code> returns a Boolean.
 					</td>
 					<td id="result_11"></td>
 				</tr>
@@ -126,6 +126,10 @@
 				</tr>
 			</tbody>
 		</table>
+		<div id="score_area">
+			<p>Score:</p>
+			<p id="score"></p>
+		</div>
 		<hr>
 		<h2>Test Element</h2>
 		<ul id="test">

@@ -16,6 +16,8 @@
  * You should have received a copy of the GNU Lesser General
  * Public License along with Matt's DOM Utils (Utils).
  * If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @see http://www.fortybelow.ca/projects/JavaScript/Utils/
  */
 
 var Utils = Utils || {},
@@ -46,7 +48,7 @@ var Utils = Utils || {},
         indent: 8, maxerr: 1
 */
 
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -385,7 +387,7 @@ if (Utils) {
 	}());
 }
 
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -427,7 +429,7 @@ if (Utils) {
 	}());
 }
 
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -626,7 +628,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.ELEMENT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -645,7 +650,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.ATTRIBUTE_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -664,7 +672,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.TEXT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -684,7 +695,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.CDATA_SECTION_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -705,7 +719,10 @@ if (Utils) {
 		{
 			var key = "ENTITY_REFERENCE_NODE",
 				type = nodeTypes[key];
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -724,7 +741,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.ENTITY_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -745,7 +765,10 @@ if (Utils) {
 		{
 			var key = "PROCESSING_INSTRUCTION_NODE",
 				type = nodeTypes[key];
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -764,7 +787,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.COMMENT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -783,7 +809,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.DOCUMENT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -846,7 +875,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.DOCUMENT_TYPE_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -867,7 +899,10 @@ if (Utils) {
 		{
 			var key = "DOCUMENT_FRAGMENT_NODE",
 				type = nodeTypes[key];
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -886,7 +921,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.NOTATION_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
 		doc = null;
@@ -920,7 +958,7 @@ if (Utils) {
 	}());
 }
 
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -972,7 +1010,7 @@ if (Utils) {
 	}());
 }
 
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -986,9 +1024,21 @@ if (Utils) {
                 * * Utils.is
                 */
 
-		var isNodeLike = Utils.is.nodeLike,
+		var nodeTypes = Utils.types,
+			isNodeLike = Utils.is.nodeLike,
 			isHostObject = Utils.is.hostObject,
-			isArrayLike = Utils.is.arrayLike;
+			isArrayLike = Utils.is.arrayLike,
+
+			valueSetters;
+
+		valueSetters = (function () {
+			var result = {};
+			result[nodeTypes.TEXT_NODE] = true;
+			result[nodeTypes.PROCESSING_INSTRUCTION_NODE] =
+				true;
+			result[nodeTypes.COMMENT_NODE] = true;
+			return result;
+		}());
 
                /**
                 * @public `Utils.node.prepend`.
@@ -1287,10 +1337,10 @@ if (Utils) {
 		}
 
                /**
-                * @public `Utils.node.name`.
+                * @public `Utils.node.getName`.
                 *
                 * @description
-                * Wrapper method for `nodeName`; returns the
+                * Getter method for `nodeName`; returns the
                 * wrapped property's result or `null` if not
                 * applicable.
                 *
@@ -1350,10 +1400,10 @@ if (Utils) {
 		}
 
                /**
-                * @public `Utils.node.value`.
+                * @public `Utils.node.getValue`.
                 *
                 * @description
-                * Wrapper method for `nodeValue`; returns the
+                * Getter method for `nodeValue`; returns the
                 * wrapped property's result or `null` if not
                 * applicable.
                 *
@@ -1377,6 +1427,42 @@ if (Utils) {
 			return result;
 		}
 
+               /**
+                * @public `Utils.node.setValue`.
+                *
+                * @description
+                * Setter method for `nodeValue`; returns the
+                * wrapped property's result or `null` if not
+                * applicable.
+                *
+                * @see `Node::nodeValue`.
+                * @see `CharacterData::data`.
+                * @see `Text::data`.
+                * 
+                * @param obj Object
+                * A node-like object to retrieve the `nodeValue`
+                * property from.
+                * 
+                * @param newValue String
+                * A string containing the new value for the
+		* `nodeValue` property.
+                */
+
+		function setValue(
+			obj,
+			newValue
+		)
+		{
+			var key = "nodeValue",
+				result = null;
+			if (isNodeLike(obj)) {
+				if (valueSetters[obj.nodeType]) {
+					result = obj[key] = newValue;
+				}
+			}
+			return result;
+		}
+
 		Utils.node = Utils.node || {
 			"prepend": insertBefore,
 			"prependList": insertListBefore,
@@ -1385,12 +1471,13 @@ if (Utils) {
 			"remove": removeChild,
 			"replace": replaceChild,
 			"clone": cloneNode,
-			"name": getName,
-			"value": getValue
+			"getName": getName,
+			"getValue": getValue,
+			"setValue": setValue
 		};
 	}());
 }
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -1900,7 +1987,7 @@ if (Utils) {
 	}());
 }
 
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -1934,6 +2021,7 @@ if (Utils) {
 
 			canGetClassName,
 			canUseClassList,
+
 			forkHasClass,
 			hasClass,
 			forkAddClass,
@@ -2000,6 +2088,8 @@ if (Utils) {
                /**
                 * @private
                 *
+                * @closure
+                *
                 * @description
                 * Boolean asserting if element node-like objects
                 * can retrieve the `className` property.
@@ -2016,6 +2106,8 @@ if (Utils) {
 
                /**
                 * @private
+                *
+                * @closure
                 *
                 * @description
                 * Boolean asserting if element node-like objects
@@ -2387,6 +2479,37 @@ if (Utils) {
                 * @private
                 *
                 * @description
+                * Wrapper method that wraps `hasClass`;
+                * returns `null` if not applicable.
+                *
+                * @param obj Object
+                * An element node-like object to access.
+                *
+                * @param token String
+                * A string containing a token to use.
+                *
+                * @see `hasClass`.
+                */
+
+		function wrapHasClass(
+			obj,
+			token
+		)
+		{
+			var result = null;
+			if (hasClass) {
+				result = hasClass(
+					obj,
+					token
+				);
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
                 * Helper method that iterates over the specified list
                 * of tokens and returns a boolean asserting their
                 * presence in a specific element node-like object's
@@ -2409,14 +2532,13 @@ if (Utils) {
 			var index = 0,
 				max = tokens.length,
 				result = true;
-			if (hasClass) {
-				while (index < max && result) {
-					result = hasClass(
-						obj,
-						tokens[index]
-					);
-					index += 1;
-				}
+			while (index < max && result) {
+				result = wrapHasClass(
+					obj,
+					tokens[index]
+				);
+				result = !!result;
+				index += 1;
 			}
 			return result;
 		}
@@ -2511,11 +2633,9 @@ if (Utils) {
 		)
 		{
 			var result = false;
-			if (hasClass) {
-				if (!hasClass(obj, add)) {
-					list[list.length] = add;
-					result = true;
-				}
+			if (!wrapHasClass(obj, add)) {
+				list[list.length] = add;
+				result = true;
 			}
 			return result;
 		}
@@ -2608,13 +2728,18 @@ if (Utils) {
 			var list,
 				result;
 			if (isElement(obj)) {
-				list = buildClassList(obj);
+				list = buildClassList(
+					obj
+				);
 				classAdditionCheck(
 					obj,
 					token,
 					list
 				);
-				overwriteClass(obj, list);
+				overwriteClass(
+					obj,
+					list
+				);
 			}
 			return result;
 		}
@@ -2656,6 +2781,37 @@ if (Utils) {
                 * @private
                 *
                 * @description
+                * Wrapper method that wraps `addClass`;
+                * returns `null` if not applicable.
+                *
+                * @param obj Object
+                * An element node-like object to access.
+                *
+                * @param token String
+                * A string containing a token to use.
+                *
+                * @see `addClass`.
+                */
+
+		function wrapAddClass(
+			obj,
+			token
+		)
+		{
+			var result = null;
+			if (addClass) {
+				result = addClass(
+					obj,
+					token
+				);
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
                 * Helper method that iterates over the specified list
                 * of tokens and adds them to a specific element
                 * node-like object's token list.
@@ -2677,13 +2833,11 @@ if (Utils) {
 			var index = 0,
 				max = tokens.length,
 				result;
-			if (addClass) {
-				for (index; index < max; index += 1) {
-					addClass(
-						obj,
-						tokens[index]
-					);
-				}
+			for (index; index < max; index += 1) {
+				wrapAddClass(
+					obj,
+					tokens[index]
+				);
 			}
 			return result;
 		}
@@ -2818,13 +2972,11 @@ if (Utils) {
 		)
 		{
 			var result;
-			if (hasClass) {
-				if (hasClass(obj, remove)) {
-					result = removeToken(
-						remove,
-						list
-					);
-				}
+			if (wrapHasClass(obj, remove)) {
+				result = removeToken(
+					remove,
+					list
+				);
 			}
 			return result;
 		}
@@ -2889,13 +3041,18 @@ if (Utils) {
 			var list,
 				result;
 			if (isElement(obj)) {
-				list = buildClassList(obj);
+				list = buildClassList(
+					obj
+				);
 				classRemovalCheck(
 					obj,
 					token,
 					list
 				);
-				overwriteClass(obj, list);
+				overwriteClass(
+					obj,
+					list
+				);
 			}
 			return result;
 		}
@@ -2937,6 +3094,37 @@ if (Utils) {
                 * @private
                 *
                 * @description
+                * Wrapper method that wraps `removeClass`;
+                * returns `null` if not applicable.
+                *
+                * @param obj Object
+                * An element node-like object to access.
+                *
+                * @param token String
+                * A string containing a token to use.
+                *
+                * @see `removeClass`.
+                */
+
+		function wrapRemoveClass(
+			obj,
+			token
+		)
+		{
+			var result = null;
+			if (removeClass) {
+				result = removeClass(
+					obj,
+					token
+				);
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
                 * Helper method that iterates over the specified list
                 * of tokens and removes them from a specific element
                 * node-like object's token list.
@@ -2959,14 +3147,12 @@ if (Utils) {
 				aux = max,
 				diff,
 				result;
-			if (removeClass) {
-				for (aux; aux > -1; aux -= 1) {
-					diff = max - aux;
-					removeClass(
-						obj,
-						tokens[diff]
-					);
-				}
+			for (aux; aux > -1; aux -= 1) {
+				diff = max - aux;
+				wrapRemoveClass(
+					obj,
+					tokens[diff]
+				);
 			}
 			return result;
 		}
@@ -3057,22 +3243,19 @@ if (Utils) {
 			token
 		)
 		{
-			var has,
+			var has = wrapHasClass(obj, token),
 				result = false;
-			if (isElement(obj) && hasClass) {
-				has = hasClass(obj, token);
-				if (!has && addClass) {
-					addClass(
-						obj,
-						token
-					);
-					result = true;
-				} else if (has && removeClass) {
-					removeClass(
-						obj,
-						token
-					);
-				}
+			if (!has) {
+				wrapAddClass(
+					obj,
+					token
+				);
+				result = true;
+			} else if (has) {
+				wrapRemoveClass(
+					obj,
+					token
+				);
 			}
 			return result;
 		}
@@ -3116,6 +3299,37 @@ if (Utils) {
                 * @private
                 *
                 * @description
+                * Wrapper method that wraps `toggleClass`;
+                * returns `null` if not applicable.
+                *
+                * @param obj Object
+                * An element node-like object to access.
+                *
+                * @param token String
+                * A string containing a token to use.
+                *
+                * @see `toggleClass`.
+                */
+
+		function wrapToggleClass(
+			obj,
+			token
+		)
+		{
+			var result = null;
+			if (toggleClass) {
+				result = toggleClass(
+					obj,
+					token
+				);
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
                 * Helper method that iterates over the specified list
                 * of tokens and toggles them on a specific element
                 * node-like object's token list.
@@ -3137,13 +3351,11 @@ if (Utils) {
 			var index = 0,
 				max = tokens.length,
 				result;
-			if (toggleClass) {
-				for (index; index < max; index += 1) {
-					toggleClass(
-						obj,
-						tokens[index]
-					);
-				}
+			for (index; index < max; index += 1) {
+				wrapToggleClass(
+					obj,
+					tokens[index]
+				);
 			}
 			return result;
 		}

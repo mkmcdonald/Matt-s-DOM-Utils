@@ -22,9 +22,21 @@
 						<a href="degradation.html"
 							title="Graceful Degradation">Graceful Degradation</a>
 					</li>
+				</ol>
+			</div>
+			<div class="cell secondary_cell" id="@LIBRARY_NAME@">
+				<h3 class="heading">
+					<a href="#@LIBRARY_NAME@"
+						title="@LIBRARY_NAME@">@LIBRARY_NAME@</a>
+				</h3>
+				<ol class="feature_list">
 					<li>
 						<a href="implementation.html"
 							title="Implementation">Implementation</a>
+					</li>
+					<li>
+						<a href="customisation.html"
+							title="Customisation">Customisation</a>
 					</li>
 				</ol>
 			</div>

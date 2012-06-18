@@ -1,0 +1,591 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=utf-8">
+		<title>Complete Test</title>
+		<link href="../../Assets/CSS/tests.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+	</head>
+	<body>
+		<h1>Complete Test</h1>
+		<button id="start" type="button">Run Test</button>
+		<button id="stop" type="button">Clear Test</button>
+		<h2>Test Results</h2>
+		<table id="results">
+			<caption>Tabulated Results</caption>
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Description</th>
+					<th>Assertion</th>
+				</tr>
+			</thead>
+			<tbody id="tests">
+				<tr id="test_1">
+					<td>1.</td>
+					<td><code>@LIBRARY_NAME@.node.prepend</code> returns a node-like object</td>
+					<td id="result_1"></td>
+				</tr>
+				<tr id="test_2">
+					<td>2.</td>
+					<td><code>@LIBRARY_NAME@.node.prependList</code> returns <code>undefined</code></td>
+					<td id="result_2"></td>
+				</tr>
+				<tr id="test_3">
+					<td>3.</td>
+					<td><code>@LIBRARY_NAME@.node.append</code> returns <code>undefined</code></td>
+					<td id="result_3"></td>
+				</tr>
+				<tr id="test_4">
+					<td>4.</td>
+					<td><code>@LIBRARY_NAME@.node.appendList</code> returns <code>undefined</code></td>
+					<td id="result_4"></td>
+				</tr>
+				<tr id="test_5">
+					<td>5.</td>
+					<td><code>@LIBRARY_NAME@.node.remove</code> returns a node-like object</td>
+					<td id="result_5"></td>
+				</tr>
+				<tr id="test_6">
+					<td>6.</td>
+					<td><code>@LIBRARY_NAME@.node.replace</code> returns a node-like object</td>
+					<td id="result_6"></td>
+				</tr>
+				<tr id="test_7">
+					<td>7.</td>
+					<td><code>@LIBRARY_NAME@.node.clone</code> returns a node-like object</td>
+					<td id="result_7"></td>
+				</tr>
+				<tr id="test_8">
+					<td>8.</td>
+					<td><code>@LIBRARY_NAME@.node.getName</code> returns a String</td>
+					<td id="result_8"></td>
+				</tr>
+				<tr id="test_9">
+					<td>9.</td>
+					<td><code>@LIBRARY_NAME@.node.getValue</code> returns a String</td>
+					<td id="result_9"></td>
+				</tr>
+				<tr id="test_10">
+					<td>10.</td>
+					<td><code>@LIBRARY_NAME@.node.setValue</code> returns a String</td>
+					<td id="result_10"></td>
+				</tr>
+				<tr id="test_11">
+					<td>11.</td>
+					<td>
+						<code>@LIBRARY_NAME@.create.element</code> returns an element
+							node-like object.
+					</td>
+					<td id="result_11"></td>
+				</tr>
+				<tr id="test_12">
+					<td>12.</td>
+					<td>
+						<code>@LIBRARY_NAME@.create.text</code> returns a text
+							node-like object.
+					</td>
+					<td id="result_12"></td>
+				</tr>
+				<tr id="test_13">
+					<td>13.</td>
+					<td>
+						<code>@LIBRARY_NAME@.create.comment</code> returns a comment
+							node-like object.
+					</td>
+					<td id="result_13"></td>
+				</tr>
+				<tr id="test_14">
+					<td>14.</td>
+					<td>
+						<code>@LIBRARY_NAME@.create.documentFragment</code> returns a
+							document fragment node-like object.
+					</td>
+					<td id="result_14"></td>
+				</tr>
+				<tr id="test_15">
+					<td>15.</td>
+					<td>
+						<code>@LIBRARY_NAME@.classes.contains</code> returns a Boolean.
+					</td>
+					<td id="result_15"></td>
+				</tr>
+				<tr id="test_16">
+					<td>16.</td>
+					<td>
+						<code>@LIBRARY_NAME@.classes.containsList</code> returns a Boolean.
+					</td>
+					<td id="result_16"></td>
+				</tr>
+				<tr id="test_17">
+					<td>17.</td>
+					<td>
+						<code>@LIBRARY_NAME@.classes.add</code> returns
+							<code>undefined</code>.
+					</td>
+					<td id="result_17"></td>
+				</tr>
+				<tr id="test_18">
+					<td>18.</td>
+					<td>
+						<code>@LIBRARY_NAME@.classes.addList</code> returns
+							<code>undefined</code>.
+					</td>
+					<td id="result_18"></td>
+				</tr>
+				<tr id="test_19">
+					<td>19.</td>
+					<td>
+						<code>@LIBRARY_NAME@.classes.remove</code> returns
+							<code>undefined</code>.
+					</td>
+					<td id="result_19"></td>
+				</tr>
+				<tr id="test_20">
+					<td>20.</td>
+					<td>
+						<code>@LIBRARY_NAME@.classes.removeList</code> returns
+							<code>undefined</code>.
+					</td>
+					<td id="result_20"></td>
+				</tr>
+				<tr id="test_21">
+					<td>21.</td>
+					<td>
+						<code>@LIBRARY_NAME@.classes.toggle</code> returns a Boolean.
+					</td>
+					<td id="result_21"></td>
+				</tr>
+				<tr id="test_22">
+					<td>22.</td>
+					<td>
+						<code>@LIBRARY_NAME@.classes.toggle</code> returns a Boolean.
+					</td>
+					<td id="result_22"></td>
+				</tr>
+				<tr id="test_23">
+					<td>23.</td>
+					<td>
+						<code>@LIBRARY_NAME@.classes.toggleList</code> returns
+							<code>undefined</code>.
+					</td>
+					<td id="result_23"></td>
+				</tr>
+				<tr id="test_24">
+					<td>24.</td>
+					<td>
+						<code>@LIBRARY_NAME@.classes.get</code> returns an
+							array-like object.
+					</td>
+					<td id="result_24"></td>
+				</tr>
+				<tr id="test_25">
+					<td>25.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.getNodes</code> returns an
+							array-like object.
+					</td>
+					<td id="result_25"></td>
+				</tr>
+				<tr id="test_26">
+					<td>26.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.nodes</code> returns an
+							array-like object.
+					</td>
+					<td id="result_26"></td>
+				</tr>
+				<tr id="test_27">
+					<td>27.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.getElements</code> returns an
+							array-like object.
+					</td>
+					<td id="result_27"></td>
+				</tr>
+				<tr id="test_28">
+					<td>28.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.elements</code> returns an
+							array-like object.
+					</td>
+					<td id="result_28"></td>
+				</tr>
+				<tr id="test_29">
+					<td>29.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.getNodeTree</code> returns an
+							array-like object.
+					</td>
+					<td id="result_29"></td>
+				</tr>
+				<tr id="test_30">
+					<td>30.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.nodeTree</code> returns an
+							array-like object.
+					</td>
+					<td id="result_30"></td>
+				</tr>
+				<tr id="test_31">
+					<td>31.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.getText</code> returns a String.
+					</td>
+					<td id="result_31"></td>
+				</tr>
+				<tr id="test_32">
+					<td>32.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.setText</code> returns a String.
+					</td>
+					<td id="result_32"></td>
+				</tr>
+				<tr id="test_33">
+					<td>33.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.getElementTree</code> returns an
+							array-like object.
+					</td>
+					<td id="result_33"></td>
+				</tr>
+				<tr id="test_34">
+					<td>34.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.elementTree</code> returns an
+							array-like object.
+					</td>
+					<td id="result_34"></td>
+				</tr>
+				<tr id="test_35">
+					<td>35.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.isAncestor</code> returns a Boolean.
+					</td>
+					<td id="result_35"></td>
+				</tr>
+				<tr id="test_36">
+					<td>36.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.getAncestors</code> returns a
+							linked list-like object.
+					</td>
+					<td id="result_36"></td>
+				</tr>
+				<tr id="test_37">
+					<td>37.</td>
+					<td>
+						<code>@LIBRARY_NAME@.traverse.ancestors</code> returns an
+							array-like object.
+					</td>
+					<td id="result_37"></td>
+				</tr>
+				<tr id="test_38">
+					<td>38.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.byName</code> returns an
+							array-like object.
+					</td>
+					<td id="result_38"></td>
+				</tr>
+				<tr id="test_39">
+					<td>39.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.byTagName</code> returns an
+							array-like object.
+					</td>
+					<td id="result_39"></td>
+				</tr>
+				<tr id="test_40">
+					<td>40.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.byClassName</code> returns an
+							array-like object.
+					</td>
+					<td id="result_40"></td>
+				</tr>
+				<tr id="test_41">
+					<td>41.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.byId</code> returns a
+							node-like object.
+					</td>
+					<td id="result_41"></td>
+				</tr>
+				<tr id="test_42">
+					<td>42.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.query</code> returns an
+							array-like object.
+					</td>
+					<td id="result_42"></td>
+				</tr>
+				<tr id="test_43">
+					<td>43.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.queryAll</code> returns an
+							array-like object.
+					</td>
+					<td id="result_43"></td>
+				</tr>
+				<tr id="test_44">
+					<td>44.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.head</code> returns a
+							node-like object.
+					</td>
+					<td id="result_44"></td>
+				</tr>
+				<tr id="test_45">
+					<td>45.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.body</code> returns a
+							node-like object.
+					</td>
+					<td id="result_45"></td>
+				</tr>
+				<tr id="test_46">
+					<td>46.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.images</code> returns a
+							node-like object.
+					</td>
+					<td id="result_46"></td>
+				</tr>
+				<tr id="test_47">
+					<td>47.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.allImages</code> returns an
+							array-like object.
+					</td>
+					<td id="result_47"></td>
+				</tr>
+				<tr id="test_48">
+					<td>48.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.embeds</code> returns a
+							node-like object.
+					</td>
+					<td id="result_48"></td>
+				</tr>
+				<tr id="test_49">
+					<td>49.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.allEmbeds</code> returns an
+							array-like object.
+					</td>
+					<td id="result_49"></td>
+				</tr>
+				<tr id="test_50">
+					<td>50.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.plugins</code> returns a
+							node-like object.
+					</td>
+					<td id="result_50"></td>
+				</tr>
+				<tr id="test_51">
+					<td>51.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.allPlugins</code> returns an
+							array-like object.
+					</td>
+					<td id="result_51"></td>
+				</tr>
+				<tr id="test_52">
+					<td>52.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.links</code> returns a
+							node-like object.
+					</td>
+					<td id="result_52"></td>
+				</tr>
+				<tr id="test_53">
+					<td>53.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.allLinks</code> returns an
+							array-like object.
+					</td>
+					<td id="result_53"></td>
+				</tr>
+				<tr id="test_54">
+					<td>54.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.forms</code> returns a
+							node-like object.
+					</td>
+					<td id="result_54"></td>
+				</tr>
+				<tr id="test_55">
+					<td>55.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.allForms</code> returns an
+							array-like object.
+					</td>
+					<td id="result_55"></td>
+				</tr>
+				<tr id="test_56">
+					<td>56.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.scripts</code> returns a
+							node-like object.
+					</td>
+					<td id="result_56"></td>
+				</tr>
+				<tr id="test_57">
+					<td>57.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.allScripts</code> returns an
+							array-like object.
+					</td>
+					<td id="result_57"></td>
+				</tr>
+				<tr id="test_58">
+					<td>58.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.applets</code> returns a
+							node-like object.
+					</td>
+					<td id="result_58"></td>
+				</tr>
+				<tr id="test_59">
+					<td>59.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.allApplets</code> returns an
+							array-like object.
+					</td>
+					<td id="result_59"></td>
+				</tr>
+				<tr id="test_60">
+					<td>60.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.anchors</code> returns a
+							node-like object.
+					</td>
+					<td id="result_60"></td>
+				</tr>
+				<tr id="test_61">
+					<td>61.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.allAnchors</code> returns an
+							array-like object.
+					</td>
+					<td id="result_61"></td>
+				</tr>
+				<tr id="test_62">
+					<td>62.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.namedItem</code> returns a
+							node-like object.
+					</td>
+					<td id="result_62"></td>
+				</tr>
+				<tr id="test_63">
+					<td>63.</td>
+					<td>
+						<code>@LIBRARY_NAME@.select.collection</code> returns an
+							array-like object.
+					</td>
+					<td id="result_63"></td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="score_area">
+			<p>Score:</p>
+			<p id="score"></p>
+		</div>
+		<hr>
+		<h2>Node Test Element</h2>
+		<ul id="node_test">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<p id="test_text">test</p>
+		<hr>
+		<h2>Create Test Element</h2>
+		<div id="create_test">
+			<p>
+				The rain in Spain is quite plain.
+			</p>
+		</div>
+		<hr>
+		<h2>Classes Test Element</h2>
+		<blockquote cite="http://www.darklyrics.com/lyrics/theruinsofbeverast/unlocktheshrinereliquaryofthewhiteabyss.html#11"
+			id="classes_test">
+			<pre>Until these tunnels
+Shall become our grave
+We dwell with the poets
+The eerie echoes
+Of shameful choirs
+Howl deep within here
+Sounds of harm
+From where the stillborn graze
+Standing armed without a strategy
+In a war
+That never should have been declared
+Eyes adapted to perpetual dawn
+The trembling march of the offensive pack
+With the bark of the hounds
+Our final rhyme shall be composed
+We await this, our time
+When the foul screams of agony
+Will sound through the mine.</pre>
+		</blockquote>
+		<hr>
+		<h2>Traverse Test Element</h2>
+		<ul id="traverse_test">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<hr>
+		<h2>Select Test Element</h2>
+		<div id="select_test">
+			<h3>Test Image</h3>
+			<p>
+			<img alt="Test Image" height="100"
+				src="../../Assets/Images/logo.jpg" width="337">
+			</p>
+			<h3>Test Embed</h3>
+			<object id="embedded" height="100"
+				width="100">
+				<embed src="" type="text/html">
+			</object>
+			<h3>Test Links</h3>
+			<p>
+				<a href="./" title="Test One">Test One</a>
+				<a href="./" title="Test Two">Test Two</a>
+				<a href="./" title="Test Three">Test Three</a>
+			</p>
+			<h3>Test Form</h3>
+			<form action="./" class="container" id="test_form"
+				method="post" name="test_form"
+				onsubmit="return false;">
+				<fieldset class="container">
+					<legend>Test Elements</legend>
+					<input name="control1" type="text">
+					<input name="control2" type="password">
+					<input name="control3" type="submit">
+				</fieldset>
+			</form>
+			<h3>Test Applet</h3>
+			<applet code="HelloWorld.class" codeBase="../Applets/"
+				height="100" id="appletcation" width="100">
+				Hello world
+			</applet>
+			<h3>Test Anchors</h3>
+			<p>
+				<a name="anchor1" title="Test One">Test One</a>
+				<a name="anchor2" title="Test Two">Test Two</a>
+				<a name="anchor3" title="Test Three">Test Three</a>
+			</p>
+		</div>
+		<script src="../../Builds/Uncompressed/utils-complete.js"
+			type="text/javascript"></script>
+		<script src="JS/complete.js"
+			type="text/javascript"></script>
+	</body>
+</html>

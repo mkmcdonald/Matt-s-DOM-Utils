@@ -1,0 +1,77 @@
+var global = global || this;
+if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
+	(function () {
+		function createText(
+			doc,
+			text
+		)
+		{
+			var result = null;
+			if (@LIBRARY_NAME@.create.text) {
+				result = @LIBRARY_NAME@.create.text(
+					doc,
+					text
+				);
+			}
+			return result;
+		}
+
+		function appendNode(
+			par,
+			node
+		)
+		{
+			return @LIBRARY_NAME@.node.append(
+				par,
+				node
+			);
+		}
+
+		function appendText(
+			par,
+			text
+		)
+		{
+			var node = createText(
+				global.document,
+				text
+			);
+			if (node) {
+				appendNode(
+					par,
+					node
+				);
+			}
+		}
+
+		function selectBody(
+			doc
+		)	
+		{
+			var result = null;
+			if (@LIBRARY_NAME@.select.body) {
+				result = @LIBRARY_NAME@.select.body(
+					doc
+				);
+			}
+			return result;
+		}
+
+		function addBodyText(
+			text
+		)
+		{
+			var body = selectBody(global.document);
+			if (body) {
+				appendText(
+					body,
+					text
+				);
+			}
+		}
+
+		addBodyText("foo\r\n");
+		addBodyText("bar\r\n");
+		addBodyText("baz\r\n");
+	}());
+}

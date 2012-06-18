@@ -26,11 +26,9 @@ SELECT = $(LIBRARY)/select.js
 CORE_DEP = $(LICENSE) $(UTILS) $(METADATA) $(RAISE) $(TYPES) $(IS)\
 	$(HELPERS) $(NODE) $(CREATE)
 
-ALL_FILE = $(UNCOMPRESSED)/utils-all.js
-ALL_DEP = $(CORE_DEP) $(CLASSES) $(TRAVERSE) $(SELECT)
-COPY_LIB = find $(LIBRARY) -name "*.js" -type f | xargs\
-	cp -t $(UNCOMPRESSED)
-MAKE_ALL = cat $(ALL_DEP) > $(ALL_FILE); $(COPY_LIB);
+COMPLETE_FILE = $(UNCOMPRESSED)/utils-complete.js
+COMPLETE_DEP = $(CORE_DEP) $(CLASSES) $(TRAVERSE) $(SELECT)
+MAKE_COMPLETE = cat $(COMPLETE_DEP) > $(COMPLETE_FILE);
 
 CORE_FILE = $(UNCOMPRESSED)/utils-core.js
 MAKE_CORE = cat $(CORE_DEP) > $(CORE_FILE);
@@ -47,26 +45,22 @@ SELECT_FILE = $(UNCOMPRESSED)/utils-select.js
 SELECT_DEP = $(CORE_DEP) $(SELECT)
 MAKE_SELECT = cat $(SELECT_DEP) > $(SELECT_FILE);
 
-MAKE_INSTALL = ./compress.sh;
+COPY_LIB = find $(LIBRARY) -name "*.js" -type f | xargs\
+	cp -t $(UNCOMPRESSED);
+MAKE_COMPRESS = $(COPY_LIB) ./compress.sh;
 
 MAKE_CLEAN = find $(BUILDS) -type f | xargs rm -f;
 
-MAKE_UNINSTALL = find $(BUILDS) -type f | xargs rm -f;
+all: core classes traverse select complete compress
+	@echo "--------------------";
+	@echo "";
+	@echo "ALL BUILDS COMPLETE";
+	@echo "";
 
-all: core classes traverse select
-	@echo "building utils-all.js";
-	@$(MAKE_ALL)
-	@echo "utils-all.js built";
-
-install:
-	@echo "compressing builds";
-	@$(MAKE_INSTALL)
-	@echo "builds compressed";
-
-uninstall:
-	@echo "removing compressed builds";
-	@$(MAKE_UNINSTALL);
-	@echo "compressed builds removed";
+complete:
+	@echo "building utils-complete.js";
+	@$(MAKE_COMPLETE)
+	@echo "utils-complete.js built";
 
 core:
 	@echo "building utils-core.js";
@@ -88,9 +82,19 @@ select:
 	@$(MAKE_SELECT)
 	@echo "utils-select.js built";
 
-clean: 
-	@echo "removing builds";
-	@$(MAKE_CLEAN)
-	@echo "builds removed";
+compress:
+	@echo "--------------------";
+	@echo "";
+	@echo "COMPRESSING BUILDS";
+	@echo "";
+	@$(MAKE_COMPRESS)
+	@echo "";
+	@echo "BUILDS COMPRESSED";
+	@echo "";
 
-.PHONY: all install uninstall core classes traverse select clean
+clean: 
+	@echo "all builds queued for deletion";
+	@$(MAKE_CLEAN)
+	@echo "all builds deleted";
+
+.PHONY: all install uninstall core classes traverse select compress clean

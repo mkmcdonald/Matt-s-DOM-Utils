@@ -1674,11 +1674,15 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
-ac_config_files="$ac_config_files "Templates/license" "Library/license.js" "Library/utils.js" "Library/metadata.js" "Library/raise.js" "Library/types.js" "Library/is.js" "Library/helpers.js" "Library/node.js" "Library/create.js" "Library/classes.js" "Library/traverse.js" "Library/select.js" "index.html" "Download/index.html" "Docs/index.html" "Docs/raise.html" "Docs/types.html" "Docs/helpers.html" "Docs/is.html" "Docs/node.html" "Docs/create.html" "Docs/classes.html" "Docs/traverse.html" "Docs/select.html" "Docs/glossary.html" "Docs/HOWTO/index.html" "Docs/HOWTO/degradation.html" "Docs/HOWTO/implementation.html" "Tests/index.html" "Tests/Node/node.html" "Tests/Node/JS/node.js" "Tests/Create/create.html" "Tests/Create/JS/create.js" "Tests/Classes/classes.html" "Tests/Classes/JS/classes.js" "Tests/HOWTO/JS/slideshow.js" "Tests/Traverse/traverse.html" "Tests/Traverse/JS/traverse.js" "Tests/Select/select.html" "Tests/Select/JS/select.js" "Tests/All/all.html" "Tests/All/JS/all.js" "Tests/All/all-min.html" "Tests/All/JS/all-min.js" "about.html" "README.md""
+ac_config_files="$ac_config_files "Templates/license" "Library/license.js" "Library/utils.js" "Library/metadata.js" "Library/raise.js" "Library/types.js" "Library/is.js" "Library/helpers.js" "Library/node.js" "Library/create.js" "Library/classes.js" "Library/traverse.js" "Library/select.js" "index.html" "Download/index.html" "Docs/index.html" "Docs/raise.html" "Docs/types.html" "Docs/helpers.html" "Docs/is.html" "Docs/node.html" "Docs/create.html" "Docs/classes.html" "Docs/traverse.html" "Docs/select.html" "Docs/glossary.html" "Docs/HOWTO/index.html" "Docs/HOWTO/degradation.html" "Docs/HOWTO/implementation.html" "Docs/HOWTO/customisation.html" "Tests/index.html" "Tests/Node/node.html" "Tests/Node/JS/node.js" "Tests/Create/create.html" "Tests/Create/JS/create.js" "Tests/Classes/classes.html" "Tests/Classes/JS/classes.js" "Tests/HOWTO/JS/slideshow.js" "Tests/Traverse/traverse.html" "Tests/Traverse/JS/traverse.js" "Tests/Select/select.html" "Tests/Select/JS/select.js" "Tests/Complete/complete.html" "Tests/Complete/JS/complete.js" "Tests/Complete/complete-min.html" "Tests/Complete/JS/complete-min.js" "about.html" "README.md""
 
+
+# your library name here
 
 
 LIBRARY_NAME="Utils";
+
+# templates
 
 
 LICENSE="Templates/license";
@@ -2510,6 +2514,7 @@ do
     ""Docs/HOWTO/index.html"") CONFIG_FILES="$CONFIG_FILES "Docs/HOWTO/index.html"" ;;
     ""Docs/HOWTO/degradation.html"") CONFIG_FILES="$CONFIG_FILES "Docs/HOWTO/degradation.html"" ;;
     ""Docs/HOWTO/implementation.html"") CONFIG_FILES="$CONFIG_FILES "Docs/HOWTO/implementation.html"" ;;
+    ""Docs/HOWTO/customisation.html"") CONFIG_FILES="$CONFIG_FILES "Docs/HOWTO/customisation.html"" ;;
     ""Tests/index.html"") CONFIG_FILES="$CONFIG_FILES "Tests/index.html"" ;;
     ""Tests/Node/node.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Node/node.html"" ;;
     ""Tests/Node/JS/node.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Node/JS/node.js"" ;;
@@ -2522,10 +2527,10 @@ do
     ""Tests/Traverse/JS/traverse.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Traverse/JS/traverse.js"" ;;
     ""Tests/Select/select.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Select/select.html"" ;;
     ""Tests/Select/JS/select.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Select/JS/select.js"" ;;
-    ""Tests/All/all.html"") CONFIG_FILES="$CONFIG_FILES "Tests/All/all.html"" ;;
-    ""Tests/All/JS/all.js"") CONFIG_FILES="$CONFIG_FILES "Tests/All/JS/all.js"" ;;
-    ""Tests/All/all-min.html"") CONFIG_FILES="$CONFIG_FILES "Tests/All/all-min.html"" ;;
-    ""Tests/All/JS/all-min.js"") CONFIG_FILES="$CONFIG_FILES "Tests/All/JS/all-min.js"" ;;
+    ""Tests/Complete/complete.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Complete/complete.html"" ;;
+    ""Tests/Complete/JS/complete.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Complete/JS/complete.js"" ;;
+    ""Tests/Complete/complete-min.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Complete/complete-min.html"" ;;
+    ""Tests/Complete/JS/complete-min.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Complete/JS/complete-min.js"" ;;
     ""about.html"") CONFIG_FILES="$CONFIG_FILES "about.html"" ;;
     ""README.md"") CONFIG_FILES="$CONFIG_FILES "README.md"" ;;
 

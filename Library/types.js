@@ -1,4 +1,4 @@
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**

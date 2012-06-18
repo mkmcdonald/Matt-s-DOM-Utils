@@ -1,4 +1,4 @@
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -197,7 +197,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.ELEMENT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -216,7 +219,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.ATTRIBUTE_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -235,7 +241,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.TEXT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -255,7 +264,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.CDATA_SECTION_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -276,7 +288,10 @@ if (Utils) {
 		{
 			var key = "ENTITY_REFERENCE_NODE",
 				type = nodeTypes[key];
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -295,7 +310,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.ENTITY_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -316,7 +334,10 @@ if (Utils) {
 		{
 			var key = "PROCESSING_INSTRUCTION_NODE",
 				type = nodeTypes[key];
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -335,7 +356,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.COMMENT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -354,7 +378,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.DOCUMENT_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -417,7 +444,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.DOCUMENT_TYPE_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -438,7 +468,10 @@ if (Utils) {
 		{
 			var key = "DOCUMENT_FRAGMENT_NODE",
 				type = nodeTypes[key];
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -457,7 +490,10 @@ if (Utils) {
 		)
 		{
 			var type = nodeTypes.NOTATION_NODE;
-			return isNodeType(obj, type);
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
 		doc = null;

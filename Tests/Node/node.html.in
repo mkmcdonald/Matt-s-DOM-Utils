@@ -58,8 +58,27 @@
 					<td><code>@LIBRARY_NAME@.node.clone</code> returns a node-like object</td>
 					<td id="result_7"></td>
 				</tr>
+				<tr id="test_8">
+					<td>8.</td>
+					<td><code>@LIBRARY_NAME@.node.getName</code> returns a String</td>
+					<td id="result_8"></td>
+				</tr>
+				<tr id="test_9">
+					<td>9.</td>
+					<td><code>@LIBRARY_NAME@.node.getValue</code> returns a String</td>
+					<td id="result_9"></td>
+				</tr>
+				<tr id="test_10">
+					<td>10.</td>
+					<td><code>@LIBRARY_NAME@.node.setValue</code> returns a String</td>
+					<td id="result_10"></td>
+				</tr>
 			</tbody>
 		</table>
+		<div id="score_area">
+			<p>Score:</p>
+			<p id="score"></p>
+		</div>
 		<hr>
 		<h2>Test Element</h2>
 		<ul id="test">
@@ -67,6 +86,7 @@
 			<li>2</li>
 			<li>3</li>
 		</ul>
+		<p id="test_text">test</p>
 		<script src="../../Builds/Uncompressed/utils-core.js"
 			type="text/javascript"></script>
 		<script src="JS/node.js"

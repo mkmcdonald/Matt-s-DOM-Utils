@@ -29,6 +29,7 @@ AC_CONFIG_FILES([
 	"Docs/HOWTO/index.html"
 	"Docs/HOWTO/degradation.html"
 	"Docs/HOWTO/implementation.html"
+	"Docs/HOWTO/customisation.html"
 	"Tests/index.html"
 	"Tests/Node/node.html"
 	"Tests/Node/JS/node.js"
@@ -41,16 +42,20 @@ AC_CONFIG_FILES([
 	"Tests/Traverse/JS/traverse.js"
 	"Tests/Select/select.html"
 	"Tests/Select/JS/select.js"
-	"Tests/All/all.html"
-	"Tests/All/JS/all.js"
-	"Tests/All/all-min.html"
-	"Tests/All/JS/all-min.js"
+	"Tests/Complete/complete.html"
+	"Tests/Complete/JS/complete.js"
+	"Tests/Complete/complete-min.html"
+	"Tests/Complete/JS/complete-min.js"
 	"about.html"
 	"README.md"
 ])
 
+# your library name here
+
 AC_SUBST(LIBRARY_NAME)
 LIBRARY_NAME="Utils";
+
+# templates
 
 AC_SUBST_FILE(LICENSE)
 LICENSE="Templates/license";

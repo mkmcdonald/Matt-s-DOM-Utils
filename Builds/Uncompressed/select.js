@@ -1,4 +1,4 @@
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -596,12 +596,10 @@ if (Utils) {
                 */
 
 		getHead = (function () {
-			var headProp,
-				key = "getElementsByTagName",
+			var key = "getElementsByTagName",
 				result = null;
 			if (isDocument(doc)) {
-				headProp = isHostObject(doc.head);
-				if (headProp) {
+				if (isHostObject(doc.head)) {
 					result = getNativeHead;
 				} else if (isHostObject(doc[key])) {
 					result = forkHead;
@@ -679,12 +677,10 @@ if (Utils) {
                 */
 
 		getBody = (function () {
-			var bodyProp,
-				key = "getElementsByTagName",
+			var key = "getElementsByTagName",
 				result = null;
 			if (isDocument(doc)) {
-				bodyProp = isHostObject(doc.body);
-				if (bodyProp) {
+				if (isHostObject(doc.body)) {
 					result = getNativeBody;
 				} else if (isHostObject(doc[key])) {
 					result = forkBody;
@@ -711,7 +707,9 @@ if (Utils) {
 			var result = items;
 			if (!isNodeLike(items) &&
 				isArrayLike(items)) {
-				result = makeArray(items);
+				result = makeArray(
+					items
+				);
 			}
 			return result;
 		}

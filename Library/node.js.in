@@ -1,4 +1,4 @@
-if (@LIBRARY_NAME@) {
+if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 	(function () {
 
                /**
@@ -12,9 +12,21 @@ if (@LIBRARY_NAME@) {
                 * * @LIBRARY_NAME@.is
                 */
 
-		var isNodeLike = @LIBRARY_NAME@.is.nodeLike,
+		var nodeTypes = @LIBRARY_NAME@.types,
+			isNodeLike = @LIBRARY_NAME@.is.nodeLike,
 			isHostObject = @LIBRARY_NAME@.is.hostObject,
-			isArrayLike = @LIBRARY_NAME@.is.arrayLike;
+			isArrayLike = @LIBRARY_NAME@.is.arrayLike,
+
+			valueSetters;
+
+		valueSetters = (function () {
+			var result = {};
+			result[nodeTypes.TEXT_NODE] = true;
+			result[nodeTypes.PROCESSING_INSTRUCTION_NODE] =
+				true;
+			result[nodeTypes.COMMENT_NODE] = true;
+			return result;
+		}());
 
                /**
                 * @public `@LIBRARY_NAME@.node.prepend`.
@@ -313,10 +325,10 @@ if (@LIBRARY_NAME@) {
 		}
 
                /**
-                * @public `@LIBRARY_NAME@.node.name`.
+                * @public `@LIBRARY_NAME@.node.getName`.
                 *
                 * @description
-                * Wrapper method for `nodeName`; returns the
+                * Getter method for `nodeName`; returns the
                 * wrapped property's result or `null` if not
                 * applicable.
                 *
@@ -376,10 +388,10 @@ if (@LIBRARY_NAME@) {
 		}
 
                /**
-                * @public `@LIBRARY_NAME@.node.value`.
+                * @public `@LIBRARY_NAME@.node.getValue`.
                 *
                 * @description
-                * Wrapper method for `nodeValue`; returns the
+                * Getter method for `nodeValue`; returns the
                 * wrapped property's result or `null` if not
                 * applicable.
                 *
@@ -403,6 +415,42 @@ if (@LIBRARY_NAME@) {
 			return result;
 		}
 
+               /**
+                * @public `@LIBRARY_NAME@.node.setValue`.
+                *
+                * @description
+                * Setter method for `nodeValue`; returns the
+                * wrapped property's result or `null` if not
+                * applicable.
+                *
+                * @see `Node::nodeValue`.
+                * @see `CharacterData::data`.
+                * @see `Text::data`.
+                * 
+                * @param obj Object
+                * A node-like object to retrieve the `nodeValue`
+                * property from.
+                * 
+                * @param newValue String
+                * A string containing the new value for the
+		* `nodeValue` property.
+                */
+
+		function setValue(
+			obj,
+			newValue
+		)
+		{
+			var key = "nodeValue",
+				result = null;
+			if (isNodeLike(obj)) {
+				if (valueSetters[obj.nodeType]) {
+					result = obj[key] = newValue;
+				}
+			}
+			return result;
+		}
+
 		@LIBRARY_NAME@.node = @LIBRARY_NAME@.node || {
 			"prepend": insertBefore,
 			"prependList": insertListBefore,
@@ -411,8 +459,9 @@ if (@LIBRARY_NAME@) {
 			"remove": removeChild,
 			"replace": replaceChild,
 			"clone": cloneNode,
-			"name": getName,
-			"value": getValue
+			"getName": getName,
+			"getValue": getValue,
+			"setValue": setValue
 		};
 	}());
 }

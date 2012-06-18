@@ -208,13 +208,13 @@ builder.
 
 `make traverse` (exports to [./Builds/Uncompressed/utils-traverse.js](./Builds/Uncompressed/utils-traverse.js "Build File")).
 
-#### All
+#### Complete
 
-`make all` or `make` (exports to [./Builds/Uncompressed/utils-all.js](./Builds/Uncompressed/utils-all.js "Build File")).
+`make complete` (exports to [./Builds/Uncompressed/utils-complete.js](./Builds/Uncompressed/utils-complete.js "Build File")).
 
 #### Minified
 
-`make install` (runs all hard-coded builds through the YUI Compressor to [./Builds/Compressed](./Builds/Compressed "Compressed Directory")).
+`make` (runs all hard-coded builds through the YUI Compressor to [./Builds/Compressed](./Builds/Compressed "Compressed Directory")).
 
 ### Custom Builder
 

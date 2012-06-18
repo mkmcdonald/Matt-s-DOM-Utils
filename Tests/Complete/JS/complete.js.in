@@ -1,0 +1,1354 @@
+var global = global || this;
+if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
+	(function () {
+		var doc = global.document,
+			commonElements,
+			tests,
+			testIndex,
+
+			score,
+			testsRun,
+
+			runTests,
+
+			tester;
+
+		commonElements = (function () {
+			var key = "getElementById",
+				obj = {};
+			obj.node_test = doc[key]("node_test");
+			obj.test_text = doc[key]("test_text");
+			obj.create_test = doc[key]("create_test");
+			obj.classes_test = doc[key]("classes_test");
+			obj.traverse_test = doc[key]("traverse_test");
+			obj.test_form = doc[key]("test_form");
+			obj.start = doc[key]("start");
+			obj.stop = doc[key]("stop");
+			obj.results = doc[key]("results");
+			obj.tests = doc[key]("tests");
+			obj.score = doc[key]("score");
+			return obj;
+		}());
+
+		doc = null;
+
+		function prepend(node)
+		{
+			var par = commonElements.node_test;
+			if (par && node) {
+				node =  @LIBRARY_NAME@.node.prepend(
+					par,
+					node,
+					par.lastChild
+				);
+			}
+			return node;
+		}
+
+		function makeElement(
+			doc,
+			tag
+		)
+		{
+			var result = null;
+			if (@LIBRARY_NAME@.create.element) {
+				result = @LIBRARY_NAME@.create.element(
+					doc,
+					tag
+				);
+			}
+			return result;
+		}
+
+		function insertBefore()
+		{
+			var node;
+			if (@LIBRARY_NAME@.create.element) {
+				node = makeElement(
+					global.document,
+					"li"
+				);
+			}
+			if (node) {
+				node = prepend(
+					node
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				node
+			);
+		}
+
+		function generateList(
+			num
+		)
+		{
+			var index = num - 1,
+				node,
+				list = [];
+			while (index > -1) {
+				node = makeElement(
+					global.document,
+					"li"
+				);
+				if (node) {
+					list[index] = node;
+				}
+				index -= 1;
+			}
+			return list;
+		}
+
+		function generatePrependList()
+		{
+			return generateList(
+				3
+			);
+		}
+
+		function insertList()
+		{
+			var list = generatePrependList(),
+				par = commonElements.node_test,
+				nodes;
+			if (par && list && list.length) {
+				nodes = @LIBRARY_NAME@.node.prependList(
+					par,
+					list,
+					par.lastChild
+				);
+			}
+			return @LIBRARY_NAME@.is.type(
+				nodes,
+				"undefined"
+			);
+		}
+
+		function appendChild()
+		{
+			var node = makeElement(
+				global.document,
+				"li"
+			);
+			node = @LIBRARY_NAME@.node.append(
+				commonElements.node_test,
+				node
+			);
+			return @LIBRARY_NAME@.is.nodeLike(
+				node
+			);
+		}
+
+		function generateAppendList()
+		{
+			return generateList(
+				3
+			);
+		}
+
+		function appendList()
+		{
+			var list = generateAppendList(),
+				nodes,
+				par = commonElements.node_test;
+			if (list && list.length) {
+				nodes = @LIBRARY_NAME@.node.appendList(
+					par,
+					list
+				);
+			}
+			return @LIBRARY_NAME@.is.type(
+				nodes,
+				"undefined"
+			);
+		}
+
+		function removeChild()
+		{
+			var par = commonElements.node_test,
+				node;
+			if (par) {
+				node = @LIBRARY_NAME@.node.remove(
+					par,
+					par.lastChild
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				node
+			);
+		}
+
+		function replace(node)
+		{
+			var par = commonElements.node_test;
+			if (par) {
+				node =  @LIBRARY_NAME@.node.replace(
+					par,
+					node,
+					par.lastChild
+				);
+			}
+			return node;
+		}
+
+		function makeText(
+			doc,
+			text
+		)
+		{
+			var result = null;
+			if (@LIBRARY_NAME@.create.text) {
+				result = @LIBRARY_NAME@.create.text(
+					doc,
+					text
+				);
+			}
+			return result;
+		}
+
+		function replaceChild()
+		{
+			var node = makeText(
+				global.document,
+				"c = b^x; x = log(c) / log(b)"
+			);
+			if (node) {
+				node = replace(node);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				node
+			);
+		}
+
+		function cloneNode()
+		{
+			var node = @LIBRARY_NAME@.node.clone(
+				commonElements.node_test,
+				true
+			);
+			return @LIBRARY_NAME@.is.nodeLike(
+				node
+			);
+		}
+
+		function getName()
+		{
+			var node = commonElements.node_test,
+				test;
+			if (node) {
+				test = @LIBRARY_NAME@.node.getName(
+					node,
+					true
+				);
+			}
+			return test === "ul";
+		}
+
+		function getValue()
+		{
+			var node = commonElements.test_text,
+				test;
+			if (node.firstChild) {
+				test = @LIBRARY_NAME@.node.getValue(
+					node.firstChild
+				);
+			}
+			return test === "test";
+		}
+
+		function setValue()
+		{
+			var node = commonElements.test_text,
+				test;
+			if (node.firstChild) {
+				test = @LIBRARY_NAME@.node.setValue(
+					node.firstChild,
+					"testing; 1, 2, 3"
+				);
+			}
+			return test === "testing; 1, 2, 3";
+		}
+
+		function createElement()
+		{
+			var test = makeElement(
+				global.document,
+				"p"
+			);
+			return @LIBRARY_NAME@.is.element(
+				test
+			);
+		}
+
+		function createTextNode()
+		{
+			var test = makeText(
+				global.document,
+				"The rain in Spain is quite plain."
+			);
+			return @LIBRARY_NAME@.is.text(
+				test
+			);
+		}
+
+		function makeComment(
+			doc,
+			text
+		)
+		{
+			var result = null;
+			if (@LIBRARY_NAME@.create.comment) {
+				result = @LIBRARY_NAME@.create.comment(
+					doc,
+					text
+				);
+			}
+			return result;
+		}
+
+		function createComment()
+		{
+			var test = makeComment(
+				global.document,
+				"No comment."
+			);
+			return @LIBRARY_NAME@.is.comment(
+				test
+			);
+		}
+
+		function makeDocumentFragment(
+			doc
+		)
+		{
+			var result = null;
+			if (@LIBRARY_NAME@.create.documentFragment) {
+				result = @LIBRARY_NAME@.create.documentFragment(
+					doc
+				);
+			}
+			return result;
+		}
+
+		function createDocumentFragment()
+		{
+			var test = makeDocumentFragment(
+				global.document
+			);
+			return @LIBRARY_NAME@.is.documentFragment(
+				test
+			);
+		}
+
+		function contains()
+		{
+			var test,
+				node = commonElements.classes_test;
+			if (@LIBRARY_NAME@.classes.contains) {
+				test = @LIBRARY_NAME@.classes.contains(
+					node,
+					"good"
+				);
+			}
+			return @LIBRARY_NAME@.is.type(
+				test,
+				"boolean"
+			);
+		}
+
+		function containsList()
+		{
+			var node = commonElements.classes_test,
+				tokens  = @LIBRARY_NAME@.classes.containsList(
+					node,
+					["a", "b", "c"]
+				);
+			return @LIBRARY_NAME@.is.type(
+				tokens,
+				"boolean"
+			);
+		}
+
+		function add()
+		{
+			var test,
+				node = commonElements.classes_test;
+			if (@LIBRARY_NAME@.classes.add) {
+				test = @LIBRARY_NAME@.classes.add(
+					node,
+					"good"
+				);
+			}
+			return @LIBRARY_NAME@.is.type(
+				test,
+				"undefined"
+			);
+		}
+
+		function addList()
+		{
+			var node = commonElements.classes_test,
+				test = @LIBRARY_NAME@.classes.addList(
+					node,
+					["a", "b", "c"]
+				);
+			return @LIBRARY_NAME@.is.type(
+				test,
+				"undefined"
+			);
+		}
+
+		function remove()
+		{
+			var node = commonElements.classes_test,
+				test = null;
+			if (@LIBRARY_NAME@.classes.remove) {
+				test = @LIBRARY_NAME@.classes.remove(
+					node,
+					"good"
+				);
+			}
+			return @LIBRARY_NAME@.is.type(
+				test,
+				"undefined"
+			);
+		}
+
+		function removeList()
+		{
+			var node = commonElements.classes_test,
+				tokens = @LIBRARY_NAME@.classes.removeList(
+					node,
+					["a", "b", "c"]
+				);
+			return @LIBRARY_NAME@.is.type(
+				tokens,
+				"undefined"
+			);
+		}
+
+		function toggle()
+		{
+			var node = commonElements.classes_test,
+				test = null;
+			if (@LIBRARY_NAME@.classes.toggle) {
+				test = @LIBRARY_NAME@.classes.toggle(
+					node,
+					"toggle"
+				);
+			}
+			return @LIBRARY_NAME@.is.type(
+				test,
+				"boolean"
+			);
+		}
+
+		function toggleList()
+		{
+			var node = commonElements.classes_test,
+				test = @LIBRARY_NAME@.classes.toggleList(
+					node,
+					["a", "b", "c"]
+				);
+			return @LIBRARY_NAME@.is.type(
+				test,
+				"undefined"
+			);
+		}
+
+		function get()
+		{
+			var node = commonElements.classes_test,
+				test;
+			if (@LIBRARY_NAME@.classes.get) {
+				test = @LIBRARY_NAME@.classes.get(
+					node
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function childNodes()
+		{
+			var node = commonElements.traverse_test,
+				nodes;
+			if (@LIBRARY_NAME@.traverse.getNodes) {
+				nodes = @LIBRARY_NAME@.traverse.getNodes(
+					node
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				nodes
+			);
+		}
+
+		function optimisticFilter(node)
+		{
+			return true;
+		}
+
+		function childNodesTraversed()
+		{
+			var node = commonElements.traverse_test,
+				nodes = @LIBRARY_NAME@.traverse.nodes(
+					node,
+					optimisticFilter
+				);
+			return @LIBRARY_NAME@.is.arrayLike(
+				nodes
+			);
+		}
+
+		function children()
+		{
+			var node = commonElements.traverse_test,
+				test;
+			if (@LIBRARY_NAME@.traverse.getElements) {
+				test = @LIBRARY_NAME@.traverse.getElements(
+					node
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function pessimisticFilter(node)
+		{
+			return false;
+		}
+
+		function childrenTraversed()
+		{
+			var node = commonElements.traverse_test,
+				nodes = @LIBRARY_NAME@.traverse.elements(
+					node,
+					pessimisticFilter
+				);
+			return @LIBRARY_NAME@.is.arrayLike(
+				nodes
+			);
+		}
+
+		function tree()
+		{
+			var nodes = @LIBRARY_NAME@.traverse.getNodeTree(
+				global.document
+			);
+			return @LIBRARY_NAME@.is.arrayLike(
+				nodes
+			);
+		}
+
+		function treeTraversed()
+		{
+			var nodes = @LIBRARY_NAME@.traverse.nodeTree(
+				global.document,
+				optimisticFilter
+			);
+			return @LIBRARY_NAME@.is.arrayLike(
+				nodes
+			);
+		}
+
+		function getText()
+		{
+			var node = commonElements.traverse_test,
+				text = @LIBRARY_NAME@.traverse.getText(
+					node
+				);
+			return @LIBRARY_NAME@.is.type(
+				text,
+				"string"
+			);
+		}
+
+		function setText()
+		{
+			var node = commonElements.traverse_test,
+				text = @LIBRARY_NAME@.traverse.setText(
+					node,
+					"NEW TEXTUAL CONTENT",
+					global.document
+				);
+			return text === "NEW TEXTUAL CONTENT";
+		}
+
+		function childrenTree()
+		{
+			var tree = @LIBRARY_NAME@.traverse.getElementTree(
+				global.document
+			);
+			return @LIBRARY_NAME@.is.arrayLike(
+				tree
+			);
+		}
+
+		function childrenTreeTraversed()
+		{
+			var nodes = @LIBRARY_NAME@.traverse.elementTree(
+				global.document,
+				optimisticFilter
+			);
+			return @LIBRARY_NAME@.is.arrayLike(
+				nodes
+			);
+		}
+
+		function isAncestor()
+		{
+			var child = commonElements.traverse_text,
+				node = @LIBRARY_NAME@.traverse.isAncestor(
+					global.document,
+					child
+				);
+			return @LIBRARY_NAME@.is.type(
+				node,
+				"boolean"
+			);
+		}
+
+		function ancestors()
+		{
+			var node = commonElements.traverse_test,
+				list = @LIBRARY_NAME@.traverse.getAncestors(
+					node
+				),
+				test;
+			if (list && list.value) {
+				test = list.value;
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function ancestorsTraversed()
+		{
+			var node = commonElements.traverse_test,
+				nodes = @LIBRARY_NAME@.traverse.ancestors(
+					node,
+					optimisticFilter
+				);
+			return @LIBRARY_NAME@.is.arrayLike(
+				nodes
+			);
+		}
+
+		function byName()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.byName) {
+				test = @LIBRARY_NAME@.select.byName(
+					global.document,
+					"control1"
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function byTagName()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.byTagName) {
+				test = @LIBRARY_NAME@.select.byTagName(
+					global.document,
+					"input"
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function byClassName()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.byClassName) {
+				test = @LIBRARY_NAME@.select.byClassName(
+					global.document,
+					"container"
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function byId()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.byId) {
+				test = @LIBRARY_NAME@.select.byId(
+					global.document,
+					"select_test"
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function query()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.query) {
+				test = @LIBRARY_NAME@.select.query(
+					global.document,
+					"input[type=text]"
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function queryAll()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.queryAll) {
+				test = @LIBRARY_NAME@.select.queryAll(
+					global.document,
+					"input[type]"
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function head()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.head) {
+				test = @LIBRARY_NAME@.select.head(
+					global.document
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function body()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.body) {
+				test = @LIBRARY_NAME@.select.body(
+					global.document
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function images()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.images) {
+				test = @LIBRARY_NAME@.select.images(
+					global.document,
+					"0"
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function allImages()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.allImages) {
+				test = @LIBRARY_NAME@.select.allImages(
+					global.document
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function embeds()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.embeds) {
+				test = @LIBRARY_NAME@.select.embeds(
+					global.document,
+					"0"
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function allEmbeds()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.allEmbeds) {
+				test = @LIBRARY_NAME@.select.allEmbeds(
+					global.document
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function plugins()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.plugins) {
+				test = @LIBRARY_NAME@.select.plugins(
+					global.document,
+					"0"
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function allPlugins()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.allPlugins) {
+				test = @LIBRARY_NAME@.select.allPlugins(
+					global.document
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function links()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.links) {
+				test = @LIBRARY_NAME@.select.links(
+					global.document,
+					"0"
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function allLinks()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.allLinks) {
+				test = @LIBRARY_NAME@.select.allLinks(
+					global.document
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function forms()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.forms) {
+				test = @LIBRARY_NAME@.select.forms(
+					global.document,
+					"0"
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function allForms()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.allForms) {
+				test = @LIBRARY_NAME@.select.allForms(
+					global.document
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function scripts()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.scripts) {
+				test = @LIBRARY_NAME@.select.scripts(
+					global.document,
+					"0"
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function allScripts()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.allScripts) {
+				test = @LIBRARY_NAME@.select.allScripts(
+					global.document
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function applets()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.applets) {
+				test = @LIBRARY_NAME@.select.applets(
+					global.document,
+					"0"
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function allApplets()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.allApplets) {
+				test = @LIBRARY_NAME@.select.allApplets(
+					global.document
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function anchors()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.anchors) {
+				test = @LIBRARY_NAME@.select.anchors(
+					global.document,
+					"0"
+				);
+			}
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function allAnchors()
+		{
+			var test;
+			if (@LIBRARY_NAME@.select.allAnchors) {
+				test = @LIBRARY_NAME@.select.allAnchors(
+					global.document
+				);
+			}
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		function namedItem()
+		{
+			var node = commonElements.test_form,
+				test = @LIBRARY_NAME@.select.namedItem(
+					node,
+					"elements",
+					"control1"
+				);
+			return @LIBRARY_NAME@.is.nodeLike(
+				test
+			);
+		}
+
+		function collection()
+		{
+			var node = commonElements.test_form,
+				test = @LIBRARY_NAME@.select.collection(
+				node,
+				"elements"
+			);
+			return @LIBRARY_NAME@.is.arrayLike(
+				test
+			);
+		}
+
+		tests = [
+			insertBefore,
+			insertList,
+			appendChild,
+			appendList,
+			removeChild,
+			replaceChild,
+			cloneNode,
+			getName,
+			getValue,
+			setValue,
+			createElement,
+			createTextNode,
+			createComment,
+			createDocumentFragment,
+			contains,
+			containsList,
+			add,
+			addList,
+			remove,
+			removeList,
+			toggle,
+			toggle,
+			toggleList,
+			get,
+			childNodes,
+			childNodesTraversed,
+			children,
+			childrenTraversed,
+			tree,
+			treeTraversed,
+			getText,
+			setText,
+			childrenTree,
+			childrenTreeTraversed,
+			isAncestor,
+			ancestors,
+			ancestorsTraversed,
+			byName,
+			byTagName,
+			byClassName,
+			byId,
+			query,
+			queryAll,
+			head,
+			body,
+			images,
+			allImages,
+			embeds,
+			allEmbeds,
+			plugins,
+			allPlugins,
+			links,
+			allLinks,
+			forms,
+			allForms,
+			scripts,
+			allScripts,
+			applets,
+			allApplets,
+			anchors,
+			allAnchors,
+			namedItem,
+			collection
+		];
+
+		function resetTestData()
+		{
+			testIndex = 0;
+			score = 0;
+			testsRun = 0;
+		}
+
+		function disableStartButton()
+		{
+			var par = commonElements,
+				button = par.start;
+			button.disabled = true;
+			button.onclick = function () {};
+		}
+
+		function createText(
+			doc,
+			text
+		)
+		{
+			var result = null;
+			if (@LIBRARY_NAME@.create.text) {
+				result = @LIBRARY_NAME@.create.text(
+					doc,
+					text
+				);
+			}
+			return result;
+		}
+
+		function appendNode(
+			par,
+			node
+		)
+		{
+			return @LIBRARY_NAME@.node.append(
+				par,
+				node
+			);
+		}
+
+		function createMessage(text)
+		{
+			var str = String(text);
+			if (str === "") {
+				str = "[an empty string]";
+			}
+			return createText(
+				global.document,
+				str
+			);
+		}
+
+		function grabById(
+			id
+		)
+		{
+			var key = "getElementById";
+			return global.document[key](
+				id
+			);
+		}
+
+		function addMessage(
+			msg,
+			num
+		)
+		{
+			var cell = grabById("result_" + num),
+				text = createMessage(msg);
+			if (cell) {
+				appendNode(
+					cell,
+					text
+				);
+			}
+		}
+
+		function updateScore()
+		{
+			var par = commonElements,
+				element = par.score,
+				total = score + " / " + testsRun,
+				text = createMessage(total);
+			if (element && !element.firstChild) {
+				appendNode(
+					element,
+					text
+				);
+			} else if (element && element.firstChild) {
+				element.firstChild.nodeValue = total;
+			}
+		}
+
+		function adjustScore(
+			result,
+			num
+		)
+		{
+
+			var row = grabById("test_" + num);
+			if (row) {
+				if (result === "true") {
+					row.className = "pass";
+					score += 1;
+					testsRun += 1;
+				} else if (result === "false") {
+					row.className = "fail";
+				} else if (result === "ERROR") {
+					row.className = "error";
+					testsRun += 1;
+				}
+			}
+			updateScore();
+		}
+
+		function addResult(
+			result,
+			num
+		)
+		{
+			addMessage(
+				result,
+				num
+			);
+			adjustScore(
+				result,
+				num
+			);
+		}
+
+		function runTest(
+			test,
+			key
+		)
+		{
+			var result = null;
+			if (typeof test === "function") {
+				try {
+					result = test();
+					result = String(
+						result
+					);
+				} catch (err) {
+					result = "ERROR";
+				}
+				addResult(
+					result,
+					key
+				);
+			}
+		}
+
+		function makeTimeout(
+			ref,
+			ms
+		)
+		{
+			var key = "setTimeout",
+				result;
+			if (@LIBRARY_NAME@.is.hostObject(global[key])) {
+				result = global[key](
+					ref,
+					ms
+				);
+			}
+			return result;
+		}
+
+		runTests = (function () {
+			var max = tests.length;
+			return function () {
+				if (testIndex < max) {
+					runTest(
+						tests[testIndex],
+						testIndex + 1
+					);
+					testIndex += 1;
+					tester = makeTimeout(
+						runTests,
+						100
+					);
+				} else if (testIndex >= max) {
+					testIndex = 0;
+				}
+			};
+		}());
+
+		function startTests(
+			evt
+		)
+		{
+			resetTestData();
+			runTests();
+			disableStartButton();
+		}
+
+		function removeNode(
+			par,
+			node
+		)
+		{
+			return @LIBRARY_NAME@.node.remove(
+				par,
+				par.firstChild
+			);
+		}
+
+		function clearChildNodes(
+			par
+		)
+		{
+			while (par && par.firstChild) {
+				removeNode(
+					par,
+					par.firstChild
+				);
+			}
+		}
+
+		function clearResult(
+			num
+		)
+		{
+			var cell = grabById("result_" + num),
+				row = grabById("test_" + num),
+				index;
+			if (cell && row) {
+				row.className = "";
+				clearChildNodes(
+					cell
+				);
+			}
+		}
+
+		function clearTests()
+		{
+			var index = 0,
+				max = tests.length;
+			for (index; index < max; index += 1) {
+				clearResult(
+					index + 1
+				);
+			}
+		}
+
+		function resetScore()
+		{
+			var par = commonElements,
+				cell = par.score;
+			clearChildNodes(
+				cell
+			);
+		}
+
+		function enableStartButton()
+		{
+			var par = commonElements,
+				button = par.start;
+			button.disabled = false;
+			button.onclick = startTests;
+		}
+
+		function removeTimeout(
+			ref
+		)
+		{
+			var key = "clearTimeout";
+			if (@LIBRARY_NAME@.is.hostObject(global[key])) {
+				global[key](
+					ref
+				);
+			}
+		}
+
+		function endTests(
+			evt
+		)
+		{
+			removeTimeout(
+				tester
+			);
+			tester = null;
+			clearTests();
+			resetScore();
+			enableStartButton();
+		}
+
+		function addHandlers()
+		{
+			var par = commonElements;
+			par.start.onclick = startTests;
+			par.stop.onclick = endTests;
+		}
+
+		addHandlers();
+	}());
+}

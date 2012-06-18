@@ -1,4 +1,4 @@
-if (Utils) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 
                /**
@@ -26,8 +26,10 @@ if (Utils) {
 			isElement = Utils.is.element,
 			removeNode = Utils.node.remove,
 			isText = Utils.is.text,
-			getValue = Utils.node.value,
+			getNodeValue = Utils.node.getValue,
 			createText = Utils.create.text,
+			appendNode = Utils.node.append,
+			setNodeValue = Utils.node.setValue,
 
 			doc,
 
@@ -35,7 +37,8 @@ if (Utils) {
 			textSetters,
 			getChildren,
 			textGetterDecisions,
-			textSetterDecisions;
+			textSetterDecisions,
+			getChildNodes;
 
                /**
                 * @private
@@ -155,7 +158,7 @@ if (Utils) {
 		}
 
                /**
-                * @public `Utils.traverse.getNodes`.
+                * @private
                 *
                 * @description
                 * Method that returns an array-like object of
@@ -163,10 +166,10 @@ if (Utils) {
                 * returns `null` if not applicable.
                 *
                 * @param obj Object
-                * A node-like object to process.
+                * A node-like object to access.
                 */
 
-		function getChildNodes(
+		function getNodes(
 			obj
 		)
 		{
@@ -181,6 +184,32 @@ if (Utils) {
 			}
 			return result;
 		}
+
+               /**
+                * @public `Utils.traverse.getNodes`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure)
+                * `getNodes` or `null` * if not applicable.
+                *
+                * @param obj Object
+                * An node-like object to access.
+                *
+                * @see `getNodes`.
+                */
+
+		getChildNodes = (function () {
+			var key = "childNodes",
+				result = null;
+			if (isDocument(doc)) {
+				if (isHostObject(doc[key])) {
+					result = getNodes;
+				}
+			}
+			return result;
+		}());
 
                /**
                 * @private
@@ -208,7 +237,9 @@ if (Utils) {
 		{
 			var called;
 			if (typeof callback === "function") {
-				called = callback(obj);
+				called = callback(
+					obj
+				);
 				if (called === true) {
 					result[result.length] = obj;
 				} else if (called) {
@@ -256,6 +287,32 @@ if (Utils) {
 		}
 
                /**
+                * @private
+                *
+                * @description
+                * Wrapper method that wraps `getChildNodes`;
+                * returns `null` if not applicable.
+                *
+                * @param obj Object
+                * A node-like object to access.
+                *
+                * @see `getChildNodes`.
+                */
+
+		function wrapChildNodes(
+			obj
+		)
+		{
+			var result = null;
+			if (getChildNodes) {
+				result = getChildNodes(
+					obj
+				);
+			}
+			return result;
+		}
+
+               /**
                 * @public `Utils.traverse.nodes`.
                 *
                 * @description
@@ -281,7 +338,7 @@ if (Utils) {
 			var result = [];
 			if (typeof callback === "function") {
 				result = traverseLinear(
-					getChildNodes(obj),
+					wrapChildNodes(obj),
 					callback
 				);
 			}
@@ -386,7 +443,7 @@ if (Utils) {
 		)
 		{
 			return traverseLinear(
-				getChildNodes(obj),
+				wrapChildNodes(obj),
 				filterElementNode
 			);
 		}
@@ -463,7 +520,9 @@ if (Utils) {
 			var canGet,
 				result;
 			if (doc) {
-				canGet = canGetChildren(doc.body);
+				canGet = canGetChildren(
+					doc.body
+				);
 				if (canGet) {
 					result = getNativeChildren;
 				} else if (!canGet) {
@@ -472,6 +531,32 @@ if (Utils) {
 			}
 			return result;
 		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Wrapper method that wraps `getChildren`;
+                * returns `null` if not applicable.
+                *
+                * @param obj Object
+                * A node-like object to traverse.
+                *
+                * @see `getChildren`.
+                */
+
+		function wrapChildren(
+			obj
+		)
+		{
+			var result = null;
+			if (getChildren) {
+				result = getChildren(
+					obj
+				);
+			}
+			return result;
+		}
 
                /**
                 * @public `Utils.traverse.elements`.
@@ -497,13 +582,11 @@ if (Utils) {
 		)
 		{
 			var result = [];
-			if (getChildren) {
-				if (typeof callback === "function") {
-					result = traverseLinear(
-						getChildren(obj),
-						callback
-					);
-				}
+			if (typeof callback === "function") {
+				result = traverseLinear(
+					wrapChildren(obj),
+					callback
+				);
 			}
 			return result;
 		}
@@ -582,7 +665,9 @@ if (Utils) {
 		{
 			var result = null;
 			if (isText(obj)) {
-				result = obj.nodeValue;
+				result = getNodeValue(
+					obj
+				);
 			}
 			return result;
 		}
@@ -605,7 +690,9 @@ if (Utils) {
 			obj
 		)
 		{
-			return getValue(obj);
+			return getNodeValue(
+				obj
+			);
 		}
 
                /**
@@ -659,7 +746,9 @@ if (Utils) {
 		{
 			var result = false;
 			if (isNodeLike(obj)) {
-				result = isHostObject(obj.childNodes);
+				result = isHostObject(
+					obj.childNodes
+				);
 			}
 			return result;
 		}
@@ -806,7 +895,9 @@ if (Utils) {
 					obj,
 					filterTextData
 				);
-				result = nodes.join("");
+				result = nodes.join(
+					""
+				);
 			}
 			return result;
 		}
@@ -863,8 +954,41 @@ if (Utils) {
 			if (canGetText(obj)) {
 				decision = decisions[obj.nodeType];
 				if (typeof decision === "function") {
-					result = decision(obj);
+					result = decision(
+						obj
+					);
 				}
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Wrapper method that wraps `createText`;
+                * returns `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to create a text
+                * node-like object in.
+                *
+                * @param text String
+                * A string representing the `nodeValue` of the
+                * text node-like object to be created.
+                */
+
+		function wrapCreateText(
+			doc,
+			text
+		)
+		{
+			var result = null;
+			if (createText) {
+				result = createText(
+					doc,
+					text
+				);
 			}
 			return result;
 		}
@@ -898,16 +1022,14 @@ if (Utils) {
 		{
 			var node,
 				result = null;
-			if (createText) {
-				node = createText(
+				node = wrapCreateText(
 					doc,
 					text
 				);
-				result = Utils.node.append(
+				result = appendNode(
 					obj,
 					node
 				);
-			}
 			return result;
 		}
 
@@ -935,8 +1057,8 @@ if (Utils) {
                 */
 
 		function overrideText(
-			text,
 			obj,
+			text,
 			doc
 		)
 		{
@@ -945,13 +1067,15 @@ if (Utils) {
 			text = text || "";
 			if (isNodeLike(obj)) {
 				if (isDocument(doc)) {
-					clearChildNodes(obj);
+					clearChildNodes(
+						obj
+					);
 					textNode = appendText(
 						text,
 						obj,
 						doc
 					);
-					result = Utils.node.value(
+					result = getNodeValue(
 						textNode
 					);
 				}
@@ -978,17 +1102,14 @@ if (Utils) {
                 */
 
 		function replaceText(
-			text,
-			obj
+			obj,
+			text
 		)
 		{
-			var result = null;
-			text = text || "";
-			if (Utils.can.getValue(obj)) {
-				obj.nodeValue = text;
-				result = obj.nodeValue;
-			}
-			return result;
+			return setNodeValue(
+				obj,
+				text
+			);
 		}
 
                /**
@@ -1029,13 +1150,21 @@ if (Utils) {
                 * A node-like object to replace the textual content
                 * of.
                 *
+                * @param text String
+                * A string containing the textual content to act as
+                * a replacement.
+                *
+                * @param doc Document
+                * A document node-like object to create a text
+                * node-like object with.
+                *
                 * @see DOM 4 Spec section 5.3 (`Node::textContent`,
                 * setting).
                 */
 
 		function setText(
-			text,
 			obj,
+			text,
 			doc
 		)
 		{
@@ -1046,8 +1175,8 @@ if (Utils) {
 				decision = decisions[obj.nodeType];
 				if (typeof decision === "function") {
 					result = decision(
-						text,
 						obj,
+						text,
 						doc
 					);
 				}
@@ -1320,14 +1449,12 @@ if (Utils) {
 			var key = "parent",
 				result = null;
 			if (isNodeLike(obj)) {
-				if (obj.parentNode) {
+				if (isHostObject(obj.parentNode)) {
 					result = {};
 					result.value = obj.parentNode;
 					result[key] = getAncestorList(
 						obj.parentNode
 					);
-				} else if (!obj.parentNode) {
-					result = null;
 				}
 			}
 			return result;
@@ -1394,7 +1521,9 @@ if (Utils) {
 			var list,
 				result = false;
 			if (isNodeLike(obj)) {
-				list = getAncestorList(obj);
+				list = getAncestorList(
+					obj
+				);
 				result = listContainsNode(
 					list,
 					par

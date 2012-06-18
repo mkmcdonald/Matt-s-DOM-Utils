@@ -1,0 +1,295 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): HOWTO&mdash;Customisation</title>
+@HOWTO_STYLESHEET@
+@HOWTO_RESOURCES@
+		<link href="implementation.html" hreflang="en" media="all"
+			rel="prev" title="HOWTO: Implementation"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="HOWTO Index"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="next" title="HOWTO Index"
+			type="text/html">
+@BODY@
+@HOWTO_HEADER@
+@HOWTO_NAV@
+		<div class="primary_row row">
+			<div class="cell primary_cell">
+				<h2 class="heading"
+					title="HOWTO: Customisation">
+					HOWTO: Customisation
+				</h2>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="implementation.html" rel="prev"
+					title="Previous">&larr;HOWTO: Implementation</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="./" rel="next"
+					title="Next">HOWTO Index&rarr;</a>
+			</div>
+		</div>
+		<div class="column primary_column">
+			<div class="cell primary_cell" id="table_of_contents">
+				<h3 class="heading">
+					<a href="#table_of_contents"
+						title="Table of Contents">Table of Contents</a>
+				</h3>
+				<ol class="contents_list">
+					<li>
+						<a href="#introduction"
+							title="Introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="#configuration"
+							title="Configuration">Configuration</a>
+						<ol>
+							<li>
+								<a href="#autoconf"
+									title="autoconf"><code>autoconf</code></a>
+							</li>
+							<li>
+								<a href="#configure"
+									title="./configure"><code>./configure</code></a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#makefile"
+							title="Makefile">Makefile</a>
+						<ol>
+							<li>
+								<a href="#core_build"
+									title="Core Build">Core Build</a>
+							</li>
+							<li>
+								<a href="#independent_core_build"
+									title="Independent Core Build">Independent Core Build</a>
+							</li>
+							<li>
+								<a href="#complete_build"
+									title="Complete Build">Complete Build</a>
+							</li>
+							<li>
+								<a href="#minification"
+									title="Minification">Minification</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#footnotes"
+							title="Footnotes">Footnotes</a>
+					</li>
+				</ol>
+			</div>
+			<hr>
+			<div class="cell primary_cell" id="introduction">
+				<h3 class="heading">
+					<a href="#introduction"
+						title="Introduction">Introduction</a>
+				</h3>
+				<p>
+					Once the development package for <em>@LIBRARY_NAME@</em> has
+					been downloaded, options arise to fully customise a build.
+					They are outlined below.
+				</p>
+			</div>
+			<div class="cell primary_cell" id="configuration">
+				<h3 class="heading">
+					<a href="#configuration"
+						title="Configuration">Configuration</a>
+				</h3>
+				<p>
+					<em>@LIBRARY_NAME@</em> is designed to work under a variable
+					name. This is implemented via the <code>autoconf</code> utility,
+					which is part of the GNU Autotools build system<a href="#footnote_0"
+						title="Footnote Zero">[0]</a>. This step is
+					optional, but optimal for demanding scenarios.
+				</p>
+				<div id="autoconf">
+					<h4 class="heading">
+						<a href="#autoconf"
+							title="autoconf"><code>autoconf</code></a>
+					</h4>
+					<p>
+						In order to generate text in a dynamic fashion,
+						<code>autoconf</code> is used to plug in templates
+						and strings as Bash variables. These variables can
+						be found in a file<a href="#footnote_1"
+							title="Footnote One">[1]</a> entitled
+						&ldquo;configure.ac&rdquo;. Once the variables are modified,
+						a command such as:
+					</p>
+					<p>
+						<code>autoconf</code>
+					</p>
+					<p>
+						must be called to generate a fresh <code>configure</code>
+						shell script.
+					</p>
+				</div>
+				<div id="configure">
+					<h4 class="heading">
+						<a href="#configure"
+							title="./configure"><code>./configure</code></a>
+					</h4>
+					<p>
+						Once a <code>./configure</code> shell script has been generated,
+						it can be executed. Execution of the script will replace special
+						placeholders (demarcated by <code>@</code> characters). For example,
+						the Bash variable <code>LIBRARY_NAME</code> will
+						replace placeholders of: &ldquo;&commat;LIBRARY_NAME&commat;&rdquo;.
+						This particular variable is used heavily in <em>@LIBRARY_NAME@</em> to
+						facilitate fully customised builds.
+					</p>
+				</div>
+			</div>
+			<div class="cell primary_cell" id="makefile">
+				<h3 class="heading">
+					<a href="#makefile"
+						title="Makefile">Makefile</a>
+				</h3>
+				<p>
+					If <em>@LIBRARY_NAME@</em> has been configured, the Makefile is
+					the next logical step for pre-defined builds. A build is
+					provided for the &ldquo;core&rdquo;; builds are also provided
+					for each independent module (prefixed with the
+					&ldquo;core&rdquo;). Finally, a build with every module is
+					provided. Each of these categories are listed below.
+				</p>
+				<div id="core_build">
+					<h4 class="heading">
+						<a href="#core_build"
+							title="Core Build">Core Build</a>
+					</h4>
+					<p>
+						In the &ldquo;core&rdquo; build, every
+						defined &ldquo;core&rdquo; module is concatenated
+						in order. The build is then formed into a file<a href="#footnote_2"
+							title="Footnote Two">[2]</a>. When in a terminal navigated
+						to the directory in which Makefile is housed, a command of:
+					</p>
+					<p>
+						<code>make core</code>
+					</p>
+					<p>
+						will create such a build.
+					</p>
+				</div>
+				<div id="independent_core_build">
+					<h4 class="heading">
+						<a href="#independent_core_build"
+							title="Independent Core Build">Independent Core Build</a>
+					</h4>
+					<p>
+						In the independent &ldquo;core&rdquo; build, every
+						defined &ldquo;core&rdquo; module is concatenated
+						in order along with the specified independent module.
+						for viewing. When in a terminal navigated to the directory
+						in which Makefile is housed, a command such as:
+					</p>
+					<p>
+						<code>make [module name here]</code>
+					</p>
+					<p>
+						will create such a build. For example, a command of:
+					</p>
+					<p>
+						<code>make traverse</code>
+					</p>
+					<p>
+						will make an independent &ldquo;core&rdquo; build with the
+						traverse module at the end.
+					</p>
+				</div>
+				<div id="complete_build">
+					<h4 class="heading">
+						<a href="#complete_build"
+							title="Completed Build">Complete Build</a>
+					</h4>
+					<p>
+						In the &ldquo;complete&rdquo;, or &ldquo;all&rdquo; build,
+						all modules are concatenated in defined order (though
+						independent modules are not order-dependent after the
+						&ldquo;core&rdquo; has been defined). The build is then formed
+						into a file<a href="#footnote_3"
+							title="Footnote Three">[3]</a>. When in a terminal
+						navigated to the directory in which Makefile is housed, a command of:
+					</p>
+					<p>
+						<code>make all</code>
+					</p>
+					<p>
+						or a command of:
+					</p>
+					<p>
+						<code>make</code>
+					</p>
+					<p>
+						will create such a build.
+					</p>
+				</div>
+			</div>
+			<hr>
+			<div class="cell primary_cell" id="footnotes">
+				<h3 class="heading">
+					<a href="#footnotes"
+						title="Footnotes">Footnotes</a>
+				</h3>
+				<dl>
+					<dt class="doc_entry" id="footnote_0">
+						<a href="#footnote_0"
+							title="Footnote Zero">[0]</a>
+					</dt>
+					<dd>
+						<a href="http://www.gnu.org/software/automake/manual/html_node/GNU-Build-System.html#GNU-Build-System"
+							title="GNU Autotools">GNU Autotools</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_1">
+						<a href="#footnote_1"
+							title="Footnote One">[1]</a>
+					</dt>
+					<dd>
+						<a href="../../configure.ac"
+							title="configure.ac"><code>configure.ac</code></a>
+					</dd>
+					<dt class="doc_entry" id="footnote_2">
+						<a href="#footnote_2"
+							title="Footnote Two">[2]</a>
+					</dt>
+					<dd>
+						<a href="../../Builds/Uncompressed/utils-core.js"
+							title="Core Build">Core Build</a>
+					</dd>
+					<dt class="doc_entry" id="footnote_3">
+						<a href="#footnote_3"
+							title="Footnote Three">[3]</a>
+					</dt>
+					<dd>
+						<a href="../../Builds/Uncompressed/utils-all.js"
+							title="Complete Build">Complete Build</a>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="implementation.html" rel="prev"
+					title="Previous">&larr;HOWTO: Implementation</a>
+			</div>
+			<div class="cell index_link primary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to HOWTO Index</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="./" rel="next"
+					title="Next">HOWTO Index&rarr;</a>
+			</div>
+		</div>
+@FOOTER@
+@END@
+

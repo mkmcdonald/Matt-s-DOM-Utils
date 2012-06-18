@@ -1,0 +1,641 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=utf-8">
+		<title>Complete Test (Minimal)</title>
+	</head>
+	<body>
+		<h1>Complete Test (Minimal)</h1>
+		<h2>Test Results</h2>
+		<form action="./" id="test_form" method="post"
+			name="test_form" onsubmit="return false;">
+			<fieldset>
+				<legend>Test Controls</legend>
+				<p>
+					<input name="start" type="submit"
+						value="Start Test">
+				</p>
+				<p>
+					<input name="stop" type="reset"
+						value="Stop Test">
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_1"
+							type="text">
+						<code>Utils.node.prepend</code> returns a node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_2"
+							type="text">
+						<code>Utils.node.prependList</code> returns <code>undefined</code>.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_3"
+							type="text">
+						<code>Utils.node.append</code> returns <code>undefined</code>.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_4"
+							type="text">
+						<code>Utils.node.appendList</code> returns <code>undefined</code>.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_5"
+							type="text">
+						<code>Utils.node.remove</code> returns a node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_6"
+							type="text">
+						<code>Utils.node.replace</code> returns a node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_7"
+							type="text">
+						<code>Utils.node.clone</code> returns a node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_8"
+							type="text">
+						<code>Utils.node.getName</code> returns a String
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_9"
+							type="text">
+						<code>Utils.node.getValue</code> returns a String
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_10"
+							type="text">
+						<code>Utils.node.setValue</code> returns a String
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_11"
+							type="text">
+						<code>Utils.create.element</code> returns an element
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_12"
+							type="text">
+						<code>Utils.create.text</code> returns a text
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_13"
+							type="text">
+						<code>Utils.create.comment</code> returns a comment
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_14"
+							type="text">
+						<code>Utils.create.documentFragment</code> returns a
+							document fragment node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_15"
+							type="text">
+						<code>Utils.classes.contains</code> returns a boolean.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_16"
+							type="text">
+						<code>Utils.classes.containsList</code> returns a boolean.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_17"
+							type="text">
+						<code>Utils.classes.add</code> returns
+							<code>undefined</code>.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_18"
+							type="text">
+						<code>Utils.classes.addList</code> returns
+							<code>undefined</code>.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_19"
+							type="text">
+						<code>Utils.classes.remove</code> returns
+							<code>undefined</code>.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_20"
+							type="text">
+						<code>Utils.classes.removeList</code> returns
+							<code>undefined</code>.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_21"
+							type="text">
+						<code>Utils.classes.toggle</code> returns a boolean.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_22"
+							type="text">
+						<code>Utils.classes.toggle</code> returns a boolean.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_23"
+							type="text">
+						<code>Utils.classes.toggleList</code> returns
+							<code>undefined</code>.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_24"
+							type="text">
+						<code>Utils.classes.get</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_25"
+							type="text">
+						<code>Utils.traverse.getNodes</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_26"
+							type="text">
+						<code>Utils.traverse.nodes</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_27"
+							type="text">
+						<code>Utils.traverse.getElements</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_28"
+							type="text">
+						<code>Utils.traverse.elements</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_29"
+							type="text">
+						<code>Utils.traverse.getNodeTree</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_30"
+							type="text">
+						<code>Utils.traverse.nodeTree</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_31"
+							type="text">
+						<code>Utils.traverse.getText</code> returns a string.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_32"
+							type="text">
+						<code>Utils.traverse.setText</code> returns a string.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_33"
+							type="text">
+						<code>Utils.traverse.getElementTree</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_34"
+							type="text">
+						<code>Utils.traverse.elementTree</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_35"
+							type="text">
+						<code>Utils.traverse.isAncestor</code> returns a boolean.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_36"
+							type="text">
+						<code>Utils.traverse.getAncestors</code> returns a
+							linked list-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_37"
+							type="text">
+						<code>Utils.traverse.ancestors</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_38"
+							type="text">
+						<code>Utils.select.byName</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_39"
+							type="text">
+						<code>Utils.select.byTagName</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_40"
+							type="text">
+						<code>Utils.select.byClassName</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_41"
+							type="text">
+						<code>Utils.select.byId</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_42"
+							type="text">
+						<code>Utils.select.query</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_43"
+							type="text">
+						<code>Utils.select.queryAll</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_44"
+							type="text">
+						<code>Utils.select.head</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_45"
+							type="text">
+						<code>Utils.select.body</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_46"
+							type="text">
+						<code>Utils.select.images</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_47"
+							type="text">
+						<code>Utils.select.allImages</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_48"
+							type="text">
+						<code>Utils.select.embeds</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_49"
+							type="text">
+						<code>Utils.select.allEmbeds</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_50"
+							type="text">
+						<code>Utils.select.plugins</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_51"
+							type="text">
+						<code>Utils.select.allPlugins</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_52"
+							type="text">
+						<code>Utils.select.links</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_53"
+							type="text">
+						<code>Utils.select.allLinks</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_54"
+							type="text">
+						<code>Utils.select.forms</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_55"
+							type="text">
+						<code>Utils.select.allForms</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_56"
+							type="text">
+						<code>Utils.select.scripts</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_57"
+							type="text">
+						<code>Utils.select.allScripts</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_58"
+							type="text">
+						<code>Utils.select.applets</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_59"
+							type="text">
+						<code>Utils.select.allApplets</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_60"
+							type="text">
+						<code>Utils.select.anchors</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_61"
+							type="text">
+						<code>Utils.select.allAnchors</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_62"
+							type="text">
+						<code>Utils.select.namedItem</code> returns a
+							node-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_63"
+							type="text">
+						<code>Utils.select.collection</code> returns an
+							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input readonly
+							name="score"
+							type="text">
+						Total score
+					</label>
+				</p>
+			</fieldset>
+		</form>
+		<h2>Node Test Element</h2>
+		<a href="./" id="node_test" name="node_test">test</a>
+		<hr>
+		<h2>Create Test Element</h2>
+		<a href="./" id="create_test" name="create_test">test</a>
+		<hr>
+		<h2>Classes Test Element</h2>
+		<a href="./" id="classes_test" name="classes_test">test</a>
+		<hr>
+		<h2>Traverse Test Element</h2>
+		<a href="./" id="traverse_test" name="traverse_test">test</a>
+			<span>
+				one;
+			</span>
+			<em>
+				two;
+			</em>
+			<strong>
+				three.
+			</strong>
+		</a>
+		<hr>
+		<h2>Select Test Element</h2>
+		<div class="container" id="select_test">
+			<h3>Test Image</h3>
+			<p>
+			<img alt="Test Image" height="100"
+				src="../../Assets/Images/logo.jpg" width="337">
+			</p>
+			<h3>Test Embed</h3>
+			<object id="embedded" height="100"
+				width="100">
+				<embed src="" type="text/html">
+			</object>
+			<h3>Test Links</h3>
+			<p>
+				<a href="./" title="Test One">Test One</a>
+				<a href="./" title="Test Two">Test Two</a>
+				<a href="./" title="Test Three">Test Three</a>
+			</p>
+			<h3>Test Form</h3>
+			<h3>Test Applet</h3>
+			<applet code="HelloWorld.class" codeBase="../Applets/"
+				height="100" id="appletcation" width="100">
+				Hello world
+			</applet>
+			<h3>Test Anchors</h3>
+			<p>
+				<a name="anchor1" title="Test One">Test One</a>
+				<a name="anchor2" title="Test Two">Test Two</a>
+				<a name="anchor3" title="Test Three">Test Three</a>
+			</p>
+		</div>
+		<script src="../../Builds/Uncompressed/utils-complete.js"
+			type="text/javascript"></script>
+		<script src="./JS/complete-min.js"
+			type="text/javascript"></script>
+	</body>
+</html>

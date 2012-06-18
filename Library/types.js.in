@@ -1,4 +1,4 @@
-if (@LIBRARY_NAME@) {
+if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 	(function () {
 
                /**

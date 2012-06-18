@@ -1,4 +1,4 @@
-if (@LIBRARY_NAME@) {
+if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 	(function () {
 
                /**
@@ -32,6 +32,7 @@ if (@LIBRARY_NAME@) {
 
 			canGetClassName,
 			canUseClassList,
+
 			forkHasClass,
 			hasClass,
 			forkAddClass,
@@ -98,6 +99,8 @@ if (@LIBRARY_NAME@) {
                /**
                 * @private
                 *
+                * @closure
+                *
                 * @description
                 * Boolean asserting if element node-like objects
                 * can retrieve the `className` property.
@@ -114,6 +117,8 @@ if (@LIBRARY_NAME@) {
 
                /**
                 * @private
+                *
+                * @closure
                 *
                 * @description
                 * Boolean asserting if element node-like objects
@@ -485,6 +490,37 @@ if (@LIBRARY_NAME@) {
                 * @private
                 *
                 * @description
+                * Wrapper method that wraps `hasClass`;
+                * returns `null` if not applicable.
+                *
+                * @param obj Object
+                * An element node-like object to access.
+                *
+                * @param token String
+                * A string containing a token to use.
+                *
+                * @see `hasClass`.
+                */
+
+		function wrapHasClass(
+			obj,
+			token
+		)
+		{
+			var result = null;
+			if (hasClass) {
+				result = hasClass(
+					obj,
+					token
+				);
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
                 * Helper method that iterates over the specified list
                 * of tokens and returns a boolean asserting their
                 * presence in a specific element node-like object's
@@ -507,14 +543,13 @@ if (@LIBRARY_NAME@) {
 			var index = 0,
 				max = tokens.length,
 				result = true;
-			if (hasClass) {
-				while (index < max && result) {
-					result = hasClass(
-						obj,
-						tokens[index]
-					);
-					index += 1;
-				}
+			while (index < max && result) {
+				result = wrapHasClass(
+					obj,
+					tokens[index]
+				);
+				result = !!result;
+				index += 1;
 			}
 			return result;
 		}
@@ -609,11 +644,9 @@ if (@LIBRARY_NAME@) {
 		)
 		{
 			var result = false;
-			if (hasClass) {
-				if (!hasClass(obj, add)) {
-					list[list.length] = add;
-					result = true;
-				}
+			if (!wrapHasClass(obj, add)) {
+				list[list.length] = add;
+				result = true;
 			}
 			return result;
 		}
@@ -706,13 +739,18 @@ if (@LIBRARY_NAME@) {
 			var list,
 				result;
 			if (isElement(obj)) {
-				list = buildClassList(obj);
+				list = buildClassList(
+					obj
+				);
 				classAdditionCheck(
 					obj,
 					token,
 					list
 				);
-				overwriteClass(obj, list);
+				overwriteClass(
+					obj,
+					list
+				);
 			}
 			return result;
 		}
@@ -754,6 +792,37 @@ if (@LIBRARY_NAME@) {
                 * @private
                 *
                 * @description
+                * Wrapper method that wraps `addClass`;
+                * returns `null` if not applicable.
+                *
+                * @param obj Object
+                * An element node-like object to access.
+                *
+                * @param token String
+                * A string containing a token to use.
+                *
+                * @see `addClass`.
+                */
+
+		function wrapAddClass(
+			obj,
+			token
+		)
+		{
+			var result = null;
+			if (addClass) {
+				result = addClass(
+					obj,
+					token
+				);
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
                 * Helper method that iterates over the specified list
                 * of tokens and adds them to a specific element
                 * node-like object's token list.
@@ -775,13 +844,11 @@ if (@LIBRARY_NAME@) {
 			var index = 0,
 				max = tokens.length,
 				result;
-			if (addClass) {
-				for (index; index < max; index += 1) {
-					addClass(
-						obj,
-						tokens[index]
-					);
-				}
+			for (index; index < max; index += 1) {
+				wrapAddClass(
+					obj,
+					tokens[index]
+				);
 			}
 			return result;
 		}
@@ -916,13 +983,11 @@ if (@LIBRARY_NAME@) {
 		)
 		{
 			var result;
-			if (hasClass) {
-				if (hasClass(obj, remove)) {
-					result = removeToken(
-						remove,
-						list
-					);
-				}
+			if (wrapHasClass(obj, remove)) {
+				result = removeToken(
+					remove,
+					list
+				);
 			}
 			return result;
 		}
@@ -987,13 +1052,18 @@ if (@LIBRARY_NAME@) {
 			var list,
 				result;
 			if (isElement(obj)) {
-				list = buildClassList(obj);
+				list = buildClassList(
+					obj
+				);
 				classRemovalCheck(
 					obj,
 					token,
 					list
 				);
-				overwriteClass(obj, list);
+				overwriteClass(
+					obj,
+					list
+				);
 			}
 			return result;
 		}
@@ -1035,6 +1105,37 @@ if (@LIBRARY_NAME@) {
                 * @private
                 *
                 * @description
+                * Wrapper method that wraps `removeClass`;
+                * returns `null` if not applicable.
+                *
+                * @param obj Object
+                * An element node-like object to access.
+                *
+                * @param token String
+                * A string containing a token to use.
+                *
+                * @see `removeClass`.
+                */
+
+		function wrapRemoveClass(
+			obj,
+			token
+		)
+		{
+			var result = null;
+			if (removeClass) {
+				result = removeClass(
+					obj,
+					token
+				);
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
                 * Helper method that iterates over the specified list
                 * of tokens and removes them from a specific element
                 * node-like object's token list.
@@ -1057,14 +1158,12 @@ if (@LIBRARY_NAME@) {
 				aux = max,
 				diff,
 				result;
-			if (removeClass) {
-				for (aux; aux > -1; aux -= 1) {
-					diff = max - aux;
-					removeClass(
-						obj,
-						tokens[diff]
-					);
-				}
+			for (aux; aux > -1; aux -= 1) {
+				diff = max - aux;
+				wrapRemoveClass(
+					obj,
+					tokens[diff]
+				);
 			}
 			return result;
 		}
@@ -1155,22 +1254,19 @@ if (@LIBRARY_NAME@) {
 			token
 		)
 		{
-			var has,
+			var has = wrapHasClass(obj, token),
 				result = false;
-			if (isElement(obj) && hasClass) {
-				has = hasClass(obj, token);
-				if (!has && addClass) {
-					addClass(
-						obj,
-						token
-					);
-					result = true;
-				} else if (has && removeClass) {
-					removeClass(
-						obj,
-						token
-					);
-				}
+			if (!has) {
+				wrapAddClass(
+					obj,
+					token
+				);
+				result = true;
+			} else if (has) {
+				wrapRemoveClass(
+					obj,
+					token
+				);
 			}
 			return result;
 		}
@@ -1214,6 +1310,37 @@ if (@LIBRARY_NAME@) {
                 * @private
                 *
                 * @description
+                * Wrapper method that wraps `toggleClass`;
+                * returns `null` if not applicable.
+                *
+                * @param obj Object
+                * An element node-like object to access.
+                *
+                * @param token String
+                * A string containing a token to use.
+                *
+                * @see `toggleClass`.
+                */
+
+		function wrapToggleClass(
+			obj,
+			token
+		)
+		{
+			var result = null;
+			if (toggleClass) {
+				result = toggleClass(
+					obj,
+					token
+				);
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
                 * Helper method that iterates over the specified list
                 * of tokens and toggles them on a specific element
                 * node-like object's token list.
@@ -1235,13 +1362,11 @@ if (@LIBRARY_NAME@) {
 			var index = 0,
 				max = tokens.length,
 				result;
-			if (toggleClass) {
-				for (index; index < max; index += 1) {
-					toggleClass(
-						obj,
-						tokens[index]
-					);
-				}
+			for (index; index < max; index += 1) {
+				wrapToggleClass(
+					obj,
+					tokens[index]
+				);
 			}
 			return result;
 		}

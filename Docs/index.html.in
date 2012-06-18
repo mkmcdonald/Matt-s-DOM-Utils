@@ -76,6 +76,10 @@
 						<a href="./HOWTO/#defensive_programming"
 							title="Defensive Programming">Defensive Programming</a>
 					</li>
+					<li>
+						<a href="./HOWTO/#@LIBRARY_NAME@"
+							title="@LIBRARY_NAME@">@LIBRARY_NAME@</a>
+					</li>
 				</ul>
 			</div>
 		</div>
