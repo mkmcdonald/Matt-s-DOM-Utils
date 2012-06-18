@@ -25,8 +25,6 @@
 
         Twitter: @mattsdomutils.
 
-        IRC: #mattsdomutils (FreeNode).
-
         Current Build Order:
 
         (core)
