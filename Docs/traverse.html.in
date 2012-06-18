@@ -103,6 +103,7 @@ if (@LIBRARY_NAME@.traverse.getNodes) {
 					<a href="#linear"
 						title="@LIBRARY_NAME@.traverse.linear"><code>@LIBRARY_NAME@.traverse.linear</code></a>
 				</h3>
+				@DOCS_FILTER_INSTRUCTIONS@
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
@@ -137,6 +138,7 @@ if (@LIBRARY_NAME@.traverse.getNodes) {
 					<a href="#nodes"
 						title="@LIBRARY_NAME@.traverse.nodes"><code>@LIBRARY_NAME@.traverse.nodes</code></a>
 				</h3>
+				@DOCS_FILTER_INSTRUCTIONS@
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
@@ -198,6 +200,7 @@ if (@LIBRARY_NAME@.traverse.getNodes) {
 					<a href="#get_elements"
 						title="@LIBRARY_NAME@.traverse.getElements"><code>@LIBRARY_NAME@.traverse.getElements</code></a>
 				</h3>
+				@DOCS_FILTER_INSTRUCTIONS@
 				@DOCS_HOST_DETECTION_WARNING@
 				<pre class="example">
 var children;
@@ -240,6 +243,7 @@ if (@LIBRARY_NAME@.traverse.getElements) {
 					<a href="#elements"
 						title="@LIBRARY_NAME@.traverse.elements"><code>@LIBRARY_NAME@.traverse.elements</code></a>
 				</h3>
+				@DOCS_FILTER_INSTRUCTIONS@
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
@@ -335,6 +339,7 @@ if (@LIBRARY_NAME@.traverse.getElements) {
 					<a href="#node_tree"
 						title="@LIBRARY_NAME@.traverse.nodeTree"><code>@LIBRARY_NAME@.traverse.nodeTree</code></a>
 				</h3>
+				@DOCS_FILTER_INSTRUCTIONS@
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
@@ -458,6 +463,7 @@ if (@LIBRARY_NAME@.traverse.getElements) {
 					<a href="#recursive"
 						title="@LIBRARY_NAME@.traverse.recursive"><code>@LIBRARY_NAME@.traverse.recursive</code></a>
 				</h3>
+				@DOCS_FILTER_INSTRUCTIONS@
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
@@ -533,6 +539,7 @@ if (@LIBRARY_NAME@.traverse.getElements) {
 					<a href="#element_tree"
 						title="@LIBRARY_NAME@.traverse.elementTree"><code>@LIBRARY_NAME@.traverse.elementTree</code></a>
 				</h3>
+				@DOCS_FILTER_INSTRUCTIONS@
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
@@ -646,6 +653,7 @@ if (@LIBRARY_NAME@.traverse.getElements) {
 					<a href="#list"
 						title="@LIBRARY_NAME@.traverse.linkedList"><code>@LIBRARY_NAME@.traverse.linkedList</code></a>
 				</h3>
+				@DOCS_FILTER_INSTRUCTIONS@
 				<p class="doc_art function_head">function (<var>list</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@
@@ -678,6 +686,7 @@ if (@LIBRARY_NAME@.traverse.getElements) {
 					<a href="#ancestors"
 						title="@LIBRARY_NAME@.traverse.ancestors"><code>@LIBRARY_NAME@.traverse.ancestors</code></a>
 				</h3>
+				@DOCS_FILTER_INSTRUCTIONS@
 				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@

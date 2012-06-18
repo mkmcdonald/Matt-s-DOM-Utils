@@ -94,10 +94,18 @@
 				<tr id="test_10">
 					<td>10.</td>
 					<td>
+						<code>@LIBRARY_NAME@.classes.item</code> returns a
+							String.
+					</td>
+					<td id="result_10"></td>
+				</tr>
+				<tr id="test_11">
+					<td>11.</td>
+					<td>
 						<code>@LIBRARY_NAME@.classes.get</code> returns an
 							array-like object.
 					</td>
-					<td id="result_10"></td>
+					<td id="result_11"></td>
 				</tr>
 			</tbody>
 		</table>

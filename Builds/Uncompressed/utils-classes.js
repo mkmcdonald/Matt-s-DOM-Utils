@@ -437,7 +437,7 @@ if (typeof Utils === "object" && Utils) {
                 * Utils.is
                 *
                 * @description
-                * Various tests.
+                * Various identity tests.
                 *
                 * @dependencies
                 * * Utils.types
@@ -2030,6 +2030,8 @@ if (typeof Utils === "object" && Utils) {
 			removeClass,
 			forkToggleClass,
 			toggleClass,
+			forkGetClass,
+			getClass,
 			getClasses;
 
                /**
@@ -2462,6 +2464,7 @@ if (typeof Utils === "object" && Utils) {
                 *
                 * @see `forkHasClass`.
                 * @see `hasSingleClass`.
+                * @see `DOMTokenList::contains`.
                 */
 
 		hasClass = (function () {
@@ -2764,6 +2767,7 @@ if (typeof Utils === "object" && Utils) {
                 *
                 * @see `forkAddClass`.
                 * @see `addSingleClass`.
+                * @see `DOMTokenList::add`.
                 */
 
 		addClass = (function () {
@@ -3077,6 +3081,7 @@ if (typeof Utils === "object" && Utils) {
                 *
                 * @see `forkRemoveClass`.
                 * @see `removeSingleClass`.
+                * @see `DOMTokenList::remove`.
                 */
 
 		removeClass = (function () {
@@ -3280,6 +3285,7 @@ if (typeof Utils === "object" && Utils) {
                 *
                 * @see `forkToggleClass`.
                 * @see `toggleSingleClass`.
+                * @see `DOMTokenList::toggle`.
                 */
 
 		toggleClass = (function () {
@@ -3394,7 +3400,38 @@ if (typeof Utils === "object" && Utils) {
 		}
 
                /**
-                * @public `Utils.classes.item`.
+                * @private
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure)
+                * the result of `forkMethod` or `null`
+                * if not applicable.
+                *
+                * @param obj Object
+                * An element node-like object to access.
+                *
+                * @param index Number
+                * A number to be the index retrieved.
+                *
+                * @see `forkMethod`.
+                */
+
+		forkGetClass = (function () {
+			var result = null;
+			if (body && canUseClassList &&
+				isHostObject(body.classList.item)) {
+				result = forkMethod(
+					"item",
+					null
+				);
+			}
+			return result;
+		}());
+
+               /**
+                * @private
                 *
                 * @description
                 * Method that returns the token at the specified
@@ -3406,10 +3443,12 @@ if (typeof Utils === "object" && Utils) {
                 * a token list.
                 *
                 * @param index Number
-                * A number to be the index retrieve.
+                * A number to be the index retrieved.
+                *
+                * @see `DOMTokenList::item`.
                 */
 
-		function getClass(
+		function getToken(
 			obj,
 			index
 		)
@@ -3417,7 +3456,9 @@ if (typeof Utils === "object" && Utils) {
 			var tokens,
 				result = null;
 			if (isElement(obj)) {
-				tokens = buildClassList(obj);
+				tokens = buildClassList(
+					obj
+				);
 				if (index >= 0 && 
 					index < tokens.length) {
 					result = tokens[index];
@@ -3425,6 +3466,40 @@ if (typeof Utils === "object" && Utils) {
 			}
 			return result;
 		}
+
+               /**
+                * @public `Utils.classes.item`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure) the
+                * the token at the specified in a specific
+                * node-like object's token list; returns `null` if
+                * not applicable.
+                *
+                * @param obj Object
+                * An element node-like object used as a source of
+                * a token list.
+                *
+                * @param index Number
+                * A number to be the index retrieved.
+                *
+                * @see `DOMTokenList::item`.
+                */
+
+		getClass = (function () {
+			var result = null;
+			if (doc) {
+				if (canUseClassList) {
+					result = forkGetClass;
+				} else if (!canUseClassList &&
+					isElement(body)) {
+					result = getToken;
+				}
+			}
+			return result;
+		}());
 
                /**
                 * @private

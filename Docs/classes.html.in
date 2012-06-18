@@ -383,6 +383,15 @@ if (@LIBRARY_NAME@.classes.toggle) {
 					<a href="#item"
 						title="@LIBRARY_NAME@.classes.item"><code>@LIBRARY_NAME@.classes.item</code></a>
 				</h3>
+				@DOCS_HOST_DETECTION_WARNING@
+				<pre class="example">
+var item;
+if (@LIBRARY_NAME@.classes.item) {
+	item = @LIBRARY_NAME@.classes.item(
+		document.body,
+		0
+	);
+}</pre>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>index</var>) {</p>
 				<dl class="doc_list">
 					@DOCS_DESCRIPTION@

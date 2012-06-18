@@ -439,6 +439,20 @@ if (Utils.classes.toggle) {
 					<a href="#item"
 						title="Utils.classes.item"><code>Utils.classes.item</code></a>
 				</h3>
+				<p class="warning">
+					Warning: this property will return <code>null</code>
+					if the host environment is detected to be unsuitable;
+					an <code>if</code> block or a similar construct should
+					be used for detection. An example follows.
+				</p>
+				<pre class="example">
+var item;
+if (Utils.classes.item) {
+	item = Utils.classes.item(
+		document.body,
+		0
+	);
+}</pre>
 				<p class="doc_art function_head">function (<var>obj</var>, <var>index</var>) {</p>
 				<dl class="doc_list">
 					<dt>description</dt>

@@ -6,7 +6,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
                 * @LIBRARY_NAME@.is
                 *
                 * @description
-                * Various tests.
+                * Various identity tests.
                 *
                 * @dependencies
                 * * @LIBRARY_NAME@.types

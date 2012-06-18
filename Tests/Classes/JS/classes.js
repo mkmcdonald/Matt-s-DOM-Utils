@@ -143,6 +143,22 @@ if (typeof Utils === "object" && Utils) {
 			);
 		}
 
+		function getClass()
+		{
+			var node = commonElements.test,
+				test;
+			if (Utils.classes.item) {
+				test = Utils.classes.item(
+					node,
+					0
+				);
+			}
+			return Utils.is.type(
+				test,
+				"string"
+			);
+		}
+
 		function get()
 		{
 			var node = commonElements.test,
@@ -168,6 +184,7 @@ if (typeof Utils === "object" && Utils) {
 				toggle,
 				toggle,
 				toggleList,
+				getClass,
 				get
 			];
 		}());

@@ -437,7 +437,7 @@ if (typeof Utils === "object" && Utils) {
                 * Utils.is
                 *
                 * @description
-                * Various tests.
+                * Various identity tests.
                 *
                 * @dependencies
                 * * Utils.types

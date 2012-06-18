@@ -126,6 +126,9 @@ HOWTO_NAV="Templates/Docs/HowTo/nav";
 AC_SUBST_FILE(TESTS_NAV)
 TESTS_NAV="Templates/Tests/nav";
 
+AC_SUBST_FILE(DOCS_FILTER_INSTRUCTIONS)
+DOCS_FILTER_INSTRUCTIONS="Templates/Docs/Instructions/filter";
+
 AC_SUBST_FILE(DOCS_HOST_DETECTION_WARNING)
 DOCS_HOST_DETECTION_WARNING="Templates/Docs/Warnings/host_detection";
 

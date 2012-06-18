@@ -437,7 +437,7 @@ if (typeof Utils === "object" && Utils) {
                 * Utils.is
                 *
                 * @description
-                * Various tests.
+                * Various identity tests.
                 *
                 * @dependencies
                 * * Utils.types
@@ -2991,12 +2991,12 @@ if (typeof Utils === "object" && Utils) {
                 * to the specified node-like object; returns `null`
                 * if not applicable.
                 *
-                * @param text String
-                * A string containing textual content to add.
-                *
                 * @param obj Object
                 * A node-like object to append the created text node
                 * like object to.
+                *
+                * @param text String
+                * A string containing textual content to add.
                 *
                 * @param doc Object
                 * A document node-like object used to create a text
@@ -3004,8 +3004,8 @@ if (typeof Utils === "object" && Utils) {
                 */
 
 		function appendText(
-			text,
 			obj,
+			text,
 			doc
 		)
 		{
@@ -3032,11 +3032,11 @@ if (typeof Utils === "object" && Utils) {
                 * returns the textual content added or `null` if not
                 * applicable.
                 *
-                * @param text String
-                * A string containing textual content to add.
-                *
                 * @param obj Object
                 * A node-like object to traverse.
+                *
+                * @param text String
+                * A string containing textual content to add.
                 *
                 * @param doc Object
                 * A document node-like object used to create a text
@@ -3053,15 +3053,14 @@ if (typeof Utils === "object" && Utils) {
 		{
 			var textNode,
 				result = null;
-			text = text || "";
 			if (isNodeLike(obj)) {
 				if (isDocument(doc)) {
 					clearChildNodes(
 						obj
 					);
 					textNode = appendText(
-						text,
 						obj,
+						text,
 						doc
 					);
 					result = getNodeValue(

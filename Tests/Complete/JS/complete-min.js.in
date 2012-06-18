@@ -484,6 +484,22 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
+		function getClass()
+		{
+			var node = commonElements.classes_test,
+				test;
+			if (@LIBRARY_NAME@.classes.item) {
+				test = @LIBRARY_NAME@.classes.item(
+					node,
+					0
+				);
+			}
+			return @LIBRARY_NAME@.is.type(
+				test,
+				"string"
+			);
+		}
+
 		function get()
 		{
 			var node = commonElements.classes_test,
@@ -1038,6 +1054,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			toggle,
 			toggle,
 			toggleList,
+			getClass,
 			get,
 			childNodes,
 			childNodesTraversed,
