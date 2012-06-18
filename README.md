@@ -140,8 +140,7 @@ conversion.
 of the `Node` interface. In particular, this includes
 `Node::appendChild` and `Node::removeChild`.
 
-See [./Tests/Node](./Tests/Node "Node Tests")
-for examples.
+See ./Tests/Node for examples.
 
 ### Create
 
@@ -149,8 +148,7 @@ for examples.
 creation. In particular, this includes `Node::createElement` and
 `Node::createTextNode`.
 
-See [./Tests/Create](./Tests/Create "Create Tests")
-for examples.
+See ./Tests/Create for examples.
 
 ---
 
@@ -162,8 +160,7 @@ for examples.
 implementation. This includes methods for testing, adding,
 removing and retrieving class tokens.
 
-See [./Tests/Classes](./Tests/Classes "Class Tests")
-for examples.
+See ./Tests/Classes for examples.
 
 ### Traverse
 
@@ -171,8 +168,7 @@ for examples.
 utilities for `Node::childNodes`, `Node::children` and text along
 with more general methods of traversal.
 
-See [./Tests/Traverse](./Tests/Traverse "Traverse Tests")
-for examples.
+See ./Tests/Traverse for examples.
 
 ### Select
 
@@ -181,8 +177,7 @@ selection. This includes popular methods such as
 `Document::getElementById`, `getElementsByTagName` and newer
 methods such as `NodeSelector::querySelectorAll`.
 
-See [./Tests/Select](./Tests/Select "Select Tests")
-for examples.
+See ./Tests/Select for examples.
 
 ---
 
@@ -194,27 +189,27 @@ builder.
 ### Makefile
 
 *Utils* provides some simple options for build creation via
-[./Makefile](./Makefile "Makefile").
+./Makefile.
 
 #### Core
 
-`make core` (exports to [./Builds/Uncompressed/utils-core.js](./Builds/Uncompressed/utils-core.js "Build File")).
+`make core` (exports to ./Builds/Uncompressed/utils-core.js).
 
 #### Classes
 
-`make classes` (exports to [./Builds/Uncompressed/utils-classes.js](./Builds/Uncompressed/utils-classes.js "Build File")).
+`make classes` (exports to ./Builds/Uncompressed/utils-classes.js).
 
 #### Traverse
 
-`make traverse` (exports to [./Builds/Uncompressed/utils-traverse.js](./Builds/Uncompressed/utils-traverse.js "Build File")).
+`make traverse` (exports to ./Builds/Uncompressed/utils-traverse.js).
 
 #### Complete
 
-`make complete` (exports to [./Builds/Uncompressed/utils-complete.js](./Builds/Uncompressed/utils-complete.js "Build File")).
+`make complete` (exports to ./Builds/Uncompressed/utils-complete.js).
 
 #### Minified
 
-`make` (runs all hard-coded builds through the YUI Compressor to [./Builds/Compressed](./Builds/Compressed "Compressed Directory")).
+`make` (runs all hard-coded builds through the YUI Compressor to ./Builds/Compressed).
 
 ### Custom Builder
 
@@ -223,7 +218,7 @@ more flexible builds. This option allows one to
 select multiple modules instead of the hard-coded
 one-or-none-or-all Makefile approach.
 
-The builder is located at: [./Download/index.html](./Download/index.html "Builder Page").
+The builder is located at: ./Download/index.html.
 
 #### Options
 
@@ -249,4 +244,4 @@ The builder is located at: [./Download/index.html](./Download/index.html "Builde
 
 ## Metadata
 
-* Last edited on Friday, June 15th 2012
+* Last edited on Monday, June 18th 2012
