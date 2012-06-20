@@ -1,0 +1,20 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Demos</title>
+@DEMOS_STYLESHEET@
+@DEMOS_RESOURCES@
+@BODY@
+@DEMOS_HEADER@
+@DEMOS_NAV@
+		<div class="primary_row row ">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Demos">Demos</h2>
+			</div>
+		</div>
+		<ul class="parimary_row row">
+			<li class="cell primary_cell">
+				<a href="./select.html" title="Select Demo">./select.html</a>	
+			</li>
+		</ul>
+@FOOTER@
+@END@

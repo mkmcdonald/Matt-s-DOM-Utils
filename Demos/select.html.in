@@ -1,0 +1,119 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Demo&mdash;Select</title>
+@DEMOS_STYLESHEET@
+@DEMOS_RESOURCES@
+@BODY@
+@DEMOS_HEADER@
+		@DEMOS_NAV@
+		<div class="primary_row row ">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Select">Select</h2>
+			</div>
+		</div>
+		<form action="./select.html" class="column primary_column"
+			method="get" name="demo">
+			<fieldset class="cell primary_cell">
+				<legend>Choose a method:</legend>
+				<p>
+					<select name="method_control"
+						required>
+						<option name="byName_control"
+							value="byName">
+							@LIBRARY_NAME@.select.byName
+						</option>
+						<option name="byTagName_control"
+							selected
+							value="byTagName">
+							@LIBRARY_NAME@.select.byTagName
+						</option>
+						<option name="byClassName_control"
+							value="byClassName">
+							@LIBRARY_NAME@.select.byClassName
+						</option>
+						<option name="byId_control"
+							value="byId">
+							@LIBRARY_NAME@.select.byId
+						</option>
+						<option name="query_control"
+							value="query">
+							@LIBRARY_NAME@.select.query
+						</option>
+						<option name="queryAll_control"
+							value="queryAll">
+							@LIBRARY_NAME@.select.queryAll
+						</option>
+						<option name="forms_control"
+							value="forms">
+							@LIBRARY_NAME@.select.forms
+						</option>
+						<option name="allForms_control"
+							value="allForms">
+							@LIBRARY_NAME@.select.allForms
+						</option>
+					</select>
+				</p>
+				<p>
+					which will then be called upon form submission
+					(via <code>eval</code>, so quote strings where
+					expected).
+				</p>
+			</fieldset>
+			<fieldset class="cell primary_cell">
+				<legend>Enter the corresponding parameters:</legend>
+				<div id="param_0">
+					<p>
+						<label for="param_control_0">
+							<var id="param_name_0">doc</var>
+							<span id="param_type_0">(Document)</span>
+						</label>
+					</p>
+					<p>
+						<input id="param_control_0"
+							name="param_control_0"
+							required
+							type="text">
+					</p>
+				</div>
+				<div id="param_1">
+					<p>
+						<label for="param_control_1">
+							<var id="param_name_1">tag</var>
+							<span id="param_type_1">(String)</span>
+						</label>
+					</p>
+					<p>
+						<input id="param_control_1"
+							name="param_control_1"
+							required
+							type="text">
+					</p>
+				</div>
+				<p>
+					which will be passed with the selected method.
+				</p>
+			</fieldset>
+			<fieldset class="cell primary_cell">
+				<legend>Call the selected method.</legend>
+				<p>
+					<input name="submit_control"
+						type="submit"
+						value="Call Method">
+				</p>
+				<p>
+					<button name="erase_control"
+						type="button">
+						Erase Results
+					</button>
+				</p>
+				</p>
+					Results will be highlighted.
+				</p>
+			</fieldset>
+		</form>
+@FOOTER@
+		<script src="../Builds/Uncompressed/utils-complete.js"
+			type="text/javascript"></script>
+		<script src="./JS/select.js"
+			type="text/javascript"></script>
+@END@

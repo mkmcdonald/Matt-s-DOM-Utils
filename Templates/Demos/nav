@@ -3,10 +3,10 @@
 				<a href="../" title="Home">Home</a>
 			</li>
 			<li class="active cell demos nav_cell">
-				<a href="../Demos" title="Demos">Demos</a>
+				<a href="./" title="Demos">Demos</a>
 			</li>
-			<li class="active cell download nav_cell">
-				<a href="./" title="Download">Download</a>
+			<li class="cell download nav_cell">
+				<a href="../Download" title="Download">Download</a>
 			</li>
 			<li class="cell docs nav_cell">
 				<a href="../Docs" title="Documentation">Documentation</a>

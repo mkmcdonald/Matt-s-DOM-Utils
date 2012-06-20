@@ -5319,7 +5319,7 @@ if (typeof Utils === "object" && Utils) {
 		selectorTypes = (function () {
 			var result = {};
 			result[nodeTypes.ELEMENT_NODE] = true;
-			result[nodeTypes.DOCMENT_NODE] = true;
+			result[nodeTypes.DOCUMENT_NODE] = true;
 			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
 			return result;
 		}());
@@ -5342,7 +5342,7 @@ if (typeof Utils === "object" && Utils) {
 			var types = selectorTypes,
 				result = false;
 			if (isNodeLike(obj)) {
-				result = typeof types[obj.nodeType] ===
+				result = typeof types[obj.nodeType] !==
 					"undefined";
 			}
 			return result;

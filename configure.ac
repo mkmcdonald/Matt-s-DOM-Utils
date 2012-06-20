@@ -14,6 +14,9 @@ AC_CONFIG_FILES([
 	"Library/traverse.js"
 	"Library/select.js"
 	"index.html"
+	"Demos/index.html"
+	"Demos/select.html"
+	"Demos/JS/select.js"
 	"Download/index.html"
 	"Docs/index.html"
 	"Docs/raise.html"
@@ -69,6 +72,9 @@ HEAD="Templates/head";
 AC_SUBST_FILE(ROOT_STYLESHEET)
 ROOT_STYLESHEET="Templates/stylesheet";
 
+AC_SUBST_FILE(DEMOS_STYLESHEET)
+DEMOS_STYLESHEET="Templates/Demos/stylesheet";
+
 AC_SUBST_FILE(DOWNLOAD_STYLESHEET)
 DOWNLOAD_STYLESHEET="Templates/Download/stylesheet";
 
@@ -83,6 +89,9 @@ TESTS_STYLESHEET="Templates/Tests/stylesheet";
 
 AC_SUBST_FILE(ROOT_RESOURCES)
 ROOT_RESOURCES="Templates/resources";
+
+AC_SUBST_FILE(DEMOS_RESOURCES)
+DEMOS_RESOURCES="Templates/Demos/resources";
 
 AC_SUBST_FILE(DOWNLOAD_RESOURCES)
 DOWNLOAD_RESOURCES="Templates/Download/resources";
@@ -102,6 +111,9 @@ BODY="Templates/body";
 AC_SUBST_FILE(ROOT_HEADER)
 ROOT_HEADER="Templates/header";
 
+AC_SUBST_FILE(DEMOS_HEADER)
+DEMOS_HEADER="Templates/Demos/header";
+
 AC_SUBST_FILE(DOWNLOAD_HEADER)
 DOWNLOAD_HEADER="Templates/Download/header";
 
@@ -113,6 +125,9 @@ HOWTO_HEADER="Templates/Docs/HowTo/header";
 
 AC_SUBST_FILE(TESTS_HEADER)
 TESTS_HEADER="Templates/Tests/header";
+
+AC_SUBST_FILE(DEMOS_NAV)
+DEMOS_NAV="Templates/Demos/nav";
 
 AC_SUBST_FILE(DOWNLOAD_NAV)
 DOWNLOAD_NAV="Templates/Download/nav";

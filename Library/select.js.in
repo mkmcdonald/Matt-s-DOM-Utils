@@ -81,7 +81,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		selectorTypes = (function () {
 			var result = {};
 			result[nodeTypes.ELEMENT_NODE] = true;
-			result[nodeTypes.DOCMENT_NODE] = true;
+			result[nodeTypes.DOCUMENT_NODE] = true;
 			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
 			return result;
 		}());
@@ -104,7 +104,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			var types = selectorTypes,
 				result = false;
 			if (isNodeLike(obj)) {
-				result = typeof types[obj.nodeType] ===
+				result = typeof types[obj.nodeType] !==
 					"undefined";
 			}
 			return result;

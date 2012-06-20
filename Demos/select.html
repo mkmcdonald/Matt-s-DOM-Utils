@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=utf-8">
+		<meta name="viewport"
+			content="initial-scale=1.0">
+		<meta name="Author"
+			content="Matt McDonald">
+		<title>Matt's DOM Utils (Utils): Demo&mdash;Select</title>
+		<link href="../Assets/CSS/style-main.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+		<link href="../Assets/CSS/style-demos.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+		<link href="../favicon.ico"
+			media="all" rel="icon prefetch">
+	</head>
+	<body>
+		<div class="header_row row">
+			<h1 class="cell header_cell heading">
+				<a class="masthead"
+					href="../" title="Matt's DOM Utils"><img alt="Matt's DOM Utils" height="100" src="../Assets/Images/logo.jpg" width="337"></a>
+				<span class="tagline">Matt's DOM Utils (<em>Utils</em>)</span>
+			</h1>
+		</div>
+		<ul class="nav_row row">
+			<li class="cell home nav_cell">
+				<a href="../" title="Home">Home</a>
+			</li>
+			<li class="active cell demos nav_cell">
+				<a href="./" title="Demos">Demos</a>
+			</li>
+			<li class="cell download nav_cell">
+				<a href="../Download" title="Download">Download</a>
+			</li>
+			<li class="cell docs nav_cell">
+				<a href="../Docs" title="Documentation">Documentation</a>
+			</li>
+			<li class="cell nav_cell tests ">
+				<a href="../Tests" title="Tests">Tests</a>
+			</li>
+			<li class="cell github nav_cell">
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/" title="GitHub">GitHub</a>
+			</li>
+			<li class="about cell nav_cell">
+				<a href="../about.html" title="About">About</a>
+			</li>
+		</ul>
+		<div class="primary_row row ">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Select">Select</h2>
+			</div>
+		</div>
+		<form action="./select.html" class="column primary_column"
+			method="get" name="demo">
+			<fieldset class="cell primary_cell">
+				<legend>Choose a method:</legend>
+				<p>
+					<select name="method_control"
+						required>
+						<option name="byName_control"
+							value="byName">
+							Utils.select.byName
+						</option>
+						<option name="byTagName_control"
+							selected
+							value="byTagName">
+							Utils.select.byTagName
+						</option>
+						<option name="byClassName_control"
+							value="byClassName">
+							Utils.select.byClassName
+						</option>
+						<option name="byId_control"
+							value="byId">
+							Utils.select.byId
+						</option>
+						<option name="query_control"
+							value="query">
+							Utils.select.query
+						</option>
+						<option name="queryAll_control"
+							value="queryAll">
+							Utils.select.queryAll
+						</option>
+						<option name="forms_control"
+							value="forms">
+							Utils.select.forms
+						</option>
+						<option name="allForms_control"
+							value="allForms">
+							Utils.select.allForms
+						</option>
+					</select>
+				</p>
+				<p>
+					which will then be called upon form submission
+					(via <code>eval</code>, so quote strings where
+					expected).
+				</p>
+			</fieldset>
+			<fieldset class="cell primary_cell">
+				<legend>Enter the corresponding parameters:</legend>
+				<div id="param_0">
+					<p>
+						<label for="param_control_0">
+							<var id="param_name_0">doc</var>
+							<span id="param_type_0">(Document)</span>
+						</label>
+					</p>
+					<p>
+						<input id="param_control_0"
+							name="param_control_0"
+							required
+							type="text">
+					</p>
+				</div>
+				<div id="param_1">
+					<p>
+						<label for="param_control_1">
+							<var id="param_name_1">tag</var>
+							<span id="param_type_1">(String)</span>
+						</label>
+					</p>
+					<p>
+						<input id="param_control_1"
+							name="param_control_1"
+							required
+							type="text">
+					</p>
+				</div>
+				<p>
+					which will be passed with the selected method.
+				</p>
+			</fieldset>
+			<fieldset class="cell primary_cell">
+				<legend>Call the selected method.</legend>
+				<p>
+					<input name="submit_control"
+						type="submit"
+						value="Call Method">
+				</p>
+				<p>
+					<button name="erase_control"
+						type="button">
+						Erase Results
+					</button>
+				</p>
+				</p>
+					Results will be highlighted.
+				</p>
+			</fieldset>
+		</form>
+		<div class="footer_row row">
+			<address class="cell footer_cell">
+				Developed by <a href="http://www.fortybelow.ca"
+					title="Matt McDonald">Matt McDonald</a>;
+			</address>
+			<address class="cell footer_cell">
+				Logo designed by <a href="http://www.weirdurl.com"
+					title="Nathan Malone">Nathan Malone</a>;
+			</address>
+			<div class="cell footer_cell">
+				<a href="http://www.anybrowser.org/campaign"
+					title="Viewable with any browser">Viewable with any browser</a>
+			</div>
+		</div>
+		<script src="../Builds/Uncompressed/utils-complete.js"
+			type="text/javascript"></script>
+		<script src="./JS/select.js"
+			type="text/javascript"></script>
+	</body>
+</html>

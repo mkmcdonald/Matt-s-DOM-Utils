@@ -609,21 +609,25 @@ ac_subst_files='LICENSE
 BEGIN
 HEAD
 ROOT_STYLESHEET
+DEMOS_STYLESHEET
 DOWNLOAD_STYLESHEET
 DOCS_STYLESHEET
 HOWTO_STYLESHEET
 TESTS_STYLESHEET
 ROOT_RESOURCES
+DEMOS_RESOURCES
 DOWNLOAD_RESOURCES
 DOCS_RESOURCES
 HOWTO_RESOURCES
 TESTS_RESOURCES
 BODY
 ROOT_HEADER
+DEMOS_HEADER
 DOWNLOAD_HEADER
 DOCS_HEADER
 HOWTO_HEADER
 TESTS_HEADER
+DEMOS_NAV
 DOWNLOAD_NAV
 DOCS_NAV
 HOWTO_NAV
@@ -1675,7 +1679,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
-ac_config_files="$ac_config_files "Templates/license" "Library/license.js" "Library/utils.js" "Library/metadata.js" "Library/raise.js" "Library/types.js" "Library/is.js" "Library/helpers.js" "Library/node.js" "Library/create.js" "Library/classes.js" "Library/traverse.js" "Library/select.js" "index.html" "Download/index.html" "Docs/index.html" "Docs/raise.html" "Docs/types.html" "Docs/helpers.html" "Docs/is.html" "Docs/node.html" "Docs/create.html" "Docs/classes.html" "Docs/traverse.html" "Docs/select.html" "Docs/glossary.html" "Docs/HOWTO/index.html" "Docs/HOWTO/degradation.html" "Docs/HOWTO/implementation.html" "Docs/HOWTO/customisation.html" "Tests/index.html" "Tests/Node/node.html" "Tests/Node/JS/node.js" "Tests/Create/create.html" "Tests/Create/JS/create.js" "Tests/Classes/classes.html" "Tests/Classes/JS/classes.js" "Tests/HOWTO/JS/slideshow.js" "Tests/Traverse/traverse.html" "Tests/Traverse/JS/traverse.js" "Tests/Select/select.html" "Tests/Select/JS/select.js" "Tests/Complete/complete.html" "Tests/Complete/JS/complete.js" "Tests/Complete/complete-min.html" "Tests/Complete/JS/complete-min.js" "about.html" "README.md""
+ac_config_files="$ac_config_files "Templates/license" "Library/license.js" "Library/utils.js" "Library/metadata.js" "Library/raise.js" "Library/types.js" "Library/is.js" "Library/helpers.js" "Library/node.js" "Library/create.js" "Library/classes.js" "Library/traverse.js" "Library/select.js" "index.html" "Demos/index.html" "Demos/select.html" "Demos/JS/select.js" "Download/index.html" "Docs/index.html" "Docs/raise.html" "Docs/types.html" "Docs/helpers.html" "Docs/is.html" "Docs/node.html" "Docs/create.html" "Docs/classes.html" "Docs/traverse.html" "Docs/select.html" "Docs/glossary.html" "Docs/HOWTO/index.html" "Docs/HOWTO/degradation.html" "Docs/HOWTO/implementation.html" "Docs/HOWTO/customisation.html" "Tests/index.html" "Tests/Node/node.html" "Tests/Node/JS/node.js" "Tests/Create/create.html" "Tests/Create/JS/create.js" "Tests/Classes/classes.html" "Tests/Classes/JS/classes.js" "Tests/HOWTO/JS/slideshow.js" "Tests/Traverse/traverse.html" "Tests/Traverse/JS/traverse.js" "Tests/Select/select.html" "Tests/Select/JS/select.js" "Tests/Complete/complete.html" "Tests/Complete/JS/complete.js" "Tests/Complete/complete-min.html" "Tests/Complete/JS/complete-min.js" "about.html" "README.md""
 
 
 # your library name here
@@ -1698,6 +1702,9 @@ HEAD="Templates/head";
 ROOT_STYLESHEET="Templates/stylesheet";
 
 
+DEMOS_STYLESHEET="Templates/Demos/stylesheet";
+
+
 DOWNLOAD_STYLESHEET="Templates/Download/stylesheet";
 
 
@@ -1711,6 +1718,9 @@ TESTS_STYLESHEET="Templates/Tests/stylesheet";
 
 
 ROOT_RESOURCES="Templates/resources";
+
+
+DEMOS_RESOURCES="Templates/Demos/resources";
 
 
 DOWNLOAD_RESOURCES="Templates/Download/resources";
@@ -1731,6 +1741,9 @@ BODY="Templates/body";
 ROOT_HEADER="Templates/header";
 
 
+DEMOS_HEADER="Templates/Demos/header";
+
+
 DOWNLOAD_HEADER="Templates/Download/header";
 
 
@@ -1741,6 +1754,9 @@ HOWTO_HEADER="Templates/Docs/HowTo/header";
 
 
 TESTS_HEADER="Templates/Tests/header";
+
+
+DEMOS_NAV="Templates/Demos/nav";
 
 
 DOWNLOAD_NAV="Templates/Download/nav";
@@ -2503,6 +2519,9 @@ do
     ""Library/traverse.js"") CONFIG_FILES="$CONFIG_FILES "Library/traverse.js"" ;;
     ""Library/select.js"") CONFIG_FILES="$CONFIG_FILES "Library/select.js"" ;;
     ""index.html"") CONFIG_FILES="$CONFIG_FILES "index.html"" ;;
+    ""Demos/index.html"") CONFIG_FILES="$CONFIG_FILES "Demos/index.html"" ;;
+    ""Demos/select.html"") CONFIG_FILES="$CONFIG_FILES "Demos/select.html"" ;;
+    ""Demos/JS/select.js"") CONFIG_FILES="$CONFIG_FILES "Demos/JS/select.js"" ;;
     ""Download/index.html"") CONFIG_FILES="$CONFIG_FILES "Download/index.html"" ;;
     ""Docs/index.html"") CONFIG_FILES="$CONFIG_FILES "Docs/index.html"" ;;
     ""Docs/raise.html"") CONFIG_FILES="$CONFIG_FILES "Docs/raise.html"" ;;

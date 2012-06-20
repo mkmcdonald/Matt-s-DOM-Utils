@@ -1,0 +1,11 @@
+.selected
+{
+	background: #071526;
+	color: #F1F1F1;
+	box-shadow: 0 0 1em #0077FF;
+}
+
+.inactive
+{
+	visibility: hidden;
+}
