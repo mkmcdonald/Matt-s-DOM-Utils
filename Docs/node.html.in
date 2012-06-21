@@ -30,7 +30,7 @@
 				<h2 class="heading" title="@LIBRARY_NAME@.node">
 					<code>@LIBRARY_NAME@.node</code>
 				</h2>
-				<div class="module_info" id="dependencies">
+				<div class="fragment module_info" id="dependencies">
 					<h3 class="heading">
 						<a href="#dependencies"
 							title="Dependencies">Dependencies</a>
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry" id="prepend">
+			<li class="cell doc_cell doc_entry fragment" id="prepend">
 				<h3 class="heading">
 					<a href="#prepend"
 						title="@LIBRARY_NAME@.node.prepend"><code>@LIBRARY_NAME@.node.prepend</code></a>
@@ -100,7 +100,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="prepend_list">
+			<li class="cell doc_cell doc_entry fragment" id="prepend_list">
 				<h3 class="heading">
 					<a href="#prepend_list"
 						title="@LIBRARY_NAME@.node.prependList"><code>@LIBRARY_NAME@.node.prependList</code></a>
@@ -151,7 +151,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="append">
+			<li class="cell doc_cell doc_entry fragment" id="append">
 				<h3 class="heading">
 					<a href="#append"
 						title="@LIBRARY_NAME@.node.append"><code>@LIBRARY_NAME@.node.append</code></a>
@@ -191,7 +191,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="append_list">
+			<li class="cell doc_cell doc_entry fragment" id="append_list">
 				<h3 class="heading">
 					<a href="#append_list"
 						title="@LIBRARY_NAME@.node.appendList"><code>@LIBRARY_NAME@.node.appendList</code></a>
@@ -230,7 +230,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="remove">
+			<li class="cell doc_cell doc_entry fragment" id="remove">
 				<h3 class="heading">
 					<a href="#remove"
 						title="@LIBRARY_NAME@.node.remove"><code>@LIBRARY_NAME@.node.remove</code></a>
@@ -271,7 +271,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="replace">
+			<li class="cell doc_cell doc_entry fragment" id="replace">
 				<h3 class="heading">
 					<a href="#replace"
 						title="@LIBRARY_NAME@.node.replace"><code>@LIBRARY_NAME@.node.replace</code></a>
@@ -327,7 +327,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="clone">
+			<li class="cell doc_cell doc_entry fragment" id="clone">
 				<h3 class="heading">
 					<a href="#clone"
 						title="@LIBRARY_NAME@.node.clone"><code>@LIBRARY_NAME@.node.clone</code></a>
@@ -365,7 +365,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="get_name">
+			<li class="cell doc_cell doc_entry fragment" id="get_name">
 				<h3 class="heading">
 					<a href="#get_name"
 						title="@LIBRARY_NAME@.node.getName"><code>@LIBRARY_NAME@.node.getName</code></a>
@@ -402,7 +402,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="get_value">
+			<li class="cell doc_cell doc_entry fragment" id="get_value">
 				<h3 class="heading">
 					<a href="#get_value"
 						title="@LIBRARY_NAME@.node.getValue"><code>@LIBRARY_NAME@.node.getValue</code></a>
@@ -430,7 +430,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="set_value">
+			<li class="cell doc_cell doc_entry fragment" id="set_value">
 				<h3 class="heading">
 					<a href="#set_value"
 						title="@LIBRARY_NAME@.node.setValue"><code>@LIBRARY_NAME@.node.setValue</code></a>

@@ -30,7 +30,7 @@
 				<h2 class="heading" title="@LIBRARY_NAME@.helpers">
 					<code>@LIBRARY_NAME@.helpers</code>
 				</h2>
-				<div class="module_info" id="dependencies">
+				<div class="fragment module_info" id="dependencies">
 					<h3 class="heading">
 						<a href="#dependencies"
 							title="Dependencies">Dependencies</a>
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry" id="make_array">
+			<li class="cell doc_cell doc_entry fragment" id="make_array">
 				<h3 class="heading">
 					<a href="#make_array"
 						title="@LIBRARY_NAME@.helpers.makeArray"><code>@LIBRARY_NAME@.helpers.makeArray</code></a>

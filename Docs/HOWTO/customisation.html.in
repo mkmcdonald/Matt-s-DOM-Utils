@@ -241,7 +241,7 @@
 						title="Footnotes">Footnotes</a>
 				</h3>
 				<dl>
-					<dt class="doc_entry" id="footnote_0">
+					<dt class="footnote fragment" id="footnote_0">
 						<a href="#footnote_0"
 							title="Footnote Zero">[0]</a>
 					</dt>
@@ -249,7 +249,7 @@
 						<a href="http://www.gnu.org/software/automake/manual/html_node/GNU-Build-System.html#GNU-Build-System"
 							title="GNU Autotools">GNU Autotools</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_1">
+					<dt class="footnote fragment" id="footnote_1">
 						<a href="#footnote_1"
 							title="Footnote One">[1]</a>
 					</dt>
@@ -257,7 +257,7 @@
 						<a href="../../configure.ac"
 							title="configure.ac"><code>configure.ac</code></a>
 					</dd>
-					<dt class="doc_entry" id="footnote_2">
+					<dt class="footnote fragment" id="footnote_2">
 						<a href="#footnote_2"
 							title="Footnote Two">[2]</a>
 					</dt>
@@ -265,7 +265,7 @@
 						<a href="../../Builds/Uncompressed/utils-core.js"
 							title="Core Build">Core Build</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_3">
+					<dt class="footnote fragment" id="footnote_3">
 						<a href="#footnote_3"
 							title="Footnote Three">[3]</a>
 					</dt>

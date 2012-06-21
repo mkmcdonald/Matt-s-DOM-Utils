@@ -2,7 +2,7 @@
 			<li class="cell home nav_cell">
 				<a href="../" title="Home">Home</a>
 			</li>
-			<li class="active cell demos nav_cell">
+			<li class="cell demos nav_cell">
 				<a href="../Demos" title="Demos">Demos</a>
 			</li>
 			<li class="active cell download nav_cell">

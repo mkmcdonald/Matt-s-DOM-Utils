@@ -64,24 +64,31 @@
 					<input id="minify_build" name="minify_build"
 						type="checkbox" value="minify">
 					<label for="minify_build">
-						Minify build<a href="#footnote_0"
-							title="Footnote Zero"><sup>0</sup></a>
+						Minify build<a href="#stipulation_0"
+							title="Stipulation Zero"><sup>0</sup></a>
 					</label>
 				</p>
 				<input type="submit" value="Submit Build">
 			</fieldset>
 		</form>
 		<div class="column primary_column">
-			<dl class="cell primary_cell">
-				<dt id="footnote_0">
-					<sup>0</sup>
-				</dt>
-				<dd>
-					Due to the heavy amount of inline documentation in
-					<em>@LIBRARY_NAME@</em>, minification is recommended for
-					&ldquo;production&rdquo; usage.
-				</dd>
-			</dl>
+			<div class="cell primary_cell" id="stipulations">
+				<h3 class="heading">
+					<a href="#stipulations"
+						title="Stipulations">Stipulations</a>
+				</h3>
+				<dl>
+					<dt class="stipulation fragment" id="stipulation_0">
+						<a href="#stipulation_0"
+							title="Stipulation Zero"><sup>0</sup></a>
+					</dt>
+					<dd>
+						Due to the heavy amount of inline documentation in
+						<em>@LIBRARY_NAME@</em>, minification is recommended for
+						&ldquo;production&rdquo; usage.
+					</dd>
+				</dl>
+			</div>
 		</div>
 @FOOTER@
 @END@

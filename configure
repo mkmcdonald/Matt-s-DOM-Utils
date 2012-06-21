@@ -1711,7 +1711,7 @@ DOWNLOAD_STYLESHEET="Templates/Download/stylesheet";
 DOCS_STYLESHEET="Templates/Docs/stylesheet";
 
 
-HOWTO_STYLESHEET="Templates/Docs/HowTo/stylesheet";
+HOWTO_STYLESHEET="Templates/Docs/HOWTO/stylesheet";
 
 
 TESTS_STYLESHEET="Templates/Tests/stylesheet";
@@ -1729,7 +1729,7 @@ DOWNLOAD_RESOURCES="Templates/Download/resources";
 DOCS_RESOURCES="Templates/Docs/resources";
 
 
-HOWTO_RESOURCES="Templates/Docs/HowTo/resources";
+HOWTO_RESOURCES="Templates/Docs/HOWTO/resources";
 
 
 TESTS_RESOURCES="Templates/Tests/resources";
@@ -1750,7 +1750,7 @@ DOWNLOAD_HEADER="Templates/Download/header";
 DOCS_HEADER="Templates/Docs/header";
 
 
-HOWTO_HEADER="Templates/Docs/HowTo/header";
+HOWTO_HEADER="Templates/Docs/HOWTO/header";
 
 
 TESTS_HEADER="Templates/Tests/header";
@@ -1765,7 +1765,7 @@ DOWNLOAD_NAV="Templates/Download/nav";
 DOCS_NAV="Templates/Docs/nav";
 
 
-HOWTO_NAV="Templates/Docs/HowTo/nav";
+HOWTO_NAV="Templates/Docs/HOWTO/nav";
 
 
 TESTS_NAV="Templates/Tests/nav";

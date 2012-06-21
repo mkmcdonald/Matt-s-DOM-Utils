@@ -323,7 +323,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						title="Footnotes">Footnotes</a>
 				</h3>
 				<dl>
-					<dt class="doc_entry" id="footnote_0">
+					<dt class="footnote fragment" id="footnote_0">
 						<a href="#footnote_0"
 							title="Footnote Zero">[0]</a>
 					</dt>

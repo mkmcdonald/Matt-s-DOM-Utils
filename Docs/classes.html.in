@@ -30,7 +30,7 @@
 				<h2 class="heading" title="@LIBRARY_NAME@.classes">
 					<code>@LIBRARY_NAME@.classes</code>
 				</h2>
-				<div class="module_info" id="dependencies">
+				<div class="fragment module_info" id="dependencies">
 					<h3 class="heading">
 						<a href="#dependencies"
 							title="Dependencies">Dependencies</a>
@@ -53,7 +53,7 @@
 			</div>
 		</div>
 		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry" id="contains">
+			<li class="cell doc_cell doc_entry fragment" id="contains">
 				<h3 class="heading">
 					<a href="#contains"
 						title="@LIBRARY_NAME@.classes.contains"><code>@LIBRARY_NAME@.classes.contains</code></a>
@@ -96,7 +96,7 @@ if (@LIBRARY_NAME@.classes.contains) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="contains_list">
+			<li class="cell doc_cell doc_entry fragment" id="contains_list">
 				<h3 class="heading">
 					<a href="#contains_list"
 						title="@LIBRARY_NAME@.classes.containsList"><code>@LIBRARY_NAME@.classes.containsList</code></a>
@@ -134,7 +134,7 @@ if (@LIBRARY_NAME@.classes.contains) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="add">
+			<li class="cell doc_cell doc_entry fragment" id="add">
 				<h3 class="heading">
 					<a href="#add"
 						title="@LIBRARY_NAME@.classes.add"><code>@LIBRARY_NAME@.classes.add</code></a>
@@ -177,7 +177,7 @@ if (@LIBRARY_NAME@.classes.add) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="add_list">
+			<li class="cell doc_cell doc_entry fragment" id="add_list">
 				<h3 class="heading">
 					<a href="#add_list"
 						title="@LIBRARY_NAME@.classes.addList"><code>@LIBRARY_NAME@.classes.addList</code></a>
@@ -215,7 +215,7 @@ if (@LIBRARY_NAME@.classes.add) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="remove">
+			<li class="cell doc_cell doc_entry fragment" id="remove">
 				<h3 class="heading">
 					<a href="#remove"
 						title="@LIBRARY_NAME@.classes.remove"><code>@LIBRARY_NAME@.classes.remove</code></a>
@@ -258,7 +258,7 @@ if (@LIBRARY_NAME@.classes.remove) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="remove_list">
+			<li class="cell doc_cell doc_entry fragment" id="remove_list">
 				<h3 class="heading">
 					<a href="#remove_list"
 						title="@LIBRARY_NAME@.classes.removeList"><code>@LIBRARY_NAME@.classes.removeList</code></a>
@@ -296,7 +296,7 @@ if (@LIBRARY_NAME@.classes.remove) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="toggle">
+			<li class="cell doc_cell doc_entry fragment" id="toggle">
 				<h3 class="heading">
 					<a href="#toggle"
 						title="@LIBRARY_NAME@.classes.toggle"><code>@LIBRARY_NAME@.classes.toggle</code></a>
@@ -340,7 +340,7 @@ if (@LIBRARY_NAME@.classes.toggle) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="toggle_list">
+			<li class="cell doc_cell doc_entry fragment" id="toggle_list">
 				<h3 class="heading">
 					<a href="#toggle_list"
 						title="@LIBRARY_NAME@.classes.toggleList"><code>@LIBRARY_NAME@.classes.toggleList</code></a>
@@ -378,7 +378,7 @@ if (@LIBRARY_NAME@.classes.toggle) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="item">
+			<li class="cell doc_cell doc_entry fragment" id="item">
 				<h3 class="heading">
 					<a href="#item"
 						title="@LIBRARY_NAME@.classes.item"><code>@LIBRARY_NAME@.classes.item</code></a>
@@ -421,7 +421,7 @@ if (@LIBRARY_NAME@.classes.item) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="get">
+			<li class="cell doc_cell doc_entry fragment" id="get">
 				<h3 class="heading">
 					<a href="#get"
 						title="@LIBRARY_NAME@.classes.get"><code>@LIBRARY_NAME@.classes.get</code></a>

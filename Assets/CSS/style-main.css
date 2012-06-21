@@ -207,7 +207,7 @@ hr, .row
 	font-size: 1.25em;
 }
 
-.doc_entry:target, .module_info:target
+.fragment:target
 {
 	background-color: #5D7693;
 }

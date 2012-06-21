@@ -1020,7 +1020,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						title="Footnotes">Footnotes</a>
 				</h3>
 				<dl>
-					<dt class="doc_entry" id="footnote_0">
+					<dt class="footnote fragment" id="footnote_0">
 						<a href="#footnote_0"
 							title="Footnote Zero">[0]</a>
 					</dt>
@@ -1028,7 +1028,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://groups.google.com/group/comp.lang.javascript/msg/60a6bb437e54f282"
 							title="Richard Cornford on Graceful Degradation">Richard Cornford on Graceful Degradation</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_1">
+					<dt class="footnote fragment" id="footnote_1">
 						<a href="#footnote_1"
 							rel="nofollow"
 							title="Footnote One">[1]</a>
@@ -1037,7 +1037,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://darcyclarke.me/development/front-end-job-interview-questions/"
 							title="Darcy Clarke: Front-end Job Interview Questions">Darcy Clarke: Front-end Job Interview Questions</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_2">
+					<dt class="footnote fragment" id="footnote_2">
 						<a href="#footnote_2"
 							title="Footnote Two">[2]</a>
 					</dt>
@@ -1045,7 +1045,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23"
 							title="HTTP/1.1: Host Header">HTTP/1.1: Host Header</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_3">
+					<dt class="footnote fragment" id="footnote_3">
 						<a href="#footnote_3"
 							title="Footnote Three">[3]</a>
 					</dt>
@@ -1053,7 +1053,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4"
 							title="HTTP/1.1: 4xx Status Codes">HTTP/1.1: 4xx Status Codes</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_4">
+					<dt class="footnote fragment" id="footnote_4">
 						<a href="#footnote_4"
 							title="Footnote Four">[4]</a>
 					</dt>
@@ -1061,7 +1061,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5"
 							title="HTTP/1.1: 5xx Status Codes">HTTP/1.1: 5xx Status Codes</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_5">
+					<dt class="footnote fragment" id="footnote_5">
 						<a href="#footnote_5"
 							title="Footnote Five">[5]</a>
 					</dt>
@@ -1069,7 +1069,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://hsivonen.iki.fi/doctype/"
 							title="Henri Sivonen on Quirks Mode">Henri Sivonen on Quirks Mode</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_6">
+					<dt class="footnote fragment" id="footnote_6">
 						<a href="#footnote_6"
 							title="Footnote Six">[6]</a>
 					</dt>
@@ -1077,7 +1077,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://www.w3.org/TR/CSS21/sample.html"
 							title="CSS 2.1: Default Stylesheet for HTML 4">CSS 2.1: Default Stylesheet for HTML 4</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_7">
+					<dt class="footnote fragment" id="footnote_7">
 						<a href="#footnote_7"
 							title="Footnote Seven">[7]</a>
 					</dt>
@@ -1085,7 +1085,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://www.w3.org/TR/CSS21/media.html"
 							title="CSS 2.1: Media Types">CSS 2.1: Media Types</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_8">
+					<dt class="footnote fragment" id="footnote_8">
 						<a href="#footnote_8"
 							title="Footnote Eight">[8]</a>
 					</dt>
@@ -1093,7 +1093,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://www.w3.org/TR/css3-mediaqueries/"
 							title="CSS 3: Media Queries">CSS 3: Media Queries</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_9">
+					<dt class="footnote fragment" id="footnote_9">
 						<a href="#footnote_9"
 							title="Footnote Nine">[9]</a>
 					</dt>
@@ -1101,7 +1101,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="news:comp.lang.javascript"
 							title="comp.lang.javascript Newsgroup">comp.lang.javascript Newsgroup</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_10">
+					<dt class="footnote fragment" id="footnote_10">
 						<a href="#footnote_10"
 							title="Footnote Ten">[10]</a>
 					</dt>
@@ -1109,7 +1109,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://groups.google.com/group/comp.lang.javascript/msg/5333f12001527114"
 							title="David Mark on Defensive Programming">David Mark on Defensive Programming</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_11">
+					<dt class="footnote fragment" id="footnote_11">
 						<a href="#footnote_11"
 							title="Footnote Eleven">[11]</a>
 					</dt>
@@ -1117,7 +1117,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://groups.google.com/group/comp.lang.javascript/browse_thread/thread/36580a49ca956e25/2ae322410a8aea48"
 							title="Google Groups: Should isHostMethod be added to the FAQ?">Google Groups: Should isHostMethod be added to the FAQ?</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_12">
+					<dt class="footnote fragment" id="footnote_12">
 						<a href="#footnote_12"
 							title="Footnote Twelve">[12]</a>
 					</dt>
@@ -1125,7 +1125,7 @@ if (typeof @LIBRARY_NAME@ === "object" &amp;&amp; @LIBRARY_NAME@) {
 						<a href="http://www.cinsoft.net/mylib.html"
 							title="My Library">My Library</a>
 					</dd>
-					<dt class="doc_entry" id="footnote_13">
+					<dt class="footnote fragment" id="footnote_13">
 						<a href="#footnote_13"
 							title="Footnote Thirteen">[13]</a>
 					</dt>

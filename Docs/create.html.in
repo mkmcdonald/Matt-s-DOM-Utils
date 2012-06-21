@@ -30,7 +30,7 @@
 				<h2 class="heading" title="@LIBRARY_NAME@.create">
 					<code>@LIBRARY_NAME@.create</code>
 				</h2>
-				<div class="module_info" id="dependencies">
+				<div class="fragment module_info" id="dependencies">
 					<h3 class="heading">
 						<a href="#dependencies"
 							title="Dependencies">Dependencies</a>
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry" id="element">
+			<li class="cell doc_cell doc_entry fragment" id="element">
 				<h3 class="heading">
 					<a href="#element"
 						title="@LIBRARY_NAME@.create.element"><code>@LIBRARY_NAME@.create.element</code></a>
@@ -93,7 +93,7 @@ if (@LIBRARY_NAME@.create.element) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="element_ns">
+			<li class="cell doc_cell doc_entry fragment" id="element_ns">
 				<h3 class="heading">
 					<a href="#element_ns"
 						title="@LIBRARY_NAME@.create.elementNS"><code>@LIBRARY_NAME@.create.elementNS</code></a>
@@ -152,7 +152,7 @@ if (@LIBRARY_NAME@.create.elementNS) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="text">
+			<li class="cell doc_cell doc_entry fragment" id="text">
 				<h3 class="heading">
 					<a href="#text"
 						title="@LIBRARY_NAME@.create.text"><code>@LIBRARY_NAME@.create.text</code></a>
@@ -200,7 +200,7 @@ if (@LIBRARY_NAME@.create.text) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="processing_instruction">
+			<li class="cell doc_cell doc_entry fragment" id="processing_instruction">
 				<h3 class="heading">
 					<a href="#processing_instruction"
 						title="@LIBRARY_NAME@.create.processingInstruction"><code>@LIBRARY_NAME@.create.processingInstruction</code></a>
@@ -259,7 +259,7 @@ if (@LIBRARY_NAME@.create.processingInstruction) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="comment">
+			<li class="cell doc_cell doc_entry fragment" id="comment">
 				<h3 class="heading">
 					<a href="#comment"
 						title="@LIBRARY_NAME@.create.comment"><code>@LIBRARY_NAME@.create.comment</code></a>
@@ -308,7 +308,7 @@ if (@LIBRARY_NAME@.create.comment) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="document_fragment">
+			<li class="cell doc_cell doc_entry fragment" id="document_fragment">
 				<h3 class="heading">
 					<a href="#document_fragment"
 						title="@LIBRARY_NAME@.create.documentFragment"><code>@LIBRARY_NAME@.create.documentFragment</code></a>

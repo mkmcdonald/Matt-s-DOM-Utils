@@ -82,7 +82,7 @@ AC_SUBST_FILE(DOCS_STYLESHEET)
 DOCS_STYLESHEET="Templates/Docs/stylesheet";
 
 AC_SUBST_FILE(HOWTO_STYLESHEET)
-HOWTO_STYLESHEET="Templates/Docs/HowTo/stylesheet";
+HOWTO_STYLESHEET="Templates/Docs/HOWTO/stylesheet";
 
 AC_SUBST_FILE(TESTS_STYLESHEET)
 TESTS_STYLESHEET="Templates/Tests/stylesheet";
@@ -100,7 +100,7 @@ AC_SUBST_FILE(DOCS_RESOURCES)
 DOCS_RESOURCES="Templates/Docs/resources";
 
 AC_SUBST_FILE(HOWTO_RESOURCES)
-HOWTO_RESOURCES="Templates/Docs/HowTo/resources";
+HOWTO_RESOURCES="Templates/Docs/HOWTO/resources";
 
 AC_SUBST_FILE(TESTS_RESOURCES)
 TESTS_RESOURCES="Templates/Tests/resources";
@@ -121,7 +121,7 @@ AC_SUBST_FILE(DOCS_HEADER)
 DOCS_HEADER="Templates/Docs/header";
 
 AC_SUBST_FILE(HOWTO_HEADER)
-HOWTO_HEADER="Templates/Docs/HowTo/header";
+HOWTO_HEADER="Templates/Docs/HOWTO/header";
 
 AC_SUBST_FILE(TESTS_HEADER)
 TESTS_HEADER="Templates/Tests/header";
@@ -136,7 +136,7 @@ AC_SUBST_FILE(DOCS_NAV)
 DOCS_NAV="Templates/Docs/nav";
 
 AC_SUBST_FILE(HOWTO_NAV)
-HOWTO_NAV="Templates/Docs/HowTo/nav";
+HOWTO_NAV="Templates/Docs/HOWTO/nav";
 
 AC_SUBST_FILE(TESTS_NAV)
 TESTS_NAV="Templates/Tests/nav";

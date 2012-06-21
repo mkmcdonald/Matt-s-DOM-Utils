@@ -96,9 +96,7 @@
 					</select>
 				</p>
 				<p>
-					which will then be called upon form submission
-					(via <code>eval</code>, so quote strings where
-					expected).
+					which will then be called upon form submission.
 				</p>
 			</fieldset>
 			<fieldset class="cell primary_cell">
@@ -107,7 +105,7 @@
 					<p>
 						<label for="param_control_0">
 							<var id="param_name_0">doc</var>
-							<span id="param_type_0">(Document)</span>
+							<span id="param_type_0">(Document || Element)</span>
 						</label>
 					</p>
 					<p>
@@ -132,7 +130,31 @@
 					</p>
 				</div>
 				<p>
-					which will be passed with the selected method.
+					which are passed to <code>eval</code>, which
+					allows them to be called with the selected method.
+					They are provided with type hints to
+					guide input.
+				</p>
+				<p>
+					Remember that <code>String</code>
+					types require quotations.
+				</p>
+				<p>
+					For example, calling <code>Utils.select.tagName</code>
+					with input of:
+				</p>
+				<p>
+					<code>document</code>
+				</p>
+				<p>
+					and
+				</p>
+				<p>
+					<code>"*"</code>
+				</p>
+				<p>
+					would select all applicable elements on the page, which
+					would then be highlighted for visual feedback.
 				</p>
 			</fieldset>
 			<fieldset class="cell primary_cell">

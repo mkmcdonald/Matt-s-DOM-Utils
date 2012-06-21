@@ -30,7 +30,7 @@
 				<h2 class="heading" title="@LIBRARY_NAME@.types">
 					<code>@LIBRARY_NAME@.types</code>
 				</h2>
-				<div class="module_info" id="dependencies">
+				<div class="fragment module_info" id="dependencies">
 					<h3 class="heading">
 						<a href="#dependencies"
 							title="Dependencies">Dependencies</a>
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry" id="element_node">
+			<li class="cell doc_cell doc_entry fragment" id="element_node">
 				<h3 class="heading">
 					<a href="#element_node"
 						title="@LIBRARY_NAME@.types.ELEMENT_NODE"><code>@LIBRARY_NAME@.types.ELEMENT_NODE</code></a>
@@ -61,7 +61,7 @@
 					</dd>
 				</dl>
 			</li>
-			<li class="cell doc_cell doc_entry" id="attribute_node">
+			<li class="cell doc_cell doc_entry fragment" id="attribute_node">
 				<h3 class="heading">
 					<a href="#attribute_node"
 						title="@LIBRARY_NAME@.types.ATTRIBUTE_NODE"><code>@LIBRARY_NAME@.types.ATTRIBUTE_NODE</code></a>
@@ -78,7 +78,7 @@
 					</dd>
 				</dl>
 			</li>
-			<li class="cell doc_cell doc_entry" id="text_node">
+			<li class="cell doc_cell doc_entry fragment" id="text_node">
 				<h3 class="heading">
 					<a href="#text_node"
 						title="@LIBRARY_NAME@.types.TEXT_NODE"><code>@LIBRARY_NAME@.types.TEXT_NODE</code></a>
@@ -95,7 +95,7 @@
 					</dd>
 				</dl>
 			</li>
-			<li class="cell doc_cell doc_entry" id="cdata_section_node">
+			<li class="cell doc_cell doc_entry fragment" id="cdata_section_node">
 				<h3 class="heading">
 					<a href="#cdata_section_node"
 						title="@LIBRARY_NAME@.types.CDATA_SECTION_NODE"><code>@LIBRARY_NAME@.types.CDATA_SECTION_NODE</code></a>
@@ -112,7 +112,7 @@
 					</dd>
 				</dl>
 			</li>
-			<li class="cell doc_cell doc_entry" id="entity_reference_node">
+			<li class="cell doc_cell doc_entry fragment" id="entity_reference_node">
 				<h3 class="heading">
 					<a href="#entity_reference_node"
 						title="@LIBRARY_NAME@.types.ENTITY_REFERENCE_NODE"><code>@LIBRARY_NAME@.types.ENTITY_REFERENCE_NODE</code></a>
@@ -129,7 +129,7 @@
 					</dd>
 				</dl>
 			</li>
-			<li class="cell doc_cell doc_entry" id="entity_node">
+			<li class="cell doc_cell doc_entry fragment" id="entity_node">
 				<h3 class="heading">
 					<a href="#entity_node"
 						title="@LIBRARY_NAME@.types.ENTITY_NODE"><code>@LIBRARY_NAME@.types.ENTITY_NODE</code></a>
@@ -146,7 +146,7 @@
 					</dd>
 				</dl>
 			</li>
-			<li class="cell doc_cell doc_entry" id="processing_instruction_node">
+			<li class="cell doc_cell doc_entry fragment" id="processing_instruction_node">
 				<h3 class="heading">
 					<a href="#processing_instruction_node"
 						title="@LIBRARY_NAME@.types.PROCESSING_INSTRUCTION_NODE"><code>@LIBRARY_NAME@.types.PROCESSING_INSTRUCTION_NODE</code></a>
@@ -163,7 +163,7 @@
 					</dd>
 				</dl>
 			</li>
-			<li class="cell doc_cell doc_entry" id="comment_node">
+			<li class="cell doc_cell doc_entry fragment" id="comment_node">
 				<h3 class="heading">
 					<a href="#comment_node"
 						title="@LIBRARY_NAME@.types.COMMENT_NODE"><code>@LIBRARY_NAME@.types.COMMENT_NODE</code></a>
@@ -180,7 +180,7 @@
 					</dd>
 				</dl>
 			</li>
-			<li class="cell doc_cell doc_entry" id="document_node">
+			<li class="cell doc_cell doc_entry fragment" id="document_node">
 				<h3 class="heading">
 					<a href="#document_node"
 						title="@LIBRARY_NAME@.types.DOCUMENT_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_NODE</code></a>
@@ -197,7 +197,7 @@
 					</dd>
 				</dl>
 			</li>
-			<li class="cell doc_cell doc_entry" id="document_type_node">
+			<li class="cell doc_cell doc_entry fragment" id="document_type_node">
 				<h3 class="heading">
 					<a href="#document_type_node"
 						title="@LIBRARY_NAME@.types.DOCUMENT_TYPE_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_TYPE_NODE</code></a>
@@ -214,7 +214,7 @@
 					</dd>
 				</dl>
 			</li>
-			<li class="cell doc_cell doc_entry" id="document_fragment_node">
+			<li class="cell doc_cell doc_entry fragment" id="document_fragment_node">
 				<h3 class="heading">
 					<a href="#document_fragment_node"
 						title="@LIBRARY_NAME@.types.DOCUMENT_FRAGMENT_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_FRAGMENT_NODE</code></a>
@@ -231,7 +231,7 @@
 					</dd>
 				</dl>
 			</li>
-			<li class="cell doc_cell doc_entry" id="notation_node">
+			<li class="cell doc_cell doc_entry fragment" id="notation_node">
 				<h3 class="heading">
 					<a href="#notation_node"
 						title="@LIBRARY_NAME@.types.NOTATION_NODE"><code>@LIBRARY_NAME@.types.NOTATION_NODE</code></a>

@@ -70,7 +70,8 @@
 					Moreover, <em>@LIBRARY_NAME@</em> treats non-element nodes with
 					care and respect. Traversal methods are provided for
 					unfiltered trees, allowing for a full, representative
-					view of the document tree.
+					view of the <a href="./Docs/glossary.html#document_tree"
+						title="Document Tree">document tree</a>.
 				</p>
 				<p>
 					The primary tenet of <em>@LIBRARY_NAME@</em> is &ldquo;Graceful Degradation&rdquo;.

@@ -30,7 +30,7 @@
 				<h2 class="heading" title="@LIBRARY_NAME@.select">
 					<code>@LIBRARY_NAME@.select</code>
 				</h2>
-				<div class="module_info" id="dependencies">
+				<div class="fragment module_info" id="dependencies">
 					<h3 class="heading">
 						<a href="#dependencies"
 							title="Dependencies">Dependencies</a>
@@ -53,7 +53,7 @@
 			</div>
 		</div>
 		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry" id="by_name">
+			<li class="cell doc_cell doc_entry fragment" id="by_name">
 				<h3 class="heading">
 					<a href="#by_name"
 						title="@LIBRARY_NAME@.select.byName"><code>@LIBRARY_NAME@.select.byName</code></a>
@@ -95,7 +95,7 @@ if (@LIBRARY_NAME@.select.byName) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="by_tag_name">
+			<li class="cell doc_cell doc_entry fragment" id="by_tag_name">
 				<h3 class="heading">
 					<a href="#by_tag_name"
 						title="@LIBRARY_NAME@.select.byTagName"><code>@LIBRARY_NAME@.select.byTagName</code></a>
@@ -150,7 +150,7 @@ if (@LIBRARY_NAME@.select.byTagName) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="by_tag_name_ns">
+			<li class="cell doc_cell doc_entry fragment" id="by_tag_name_ns">
 				<h3 class="heading">
 					<a href="#by_tag_name_ns"
 						title="@LIBRARY_NAME@.select.byTagNameNS"><code>@LIBRARY_NAME@.select.byTagNameNS</code></a>
@@ -211,7 +211,7 @@ if (@LIBRARY_NAME@.select.byTagNameNS) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="by_class_name">
+			<li class="cell doc_cell doc_entry fragment" id="by_class_name">
 				<h3 class="heading">
 					<a href="#by_class_name"
 						title="@LIBRARY_NAME@.select.byClassName"><code>@LIBRARY_NAME@.select.byClassName</code></a>
@@ -260,7 +260,7 @@ if (@LIBRARY_NAME@.select.byClassName) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="by_id">
+			<li class="cell doc_cell doc_entry fragment" id="by_id">
 				<h3 class="heading">
 					<a href="#by_id"
 						title="@LIBRARY_NAME@.select.byId"><code>@LIBRARY_NAME@.select.byId</code></a>
@@ -308,7 +308,7 @@ if (@LIBRARY_NAME@.select.byId) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="query">
+			<li class="cell doc_cell doc_entry fragment" id="query">
 				<h3 class="heading">
 					<a href="#query"
 						title="@LIBRARY_NAME@.select.query"><code>@LIBRARY_NAME@.select.query</code></a>
@@ -357,7 +357,7 @@ if (@LIBRARY_NAME@.select.query) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="query_all">
+			<li class="cell doc_cell doc_entry fragment" id="query_all">
 				<h3 class="heading">
 					<a href="#query_all"
 						title="@LIBRARY_NAME@.select.queryAll"><code>@LIBRARY_NAME@.select.queryAll</code></a>
@@ -406,7 +406,7 @@ if (@LIBRARY_NAME@.select.queryAll) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="head">
+			<li class="cell doc_cell doc_entry fragment" id="head">
 				<h3 class="heading">
 					<a href="#head"
 						title="@LIBRARY_NAME@.select.head"><code>@LIBRARY_NAME@.select.head</code></a>
@@ -442,7 +442,7 @@ if (@LIBRARY_NAME@.select.head) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="body">
+			<li class="cell doc_cell doc_entry fragment" id="body">
 				<h3 class="heading">
 					<a href="#body"
 						title="@LIBRARY_NAME@.select.body"><code>@LIBRARY_NAME@.select.body</code></a>
@@ -478,7 +478,7 @@ if (@LIBRARY_NAME@.select.body) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="images">
+			<li class="cell doc_cell doc_entry fragment" id="images">
 				<h3 class="heading">
 					<a href="#images"
 						title="@LIBRARY_NAME@.select.images"><code>@LIBRARY_NAME@.select.images</code></a>
@@ -522,7 +522,7 @@ if (@LIBRARY_NAME@.select.images) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="all_images">
+			<li class="cell doc_cell doc_entry fragment" id="all_images">
 				<h3 class="heading">
 					<a href="#all_images"
 						title="@LIBRARY_NAME@.select.allImages"><code>@LIBRARY_NAME@.select.allImages</code></a>
@@ -557,7 +557,7 @@ if (@LIBRARY_NAME@.select.allImages) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="embeds">
+			<li class="cell doc_cell doc_entry fragment" id="embeds">
 				<h3 class="heading">
 					<a href="#embeds"
 						title="@LIBRARY_NAME@.select.embeds"><code>@LIBRARY_NAME@.select.embeds</code></a>
@@ -601,7 +601,7 @@ if (@LIBRARY_NAME@.select.embeds) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="all_embeds">
+			<li class="cell doc_cell doc_entry fragment" id="all_embeds">
 				<h3 class="heading">
 					<a href="#all_embeds"
 						title="@LIBRARY_NAME@.select.allEmbeds"><code>@LIBRARY_NAME@.select.allEmbeds</code></a>
@@ -636,7 +636,7 @@ if (@LIBRARY_NAME@.select.allEmbeds) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="plugins">
+			<li class="cell doc_cell doc_entry fragment" id="plugins">
 				<h3 class="heading">
 					<a href="#plugins"
 						title="@LIBRARY_NAME@.select.plugins"><code>@LIBRARY_NAME@.select.plugins</code></a>
@@ -679,7 +679,7 @@ if (@LIBRARY_NAME@.select.plugins) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="all_plugins">
+			<li class="cell doc_cell doc_entry fragment" id="all_plugins">
 				<h3 class="heading">
 					<a href="#all_plugins"
 						title="@LIBRARY_NAME@.select.allPlugins"><code>@LIBRARY_NAME@.select.allPlugins</code></a>
@@ -714,7 +714,7 @@ if (@LIBRARY_NAME@.select.allPlugins) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="links">
+			<li class="cell doc_cell doc_entry fragment" id="links">
 				<h3 class="heading">
 					<a href="#links"
 						title="@LIBRARY_NAME@.select.links"><code>@LIBRARY_NAME@.select.links</code></a>
@@ -757,7 +757,7 @@ if (@LIBRARY_NAME@.select.links) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="all_links">
+			<li class="cell doc_cell doc_entry fragment" id="all_links">
 				<h3 class="heading">
 					<a href="#all_links"
 						title="@LIBRARY_NAME@.select.allLinks"><code>@LIBRARY_NAME@.select.allLinks</code></a>
@@ -792,7 +792,7 @@ if (@LIBRARY_NAME@.select.allLinks) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="forms">
+			<li class="cell doc_cell doc_entry fragment" id="forms">
 				<h3 class="heading">
 					<a href="#forms"
 						title="@LIBRARY_NAME@.select.forms"><code>@LIBRARY_NAME@.select.forms</code></a>
@@ -835,7 +835,7 @@ if (@LIBRARY_NAME@.select.forms) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="all_forms">
+			<li class="cell doc_cell doc_entry fragment" id="all_forms">
 				<h3 class="heading">
 					<a href="#all_forms"
 						title="@LIBRARY_NAME@.Forms.allForms"><code>@LIBRARY_NAME@.select.allForms</code></a>
@@ -870,7 +870,7 @@ if (@LIBRARY_NAME@.select.allForms) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="scripts">
+			<li class="cell doc_cell doc_entry fragment" id="scripts">
 				<h3 class="heading">
 					<a href="#scripts"
 						title="@LIBRARY_NAME@.select.scripts"><code>@LIBRARY_NAME@.select.scripts</code></a>
@@ -913,7 +913,7 @@ if (@LIBRARY_NAME@.select.scripts) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="all_scripts">
+			<li class="cell doc_cell doc_entry fragment" id="all_scripts">
 				<h3 class="heading">
 					<a href="#all_scripts"
 						title="@LIBRARY_NAME@.select.allScripts"><code>@LIBRARY_NAME@.select.allScripts</code></a>
@@ -948,7 +948,7 @@ if (@LIBRARY_NAME@.select.allScripts) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="applets">
+			<li class="cell doc_cell doc_entry fragment" id="applets">
 				<h3 class="heading">
 					<a href="#applets"
 						title="@LIBRARY_NAME@.select.applets"><code>@LIBRARY_NAME@.select.applets</code></a>
@@ -991,7 +991,7 @@ if (@LIBRARY_NAME@.select.applets) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="all_applets">
+			<li class="cell doc_cell doc_entry fragment" id="all_applets">
 				<h3 class="heading">
 					<a href="#all_applets"
 						title="@LIBRARY_NAME@.select.allApplets"><code>@LIBRARY_NAME@.select.allApplets</code></a>
@@ -1027,7 +1027,7 @@ if (@LIBRARY_NAME@.select.allApplets) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="anchors">
+			<li class="cell doc_cell doc_entry fragment" id="anchors">
 				<h3 class="heading">
 					<a href="#anchors"
 						title="@LIBRARY_NAME@.select.anchors"><code>@LIBRARY_NAME@.select.anchors</code></a>
@@ -1070,7 +1070,7 @@ if (@LIBRARY_NAME@.select.anchors) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="all_anchors">
+			<li class="cell doc_cell doc_entry fragment" id="all_anchors">
 				<h3 class="heading">
 					<a href="#all_anchors"
 						title="@LIBRARY_NAME@.select.allAnchors"><code>@LIBRARY_NAME@.select.allAnchors</code></a>
@@ -1105,7 +1105,7 @@ if (@LIBRARY_NAME@.select.allAnchors) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="named_items">
+			<li class="cell doc_cell doc_entry fragment" id="named_items">
 				<h3 class="heading">
 					<a href="#named_items"
 						title="@LIBRARY_NAME@.select.namedItem"><code>@LIBRARY_NAME@.select.namedItem</code></a>
@@ -1120,7 +1120,7 @@ if (@LIBRARY_NAME@.select.allAnchors) {
 						or a
 						<a href="glossary.html#node_like_object"
 							title="Node-like Object">node-like object</a>
-						representing the specified name of a specified
+						representing the specified name of a specific
 						<code>HTMLCollection</code>.
 					</dd>
 					<dt>
@@ -1150,7 +1150,7 @@ if (@LIBRARY_NAME@.select.allAnchors) {
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="collection">
+			<li class="cell doc_cell doc_entry fragment" id="collection">
 				<h3 class="heading">
 					<a href="#collection"
 						title="@LIBRARY_NAME@.select.collection"><code>@LIBRARY_NAME@.select.collection</code></a>

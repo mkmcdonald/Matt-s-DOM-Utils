@@ -90,6 +90,18 @@
 							are encouraged.
 						</p>
 					</li>
+					<li>
+						<h4 class="heading"
+							title="Customisable">Customisable</h4>
+						<p>
+							<em>@LIBRARY_NAME@</em> is developed to operate under
+							any namespace. Developers have the ability to generate
+							one through a build step that resonates throughout the
+							entire project tree. A specific article<a href="#footnote_0"
+								title="Footnote Zero">[0]</a> has been
+							written to guide developers in doing so.
+						</p>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -167,8 +179,8 @@
 					<li>Firefox 1-13;</li>
 					<li>Opera 5-12;</li>
 					<li>Safari 3.1-5;</li>
-					<li>Chrome 1-4<a href="#footnote_0"
-						title="Footnote Zero"><sup>0</sup></a>.</li>
+					<li>Chrome 1-4<a href="#stipulation_0"
+						title="Stipulation Zero"><sup>0</sup></a>.</li>
 				</ul>
 				<h4 class="heading"
 					title="Testing">Testing</h4>
@@ -194,8 +206,8 @@
 				<p>
 					<em>@LIBRARY_NAME@</em> is written in a style that's subjectively
 					easy to read and follow. No line of code exceeds 72 columns;
-					every function's body is 25<a href="#footnote_1"
-						title="Footnote One"><sup>1</sup></a> lines of code or
+					every function's body is 25<a href="#stipulation_1"
+						title="Stipulation One"><sup>1</sup></a> lines of code or
 					less; each function contains documentation for portability and
 					clarity.  Furthermore, the code is intended to be reliable and
 					friendly; zero corners are cut.
@@ -216,26 +228,50 @@
 			</div>
 		</div>
 		<div class="column primary_column">
-			<dl class="cell primary_cell">
-				<dt id="footnote_0">
-					<sup>0</sup>
-				</dt>
-				<dd>
-					<em>@LIBRARY_NAME@</em> is presumed to work well on Chrome versions
-					4 and up. However, due to Chrome's intrusive installation,
-					only one version can be installed per virtual machine.
-					As only four virtual machines utilized for the testing of
-					<em>@LIBRARY_NAME@</em> can run Chrome, only four versions can be tested.
-				</dd>
-				<dt id="footnote_1">
-					<sup>1</sup>
-				</dt>
-				<dd>
-					<em>@LIBRARY_NAME@</em> is authored
-					with a strict ceiling of 20 lines of code per function body,
-					but some difficult cases remain.
-				</dd>
-			</dl>
+			<div class="cell primary_cell" id="stipulations">
+				<h3 class="heading">
+					<a href="#stipulations"
+						title="Stipulations">Stipulations</a>
+				</h3>
+				<dl>
+					<dt class="fragment stipulation" id="stipulation_0">
+						<a href="#stipulation_0"
+							title="Stipulation Zero"><sup>0</sup></a>
+					</dt>
+					<dd>
+						<em>@LIBRARY_NAME@</em> is presumed to work well on Chrome versions
+						4 and up. However, due to Chrome's intrusive installation,
+						only one version can be installed per virtual machine.
+						As only four virtual machines utilized for the testing of
+						<em>@LIBRARY_NAME@</em> can run Chrome, only four versions can be tested.
+					</dd>
+					<dt class="fragment stipulation" id="stipulation_1">
+						<a href="#stipulation_1"
+							title="Stipulation One"><sup>1</sup></a>
+					</dt>
+					<dd>
+						<em>@LIBRARY_NAME@</em> is authored
+						with a strict ceiling of 20 lines of code per function body,
+						but some difficult cases remain.
+					</dd>
+				</dl>
+			</div>
+			<div class="cell primary_cell" id="footnotes">
+				<h3 class="heading">
+					<a href="#footnotes"
+						title="Footnotes">Footnotes</a>
+				</h3>
+				<dl>
+					<dt class="footnote fragment" id="footnote_0">
+						<a href="#footnote_0"
+							title="Footnote 0">[0]</a>
+					</dt>
+					<dd>
+						<a href="./Docs/HOWTO/customisation.html"
+							title="Build Customisation">Customisation</a>
+					</dd>
+				</dl>
+			</div>
 		</div>
 @FOOTER@
 @END@

@@ -30,7 +30,7 @@
 				<h2 class="heading" title="@LIBRARY_NAME@.is">
 					<code>@LIBRARY_NAME@.is</code>
 				</h2>
-				<div class="module_info" id="dependencies">
+				<div class="fragment module_info" id="dependencies">
 					<h3 class="heading">
 						<a href="#dependencies"
 							title="Dependencies">Dependencies</a>
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry" id="type">
+			<li class="cell doc_cell doc_entry fragment" id="type">
 				<h3 class="heading">
 					<a href="#type"
 						title="@LIBRARY_NAME@.is.type"><code>@LIBRARY_NAME@.is.type</code></a>
@@ -78,7 +78,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="host_object">
+			<li class="cell doc_cell doc_entry fragment" id="host_object">
 				<h3 class="heading">
 					<a href="#host_object"
 						title="@LIBRARY_NAME@.is.hostObject"><code>@LIBRARY_NAME@.is.hostObject</code></a>
@@ -104,7 +104,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="array_like">
+			<li class="cell doc_cell doc_entry fragment" id="array_like">
 				<h3 class="heading">
 					<a href="#array_like"
 						title="@LIBRARY_NAME@.is.arrayLike"><code>@LIBRARY_NAME@.is.arrayLike</code></a>
@@ -130,7 +130,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="node_like">
+			<li class="cell doc_cell doc_entry fragment" id="node_like">
 				<h3 class="heading">
 					<a href="#node_like"
 						title="@LIBRARY_NAME@.is.nodeLike"><code>@LIBRARY_NAME@.is.nodeLike</code></a>
@@ -156,7 +156,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="node_type">
+			<li class="cell doc_cell doc_entry fragment" id="node_type">
 				<h3 class="heading">
 					<a href="#node_type"
 						title="@LIBRARY_NAME@.is.nodeType"><code>@LIBRARY_NAME@.is.nodeType</code></a>
@@ -191,7 +191,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="element">
+			<li class="cell doc_cell doc_entry fragment" id="element">
 				<h3 class="heading">
 					<a href="#element"
 						title="@LIBRARY_NAME@.is.element"><code>@LIBRARY_NAME@.is.element</code></a>
@@ -218,7 +218,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="attribute">
+			<li class="cell doc_cell doc_entry fragment" id="attribute">
 				<h3 class="heading">
 					<a href="#attribute"
 						title="@LIBRARY_NAME@.is.attribute"><code>@LIBRARY_NAME@.is.attribute</code></a>
@@ -245,7 +245,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="text">
+			<li class="cell doc_cell doc_entry fragment" id="text">
 				<h3 class="heading">
 					<a href="#text"
 						title="@LIBRARY_NAME@.is.text"><code>@LIBRARY_NAME@.is.text</code></a>
@@ -274,7 +274,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="cdata_section">
+			<li class="cell doc_cell doc_entry fragment" id="cdata_section">
 				<h3 class="heading">
 					<a href="#cdata_section"
 						title="@LIBRARY_NAME@.is.cDataSection"><code>@LIBRARY_NAME@.is.cDataSection</code></a>
@@ -301,7 +301,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="entity_reference">
+			<li class="cell doc_cell doc_entry fragment" id="entity_reference">
 				<h3 class="heading">
 					<a href="#entity_reference"
 						title="@LIBRARY_NAME@.is.entityReference"><code>@LIBRARY_NAME@.is.entityReference</code></a>
@@ -328,7 +328,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="entity">
+			<li class="cell doc_cell doc_entry fragment" id="entity">
 				<h3 class="heading">
 					<a href="#entity"
 						title="@LIBRARY_NAME@.is.entity"><code>@LIBRARY_NAME@.is.entity</code></a>
@@ -355,7 +355,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="processing_instruction">
+			<li class="cell doc_cell doc_entry fragment" id="processing_instruction">
 				<h3 class="heading">
 					<a href="#processing_instruction"
 						title="@LIBRARY_NAME@.is.processingInstruction"><code>@LIBRARY_NAME@.is.processingInstruction</code></a>
@@ -382,7 +382,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="comment">
+			<li class="cell doc_cell doc_entry fragment" id="comment">
 				<h3 class="heading">
 					<a href="#comment"
 						title="@LIBRARY_NAME@.is.comment"><code>@LIBRARY_NAME@.is.comment</code></a>
@@ -409,7 +409,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="document">
+			<li class="cell doc_cell doc_entry fragment" id="document">
 				<h3 class="heading">
 					<a href="#document"
 						title="@LIBRARY_NAME@.is.document"><code>@LIBRARY_NAME@.is.document</code></a>
@@ -436,7 +436,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="document_type">
+			<li class="cell doc_cell doc_entry fragment" id="document_type">
 				<h3 class="heading">
 					<a href="#document_type"
 						title="@LIBRARY_NAME@.is.documentType"><code>@LIBRARY_NAME@.is.documentType</code></a>
@@ -463,7 +463,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="document_fragment">
+			<li class="cell doc_cell doc_entry fragment" id="document_fragment">
 				<h3 class="heading">
 					<a href="#document_fragment"
 						title="@LIBRARY_NAME@.is.documentFragment"><code>@LIBRARY_NAME@.is.documentFragment</code></a>
@@ -490,7 +490,7 @@
 				</dl>
 				<p class="doc_art function_tail">}</p>
 			</li>
-			<li class="cell doc_cell doc_entry" id="notation">
+			<li class="cell doc_cell doc_entry fragment" id="notation">
 				<h3 class="heading">
 					<a href="#notation"
 						title="@LIBRARY_NAME@.is.notation"><code>@LIBRARY_NAME@.is.notation</code></a>
