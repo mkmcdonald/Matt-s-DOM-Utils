@@ -115,18 +115,18 @@ hr, .row
 
 .primary_column
 {
-	width: 73em;
+	width: 76em;
 	clear: both;
 }
 
 .secondary_column
 {
-	width: 24.33em;
+	width: 23em;
 }
 
 .cell
 {
-	padding: 1em;
+	padding: 1em 2em 1em 2em;
 	border: 0;
 	float: left;
 	clear: both;
@@ -255,10 +255,10 @@ hr, .row
 
 @media screen and (max-width: 40em)
 {
-	.primary_cell, .secondary_cell, hr
+	.column, hr
 	{
 		/* fit within 20em page */
-		width: 18em;
+		width: 16em;
 	}
 
 	.masthead
@@ -280,7 +280,7 @@ hr, .row
 		font-size: .75em;
 	}
 
-	.cell, hr
+	.column, hr
 	{
 		/*
 			fit within 15 em (at 16px) page
@@ -288,24 +288,24 @@ hr, .row
 			remember: 1em = 12px because of
 			of the previous declaration
 		*/
-		width: 15em;
+		width: 13em;
 	}
 
 	.header_cell
 	{
 		/* h1 is 2em */
-		width: 7em;
+		width: 6em;
 	}
 
 	.doc_cell
 	{
 		/* 2em left margin */
-		width: 13em;
+		width: 11em;
 	}
 
 	.doc_list
 	{
 		/* 2em left margin */
-		width: 11em;
+		width: 9em;
 	}
 }

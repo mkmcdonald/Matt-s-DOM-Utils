@@ -4,7 +4,6 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		var doc = global.document,
 			commonElements,
 			methods,
-			selected,
 			MAX_PARAMS;
 
 		function getElements(
@@ -24,153 +23,6 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			return result;
 		}
 
-		commonElements = (function () {
-			var obj = {};
-			obj.demo = doc.forms.demo;
-			obj.method = getElements(
-				obj.demo,
-				"method_control"
-			);
-			obj.erase = getElements(
-				obj.demo,
-				"erase_control"
-			);
-			return obj;
-		}());
-
-		function grabByNameTree()
-		{
-			return {
-				"0": {
-					"name": "doc",
-					"type": "Document"
-				},
-				"1": {
-					"name": "name",
-					"type": "String"
-				},
-				"length": 2
-			};
-		}
-
-		function grabByTagNameTree()
-		{
-			return {
-				"0": {
-					"name": "caller",
-					"type": "Document || Element"
-				},
-				"1": {
-					"name": "tag",
-					"type": "String (with quotations)"
-				},
-				"length": 2
-			};
-		}
-
-		function grabByClassNameTree()
-		{
-			return {
-				"0": {
-					"name": "caller",
-					"type": "Document || Element"
-				},
-				"1": {
-					"name": "classes",
-					"type": "String (with quotations)"
-				},
-				"length": 2
-			};
-		}
-
-		function grabByIdTree()
-		{
-			return {
-				"0": {
-					"name": "doc",
-					"type": "Document"
-				},
-				"1": {
-					"name": "id",
-					"type": "String (with quotations)"
-				},
-				"length": 2
-			};
-		}
-
-		function grabQueryTree()
-		{
-			return {
-				"0": {
-					"name": "caller",
-					"type": "Document || Element"
-				},
-				"1": {
-					"name": "selectors",
-					"type": "String (with quotations)"
-				},
-				"length": 2
-			};
-		}
-
-		function grabQueryAllTree()
-		{
-			return {
-				"0": {
-					"name": "caller",
-					"type": "Document || Element"
-				},
-				"1": {
-					"name": "selectors",
-					"type": "String (with quotations)"
-				},
-				"length": 2
-			};
-		}
-
-		function grabFormsTree()
-		{
-			return {
-				"0": {
-					"name": "doc",
-					"type": "Document"
-				},
-				"1": {
-					"name": "key",
-					"type": "String (with quotations)"
-				},
-				"length": 2
-			};
-		}
-
-		function grabAllFormsTree()
-		{
-			return {
-				"0": {
-					"name": "doc",
-					"type": "Document"
-				},
-				"length": 1
-			};
-		}
-
-		methods = {
-			"byName": grabByNameTree(),
-			"byTagName": grabByTagNameTree(),
-			"byClassName": grabByClassNameTree(),
-			"byId": grabByIdTree(),
-			"query": grabQueryTree(),
-			"queryAll": grabQueryAllTree(),
-			"forms": grabFormsTree(),
-			"allForms": grabAllFormsTree()
-		};
-
-		selected = [];
-
-		MAX_PARAMS = 2;
-
-		doc = null;
-
 		function byId(
 			doc,
 			id
@@ -185,6 +37,191 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			}
 			return result;
 		}
+
+		commonElements = (function () {
+			var obj = {};
+			obj.demo = doc.forms.demo;
+			obj.method = getElements(
+				obj.demo,
+				"method_control"
+			);
+			obj.erase = getElements(
+				obj.demo,
+				"erase_control"
+			);
+			obj.tokens = byId(
+				doc,
+				"tokens"
+			);
+			obj.result = byId(
+				doc,
+				"result"
+			);
+			return obj;
+		}());
+
+		function grabContainsTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "token",
+					"type": "String (with quotations)"
+				},
+				"length": 2
+			};
+		}
+
+		function grabContainsListTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "tokens",
+					"type": "Array"
+				},
+				"length": 2
+			};
+		}
+
+		function grabAddTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "token",
+					"type": "String (with quotations)"
+				},
+				"length": 2
+			};
+		}
+
+		function grabAddListTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "tokens",
+					"type": "Array"
+				},
+				"length": 2
+			};
+		}
+
+		function grabRemoveTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "token",
+					"type": "String (with quotations)"
+				},
+				"length": 2
+			};
+		}
+
+		function grabRemoveListTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "tokens",
+					"type": "Array"
+				},
+				"length": 2
+			};
+		}
+
+		function grabToggleTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "token",
+					"type": "String (with quotations)"
+				},
+				"length": 2
+			};
+		}
+
+		function grabToggleListTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "tokens",
+					"type": "Array"
+				},
+				"length": 2
+			};
+		}
+
+		function grabItemTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "index",
+					"type": "Number"
+				},
+				"length": 2
+			};
+		}
+
+		function grabGetTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"length": 1
+			};
+		}
+
+		methods = {
+			"contains": grabContainsTree(),
+			"containsList": grabContainsListTree(),
+			"add": grabAddTree(),
+			"addList": grabAddListTree(),
+			"remove": grabRemoveTree(),
+			"removeList": grabRemoveListTree(),
+			"toggle": grabToggleTree(),
+			"toggleList": grabToggleListTree(),
+			"item": grabItemTree(),
+			"get": grabGetTree()
+		};
+
+		MAX_PARAMS = 2;
+
+		doc = null;
 
 		function removeClass(
 			obj,
@@ -427,53 +464,93 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		)
 		{
 			var result = null;
-			if (@LIBRARY_NAME@.select[key]) {
+			if (@LIBRARY_NAME@.classes[key]) {
 				if (params) {
-					result = @LIBRARY_NAME@.select[key](
+					result = @LIBRARY_NAME@.classes[key](
 						eval(params[0]),
-						eval(params[1]),
-						eval(params[2])
+						eval(params[1])
 					);
 				}
 			}
 			return result;
 		}
 
-		function showItem(
-			item
+		function joinArray(
+			ar,
+			delim
 		)
 		{
-			if (item) {
-				addClass(
-					item,
-					"selected"
+			var result = null;
+			if (typeof Array.prototype.join ===
+				"function") {
+				result = ar.join(
+					delim
 				);
-				selected[selected.length] = item;
 			}
+			return result;
 		}
 
-		function iterateResult(
+		function showTokens(
+			tokens
+		)
+		{
+			var display = commonElements.tokens;
+			tokens = joinArray(
+				tokens,
+				", "
+			);
+			if (tokens) {
+				tokens = "[" + tokens + "]";
+			} else if (tokens === "") {
+				tokens = "[]";
+			}
+			setText(
+				display,
+				tokens,
+				global.document
+			);
+		}
+
+		function iterateTokens(
+			tokens
+		)
+		{
+			var max = tokens.length,
+				index,
+				item,
+				list = [];
+			for (index = 0; index < max; index += 1 ) {
+				item = tokens[index];
+				list[list.length] = item;
+			}
+			showTokens(
+				list
+			);
+		}
+
+		function addResult(
 			called
 		)
 		{
-			var max = called.length,
-				index,
-				item;
-			for (index = 0; index < max; index += 1 ) {
-				item = called[index];
-				showItem(
-					item
-				);
-			}
+			var display = commonElements.result;
+			setText(
+				display,
+				called,
+				global.document
+			);
 		}
 
-		function isNodeLike(
+		function getClasses(
 			obj
 		)
 		{
-			return @LIBRARY_NAME@.is.nodeLike(
-				obj
-			);
+			var result = null;
+			if (@LIBRARY_NAME@.classes.get) {
+				result = @LIBRARY_NAME@.classes.get(
+					obj
+				);
+			}
+			return result;
 		}
 
 		function isArrayLike(
@@ -486,19 +563,18 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		}
 
 		function displayResult(
+			obj,
 			called
 		)
 		{
-			if (called) {
-				if (isNodeLike(called)) {
-					showItem(
-						called
-					);
-				} else if (isArrayLike(called)) {
-					iterateResult(
-						called
-					);
-				}
+			var tokens = getClasses(obj);
+			if (isArrayLike(tokens)) {
+				iterateTokens(
+					tokens
+				);
+				addResult(
+					called
+				);
 			}
 		}
 
@@ -516,11 +592,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					method,
 					params
 				);
-				if (called) {
-					displayResult(
-						called
-					);
-				}
+				displayResult(
+					eval(params[0]),
+					called
+				);
 			}
 			return false;
 		}
@@ -544,32 +619,32 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			}
 		}
 
-		function eraseResult(
-			item
-		)
+		function eraseResult()
 		{
-			if (item) {
-				removeClass(
-					item,
-					"selected"
-				);
-			}
+			var display = commonElements.result;
+			setText(
+				display,	
+				"",
+				global.document
+			);
+		}
+
+		function eraseTokens()
+		{
+			var display = commonElements.tokens;
+			setText(
+				display,	
+				"",
+				global.document
+			);
 		}
 
 		function eraseRequested(
 			evt
 		)
 		{
-			var max = selected.length,
-				index,
-				item;
-			for (index = 0; index < max; index += 1 ) {
-				item = selected[index];
-				eraseResult(
-					item
-				);
-			}
-			selected = [];
+			eraseTokens();
+			eraseResult();
 		}
 
 		function addEraseHandlers()

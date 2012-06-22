@@ -1,6 +1,5 @@
 AC_INIT([Utils], [0.0], [utils@fortybelow.ca])
 AC_CONFIG_FILES([
-	"Templates/license"
 	"Library/license.js"
 	"Library/utils.js"
 	"Library/metadata.js"
@@ -15,7 +14,9 @@ AC_CONFIG_FILES([
 	"Library/select.js"
 	"index.html"
 	"Demos/index.html"
+	"Demos/classes.html"
 	"Demos/select.html"
+	"Demos/JS/classes.js"
 	"Demos/JS/select.js"
 	"Download/index.html"
 	"Docs/index.html"

@@ -7,7 +7,7 @@
 			content="initial-scale=1.0">
 		<meta name="Author"
 			content="Matt McDonald">
-		<title>Matt's DOM Utils (Utils): Demos&mdash;Select</title>
+		<title>Matt's DOM Utils (Utils): Demos&mdash;Classes</title>
 		<link href="../Assets/CSS/style-main.css"
 			media="all" rel="stylesheet"
 			type="text/css">
@@ -50,10 +50,10 @@
 		</ul>
 		<div class="primary_row row ">
 			<div class="cell primary_cell">
-				<h2 class="heading" title="Select">Select</h2>
+				<h2 class="heading" title="Classes">Classes</h2>
 			</div>
 		</div>
-		<form action="./select.html" class="column primary_column"
+		<form action="./classes.html" class="column primary_column"
 			method="get" name="demo">
 			<fieldset class="cell primary_cell">
 				<legend>Choose a method</legend>
@@ -63,38 +63,46 @@
 				<p>
 					<select name="method_control"
 						required>
-						<option name="byName_control"
-							value="byName">
-							Utils.select.byName
-						</option>
-						<option name="byTagName_control"
+						<option name="contains_control"
 							selected
-							value="byTagName">
-							Utils.select.byTagName
+							value="contains">
+							Utils.classes.contains
 						</option>
-						<option name="byClassName_control"
-							value="byClassName">
-							Utils.select.byClassName
+						<option name="containsList_control"
+							value="containsList">
+							Utils.classes.containsList
 						</option>
-						<option name="byId_control"
-							value="byId">
-							Utils.select.byId
+						<option name="add_control"
+							value="add">
+							Utils.classes.add
 						</option>
-						<option name="query_control"
-							value="query">
-							Utils.select.query
+						<option name="addList_control"
+							value="addList">
+							Utils.classes.addList
 						</option>
-						<option name="queryAll_control"
-							value="queryAll">
-							Utils.select.queryAll
+						<option name="remove_control"
+							value="remove">
+							Utils.classes.remove
 						</option>
-						<option name="forms_control"
-							value="forms">
-							Utils.select.forms
+						<option name="removeList_control"
+							value="removeList">
+							Utils.classes.removeList
 						</option>
-						<option name="allForms_control"
-							value="allForms">
-							Utils.select.allForms
+						<option name="toggle_control"
+							value="toggle">
+							Utils.classes.toggle
+						</option>
+						<option name="toggleList_control"
+							value="toggleList">
+							Utils.classes.toggleList
+						</option>
+						<option name="item_control"
+							value="item">
+							Utils.classes.item
+						</option>
+						<option name="get_control"
+							value="get">
+							Utils.classes.get
 						</option>
 					</select>
 				</p>
@@ -108,27 +116,27 @@
 					guide input.
 				</p>
 				<p>
-					For example, calling <code>Utils.select.tagName</code>
+					For example, calling <code>Utils.classes.contains</code>
 					with input of:
 				</p>
 				<p>
-					<code>document</code>
+					<code>document.body</code>
 				</p>
 				<p>
 					and
 				</p>
 				<p>
-					<code>"*"</code>
+					<code>"test"</code>
 				</p>
 				<p>
-					would select all applicable elements on the page, which
-					would then be highlighted for visual feedback.
+					would display the result of the call and the current tokens
+					in the specified element's <code>classList</code> object.
 				</p>
 				<div id="param_0">
 					<p>
 						<label for="param_control_0">
-							<var id="param_name_0">doc</var>
-							<span id="param_type_0">(Document || Element)</span>
+							<var id="param_name_0">obj</var>
+							<span id="param_type_0">(Element)</span>
 						</label>
 					</p>
 					<p>
@@ -141,7 +149,7 @@
 				<div id="param_1">
 					<p>
 						<label for="param_control_1">
-							<var id="param_name_1">tag</var>
+							<var id="param_name_1">token</var>
 							<span id="param_type_1">(String (with quotations))</span>
 						</label>
 					</p>
@@ -156,7 +164,7 @@
 			<fieldset class="cell primary_cell">
 				<legend>Call the selected method.</legend>
 				<p>
-					Results will be highlighted.
+					Results will be displayed below.
 				</p>
 				<p>
 					<input name="submit_control"
@@ -171,6 +179,28 @@
 				</p>
 			</fieldset>
 		</form>
+		<div class="primary_row row ">
+			<div class="cell primary_cell">
+				<h3 class="heading" title="Tokens">Tokens</h3>
+				<p>
+					The specified <code>Element</code>'s class token list:
+				</p>
+				<pre id="tokens">[]</pre>
+				<p>
+					in <code>Array</code> form.
+				</p>
+			</div>
+			<div class="cell primary_cell">
+				<h3 class="heading" title="Result">Result</h3>
+				<p>
+					The result of the called method:
+				</p>
+				<pre id="result">undefined</pre>
+				<p>
+					in <code>String</code> form.
+				</p>
+			</div>
+		</div>
 		<div class="footer_row row">
 			<address class="cell footer_cell">
 				Developed by <a href="http://www.fortybelow.ca"
@@ -187,7 +217,7 @@
 		</div>
 		<script src="../Builds/Uncompressed/utils-complete.js"
 			type="text/javascript"></script>
-		<script src="./JS/select.js"
+		<script src="./JS/classes.js"
 			type="text/javascript"></script>
 	</body>
 </html>

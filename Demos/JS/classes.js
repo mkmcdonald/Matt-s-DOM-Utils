@@ -1,10 +1,9 @@
 var global = global || this;
-if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
+if (typeof Utils === "object" && Utils) {
 	(function () {
 		var doc = global.document,
 			commonElements,
 			methods,
-			selected,
 			MAX_PARAMS;
 
 		function getElements(
@@ -14,11 +13,26 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		{
 			var key = "namedItem",
 				result = null;
-			if (@LIBRARY_NAME@.select[key]) {
-				result = @LIBRARY_NAME@.select[key](
+			if (Utils.select[key]) {
+				result = Utils.select[key](
 					form,
 					"elements",
 					name
+				);
+			}
+			return result;
+		}
+
+		function byId(
+			doc,
+			id
+		)
+		{
+			var result = null;
+			if (Utils.select.byId) {
+				result = Utils.select.byId(
+					doc,
+					id
 				);
 			}
 			return result;
@@ -35,156 +49,179 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 				obj.demo,
 				"erase_control"
 			);
+			obj.tokens = byId(
+				doc,
+				"tokens"
+			);
+			obj.result = byId(
+				doc,
+				"result"
+			);
 			return obj;
 		}());
 
-		function grabByNameTree()
+		function grabContainsTree()
 		{
 			return {
 				"0": {
-					"name": "doc",
-					"type": "Document"
+					"name": "obj",
+					"type": "Element"
 				},
 				"1": {
-					"name": "name",
-					"type": "String"
-				},
-				"length": 2
-			};
-		}
-
-		function grabByTagNameTree()
-		{
-			return {
-				"0": {
-					"name": "caller",
-					"type": "Document || Element"
-				},
-				"1": {
-					"name": "tag",
+					"name": "token",
 					"type": "String (with quotations)"
 				},
 				"length": 2
 			};
 		}
 
-		function grabByClassNameTree()
+		function grabContainsListTree()
 		{
 			return {
 				"0": {
-					"name": "caller",
-					"type": "Document || Element"
+					"name": "obj",
+					"type": "Element"
 				},
 				"1": {
-					"name": "classes",
+					"name": "tokens",
+					"type": "Array"
+				},
+				"length": 2
+			};
+		}
+
+		function grabAddTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "token",
 					"type": "String (with quotations)"
 				},
 				"length": 2
 			};
 		}
 
-		function grabByIdTree()
+		function grabAddListTree()
 		{
 			return {
 				"0": {
-					"name": "doc",
-					"type": "Document"
+					"name": "obj",
+					"type": "Element"
 				},
 				"1": {
-					"name": "id",
+					"name": "tokens",
+					"type": "Array"
+				},
+				"length": 2
+			};
+		}
+
+		function grabRemoveTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "token",
 					"type": "String (with quotations)"
 				},
 				"length": 2
 			};
 		}
 
-		function grabQueryTree()
+		function grabRemoveListTree()
 		{
 			return {
 				"0": {
-					"name": "caller",
-					"type": "Document || Element"
+					"name": "obj",
+					"type": "Element"
 				},
 				"1": {
-					"name": "selectors",
+					"name": "tokens",
+					"type": "Array"
+				},
+				"length": 2
+			};
+		}
+
+		function grabToggleTree()
+		{
+			return {
+				"0": {
+					"name": "obj",
+					"type": "Element"
+				},
+				"1": {
+					"name": "token",
 					"type": "String (with quotations)"
 				},
 				"length": 2
 			};
 		}
 
-		function grabQueryAllTree()
+		function grabToggleListTree()
 		{
 			return {
 				"0": {
-					"name": "caller",
-					"type": "Document || Element"
+					"name": "obj",
+					"type": "Element"
 				},
 				"1": {
-					"name": "selectors",
-					"type": "String (with quotations)"
+					"name": "tokens",
+					"type": "Array"
 				},
 				"length": 2
 			};
 		}
 
-		function grabFormsTree()
+		function grabItemTree()
 		{
 			return {
 				"0": {
-					"name": "doc",
-					"type": "Document"
+					"name": "obj",
+					"type": "Element"
 				},
 				"1": {
-					"name": "key",
-					"type": "String (with quotations)"
+					"name": "index",
+					"type": "Number"
 				},
 				"length": 2
 			};
 		}
 
-		function grabAllFormsTree()
+		function grabGetTree()
 		{
 			return {
 				"0": {
-					"name": "doc",
-					"type": "Document"
+					"name": "obj",
+					"type": "Element"
 				},
 				"length": 1
 			};
 		}
 
 		methods = {
-			"byName": grabByNameTree(),
-			"byTagName": grabByTagNameTree(),
-			"byClassName": grabByClassNameTree(),
-			"byId": grabByIdTree(),
-			"query": grabQueryTree(),
-			"queryAll": grabQueryAllTree(),
-			"forms": grabFormsTree(),
-			"allForms": grabAllFormsTree()
+			"contains": grabContainsTree(),
+			"containsList": grabContainsListTree(),
+			"add": grabAddTree(),
+			"addList": grabAddListTree(),
+			"remove": grabRemoveTree(),
+			"removeList": grabRemoveListTree(),
+			"toggle": grabToggleTree(),
+			"toggleList": grabToggleListTree(),
+			"item": grabItemTree(),
+			"get": grabGetTree()
 		};
-
-		selected = [];
 
 		MAX_PARAMS = 2;
 
 		doc = null;
-
-		function byId(
-			doc,
-			id
-		)
-		{
-			var result = null;
-			if (@LIBRARY_NAME@.select.byId) {
-				result = @LIBRARY_NAME@.select.byId(
-					doc,
-					id
-				);
-			}
-			return result;
-		}
 
 		function removeClass(
 			obj,
@@ -192,8 +229,8 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		)
 		{
 			var result = null;
-			if (@LIBRARY_NAME@.classes.remove) {
-				result = @LIBRARY_NAME@.classes.remove(
+			if (Utils.classes.remove) {
+				result = Utils.classes.remove(
 					obj,
 					token
 				);
@@ -207,8 +244,8 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		)
 		{
 			var result = null;
-			if (@LIBRARY_NAME@.classes.add) {
-				result = @LIBRARY_NAME@.classes.add(
+			if (Utils.classes.add) {
+				result = Utils.classes.add(
 					obj,
 					token
 				);
@@ -247,8 +284,8 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		)
 		{
 			var result = null;
-			if (@LIBRARY_NAME@.traverse.setText) {
-				result = @LIBRARY_NAME@.traverse.setText(
+			if (Utils.traverse.setText) {
+				result = Utils.traverse.setText(
 					obj,
 					text,
 					doc
@@ -427,78 +464,117 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		)
 		{
 			var result = null;
-			if (@LIBRARY_NAME@.select[key]) {
+			if (Utils.classes[key]) {
 				if (params) {
-					result = @LIBRARY_NAME@.select[key](
+					result = Utils.classes[key](
 						eval(params[0]),
-						eval(params[1]),
-						eval(params[2])
+						eval(params[1])
 					);
 				}
 			}
 			return result;
 		}
 
-		function showItem(
-			item
+		function joinArray(
+			ar,
+			delim
 		)
 		{
-			if (item) {
-				addClass(
-					item,
-					"selected"
+			var result = null;
+			if (typeof Array.prototype.join ===
+				"function") {
+				result = ar.join(
+					delim
 				);
-				selected[selected.length] = item;
 			}
+			return result;
 		}
 
-		function iterateResult(
+		function showTokens(
+			tokens
+		)
+		{
+			var display = commonElements.tokens;
+			tokens = joinArray(
+				tokens,
+				", "
+			);
+			if (tokens) {
+				tokens = "[" + tokens + "]";
+			} else if (tokens === "") {
+				tokens = "[]";
+			}
+			setText(
+				display,
+				tokens,
+				global.document
+			);
+		}
+
+		function iterateTokens(
+			tokens
+		)
+		{
+			var max = tokens.length,
+				index,
+				item,
+				list = [];
+			for (index = 0; index < max; index += 1 ) {
+				item = tokens[index];
+				list[list.length] = item;
+			}
+			showTokens(
+				list
+			);
+		}
+
+		function addResult(
 			called
 		)
 		{
-			var max = called.length,
-				index,
-				item;
-			for (index = 0; index < max; index += 1 ) {
-				item = called[index];
-				showItem(
-					item
-				);
-			}
+			var display = commonElements.result;
+			setText(
+				display,
+				called,
+				global.document
+			);
 		}
 
-		function isNodeLike(
+		function getClasses(
 			obj
 		)
 		{
-			return @LIBRARY_NAME@.is.nodeLike(
-				obj
-			);
+			var result = null;
+			if (Utils.classes.get) {
+				result = Utils.classes.get(
+					obj
+				);
+			}
+			return result;
 		}
 
 		function isArrayLike(
 			obj
 		)
 		{
-			return @LIBRARY_NAME@.is.arrayLike(
+			return Utils.is.arrayLike(
 				obj
 			);
 		}
 
 		function displayResult(
+			obj,
 			called
 		)
 		{
-			if (called) {
-				if (isNodeLike(called)) {
-					showItem(
-						called
-					);
-				} else if (isArrayLike(called)) {
-					iterateResult(
-						called
-					);
-				}
+			var tokens = getClasses(obj);
+			if (isArrayLike(tokens)) {
+				iterateTokens(
+					tokens
+				);
+				addResult(
+					called
+				);
 			}
 		}
 
@@ -516,11 +592,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					method,
 					params
 				);
-				if (called) {
-					displayResult(
-						called
-					);
-				}
+				displayResult(
+					eval(params[0]),
+					called
+				);
 			}
 			return false;
 		}
@@ -544,32 +619,32 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			}
 		}
 
-		function eraseResult(
-			item
-		)
+		function eraseResult()
 		{
-			if (item) {
-				removeClass(
-					item,
-					"selected"
-				);
-			}
+			var display = commonElements.result;
+			setText(
+				display,	
+				"",
+				global.document
+			);
+		}
+
+		function eraseTokens()
+		{
+			var display = commonElements.tokens;
+			setText(
+				display,	
+				"",
+				global.document
+			);
 		}
 
 		function eraseRequested(
 			evt
 		)
 		{
-			var max = selected.length,
-				index,
-				item;
-			for (index = 0; index < max; index += 1 ) {
-				item = selected[index];
-				eraseResult(
-					item
-				);
-			}
-			selected = [];
+			eraseTokens();
+			eraseResult();
 		}
 
 		function addEraseHandlers()

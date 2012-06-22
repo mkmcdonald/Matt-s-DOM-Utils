@@ -62,7 +62,7 @@ if (typeof Utils === "object" && Utils) {
 				},
 				"1": {
 					"name": "tag",
-					"type": "String"
+					"type": "String (with quotations)"
 				},
 				"length": 2
 			};
@@ -77,7 +77,7 @@ if (typeof Utils === "object" && Utils) {
 				},
 				"1": {
 					"name": "classes",
-					"type": "String"
+					"type": "String (with quotations)"
 				},
 				"length": 2
 			};
@@ -92,7 +92,7 @@ if (typeof Utils === "object" && Utils) {
 				},
 				"1": {
 					"name": "id",
-					"type": "String"
+					"type": "String (with quotations)"
 				},
 				"length": 2
 			};
@@ -107,7 +107,7 @@ if (typeof Utils === "object" && Utils) {
 				},
 				"1": {
 					"name": "selectors",
-					"type": "String"
+					"type": "String (with quotations)"
 				},
 				"length": 2
 			};
@@ -122,7 +122,7 @@ if (typeof Utils === "object" && Utils) {
 				},
 				"1": {
 					"name": "selectors",
-					"type": "String"
+					"type": "String (with quotations)"
 				},
 				"length": 2
 			};
@@ -137,7 +137,7 @@ if (typeof Utils === "object" && Utils) {
 				},
 				"1": {
 					"name": "key",
-					"type": "String"
+					"type": "String (with quotations)"
 				},
 				"length": 2
 			};

@@ -73,7 +73,7 @@
 							title="Developer Friendly">Developer Friendly</h4>
 						<p>
 							<em>@LIBRARY_NAME@</em> is heavily documented and contains
-							only clean code. This means that both developers
+							very strict code. This means that both developers
 							and users alike can easily study the API.
 						</p>
 					</li>
@@ -110,19 +110,11 @@
 				<h3 class="heading"
 					title="License">License</h3>
 				<p>
-					<em>@LIBRARY_NAME@</em> is protected by the GNU Lesser General
-					Public License (LGPL) 3.0, which can be found at the following
-					link:
-				</p>
-				<p>
-					<a href="./LICENSE"
-						title="LGPL 3.0"><img alt="LGPL 3.0" height="51"
-							src="./Assets/Images/lgpl.gif" width="147"></a>
-				</p>
-				<p>
-					for viewing. The LGPL was chosen to empower &ldquo;free as
-					in freedom&rdquo; software while remaining a respectable
-					option for proprietary vendors.
+					<em>@LIBRARY_NAME@</em> is provided under the MIT license, which
+					is provided as a separate file<a href="#footnote_1"
+						title="Footnote One">[1]</a>.
+					for viewing. The MIT license was chosen to provide the freedom
+					for developers to use the code in any scenario.
 				</p>
 			</div>
 			<div class="cell secondary_cell">
@@ -269,6 +261,14 @@
 					<dd>
 						<a href="./Docs/HOWTO/customisation.html"
 							title="Build Customisation">Customisation</a>
+					</dd>
+					<dt class="footnote fragment" id="footnote_1">
+						<a href="#footnote_1"
+							title="Footnote 1">[1]</a>
+					</dt>
+					<dd>
+						<a href="./LICENSE"
+							title="License File">License</a>
 					</dd>
 				</dl>
 			</div>

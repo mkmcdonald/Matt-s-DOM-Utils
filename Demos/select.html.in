@@ -1,6 +1,6 @@
 @BEGIN@
 @HEAD@
-		<title>Matt's DOM Utils (@LIBRARY_NAME@): Demo&mdash;Select</title>
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Demos&mdash;Select</title>
 @DEMOS_STYLESHEET@
 @DEMOS_RESOURCES@
 @BODY@
@@ -14,7 +14,10 @@
 		<form action="./select.html" class="column primary_column"
 			method="get" name="demo">
 			<fieldset class="cell primary_cell">
-				<legend>Choose a method:</legend>
+				<legend>Choose a method</legend>
+				<p>
+					which will then be called upon form submission.
+				</p>
 				<p>
 					<select name="method_control"
 						required>
@@ -53,49 +56,14 @@
 						</option>
 					</select>
 				</p>
-				<p>
-					which will then be called upon form submission.
-				</p>
 			</fieldset>
 			<fieldset class="cell primary_cell">
-				<legend>Enter the corresponding parameters:</legend>
-				<div id="param_0">
-					<p>
-						<label for="param_control_0">
-							<var id="param_name_0">doc</var>
-							<span id="param_type_0">(Document || Element)</span>
-						</label>
-					</p>
-					<p>
-						<input id="param_control_0"
-							name="param_control_0"
-							required
-							type="text">
-					</p>
-				</div>
-				<div id="param_1">
-					<p>
-						<label for="param_control_1">
-							<var id="param_name_1">tag</var>
-							<span id="param_type_1">(String)</span>
-						</label>
-					</p>
-					<p>
-						<input id="param_control_1"
-							name="param_control_1"
-							required
-							type="text">
-					</p>
-				</div>
+				<legend>Enter the corresponding parameters</legend>
 				<p>
 					which are passed to <code>eval</code>, which
 					allows them to be called with the selected method.
 					They are provided with type hints to
 					guide input.
-				</p>
-				<p>
-					Remember that <code>String</code>
-					types require quotations.
 				</p>
 				<p>
 					For example, calling <code>@LIBRARY_NAME@.select.tagName</code>
@@ -114,9 +82,40 @@
 					would select all applicable elements on the page, which
 					would then be highlighted for visual feedback.
 				</p>
+				<div id="param_0">
+					<p>
+						<label for="param_control_0">
+							<var id="param_name_0">doc</var>
+							<span id="param_type_0">(Document || Element)</span>
+						</label>
+					</p>
+					<p>
+						<input id="param_control_0"
+							name="param_control_0"
+							required
+							type="text">
+					</p>
+				</div>
+				<div id="param_1">
+					<p>
+						<label for="param_control_1">
+							<var id="param_name_1">tag</var>
+							<span id="param_type_1">(String (with quotations))</span>
+						</label>
+					</p>
+					<p>
+						<input id="param_control_1"
+							name="param_control_1"
+							required
+							type="text">
+					</p>
+				</div>
 			</fieldset>
 			<fieldset class="cell primary_cell">
 				<legend>Call the selected method.</legend>
+				<p>
+					Results will be highlighted.
+				</p>
 				<p>
 					<input name="submit_control"
 						type="submit"
@@ -127,9 +126,6 @@
 						type="button">
 						Erase Results
 					</button>
-				</p>
-				</p>
-					Results will be highlighted.
 				</p>
 			</fieldset>
 		</form>

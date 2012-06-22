@@ -48,62 +48,8 @@ abstractions.
 
 ## License
 
-*Utils* is licensed under the GNU Lesser General Public License
-(LGPL). In concordance with the LGPL, the following tasks must be undertaken
-to use *Utils*:
-
-1. Give prominent notice with each copy of [your project] that [*Utils*]
-is used in it and that [*Utils*] and its use are covered by [the LGPL];
-
-2. Accompany [your project] with a copy of the GNU GPL and [the LGPL];
-
-3. [If your project] displays copyright notices during execution, include the
-copyright notice for [*Utils*] among these notices, as well as a
-reference directing the user to the copies of the GNU GPL and [the LGPL];
-
-4. Do one of the following:
-
-	1. Convey [modifications of *Utils*] under the terms
-	of [the LGPL], and [your project's source code] in a form suitable
-	for, and under terms that permit, the user to recombine or relink 
-	[your project] with [your build of *Utils*] to produce
-	[a fork of your project], in the manner specified by section 6 of
-	the GNU GPL for conveying Corresponding Source.
-
-	2. Use a suitable shared library mechanism for linking with [*Utils*].
-	A suitable mechanism is one that:
-
-		1. uses at run time a copy of [*Utils*] already present on the
-		user's computer system;
-
-		2. will operate properly with a modified version of [*Utils*]
-		that is interface-compatible with [your build of *Utils*].
-
-5. If you use option [4.1], [build instructions] must accompany
-[modifications of *Utils*] and [your project's source code].
-If you use option [4.2], you must provide [build instructions] in the manner
-specified by section 6 of the GNU GPL for conveying Corresponding Source.
-
-### Summation
-
-In short, mention *Utils* in a README file; mention its protection
-under the LGPL; store copies of the GPL and LGPL in your project's repository;
-and link to build instructions for *Utils* (a link to the repository
-will suffice).
-
-#### Example
-
-[inside README.md]
-
-> Foobar uses *Utils* for DOM traversal; *Utils* is protected
-under the LGPL 3.0, which is a derivative of the GPL 3.0. For more, see [*Utils*.info].
-
-[inside *Utils*.info]
-
-> *Utils* is protected by the LGPL 3.0, which is a derivative of the GPL
-3.0. Copies have been stored at the following links: [link to LGPL] and
-[link to GPL]. Build instructions can be found at the following link:
-[link to *Utils*].
+*Utils* is licensed under the MIT License. In concordance with the
+MIT License, use the provided source code under any scenario.
 
 ---
 

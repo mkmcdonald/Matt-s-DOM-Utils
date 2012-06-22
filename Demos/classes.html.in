@@ -1,0 +1,167 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Demos&mdash;Classes</title>
+@DEMOS_STYLESHEET@
+@DEMOS_RESOURCES@
+@BODY@
+@DEMOS_HEADER@
+		@DEMOS_NAV@
+		<div class="primary_row row ">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Classes">Classes</h2>
+			</div>
+		</div>
+		<form action="./classes.html" class="column primary_column"
+			method="get" name="demo">
+			<fieldset class="cell primary_cell">
+				<legend>Choose a method</legend>
+				<p>
+					which will then be called upon form submission.
+				</p>
+				<p>
+					<select name="method_control"
+						required>
+						<option name="contains_control"
+							selected
+							value="contains">
+							@LIBRARY_NAME@.classes.contains
+						</option>
+						<option name="containsList_control"
+							value="containsList">
+							@LIBRARY_NAME@.classes.containsList
+						</option>
+						<option name="add_control"
+							value="add">
+							@LIBRARY_NAME@.classes.add
+						</option>
+						<option name="addList_control"
+							value="addList">
+							@LIBRARY_NAME@.classes.addList
+						</option>
+						<option name="remove_control"
+							value="remove">
+							@LIBRARY_NAME@.classes.remove
+						</option>
+						<option name="removeList_control"
+							value="removeList">
+							@LIBRARY_NAME@.classes.removeList
+						</option>
+						<option name="toggle_control"
+							value="toggle">
+							@LIBRARY_NAME@.classes.toggle
+						</option>
+						<option name="toggleList_control"
+							value="toggleList">
+							@LIBRARY_NAME@.classes.toggleList
+						</option>
+						<option name="item_control"
+							value="item">
+							@LIBRARY_NAME@.classes.item
+						</option>
+						<option name="get_control"
+							value="get">
+							@LIBRARY_NAME@.classes.get
+						</option>
+					</select>
+				</p>
+			</fieldset>
+			<fieldset class="cell primary_cell">
+				<legend>Enter the corresponding parameters</legend>
+				<p>
+					which are passed to <code>eval</code>, which
+					allows them to be called with the selected method.
+					They are provided with type hints to
+					guide input.
+				</p>
+				<p>
+					For example, calling <code>@LIBRARY_NAME@.classes.contains</code>
+					with input of:
+				</p>
+				<p>
+					<code>document.body</code>
+				</p>
+				<p>
+					and
+				</p>
+				<p>
+					<code>"test"</code>
+				</p>
+				<p>
+					would display the result of the call and the current tokens
+					in the specified element's <code>classList</code> object.
+				</p>
+				<div id="param_0">
+					<p>
+						<label for="param_control_0">
+							<var id="param_name_0">obj</var>
+							<span id="param_type_0">(Element)</span>
+						</label>
+					</p>
+					<p>
+						<input id="param_control_0"
+							name="param_control_0"
+							required
+							type="text">
+					</p>
+				</div>
+				<div id="param_1">
+					<p>
+						<label for="param_control_1">
+							<var id="param_name_1">token</var>
+							<span id="param_type_1">(String (with quotations))</span>
+						</label>
+					</p>
+					<p>
+						<input id="param_control_1"
+							name="param_control_1"
+							required
+							type="text">
+					</p>
+				</div>
+			</fieldset>
+			<fieldset class="cell primary_cell">
+				<legend>Call the selected method.</legend>
+				<p>
+					Results will be displayed below.
+				</p>
+				<p>
+					<input name="submit_control"
+						type="submit"
+						value="Call Method">
+				</p>
+				<p>
+					<button name="erase_control"
+						type="button">
+						Erase Results
+					</button>
+				</p>
+			</fieldset>
+		</form>
+		<div class="primary_row row ">
+			<div class="cell primary_cell">
+				<h3 class="heading" title="Tokens">Tokens</h3>
+				<p>
+					The specified <code>Element</code>'s class token list:
+				</p>
+				<pre id="tokens">[]</pre>
+				<p>
+					in <code>Array</code> form.
+				</p>
+			</div>
+			<div class="cell primary_cell">
+				<h3 class="heading" title="Result">Result</h3>
+				<p>
+					The result of the called method:
+				</p>
+				<pre id="result">undefined</pre>
+				<p>
+					in <code>String</code> form.
+				</p>
+			</div>
+		</div>
+@FOOTER@
+		<script src="../Builds/Uncompressed/utils-complete.js"
+			type="text/javascript"></script>
+		<script src="./JS/classes.js"
+			type="text/javascript"></script>
+@END@

@@ -1679,7 +1679,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
-ac_config_files="$ac_config_files "Templates/license" "Library/license.js" "Library/utils.js" "Library/metadata.js" "Library/raise.js" "Library/types.js" "Library/is.js" "Library/helpers.js" "Library/node.js" "Library/create.js" "Library/classes.js" "Library/traverse.js" "Library/select.js" "index.html" "Demos/index.html" "Demos/select.html" "Demos/JS/select.js" "Download/index.html" "Docs/index.html" "Docs/raise.html" "Docs/types.html" "Docs/helpers.html" "Docs/is.html" "Docs/node.html" "Docs/create.html" "Docs/classes.html" "Docs/traverse.html" "Docs/select.html" "Docs/glossary.html" "Docs/HOWTO/index.html" "Docs/HOWTO/degradation.html" "Docs/HOWTO/implementation.html" "Docs/HOWTO/customisation.html" "Tests/index.html" "Tests/Node/node.html" "Tests/Node/JS/node.js" "Tests/Create/create.html" "Tests/Create/JS/create.js" "Tests/Classes/classes.html" "Tests/Classes/JS/classes.js" "Tests/HOWTO/JS/slideshow.js" "Tests/Traverse/traverse.html" "Tests/Traverse/JS/traverse.js" "Tests/Select/select.html" "Tests/Select/JS/select.js" "Tests/Complete/complete.html" "Tests/Complete/JS/complete.js" "Tests/Complete/complete-min.html" "Tests/Complete/JS/complete-min.js" "about.html" "README.md""
+ac_config_files="$ac_config_files "Library/license.js" "Library/utils.js" "Library/metadata.js" "Library/raise.js" "Library/types.js" "Library/is.js" "Library/helpers.js" "Library/node.js" "Library/create.js" "Library/classes.js" "Library/traverse.js" "Library/select.js" "index.html" "Demos/index.html" "Demos/classes.html" "Demos/select.html" "Demos/JS/classes.js" "Demos/JS/select.js" "Download/index.html" "Docs/index.html" "Docs/raise.html" "Docs/types.html" "Docs/helpers.html" "Docs/is.html" "Docs/node.html" "Docs/create.html" "Docs/classes.html" "Docs/traverse.html" "Docs/select.html" "Docs/glossary.html" "Docs/HOWTO/index.html" "Docs/HOWTO/degradation.html" "Docs/HOWTO/implementation.html" "Docs/HOWTO/customisation.html" "Tests/index.html" "Tests/Node/node.html" "Tests/Node/JS/node.js" "Tests/Create/create.html" "Tests/Create/JS/create.js" "Tests/Classes/classes.html" "Tests/Classes/JS/classes.js" "Tests/HOWTO/JS/slideshow.js" "Tests/Traverse/traverse.html" "Tests/Traverse/JS/traverse.js" "Tests/Select/select.html" "Tests/Select/JS/select.js" "Tests/Complete/complete.html" "Tests/Complete/JS/complete.js" "Tests/Complete/complete-min.html" "Tests/Complete/JS/complete-min.js" "about.html" "README.md""
 
 
 # your library name here
@@ -2505,7 +2505,6 @@ cat >>$CONFIG_STATUS <<\_ACEOF || ac_write_fail=1
 for ac_config_target in $ac_config_targets
 do
   case $ac_config_target in
-    ""Templates/license"") CONFIG_FILES="$CONFIG_FILES "Templates/license"" ;;
     ""Library/license.js"") CONFIG_FILES="$CONFIG_FILES "Library/license.js"" ;;
     ""Library/utils.js"") CONFIG_FILES="$CONFIG_FILES "Library/utils.js"" ;;
     ""Library/metadata.js"") CONFIG_FILES="$CONFIG_FILES "Library/metadata.js"" ;;
@@ -2520,7 +2519,9 @@ do
     ""Library/select.js"") CONFIG_FILES="$CONFIG_FILES "Library/select.js"" ;;
     ""index.html"") CONFIG_FILES="$CONFIG_FILES "index.html"" ;;
     ""Demos/index.html"") CONFIG_FILES="$CONFIG_FILES "Demos/index.html"" ;;
+    ""Demos/classes.html"") CONFIG_FILES="$CONFIG_FILES "Demos/classes.html"" ;;
     ""Demos/select.html"") CONFIG_FILES="$CONFIG_FILES "Demos/select.html"" ;;
+    ""Demos/JS/classes.js"") CONFIG_FILES="$CONFIG_FILES "Demos/JS/classes.js"" ;;
     ""Demos/JS/select.js"") CONFIG_FILES="$CONFIG_FILES "Demos/JS/select.js"" ;;
     ""Download/index.html"") CONFIG_FILES="$CONFIG_FILES "Download/index.html"" ;;
     ""Docs/index.html"") CONFIG_FILES="$CONFIG_FILES "Docs/index.html"" ;;
