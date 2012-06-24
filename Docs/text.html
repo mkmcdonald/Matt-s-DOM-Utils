@@ -7,20 +7,20 @@
 			content="initial-scale=1.0">
 		<meta name="Author"
 			content="Matt McDonald">
-		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.helpers</title>
+		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.text</title>
 		<link href="../Assets/CSS/style-main.css"
 			media="all" rel="stylesheet"
 			type="text/css">
 		<link href="../favicon.ico"
 			media="all" rel="icon prefetch">
-		<link href="is.html" hreflang="en" media="all"
-			rel="prev" title="Utils.is"
+		<link href="traverse.html" hreflang="en" media="all"
+			rel="prev" title="Utils.traverse"
 			type="text/html">
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
 			type="text/html">
-		<link href="node.html" hreflang="en" media="all"
-			rel="next" title="Utils.node"
+		<link href="select.html" hreflang="en" media="all"
+			rel="next" title="Utils.select"
 			type="text/html">
 	</head>
 	<body>
@@ -56,60 +56,106 @@
 		</ul>
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
-				<a href="is.html" rel="prev"
-					title="Previous">&larr;<code>Utils.is</code></a>
+				<a href="traverse.html" rel="prev"
+					title="Previous">&larr;<code>Utils.traverse</code></a>
 			</div>
 			<div class="cell next_link primary_cell">
-				<a href="node.html" rel="next"
-					title="Next"><code>Utils.node</code>&rarr;</a>
+				<a href="select.html" rel="next"
+					title="Next"><code>Utils.select</code>&rarr;</a>
 			</div>
 		</div>
 		<div class="primary_row row">
 			<div class="cell primary_cell">
-				<h2 class="heading" title="Utils.helpers">
-					<code>Utils.helpers</code>
+				<h2 class="heading" title="Utils.text">
+					<code>Utils.text</code>
 				</h2>
 				<div class="fragment module_info" id="dependencies">
 					<h3 class="heading">
 						<a href="#dependencies"
 							title="Dependencies">Dependencies</a>
 					</h3>
-					<ol>
+					<ul>
 						<li>
-							<a href="./is.html"
-								title="Utils.is"><code>Utils.is</code></a>
+							<code>null</code>
 						</li>
-					</ol>
+					</ul>
 				</div>
 			</div>
 		</div>
 		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry fragment" id="make_array">
+			<li class="cell doc_cell doc_entry fragment" id="get">
 				<h3 class="heading">
-					<a href="#make_array"
-						title="Utils.helpers.makeArray"><code>Utils.helpers.makeArray</code></a>
+					<a href="#get"
+						title="Utils.text.get"><code>Utils.text.get</code></a>
 				</h3>
 				<p class="doc_art function_head">function (<var>obj</var>) {</p>
 				<dl class="doc_list">
 					<dt>description</dt>
 					<dd>
-						Method to create a &ldquo;static&rdquo;
-						<a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>
-						from
-						an <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
+						Method that collects text node data
+						from a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						<a href="glossary.html#subtree"
+							title="Subtree">subtree</a>,
+						and returns the concatenated data.
 					</dd>
 					<dt>
 						<var>obj</var>
 					</dt>
 					<dd>
-						An <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
 					</dd>
 					<dt>return value</dt>
 					<dd>
-						<code>Array</code>
+						<code>String || null</code>
+					</dd>
+				</dl>
+				<p class="doc_art function_tail">}</p>
+			</li>
+			<li class="cell doc_cell doc_entry fragment" id="set">
+				<h3 class="heading">
+					<a href="#set"
+						title="Utils.text.set"><code>Utils.text.set</code></a>
+				</h3>
+				<p class="doc_art function_head">function (<var>obj</var>, <var>text</var>, <var>doc</var>) {</p>
+				<dl class="doc_list">
+					<dt>description</dt>
+					<dd>
+						Method that clears a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						<a href="glossary.html#subtree"
+							title="Subtree">subtree</a>,
+						tree and replaces it with a
+						text node containing the string provided.
+					</dd>
+					<dt>
+						<var>obj</var>
+					</dt>
+					<dd>
+						A <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>
+						<var>text</var>
+					</dt>
+					<dd>
+						A string that will be provided to a
+						text node, which will in turn replace
+						a <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>'s
+						<code>childNodes</code> tree.
+					</dd>
+					<dt>
+						<var>doc</var>
+					</dt>
+					<dd>
+						A document <a href="glossary.html#node_like_object"
+							title="Node-like Object">node-like object</a>.
+					</dd>
+					<dt>return value</dt>
+					<dd>
+						<code>String || null</code>
 					</dd>
 				</dl>
 				<p class="doc_art function_tail">}</p>
@@ -117,16 +163,16 @@
 		</ul>
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
-				<a href="is.html" rel="prev"
-					title="Previous">&larr;<code>Utils.is</code></a>
+				<a href="traverse.html" rel="prev"
+					title="Previous">&larr;<code>Utils.traverse</code></a>
 			</div>
 			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"
 					title="Up">&uarr;Back to Documentation Index</a>
 			</div>
 			<div class="cell next_link primary_cell">
-				<a href="node.html" rel="next"
-					title="Next"><code>Utils.node</code>&rarr;</a>
+				<a href="select.html" rel="next"
+					title="Next"><code>Utils.select</code>&rarr;</a>
 			</div>
 		</div>
 		<div class="footer_row row">

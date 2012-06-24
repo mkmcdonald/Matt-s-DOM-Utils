@@ -37,10 +37,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					"good"
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"boolean"
-			);
+			return typeof test === "boolean";
 		}
 
 		function containsList()
@@ -50,10 +47,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					node,
 					["a", "b", "c"]
 				);
-			return @LIBRARY_NAME@.is.type(
-				tokens,
-				"boolean"
-			);
+			return typeof tokens === "boolean";
 		}
 
 		function add()
@@ -66,10 +60,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					"good"
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function addList()
@@ -79,10 +70,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					node,
 					["a", "b", "c"]
 				);
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function remove()
@@ -95,10 +83,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					"good"
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function removeList()
@@ -108,10 +93,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					node,
 					["a", "b", "c"]
 				);
-			return @LIBRARY_NAME@.is.type(
-				tokens,
-				"undefined"
-			);
+			return typeof tokens === "undefined";
 		}
 
 		function toggle()
@@ -124,10 +106,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					"toggle"
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"boolean"
-			);
+			return typeof test === "boolean";
 		}
 
 		function toggleList()
@@ -137,10 +116,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					node,
 					["a", "b", "c"]
 				);
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function getClass()
@@ -153,10 +129,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					0
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"string"
-			);
+			return typeof test === "string";
 		}
 
 		function get()

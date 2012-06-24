@@ -35,20 +35,11 @@
 						<a href="#dependencies"
 							title="Dependencies">Dependencies</a>
 					</h3>
-					<ol>
+					<ul>
 						<li>
-							<a href="./raise.html"
-								title="@LIBRARY_NAME@.raise"><code>@LIBRARY_NAME@.raise</code></a>
+							<code>null</code>
 						</li>
-						<li>
-							<a href="./is.html"
-								title="@LIBRARY_NAME@.is"><code>@LIBRARY_NAME@.is</code></a>
-						</li>
-						<li>
-							<a href="./helpers.html"
-								title="@LIBRARY_NAME@.helpers"><code>@LIBRARY_NAME@.helpers</code></a>
-						</li>
-					</ol>
+					</ul>
 				</div>
 			</div>
 		</div>

@@ -7,9 +7,11 @@ compress ()
 {
 	INPUT="$1.js";
 	MIN_OUTPUT="${MIN}$1-min.js";
-	yui-compressor --type js --charset utf-8\
-		-o $MIN_OUTPUT ${FULL}$INPUT;
-	echo "$INPUT compressed";
+	if [ -f ${FULL}$INPUT ]; then
+		yui-compressor --type js --charset utf-8\
+			-o $MIN_OUTPUT ${FULL}$INPUT;
+		echo "$INPUT compressed";
+	fi;
 }
 
 compress_parts ()
@@ -25,10 +27,12 @@ compress_parts ()
 add_license ()
 {
 	NAME="$1-min.js";
-	INPUT="${MIN}$NAME";
 	LICENSE="${FULL}license.js";
-	cat $LICENSE $INPUT > "${MIN}temp";
-	mv "${MIN}temp" $INPUT;
+	INPUT="${MIN}$NAME";
+	if [ -f ${LICENSE} -a -f ${INPUT} ]; then
+		cat $LICENSE $INPUT > "${MIN}temp";
+		mv "${MIN}temp" $INPUT;
+	fi;
 }
 
 compress_builds ()
@@ -49,12 +53,12 @@ begin_parts ()
 		"metadata"
 		"raise"
 		"types"
-		"helpers"
 		"is"
 		"node"
 		"create"
 		"classes"
 		"traverse"
+		"text"
 		"select"
 	);
 	compress_parts "${PARTS[@]}";
@@ -63,11 +67,9 @@ begin_parts ()
 begin_builds ()
 {
 	BUILDS=(
-		"utils-core"
-		"utils-classes"
-		"utils-traverse"
-		"utils-select"
+		"utils-head"
 		"utils-complete"
+		"utils-build"
 	);
 	compress_builds "${BUILDS[@]}";
 }

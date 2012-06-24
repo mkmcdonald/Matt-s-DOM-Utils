@@ -52,29 +52,42 @@
 		</div>
 		<form action="build.php" class="primary_row row" method="get">
 			<fieldset class="build_set cell primary_cell">
-				<legend>Core Modules (required)</legend>
-				<ul class="file_list">
-					<li>
-						<input checked id="core_file"
-							disabled
-							name="core_file"
-							type="checkbox"
-							value="core">
-						<label for="core_file">Core</label>
-						<ul class="module_list">
-							<li>Utils.raise</li>
-							<li>Utils.types</li>
-							<li>Utils.helpers</li>
-							<li>Utils.is</li>
-							<li>Utils.node</li>
-							<li>Utils.create</li>
-						</ul>
-					</li>
-					
-				</ul>
-			</fieldset>
-			<fieldset class="build_set cell primary_cell">
 				<legend>Optional Modules</legend>
+				<p>
+					<input id="raise_file" name="raise_file"
+						type="checkbox" value="raise">
+					<label for="raise_file">
+						Utils.raise
+					</label>
+				</p>
+				<p>
+					<input id="types_file" name="types_file"
+						type="checkbox" value="types">
+					<label for="types_file">
+						Utils.types
+					</label>
+				</p>
+				<p>
+					<input id="is_file" name="is_file"
+						type="checkbox" value="is">
+					<label for="is_file">
+						Utils.is
+					</label>
+				</p>
+				<p>
+					<input id="node_file" name="node_file"
+						type="checkbox" value="node">
+					<label for="node_file">
+						Utils.node
+					</label>
+				</p>
+				<p>
+					<input id="create_file" name="create_file"
+						type="checkbox" value="create">
+					<label for="create_file">
+						Utils.create
+					</label>
+				</p>
 				<p>
 					<input id="classes_file" name="classes_file"
 						type="checkbox" value="classes">
@@ -87,6 +100,13 @@
 						type="checkbox" value="traverse">
 					<label for="traverse_file">
 						Utils.traverse
+					</label>
+				</p>
+				<p>
+					<input id="text_file" name="text_file"
+						type="checkbox" value="text">
+					<label for="text_file">
+						Utils.text
 					</label>
 				</p>
 				<p>

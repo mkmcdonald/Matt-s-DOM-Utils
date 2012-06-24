@@ -65,7 +65,7 @@
 						<p>
 							<em>@LIBRARY_NAME@</em> is developed with standards in mind.
 							Most &ldquo;forks&rdquo; used in the API implement algorithms
-							specified in both the DOM 4 and HTML 5 specifications.
+							specified in either the DOM 4 or HTML 5 specifications.
 						</p>
 					</li>
 					<li>

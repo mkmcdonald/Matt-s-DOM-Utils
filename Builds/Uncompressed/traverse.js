@@ -10,100 +10,62 @@ if (typeof Utils === "object" && Utils) {
                 * nodes.
                 *
                 * @dependencies
-                * * Utils.types
-                * * Utils.is
-                * * Utils.helpers
-                * * Utils.node
-                * * Utils.create
+                * * null
                 */
 
-		var isDocument = Utils.is.document,
-			nodeTypes = Utils.types,
-			isNodeLike = Utils.is.nodeLike,
-			isHostObject = Utils.is.hostObject,
-			makeArray = Utils.helpers.makeArray,
-			isArrayLike = Utils.is.arrayLike,
-			isElement = Utils.is.element,
-			removeNode = Utils.node.remove,
-			isText = Utils.is.text,
-			getNodeValue = Utils.node.getValue,
-			createText = Utils.create.text,
-			appendNode = Utils.node.append,
-			setNodeValue = Utils.node.setValue,
+		var doc,
 
-			doc,
+			hostTypes,
+			nodeTypes,
 
-			textGetters,
-			textSetters,
 			getChildren,
-			textGetterDecisions,
-			textSetterDecisions,
+
 			getChildNodes;
 
                /**
                 * @private
                 *
-                * @closure
-                *
                 * @description
                 * Variable containing the current document
-                * node-like object or `null`.
+                * node-like object.
                 */
 
-		doc = (function () {
-			var result = null;
-			if (isDocument(global.document)) {
-				result = global.document;
-			}
-			return result;
-		}());
+		doc = global.document;
 
                /**
                 * @private
                 *
-                * @closure
-                *
                 * @description
-                * Variable containing keys of `nodeType` values
-                * that can retrieve text.
-                *
-                * @see `Utils.types`.
+                * Object containing "normal" types associated with
+                * host objects (exludes "unknown").
                 */
 
-		textGetters = (function () {
-			var result = {};
-			result[nodeTypes.ELEMENT_NODE] = true;
-			result[nodeTypes.TEXT_NODE] = true;
-			result[nodeTypes.PROCESSING_INSTRUCTION_NODE] =
-				true;
-			result[nodeTypes.COMMENT_NODE] = true;
-			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] =
-				true;
-			return result;
-		}());
+		hostTypes = {
+			"object": true,
+			"function": true
+		};
 
                /**
                 * @private
                 *
                 * @description
                 * Method that returns a boolean asserting if the
-                * specified node-like object can retrieve textual
-                * content.
+                * specified object is node-like.
                 *
                 * @param obj Object
-                * A node-like object to assert.
+                * An object to assert.
                 */
 
-		function canGetText(
+		function isNodeLike(
 			obj
 		)
 		{
-			var getters = textGetters,
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
 				result = false;
-			if (isNodeLike(obj)) {
-				if (getters[obj.nodeType]) {
-					result = true;
-				}
+			if (normal || type === "unknown") {
+				result = typeof obj.nodeType ===
+					"number";
 			}
 			return result;
 		}
@@ -111,47 +73,77 @@ if (typeof Utils === "object" && Utils) {
                /**
                 * @private
                 *
-                * @closure
-                *
                 * @description
-                * Object containing keys of `nodeType` values that
-                * can overwrite text.
-                *
-                * @see `Utils.types`.
+                * Method that returns a boolean asserting if the
+                * specified object is a host-like object (by passing
+                * one of two assertions:
+		* a) a `typeof` result of "object" or "function"
+		* along with "truthiness";
+		* b) a `typeof` result of "unknown".
+		*
+                * @param obj Object
+                * An object to assert.
                 */
 
-		textSetters = (function () {
-			var result = {};
-			result[nodeTypes.ELEMENT_NODE] = true;
-			result[nodeTypes.TEXT_NODE] = true;
-			result[nodeTypes.PROCESSING_INSTRUCTION_NODE] =
-				true;
-			result[nodeTypes.COMMENT_NODE] = true;
-			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] =
-				true;
-			return result;
-		}());
+		function isHostObject(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj;
+			return !!(normal || type === "unknown");
+		}
 
                /**
                 * @private
                 *
                 * @description
                 * Method that returns a boolean asserting if the
-                * specified node can overwrite textual content.
+                * specified object is array-like.
                 *
                 * @param obj Object
-                * A node-like object to assert.
+                * An object to assert.
                 */
 
-		function canSetText(
+		function isArrayLike(
 			obj
 		)
 		{
-			var setters = textSetters,
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
 				result = false;
-			if (isNodeLike(obj)) {
-				if (setters[obj.nodeType]) {
-					result = true;
+			if (normal || type === "unknown") {
+				result = typeof obj.length ===
+					"number";
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns an array produced from an
+                * iterable object.
+                *
+                * @param obj Object
+                * An object to iterate.
+                */
+
+		function makeArray(
+			obj
+		)
+		{
+			var max,
+				aux,
+				diff,
+				result = [];
+			if (isArrayLike(obj)) {
+				result.length = obj.length;
+				max = obj.length - 1;
+				for (aux = max; aux > -1; aux -= 1) {
+					diff = max - aux;
+					result[diff] = obj[diff];
 				}
 			}
 			return result;
@@ -203,10 +195,8 @@ if (typeof Utils === "object" && Utils) {
 		getChildNodes = (function () {
 			var key = "childNodes",
 				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = getNodes;
-				}
+			if (isHostObject(doc[key])) {
+				result = getNodes;
 			}
 			return result;
 		}());
@@ -349,6 +339,41 @@ if (typeof Utils === "object" && Utils) {
                 * @private
                 *
                 * @description
+                * Wrapper method for `removeChild`; returns the
+                * wrapped method's result or `null` if not
+                * applicable.
+                *
+                * @see `Node::removeChild`.
+                * 
+                * @param par Object
+                * A node-like object that will attempt to remove
+                * another node-like object.
+                * 
+                * @param obj Object
+                * A node-like object to be removed.
+                */
+
+		function removeChild(
+			par,
+			obj
+		)
+		{
+			var key = "removeChild",
+				result = null;
+			if (isNodeLike(par) && isNodeLike(obj)) {
+				if (isHostObject(par[key])) {
+					result = par[key](
+						obj
+					);
+				}
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
                 * Method used as a callback for `traverse*`; removes
                 * a node-like object from the document tree; returns
                 * `null` if not applicable.
@@ -363,7 +388,7 @@ if (typeof Utils === "object" && Utils) {
 		{
 			var result = null;
 			if (isNodeLike(obj)) {
-				removeNode(
+				removeChild(
 					obj.parentNode,
 					obj
 				);
@@ -398,6 +423,82 @@ if (typeof Utils === "object" && Utils) {
 				);
 			}
 			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Object of documented `nodeType`s.
+                *
+                * @see DOM 4 Spec 5.3 (Node, nodeType).
+                */
+
+		nodeTypes = {
+			"ELEMENT_NODE": 1,
+			"ATTRIBUTE_NODE": 2,
+			"TEXT_NODE": 3,
+			"CDATA_SECTION_NODE": 4,
+			"ENTITY_REFERENCE_NODE": 5,
+			"ENTITY_NODE": 6,
+			"PROCRESSING_INSTRUCTION_NODE": 7,
+			"COMMENT_NODE": 8,
+			"DOCUMENT_NODE": 9,
+			"DOCUMENT_TYPE_NODE": 10,
+			"DOCUMENT_FRAGMENT_NODE": 11,
+			"NOTATION_NODE": 12
+		};
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object has a certain value for the
+                * `nodeType` property.
+                *
+                * @param obj Object
+                * An object which will have its `nodeType`
+                * property checked.
+                *
+                * @param num Number
+                * A number to assert.
+                */
+
+		function isNodeType(
+			obj,
+			num
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
+				result = false;
+			if (normal || type === "unknown") {
+				result = obj.nodeType === num;
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is an element node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isElement(
+			obj
+		)
+		{
+			var type = nodeTypes.ELEMENT_NODE;
+			return isNodeType(
+				obj,
+				type
+			);
 		}
 
                /**
@@ -523,10 +624,9 @@ if (typeof Utils === "object" && Utils) {
 				canGet = canGetChildren(
 					doc.body
 				);
+				result = forkChildren;
 				if (canGet) {
 					result = getNativeChildren;
-				} else if (!canGet) {
-					result = forkChildren;
 				}
 			}
 			return result;
@@ -644,55 +744,6 @@ if (typeof Utils === "object" && Utils) {
 				);
 			}
 			return result;
-		}
-
-               /**
-                * @private
-                *
-                * @description
-                * Method used as a callback for `traverse*`; returns
-                * the `nodeValue` property value for the specified
-                * node-like object if it is a text node-like object;
-                * returns `null` if not applicable.
-                *
-                * @param obj Object
-                * A node-like object to assert.
-                */
-
-		function filterTextData(
-			obj
-		)
-		{
-			var result = null;
-			if (isText(obj)) {
-				result = getNodeValue(
-					obj
-				);
-			}
-			return result;
-		}
-
-               /**
-                * @private
-                *
-                * @description
-                * Helper method that retrieves the `nodeValue`
-                * property value of a node-like object; returns
-                * `null` if not applicable.
-                *
-                * @param obj Object
-                * A text node-like object to use.
-                *
-                * @see `getText`.
-                */
-
-		function grabText(
-			obj
-		)
-		{
-			return getNodeValue(
-				obj
-			);
 		}
 
                /**
@@ -863,320 +914,6 @@ if (typeof Utils === "object" && Utils) {
 						obj.childNodes[diff],
 						callback,
 						result
-					);
-				}
-			}
-			return result;
-		}
-
-               /**
-                * @private
-                *
-                * @description
-                * Helper method that concatenates the `nodeValue`
-                * property value of text node-like objects
-                * in the specified node-like object's subtree;
-                * returns `null` if not applicable.
-                *
-                * @param obj Object
-                * A node-like object to traverse.
-                *
-                * @see `getText`.
-                */
-
-		function collectText(
-			obj
-		)
-		{
-			var nodes,
-				result = null;
-			if (isNodeLike(obj)) {
-				nodes = traverseChildNodeTree(
-					obj,
-					filterTextData
-				);
-				result = nodes.join(
-					""
-				);
-			}
-			return result;
-		}
-
-               /**
-                * @private
-                *
-                * @closure
-                *
-                * @description
-                * Object containing decisions for specific
-                * `nodeType` values pertaining to the retrieval of
-                * textual content.
-                */
-
-		textGetterDecisions = (function () {
-			var result = {};
-			result[nodeTypes.ELEMENT_NODE] = collectText;
-			result[nodeTypes.TEXT_NODE] = grabText;
-			result[nodeTypes.COMMENT_NODE] = grabText;
-			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] =
-				collectText;
-			result[nodeTypes.PROCESSING_INSTRUCTION_NODE] =
-				grabText;
-			return result;
-		}());
-
-               /**
-                * @public `Utils.traverse.getText`.
-                *
-                * @description
-                * Method that returns a concatenated string
-                * consisting of `nodeValue` property values of text
-                * node-like objects from the specified node-like
-                * object's subtree or the `nodeValue` property value
-                * of the node-like object itself; returns `null` if
-                * not applicable.
-                *
-                * @param obj Object
-                * A node-like object to retrieve textual content
-                * from.
-                *
-                * @see DOM 4 Spec section 5.3 (`Node::textContent`,
-                * getting).
-                */
-
-		function getText(
-			obj
-		)
-		{
-			var decisions = textGetterDecisions,
-				decision,
-				result = null;
-			if (canGetText(obj)) {
-				decision = decisions[obj.nodeType];
-				if (typeof decision === "function") {
-					result = decision(
-						obj
-					);
-				}
-			}
-			return result;
-		}
-
-               /**
-                * @private
-                *
-                * @description
-                * Wrapper method that wraps `createText`;
-                * returns `null` if not applicable.
-                *
-                * @param doc Object
-                * A document node-like object to create a text
-                * node-like object in.
-                *
-                * @param text String
-                * A string representing the `nodeValue` of the
-                * text node-like object to be created.
-                */
-
-		function wrapCreateText(
-			doc,
-			text
-		)
-		{
-			var result = null;
-			if (createText) {
-				result = createText(
-					doc,
-					text
-				);
-			}
-			return result;
-		}
-
-               /**
-                * @private
-                *
-                * @description
-                * Helper method that returns the result of the
-                * creation and suffixion of a text node-like object
-                * to the specified node-like object; returns `null`
-                * if not applicable.
-                *
-                * @param obj Object
-                * A node-like object to append the created text node
-                * like object to.
-                *
-                * @param text String
-                * A string containing textual content to add.
-                *
-                * @param doc Object
-                * A document node-like object used to create a text
-                * node-like object.
-                */
-
-		function appendText(
-			obj,
-			text,
-			doc
-		)
-		{
-			var node,
-				result = null;
-				node = wrapCreateText(
-					doc,
-					text
-				);
-				result = appendNode(
-					obj,
-					node
-				);
-			return result;
-		}
-
-               /**
-                * @private
-                *
-                * @description
-                * Helper method that clears the specified
-                * node-like object's subtree and appends a text
-                * node-like object with a specific string;
-                * returns the textual content added or `null` if not
-                * applicable.
-                *
-                * @param obj Object
-                * A node-like object to traverse.
-                *
-                * @param text String
-                * A string containing textual content to add.
-                *
-                * @param doc Object
-                * A document node-like object used to create a text
-                * node-like object.
-                *
-                * @see `setText`.
-                */
-
-		function overrideText(
-			obj,
-			text,
-			doc
-		)
-		{
-			var textNode,
-				result = null;
-			if (isNodeLike(obj)) {
-				if (isDocument(doc)) {
-					clearChildNodes(
-						obj
-					);
-					textNode = appendText(
-						obj,
-						text,
-						doc
-					);
-					result = getNodeValue(
-						textNode
-					);
-				}
-			}
-			return result;
-		}
-
-               /**
-                * @private
-                *
-                * @description
-                * Helper method that replaces the `nodeValue`
-                * property value of the specified node-like object
-                * with a specific string.
-                *
-                * @param text String
-                * A string containing textual content to add.
-                *
-                * @param obj Object
-                * A node-like object to replace the `nodeValue`
-                * property value of.
-                *
-                * @see `setText`.
-                */
-
-		function replaceText(
-			obj,
-			text
-		)
-		{
-			return setNodeValue(
-				obj,
-				text
-			);
-		}
-
-               /**
-                * @private
-                *
-                * @closure
-                *
-                * @description
-                * Object containing decisions for specific
-                * `nodeType` values pertaining to the replacement
-                * textual content.
-                */
-
-		textSetterDecisions = (function () {
-			var result = {};
-			result[nodeTypes.ELEMENT_NODE] =
-				overrideText;
-			result[nodeTypes.TEXT_NODE] =
-				replaceText;
-			result[nodeTypes.COMMENT_NODE] =
-				replaceText;
-			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] =
-				overrideText;
-			result[nodeTypes.PROCESSING_INSTRUCTION_NODE] =
-				replaceText;
-			return result;
-		}());
-
-               /**
-                * @public `Utils.traverse.setText`.
-                *
-                * @description
-                * Method that returns a string consisting of textual
-                * content that replaces existing textual content;
-                * returns `null` if not applicable.
-                *
-                * @param obj Object
-                * A node-like object to replace the textual content
-                * of.
-                *
-                * @param text String
-                * A string containing the textual content to act as
-                * a replacement.
-                *
-                * @param doc Document
-                * A document node-like object to create a text
-                * node-like object with.
-                *
-                * @see DOM 4 Spec section 5.3 (`Node::textContent`,
-                * setting).
-                */
-
-		function setText(
-			obj,
-			text,
-			doc
-		)
-		{
-			var decisions = textSetterDecisions,
-				decision,
-				result = null;
-			if (canSetText(obj)) {
-				decision = decisions[obj.nodeType];
-				if (typeof decision === "function") {
-					result = decision(
-						obj,
-						text,
-						doc
 					);
 				}
 			}
@@ -1639,9 +1376,6 @@ if (typeof Utils === "object" && Utils) {
 			"getNodeTree": getChildNodeTree,
 
 			"nodeTree": traverseChildNodeTree,
-
-			"getText": getText,
-			"setText": setText,
 
 			"recursive": traverseRecursive,
 

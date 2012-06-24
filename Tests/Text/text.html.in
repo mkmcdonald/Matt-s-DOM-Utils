@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=UTF-8">
+		<title>Text Test</title>
+		<link href="../../Assets/CSS/tests.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+	</head>
+	<body>
+		<h1>Text Test</h1>
+		<button id="start" type="button">Run Test</button>
+		<button id="stop" type="button">Clear Test</button>
+		<h2>Test Results</h2>
+		<table id="results">
+			<caption>Tabulated Results</caption>
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Description</th>
+					<th>Assertion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="test_1">
+					<td>1.</td>
+					<td>
+						<code>@LIBRARY_NAME@.text.get</code> returns a String.
+					</td>
+					<td id="result_1"></td>
+				</tr>
+				<tr id="test_2">
+					<td>2.</td>
+					<td>
+						<code>@LIBRARY_NAME@.text.set</code> returns a String.
+					</td>
+					<td id="result_2"></td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="score_area">
+			<p>Score:</p>
+			<p id="score"></p>
+		</div>
+		<hr>
+		<h2>Test Element</h2>
+		<ul id="test">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<script src="../../Builds/Uncompressed/utils-complete.js"
+			type="text/javascript"></script>
+		<script src="JS/text.js"
+			type="text/javascript"></script>
+	</body>
+</html>

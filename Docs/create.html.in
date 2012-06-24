@@ -35,12 +35,11 @@
 						<a href="#dependencies"
 							title="Dependencies">Dependencies</a>
 					</h3>
-					<ol>
+					<ul>
 						<li>
-							<a href="./is.html"
-								title="@LIBRARY_NAME@.is"><code>@LIBRARY_NAME@.is</code></a>
+							<code>null</code>
 						</li>
-					</ol>
+					</ul>
 				</div>
 			</div>
 		</div>

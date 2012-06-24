@@ -110,10 +110,7 @@ if (typeof Utils === "object" && Utils) {
 					par.lastChild
 				);
 			}
-			return Utils.is.type(
-				nodes,
-				"undefined"
-			);
+			return typeof nodes === "undefined";
 		}
 
 		function appendChild()
@@ -147,10 +144,7 @@ if (typeof Utils === "object" && Utils) {
 					list
 				);
 			}
-			return Utils.is.type(
-				nodes,
-				"undefined"
-			);
+			return typeof nodes === "undefined";
 		}
 
 		function removeChild()

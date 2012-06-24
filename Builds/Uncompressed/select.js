@@ -9,30 +9,30 @@ if (typeof Utils === "object" && Utils) {
                 * Various selection wrappers.
                 *
                 * @dependencies
-                * * Utils.types
-                * * Utils.is
-                * * Utils.helpers
+                * * null
                 */
 
-		var nodeTypes = Utils.types,
-			isNodeLike = Utils.is.nodeLike,
-			makeArray = Utils.helpers.makeArray,
-			isDocument = Utils.is.document,
-			isHostObject = Utils.is.hostObject,
-			isElement = Utils.is.element,
-			isArrayLike = Utils.is.arrayLike,
+		var doc,
 
-			doc,
+			hostTypes,
 
-			selectorTypes,
-
-			getHead,
-			getBody,
 			getElementsByName,
+
+			nodeTypes,
+
 			getElementsByTagName,
+
+			isDocument,
+
 			getElementsByTagNameNS,
 			getElementsByClassName,
 			getElementById,
+
+			getHead,
+			getBody,
+
+			selectorTypes,
+
 			querySelector,
 			querySelectorAll,
 			getImages,
@@ -57,55 +57,124 @@ if (typeof Utils === "object" && Utils) {
                 *
                 * @description
                 * Variable containing the current document
-                * node-like object or `null`.
+                * node-like object.
                 */
 
-		doc = (function () {
-			var result = null;
-			if (isDocument(global.document)) {
-				result = global.document;
-			}
-			return result;
-		}());
-
-               /**
-                * @private
-                *
-                * @closure
-                *
-                * @description
-                * Object containing applicable `nodeType` property
-                * values for `querySelector*`.
-                */
-
-		selectorTypes = (function () {
-			var result = {};
-			result[nodeTypes.ELEMENT_NODE] = true;
-			result[nodeTypes.DOCUMENT_NODE] = true;
-			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
-			return result;
-		}());
+		doc = global.document;
 
                /**
                 * @private
                 *
                 * @description
-                * Helper method that returns a boolean asserting if
-                * a node-like object can call `querySelector*`.
+                * Object containing "normal" types associated with
+                * host objects (exludes "unknown").
+                */
+
+		hostTypes = {
+			"object": true,
+			"function": true
+		};
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is node-like.
                 *
                 * @param obj Object
-                * A node-like object to assert.
+                * An object to assert.
                 */
 
-		function canCallSelectors(
+		function isNodeLike(
 			obj
 		)
 		{
-			var types = selectorTypes,
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
 				result = false;
-			if (isNodeLike(obj)) {
-				result = typeof types[obj.nodeType] !==
-					"undefined";
+			if (normal || type === "unknown") {
+				result = typeof obj.nodeType ===
+					"number";
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a host-like object (by passing
+                * one of two assertions:
+		* a) a `typeof` result of "object" or "function"
+		* along with "truthiness";
+		* b) a `typeof` result of "unknown".
+		*
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isHostObject(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj;
+			return !!(normal || type === "unknown");
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is array-like.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isArrayLike(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
+				result = false;
+			if (normal || type === "unknown") {
+				result = typeof obj.length ===
+					"number";
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns an array produced from an
+                * iterable object.
+                *
+                * @param obj Object
+                * An object to iterate.
+                */
+
+		function makeArray(
+			obj
+		)
+		{
+			var max,
+				aux,
+				diff,
+				result = [];
+			if (isArrayLike(obj)) {
+				result.length = obj.length;
+				max = obj.length - 1;
+				for (aux = max; aux > -1; aux -= 1) {
+					diff = max - aux;
+					result[diff] = obj[diff];
+				}
 			}
 			return result;
 		}
@@ -128,13 +197,9 @@ if (typeof Utils === "object" && Utils) {
 		{
 			var key = method;
 			return function (doc, name) {
-				var result = null;
-				if (isDocument(doc)) {
-					result = makeArray(
-						doc[key](name)
-					);
-				}
-				return result;
+				return makeArray(
+					doc[key](name)
+				);
 			};
 		}
 
@@ -158,15 +223,154 @@ if (typeof Utils === "object" && Utils) {
 		getElementsByName = (function () {
 			var key = "getElementsByName",
 				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = getByName(
-						key
-					);
-				}
+			if (isHostObject(doc[key])) {
+				result = getByName(
+					key
+				);
 			}
 			return result;
 		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Object of documented `nodeType`s.
+                *
+                * @see DOM 4 Spec 5.3 (Node, nodeType).
+                */
+
+		nodeTypes = {
+			"ELEMENT_NODE": 1,
+			"ATTRIBUTE_NODE": 2,
+			"TEXT_NODE": 3,
+			"CDATA_SECTION_NODE": 4,
+			"ENTITY_REFERENCE_NODE": 5,
+			"ENTITY_NODE": 6,
+			"PROCRESSING_INSTRUCTION_NODE": 7,
+			"COMMENT_NODE": 8,
+			"DOCUMENT_NODE": 9,
+			"DOCUMENT_TYPE_NODE": 10,
+			"DOCUMENT_FRAGMENT_NODE": 11,
+			"NOTATION_NODE": 12
+		};
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object has a certain value for the
+                * `nodeType` property.
+                *
+                * @param obj Object
+                * An object which will have its `nodeType`
+                * property checked.
+                *
+                * @param num Number
+                * A number to assert.
+                */
+
+		function isNodeType(
+			obj,
+			num
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
+				result = false;
+			if (normal || type === "unknown") {
+				result = obj.nodeType === num;
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a document node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isDocumentNode(
+			obj
+		)
+		{
+			var type = nodeTypes.DOCUMENT_NODE;
+			return isNodeType(
+				obj,
+				type
+			);
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is the current document.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isAlmostDocument(
+			obj
+		)
+		{
+			return obj === global.document;
+		}
+
+               /**
+                * @private
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure) a
+                * boolean asserting if the specified object is a
+                * document node-like object or the current document.
+                *
+                * @param obj Object
+                * An object to assert.
+                *
+                * @see `isDocumentNode`.
+                * @see `isAlmostDocument`.
+                */
+
+		isDocument = (function () {
+			var result = isDocumentNode;
+			if (!isNodeLike(doc)) {
+				result = isAlmostDocument;
+			}
+			return result;
+		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is an element node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isElement(
+			obj
+		)
+		{
+			var type = nodeTypes.ELEMENT_NODE;
+			return isNodeType(
+				obj,
+				type
+			);
+		}
 
                /**
                 * @private
@@ -219,12 +423,10 @@ if (typeof Utils === "object" && Utils) {
 		getElementsByTagName = (function () {
 			var key = "getElementsByTagName",
 				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = getByTagName(
-						key
-					);
-				}
+			if (isHostObject(doc[key])) {
+				result = getByTagName(
+					key
+				);
 			}
 			return result;
 		}());
@@ -284,12 +486,10 @@ if (typeof Utils === "object" && Utils) {
 		getElementsByTagNameNS = (function () {
 			var key = "getElementsByTagNameNS",
 				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = getByTagNameNS(
-						key
-					);
-				}
+			if (isHostObject(doc[key])) {
+				result = getByTagNameNS(
+					key
+				);
 			}
 			return result;
 		}());
@@ -345,12 +545,10 @@ if (typeof Utils === "object" && Utils) {
 		getElementsByClassName = (function () {
 			var key = "getElementsByClassName",
 				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = getByClassName(
-						key
-					);
-				}
+			if (isHostObject(doc[key])) {
+				result = getByClassName(
+					key
+				);
 			}
 			return result;
 		}());
@@ -373,11 +571,7 @@ if (typeof Utils === "object" && Utils) {
 		{
 			var key = method;
 			return function (doc, id) {
-				var result = null;
-				if (isDocument(doc)) {
-					result = doc[key](id);
-				}
-				return result;
+				return doc[key](id);
 			};
 		}
 
@@ -401,15 +595,201 @@ if (typeof Utils === "object" && Utils) {
 		getElementById = (function () {
 			var key = "getElementById",
 				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = getById(
-						key
-					);
-				}
+			if (isHostObject(doc[key])) {
+				result = getById(
+					key
+				);
 			}
 			return result;
 		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns the "head" element node-like
+                * object for the specified document; returns
+                * `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
+
+		function getNativeHead(
+			doc
+		)
+		{
+			return doc.head;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns the "head" element node-like
+                * object for the specified document; returns
+                * `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
+
+		function forkHead(
+			doc
+		)
+		{
+			var heads,
+				result = null;
+			heads = getElementsByTagName(
+				doc,
+				"head"
+			);
+			if (isArrayLike(heads)) {
+				result = heads[0];
+			}
+			return result;
+		}
+
+               /**
+                * @public `Utils.select.head`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure) the
+                * "head" element node-like object for the specified
+                * document node-like object; returns `null` if not
+                * applicable.
+                *
+                * @see `getNativeHead`.
+                * @see `forkHead`.
+                */
+
+		getHead = (function () {
+			var key = "getElementsByTagName",
+				result = null;
+			if (isHostObject(doc.head)) {
+				result = getNativeHead;
+			} else if (isHostObject(doc[key])) {
+				result = forkHead;
+			}
+			return result;
+		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns the "body" element node-like
+                * object for the specified document; returns
+                * `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
+
+		function getNativeBody(
+			doc
+		)
+		{
+			return doc.body;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns the "body" element node-like
+                * object for the specified document; returns
+                * `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
+
+		function forkBody(
+			doc
+		)
+		{
+			var bodies,
+				result = null;
+			bodies = getElementsByTagName(
+				doc,
+				"body"
+			);
+			if (isArrayLike(bodies)) {
+				result = bodies[0];
+			}
+			return result;
+		}
+
+               /**
+                * @public `Utils.select.body`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure) the
+                * "body" element node-like object for the specified
+                * document node-like object; returns `null` if not
+                * applicable.
+                *
+                * @see `getNativeBody`.
+                * @see `forkBody`.
+                */
+
+		getBody = (function () {
+			var key = "getElementsByTagName",
+				result = null;
+			if (isHostObject(doc.body)) {
+				result = getNativeBody;
+			} else if (isHostObject(doc[key])) {
+				result = forkBody;
+			}
+			return result;
+		}());
+
+               /**
+                * @private
+                *
+                * @closure
+                *
+                * @description
+                * Object containing applicable `nodeType` property
+                * values for `querySelector*`.
+                */
+
+		selectorTypes = (function () {
+			var result = {};
+			result[nodeTypes.ELEMENT_NODE] = true;
+			result[nodeTypes.DOCUMENT_NODE] = true;
+			result[nodeTypes.DOCUMENT_FRAGMENT_NODE] = true;
+			return result;
+		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Helper method that returns a boolean asserting if
+                * a node-like object can call `querySelector*`.
+                *
+                * @param obj Object
+                * A node-like object to assert.
+                */
+
+		function canCallSelectors(
+			obj
+		)
+		{
+			var types = selectorTypes,
+				result = false;
+			if (isNodeLike(obj)) {
+				result = typeof types[obj.nodeType] !==
+					"undefined";
+			}
+			return result;
+		}
 
                /**
                 * @private
@@ -531,168 +911,6 @@ if (typeof Utils === "object" && Utils) {
                 * @private
                 *
                 * @description
-                * Method that returns the "head" element node-like
-                * object for the specified document; returns
-                * `null` if not applicable.
-                *
-                * @param doc Object
-                * A document node-like object to access.
-                */
-
-		function getNativeHead(
-			doc
-		)
-		{
-			var result = null;
-			if (isDocument(doc)) {
-				result = doc.head;
-			}
-			return result;
-		}
-
-               /**
-                * @private
-                *
-                * @description
-                * Method that returns the "head" element node-like
-                * object for the specified document; returns
-                * `null` if not applicable.
-                *
-                * @param doc Object
-                * A document node-like object to access.
-                */
-
-		function forkHead(
-			doc
-		)
-		{
-			var heads,
-				result = null;
-			if (isDocument(doc)) {
-				heads = getElementsByTagName(
-					doc,
-					"head"
-				);
-				if (isArrayLike(heads)) {
-					result = heads[0];
-				}
-			}
-			return result;
-		}
-
-               /**
-                * @public `Utils.select.head`.
-                *
-                * @closure
-                *
-                * @description
-                * Wrapper method that returns (via a closure) the
-                * "head" element node-like object for the specified
-                * document node-like object; returns `null` if not
-                * applicable.
-                *
-                * @see `getNativeHead`.
-                * @see `forkHead`.
-                */
-
-		getHead = (function () {
-			var key = "getElementsByTagName",
-				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc.head)) {
-					result = getNativeHead;
-				} else if (isHostObject(doc[key])) {
-					result = forkHead;
-				}
-			}
-			return result;
-		}());
-
-               /**
-                * @private
-                *
-                * @description
-                * Method that returns the "body" element node-like
-                * object for the specified document; returns
-                * `null` if not applicable.
-                *
-                * @param doc Object
-                * A document node-like object to access.
-                */
-
-		function getNativeBody(
-			doc
-		)
-		{
-			var result = null;
-			if (isDocument(doc)) {
-				result = doc.body;
-			}
-			return result;
-		}
-
-               /**
-                * @private
-                *
-                * @description
-                * Method that returns the "body" element node-like
-                * object for the specified document; returns
-                * `null` if not applicable.
-                *
-                * @param doc Object
-                * A document node-like object to access.
-                */
-
-		function forkBody(
-			doc
-		)
-		{
-			var bodies,
-				result = null;
-			if (isDocument(doc)) {
-				bodies = getElementsByTagName(
-					doc,
-					"body"
-				);
-				if (isArrayLike(bodies)) {
-					result = bodies[0];
-				}
-			}
-			return result;
-		}
-
-               /**
-                * @public `Utils.select.body`.
-                *
-                * @closure
-                *
-                * @description
-                * Wrapper method that returns (via a closure) the
-                * "body" element node-like object for the specified
-                * document node-like object; returns `null` if not
-                * applicable.
-                *
-                * @see `getNativeBody`.
-                * @see `forkBody`.
-                */
-
-		getBody = (function () {
-			var key = "getElementsByTagName",
-				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc.body)) {
-					result = getNativeBody;
-				} else if (isHostObject(doc[key])) {
-					result = forkBody;
-				}
-			}
-			return result;
-		}());
-
-               /**
-                * @private
-                *
-                * @description
                 * Helper method that converts an `HTMLCollection` to
                 * an array-like object if necessary and returns it.
                 *
@@ -733,13 +951,9 @@ if (typeof Utils === "object" && Utils) {
 		{
 			var key = collection;
 			return function (doc) {
-				var result = null;
-				if (isDocument(doc)) {
-					result = makeArray(
-						doc[key]
-					);
-				}
-				return result;
+				return makeArray(
+					doc[key]
+				);
 			};
 		}
 
@@ -764,12 +978,10 @@ if (typeof Utils === "object" && Utils) {
 		)
 		{
 			var result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = getDocumentCollection(
-						key
-					);
-				}
+			if (isHostObject(doc[key])) {
+				result = getDocumentCollection(
+					key
+				);
 			}
 			return result;
 		}
@@ -793,13 +1005,9 @@ if (typeof Utils === "object" && Utils) {
 		{
 			var key = collection;
 			return function (doc, name) {
-				var result = null;
-				if (isDocument(doc)) {
-					result = adjustItems(
-						doc[key][name]
-					);
-				}
-				return result;
+				return adjustItems(
+					doc[key][name]
+				);
 			};
 		}
 
@@ -824,12 +1032,10 @@ if (typeof Utils === "object" && Utils) {
 		)
 		{
 			var result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = getNamedDocumentItem(
-						key
-					);
-				}
+			if (isHostObject(doc[key])) {
+				result = getNamedDocumentItem(
+					key
+				);
 			}
 			return result;
 		}

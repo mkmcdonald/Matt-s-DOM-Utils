@@ -118,10 +118,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					par.lastChild
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				nodes,
-				"undefined"
-			);
+			return typeof nodes === "undefined";
 		}
 
 		function makeElement(
@@ -175,10 +172,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					list
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				nodes,
-				"undefined"
-			);
+			return typeof nodes === "undefined";
 		}
 
 		function removeChild()
@@ -275,10 +269,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					node.firstChild
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"string"
-			);
+			return typeof test === "string";
 		}
 
 		function setValue()
@@ -291,10 +282,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					"testing; 1, 2, 3"
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"string"
-			);
+			return typeof test === "string";
 		}
 
 		function createElement()
@@ -378,10 +366,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					"good"
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"boolean"
-			);
+			return typeof test === "boolean";
 		}
 
 		function containsList()
@@ -391,10 +376,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					node,
 					["a", "b", "c"]
 				);
-			return @LIBRARY_NAME@.is.type(
-				tokens,
-				"boolean"
-			);
+			return typeof tokens === "boolean";
 		}
 
 		function add()
@@ -407,10 +389,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					"good"
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function addList()
@@ -420,10 +399,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					node,
 					["a", "b", "c"]
 				);
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function remove()
@@ -436,10 +412,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					"good"
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function removeList()
@@ -449,10 +422,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					node,
 					["a", "b", "c"]
 				);
-			return @LIBRARY_NAME@.is.type(
-				tokens,
-				"undefined"
-			);
+			return typeof tokens === "undefined";
 		}
 
 		function toggle()
@@ -465,10 +435,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					"toggle"
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"boolean"
-			);
+			return typeof test === "boolean";
 		}
 
 		function toggleList()
@@ -478,10 +445,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					node,
 					["a", "b", "c"]
 				);
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function getClass()
@@ -494,10 +458,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					0
 				);
 			}
-			return @LIBRARY_NAME@.is.type(
-				test,
-				"string"
-			);
+			return typeof test === "string";
 		}
 
 		function get()
@@ -600,19 +561,16 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		function getText()
 		{
 			var node = commonElements.traverse_test,
-				text = @LIBRARY_NAME@.traverse.getText(
+				text = @LIBRARY_NAME@.text.get(
 					node
 				);
-			return @LIBRARY_NAME@.is.type(
-				text,
-				"string"
-			);
+			return typeof text === "string";
 		}
 
 		function setText()
 		{
 			var node = commonElements.traverse_test,
-				text = @LIBRARY_NAME@.traverse.setText(
+				text = @LIBRARY_NAME@.text.set(
 					node,
 					"NEW TEXTUAL CONTENT",
 					global.document
@@ -648,10 +606,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					global.document,
 					child
 				);
-			return @LIBRARY_NAME@.is.type(
-				node,
-				"boolean"
-			);
+			return typeof node === "boolean";
 		}
 
 		function ancestors()

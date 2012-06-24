@@ -118,10 +118,7 @@ if (typeof Utils === "object" && Utils) {
 					par.lastChild
 				);
 			}
-			return Utils.is.type(
-				nodes,
-				"undefined"
-			);
+			return typeof nodes === "undefined";
 		}
 
 		function appendChild()
@@ -157,10 +154,7 @@ if (typeof Utils === "object" && Utils) {
 					list
 				);
 			}
-			return Utils.is.type(
-				nodes,
-				"undefined"
-			);
+			return typeof nodes === "undefined";
 		}
 
 		function removeChild()
@@ -350,10 +344,7 @@ if (typeof Utils === "object" && Utils) {
 					"good"
 				);
 			}
-			return Utils.is.type(
-				test,
-				"boolean"
-			);
+			return typeof test === "boolean";
 		}
 
 		function containsList()
@@ -363,10 +354,7 @@ if (typeof Utils === "object" && Utils) {
 					node,
 					["a", "b", "c"]
 				);
-			return Utils.is.type(
-				tokens,
-				"boolean"
-			);
+			return typeof tokens === "boolean";
 		}
 
 		function add()
@@ -379,10 +367,7 @@ if (typeof Utils === "object" && Utils) {
 					"good"
 				);
 			}
-			return Utils.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function addList()
@@ -392,10 +377,7 @@ if (typeof Utils === "object" && Utils) {
 					node,
 					["a", "b", "c"]
 				);
-			return Utils.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function remove()
@@ -408,10 +390,7 @@ if (typeof Utils === "object" && Utils) {
 					"good"
 				);
 			}
-			return Utils.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function removeList()
@@ -421,10 +400,7 @@ if (typeof Utils === "object" && Utils) {
 					node,
 					["a", "b", "c"]
 				);
-			return Utils.is.type(
-				tokens,
-				"undefined"
-			);
+			return typeof tokens === "undefined";
 		}
 
 		function toggle()
@@ -437,10 +413,7 @@ if (typeof Utils === "object" && Utils) {
 					"toggle"
 				);
 			}
-			return Utils.is.type(
-				test,
-				"boolean"
-			);
+			return typeof test === "boolean";
 		}
 
 		function toggleList()
@@ -450,10 +423,7 @@ if (typeof Utils === "object" && Utils) {
 					node,
 					["a", "b", "c"]
 				);
-			return Utils.is.type(
-				test,
-				"undefined"
-			);
+			return typeof test === "undefined";
 		}
 
 		function getClass()
@@ -466,10 +436,7 @@ if (typeof Utils === "object" && Utils) {
 					0
 				);
 			}
-			return Utils.is.type(
-				test,
-				"string"
-			);
+			return typeof test === "string";
 		}
 
 		function get()
@@ -572,19 +539,16 @@ if (typeof Utils === "object" && Utils) {
 		function getText()
 		{
 			var node = commonElements.traverse_test,
-				text = Utils.traverse.getText(
+				text = Utils.text.get(
 					node
 				);
-			return Utils.is.type(
-				text,
-				"string"
-			);
+			return typeof text === "string";
 		}
 
 		function setText()
 		{
 			var node = commonElements.traverse_test,
-				text = Utils.traverse.setText(
+				text = Utils.text.set(
 					node,
 					"NEW TEXTUAL CONTENT",
 					global.document
@@ -620,10 +584,7 @@ if (typeof Utils === "object" && Utils) {
 					global.document,
 					child
 				);
-			return Utils.is.type(
-				node,
-				"boolean"
-			);
+			return typeof node === "boolean";
 		}
 
 		function ancestors()

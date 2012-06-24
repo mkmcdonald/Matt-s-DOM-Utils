@@ -118,10 +118,7 @@ if (typeof Utils === "object" && Utils) {
 				text = Utils.traverse.getText(
 					node
 				);
-			return Utils.is.type(
-				text,
-				"string"
-			);
+			return typeof text === "string";
 		}
 
 		function setText()
@@ -132,10 +129,7 @@ if (typeof Utils === "object" && Utils) {
 					"NEW TEXTUAL CONTENT",
 					global.document
 				);
-			return Utils.is.type(
-				text,
-				"string"
-			);
+			return typeof text === "string";
 		}
 
 		function childrenTree()
@@ -166,10 +160,7 @@ if (typeof Utils === "object" && Utils) {
 					global.document,
 					child
 				);
-			return Utils.is.type(
-				node,
-				"boolean"
-			);
+			return typeof node === "boolean";
 		}
 
 		function ancestors()

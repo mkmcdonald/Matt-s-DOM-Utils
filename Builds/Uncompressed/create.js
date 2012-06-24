@@ -9,11 +9,10 @@ if (typeof Utils === "object" && Utils) {
                 * Various creation method wrappers.
                 *
                 * @dependencies
-                * * Utils.is
+                * * null
                 */
 
-		var isDocument = Utils.is.document,
-			isHostObject = Utils.is.hostObject,
+		var hostTypes,
 
 			doc,
 
@@ -31,23 +30,51 @@ if (typeof Utils === "object" && Utils) {
                /**
                 * @private
                 *
+                * @description
+                * Object containing "normal" types associated with
+                * host objects (exludes "unknown").
+                */
+
+		hostTypes = {
+			"object": true,
+			"function": true
+		};
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a host-like object (by passing
+                * one of two assertions:
+		* a) a `typeof` result of "object" or "function"
+		* along with "truthiness";
+		* b) a `typeof` result of "unknown".
+		*
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isHostObject(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj;
+			return !!(normal || type === "unknown");
+		}
+
+               /**
+                * @private
+                *
                 * @closure
                 *
                 * @description
                 * Variable containing the current document
-                * node-like object or `null`.
+                * node-like object.
                 */
 
-		doc = (function () {
-			var result = null;
-			if (global.document) {
-				if (typeof global.document ===
-					"object") {
-					result = global.document;
-				}
-			}
-			return result;
-		}());
+		doc = global.document;
 
                /**
                 * @private
@@ -73,14 +100,10 @@ if (typeof Utils === "object" && Utils) {
 			tag
 		)
 		{
-			var key = "createElement",
-				result = null;
-			if (isDocument(doc)) {
-				result = doc[key](
-					tag
-				);
-			}
-			return result;
+			var key = "createElement";
+			return doc[key](
+				tag
+			);
 		}
 
                /**
@@ -107,10 +130,8 @@ if (typeof Utils === "object" && Utils) {
 		createElement = (function () {
 			var key = "createElement",
 				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = createElementNode;
-				}
+			if (isHostObject(doc[key])) {
+				result = createElementNode;
 			}
 			return result;
 		}());
@@ -145,15 +166,11 @@ if (typeof Utils === "object" && Utils) {
 			name
 		)
 		{
-			var key = "createElementNS",
-				result = null;
-			if (isDocument(doc)) {
-				result = doc[key](
-					uri,
-					name
-				);
-			}
-			return result;
+			var key = "createElementNS";
+			return doc[key](
+				uri,
+				name
+			);
 		}
 
                /**
@@ -181,10 +198,8 @@ if (typeof Utils === "object" && Utils) {
 		createElementNS = (function () {
 			var key = "createElementNS",
 				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = createElementNodeNS;
-				}
+			if (isHostObject(doc[key])) {
+				result = createElementNodeNS;
 			}
 			return result;
 		}());
@@ -213,14 +228,10 @@ if (typeof Utils === "object" && Utils) {
 			text
 		)
 		{
-			var key = "createTextNode",
-				result = null;
-			if (isDocument(doc)) {
-				result = doc[key](
-					text
-				);
-			}
-			return result;
+			var key = "createTextNode";
+			return doc[key](
+				text
+			);
 		}
 
                /**
@@ -247,10 +258,8 @@ if (typeof Utils === "object" && Utils) {
 		createText = (function () {
 			var key = "createTextNode",
 				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = createTextNode;
-				}
+			if (isHostObject(doc[key])) {
+				result = createTextNode;
 			}
 			return result;
 		}());
@@ -284,15 +293,11 @@ if (typeof Utils === "object" && Utils) {
 			text
 		)
 		{
-			var key = "createProcessingInstruction",
-				result = null;
-			if (isDocument(doc)) {
-				result = doc[key](
-					target,
-					text
-				);
-			}
-			return result;
+			var key = "createProcessingInstruction";
+			return doc[key](
+				target,
+				text
+			);
 		}
 
                /**
@@ -323,10 +328,8 @@ if (typeof Utils === "object" && Utils) {
 		createProcessingInstruction = (function () {
 			var key = "createProcessingInstruction",
 				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = createPINode;
-				}
+			if (isHostObject(doc[key])) {
+				result = createPINode;
 			}
 			return result;
 		}());
@@ -355,14 +358,10 @@ if (typeof Utils === "object" && Utils) {
 			text
 		)
 		{
-			var key = "createComment",
-				result = null;
-			if (isDocument(doc)) {
-				result = doc[key](
-					text
-				);
-			}
-			return result;
+			var key = "createComment";
+			return doc[key](
+				text
+			);
 		}
 
                /**
@@ -389,10 +388,8 @@ if (typeof Utils === "object" && Utils) {
 		createComment = (function () {
 			var key = "createComment",
 				result = null;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = createCommentNode;
-				}
+			if (isHostObject(doc[key])) {
+				result = createCommentNode;
 			}
 			return result;
 		}());
@@ -410,10 +407,8 @@ if (typeof Utils === "object" && Utils) {
 		canUseDocFrag = (function () {
 			var key = "createDocumentFragment",
 				result = false;
-			if (isDocument(doc)) {
-				if (isHostObject(doc[key])) {
-					result = true;
-				}
+			if (isHostObject(doc[key])) {
+				result = true;
 			}
 			return result;
 		}());
@@ -460,12 +455,8 @@ if (typeof Utils === "object" && Utils) {
 			doc
 		)
 		{
-			var key = "createDocumentFragment",
-				result = null;
-			if (isDocument(doc)) {
-				result = doc[key]();
-			}
-			return result;
+			var key = "createDocumentFragment";
+			return doc[key]();
 		}
 
                /**

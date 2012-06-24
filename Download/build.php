@@ -6,18 +6,13 @@
 		define("COMPRESSED", BUILDS . "/Compressed");
 
 		$core = array(
-			"license" => array(
-				"full" => UNCOMPRESSED . "/license.js",
-				"min" => UNCOMPRESSED . "/license.js"
-			),
-			"utils" => array(
-				"full" => UNCOMPRESSED . "/utils.js",
-				"min" => COMPRESSED . "/utils-min.js"
-			),
-			"metadata" => array(
-				"full" => UNCOMPRESSED . "/metadata.js",
-				"min" => COMPRESSED . "/metadata-min.js"
-			),
+			"head" => array(
+				"full" => UNCOMPRESSED . "/utils-head.js",
+				"min" => COMPRESSED . "/utils-head-min.js"
+			)
+		);
+
+		$optional = array(
 			"raise" => array(
 				"full" => UNCOMPRESSED . "/raise.js",
 				"min" => COMPRESSED . "/raise-min.js"
@@ -30,10 +25,6 @@
 				"full" => UNCOMPRESSED . "/is.js",
 				"min" => COMPRESSED . "/is-min.js"
 			),
-			"helpers" => array(
-				"full" => UNCOMPRESSED . "/helpers.js",
-				"min" => COMPRESSED . "/helpers-min.js"
-			),
 			"node" => array(
 				"full" => UNCOMPRESSED . "/node.js",
 				"min" => COMPRESSED . "/node-min.js"
@@ -41,10 +32,7 @@
 			"create" => array(
 				"full" => UNCOMPRESSED . "/create.js",
 				"min" => COMPRESSED . "/create-min.js"
-			)
-		);
-
-		$optional = array(
+			),
 			"classes" => array(
 				"full" => UNCOMPRESSED . "/classes.js",
 				"min" => COMPRESSED . "/classes-min.js"
@@ -52,6 +40,10 @@
 			"traverse" => array(
 				"full" => UNCOMPRESSED . "/traverse.js",
 				"min" => COMPRESSED . "/traverse-min.js"
+			),
+			"text" => array(
+				"full" => UNCOMPRESSED . "/text.js",
+				"min" => COMPRESSED . "/text-min.js"
 			),
 			"select" => array(
 				"full" => UNCOMPRESSED . "/select.js",
@@ -215,7 +207,6 @@
 			sendTypeHeader();
 			sendLengthHeader($build);
 			sendDispositionHeader();
-			ob_start("ob_gzhandler");
 			echo $build;
 		}
 

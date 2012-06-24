@@ -13,29 +13,42 @@
 		</div>
 		<form action="build.php" class="primary_row row" method="get">
 			<fieldset class="build_set cell primary_cell">
-				<legend>Core Modules (required)</legend>
-				<ul class="file_list">
-					<li>
-						<input checked id="core_file"
-							disabled
-							name="core_file"
-							type="checkbox"
-							value="core">
-						<label for="core_file">Core</label>
-						<ul class="module_list">
-							<li>@LIBRARY_NAME@.raise</li>
-							<li>@LIBRARY_NAME@.types</li>
-							<li>@LIBRARY_NAME@.helpers</li>
-							<li>@LIBRARY_NAME@.is</li>
-							<li>@LIBRARY_NAME@.node</li>
-							<li>@LIBRARY_NAME@.create</li>
-						</ul>
-					</li>
-					
-				</ul>
-			</fieldset>
-			<fieldset class="build_set cell primary_cell">
 				<legend>Optional Modules</legend>
+				<p>
+					<input id="raise_file" name="raise_file"
+						type="checkbox" value="raise">
+					<label for="raise_file">
+						@LIBRARY_NAME@.raise
+					</label>
+				</p>
+				<p>
+					<input id="types_file" name="types_file"
+						type="checkbox" value="types">
+					<label for="types_file">
+						@LIBRARY_NAME@.types
+					</label>
+				</p>
+				<p>
+					<input id="is_file" name="is_file"
+						type="checkbox" value="is">
+					<label for="is_file">
+						@LIBRARY_NAME@.is
+					</label>
+				</p>
+				<p>
+					<input id="node_file" name="node_file"
+						type="checkbox" value="node">
+					<label for="node_file">
+						@LIBRARY_NAME@.node
+					</label>
+				</p>
+				<p>
+					<input id="create_file" name="create_file"
+						type="checkbox" value="create">
+					<label for="create_file">
+						@LIBRARY_NAME@.create
+					</label>
+				</p>
 				<p>
 					<input id="classes_file" name="classes_file"
 						type="checkbox" value="classes">
@@ -48,6 +61,13 @@
 						type="checkbox" value="traverse">
 					<label for="traverse_file">
 						@LIBRARY_NAME@.traverse
+					</label>
+				</p>
+				<p>
+					<input id="text_file" name="text_file"
+						type="checkbox" value="text">
+					<label for="text_file">
+						@LIBRARY_NAME@.text
 					</label>
 				</p>
 				<p>

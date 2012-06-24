@@ -9,15 +9,46 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
                 * Various DOM node method wrappers.
                 *
                 * @dependencies
-                * * @LIBRARY_NAME@.is
+                * * null
                 */
 
-		var nodeTypes = @LIBRARY_NAME@.types,
-			isNodeLike = @LIBRARY_NAME@.is.nodeLike,
-			isHostObject = @LIBRARY_NAME@.is.hostObject,
-			isArrayLike = @LIBRARY_NAME@.is.arrayLike,
+		var nodeTypes, 
+			valueSetters,
+			hostTypes;
 
-			valueSetters;
+               /**
+                * @private
+                *
+                * @description
+                * Object of documented `nodeType`s.
+                *
+                * @see DOM 4 Spec 5.3 (Node, nodeType).
+                */
+
+		nodeTypes = {
+			"ELEMENT_NODE": 1,
+			"ATTRIBUTE_NODE": 2,
+			"TEXT_NODE": 3,
+			"CDATA_SECTION_NODE": 4,
+			"ENTITY_REFERENCE_NODE": 5,
+			"ENTITY_NODE": 6,
+			"PROCRESSING_INSTRUCTION_NODE": 7,
+			"COMMENT_NODE": 8,
+			"DOCUMENT_NODE": 9,
+			"DOCUMENT_TYPE_NODE": 10,
+			"DOCUMENT_FRAGMENT_NODE": 11,
+			"NOTATION_NODE": 12
+		};
+
+               /**
+                * @private
+                *
+                * @description
+                * Object of `nodeTypes` that can set the 
+                * `nodeValue` property.
+                *
+                * @see DOM 4 Spec 5.3 (Node, nodeValue).
+                */
 
 		valueSetters = (function () {
 			var result = {};
@@ -27,6 +58,93 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			result[nodeTypes.COMMENT_NODE] = true;
 			return result;
 		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Object containing "normal" types associated with
+                * host objects (exludes "unknown").
+                */
+
+		hostTypes = {
+			"object": true,
+			"function": true
+		};
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is array-like.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isArrayLike(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
+				result = false;
+			if (normal || type === "unknown") {
+				result = typeof obj.length ===
+					"number";
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is node-like.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isNodeLike(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
+				result = false;
+			if (normal || type === "unknown") {
+				result = typeof obj.nodeType ===
+					"number";
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a host-like object (by passing
+                * one of two assertions:
+		* a) a `typeof` result of "object" or "function"
+		* along with "truthiness";
+		* b) a `typeof` result of "unknown".
+		*
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isHostObject(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj;
+			return !!(normal || type === "unknown");
+		}
 
                /**
                 * @public `@LIBRARY_NAME@.node.prepend`.
@@ -191,7 +309,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
                 * @public `@LIBRARY_NAME@.node.remove`.
                 *
                 * @description
-                * Wrapper method for `appendChild`; returns the
+                * Wrapper method for `removeChild`; returns the
                 * wrapped method's result or `null` if not
                 * applicable.
                 *

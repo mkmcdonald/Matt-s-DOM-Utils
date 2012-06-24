@@ -9,11 +9,11 @@ if (typeof Utils === "object" && Utils) {
                 * Various identity tests.
                 *
                 * @dependencies
-                * * Utils.types
+                * * null
                 */
 
-		var nodeTypes = Utils.types,
-			hostTypes,
+		var hostTypes,
+			nodeTypes,
 
 			doc,
 
@@ -31,51 +31,6 @@ if (typeof Utils === "object" && Utils) {
 			"object": true,
 			"function": true
 		};
-
-               /**
-                * @private
-                *
-                * @closure
-                *
-                * @description
-                * Object containing the current document
-                * node-like object or `null`.
-                */
-
-		doc = (function () {
-			var result = null;
-			if (global.document) {
-				if (typeof global.document ===
-					"object") {
-					result = global.document;
-				}
-			}
-			return result;
-		}());
-
-               /**
-                * @public `Utils.is.type`.
-                *
-                * @description
-                * Method that returns a boolean asserting
-                * if the specified value returns a specific
-                * string from a `typeof` check.
-                *
-                * @param val *
-                * A value to use for a `typeof` check.
-                *
-                * @param type String
-                * A string to assert for equality against the
-                * `typeof` check.
-                */
-
-		function isType(
-			val,
-			type
-		)
-		{
-			return typeof val === type;
-		}
 
                /**
                 * @public `Utils.is.hostObject`.
@@ -180,6 +135,30 @@ if (typeof Utils === "object" && Utils) {
 			}
 			return result;
 		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Object of documented `nodeType`s.
+                *
+                * @see DOM 4 Spec 5.3 (Node, nodeType).
+                */
+
+		nodeTypes = {
+			"ELEMENT_NODE": 1,
+			"ATTRIBUTE_NODE": 2,
+			"TEXT_NODE": 3,
+			"CDATA_SECTION_NODE": 4,
+			"ENTITY_REFERENCE_NODE": 5,
+			"ENTITY_NODE": 6,
+			"PROCRESSING_INSTRUCTION_NODE": 7,
+			"COMMENT_NODE": 8,
+			"DOCUMENT_NODE": 9,
+			"DOCUMENT_TYPE_NODE": 10,
+			"DOCUMENT_FRAGMENT_NODE": 11,
+			"NOTATION_NODE": 12
+		};
 
                /**
                 * @public `Utils.is.element`.
@@ -387,6 +366,18 @@ if (typeof Utils === "object" && Utils) {
                /**
                 * @private
                 *
+                * @closure
+                *
+                * @description
+                * Object containing the current document
+                * node-like object or `null`.
+                */
+
+		doc = global.document;
+
+               /**
+                * @private
+                *
                 * @description
                 * Method that returns a boolean asserting if the
                 * specified object is the current document.
@@ -499,8 +490,6 @@ if (typeof Utils === "object" && Utils) {
 		doc = null;
 
 		Utils.is = Utils.is || {
-			"type": isType,
-
 			"hostObject": isHostObject,
 
 			"arrayLike": isArrayLike,

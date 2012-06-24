@@ -118,10 +118,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 				text = @LIBRARY_NAME@.traverse.getText(
 					node
 				);
-			return @LIBRARY_NAME@.is.type(
-				text,
-				"string"
-			);
+			return typeof text === "string";
 		}
 
 		function setText()
@@ -132,10 +129,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					"NEW TEXTUAL CONTENT",
 					global.document
 				);
-			return @LIBRARY_NAME@.is.type(
-				text,
-				"string"
-			);
+			return typeof text === "string";
 		}
 
 		function childrenTree()
@@ -166,10 +160,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 					global.document,
 					child
 				);
-			return @LIBRARY_NAME@.is.type(
-				node,
-				"boolean"
-			);
+			return typeof node === "boolean";
 		}
 
 		function ancestors()

@@ -13,22 +13,16 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
                 * @see DOM 4 Spec section 9.2 (DOMTokenList).
                 *
                 * @dependencies
-                * * @LIBRARY_NAME@.raise
-                * * @LIBRARY_NAME@.is
-                * * @LIBRARY_NAME@.helpers
+                * * null
                 */
 
 		var invalidChars,
-			isDocument = @LIBRARY_NAME@.is.document,
-			isElement = @LIBRARY_NAME@.is.element,
-			isHostObject = @LIBRARY_NAME@.is.hostObject,
-			raiseInvalid = @LIBRARY_NAME@.raise.invalidCharacter,
-			raiseSyntax = @LIBRARY_NAME@.raise.syntax,
-			isArrayLike = @LIBRARY_NAME@.is.arrayLike,
-			makeArray = @LIBRARY_NAME@.helpers.makeArray,
 
 			doc,
 			body,
+
+			hostTypes,
+			nodeTypes,
 
 			canGetClassName,
 			canUseClassList,
@@ -65,20 +59,12 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
                /**
                 * @private
                 *
-                * @closure
-                *
                 * @description
                 * Variable containing the current document
-                * node-like object or `null`.
+                * node-like object.
                 */
 
-		doc = (function () {
-			var result = null;
-			if (isDocument(global.document)) {
-				result = global.document;
-			}
-			return result;
-		}());
+		doc = global.document;
 
                /**
                 * @private
@@ -101,6 +87,95 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
                /**
                 * @private
                 *
+                * @description
+                * Object containing "normal" types associated with
+                * host objects (exludes "unknown").
+                */
+
+		hostTypes = {
+			"object": true,
+			"function": true
+		};
+
+               /**
+                * @private
+                *
+                * @description
+                * Object of documented `nodeType`s.
+                *
+                * @see DOM 4 Spec 5.3 (Node, nodeType).
+                */
+
+		nodeTypes = {
+			"ELEMENT_NODE": 1,
+			"ATTRIBUTE_NODE": 2,
+			"TEXT_NODE": 3,
+			"CDATA_SECTION_NODE": 4,
+			"ENTITY_REFERENCE_NODE": 5,
+			"ENTITY_NODE": 6,
+			"PROCRESSING_INSTRUCTION_NODE": 7,
+			"COMMENT_NODE": 8,
+			"DOCUMENT_NODE": 9,
+			"DOCUMENT_TYPE_NODE": 10,
+			"DOCUMENT_FRAGMENT_NODE": 11,
+			"NOTATION_NODE": 12
+		};
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object has a certain value for the
+                * `nodeType` property.
+                *
+                * @param obj Object
+                * An object which will have its `nodeType`
+                * property checked.
+                *
+                * @param num Number
+                * A number to assert.
+                */
+
+		function isNodeType(
+			obj,
+			num
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
+				result = false;
+			if (normal || type === "unknown") {
+				result = obj.nodeType === num;
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is an element node-like object.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isElement(
+			obj
+		)
+		{
+			var type = nodeTypes.ELEMENT_NODE;
+			return isNodeType(
+				obj,
+				type
+			);
+		}
+
+               /**
+                * @private
+                *
                 * @closure
                 *
                 * @description
@@ -116,6 +191,30 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			}
 			return result;
 		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a host-like object (by passing
+                * one of two assertions:
+		* a) a `typeof` result of "object" or "function"
+		* along with "truthiness";
+		* b) a `typeof` result of "unknown".
+		*
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isHostObject(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj;
+			return !!(normal || type === "unknown");
+		}
 
                /**
                 * @private
@@ -205,6 +304,40 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
                 * @private
                 *
                 * @description
+                * Throws an error describing invalid characters.
+                *
+                * @throws Error
+                */
+
+		function raiseInvalid()
+		{
+			throw new Error(
+				"The string contains invalid " +
+					"characters."
+			);
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Throws an error describing improper syntax.
+                *
+                * @throws Error
+                */
+
+		function raiseSyntax()
+		{
+			throw new Error(
+				"The string did not match " +
+					"the expected pattern."
+			);
+		}
+
+               /**
+                * @private
+                *
+                * @description
                 * Helper method that returns a boolean asserting if
                 * the character passed is "valid" for use within a
                 * class "token"; throws an error if the character is
@@ -213,7 +346,8 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
                 * @param chr String
                 * A string containing the character to assert.
                 *
-                * @throws `@LIBRARY_NAME@.raise.types.invalidCharacter`;
+                * @see `raiseInvalid`
+                * @see `raiseSyntax`
                 */
 
 		function checkCharacter(
@@ -291,7 +425,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			var validChar = false,
 				result = "";
 			if (chr && chr !== " ") {
-				validChar = checkCharacter(chr);
+				validChar = checkCharacter(
+					chr
+				);
 			}
 			if (!validChar && sequence.length) {
 				tokens[tokens.length] = sequence;
@@ -558,6 +694,31 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		}
 
                /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is array-like.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isArrayLike(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
+				result = false;
+			if (normal || type === "unknown") {
+				result = typeof obj.length ===
+					"number";
+			}
+			return result;
+		}
+
+               /**
                 * @public `@LIBRARY_NAME@.classes.containsList`.
                 *
                 * @description
@@ -713,7 +874,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		{
 			var result;
 			if (canGetClassName) {
-				obj.className = list.join(" ");
+				obj.className = list.join(
+					" "
+				);
 			}
 			return result;
 		}
@@ -1511,6 +1674,36 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			}
 			return result;
 		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns an array produced from an
+                * iterable object.
+                *
+                * @param obj Object
+                * An object to iterate.
+                */
+
+		function makeArray(
+			obj
+		)
+		{
+			var max,
+				aux,
+				diff,
+				result = [];
+			if (isArrayLike(obj)) {
+				result.length = obj.length;
+				max = obj.length - 1;
+				for (aux = max; aux > -1; aux -= 1) {
+					diff = max - aux;
+					result[diff] = obj[diff];
+				}
+			}
+			return result;
+		}
 
                /**
                 * @private

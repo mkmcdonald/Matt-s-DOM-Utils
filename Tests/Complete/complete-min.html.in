@@ -290,22 +290,6 @@
 						<input disabled
 							name="result_32"
 							type="text">
-						<code>@LIBRARY_NAME@.traverse.getText</code> returns a string.
-					</label>
-				</p>
-				<p>
-					<label>
-						<input disabled
-							name="result_33"
-							type="text">
-						<code>@LIBRARY_NAME@.traverse.setText</code> returns a string.
-					</label>
-				</p>
-				<p>
-					<label>
-						<input disabled
-							name="result_34"
-							type="text">
 						<code>@LIBRARY_NAME@.traverse.getElementTree</code> returns an
 							array-like object.
 					</label>
@@ -313,7 +297,7 @@
 				<p>
 					<label>
 						<input disabled
-							name="result_35"
+							name="result_33"
 							type="text">
 						<code>@LIBRARY_NAME@.traverse.elementTree</code> returns an
 							array-like object.
@@ -322,7 +306,7 @@
 				<p>
 					<label>
 						<input disabled
-							name="result_36"
+							name="result_34"
 							type="text">
 						<code>@LIBRARY_NAME@.traverse.isAncestor</code> returns a boolean.
 					</label>
@@ -330,7 +314,7 @@
 				<p>
 					<label>
 						<input disabled
-							name="result_37"
+							name="result_35"
 							type="text">
 						<code>@LIBRARY_NAME@.traverse.getAncestors</code> returns a
 							linked list-like object.
@@ -339,10 +323,26 @@
 				<p>
 					<label>
 						<input disabled
-							name="result_38"
+							name="result_36"
 							type="text">
 						<code>@LIBRARY_NAME@.traverse.ancestors</code> returns an
 							array-like object.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_37"
+							type="text">
+						<code>@LIBRARY_NAME@.text.get</code> returns a string.
+					</label>
+				</p>
+				<p>
+					<label>
+						<input disabled
+							name="result_38"
+							type="text">
+						<code>@LIBRARY_NAME@.text.set</code> returns a string.
 					</label>
 				</p>
 				<p>

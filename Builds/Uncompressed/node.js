@@ -9,15 +9,46 @@ if (typeof Utils === "object" && Utils) {
                 * Various DOM node method wrappers.
                 *
                 * @dependencies
-                * * Utils.is
+                * * null
                 */
 
-		var nodeTypes = Utils.types,
-			isNodeLike = Utils.is.nodeLike,
-			isHostObject = Utils.is.hostObject,
-			isArrayLike = Utils.is.arrayLike,
+		var nodeTypes, 
+			valueSetters,
+			hostTypes;
 
-			valueSetters;
+               /**
+                * @private
+                *
+                * @description
+                * Object of documented `nodeType`s.
+                *
+                * @see DOM 4 Spec 5.3 (Node, nodeType).
+                */
+
+		nodeTypes = {
+			"ELEMENT_NODE": 1,
+			"ATTRIBUTE_NODE": 2,
+			"TEXT_NODE": 3,
+			"CDATA_SECTION_NODE": 4,
+			"ENTITY_REFERENCE_NODE": 5,
+			"ENTITY_NODE": 6,
+			"PROCRESSING_INSTRUCTION_NODE": 7,
+			"COMMENT_NODE": 8,
+			"DOCUMENT_NODE": 9,
+			"DOCUMENT_TYPE_NODE": 10,
+			"DOCUMENT_FRAGMENT_NODE": 11,
+			"NOTATION_NODE": 12
+		};
+
+               /**
+                * @private
+                *
+                * @description
+                * Object of `nodeTypes` that can set the 
+                * `nodeValue` property.
+                *
+                * @see DOM 4 Spec 5.3 (Node, nodeValue).
+                */
 
 		valueSetters = (function () {
 			var result = {};
@@ -27,6 +58,93 @@ if (typeof Utils === "object" && Utils) {
 			result[nodeTypes.COMMENT_NODE] = true;
 			return result;
 		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Object containing "normal" types associated with
+                * host objects (exludes "unknown").
+                */
+
+		hostTypes = {
+			"object": true,
+			"function": true
+		};
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is array-like.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isArrayLike(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
+				result = false;
+			if (normal || type === "unknown") {
+				result = typeof obj.length ===
+					"number";
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is node-like.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isNodeLike(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj,
+				result = false;
+			if (normal || type === "unknown") {
+				result = typeof obj.nodeType ===
+					"number";
+			}
+			return result;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is a host-like object (by passing
+                * one of two assertions:
+		* a) a `typeof` result of "object" or "function"
+		* along with "truthiness";
+		* b) a `typeof` result of "unknown".
+		*
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isHostObject(
+			obj
+		)
+		{
+			var type = typeof obj,
+				normal = hostTypes[type] && obj;
+			return !!(normal || type === "unknown");
+		}
 
                /**
                 * @public `Utils.node.prepend`.
@@ -191,7 +309,7 @@ if (typeof Utils === "object" && Utils) {
                 * @public `Utils.node.remove`.
                 *
                 * @description
-                * Wrapper method for `appendChild`; returns the
+                * Wrapper method for `removeChild`; returns the
                 * wrapped method's result or `null` if not
                 * applicable.
                 *

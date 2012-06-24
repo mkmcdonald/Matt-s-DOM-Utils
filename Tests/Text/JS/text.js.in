@@ -17,7 +17,6 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			var key = "getElementById",
 				obj = {};
 			obj.test = doc[key]("test");
-			obj.test_text = doc[key]("test_text");
 			obj.start = doc[key]("start");
 			obj.stop = doc[key]("stop");
 			obj.results = doc[key]("results");
@@ -28,243 +27,32 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		doc = null;
 
-		function prepend(node)
-		{
-			var par = commonElements.test;
-			if (par && node) {
-				node =  @LIBRARY_NAME@.node.prepend(
-					par,
-					node,
-					par.lastChild
-				);
-			}
-			return node;
-		}
-
-		function makeElement(
-			doc,
-			tag
-		)
-		{
-			var result = null;
-			if (@LIBRARY_NAME@.create.element) {
-				result = @LIBRARY_NAME@.create.element(
-					doc,
-					tag
-				);
-			}
-			return result;
-		}
-
-		function insertBefore()
-		{
-			var node;
-			if (@LIBRARY_NAME@.create.element) {
-				node = makeElement(
-					global.document,
-					"li"
-				);
-			}
-			if (node) {
-				node = prepend(node);
-			}
-			return @LIBRARY_NAME@.is.nodeLike(
-				node
-			);
-		}
-
-		function generateList(
-			num
-		)
-		{
-			var index = num - 1,
-				node,
-				list = [];
-			while (index > -1) {
-				node = makeElement(
-					global.document,
-					"li"
-				);
-				if (node) {
-					list[index] = node;
-				}
-				index -= 1;
-			}
-			return list;
-		}
-
-		function generatePrependList()
-		{
-			return generateList(3);
-		}
-
-		function insertList()
-		{
-			var list = generatePrependList(),
-				par = commonElements.test,
-				nodes;
-			if (par && list && list.length) {
-				nodes = @LIBRARY_NAME@.node.prependList(
-					par,
-					list,
-					par.lastChild
-				);
-			}
-			return typeof nodes === "undefined";
-		}
-
-		function appendChild()
-		{
-			var node = makeElement(
-				global.document,
-				"li"
-			);
-			node = @LIBRARY_NAME@.node.append(
-				commonElements.test,
-				node
-			);
-			return @LIBRARY_NAME@.is.nodeLike(
-				node
-			);
-		}
-
-		function generateAppendList()
-		{
-			return generateList(3);
-		}
-
-		function appendList()
-		{
-			var list = generateAppendList(),
-				nodes,
-				par = commonElements.test;
-			if (list && list.length) {
-				nodes = @LIBRARY_NAME@.node.appendList(
-					par,
-					list
-				);
-			}
-			return typeof nodes === "undefined";
-		}
-
-		function removeChild()
-		{
-			var par = commonElements.test,
-				node;
-			if (par) {
-				node = @LIBRARY_NAME@.node.remove(
-					par,
-					par.lastChild
-				);
-			}
-			return @LIBRARY_NAME@.is.nodeLike(
-				node
-			);
-		}
-
-		function replace(node)
-		{
-			var par = commonElements.test;
-			if (par) {
-				node =  @LIBRARY_NAME@.node.replace(
-					par,
-					node,
-					par.lastChild
-				);
-			}
-			return node;
-		}
-
-		function makeText(
-			doc,
-			text
-		)
-		{
-			var result = null;
-			if (@LIBRARY_NAME@.create.text) {
-				result = @LIBRARY_NAME@.create.text(
-					doc,
-					text
-				);
-			}
-			return result;
-		}
-
-		function replaceChild()
-		{
-			var node = makeText(
-				global.document,
-				"c = b^x; x = log(c) / log(b)"
-			);
-			if (node) {
-				node = replace(node);
-			}
-			return @LIBRARY_NAME@.is.nodeLike(
-				node
-			);
-		}
-
-		function cloneNode()
-		{
-			var node = @LIBRARY_NAME@.node.clone(
-				commonElements.test,
-				true
-			);
-			return @LIBRARY_NAME@.is.nodeLike(
-				node
-			);
-		}
-
-		function getName()
+		function getText()
 		{
 			var node = commonElements.test,
-				test;
-			if (node) {
-				test = @LIBRARY_NAME@.node.getName(
+				text = @LIBRARY_NAME@.text.get(
+					node
+				);
+			return typeof text === "string";
+		}
+
+		function setText()
+		{
+			var node = commonElements.test,
+				text = @LIBRARY_NAME@.text.set(
 					node,
-					true
+					"NEW TEXTUAL CONTENT",
+					global.document
 				);
-			}
-			return test === "ul";
+			return typeof text === "string";
 		}
 
-		function getValue()
-		{
-			var node = commonElements.test_text,
-				test;
-			if (node.firstChild) {
-				test = @LIBRARY_NAME@.node.getValue(
-					node.firstChild
-				);
-			}
-			return test === "test";
-		}
-
-		function setValue()
-		{
-			var node = commonElements.test_text,
-				test;
-			if (node.firstChild) {
-				test = @LIBRARY_NAME@.node.setValue(
-					node.firstChild,
-					"testing; 1, 2, 3"
-				);
-			}
-			return test === "testing; 1, 2, 3";
-		}
-
-		tests = [
-			insertBefore,
-			insertList,
-			appendChild,
-			appendList,
-			removeChild,
-			replaceChild,
-			cloneNode,
-			getName,
-			getValue,
-			setValue
-		];
+		tests = (function () {
+			return [
+				getText,
+				setText,
+			];
+		}());
 
 		function resetTestData()
 		{

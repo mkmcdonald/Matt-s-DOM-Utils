@@ -1679,7 +1679,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
-ac_config_files="$ac_config_files "Library/license.js" "Library/utils.js" "Library/metadata.js" "Library/raise.js" "Library/types.js" "Library/is.js" "Library/helpers.js" "Library/node.js" "Library/create.js" "Library/classes.js" "Library/traverse.js" "Library/select.js" "index.html" "Demos/index.html" "Demos/classes.html" "Demos/select.html" "Demos/JS/classes.js" "Demos/JS/select.js" "Download/index.html" "Docs/index.html" "Docs/raise.html" "Docs/types.html" "Docs/helpers.html" "Docs/is.html" "Docs/node.html" "Docs/create.html" "Docs/classes.html" "Docs/traverse.html" "Docs/select.html" "Docs/glossary.html" "Docs/HOWTO/index.html" "Docs/HOWTO/degradation.html" "Docs/HOWTO/implementation.html" "Docs/HOWTO/customisation.html" "Tests/index.html" "Tests/Node/node.html" "Tests/Node/JS/node.js" "Tests/Create/create.html" "Tests/Create/JS/create.js" "Tests/Classes/classes.html" "Tests/Classes/JS/classes.js" "Tests/HOWTO/JS/slideshow.js" "Tests/Traverse/traverse.html" "Tests/Traverse/JS/traverse.js" "Tests/Select/select.html" "Tests/Select/JS/select.js" "Tests/Complete/complete.html" "Tests/Complete/JS/complete.js" "Tests/Complete/complete-min.html" "Tests/Complete/JS/complete-min.js" "about.html" "README.md""
+ac_config_files="$ac_config_files "Library/license.js" "Library/utils.js" "Library/metadata.js" "Library/raise.js" "Library/types.js" "Library/is.js" "Library/node.js" "Library/create.js" "Library/classes.js" "Library/traverse.js" "Library/text.js" "Library/select.js" "index.html" "Demos/index.html" "Demos/classes.html" "Demos/select.html" "Demos/JS/classes.js" "Demos/JS/select.js" "Download/index.html" "Docs/index.html" "Docs/raise.html" "Docs/types.html" "Docs/is.html" "Docs/node.html" "Docs/create.html" "Docs/classes.html" "Docs/traverse.html" "Docs/text.html" "Docs/select.html" "Docs/glossary.html" "Docs/HOWTO/index.html" "Docs/HOWTO/degradation.html" "Docs/HOWTO/implementation.html" "Docs/HOWTO/customisation.html" "Tests/index.html" "Tests/Node/node.html" "Tests/Node/JS/node.js" "Tests/Create/create.html" "Tests/Create/JS/create.js" "Tests/Classes/classes.html" "Tests/Classes/JS/classes.js" "Tests/HOWTO/JS/slideshow.js" "Tests/Traverse/traverse.html" "Tests/Traverse/JS/traverse.js" "Tests/Text/text.html" "Tests/Text/JS/text.js" "Tests/Select/select.html" "Tests/Select/JS/select.js" "Tests/Complete/complete.html" "Tests/Complete/JS/complete.js" "Tests/Complete/complete-min.html" "Tests/Complete/JS/complete-min.js" "about.html" "README.md""
 
 
 # your library name here
@@ -2511,11 +2511,11 @@ do
     ""Library/raise.js"") CONFIG_FILES="$CONFIG_FILES "Library/raise.js"" ;;
     ""Library/types.js"") CONFIG_FILES="$CONFIG_FILES "Library/types.js"" ;;
     ""Library/is.js"") CONFIG_FILES="$CONFIG_FILES "Library/is.js"" ;;
-    ""Library/helpers.js"") CONFIG_FILES="$CONFIG_FILES "Library/helpers.js"" ;;
     ""Library/node.js"") CONFIG_FILES="$CONFIG_FILES "Library/node.js"" ;;
     ""Library/create.js"") CONFIG_FILES="$CONFIG_FILES "Library/create.js"" ;;
     ""Library/classes.js"") CONFIG_FILES="$CONFIG_FILES "Library/classes.js"" ;;
     ""Library/traverse.js"") CONFIG_FILES="$CONFIG_FILES "Library/traverse.js"" ;;
+    ""Library/text.js"") CONFIG_FILES="$CONFIG_FILES "Library/text.js"" ;;
     ""Library/select.js"") CONFIG_FILES="$CONFIG_FILES "Library/select.js"" ;;
     ""index.html"") CONFIG_FILES="$CONFIG_FILES "index.html"" ;;
     ""Demos/index.html"") CONFIG_FILES="$CONFIG_FILES "Demos/index.html"" ;;
@@ -2527,12 +2527,12 @@ do
     ""Docs/index.html"") CONFIG_FILES="$CONFIG_FILES "Docs/index.html"" ;;
     ""Docs/raise.html"") CONFIG_FILES="$CONFIG_FILES "Docs/raise.html"" ;;
     ""Docs/types.html"") CONFIG_FILES="$CONFIG_FILES "Docs/types.html"" ;;
-    ""Docs/helpers.html"") CONFIG_FILES="$CONFIG_FILES "Docs/helpers.html"" ;;
     ""Docs/is.html"") CONFIG_FILES="$CONFIG_FILES "Docs/is.html"" ;;
     ""Docs/node.html"") CONFIG_FILES="$CONFIG_FILES "Docs/node.html"" ;;
     ""Docs/create.html"") CONFIG_FILES="$CONFIG_FILES "Docs/create.html"" ;;
     ""Docs/classes.html"") CONFIG_FILES="$CONFIG_FILES "Docs/classes.html"" ;;
     ""Docs/traverse.html"") CONFIG_FILES="$CONFIG_FILES "Docs/traverse.html"" ;;
+    ""Docs/text.html"") CONFIG_FILES="$CONFIG_FILES "Docs/text.html"" ;;
     ""Docs/select.html"") CONFIG_FILES="$CONFIG_FILES "Docs/select.html"" ;;
     ""Docs/glossary.html"") CONFIG_FILES="$CONFIG_FILES "Docs/glossary.html"" ;;
     ""Docs/HOWTO/index.html"") CONFIG_FILES="$CONFIG_FILES "Docs/HOWTO/index.html"" ;;
@@ -2549,6 +2549,8 @@ do
     ""Tests/HOWTO/JS/slideshow.js"") CONFIG_FILES="$CONFIG_FILES "Tests/HOWTO/JS/slideshow.js"" ;;
     ""Tests/Traverse/traverse.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Traverse/traverse.html"" ;;
     ""Tests/Traverse/JS/traverse.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Traverse/JS/traverse.js"" ;;
+    ""Tests/Text/text.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Text/text.html"" ;;
+    ""Tests/Text/JS/text.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Text/JS/text.js"" ;;
     ""Tests/Select/select.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Select/select.html"" ;;
     ""Tests/Select/JS/select.js"") CONFIG_FILES="$CONFIG_FILES "Tests/Select/JS/select.js"" ;;
     ""Tests/Complete/complete.html"") CONFIG_FILES="$CONFIG_FILES "Tests/Complete/complete.html"" ;;
