@@ -63,20 +63,26 @@
 							title="Makefile">Makefile</a>
 						<ol>
 							<li>
-								<a href="#core_build"
-									title="Core Build">Core Build</a>
-							</li>
-							<li>
-								<a href="#independent_core_build"
-									title="Independent Core Build">Independent Core Build</a>
-							</li>
-							<li>
 								<a href="#complete_build"
 									title="Complete Build">Complete Build</a>
 							</li>
 							<li>
 								<a href="#minification"
 									title="Minification">Minification</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#building"
+							title="Build Creation">Building</a>
+						<ol>
+							<li>
+								<a href="#command_line_builder"
+									title="Bash Builder">Command-line Builder</a>
+							</li>
+							<li>
+								<a href="#server_side_builder"
+									title="PHP Builder">Server-side Builder</a>
 							</li>
 						</ol>
 					</li>
@@ -161,51 +167,6 @@
 					&ldquo;core&rdquo;). Finally, a build with every module is
 					provided. Each of these categories are listed below.
 				</p>
-				<div id="core_build">
-					<h4 class="heading">
-						<a href="#core_build"
-							title="Core Build">Core Build</a>
-					</h4>
-					<p>
-						In the &ldquo;core&rdquo; build, every
-						defined &ldquo;core&rdquo; module is concatenated
-						in order. The build is then formed into a file<a href="#footnote_2"
-							title="Footnote Two">[2]</a>. When in a terminal navigated
-						to the directory in which Makefile is housed, a command of:
-					</p>
-					<p>
-						<code>make core</code>
-					</p>
-					<p>
-						will create such a build.
-					</p>
-				</div>
-				<div id="independent_core_build">
-					<h4 class="heading">
-						<a href="#independent_core_build"
-							title="Independent Core Build">Independent Core Build</a>
-					</h4>
-					<p>
-						In the independent &ldquo;core&rdquo; build, every
-						defined &ldquo;core&rdquo; module is concatenated
-						in order along with the specified independent module.
-						for viewing. When in a terminal navigated to the directory
-						in which Makefile is housed, a command such as:
-					</p>
-					<p>
-						<code>make [module name here]</code>
-					</p>
-					<p>
-						will create such a build. For example, a command of:
-					</p>
-					<p>
-						<code>make traverse</code>
-					</p>
-					<p>
-						will make an independent &ldquo;core&rdquo; build with the
-						traverse module at the end.
-					</p>
-				</div>
 				<div id="complete_build">
 					<h4 class="heading">
 						<a href="#complete_build"
@@ -214,8 +175,7 @@
 					<p>
 						In the &ldquo;complete&rdquo; build, all modules are concatenated
 						in defined order (though independent modules are order-independent
-						after the &ldquo;core&rdquo; has been defined). The build is then formed
-						into a file<a href="#footnote_3"
+						). The build is then formed into a file<a href="#footnote_3"
 							title="Footnote Three">[3]</a>. When in a terminal
 						navigated to the directory in which Makefile is housed, a command of:
 					</p>
@@ -223,13 +183,67 @@
 						<code>make complete</code>
 					</p>
 					<p>
-						or a command of:
-					</p>
-					<p>
-						<code>make</code>
-					</p>
-					<p>
 						will create such a build.
+					</p>
+				</div>
+				<div id="minification">
+					<h4 class="heading">
+						<a href="#minification"
+							title="Minification">Minification</a>
+					</h4>
+					<p>
+						Hard-coded builds can be minified via the Makefile through the
+						YUI Compressor. A command of:
+					</p>
+					<p>
+						<code>make compress</code>
+					</p>
+					<p>
+						will run a shell script<a href="#footnote_4"
+							title="Footnote Four">[4]</a> that minifies
+						the builds.
+					</p>
+				</div>
+			</div>
+			<hr>
+			<div class="cell primary_cell" id="building">
+				<h3 class="heading">
+					<a href="#building"
+						title="Build Creation">Building</a>
+				</h3>
+				<p>
+					<em>@LIBRARY_NAME@</em> can be built from a multitude of
+					sources for fully customised builds. Because each module
+					is optional and order-independent, a multiplicity of permutations
+					exist.
+				</p>
+				<div id="command_line_builder">
+					<h4 class="heading">
+						<a href="#command_line_builder"
+							title="Bash Builder">Command-line Builder</a>
+					</h4>
+					<p>
+						For those that prefer a terminal, a builder<a href="#footnote_5"
+							title="Footnote Five">[5]</a> written in Bash exists.
+						A command such as:
+					</p>
+					<p>
+						<code>./build.sh [module name] [module name] [module name]</code>
+					</p>
+					<p>
+						will create a build with three modules.
+					</p>
+				</div>
+				<div id="server_side_builder">
+					<h4 class="heading">
+						<a href="#server_side_builder"
+							title="PHP Builder">Server-side Builder</a>
+					</h4>
+					<p>
+						For those that prefer a hands-off approach, a builder<a href="#footnote_6"
+							title="Footnote Six">[6]</a> written in PHP exists.
+						Once the form is submitted, the script will concatenate modules, and
+						then serve the result.
 					</p>
 				</div>
 			</div>
@@ -271,6 +285,30 @@
 					<dd>
 						<a href="../../Builds/Uncompressed/utils-complete.js"
 							title="Complete Build">Complete Build</a>
+					</dd>
+					<dt class="footnote fragment" id="footnote_4">
+						<a href="#footnote_4"
+							title="Footnote Four">[4]</a>
+					</dt>
+					<dd>
+						<a href="../../compress.sh"
+							title="Compress Shell Script">compress.sh</a>
+					</dd>
+					<dt class="footnote fragment" id="footnote_5">
+						<a href="#footnote_5"
+							title="Footnote Five">[5]</a>
+					</dt>
+					<dd>
+						<a href="../../build.sh"
+							title="Bash Builder">Command-line Builder</a>
+					</dd>
+					<dt class="footnote fragment" id="footnote_6">
+						<a href="#footnote_6"
+							title="Footnote Six">[6]</a>
+					</dt>
+					<dd>
+						<a href="../../Download/"
+							title="PHP Builder">Server-side Builder</a>
 					</dd>
 				</dl>
 			</div>
