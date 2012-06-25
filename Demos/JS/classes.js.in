@@ -284,8 +284,8 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		)
 		{
 			var result = null;
-			if (@LIBRARY_NAME@.traverse.setText) {
-				result = @LIBRARY_NAME@.traverse.setText(
+			if (@LIBRARY_NAME@.text.set) {
+				result = @LIBRARY_NAME@.text.set(
 					obj,
 					text,
 					doc

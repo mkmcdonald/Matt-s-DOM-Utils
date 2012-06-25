@@ -284,8 +284,8 @@ if (typeof Utils === "object" && Utils) {
 		)
 		{
 			var result = null;
-			if (Utils.traverse.setText) {
-				result = Utils.traverse.setText(
+			if (Utils.text.set) {
+				result = Utils.text.set(
 					obj,
 					text,
 					doc

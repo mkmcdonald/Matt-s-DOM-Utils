@@ -112,26 +112,6 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
-		function getText()
-		{
-			var node = commonElements.test,
-				text = @LIBRARY_NAME@.traverse.getText(
-					node
-				);
-			return typeof text === "string";
-		}
-
-		function setText()
-		{
-			var node = commonElements.test,
-				text = @LIBRARY_NAME@.traverse.setText(
-					node,
-					"NEW TEXTUAL CONTENT",
-					global.document
-				);
-			return typeof text === "string";
-		}
-
 		function childrenTree()
 		{
 			var tree = @LIBRARY_NAME@.traverse.getElementTree(
@@ -198,8 +178,6 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 				childrenTraversed,
 				tree,
 				treeTraversed,
-				getText,
-				setText,
 				childrenTree,
 				childrenTreeTraversed,
 				isAncestor,

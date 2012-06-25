@@ -562,7 +562,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		}());
 
                /**
-                * @public `@LIBRARY_NAME@.traverse.getText`.
+                * @public `@LIBRARY_NAME@.text.get`.
                 *
                 * @description
                 * Method that returns a concatenated string
@@ -971,7 +971,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		}());
 
                /**
-                * @public `@LIBRARY_NAME@.traverse.setText`.
+                * @public `@LIBRARY_NAME@.text.set`.
                 *
                 * @description
                 * Method that returns a string consisting of textual

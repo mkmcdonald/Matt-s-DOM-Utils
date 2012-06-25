@@ -562,7 +562,7 @@ if (typeof Utils === "object" && Utils) {
 		}());
 
                /**
-                * @public `Utils.traverse.getText`.
+                * @public `Utils.text.get`.
                 *
                 * @description
                 * Method that returns a concatenated string
@@ -971,7 +971,7 @@ if (typeof Utils === "object" && Utils) {
 		}());
 
                /**
-                * @public `Utils.traverse.setText`.
+                * @public `Utils.text.set`.
                 *
                 * @description
                 * Method that returns a string consisting of textual

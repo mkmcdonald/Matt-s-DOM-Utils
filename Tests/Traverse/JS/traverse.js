@@ -112,26 +112,6 @@ if (typeof Utils === "object" && Utils) {
 			);
 		}
 
-		function getText()
-		{
-			var node = commonElements.test,
-				text = Utils.traverse.getText(
-					node
-				);
-			return typeof text === "string";
-		}
-
-		function setText()
-		{
-			var node = commonElements.test,
-				text = Utils.traverse.setText(
-					node,
-					"NEW TEXTUAL CONTENT",
-					global.document
-				);
-			return typeof text === "string";
-		}
-
 		function childrenTree()
 		{
 			var tree = Utils.traverse.getElementTree(
@@ -198,8 +178,6 @@ if (typeof Utils === "object" && Utils) {
 				childrenTraversed,
 				tree,
 				treeTraversed,
-				getText,
-				setText,
 				childrenTree,
 				childrenTreeTraversed,
 				isAncestor,
