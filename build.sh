@@ -30,13 +30,8 @@ function add_module()
 	FILE="${FULL}/$1.js";
 	if [ -f ${FILE} ]; then
 		BUILD[${INDEX}]=${FILE};
+		echo "adding $1.js to build";
 	fi;
-}
-
-function dump_build
-{
-	OUTPUT="${FULL}/utils-build.js";
-	cat ${BUILD[@]} > ${OUTPUT};
 }
 
 function create_module ()
@@ -47,14 +42,29 @@ function create_module ()
 			add_module ${ARG};
 		fi;
 	done;
-	dump_build;
+}
+
+function dump_build
+{
+	OUTPUT="${FULL}/utils-build.js";
+	cat ${BUILD[@]} > ${OUTPUT};
+	echo "--------------------";
+	echo "";
+	echo "BUILD COMPLETE";
+	echo "";
+	echo "build sent to ${FULL}/utils-build.js";
 }
 
 function create_build ()
 {
+	echo "--------------------";
+	echo "";
+	echo "ADDING MODULES";
+	echo "";
 	for ARG in ${ARGS[@]}; do
 		create_module ${ARG};
 	done;
+	dump_build;
 }
 
 function begin_build () {
