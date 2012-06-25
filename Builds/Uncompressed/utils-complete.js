@@ -28,7 +28,6 @@
 var Utils = Utils || {},
 	global = global || this;
 
-
 /**
  * @title Matt's DOM Utils
  * @see http://www.fortybelow.ca/projects/JavaScript/Utils/
@@ -41,17 +40,6 @@ var Utils = Utils || {},
  * @contact ["Utils".toLowerCase();]@fortybelow.ca
  * @see http://www.fortybelow.ca
  */
-
-/*
-        jslint sloppy: true, white: true, maxerr: 1,
-        indent: 8
-*/
-
-/*
-        jshint forin: true, noarg: true, noempty: true,
-        eqeqeq: true, bitwise: true, undef: true, curly: true,
-        indent: 8, maxerr: 1
-*/
 
 if (typeof Utils === "object" && Utils) {
 	(function () {

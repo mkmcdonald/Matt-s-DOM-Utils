@@ -2,14 +2,15 @@
 
 FULL="Builds/Uncompressed/";
 MIN="Builds/Compressed/";
+COMPRESSOR="yui-compressor/build/yui-compressor.jar";
 
 compress ()
 {
 	INPUT="$1.js";
 	MIN_OUTPUT="${MIN}$1-min.js";
 	if [ -f ${FULL}$INPUT ]; then
-		yui-compressor --type js --charset utf-8\
-			-o $MIN_OUTPUT ${FULL}$INPUT;
+		java -jar ${COMPRESSOR} --type js --charset utf-8\
+			-o ${MIN_OUTPUT} ${FULL}$INPUT;
 		echo "$INPUT compressed";
 	fi;
 }
@@ -49,8 +50,6 @@ compress_builds ()
 begin_parts ()
 {
 	PARTS=(
-		"utils"
-		"metadata"
 		"raise"
 		"types"
 		"is"
