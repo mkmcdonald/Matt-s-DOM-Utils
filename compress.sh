@@ -2,7 +2,7 @@
 
 FULL="Builds/Uncompressed/";
 MIN="Builds/Compressed/";
-COMPRESSOR="yui-compressor/build/yui-compressor.jar";
+COMPRESSOR="yui-compressor/build/yuicompressor-2.4.8pre.jar";
 
 compress ()
 {
