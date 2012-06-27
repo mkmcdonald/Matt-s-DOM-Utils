@@ -69,108 +69,108 @@
 							DOM 4 specification.
 						</p>
 						<dl class="doc_list">
-							<dt class="footnote fragment" id="index_size_error">
+							<dt class="fragment" id="index_size_error">
 								<a href="#index_size_error"
 									title="INDEX_SIZE_ERROR"><code>INDEX_SIZE_ERROR</code></a>
 							</dt>
 							<dd>The index is not in the allowed range.</dd>
-							<dt class="footnote fragment" id="heirarchy_request_error">
+							<dt class="fragment" id="heirarchy_request_error">
 								<a href="#heirarchy_request_error"
 									title="HEIRARCHY_REQUEST_ERROR"><code>HEIRARCHY_REQUEST_ERROR</code></a>
 							</dt>
 							<dd>The operation would yield an incorrect node tree.</dd>
-							<dt class="footnote fragment" id="wrong_document_error">
+							<dt class="fragment" id="wrong_document_error">
 								<a href="#wrong_document_error"
 									title="WRONG_DOCUMENT_ERROR"><code>WRONG_DOCUMENT_ERROR</code></a>
 							</dt>
 							<dd>The object is in the wrong document.</dd>
-							<dt class="footnote fragment" id="invalid_character_error">
+							<dt class="fragment" id="invalid_character_error">
 								<a href="#invalid_character_error"
 									title="INVALID_CHARACTER_ERROR"><code>INVALID_CHARACTER_ERROR</code></a>
 							</dt>
 							<dd>The string contains invalid characters.</dd>
-							<dt class="footnote fragment" id="no_modification_allowed_error">
+							<dt class="fragment" id="no_modification_allowed_error">
 								<a href="#no_modification_allowed_error"
 									title="NO_MODIFICATION_ALLOWED_ERROR"><code>NO_MODIFICATION_ALLOWED_ERROR</code></a>
 							</dt>
 							<dd>The object can not be modified.</dd>
-							<dt class="footnote fragment" id="not_found_error">
+							<dt class="fragment" id="not_found_error">
 								<a href="#not_found_error"
 									title="NOT_FOUND_ERROR"><code>NOT_FOUND_ERROR</code></a>
 							</dt>
 							<dd>The object can not be found here.</dd>
-							<dt class="footnote fragment" id="not_supported_error">
+							<dt class="fragment" id="not_supported_error">
 								<a href="#not_supported_error"
 									title="NOT_SUPPORTED_ERROR"><code>NOT_SUPPORTED_ERROR</code></a>
 							</dt>
 							<dd>The operation is not supported.</dd>
-							<dt class="footnote fragment" id="invalid_state_error">
+							<dt class="fragment" id="invalid_state_error">
 								<a href="#invalid_state_error"
 									title="INVALID_STATE_ERROR"><code>INVALID_STATE_ERROR</code></a>
 							</dt>
 							<dd>The object is in an invalid state.</dd>
-							<dt class="footnote fragment" id="syntax_error">
+							<dt class="fragment" id="syntax_error">
 								<a href="#syntax_error"
 									title="SYNTAX_ERROR"><code>SYNTAX_ERROR</code></a>
 							</dt>
 							<dd>The string did not match the expected pattern.</dd>
-							<dt class="footnote fragment" id="invalid_modification_error">
+							<dt class="fragment" id="invalid_modification_error">
 								<a href="#invalid_modification_error"
 									title="INVALID_MODIFICATION_ERROR"><code>INVALID_MODIFICATION_ERROR</code></a>
 							</dt>
 							<dd>The object can not be modified in this way.</dd>
-							<dt class="footnote fragment" id="namespace_error">
+							<dt class="fragment" id="namespace_error">
 								<a href="#namespace_error"
 									title="NAMESPACE_ERROR"><code>NAMESPACE_ERROR</code></a>
 							</dt>
 							<dd>The operation is not allowed by Namespaces in XML.</dd>
-							<dt class="footnote fragment" id="invalid_access_error">
+							<dt class="fragment" id="invalid_access_error">
 								<a href="#invalid_access_error"
 									title="INVALID_ACCESS_ERROR"><code>INVALID_ACCESS_ERROR</code></a>
 							</dt>
 							<dd>The object does not support the operation or argument.</dd>
-							<dt class="footnote fragment" id="type_mismatch_error">
+							<dt class="fragment" id="type_mismatch_error">
 								<a href="#type_mismatch_error"
 									title="TYPE_MISMATCH_ERROR"><code>TYPE_MISMATCH_ERROR</code></a>
 							</dt>
 							<dd>The type of object does not match the expected type.</dd>
-							<dt class="footnote fragment" id="security_error">
+							<dt class="fragment" id="security_error">
 								<a href="#security_error"
 									title="SECURITY_ERROR"><code>SECURITY_ERROR</code></a>
 							</dt>
 							<dd>The operation is insecure.</dd>
-							<dt class="footnote fragment" id="network_error">
+							<dt class="fragment" id="network_error">
 								<a href="#network_error"
 									title="NETWORK_ERROR"><code>NETWORK_ERROR</code></a>
 							</dt>
 							<dd>A network error occurred.</dd>
-							<dt class="footnote fragment" id="abort_error">
+							<dt class="fragment" id="abort_error">
 								<a href="#abort_error"
 									title="ABORT_ERROR"><code>ABORT_ERROR</code></a>
 							</dt>
 							<dd>The operation was aborted.</dd>
-							<dt class="footnote fragment" id="url_mismatch_error">
+							<dt class="fragment" id="url_mismatch_error">
 								<a href="#url_mismatch_error"
 									title="URL_MISMATCH_ERROR"><code>URL_MISMATCH_ERROR</code></a>
 							</dt>
 							<dd>The given URL does not match another URL.</dd>
-							<dt class="footnote fragment" id="quota_exceeded_error">
+							<dt class="fragment" id="quota_exceeded_error">
 								<a href="#quota_exceeded_error"
 									title="QUOTA_EXCEEDED_ERROR"><code>QUOTA_EXCEEDED_ERROR</code></a>
 							</dt>
 							<dd>The quota has been exceeded.</dd>
-							<dt class="footnote fragment" id="timeout_error">
+							<dt class="fragment" id="timeout_error">
 								<a href="#timeout_error"
 									title="TIMEOUT_ERROR"><code>TIMEOUT_ERROR</code></a>
 							</dt>
 							<dd>The operation timed out.</dd>
-							<dt class="footnote fragment" id="invalid_node_type_error">
+							<dt class="fragment" id="invalid_node_type_error">
 								<a href="#invalid_node_type_error"
 									title="INVALID_NODE_TYPE_ERROR"><code>INVALID_NODE_TYPE_ERROR</code></a>
 							</dt>
 							<dd>The supplied node is incorrect or has an incorrect
 								ancestor for this operation.</dd>
-							<dt class="footnote fragment" id="data_clone_error">
+							<dt class="fragment" id="data_clone_error">
 								<a href="#data_clone_error"
 									title="DATA_CLONE_ERROR"><code>DATA_CLONE_ERROR</code></a>
 							</dt>

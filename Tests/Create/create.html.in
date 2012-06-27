@@ -68,7 +68,7 @@
 				The rain in Spain is quite plain.
 			</p>
 		</div>
-		<script src="../../Builds/Uncompressed/utils-core.js"
+		<script src="../../Builds/Uncompressed/utils-complete.js"
 			type="text/javascript"></script>
 		<script src="JS/create.js"
 			type="text/javascript"></script>
