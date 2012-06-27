@@ -9,8 +9,8 @@
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
 			type="text/html">
-		<link href="select.html" hreflang="en" media="all"
-			rel="next" title="@LIBRARY_NAME@.select"
+		<link href="ancestors.html" hreflang="en" media="all"
+			rel="next" title="@LIBRARY_NAME@.ancestors"
 			type="text/html">
 @BODY@
 @DOCS_HEADER@
@@ -21,107 +21,111 @@
 					title="Previous">&larr;<code>@LIBRARY_NAME@.traverse</code></a>
 			</div>
 			<div class="cell next_link primary_cell">
-				<a href="select.html" rel="next"
-					title="Next"><code>@LIBRARY_NAME@.select</code>&rarr;</a>
+				<a href="ancestors.html" rel="next"
+					title="Next"><code>@LIBRARY_NAME@.ancestors</code>&rarr;</a>
 			</div>
 		</div>
-		<div class="primary_row row">
+		<div class="column primary_column">
 			<div class="cell primary_cell">
 				<h2 class="heading" title="@LIBRARY_NAME@.text">
 					<code>@LIBRARY_NAME@.text</code>
 				</h2>
-				<div class="fragment module_info" id="dependencies">
+				<div class="fragment module_info" id="info">
 					<h3 class="heading">
-						<a href="#dependencies"
-							title="Dependencies">Dependencies</a>
+						<a href="#info"
+							title="Info">Info</a>
 					</h3>
-					<ul>
+					<p class="description">
+						A module containing a DOM 4 specification-style implementation
+						of <code>Node::textContent</code>. For more, see the DOM
+						4 specification section 5.3 (Interface Node, textContent).
+					</p>
+					<ol>
 						<li>
-							<code>null</code>
+							<a href="#access"
+								title="Access Methods">Access Methods</a>
 						</li>
-					</ul>
+					</ol>
 				</div>
 			</div>
+			<div class="cell primary_cell" id="access">
+				<h3 class="heading">
+					<a href="#access"
+						title="Access Methods">Access Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="get">
+						<h4 class="heading">
+							<a href="#get"
+								title="@LIBRARY_NAME@.text.get"><code>@LIBRARY_NAME@.text.get</code></a>
+						</h4>
+						<p class="description">
+							Method that collects text node data
+							from a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>,
+							and returns the concatenated data.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>String || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="set">
+						<h4 class="heading">
+							<a href="#set"
+								title="@LIBRARY_NAME@.text.set"><code>@LIBRARY_NAME@.text.set</code></a>
+						</h4>
+						<p class="description">
+							Method that clears a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>,
+							tree and replaces it with a
+							text node containing the string provided.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>text</var>
+							</dt>
+							<dd>
+								A string that will be provided to a
+								text node, which will in turn replace
+								a <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>'s
+								<code>childNodes</code> tree.
+							</dd>
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>String || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry fragment" id="get">
-				<h3 class="heading">
-					<a href="#get"
-						title="@LIBRARY_NAME@.text.get"><code>@LIBRARY_NAME@.text.get</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that collects text node data
-						from a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>,
-						and returns the concatenated data.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>String || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="set">
-				<h3 class="heading">
-					<a href="#set"
-						title="@LIBRARY_NAME@.text.set"><code>@LIBRARY_NAME@.text.set</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>, <var>text</var>, <var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that clears a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>,
-						tree and replaces it with a
-						text node containing the string provided.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>text</var>
-					</dt>
-					<dd>
-						A string that will be provided to a
-						text node, which will in turn replace
-						a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						<code>childNodes</code> tree.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>String || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-		</ul>
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="traverse.html" rel="prev"
@@ -132,8 +136,8 @@
 					title="Up">&uarr;Back to Documentation Index</a>
 			</div>
 			<div class="cell next_link primary_cell">
-				<a href="select.html" rel="next"
-					title="Next"><code>@LIBRARY_NAME@.select</code>&rarr;</a>
+				<a href="ancestors.html" rel="next"
+					title="Next"><code>@LIBRARY_NAME@.ancestors</code>&rarr;</a>
 			</div>
 		</div>
 @FOOTER@

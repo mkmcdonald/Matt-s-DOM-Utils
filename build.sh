@@ -20,6 +20,7 @@ function begin_modules ()
 		"classes"
 		"traverse"
 		"text"
+		"ancestors"
 		"select"
 	);
 }

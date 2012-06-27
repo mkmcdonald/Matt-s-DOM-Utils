@@ -48,6 +48,10 @@
 							title="@LIBRARY_NAME@.text"><code>@LIBRARY_NAME@.text</code></a>
 					</li>
 					<li>
+						<a href="ancestors.html"
+							title="@LIBRARY_NAME@.ancestors"><code>@LIBRARY_NAME@.ancestors</code></a>
+					</li>
+					<li>
 						<a href="select.html"
 							title="@LIBRARY_NAME@.select"><code>@LIBRARY_NAME@.select</code></a>
 					</li>

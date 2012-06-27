@@ -1,10 +1,22 @@
-				<p class="instructions">
-					This property is a &ldquo;filter&rdquo; method, meaning it will return an
-					<a href="glossary.html#array_like_object"
-						title="Array-like Object">array-like object</a> of results
-					from each callback invocation. A result of <code>true</code> will collect
-					the object passed; a <a href="glossary.html#truthy"
-						title="Truthy">truthy</a> result will collect the value returned;
-					a <a href="glossary.html#falsey"
-						title="Falsey">falsey</a> result will not be collected.
-				</p>
+			<p class="instructions">
+				These methods are &ldquo;filter&rdquo; methods, meaning they will return an
+				<a href="glossary.html#array_like_object"
+					title="Array-like Object">array-like object</a> of results
+				from each callback invocation. A result of <code>true</code> will collect
+				the object passed; a <a href="glossary.html#truthy"
+					title="Truthy">truthy</a> result will collect the value returned;
+				a <a href="glossary.html#falsey"
+					title="Falsey">falsey</a> result will not be collected. An example follows.
+			</p>
+			<pre class="example">
+function handler(
+	obj
+)
+{
+	var result = false;
+	if (obj &amp;&amp; obj.id === "unique") {
+		// criterion met
+		result = true;
+	}
+	return result;
+}</pre>

@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=utf-8">
+		<meta name="viewport"
+			content="initial-scale=1.0">
+		<meta name="Author"
+			content="Matt McDonald">
+		<title>Matt's DOM Utils (Utils): Documentation&mdash;Utils.ancestors</title>
+		<link href="../Assets/CSS/style-main.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+		<link href="../favicon.ico"
+			media="all" rel="icon prefetch">
+		<link href="text.html" hreflang="en" media="all"
+			rel="prev" title="Utils.text"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="Documentation Index"
+			type="text/html">
+		<link href="select.html" hreflang="en" media="all"
+			rel="next" title="Utils.select"
+			type="text/html">
+	</head>
+	<body>
+		<div class="header_row row">
+			<h1 class="cell header_cell heading">
+				<a class="masthead"
+					href="../" title="Matt's DOM Utils"><img alt="Matt's DOM Utils" height="100" src="../Assets/Images/logo.jpg" width="337"></a>
+				<span class="tagline">Matt's DOM Utils (<em>Utils</em>)</span>
+			</h1>
+		</div>
+		<ul class="nav_row row">
+			<li class="cell home nav_cell">
+				<a href="../" title="Home">Home</a>
+			</li>
+			<li class="cell demos nav_cell">
+				<a href="../Demos" title="Demos">Demos</a>
+			</li>
+			<li class="cell download nav_cell">
+				<a href="../Download" title="Download">Download</a>
+			</li>
+			<li class="active cell docs nav_cell">
+				<a href="./" title="Documentation">Documentation</a>
+			</li>
+			<li class="cell nav_cell tests ">
+				<a href="../Tests" title="Tests">Tests</a>
+			</li>
+			<li class="cell github nav_cell">
+				<a href="https://www.github.com/mkmcdonald/Matt-s-DOM-Utils/" title="GitHub">GitHub</a>
+			</li>
+			<li class="about cell nav_cell">
+				<a href="../about.html" title="About">About</a>
+			</li>
+		</ul>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="text.html" rel="prev"
+					title="Previous">&larr;<code>Utils.text</code></a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="select.html" rel="next"
+					title="Next"><code>Utils.select</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="column primary_column">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="Utils.ancestors">
+					<code>Utils.ancestors</code>
+				</h2>
+				<div class="fragment module_info" id="info">
+					<h3 class="heading">
+						<a href="#info"
+							title="Info">Info</a>
+					</h3>
+					<p class="description">
+						A module containing various methods that traverse
+						<a href="glossary.html#document_tree"
+							title="Document Tree">document tree</a>
+						ancestors.
+					</p>
+					<ol>
+						<li>
+							<a href="#filter"
+								title="Filter Methods">Filter Methods</a>
+						</li>
+						<li>
+							<a href="#retrieval"
+								title="Retrieval Methods">Retrieval Methods</a>
+						</li>
+						<li>
+							<a href="#identity"
+								title="Identity Methods">Identity Methods</a>
+						</li>
+					</ol>
+				</div>
+			</div>
+			<div class="cell primary_cell" id="filter">
+				<h3 class="heading">
+					<a href="#filter"
+						title="Filter Methods">Filter Methods</a>
+				</h3>
+			<p class="instructions">
+				These methods are &ldquo;filter&rdquo; methods, meaning they will return an
+				<a href="glossary.html#array_like_object"
+					title="Array-like Object">array-like object</a> of results
+				from each callback invocation. A result of <code>true</code> will collect
+				the object passed; a <a href="glossary.html#truthy"
+					title="Truthy">truthy</a> result will collect the value returned;
+				a <a href="glossary.html#falsey"
+					title="Falsey">falsey</a> result will not be collected. An example follows.
+			</p>
+			<pre class="example">
+function handler(
+	obj
+)
+{
+	var result = false;
+	if (obj &amp;&amp; obj.id === "unique") {
+		// criterion met
+		result = true;
+	}
+	return result;
+}</pre>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="ancestors">
+						<h4 class="heading">
+							<a href="#ancestors"
+								title="Utils.ancestors.traverse"><code>Utils.ancestors.traverse</code></a>
+						</h4>
+						<p class="description">
+							Method that traverses a linked list
+							of a node's parent nodes and calls a
+							callback with the current node passed.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>callback</var>
+							</dt>
+							<dd>
+								A function to be used as a callback.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="retrieval">
+				<h3 class="heading">
+					<a href="#retrieval"
+						title="Retrieval Methods">Retrieval Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="get_ancestors">
+						<h4 class="heading">
+							<a href="#get_ancestors"
+								title="Utils.ancestors.get"><code>Utils.ancestors.get</code></a>
+						</h4>
+						<p class="description">
+							Method that traverses the parent nodes
+							of a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							and shapes them into a linked list.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="identity">
+				<h3 class="heading">
+					<a href="#identity"
+						title="Identity Methods">Identity Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="is_ancestor">
+						<h4 class="heading">
+							<a href="#is_ancestor"
+								title="Utils.ancestors.is"><code>Utils.ancestors.is</code></a>
+						</h4>
+						<p class="description">
+							Method that checks if a
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							is an ancestor of another <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>par</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to be checked.
+							</dd>
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to be used to generate
+								an ancestral list and searched.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Boolean</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="text.html" rel="prev"
+					title="Previous">&larr;<code>Utils.text</code></a>
+			</div>
+			<div class="cell index_link primary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to Documentation Index</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="select.html" rel="next"
+					title="Next"><code>Utils.select</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="footer_row row">
+			<address class="cell footer_cell">
+				Developed by <a href="http://www.fortybelow.ca"
+					title="Matt McDonald">Matt McDonald</a>;
+			</address>
+			<address class="cell footer_cell">
+				Logo designed by <a href="http://www.weirdurl.com"
+					title="Nathan Malone">Nathan Malone</a>;
+			</address>
+			<div class="cell footer_cell">
+				<a href="http://www.anybrowser.org/campaign"
+					title="Viewable with any browser">Viewable with any browser</a>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,189 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation&mdash;@LIBRARY_NAME@.ancestors</title>
+@DOCS_STYLESHEET@
+@DOCS_RESOURCES@
+		<link href="text.html" hreflang="en" media="all"
+			rel="prev" title="@LIBRARY_NAME@.text"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="Documentation Index"
+			type="text/html">
+		<link href="select.html" hreflang="en" media="all"
+			rel="next" title="@LIBRARY_NAME@.select"
+			type="text/html">
+@BODY@
+@DOCS_HEADER@
+@DOCS_NAV@
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="text.html" rel="prev"
+					title="Previous">&larr;<code>@LIBRARY_NAME@.text</code></a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="select.html" rel="next"
+					title="Next"><code>@LIBRARY_NAME@.select</code>&rarr;</a>
+			</div>
+		</div>
+		<div class="column primary_column">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="@LIBRARY_NAME@.ancestors">
+					<code>@LIBRARY_NAME@.ancestors</code>
+				</h2>
+				<div class="fragment module_info" id="info">
+					<h3 class="heading">
+						<a href="#info"
+							title="Info">Info</a>
+					</h3>
+					<p class="description">
+						A module containing various methods that traverse
+						<a href="glossary.html#document_tree"
+							title="Document Tree">document tree</a>
+						ancestors.
+					</p>
+					<ol>
+						<li>
+							<a href="#filter"
+								title="Filter Methods">Filter Methods</a>
+						</li>
+						<li>
+							<a href="#retrieval"
+								title="Retrieval Methods">Retrieval Methods</a>
+						</li>
+						<li>
+							<a href="#identity"
+								title="Identity Methods">Identity Methods</a>
+						</li>
+					</ol>
+				</div>
+			</div>
+			<div class="cell primary_cell" id="filter">
+				<h3 class="heading">
+					<a href="#filter"
+						title="Filter Methods">Filter Methods</a>
+				</h3>
+				@DOCS_FILTER_INSTRUCTIONS@
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="ancestors">
+						<h4 class="heading">
+							<a href="#ancestors"
+								title="@LIBRARY_NAME@.ancestors.traverse"><code>@LIBRARY_NAME@.ancestors.traverse</code></a>
+						</h4>
+						<p class="description">
+							Method that traverses a linked list
+							of a node's parent nodes and calls a
+							callback with the current node passed.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>callback</var>
+							</dt>
+							<dd>
+								A function to be used as a callback.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="retrieval">
+				<h3 class="heading">
+					<a href="#retrieval"
+						title="Retrieval Methods">Retrieval Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="get_ancestors">
+						<h4 class="heading">
+							<a href="#get_ancestors"
+								title="@LIBRARY_NAME@.ancestors.get"><code>@LIBRARY_NAME@.ancestors.get</code></a>
+						</h4>
+						<p class="description">
+							Method that traverses the parent nodes
+							of a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							and shapes them into a linked list.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="identity">
+				<h3 class="heading">
+					<a href="#identity"
+						title="Identity Methods">Identity Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="is_ancestor">
+						<h4 class="heading">
+							<a href="#is_ancestor"
+								title="@LIBRARY_NAME@.ancestors.is"><code>@LIBRARY_NAME@.ancestors.is</code></a>
+						</h4>
+						<p class="description">
+							Method that checks if a
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							is an ancestor of another <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>par</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to be checked.
+							</dd>
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to be used to generate
+								an ancestral list and searched.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Boolean</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="text.html" rel="prev"
+					title="Previous">&larr;<code>@LIBRARY_NAME@.text</code></a>
+			</div>
+			<div class="cell index_link primary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to Documentation Index</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="select.html" rel="next"
+					title="Next"><code>@LIBRARY_NAME@.select</code>&rarr;</a>
+			</div>
+		</div>
+@FOOTER@
+@END@

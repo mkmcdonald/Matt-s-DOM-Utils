@@ -25,221 +25,137 @@
 					title="Next"><code>@LIBRARY_NAME@.is</code>&rarr;</a>
 			</div>
 		</div>
-		<div class="primary_row row">
+		<div class="column primary_column">
 			<div class="cell primary_cell">
 				<h2 class="heading" title="@LIBRARY_NAME@.types">
 					<code>@LIBRARY_NAME@.types</code>
 				</h2>
-				<div class="fragment module_info" id="dependencies">
+				<div class="fragment module_info" id="info">
 					<h3 class="heading">
-						<a href="#dependencies"
-							title="Dependencies">Dependencies</a>
+						<a href="#info"
+							title="Info">Info</a>
 					</h3>
-					<ul>
+					<p class="description">
+						A module containing every documented <code>nodeType</code>
+						from the DOM Level 2 Core specification. For more, see the
+						DOM Level 2 Core section 1.2 (Fundamental Interfaces,
+						Interface Node, nodeType).
+					</p>
+					<ol>
 						<li>
-							<code>null</code>
+							<a href="#numeric"
+								title="Numeric Properties">Numeric Properties</a>
 						</li>
-					</ul>
+					</ol>
 				</div>
 			</div>
-		</div>
-		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry fragment" id="element_node">
+			<div class="cell primary_cell" id="numeric">
 				<h3 class="heading">
-					<a href="#element_node"
-						title="@LIBRARY_NAME@.types.ELEMENT_NODE"><code>@LIBRARY_NAME@.types.ELEMENT_NODE</code></a>
+					<a href="#numeric"
+						title="Numeric Properties">Numeric Properties</a>
 				</h3>
-				<p class="doc_art number">1</p>
-				<dl class="doc_list">
-					<dt>
-						<code>ELEMENT_NODE</code>
+				<dl class="doc_group">
+					<dt id="element_node">
+						<a href="#element_node"
+							title="@LIBRARY_NAME@.types.ELEMENT_NODE"><code>@LIBRARY_NAME@.types.ELEMENT_NODE</code></a>
 					</dt>
 					<dd>
 						The corresponding <code>nodeType</code> for all
 						nodes implementing the <code>Element</code> interface
 						(<code>1</code>).
 					</dd>
-				</dl>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="attribute_node">
-				<h3 class="heading">
-					<a href="#attribute_node"
-						title="@LIBRARY_NAME@.types.ATTRIBUTE_NODE"><code>@LIBRARY_NAME@.types.ATTRIBUTE_NODE</code></a>
-				</h3>
-				<p class="doc_art number">2</p>
-				<dl class="doc_list">
-					<dt>
-						<code>ATTRIBUTE_NODE</code>
+					<dt id="attribute_node">
+						<a href="#attribute_node"
+							title="@LIBRARY_NAME@.types.ATTRIBUTE_NODE"><code>@LIBRARY_NAME@.types.ATTRIBUTE_NODE</code></a>
 					</dt>
 					<dd>
 						The corresponding <code>nodeType</code> for all
 						nodes implementing the <code>Attr</code> interface
 						(<code>2</code>).
 					</dd>
-				</dl>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="text_node">
-				<h3 class="heading">
-					<a href="#text_node"
-						title="@LIBRARY_NAME@.types.TEXT_NODE"><code>@LIBRARY_NAME@.types.TEXT_NODE</code></a>
-				</h3>
-				<p class="doc_art number">3</p>
-				<dl class="doc_list">
-					<dt>
-						<code>TEXT_NODE</code>
+					<dt id="text_node">
+						<a href="#text_node"
+							title="@LIBRARY_NAME@.types.TEXT_NODE"><code>@LIBRARY_NAME@.types.TEXT_NODE</code></a>
 					</dt>
 					<dd>
 						The corresponding <code>nodeType</code> for all
 						nodes implementing the <code>Text</code> interface
 						(<code>3</code>).
 					</dd>
-				</dl>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="cdata_section_node">
-				<h3 class="heading">
-					<a href="#cdata_section_node"
-						title="@LIBRARY_NAME@.types.CDATA_SECTION_NODE"><code>@LIBRARY_NAME@.types.CDATA_SECTION_NODE</code></a>
-				</h3>
-				<p class="doc_art number">4</p>
-				<dl class="doc_list">
-					<dt>
-						<code>CDATA_SECTION_NODE</code>
+					<dt id="cdata_section_node">
+						<a href="#cdata_section_node"
+							title="@LIBRARY_NAME@.types.CDATA_SECTION_NODE"><code>@LIBRARY_NAME@.types.CDATA_SECTION_NODE</code></a>
 					</dt>
 					<dd>
 						The corresponding <code>nodeType</code> for all
 						nodes implementing the <code>CDATASection</code> interface
 						(<code>4</code>).
 					</dd>
-				</dl>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="entity_reference_node">
-				<h3 class="heading">
-					<a href="#entity_reference_node"
-						title="@LIBRARY_NAME@.types.ENTITY_REFERENCE_NODE"><code>@LIBRARY_NAME@.types.ENTITY_REFERENCE_NODE</code></a>
-				</h3>
-				<p class="doc_art number">5</p>
-				<dl class="doc_list">
-					<dt>
-						<code>ENTITY_REFERENCE_NODE</code>
+					<dt id="entity_reference_node">
+						<a href="#entity_reference_node"
+							title="@LIBRARY_NAME@.types.ENTITY_REFERENCE_NODE"><code>@LIBRARY_NAME@.types.ENTITY_REFERENCE_NODE</code></a>
 					</dt>
 					<dd>
 						The corresponding <code>nodeType</code> for all
 						nodes implementing the <code>EntityReference</code> interface
 						(<code>5</code>).
 					</dd>
-				</dl>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="entity_node">
-				<h3 class="heading">
-					<a href="#entity_node"
-						title="@LIBRARY_NAME@.types.ENTITY_NODE"><code>@LIBRARY_NAME@.types.ENTITY_NODE</code></a>
-				</h3>
-				<p class="doc_art number">6</p>
-				<dl class="doc_list">
-					<dt>
-						<code>ENTITY_NODE</code>
+					<dt id="entity_node">
+						<a href="#entity_node"
+							title="@LIBRARY_NAME@.types.ENTITY_NODE"><code>@LIBRARY_NAME@.types.ENTITY_NODE</code></a>
 					</dt>
 					<dd>
 						The corresponding <code>nodeType</code> for all
 						nodes implementing the <code>Entity</code> interface
 						(<code>6</code>).
 					</dd>
-				</dl>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="processing_instruction_node">
-				<h3 class="heading">
-					<a href="#processing_instruction_node"
-						title="@LIBRARY_NAME@.types.PROCESSING_INSTRUCTION_NODE"><code>@LIBRARY_NAME@.types.PROCESSING_INSTRUCTION_NODE</code></a>
-				</h3>
-				<p class="doc_art number">7</p>
-				<dl class="doc_list">
-					<dt>
-						<code>PROCESSING_INSTRUCTION_NODE</code>
+					<dt id="processing_instruction_node">
+						<a href="#processing_instruction_node"
+							title="@LIBRARY_NAME@.types.PROCESSING_INSTRUCTION_NODE"><code>@LIBRARY_NAME@.types.PROCESSING_INSTRUCTION_NODE</code></a>
 					</dt>
 					<dd>
 						The corresponding <code>nodeType</code> for all
 						nodes implementing the <code>ProcessingInstruction</code> interface
 						(<code>7</code>).
 					</dd>
-				</dl>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="comment_node">
-				<h3 class="heading">
-					<a href="#comment_node"
-						title="@LIBRARY_NAME@.types.COMMENT_NODE"><code>@LIBRARY_NAME@.types.COMMENT_NODE</code></a>
-				</h3>
-				<p class="doc_art number">8</p>
-				<dl class="doc_list">
-					<dt>
-						<code>COMMENT_NODE</code>
-					</dt>
+					<dt id="comment_node">
+						<a href="#comment_node"
+							title="@LIBRARY_NAME@.types.COMMENT_NODE"><code>@LIBRARY_NAME@.types.COMMENT_NODE</code></a>
 					<dd>
 						The corresponding <code>nodeType</code> for all
 						nodes implementing the <code>Comment</code> interface
 						(<code>8</code>).
 					</dd>
-				</dl>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="document_node">
-				<h3 class="heading">
-					<a href="#document_node"
-						title="@LIBRARY_NAME@.types.DOCUMENT_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_NODE</code></a>
-				</h3>
-				<p class="doc_art number">9</p>
-				<dl class="doc_list">
-					<dt>
-						<code>DOCUMENT_NODE</code>
-					</dt>
+					<dt id="document_node">
+						<a href="#document_node"
+							title="@LIBRARY_NAME@.types.DOCUMENT_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_NODE</code></a>
+					</dd>
 					<dd>
 						The corresponding <code>nodeType</code> for all
 						nodes implementing the <code>Document</code> interface
 						(<code>9</code>).
 					</dd>
-				</dl>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="document_type_node">
-				<h3 class="heading">
-					<a href="#document_type_node"
-						title="@LIBRARY_NAME@.types.DOCUMENT_TYPE_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_TYPE_NODE</code></a>
-				</h3>
-				<p class="doc_art number">10</p>
-				<dl class="doc_list">
-					<dt>
-						<code>DOCUMENT_TYPE_NODE</code>
+					<dt id="document_type_node">
+						<a href="#document_type_node"
+							title="@LIBRARY_NAME@.types.DOCUMENT_TYPE_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_TYPE_NODE</code></a>
 					</dt>
 					<dd>
 						The corresponding <code>nodeType</code> for all
 						nodes implementing the <code>DocumentType</code> interface
 						(<code>10</code>).
 					</dd>
-				</dl>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="document_fragment_node">
-				<h3 class="heading">
-					<a href="#document_fragment_node"
-						title="@LIBRARY_NAME@.types.DOCUMENT_FRAGMENT_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_FRAGMENT_NODE</code></a>
-				</h3>
-				<p class="doc_art number">11</p>
-				<dl class="doc_list">
-					<dt>
-						<code>DOCUMENT_FRAGMENT_NODE</code>
+					<dt id="document_fragment_node">
+						<a href="#document_fragment_node"
+							title="@LIBRARY_NAME@.types.DOCUMENT_FRAGMENT_NODE"><code>@LIBRARY_NAME@.types.DOCUMENT_FRAGMENT_NODE</code></a>
 					</dt>
 					<dd>
 						The corresponding <code>nodeType</code> for all
 						nodes implementing the <code>DocumentFragment</code> interface
 						(<code>11</code>).
 					</dd>
-				</dl>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="notation_node">
-				<h3 class="heading">
-					<a href="#notation_node"
-						title="@LIBRARY_NAME@.types.NOTATION_NODE"><code>@LIBRARY_NAME@.types.NOTATION_NODE</code></a>
-				</h3>
-				<p class="doc_art number">12</p>
-				<dl class="doc_list">
-					<dt>
-						<code>NOTATION_NODE</code>
+					<dt id="notation_node">
+						<a href="#notation_node"
+							title="@LIBRARY_NAME@.types.NOTATION_NODE"><code>@LIBRARY_NAME@.types.NOTATION_NODE</code></a>
 					</dt>
 					<dd>
 						The corresponding <code>nodeType</code> for all
@@ -247,8 +163,8 @@
 						(<code>12</code>).
 					</dd>
 				</dl>
-			</li>
-		</ul>
+			</div>
+		</div>
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="raise.html" rel="prev"

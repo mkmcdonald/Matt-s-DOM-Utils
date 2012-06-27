@@ -45,6 +45,10 @@
 				"full" => UNCOMPRESSED . "/text.js",
 				"min" => COMPRESSED . "/text-min.js"
 			),
+			"ancestors" => array(
+				"full" => UNCOMPRESSED . "/ancestors.js",
+				"min" => COMPRESSED . "/ancestors-min.js"
+			),
 			"select" => array(
 				"full" => UNCOMPRESSED . "/select.js",
 				"min" => COMPRESSED . "/select-min.js"

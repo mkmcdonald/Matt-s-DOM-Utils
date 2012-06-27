@@ -71,6 +71,13 @@
 					</label>
 				</p>
 				<p>
+					<input id="ancestors_file" name="ancestors_file"
+						type="checkbox" value="ancestors">
+					<label for="ancestors_file">
+						@LIBRARY_NAME@.ancestors
+					</label>
+				</p>
+				<p>
 					<input id="select_file" name="select_file"
 						type="checkbox" value="select">
 					<label for="select_file">

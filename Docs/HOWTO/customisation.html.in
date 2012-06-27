@@ -175,8 +175,8 @@
 					<p>
 						In the &ldquo;complete&rdquo; build, all modules are concatenated
 						in defined order (though independent modules are order-independent
-						). The build is then formed into a file<a href="#footnote_3"
-							title="Footnote Three">[3]</a>. When in a terminal
+						). The build is then formed into a file<a href="#footnote_2"
+							title="Footnote Two">[2]</a>. When in a terminal
 						navigated to the directory in which Makefile is housed, a command of:
 					</p>
 					<p>
@@ -199,8 +199,8 @@
 						<code>make compress</code>
 					</p>
 					<p>
-						will run a shell script<a href="#footnote_4"
-							title="Footnote Four">[4]</a> that minifies
+						will run a shell script<a href="#footnote_3"
+							title="Footnote Three">[3]</a> that minifies
 						the builds.
 					</p>
 				</div>
@@ -223,8 +223,8 @@
 							title="Bash Builder">Command-line Builder</a>
 					</h4>
 					<p>
-						For those that prefer a terminal, a builder<a href="#footnote_5"
-							title="Footnote Five">[5]</a> written in Bash exists.
+						For those that prefer a terminal, a builder<a href="#footnote_4"
+							title="Footnote Four">[4]</a> written in Bash exists.
 						A command such as:
 					</p>
 					<p>
@@ -240,8 +240,8 @@
 							title="PHP Builder">Server-side Builder</a>
 					</h4>
 					<p>
-						For those that prefer a hands-off approach, a builder<a href="#footnote_6"
-							title="Footnote Six">[6]</a> written in PHP exists.
+						For those that prefer a hands-off approach, a builder<a href="#footnote_5"
+							title="Footnote Fiver">[5]</a> written in PHP exists.
 						Once the form is submitted, the script will concatenate modules, and
 						then serve the result.
 					</p>
@@ -275,36 +275,28 @@
 							title="Footnote Two">[2]</a>
 					</dt>
 					<dd>
-						<a href="../../Builds/Uncompressed/utils-core.js"
-							title="Core Build">Core Build</a>
+						<a href="../../Builds/Uncompressed/utils-complete.js"
+							title="Complete Build">Complete Build</a>
 					</dd>
 					<dt class="footnote fragment" id="footnote_3">
 						<a href="#footnote_3"
 							title="Footnote Three">[3]</a>
 					</dt>
 					<dd>
-						<a href="../../Builds/Uncompressed/utils-complete.js"
-							title="Complete Build">Complete Build</a>
+						<a href="../../compress.sh"
+							title="Compress Shell Script">compress.sh</a>
 					</dd>
 					<dt class="footnote fragment" id="footnote_4">
 						<a href="#footnote_4"
 							title="Footnote Four">[4]</a>
 					</dt>
 					<dd>
-						<a href="../../compress.sh"
-							title="Compress Shell Script">compress.sh</a>
+						<a href="../../build.sh"
+							title="Bash Builder">Command-line Builder</a>
 					</dd>
 					<dt class="footnote fragment" id="footnote_5">
 						<a href="#footnote_5"
 							title="Footnote Five">[5]</a>
-					</dt>
-					<dd>
-						<a href="../../build.sh"
-							title="Bash Builder">Command-line Builder</a>
-					</dd>
-					<dt class="footnote fragment" id="footnote_6">
-						<a href="#footnote_6"
-							title="Footnote Six">[6]</a>
 					</dt>
 					<dd>
 						<a href="../../Download/"

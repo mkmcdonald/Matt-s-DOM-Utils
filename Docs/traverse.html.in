@@ -25,603 +25,437 @@
 					title="Next"><code>@LIBRARY_NAME@.text</code>&rarr;</a>
 			</div>
 		</div>
-		<div class="primary_row row">
+		<div class="column primary_column">
 			<div class="cell primary_cell">
 				<h2 class="heading" title="@LIBRARY_NAME@.traverse">
 					<code>@LIBRARY_NAME@.traverse</code>
 				</h2>
-				<div class="fragment module_info" id="dependencies">
+				<div class="fragment module_info" id="info">
 					<h3 class="heading">
-						<a href="#dependencies"
-							title="Dependencies">Dependencies</a>
+						<a href="#info"
+							title="Info">Info</a>
 					</h3>
-					<ul>
+					<p class="description">
+						A module containing rich <a href="glossary.html#document_tree"
+							title="Document Tree">document tree</a>
+						traversal methods.
+					</p>
+					<ol>
 						<li>
-							<code>null</code>
+							<a href="#filter"
+								title="Filter Methods">Filter Methods</a>
 						</li>
-					</ul>
+						<li>
+							<a href="#retrieval"
+								title="Retrieval Methods">Retrieval Methods</a>
+						</li>
+						<li>
+							<a href="#clearance"
+								title="Clearance Methods">Clearance Methods</a>
+						</li>
+					</ol>
 				</div>
 			</div>
+			<div class="cell primary_cell" id="filter">
+				<h3 class="heading">
+					<a href="#filter"
+						title="Filter Methods">Filter Methods</a>
+				</h3>
+				@DOCS_FILTER_INSTRUCTIONS@
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="linear">
+						<h4 class="heading">
+							<a href="#linear"
+								title="@LIBRARY_NAME@.traverse.linear"><code>@LIBRARY_NAME@.traverse.linear</code></a>
+						</h4>
+						<p class="description">
+							Method that traverses an 
+							<a href="glossary.html#array_like_object"
+								title="Array-like Object">array-like object</a>,
+							calling a callback on each item.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								An <a href="glossary.html#array_like_object"
+									title="Array-like Object">array-like object</a>.
+							</dd>
+							<dt>
+								<var>callback</var>
+							</dt>
+							<dd>
+								A function to be used as a callback.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="nodes">
+						<h4 class="heading">
+							<a href="#nodes"
+								title="@LIBRARY_NAME@.traverse.nodes"><code>@LIBRARY_NAME@.traverse.nodes</code></a>
+						</h4>
+						<p class="description">
+							Method that traverses a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							child nodes and calls a callback with the
+							current node passed.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>callback</var>
+							</dt>
+							<dd>
+								A function to be used as a callback.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="elements">
+						<h4 class="heading">
+							<a href="#elements"
+								title="@LIBRARY_NAME@.traverse.elements"><code>@LIBRARY_NAME@.traverse.elements</code></a>
+						</h4>
+						<p class="description">
+							Method that traverses a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							&ldquo;children&rdquo; and calls a callback with the
+							current node passed.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>callback</var>
+							</dt>
+							<dd>
+								A function to be used as a callback.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="node_tree">
+						<h4 class="heading">
+							<a href="#node_tree"
+								title="@LIBRARY_NAME@.traverse.nodeTree"><code>@LIBRARY_NAME@.traverse.nodeTree</code></a>
+						</h4>
+						<p class="description">
+							Method that traverses a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>,
+							calling a callback on
+							each <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							in the <a href="glossary.html#array_like_object"
+								title="Array-like Object">array-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								An <a href="glossary.html#array_like_object"
+									title="Array-like Object">array-like object</a>.
+							</dd>
+							<dt>
+								<var>callback</var>
+							</dt>
+							<dd>
+								A function to be used as a callback.
+							</dd>
+							<dt>
+								<var>result</var>
+							</dt>
+							<dd>
+								An optional parameter used to override
+								the initial return value (<code>[]</code>);
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="recursive">
+						<h4 class="heading">
+							<a href="#recursive"
+								title="@LIBRARY_NAME@.traverse.recursive"><code>@LIBRARY_NAME@.traverse.recursive</code></a>
+						</h4>
+						<p class="description">
+							Method that recursively traverses an
+							<a href="glossary.html#array_like_object"
+								title="Array-like Object">array-like object</a>,
+							calling a callback on each item.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								An <a href="glossary.html#array_like_object"
+									title="Array-like Object">array-like object</a>.
+							</dd>
+							<dt>
+								<var>callback</var>
+							</dt>
+							<dd>
+								A function to be used as a callback.
+							</dd>
+							<dt>
+								<var>result</var>
+							</dt>
+							<dd>
+								An optional parameter used to override
+								the initial return value (<code>[]</code>);
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="element_tree">
+						<h4 class="heading">
+							<a href="#element_tree"
+								title="@LIBRARY_NAME@.traverse.elementTree"><code>@LIBRARY_NAME@.traverse.elementTree</code></a>
+						</h4>
+						<p class="description">
+							Method that traverses a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>,
+							calling a callback on
+							each element <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							in the <a href="glossary.html#array_like_object"
+								title="Array-like Object">array-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								An <a href="glossary.html#array_like_object"
+									title="Array-like Object">array-like object</a>.
+							</dd>
+							<dt>
+								<var>callback</var>
+							</dt>
+							<dd>
+								A function to be used as a callback.
+							</dd>
+							<dt>
+								<var>result</var>
+							</dt>
+							<dd>
+								An optional parameter used to override
+								the initial return value (<code>[]</code>);
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="retrieval">
+				<h3 class="heading">
+					<a href="#retrieval"
+						title="Retrieval Methods">Retrieval Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="get_nodes">
+						<h4 class="heading">
+							<a href="#get_nodes"
+								title="@LIBRARY_NAME@.traverse.getNodes"><code>@LIBRARY_NAME@.traverse.getNodes</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that traverses a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							child nodes and collects them in a &ldquo;static&rdquo;
+							<a href="glossary.html#array_like_object"
+								title="Array-like Object">array-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="get_elements">
+						<h4 class="heading">
+							<a href="#get_elements"
+								title="@LIBRARY_NAME@.traverse.getElements"><code>@LIBRARY_NAME@.traverse.getElements</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that traverses a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							&ldquo;children&rdquo; and collects them in a &ldquo;static&rdquo;
+							array.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>callback</var>
+							</dt>
+							<dd>
+								A function to be used as a callback.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="get_node_tree">
+						<h4 class="heading">
+							<a href="#get_node_tree"
+								title="@LIBRARY_NAME@.traverse.getNodeTree"><code>@LIBRARY_NAME@.traverse.getNodeTree</code></a>
+						</h4>
+						<p class="description">
+							Method that recursively traverses a
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>,
+							collecting each
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							in the <a href="glossary.html#array_like_object"
+								title="Array-like Object">array-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="get_element_tree">
+						<h4 class="heading">
+							<a href="#get_element_tree"
+								title="@LIBRARY_NAME@.traverse.getElementTree"><code>@LIBRARY_NAME@.traverse.getElementTree</code></a>
+						</h4>
+						<p class="description">
+							Method that recursively traverses a
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>,
+							collecting each element
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							in the <a href="glossary.html#array_like_object"
+								title="Array-like Object">array-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="clearance">
+				<h3 class="heading">
+					<a href="#clearance"
+						title="Clearance Methods">Clearance Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="clear_nodes">
+						<h4 class="heading">
+							<a href="#clear_nodes"
+								title="@LIBRARY_NAME@.traverse.clearNodes"><code>@LIBRARY_NAME@.traverse.clearNodes</code></a>
+						</h4>
+						<p class="description">
+							Method that traverses a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							child nodes and removes them.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="clear_elements">
+						<h4 class="heading">
+							<a href="#clear_elements"
+								title="@LIBRARY_NAME@.traverse.clearElements"><code>@LIBRARY_NAME@.traverse.clearElements</code></a>
+						</h4>
+						<p class="description">
+							Method that traverses a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							&ldquo;children&rdquo; and removes them.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry fragment" id="get_nodes">
-				<h3 class="heading">
-					<a href="#get_nodes"
-						title="@LIBRARY_NAME@.traverse.getNodes"><code>@LIBRARY_NAME@.traverse.getNodes</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var nodes;
-if (@LIBRARY_NAME@.traverse.getNodes) {
-	nodes = @LIBRARY_NAME@.traverse.getNodes(
-		document.body
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						child nodes and collects them in a &ldquo;static&rdquo;
-						<a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="linear">
-				<h3 class="heading">
-					<a href="#linear"
-						title="@LIBRARY_NAME@.traverse.linear"><code>@LIBRARY_NAME@.traverse.linear</code></a>
-				</h3>
-				@DOCS_FILTER_INSTRUCTIONS@
-				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses an 
-						<a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>,
-						calling a callback on each item.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						An <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="nodes">
-				<h3 class="heading">
-					<a href="#nodes"
-						title="@LIBRARY_NAME@.traverse.nodes"><code>@LIBRARY_NAME@.traverse.nodes</code></a>
-				</h3>
-				@DOCS_FILTER_INSTRUCTIONS@
-				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						child nodes and calls a callback with the
-						current node passed.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="clear_nodes">
-				<h3 class="heading">
-					<a href="#clear_nodes"
-						title="@LIBRARY_NAME@.traverse.clearNodes"><code>@LIBRARY_NAME@.traverse.clearNodes</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						child nodes and removes them.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="get_elements">
-				<h3 class="heading">
-					<a href="#get_elements"
-						title="@LIBRARY_NAME@.traverse.getElements"><code>@LIBRARY_NAME@.traverse.getElements</code></a>
-				</h3>
-				@DOCS_FILTER_INSTRUCTIONS@
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var children;
-if (@LIBRARY_NAME@.traverse.getElements) {
-	children = @LIBRARY_NAME@.traverse.getElements(
-		document.body
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						&ldquo;children&rdquo; and collects them in a &ldquo;static&rdquo;
-						array.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="elements">
-				<h3 class="heading">
-					<a href="#elements"
-						title="@LIBRARY_NAME@.traverse.elements"><code>@LIBRARY_NAME@.traverse.elements</code></a>
-				</h3>
-				@DOCS_FILTER_INSTRUCTIONS@
-				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						&ldquo;children&rdquo; and calls a callback with the
-						current node passed.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="clear_elements">
-				<h3 class="heading">
-					<a href="#clear_elements"
-						title="@LIBRARY_NAME@.traverse.clearElements"><code>@LIBRARY_NAME@.traverse.clearElements</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						&ldquo;children&rdquo; and removes them.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="get_node_tree">
-				<h3 class="heading">
-					<a href="#get_node_tree"
-						title="@LIBRARY_NAME@.traverse.getNodeTree"><code>@LIBRARY_NAME@.traverse.getNodeTree</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that recursively traverses a
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>,
-						collecting each
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						in the <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="node_tree">
-				<h3 class="heading">
-					<a href="#node_tree"
-						title="@LIBRARY_NAME@.traverse.nodeTree"><code>@LIBRARY_NAME@.traverse.nodeTree</code></a>
-				</h3>
-				@DOCS_FILTER_INSTRUCTIONS@
-				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>,
-						calling a callback on
-						each <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						in the <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						An <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					<dt>
-						<var>result</var>
-					</dt>
-					<dd>
-						An optional parameter used to override
-						the initial return value (<code>[]</code>);
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="recursive">
-				<h3 class="heading">
-					<a href="#recursive"
-						title="@LIBRARY_NAME@.traverse.recursive"><code>@LIBRARY_NAME@.traverse.recursive</code></a>
-				</h3>
-				@DOCS_FILTER_INSTRUCTIONS@
-				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that recursively traverses an
-						<a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>,
-						calling a callback on each item.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						An <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					<dt>
-						<var>result</var>
-					</dt>
-					<dd>
-						An optional parameter used to override
-						the initial return value (<code>[]</code>);
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="get_element_tree">
-				<h3 class="heading">
-					<a href="#get_element_tree"
-						title="@LIBRARY_NAME@.traverse.getElementTree"><code>@LIBRARY_NAME@.traverse.getElementTree</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that recursively traverses a
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>,
-						collecting each element
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						in the <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="element_tree">
-				<h3 class="heading">
-					<a href="#element_tree"
-						title="@LIBRARY_NAME@.traverse.elementTree"><code>@LIBRARY_NAME@.traverse.elementTree</code></a>
-				</h3>
-				@DOCS_FILTER_INSTRUCTIONS@
-				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>, <var>result</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>,
-						calling a callback on
-						each element <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						in the <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						An <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					<dt>
-						<var>result</var>
-					</dt>
-					<dd>
-						An optional parameter used to override
-						the initial return value (<code>[]</code>);
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="get_ancestors">
-				<h3 class="heading">
-					<a href="#get_ancestors"
-						title="@LIBRARY_NAME@.traverse.getAncestors"><code>@LIBRARY_NAME@.traverse.getAncestors</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses the parent nodes
-						of a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						and shapes them into a linked list.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="is_ancestor">
-				<h3 class="heading">
-					<a href="#is_ancestor"
-						title="@LIBRARY_NAME@.traverse.isAncestor"><code>@LIBRARY_NAME@.traverse.isAncestor</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>par</var>, <var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that checks if a
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						is an ancestor of another <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>par</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to be checked.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to be used to generate
-						an ancestral list and searched.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Boolean</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="list">
-				<h3 class="heading">
-					<a href="#list"
-						title="@LIBRARY_NAME@.traverse.linkedList"><code>@LIBRARY_NAME@.traverse.linkedList</code></a>
-				</h3>
-				@DOCS_FILTER_INSTRUCTIONS@
-				<p class="doc_art function_head">function (<var>list</var>, <var>callback</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses a linked list
-						and calls a callback with the current
-						node passed.
-					</dd>
-					<dt>
-						<var>list</var>
-					</dt>
-					<dd>
-						A linked list.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="ancestors">
-				<h3 class="heading">
-					<a href="#ancestors"
-						title="@LIBRARY_NAME@.traverse.ancestors"><code>@LIBRARY_NAME@.traverse.ancestors</code></a>
-				</h3>
-				@DOCS_FILTER_INSTRUCTIONS@
-				<p class="doc_art function_head">function (<var>obj</var>, <var>callback</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that traverses a linked list
-						of a node's parent nodes and calls a
-						callback with the current node passed.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>callback</var>
-					</dt>
-					<dd>
-						A function to be used as a callback.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-		</ul>
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="classes.html" rel="prev"

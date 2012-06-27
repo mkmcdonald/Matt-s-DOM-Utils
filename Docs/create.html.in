@@ -25,324 +25,265 @@
 					title="Next"><code>@LIBRARY_NAME@.classes</code>&rarr;</a>
 			</div>
 		</div>
-		<div class="primary_row row">
+		<div class="column primary_column">
 			<div class="cell primary_cell">
 				<h2 class="heading" title="@LIBRARY_NAME@.create">
 					<code>@LIBRARY_NAME@.create</code>
 				</h2>
-				<div class="fragment module_info" id="dependencies">
+				<div class="fragment module_info" id="info">
 					<h3 class="heading">
-						<a href="#dependencies"
-							title="Dependencies">Dependencies</a>
+						<a href="#info"
+							title="Info">Info</a>
 					</h3>
-					<ul>
+					<p class="description">
+						A module containing every documented DOM creational method
+						residing on the <code>Document</code> interface from the DOM
+						4 specification. For more, see the DOM 4 specification section
+						5.4 (Interface Document).
+					</p>
+					<ol>
 						<li>
-							<code>null</code>
+							<a href="#node"
+								title="Node Methods">Node Methods</a>
 						</li>
-					</ul>
+					</ol>
 				</div>
 			</div>
+			<div class="cell primary_cell" id="node">
+				<h3 class="heading">
+					<a href="#node"
+						title="Node Methods">Node Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="element">
+						<h4 class="heading">
+							<a href="#element"
+								title="@LIBRARY_NAME@.create.element"><code>@LIBRARY_NAME@.create.element</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>createElement</code>,
+							which in turn creates an element 
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							based upon the tag name provided.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>tag</var>
+							</dt>
+							<dd>
+								A string containing the preferred tag name
+								for the created element
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to use.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="element_ns">
+						<h4 class="heading">
+							<a href="#element_ns"
+								title="@LIBRARY_NAME@.create.elementNS"><code>@LIBRARY_NAME@.create.elementNS</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>createElementNamespace</code>,
+							which in turn creates a namespaced element 
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							based upon the tag name provided.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>uri</var>
+							</dt>
+							<dd>
+								A string containing namespace URI
+								for the created element 
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to use.
+							</dd>
+							<dt>
+								<var>name</var>
+							</dt>
+							<dd>
+								A string containing the qualified name
+								for the created element 
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to use.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="text">
+						<h4 class="heading">
+							<a href="#text"
+								title="@LIBRARY_NAME@.create.text"><code>@LIBRARY_NAME@.create.text</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>createTextNode</code>,
+							which in turn creates a text 
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							based upon the text provided.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>text</var>
+							</dt>
+							<dd>
+								A string containing the preferred text
+								for the created text 
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to use.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="processing_instruction">
+						<h4 class="heading">
+							<a href="#processing_instruction"
+								title="@LIBRARY_NAME@.create.processingInstruction"><code>@LIBRARY_NAME@.create.processingInstruction</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>processingInstruction</code>,
+							which in turn creates a processing instruction 
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							based upon the target and text provided.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>target</var>
+							</dt>
+							<dd>
+								A string containing the preferred target
+								for the created processing instruction
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to use.
+							</dd>
+							<dt>
+								<var>text</var>
+							</dt>
+							<dd>
+								A string containing the preferred text
+								for the created processing instruction
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to use.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="comment">
+						<h4 class="heading">
+							<a href="#comment"
+								title="@LIBRARY_NAME@.create.comment"><code>@LIBRARY_NAME@.create.comment</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>createComment</code>,
+							which in turn creates a comment 
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							based upon the text provided.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>text</var>
+							</dt>
+							<dd>
+								A string containing the preferred text
+								for the created comment
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to use.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="document_fragment">
+						<h4 class="heading">
+							<a href="#document_fragment"
+								title="@LIBRARY_NAME@.create.documentFragment"><code>@LIBRARY_NAME@.create.documentFragment</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>createDocumentFragment</code>,
+							which in turn creates a document fragment 
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry fragment" id="element">
-				<h3 class="heading">
-					<a href="#element"
-						title="@LIBRARY_NAME@.create.element"><code>@LIBRARY_NAME@.create.element</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var div;
-if (@LIBRARY_NAME@.create.element) {
-	div = @LIBRARY_NAME@.create.element(
-		document,
-		"div"
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>,  <var>tag</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>createElement</code>,
-						which in turn creates an element 
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						based upon the tag name provided.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>tag</var>
-					</dt>
-					<dd>
-						A string containing the preferred tag name
-						for the created element
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to use.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="element_ns">
-				<h3 class="heading">
-					<a href="#element_ns"
-						title="@LIBRARY_NAME@.create.elementNS"><code>@LIBRARY_NAME@.create.elementNS</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var namespaced;
-if (@LIBRARY_NAME@.create.elementNS) {
-	namespaced = @LIBRARY_NAME@.create.elementNS(
-		document,
-		"http://localhost/schema/",
-		"object"
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>,  <var>ns</var>, <var>tag</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>createElementNamespace</code>,
-						which in turn creates a namespaced element 
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						based upon the tag name provided.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>uri</var>
-					</dt>
-					<dd>
-						A string containing namespace URI
-						for the created element 
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to use.
-					</dd>
-					<dt>
-						<var>name</var>
-					</dt>
-					<dd>
-						A string containing the qualified name
-						for the created element 
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to use.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="text">
-				<h3 class="heading">
-					<a href="#text"
-						title="@LIBRARY_NAME@.create.text"><code>@LIBRARY_NAME@.create.text</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var text;
-if (@LIBRARY_NAME@.create.text) {
-	namespaced = @LIBRARY_NAME@.create.text(
-		document,
-		"Iron Maiden? Excellent!"
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>,  <var>text</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>createTextNode</code>,
-						which in turn creates a text 
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						based upon the text provided.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>text</var>
-					</dt>
-					<dd>
-						A string containing the preferred text
-						for the created text 
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to use.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="processing_instruction">
-				<h3 class="heading">
-					<a href="#processing_instruction"
-						title="@LIBRARY_NAME@.create.processingInstruction"><code>@LIBRARY_NAME@.create.processingInstruction</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var pi;
-if (@LIBRARY_NAME@.create.processingInstruction) {
-	pi = @LIBRARY_NAME@.create.processingInstruction(
-		document,
-		"xml-stylesheet",
-		"type=\"text/xsl\" href=\"style.xsl\""
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>,  <var>target</var>, <var>text</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>processingInstruction</code>,
-						which in turn creates a processing instruction 
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						based upon the target and text provided.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>target</var>
-					</dt>
-					<dd>
-						A string containing the preferred target
-						for the created processing instruction
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to use.
-					</dd>
-					<dt>
-						<var>text</var>
-					</dt>
-					<dd>
-						A string containing the preferred text
-						for the created processing instruction
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to use.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="comment">
-				<h3 class="heading">
-					<a href="#comment"
-						title="@LIBRARY_NAME@.create.comment"><code>@LIBRARY_NAME@.create.comment</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var comment;
-if (@LIBRARY_NAME@.create.comment) {
-	comment = @LIBRARY_NAME@.create.comment(
-		document,
-		"No comment.",
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>,  <var>text</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>createComment</code>,
-						which in turn creates a comment 
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						based upon the text provided.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>text</var>
-					</dt>
-					<dd>
-						A string containing the preferred text
-						for the created comment
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to use.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="document_fragment">
-				<h3 class="heading">
-					<a href="#document_fragment"
-						title="@LIBRARY_NAME@.create.documentFragment"><code>@LIBRARY_NAME@.create.documentFragment</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var fragment;
-if (@LIBRARY_NAME@.create.documentFragment) {
-	comment = @LIBRARY_NAME@.create.documentFragment(
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>createDocumentFragment</code>,
-						which in turn creates a document fragment 
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-		</ul>
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="node.html" rel="prev"

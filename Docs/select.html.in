@@ -3,8 +3,8 @@
 		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation&mdash;@LIBRARY_NAME@.select</title>
 @DOCS_STYLESHEET@
 @DOCS_RESOURCES@
-		<link href="text.html" hreflang="en" media="all"
-			rel="prev" title="@LIBRARY_NAME@.text"
+		<link href="ancestors.html" hreflang="en" media="all"
+			rel="prev" title="@LIBRARY_NAME@.ancestors"
 			type="text/html">
 		<link href="./" hreflang="en" media="all"
 			rel="index" title="Documentation Index"
@@ -17,1169 +17,916 @@
 @DOCS_NAV@
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
-				<a href="text.html" rel="prev"
-					title="Previous">&larr;<code>@LIBRARY_NAME@.text</code></a>
+				<a href="ancestors.html" rel="prev"
+					title="Previous">&larr;<code>@LIBRARY_NAME@.ancestors</code></a>
 			</div>
 			<div class="cell next_link primary_cell">
 				<a href="glossary.html" rel="next"
 					title="Next">Glossary&rarr;</a>
 			</div>
 		</div>
-		<div class="primary_row row">
+		<div class="column primary_column">
 			<div class="cell primary_cell">
 				<h2 class="heading" title="@LIBRARY_NAME@.select">
 					<code>@LIBRARY_NAME@.select</code>
 				</h2>
-				<div class="fragment module_info" id="dependencies">
+				<div class="fragment module_info" id="info">
 					<h3 class="heading">
-						<a href="#dependencies"
-							title="Dependencies">Dependencies</a>
+						<a href="#info"
+							title="Info">Info</a>
 					</h3>
-					<ul>
+					<p class="description">
+						A module containing various methods of node selection sourced
+						from various versions of the DOM Core and DOM HTML specifications.
+					</p>
+					<ol>
 						<li>
-							<code>null</code>
+							<a href="#core"
+								title="Core Methods">Core Methods</a>
 						</li>
-					</ul>
+						<li>
+							<a href="#query"
+								title="Query Methods">Query Methods</a>
+						</li>
+						<li>
+							<a href="#single"
+								title="Single Methods">Single Methods</a>
+						</li>
+						<li>
+							<a href="#collection"
+								title="Collection Methods">Collection Methods</a>
+						</li>
+					</ol>
 				</div>
 			</div>
-		</div>
-		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry fragment" id="by_name">
+			<div class="cell primary_cell" id="core">
 				<h3 class="heading">
-					<a href="#by_name"
-						title="@LIBRARY_NAME@.select.byName"><code>@LIBRARY_NAME@.select.byName</code></a>
+					<a href="#core"
+						title="Core Methods">Core Methods</a>
 				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var named;
-if (@LIBRARY_NAME@.select.byName) {
-	named = @LIBRARY_NAME@.select.byName(
-		document,
-		"test"
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>, <var>name</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>getElementsByName</code>,
-						which in turn returns element nodes with a matching
-						<code>name</code> property.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>name</var>
-					</dt>
-					<dd>
-						A string containing the name to search for.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="by_tag_name">
-				<h3 class="heading">
-					<a href="#by_tag_name"
-						title="@LIBRARY_NAME@.select.byTagName"><code>@LIBRARY_NAME@.select.byTagName</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var tagged;
-if (@LIBRARY_NAME@.select.byTagName) {
-	tagged = @LIBRARY_NAME@.select.byTagName(
-		document,
-		"test"
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>caller</var>, <var>tag</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>getElementsByTagName</code>,
-						which in turn returns element
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>s
-						from the caller's
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>
-						with a matching <code>nodeName</code> property.
-					</dd>
-					<dt>
-						<var>caller</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						or an element <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>tag</var>
-					</dt>
-					<dd>
-						A string containing the tag to search for;
-						<code>"*"</code> returns all element
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>s
-						from the caller's
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="by_tag_name_ns">
-				<h3 class="heading">
-					<a href="#by_tag_name_ns"
-						title="@LIBRARY_NAME@.select.byTagNameNS"><code>@LIBRARY_NAME@.select.byTagNameNS</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var namespaced;
-if (@LIBRARY_NAME@.select.byTagNameNS) {
-	namespaced = @LIBRARY_NAME@.select.byTagNameNS(
-		document,
-		"foo",
-		"bar"
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>caller</var>, <var>local</var>, <var>ns</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>getElementsByTagNameNS</code>,
-						which in turn returns element
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>s
-						from the caller's
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>
-						with a matching local name and namespace.
-					</dd>
-					<dt>
-						<var>caller</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						or an element <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>local</var>
-					</dt>
-					<dd>
-						A string containing the local name to search for.
-						<code>"*"</code> matches all namespaces from the caller's
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>.
-					</dd>
-					<dt>
-						<var>ns</var>
-					</dt>
-					<dd>
-						A string containing the namespace to search for.
-						<code>"*"</code> matches all local names in the
-						caller's subtree.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="by_class_name">
-				<h3 class="heading">
-					<a href="#by_class_name"
-						title="@LIBRARY_NAME@.select.byClassName"><code>@LIBRARY_NAME@.select.byClassName</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var classed;
-if (@LIBRARY_NAME@.select.byClassName) {
-	classed = @LIBRARY_NAME@.select.byClassName(
-		document,
-		"test"
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>caller</var>, <var>names</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>getElementsByClassName</code>,
-						which in turn returns element
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>s
-						from the caller's
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>
-						with matching class &ldquo;name(s)&rdquo;.
-					</dd>
-					<dt>
-						<var>caller</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						or an element <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>names</var>
-					</dt>
-					<dd>
-						A string containing the class &ldquo;name(s)&rdquo; to search for.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="by_id">
-				<h3 class="heading">
-					<a href="#by_id"
-						title="@LIBRARY_NAME@.select.byId"><code>@LIBRARY_NAME@.select.byId</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var node;
-if (@LIBRARY_NAME@.select.byId) {
-	node = @LIBRARY_NAME@.select.byId(
-		document,
-		"test"
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>, <var>id</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>getElementById</code>,
-						which in turn returns the first element
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						from the caller's
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>
-						with a matching <code>id</code>
-						property.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>id</var>
-					</dt>
-					<dd>
-						A string containing the id to search for.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="query">
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="by_name">
+						<h4 class="heading">
+							<a href="#by_name"
+								title="@LIBRARY_NAME@.select.byName"><code>@LIBRARY_NAME@.select.byName</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="example">
+							Method that wraps <code>getElementsByName</code>,
+							which in turn returns element nodes with a matching
+							<code>name</code> property.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>name</var>
+							</dt>
+							<dd>
+								A string containing the name to search for.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="by_tag_name">
+						<h4 class="heading">
+							<a href="#by_tag_name"
+								title="@LIBRARY_NAME@.select.byTagName"><code>@LIBRARY_NAME@.select.byTagName</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>getElementsByTagName</code>,
+							which in turn returns element
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>s
+							from the caller's
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>
+							with a matching <code>nodeName</code> property.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>caller</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								or an element <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>tag</var>
+							</dt>
+							<dd>
+								A string containing the tag to search for;
+								<code>"*"</code> returns all element
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>s
+								from the caller's
+								<a href="glossary.html#subtree"
+									title="Subtree">subtree</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="by_tag_name_ns">
+						<h4 class="heading">
+							<a href="#by_tag_name_ns"
+								title="@LIBRARY_NAME@.select.byTagNameNS"><code>@LIBRARY_NAME@.select.byTagNameNS</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>getElementsByTagNameNS</code>,
+							which in turn returns element
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>s
+							from the caller's
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>
+							with a matching local name and namespace.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>caller</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								or an element <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>local</var>
+							</dt>
+							<dd>
+								A string containing the local name to search for.
+								<code>"*"</code> matches all namespaces from the caller's
+								<a href="glossary.html#subtree"
+									title="Subtree">subtree</a>.
+							</dd>
+							<dt>
+								<var>ns</var>
+							</dt>
+							<dd>
+								A string containing the namespace to search for.
+								<code>"*"</code> matches all local names in the
+								caller's subtree.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="by_class_name">
+						<h4 class="heading">
+							<a href="#by_class_name"
+								title="@LIBRARY_NAME@.select.byClassName"><code>@LIBRARY_NAME@.select.byClassName</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="example">
+							Method that wraps <code>getElementsByClassName</code>,
+							which in turn returns element
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>s
+							from the caller's
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>
+							with matching class &ldquo;name(s)&rdquo;.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>caller</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								or an element <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>names</var>
+							</dt>
+							<dd>
+								A string containing the class &ldquo;name(s)&rdquo; to search for.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="by_id">
+						<h4 class="heading">
+							<a href="#by_id"
+								title="@LIBRARY_NAME@.select.byId"><code>@LIBRARY_NAME@.select.byId</code></a>
+						</h4>
+						<p class="description">
+							Method that wraps <code>getElementById</code>,
+							which in turn returns the first element
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							from the caller's
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>
+							with a matching <code>id</code>
+							property.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>id</var>
+							</dt>
+							<dd>
+								A string containing the id to search for.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="query">
 				<h3 class="heading">
 					<a href="#query"
-						title="@LIBRARY_NAME@.select.query"><code>@LIBRARY_NAME@.select.query</code></a>
+						title="Query Methods">Query Methods</a>
 				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var node;
-if (@LIBRARY_NAME@.select.query) {
-	node = @LIBRARY_NAME@.select.query(
-		document,
-		"div.test"
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>caller</var>, <var>selectors</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>querySelector</code>,
-						which in turn returns an element
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						from the caller's
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>
-						that matches the selector(s) used.
-					</dd>
-					<dt>
-						<var>caller</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						or an element <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>selectors</var>
-					</dt>
-					<dd>
-						A string containing the selector(s) to use.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="query_all">
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="query">
+						<h4 class="heading">
+							<a href="#query"
+								title="@LIBRARY_NAME@.select.query"><code>@LIBRARY_NAME@.select.query</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>querySelector</code>,
+							which in turn returns an element
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							from the caller's
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>
+							that matches the selector(s) used.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>caller</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								or an element <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>selectors</var>
+							</dt>
+							<dd>
+								A string containing the selector(s) to use.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="query_all">
+						<h4 class="heading">
+							<a href="#query_all"
+								title="@LIBRARY_NAME@.select.queryAll"><code>@LIBRARY_NAME@.select.queryAll</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>querySelectorAll</code>,
+							which in turn returns element
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>s
+							from the caller's
+							<a href="glossary.html#subtree"
+								title="Subtree">subtree</a>
+							that match the selector(s) used.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>caller</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								or an element <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>selectors</var>
+							</dt>
+							<dd>
+								A string containing the selector(s) to use.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="single">
 				<h3 class="heading">
-					<a href="#query_all"
-						title="@LIBRARY_NAME@.select.queryAll"><code>@LIBRARY_NAME@.select.queryAll</code></a>
+					<a href="#single"
+						title="Single Methods">Single Methods</a>
 				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var node;
-if (@LIBRARY_NAME@.select.queryAll) {
-	node = @LIBRARY_NAME@.select.queryAll(
-		document,
-		"div[class]"
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>caller</var>, <var>selectors</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>querySelectorAll</code>,
-						which in turn returns element
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>s
-						from the caller's
-						<a href="glossary.html#subtree"
-							title="Subtree">subtree</a>
-						that match the selector(s) used.
-					</dd>
-					<dt>
-						<var>caller</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						or an element <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>selectors</var>
-					</dt>
-					<dd>
-						A string containing the selector(s) to use.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="head">
-				<h3 class="heading">
-					<a href="#head"
-						title="@LIBRARY_NAME@.select.head"><code>@LIBRARY_NAME@.select.head</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var head;
-if (@LIBRARY_NAME@.select.head) {
-	head = @LIBRARY_NAME@.select.head(
-		document
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.head</code>,
-						which in turn returns the <code>head</code> element
-						of the specified document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="body">
-				<h3 class="heading">
-					<a href="#body"
-						title="@LIBRARY_NAME@.select.body"><code>@LIBRARY_NAME@.select.body</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var body;
-if (@LIBRARY_NAME@.select.body) {
-	body = @LIBRARY_NAME@.select.body(
-		document
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.body</code>,
-						which in turn returns the <code>body</code> element
-						of the specified document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="images">
-				<h3 class="heading">
-					<a href="#images"
-						title="@LIBRARY_NAME@.select.images"><code>@LIBRARY_NAME@.select.images</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var image;
-if (@LIBRARY_NAME@.select.images) {
-	image = @LIBRARY_NAME@.select.images(
-		document,
-		0
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>, <var>key</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.images</code>,
-						which in turn returns the
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>(s)
-						registered for the specified key .
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>key</var>
-					</dt>
-					<dd>
-						A string containing the key to search for.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="all_images">
-				<h3 class="heading">
-					<a href="#all_images"
-						title="@LIBRARY_NAME@.select.allImages"><code>@LIBRARY_NAME@.select.allImages</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var images;
-if (@LIBRARY_NAME@.select.allImages) {
-	images = @LIBRARY_NAME@.select.allImages(
-		document
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.images</code>,
-						which in turn returns the entire
-						<code>HTMLCollection</code>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="embeds">
-				<h3 class="heading">
-					<a href="#embeds"
-						title="@LIBRARY_NAME@.select.embeds"><code>@LIBRARY_NAME@.select.embeds</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var embed;
-if (@LIBRARY_NAME@.select.embeds) {
-	embed = @LIBRARY_NAME@.select.embeds(
-		document,
-		0
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>, <var>key</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.embeds</code>,
-						which in turn returns the 
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>(s)
-						registered for the specified key.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>key</var>
-					</dt>
-					<dd>
-						A string containing the key to search for.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="all_embeds">
-				<h3 class="heading">
-					<a href="#all_embeds"
-						title="@LIBRARY_NAME@.select.allEmbeds"><code>@LIBRARY_NAME@.select.allEmbeds</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var embeds;
-if (@LIBRARY_NAME@.select.allEmbeds) {
-	embeds = @LIBRARY_NAME@.select.allEmbeds(
-		document
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.embeds</code>,
-						which in turn returns the entire
-						<code>HTMLCollection</code>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="plugins">
-				<h3 class="heading">
-					<a href="#plugins"
-						title="@LIBRARY_NAME@.select.plugins"><code>@LIBRARY_NAME@.select.plugins</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var plugin;
-if (@LIBRARY_NAME@.select.plugins) {
-	plugin = @LIBRARY_NAME@.select.plugins(
-		document,
-		0
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>, <var>key</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.plugins</code>,
-						which in turn returns the <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>(s)
-						registered for the specified key.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>key</var>
-					</dt>
-					<dd>
-						A string containing the key to search for.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="all_plugins">
-				<h3 class="heading">
-					<a href="#all_plugins"
-						title="@LIBRARY_NAME@.select.allPlugins"><code>@LIBRARY_NAME@.select.allPlugins</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var plugins;
-if (@LIBRARY_NAME@.select.allPlugins) {
-	plugins = @LIBRARY_NAME@.select.allPlugins(
-		document
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.plugins</code>,
-						which in turn returns the entire
-						<code>HTMLCollection</code>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="links">
-				<h3 class="heading">
-					<a href="#links"
-						title="@LIBRARY_NAME@.select.links"><code>@LIBRARY_NAME@.select.links</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var link;
-if (@LIBRARY_NAME@.select.links) {
-	link = @LIBRARY_NAME@.select.links(
-		document,
-		0
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>, <var>key</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.links</code>,
-						which in turn returns the <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>(s)
-						registered for the specified key.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>key</var>
-					</dt>
-					<dd>
-						A string containing the key to search for.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="all_links">
-				<h3 class="heading">
-					<a href="#all_links"
-						title="@LIBRARY_NAME@.select.allLinks"><code>@LIBRARY_NAME@.select.allLinks</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var links;
-if (@LIBRARY_NAME@.select.allLinks) {
-	links = @LIBRARY_NAME@.select.allLinks(
-		document
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.links</code>,
-						which in turn returns the entire
-						<code>HTMLCollection</code>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="forms">
-				<h3 class="heading">
-					<a href="#forms"
-						title="@LIBRARY_NAME@.select.forms"><code>@LIBRARY_NAME@.select.forms</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var form;
-if (@LIBRARY_NAME@.select.forms) {
-	form = @LIBRARY_NAME@.select.forms(
-		document,
-		0
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>, <var>key</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.forms</code>,
-						which in turn returns the <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>(s)
-						registered for the specified key.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>key</var>
-					</dt>
-					<dd>
-						A string containing the key to search for.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="all_forms">
-				<h3 class="heading">
-					<a href="#all_forms"
-						title="@LIBRARY_NAME@.Forms.allForms"><code>@LIBRARY_NAME@.select.allForms</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var forms;
-if (@LIBRARY_NAME@.select.allForms) {
-	forms = @LIBRARY_NAME@.select.allForms(
-		document
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.forms</code>,
-						which in turn returns the entire
-						<code>HTMLCollection</code>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="scripts">
-				<h3 class="heading">
-					<a href="#scripts"
-						title="@LIBRARY_NAME@.select.scripts"><code>@LIBRARY_NAME@.select.scripts</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var script;
-if (@LIBRARY_NAME@.select.scripts) {
-	script = @LIBRARY_NAME@.select.scripts(
-		document,
-		0
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>, <var>key</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.scripts</code>,
-						which in turn returns the <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>(s)
-						registered for the specified key.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>key</var>
-					</dt>
-					<dd>
-						A string containing the key to search for.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="all_scripts">
-				<h3 class="heading">
-					<a href="#all_scripts"
-						title="@LIBRARY_NAME@.select.allScripts"><code>@LIBRARY_NAME@.select.allScripts</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var scripts;
-if (@LIBRARY_NAME@.select.allScripts) {
-	scripts = @LIBRARY_NAME@.select.allScripts(
-		document
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.scripts</code>,
-						which in turn returns the entire
-						<code>HTMLCollection</code>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="applets">
-				<h3 class="heading">
-					<a href="#applets"
-						title="@LIBRARY_NAME@.select.applets"><code>@LIBRARY_NAME@.select.applets</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var applet;
-if (@LIBRARY_NAME@.select.applets) {
-	applet = @LIBRARY_NAME@.select.applets(
-		document,
-		0
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>, <var>key</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.applets</code>,
-						which in turn returns the <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>(s)
-						registered for the specified key.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>key</var>
-					</dt>
-					<dd>
-						A string containing the key to search for.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="all_applets">
-				<h3 class="heading">
-					<a href="#all_applets"
-						title="@LIBRARY_NAME@.select.allApplets"><code>@LIBRARY_NAME@.select.allApplets</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var applets;
-if (@LIBRARY_NAME@.select.allApplets) {
-	applets = @LIBRARY_NAME@.select.allApplets(
-		document
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.applets</code>,
-						which in turn returns the entire
-						<code>HTMLCollection</code>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="anchors">
-				<h3 class="heading">
-					<a href="#anchors"
-						title="@LIBRARY_NAME@.select.anchors"><code>@LIBRARY_NAME@.select.anchors</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var anchor;
-if (@LIBRARY_NAME@.select.anchors) {
-	anchor = @LIBRARY_NAME@.select.anchors(
-		document,
-		0
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>, <var>key</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.anchors</code>,
-						which in turn returns the <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>(s)
-						registered for the specified key.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>key</var>
-					</dt>
-					<dd>
-						A string containing the key to search for.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="all_anchors">
-				<h3 class="heading">
-					<a href="#all_anchors"
-						title="@LIBRARY_NAME@.select.allAnchors"><code>@LIBRARY_NAME@.select.allAnchors</code></a>
-				</h3>
-				@DOCS_HOST_DETECTION_WARNING@
-				<pre class="example">
-var anchors;
-if (@LIBRARY_NAME@.select.allAnchors) {
-	anchors = @LIBRARY_NAME@.select.allAnchors(
-		document
-	);
-}</pre>
-				<p class="doc_art function_head">function (<var>doc</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>document.anchors</code>,
-						which in turn returns the entire
-						<code>HTMLCollection</code>.
-					</dd>
-					<dt>
-						<var>doc</var>
-					</dt>
-					<dd>
-						A document <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="named_items">
-				<h3 class="heading">
-					<a href="#named_items"
-						title="@LIBRARY_NAME@.select.namedItem"><code>@LIBRARY_NAME@.select.namedItem</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>, <var>key</var>, <var>name</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that returns either an
-						<a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>
-						or a
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						representing the specified name of a specific
-						<code>HTMLCollection</code>.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>key</var>
-					</dt>
-					<dd>
-						A string containing the key of the collection to be accessed.
-					</dd>
-					<dt>
-						<var>name</var>
-					</dt>
-					<dd>
-						A string containing the name to be accessed from the specified
-						<code>HTMLCollection</code>.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="collection">
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="head">
+						<h4 class="heading">
+							<a href="#head"
+								title="@LIBRARY_NAME@.select.head"><code>@LIBRARY_NAME@.select.head</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.head</code>,
+							which in turn returns the <code>head</code> element
+							of the specified document <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="body">
+						<h4 class="heading">
+							<a href="#body"
+								title="@LIBRARY_NAME@.select.body"><code>@LIBRARY_NAME@.select.body</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.body</code>,
+							which in turn returns the <code>body</code> element
+							of the specified document <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="collection">
 				<h3 class="heading">
 					<a href="#collection"
-						title="@LIBRARY_NAME@.select.collection"><code>@LIBRARY_NAME@.select.collection</code></a>
+						title="Collection Methods">Collection Methods</a>
 				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>, <var>key</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that returns an
-						<a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>
-						representing the specified <code>HTMLCollection</code>.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>key</var>
-					</dt>
-					<dd>
-						A string containing the key of the collection to be accessed.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Array || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-		</ul>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="images">
+						<h4 class="heading">
+							<a href="#images"
+								title="@LIBRARY_NAME@.select.images"><code>@LIBRARY_NAME@.select.images</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.images</code>,
+							which in turn returns the
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>(s)
+							registered for the specified key .
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>key</var>
+							</dt>
+							<dd>
+								A string containing the key to search for.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="all_images">
+						<h4 class="heading">
+							<a href="#all_images"
+								title="@LIBRARY_NAME@.select.allImages"><code>@LIBRARY_NAME@.select.allImages</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.images</code>,
+							which in turn returns the entire
+							<code>HTMLCollection</code>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="embeds">
+						<h4 class="heading">
+							<a href="#embeds"
+								title="@LIBRARY_NAME@.select.embeds"><code>@LIBRARY_NAME@.select.embeds</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.embeds</code>,
+							which in turn returns the 
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>(s)
+							registered for the specified key.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>key</var>
+							</dt>
+							<dd>
+								A string containing the key to search for.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="all_embeds">
+						<h4 class="heading">
+							<a href="#all_embeds"
+								title="@LIBRARY_NAME@.select.allEmbeds"><code>@LIBRARY_NAME@.select.allEmbeds</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.embeds</code>,
+							which in turn returns the entire
+							<code>HTMLCollection</code>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="plugins">
+						<h4 class="heading">
+							<a href="#plugins"
+								title="@LIBRARY_NAME@.select.plugins"><code>@LIBRARY_NAME@.select.plugins</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.plugins</code>,
+							which in turn returns the <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>(s)
+							registered for the specified key.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>key</var>
+							</dt>
+							<dd>
+								A string containing the key to search for.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="all_plugins">
+						<h4 class="heading">
+							<a href="#all_plugins"
+								title="@LIBRARY_NAME@.select.allPlugins"><code>@LIBRARY_NAME@.select.allPlugins</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.plugins</code>,
+							which in turn returns the entire
+							<code>HTMLCollection</code>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="links">
+						<h4 class="heading">
+							<a href="#links"
+								title="@LIBRARY_NAME@.select.links"><code>@LIBRARY_NAME@.select.links</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.links</code>,
+							which in turn returns the <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>(s)
+							registered for the specified key.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>key</var>
+							</dt>
+							<dd>
+								A string containing the key to search for.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="all_links">
+						<h4 class="heading">
+							<a href="#all_links"
+								title="@LIBRARY_NAME@.select.allLinks"><code>@LIBRARY_NAME@.select.allLinks</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.links</code>,
+							which in turn returns the entire
+							<code>HTMLCollection</code>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="forms">
+						<h4 class="heading">
+							<a href="#forms"
+								title="@LIBRARY_NAME@.select.forms"><code>@LIBRARY_NAME@.select.forms</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.forms</code>,
+							which in turn returns the <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>(s)
+							registered for the specified key.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>key</var>
+							</dt>
+							<dd>
+								A string containing the key to search for.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="all_forms">
+						<h4 class="heading">
+							<a href="#all_forms"
+								title="@LIBRARY_NAME@.Forms.allForms"><code>@LIBRARY_NAME@.select.allForms</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.forms</code>,
+							which in turn returns the entire
+							<code>HTMLCollection</code>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="scripts">
+						<h4 class="heading">
+							<a href="#scripts"
+								title="@LIBRARY_NAME@.select.scripts"><code>@LIBRARY_NAME@.select.scripts</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.scripts</code>,
+							which in turn returns the <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>(s)
+							registered for the specified key.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>key</var>
+							</dt>
+							<dd>
+								A string containing the key to search for.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="all_scripts">
+						<h4 class="heading">
+							<a href="#all_scripts"
+								title="@LIBRARY_NAME@.select.allScripts"><code>@LIBRARY_NAME@.select.allScripts</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.scripts</code>,
+							which in turn returns the entire
+							<code>HTMLCollection</code>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="applets">
+						<h4 class="heading">
+							<a href="#applets"
+								title="@LIBRARY_NAME@.select.applets"><code>@LIBRARY_NAME@.select.applets</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.applets</code>,
+							which in turn returns the <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>(s)
+							registered for the specified key.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>key</var>
+							</dt>
+							<dd>
+								A string containing the key to search for.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="all_applets">
+						<h4 class="heading">
+							<a href="#all_applets"
+								title="@LIBRARY_NAME@.select.allApplets"><code>@LIBRARY_NAME@.select.allApplets</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.applets</code>,
+							which in turn returns the entire
+							<code>HTMLCollection</code>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="anchors">
+						<h4 class="heading">
+							<a href="#anchors"
+								title="@LIBRARY_NAME@.select.anchors"><code>@LIBRARY_NAME@.select.anchors</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.anchors</code>,
+							which in turn returns the <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>(s)
+							registered for the specified key.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>key</var>
+							</dt>
+							<dd>
+								A string containing the key to search for.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="all_anchors">
+						<h4 class="heading">
+							<a href="#all_anchors"
+								title="@LIBRARY_NAME@.select.allAnchors"><code>@LIBRARY_NAME@.select.allAnchors</code></a>
+						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
+						<p class="description">
+							Method that wraps <code>document.anchors</code>,
+							which in turn returns the entire
+							<code>HTMLCollection</code>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A document <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="named_items">
+						<h4 class="heading">
+							<a href="#named_items"
+								title="@LIBRARY_NAME@.select.namedItem"><code>@LIBRARY_NAME@.select.namedItem</code></a>
+						</h4>
+						<p class="description">
+							Method that returns either an
+							<a href="glossary.html#array_like_object"
+								title="Array-like Object">array-like object</a>
+							or a
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							representing the specified name of a specific
+							<code>HTMLCollection</code>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>key</var>
+							</dt>
+							<dd>
+								A string containing the key of the collection to be accessed.
+							</dd>
+							<dt>
+								<var>name</var>
+							</dt>
+							<dd>
+								A string containing the name to be accessed from the specified
+								<code>HTMLCollection</code>.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="collection">
+						<h4 class="heading">
+							<a href="#collection"
+								title="@LIBRARY_NAME@.select.collection"><code>@LIBRARY_NAME@.select.collection</code></a>
+						</h4>
+						<p class="description">
+							Method that returns an
+							<a href="glossary.html#array_like_object"
+								title="Array-like Object">array-like object</a>
+							representing the specified <code>HTMLCollection</code>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+							</dd>
+							<dt>
+								<var>key</var>
+							</dt>
+							<dd>
+								A string containing the key of the collection to be accessed.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Array || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
-				<a href="text.html" rel="prev"
-					title="Previous">&larr;<code>@LIBRARY_NAME@.text</code></a>
+				<a href="ancestors.html" rel="prev"
+					title="Previous">&larr;<code>@LIBRARY_NAME@.ancestors</code></a>
 			</div>
 			<div class="cell index_link primary_cell">
 				<a href="./" rel="index"

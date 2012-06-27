@@ -536,26 +536,6 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
-		function getText()
-		{
-			var node = commonElements.traverse_test,
-				text = @LIBRARY_NAME@.text.get(
-					node
-				);
-			return typeof text === "string";
-		}
-
-		function setText()
-		{
-			var node = commonElements.traverse_test,
-				text = @LIBRARY_NAME@.text.set(
-					node,
-					"NEW TEXTUAL CONTENT",
-					global.document
-				);
-			return text === "NEW TEXTUAL CONTENT";
-		}
-
 		function childrenTree()
 		{
 			var tree = @LIBRARY_NAME@.traverse.getElementTree(
@@ -577,20 +557,42 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
-		function isAncestor()
-		{
-			var child = commonElements.traverse_text,
-				node = @LIBRARY_NAME@.traverse.isAncestor(
-					global.document,
-					child
-				);
-			return typeof node === "boolean";
-		}
-
-		function ancestors()
+		function getText()
 		{
 			var node = commonElements.traverse_test,
-				list = @LIBRARY_NAME@.traverse.getAncestors(
+				text = @LIBRARY_NAME@.text.get(
+					node
+				);
+			return typeof text === "string";
+		}
+
+		function setText()
+		{
+			var node = commonElements.traverse_test,
+				text = @LIBRARY_NAME@.text.set(
+					node,
+					"NEW TEXTUAL CONTENT",
+					global.document
+				);
+			return text === "NEW TEXTUAL CONTENT";
+		}
+
+		function ancestorsTraversed()
+		{
+			var node = commonElements.traverse_test,
+				nodes = @LIBRARY_NAME@.ancestors.traverse(
+					node,
+					optimisticFilter
+				);
+			return @LIBRARY_NAME@.is.arrayLike(
+				nodes
+			);
+		}
+
+		function getAncestors()
+		{
+			var node = commonElements.traverse_test,
+				list = @LIBRARY_NAME@.ancestors.get(
 					node
 				),
 				test;
@@ -602,16 +604,14 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
-		function ancestorsTraversed()
+		function isAncestor()
 		{
-			var node = commonElements.traverse_test,
-				nodes = @LIBRARY_NAME@.traverse.ancestors(
-					node,
-					optimisticFilter
+			var child = commonElements.traverse_text,
+				node = @LIBRARY_NAME@.ancestors.is(
+					global.document,
+					child
 				);
-			return @LIBRARY_NAME@.is.arrayLike(
-				nodes
-			);
+			return typeof node === "boolean";
 		}
 
 		function byName()
@@ -997,13 +997,13 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			childrenTraversed,
 			tree,
 			treeTraversed,
-			getText,
-			setText,
 			childrenTree,
 			childrenTreeTraversed,
-			isAncestor,
-			ancestors,
+			getText,
+			setText,
 			ancestorsTraversed,
+			getAncestors,
+			isAncestor,
 			byName,
 			byTagName,
 			byClassName,

@@ -64,541 +64,442 @@
 					title="Next"><code>Utils.types</code>&rarr;</a>
 			</div>
 		</div>
-		<div class="primary_row row">
+		<div class="column primary_column">
 			<div class="cell primary_cell">
 				<h2 class="heading" title="Utils.raise">
 					<code>Utils.raise</code>
 				</h2>
-				<div class="fragment module_info" id="dependencies">
+				<div class="fragment module_info" id="info">
 					<h3 class="heading">
-						<a href="#dependencies"
-							title="Dependencies">Dependencies</a>
+						<a href="#info"
+							title="Info">Info</a>
 					</h3>
-					<ul>
+					<p class="description">
+						A module containing every documented error name
+						DOM 4 specification and methods to &ldquo;raise&rdquo;
+						(throw) them. For more, see the DOM 4 specification
+						section 3.3 (Errors, error names).
+					</p>
+					<ol>
 						<li>
-							<code>null</code>
+							<a href="#messages"
+								title="Error Messages">Error Messages</a>
 						</li>
-					</ul>
+						<li>
+							<a href="#handlers"
+								title="Error Handlers">Error Handlers</a>
+						</li>
+					</ol>
 				</div>
 			</div>
+			<div class="cell primary_cell" id="messages">
+				<h3 class="heading">
+					<a href="#messages"
+						title="Error Messages">Error Messages</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="types">
+						<h4 class="heading">
+							<a href="#types"
+								title="types"><code>Utils.raise.types</code></a>
+						</h4>
+						<p class="description">
+							Object containing every documented error message in the
+							DOM 4 specification.
+						</p>
+						<dl class="doc_list">
+							<dt class="footnote fragment" id="index_size_error">
+								<a href="#index_size_error"
+									title="INDEX_SIZE_ERROR"><code>INDEX_SIZE_ERROR</code></a>
+							</dt>
+							<dd>The index is not in the allowed range.</dd>
+							<dt class="footnote fragment" id="heirarchy_request_error">
+								<a href="#heirarchy_request_error"
+									title="HEIRARCHY_REQUEST_ERROR"><code>HEIRARCHY_REQUEST_ERROR</code></a>
+							</dt>
+							<dd>The operation would yield an incorrect node tree.</dd>
+							<dt class="footnote fragment" id="wrong_document_error">
+								<a href="#wrong_document_error"
+									title="WRONG_DOCUMENT_ERROR"><code>WRONG_DOCUMENT_ERROR</code></a>
+							</dt>
+							<dd>The object is in the wrong document.</dd>
+							<dt class="footnote fragment" id="invalid_character_error">
+								<a href="#invalid_character_error"
+									title="INVALID_CHARACTER_ERROR"><code>INVALID_CHARACTER_ERROR</code></a>
+							</dt>
+							<dd>The string contains invalid characters.</dd>
+							<dt class="footnote fragment" id="no_modification_allowed_error">
+								<a href="#no_modification_allowed_error"
+									title="NO_MODIFICATION_ALLOWED_ERROR"><code>NO_MODIFICATION_ALLOWED_ERROR</code></a>
+							</dt>
+							<dd>The object can not be modified.</dd>
+							<dt class="footnote fragment" id="not_found_error">
+								<a href="#not_found_error"
+									title="NOT_FOUND_ERROR"><code>NOT_FOUND_ERROR</code></a>
+							</dt>
+							<dd>The object can not be found here.</dd>
+							<dt class="footnote fragment" id="not_supported_error">
+								<a href="#not_supported_error"
+									title="NOT_SUPPORTED_ERROR"><code>NOT_SUPPORTED_ERROR</code></a>
+							</dt>
+							<dd>The operation is not supported.</dd>
+							<dt class="footnote fragment" id="invalid_state_error">
+								<a href="#invalid_state_error"
+									title="INVALID_STATE_ERROR"><code>INVALID_STATE_ERROR</code></a>
+							</dt>
+							<dd>The object is in an invalid state.</dd>
+							<dt class="footnote fragment" id="syntax_error">
+								<a href="#syntax_error"
+									title="SYNTAX_ERROR"><code>SYNTAX_ERROR</code></a>
+							</dt>
+							<dd>The string did not match the expected pattern.</dd>
+							<dt class="footnote fragment" id="invalid_modification_error">
+								<a href="#invalid_modification_error"
+									title="INVALID_MODIFICATION_ERROR"><code>INVALID_MODIFICATION_ERROR</code></a>
+							</dt>
+							<dd>The object can not be modified in this way.</dd>
+							<dt class="footnote fragment" id="namespace_error">
+								<a href="#namespace_error"
+									title="NAMESPACE_ERROR"><code>NAMESPACE_ERROR</code></a>
+							</dt>
+							<dd>The operation is not allowed by Namespaces in XML.</dd>
+							<dt class="footnote fragment" id="invalid_access_error">
+								<a href="#invalid_access_error"
+									title="INVALID_ACCESS_ERROR"><code>INVALID_ACCESS_ERROR</code></a>
+							</dt>
+							<dd>The object does not support the operation or argument.</dd>
+							<dt class="footnote fragment" id="type_mismatch_error">
+								<a href="#type_mismatch_error"
+									title="TYPE_MISMATCH_ERROR"><code>TYPE_MISMATCH_ERROR</code></a>
+							</dt>
+							<dd>The type of object does not match the expected type.</dd>
+							<dt class="footnote fragment" id="security_error">
+								<a href="#security_error"
+									title="SECURITY_ERROR"><code>SECURITY_ERROR</code></a>
+							</dt>
+							<dd>The operation is insecure.</dd>
+							<dt class="footnote fragment" id="network_error">
+								<a href="#network_error"
+									title="NETWORK_ERROR"><code>NETWORK_ERROR</code></a>
+							</dt>
+							<dd>A network error occurred.</dd>
+							<dt class="footnote fragment" id="abort_error">
+								<a href="#abort_error"
+									title="ABORT_ERROR"><code>ABORT_ERROR</code></a>
+							</dt>
+							<dd>The operation was aborted.</dd>
+							<dt class="footnote fragment" id="url_mismatch_error">
+								<a href="#url_mismatch_error"
+									title="URL_MISMATCH_ERROR"><code>URL_MISMATCH_ERROR</code></a>
+							</dt>
+							<dd>The given URL does not match another URL.</dd>
+							<dt class="footnote fragment" id="quota_exceeded_error">
+								<a href="#quota_exceeded_error"
+									title="QUOTA_EXCEEDED_ERROR"><code>QUOTA_EXCEEDED_ERROR</code></a>
+							</dt>
+							<dd>The quota has been exceeded.</dd>
+							<dt class="footnote fragment" id="timeout_error">
+								<a href="#timeout_error"
+									title="TIMEOUT_ERROR"><code>TIMEOUT_ERROR</code></a>
+							</dt>
+							<dd>The operation timed out.</dd>
+							<dt class="footnote fragment" id="invalid_node_type_error">
+								<a href="#invalid_node_type_error"
+									title="INVALID_NODE_TYPE_ERROR"><code>INVALID_NODE_TYPE_ERROR</code></a>
+							</dt>
+							<dd>The supplied node is incorrect or has an incorrect
+								ancestor for this operation.</dd>
+							<dt class="footnote fragment" id="data_clone_error">
+								<a href="#data_clone_error"
+									title="DATA_CLONE_ERROR"><code>DATA_CLONE_ERROR</code></a>
+							</dt>
+							<dd>The object can not be cloned.</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="handlers">
+				<h3 class="heading">
+					<a href="#handlers"
+						title="Error Handlers">Error Handlers</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="index_size">
+						<h4 class="heading">
+							<a href="#index_size"
+								title="Utils.raise.indexSize"><code>Utils.raise.indexSize</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#index_size_error"
+								title="Utils.raise.types.INDEX_SIZE_ERROR"><code>Utils.raise.types.INDEX_SIZE_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="heirarchy_request">
+						<h4 class="heading">
+							<a href="#heirarchy_request"
+								title="Utils.raise.heirarchyRequest"><code>Utils.raise.heirarchyRequest</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#heirarchy_request_error"
+								title="Utils.raise.types.HEIRARCHY_REQUEST_ERROR"><code>Utils.raise.types.HEIRARCHY_REQUEST_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="wrong_document">
+						<h4 class="heading">
+							<a href="#wrong_document"
+								title="Utils.raise.wrongDocument"><code>Utils.raise.wrongDocument</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#wrong_document_error"
+								title="Utils.raise.types.WRONG_DOCUMENT_ERROR"><code>Utils.raise.types.WRONG_DOCUMENT_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="invalid_character">
+						<h4 class="heading">
+							<a href="#invalid_character"
+								title="Utils.raise.invalidCharacter"><code>Utils.raise.invalidCharacter</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#invalid_character_error"
+								title="Utils.raise.types.INVALID_CHARACTER_ERROR"><code>Utils.raise.types.INVALID_CHARACTER_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="no_modification_allowed">
+						<h4 class="heading">
+							<a href="#no_modification_allowed"
+								title="Utils.raise.noModificationAllowed"><code>Utils.raise.noModificationAllowed</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#no_modification_allowed_error"
+								title="Utils.raise.types.NO_MODIFICATION_ALLOWED_ERROR"><code>Utils.raise.types.NO_MODIFICATION_ALLOWED_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="not_found">
+						<h4 class="heading">
+							<a href="#not_found"
+								title="Utils.raise.notFound"><code>Utils.raise.notFound</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#not_found_error"
+								title="Utils.raise.types.NOT_FOUND_ERROR"><code>Utils.raise.types.NOT_FOUND_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="not_supported">
+						<h4 class="heading">
+							<a href="#not_supported"
+								title="Utils.raise.notSupported"><code>Utils.raise.notSupported</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#not_supported_error"
+								title="Utils.raise.types.NOT_SUPPORTED_ERROR"><code>Utils.raise.types.NOT_SUPPORTED_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="invalid_state">
+						<h4 class="heading">
+							<a href="#invalid_state"
+								title="Utils.raise.invalidState"><code>Utils.raise.invalidState</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#invalid_state_error"
+								title="Utils.raise.types.INVALID_STATE_ERROR"><code>Utils.raise.types.INVALID_STATE_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="syntax">
+						<h4 class="heading">
+							<a href="#syntax"
+								title="Utils.raise.syntax"><code>Utils.raise.syntax</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#syntax_error"
+								title="Utils.raise.types.SYNTAX_ERROR"><code>Utils.raise.types.SYNTAX_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="invalid_modification">
+						<h4 class="heading">
+							<a href="#invalid_modification"
+								title="Utils.raise.invalidModification"><code>Utils.raise.invalidModification</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#invalid_modification_error"
+								title="Utils.raise.types.INVALID_MODIFICATION_ERROR"><code>Utils.raise.types.INVALID_MODIFICATION_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="namespace">
+						<h4 class="heading">
+							<a href="#namespace"
+								title="Utils.raise.namespace"><code>Utils.raise.namespace</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#namespace_error"
+								title="Utils.raise.types.NAMESPACE_ERROR"><code>Utils.raise.types.NAMESPACE_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="invalid_access">
+						<h4 class="heading">
+							<a href="#invalid_access"
+								title="Utils.raise.invalidAccess"><code>Utils.raise.invalidAccess</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#invalid_access_error"
+								title="Utils.raise.types.INVALID_ACCESS_ERROR"><code>Utils.raise.types.INVALID_ACCESS_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="type_mismatch">
+						<h4 class="heading">
+							<a href="#type_mismatch"
+								title="Utils.raise.typeMismatch"><code>Utils.raise.typeMismatch</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#type_mismatch_error"
+								title="Utils.raise.types.TYPE_MISMATCH_ERROR"><code>Utils.raise.types.TYPE_MISMATCH_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="security">
+						<h4 class="heading">
+							<a href="#security"
+								title="Utils.raise.security"><code>Utils.raise.security</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#security_error"
+								title="Utils.raise.types.SECURITY_ERROR"><code>Utils.raise.types.SECURITY_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="network">
+						<h4 class="heading">
+							<a href="#network"
+								title="Utils.raise.network"><code>Utils.raise.network</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#network_error"
+								title="Utils.raise.types.NETWORK_ERROR"><code>Utils.raise.types.NETWORK_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="abort">
+						<h4 class="heading">
+							<a href="#abort"
+								title="Utils.raise.abort"><code>Utils.raise.abort</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#abort_error"
+								title="Utils.raise.types.ABORT_ERROR"><code>Utils.raise.types.ABORT_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="url_mismatch">
+						<h4 class="heading">
+							<a href="#url_mismatch"
+								title="Utils.raise.urlMismatch"><code>Utils.raise.urlMismatch</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#url_mismatch_error"
+								title="Utils.raise.types.URL_MISMATCH_ERROR"><code>Utils.raise.types.URL_MISMATCH_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="quota_exceeded">
+						<h4 class="heading">
+							<a href="#quota_exceeded"
+								title="Utils.raise.quotaExceeded"><code>Utils.raise.quotaExceeded</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#quota_exceeded_error"
+								title="Utils.raise.types.QUOTA_EXCEEDED_ERROR"><code>Utils.raise.types.QUOTA_EXCEEDED_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="timeout">
+						<h4 class="heading">
+							<a href="#timeout"
+								title="Utils.raise.timeout"><code>Utils.raise.timeout</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#timeout_error"
+								title="Utils.raise.types.TIMEOUT_ERROR"><code>Utils.raise.types.TIMEOUT_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="invalid_node_type">
+						<h4 class="heading">
+							<a href="#invalid_node_type"
+								title="Utils.raise.invalidNodeType"><code>Utils.raise.invalidNodeType</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#invalid_node_type_error"
+								title="Utils.raise.types.INVALID_NODE_TYPE_ERROR"><code>Utils.raise.types.INVALID_NODE_TYPE_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="data_clone">
+						<h4 class="heading">
+							<a href="#data_clone"
+								title="Utils.raise.dataClone"><code>Utils.raise.dataClone</code></a>
+						</h4>
+						<p class="description">
+							Method to throw <a href="#data_clone_error"
+								title="Utils.raise.types.DATA_CLONE_ERROR"><code>Utils.raise.types.DATA_CLONE_ERROR</code></a>.
+						</p>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry fragment" id="types">
-				<h3 class="heading">
-					<a href="#types"
-						title="types"><code>Utils.raise.types</code></a>
-				</h3>
-				<p class="doc_art left_brace">{</p>
-				<dl class="doc_list">
-					<dt class="footnote fragment" id="index_size_error">
-						<a href="#index_size_error"
-							title="INDEX_SIZE_ERROR"><code>INDEX_SIZE_ERROR</code></a>
-					</dt>
-					<dd>The index is not in the allowed range.</dd>
-					<dt class="footnote fragment" id="heirarchy_request_error">
-						<a href="#heirarchy_request_error"
-							title="HEIRARCHY_REQUEST_ERROR"><code>HEIRARCHY_REQUEST_ERROR</code></a>
-					</dt>
-					<dd>The operation would yield an incorrect node tree.</dd>
-					<dt class="footnote fragment" id="wrong_document_error">
-						<a href="#wrong_document_error"
-							title="WRONG_DOCUMENT_ERROR"><code>WRONG_DOCUMENT_ERROR</code></a>
-					</dt>
-					<dd>The object is in the wrong document.</dd>
-					<dt class="footnote fragment" id="invalid_character_error">
-						<a href="#invalid_character_error"
-							title="INVALID_CHARACTER_ERROR"><code>INVALID_CHARACTER_ERROR</code></a>
-					</dt>
-					<dd>The string contains invalid characters.</dd>
-					<dt class="footnote fragment" id="no_modification_allowed_error">
-						<a href="#no_modification_allowed_error"
-							title="NO_MODIFICATION_ALLOWED_ERROR"><code>NO_MODIFICATION_ALLOWED_ERROR</code></a>
-					</dt>
-					<dd>The object can not be modified.</dd>
-					<dt class="footnote fragment" id="not_found_error">
-						<a href="#not_found_error"
-							title="NOT_FOUND_ERROR"><code>NOT_FOUND_ERROR</code></a>
-					</dt>
-					<dd>The object can not be found here.</dd>
-					<dt class="footnote fragment" id="not_supported_error">
-						<a href="#not_supported_error"
-							title="NOT_SUPPORTED_ERROR"><code>NOT_SUPPORTED_ERROR</code></a>
-					</dt>
-					<dd>The operation is not supported.</dd>
-					<dt class="footnote fragment" id="invalid_state_error">
-						<a href="#invalid_state_error"
-							title="INVALID_STATE_ERROR"><code>INVALID_STATE_ERROR</code></a>
-					</dt>
-					<dd>The object is in an invalid state.</dd>
-					<dt class="footnote fragment" id="syntax_error">
-						<a href="#syntax_error"
-							title="SYNTAX_ERROR"><code>SYNTAX_ERROR</code></a>
-					</dt>
-					<dd>The string did not match the expected pattern.</dd>
-					<dt class="footnote fragment" id="invalid_modification_error">
-						<a href="#invalid_modification_error"
-							title="INVALID_MODIFICATION_ERROR"><code>INVALID_MODIFICATION_ERROR</code></a>
-					</dt>
-					<dd>The object can not be modified in this way.</dd>
-					<dt class="footnote fragment" id="namespace_error">
-						<a href="#namespace_error"
-							title="NAMESPACE_ERROR"><code>NAMESPACE_ERROR</code></a>
-					</dt>
-					<dd>The operation is not allowed by Namespaces in XML.</dd>
-					<dt class="footnote fragment" id="invalid_access_error">
-						<a href="#invalid_access_error"
-							title="INVALID_ACCESS_ERROR"><code>INVALID_ACCESS_ERROR</code></a>
-					</dt>
-					<dd>The object does not support the operation or argument.</dd>
-					<dt class="footnote fragment" id="type_mismatch_error">
-						<a href="#type_mismatch_error"
-							title="TYPE_MISMATCH_ERROR"><code>TYPE_MISMATCH_ERROR</code></a>
-					</dt>
-					<dd>The type of object does not match the expected type.</dd>
-					<dt class="footnote fragment" id="security_error">
-						<a href="#security_error"
-							title="SECURITY_ERROR"><code>SECURITY_ERROR</code></a>
-					</dt>
-					<dd>The operation is insecure.</dd>
-					<dt class="footnote fragment" id="network_error">
-						<a href="#network_error"
-							title="NETWORK_ERROR"><code>NETWORK_ERROR</code></a>
-					</dt>
-					<dd>A network error occurred.</dd>
-					<dt class="footnote fragment" id="abort_error">
-						<a href="#abort_error"
-							title="ABORT_ERROR"><code>ABORT_ERROR</code></a>
-					</dt>
-					<dd>The operation was aborted.</dd>
-					<dt class="footnote fragment" id="url_mismatch_error">
-						<a href="#url_mismatch_error"
-							title="URL_MISMATCH_ERROR"><code>URL_MISMATCH_ERROR</code></a>
-					</dt>
-					<dd>The given URL does not match another URL.</dd>
-					<dt class="footnote fragment" id="quota_exceeded_error">
-						<a href="#quota_exceeded_error"
-							title="QUOTA_EXCEEDED_ERROR"><code>QUOTA_EXCEEDED_ERROR</code></a>
-					</dt>
-					<dd>The quota has been exceeded.</dd>
-					<dt class="footnote fragment" id="timeout_error">
-						<a href="#timeout_error"
-							title="TIMEOUT_ERROR"><code>TIMEOUT_ERROR</code></a>
-					</dt>
-					<dd>The operation timed out.</dd>
-					<dt class="footnote fragment" id="invalid_node_type_error">
-						<a href="#invalid_node_type_error"
-							title="INVALID_NODE_TYPE_ERROR"><code>INVALID_NODE_TYPE_ERROR</code></a>
-					</dt>
-					<dd>The supplied node is incorrect or has an incorrect
-						ancestor for this operation.</dd>
-					<dt class="footnote fragment" id="data_clone_error">
-						<a href="#data_clone_error"
-							title="DATA_CLONE_ERROR"><code>DATA_CLONE_ERROR</code></a>
-					</dt>
-					<dd>The object can not be cloned.</dd>
-				</dl>
-				<p class="doc_art right_brace">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="index_size">
-				<h3 class="heading">
-					<a href="#index_size"
-						title="Utils.raise.indexSize"><code>Utils.raise.indexSize</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#index_size_error"
-							title="Utils.raise.types.INDEX_SIZE_ERROR"><code>Utils.raise.types.INDEX_SIZE_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="heirarchy_request">
-				<h3 class="heading">
-					<a href="#heirarchy_request"
-						title="Utils.raise.heirarchyRequest"><code>Utils.raise.heirarchyRequest</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#heirarchy_request_error"
-							title="Utils.raise.types.HEIRARCHY_REQUEST_ERROR"><code>Utils.raise.types.HEIRARCHY_REQUEST_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="wrong_document">
-				<h3 class="heading">
-					<a href="#wrong_document"
-						title="Utils.raise.wrongDocument"><code>Utils.raise.wrongDocument</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#wrong_document_error"
-							title="Utils.raise.types.WRONG_DOCUMENT_ERROR"><code>Utils.raise.types.WRONG_DOCUMENT_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="invalid_character">
-				<h3 class="heading">
-					<a href="#invalid_character"
-						title="Utils.raise.invalidCharacter"><code>Utils.raise.invalidCharacter</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#invalid_character_error"
-							title="Utils.raise.types.INVALID_CHARACTER_ERROR"><code>Utils.raise.types.INVALID_CHARACTER_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="no_modification_allowed">
-				<h3 class="heading">
-					<a href="#no_modification_allowed"
-						title="Utils.raise.noModificationAllowed"><code>Utils.raise.noModificationAllowed</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#no_modification_allowed_error"
-							title="Utils.raise.types.NO_MODIFICATION_ALLOWED_ERROR"><code>Utils.raise.types.NO_MODIFICATION_ALLOWED_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="not_found">
-				<h3 class="heading">
-					<a href="#not_found"
-						title="Utils.raise.notFound"><code>Utils.raise.notFound</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#not_found_error"
-							title="Utils.raise.types.NOT_FOUND_ERROR"><code>Utils.raise.types.NOT_FOUND_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="not_supported">
-				<h3 class="heading">
-					<a href="#not_supported"
-						title="Utils.raise.notSupported"><code>Utils.raise.notSupported</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#not_supported_error"
-							title="Utils.raise.types.NOT_SUPPORTED_ERROR"><code>Utils.raise.types.NOT_SUPPORTED_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="invalid_state">
-				<h3 class="heading">
-					<a href="#invalid_state"
-						title="Utils.raise.invalidState"><code>Utils.raise.invalidState</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#invalid_state_error"
-							title="Utils.raise.types.INVALID_STATE_ERROR"><code>Utils.raise.types.INVALID_STATE_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="syntax">
-				<h3 class="heading">
-					<a href="#syntax"
-						title="Utils.raise.syntax"><code>Utils.raise.syntax</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#syntax_error"
-							title="Utils.raise.types.SYNTAX_ERROR"><code>Utils.raise.types.SYNTAX_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="invalid_modification">
-				<h3 class="heading">
-					<a href="#invalid_modification"
-						title="Utils.raise.invalidModification"><code>Utils.raise.invalidModification</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#invalid_modification_error"
-							title="Utils.raise.types.INVALID_MODIFICATION_ERROR"><code>Utils.raise.types.INVALID_MODIFICATION_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="namespace">
-				<h3 class="heading">
-					<a href="#namespace"
-						title="Utils.raise.namespace"><code>Utils.raise.namespace</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#namespace_error"
-							title="Utils.raise.types.NAMESPACE_ERROR"><code>Utils.raise.types.NAMESPACE_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="invalid_access">
-				<h3 class="heading">
-					<a href="#invalid_access"
-						title="Utils.raise.invalidAccess"><code>Utils.raise.invalidAccess</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#invalid_access_error"
-							title="Utils.raise.types.INVALID_ACCESS_ERROR"><code>Utils.raise.types.INVALID_ACCESS_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="type_mismatch">
-				<h3 class="heading">
-					<a href="#type_mismatch"
-						title="Utils.raise.typeMismatch"><code>Utils.raise.typeMismatch</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#type_mismatch_error"
-							title="Utils.raise.types.TYPE_MISMATCH_ERROR"><code>Utils.raise.types.TYPE_MISMATCH_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="security">
-				<h3 class="heading">
-					<a href="#security"
-						title="Utils.raise.security"><code>Utils.raise.security</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#security_error"
-							title="Utils.raise.types.SECURITY_ERROR"><code>Utils.raise.types.SECURITY_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="network">
-				<h3 class="heading">
-					<a href="#network"
-						title="Utils.raise.network"><code>Utils.raise.network</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#network_error"
-							title="Utils.raise.types.NETWORK_ERROR"><code>Utils.raise.types.NETWORK_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="abort">
-				<h3 class="heading">
-					<a href="#abort"
-						title="Utils.raise.abort"><code>Utils.raise.abort</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#abort_error"
-							title="Utils.raise.types.ABORT_ERROR"><code>Utils.raise.types.ABORT_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="url_mismatch">
-				<h3 class="heading">
-					<a href="#url_mismatch"
-						title="Utils.raise.urlMismatch"><code>Utils.raise.urlMismatch</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#url_mismatch_error"
-							title="Utils.raise.types.URL_MISMATCH_ERROR"><code>Utils.raise.types.URL_MISMATCH_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="quota_exceeded">
-				<h3 class="heading">
-					<a href="#quota_exceeded"
-						title="Utils.raise.quotaExceeded"><code>Utils.raise.quotaExceeded</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#quota_exceeded_error"
-							title="Utils.raise.types.QUOTA_EXCEEDED_ERROR"><code>Utils.raise.types.QUOTA_EXCEEDED_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="timeout">
-				<h3 class="heading">
-					<a href="#timeout"
-						title="Utils.raise.timeout"><code>Utils.raise.timeout</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#timeout_error"
-							title="Utils.raise.types.TIMEOUT_ERROR"><code>Utils.raise.types.TIMEOUT_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="invalid_node_type">
-				<h3 class="heading">
-					<a href="#invalid_node_type"
-						title="Utils.raise.invalidNodeType"><code>Utils.raise.invalidNodeType</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#invalid_node_type_error"
-							title="Utils.raise.types.INVALID_NODE_TYPE_ERROR"><code>Utils.raise.types.INVALID_NODE_TYPE_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="data_clone">
-				<h3 class="heading">
-					<a href="#data_clone"
-						title="Utils.raise.dataClone"><code>Utils.raise.dataClone</code></a>
-				</h3>
-				<p class="doc_art function_head">function () {</p>
-				<dl class="doc_list">
-					<dt>description</dt>
-					<dd>
-						Method to throw <a href="#data_clone_error"
-							title="Utils.raise.types.DATA_CLONE_ERROR"><code>Utils.raise.types.DATA_CLONE_ERROR</code></a>.
-					</dd>
-					<dt>return value</dt>
-					<dd>
-						<code>undefined</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-		</ul>
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="./" rel="prev"

@@ -58,6 +58,7 @@ begin_parts ()
 		"classes"
 		"traverse"
 		"text"
+		"ancestors"
 		"select"
 	);
 	compress_parts "${PARTS[@]}";

@@ -558,26 +558,6 @@ if (typeof Utils === "object" && Utils) {
 			);
 		}
 
-		function getText()
-		{
-			var node = commonElements.traverse_test,
-				text = Utils.text.get(
-					node
-				);
-			return typeof text === "string";
-		}
-
-		function setText()
-		{
-			var node = commonElements.traverse_test,
-				text = Utils.text.set(
-					node,
-					"NEW TEXTUAL CONTENT",
-					global.document
-				);
-			return text === "NEW TEXTUAL CONTENT";
-		}
-
 		function childrenTree()
 		{
 			var tree = Utils.traverse.getElementTree(
@@ -599,20 +579,42 @@ if (typeof Utils === "object" && Utils) {
 			);
 		}
 
-		function isAncestor()
-		{
-			var child = commonElements.traverse_text,
-				node = Utils.traverse.isAncestor(
-					global.document,
-					child
-				);
-			return typeof node === "boolean";
-		}
-
-		function ancestors()
+		function getText()
 		{
 			var node = commonElements.traverse_test,
-				list = Utils.traverse.getAncestors(
+				text = Utils.text.get(
+					node
+				);
+			return typeof text === "string";
+		}
+
+		function setText()
+		{
+			var node = commonElements.traverse_test,
+				text = Utils.text.set(
+					node,
+					"NEW TEXTUAL CONTENT",
+					global.document
+				);
+			return text === "NEW TEXTUAL CONTENT";
+		}
+
+		function ancestorsTraversed()
+		{
+			var node = commonElements.traverse_test,
+				nodes = Utils.ancestors.traverse(
+					node,
+					optimisticFilter
+				);
+			return Utils.is.arrayLike(
+				nodes
+			);
+		}
+
+		function getAncestors()
+		{
+			var node = commonElements.traverse_test,
+				list = Utils.ancestors.get(
 					node
 				),
 				test;
@@ -624,16 +626,14 @@ if (typeof Utils === "object" && Utils) {
 			);
 		}
 
-		function ancestorsTraversed()
+		function isAncestor()
 		{
-			var node = commonElements.traverse_test,
-				nodes = Utils.traverse.ancestors(
-					node,
-					optimisticFilter
+			var child = commonElements.traverse_text,
+				node = Utils.ancestors.is(
+					global.document,
+					child
 				);
-			return Utils.is.arrayLike(
-				nodes
-			);
+			return typeof node === "boolean";
 		}
 
 		function byName()
@@ -1017,13 +1017,13 @@ if (typeof Utils === "object" && Utils) {
 			childrenTraversed,
 			tree,
 			treeTraversed,
-			getText,
-			setText,
 			childrenTree,
 			childrenTreeTraversed,
-			isAncestor,
-			ancestors,
+			getText,
+			setText,
 			ancestorsTraversed,
+			getAncestors,
+			isAncestor,
 			byName,
 			byTagName,
 			byClassName,

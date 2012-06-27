@@ -25,446 +25,455 @@
 					title="Next"><code>@LIBRARY_NAME@.create</code>&rarr;</a>
 			</div>
 		</div>
-		<div class="primary_row row">
+		<div class="column primary_column">
 			<div class="cell primary_cell">
 				<h2 class="heading" title="@LIBRARY_NAME@.node">
 					<code>@LIBRARY_NAME@.node</code>
 				</h2>
-				<div class="fragment module_info" id="dependencies">
+				<div class="fragment module_info" id="info">
 					<h3 class="heading">
-						<a href="#dependencies"
-							title="Dependencies">Dependencies</a>
+						<a href="#info"
+							title="Info">Info</a>
 					</h3>
-					<ul>
+					<p class="description">
+						A module containing various methods from the <code>Node</code>
+						interface. These include methods to append, remove, replace and
+						clone nodes. For more, see the DOM 4 specification section 5.3
+						(Interface Node).
+					</p>
+					<ol>
 						<li>
-							<code>null</code>
+							<a href="#additive"
+								title="Additive Methods">Additive Methods</a>
 						</li>
-					</ul>
+						<li>
+							<a href="#subtractive"
+								title="Subtractive Methods">Subtractive Methods</a>
+						</li>
+						<li>
+							<a href="#multiplicative"
+								title="Multiplicative Methods">Multiplicative Methods</a>
+						</li>
+						<li>
+							<a href="#access"
+								title="Access Methods">Access Methods</a>
+						</li>
+					</ol>
 				</div>
 			</div>
+			<div class="cell primary_cell" id="additive">
+				<h3 class="heading">
+					<a href="#additive"
+						title="Additive Methods">Additive Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="prepend">
+						<h4 class="heading">
+							<a href="#prepend"
+								title="@LIBRARY_NAME@.node.prepend"><code>@LIBRARY_NAME@.node.prepend</code></a>
+						</h4>
+						<p class="description">
+							Method that wraps <code>insertBefore</code>,
+							which in turn appends a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a> before
+							another <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a> to a
+							parent <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>.
+						</dd>
+						<dl class="doc_list">
+							<dt>
+								<var>par</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will act as the <code>parentNode</code>.
+							</dd>
+							<dt>
+								<var>newObj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will be inserted before the referenced
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								if successful.
+							</dd>
+							<dt>
+								<var>refObj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will act as the reference <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to where the new <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								will be inserted before.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="prepend_list">
+						<h4 class="heading">
+							<a href="#prepend_list"
+								title="@LIBRARY_NAME@.node.prependList"><code>@LIBRARY_NAME@.node.prependList</code></a>
+						</h4>
+						<p class="description">
+							Method takes an <a href="glossary.html#array_like_object"
+								title="Array-like Object">array-like object</a>
+							and passes each element to <a href="#prepend"
+								title="@LIBRARY_NAME@.node.prepend"><code>prepend</code></a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>par</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will act as the <code>parentNode</code>.
+							</dd>
+							<dt>
+								<var>list</var>
+							</dt>
+							<dd>
+								An <a href="glossary.html#array_like_object"
+									title="Array-like Object">array-like object</a>
+								containing <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>s
+								to be prefixed.
+							</dd>
+							<dt>
+								<var>refObj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will act as the reference <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to where the new <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								will be inserted before.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="append">
+						<h4 class="heading">
+							<a href="#append"
+								title="@LIBRARY_NAME@.node.append"><code>@LIBRARY_NAME@.node.append</code></a>
+						</h4>
+						<p class="description">
+							Method that &ldquo;appends&rdquo; a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							(via <code>appendChild</code>) to a parent <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>par</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will act as the <code>parentNode</code>.
+							</dd>
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will be appended to the given parent
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>.
+								if successful.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="append_list">
+						<h4 class="heading">
+							<a href="#append_list"
+								title="@LIBRARY_NAME@.node.appendList"><code>@LIBRARY_NAME@.node.appendList</code></a>
+						</h4>
+						<p class="description">
+							Method takes an <a href="glossary.html#array_like_object"
+								title="Array-like Object">array-like object</a>
+							and passes each element to <a href="#append"
+								title="@LIBRARY_NAME@.node.append"><code>append</code></a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>par</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will act as the <code>parentNode</code>.
+							</dd>
+							<dt>
+								<var>list</var>
+							</dt>
+							<dd>
+								An <a href="glossary.html#array_like_object"
+									title="Array-like Object">array-like object</a>
+								containing <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>s
+								to be appended.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="subtractive">
+				<h3 class="heading">
+					<a href="#subtractive"
+						title="Subtractive Methods">Subtractive Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="remove">
+						<h4 class="heading">
+							<a href="#remove"
+								title="@LIBRARY_NAME@.node.remove"><code>@LIBRARY_NAME@.node.remove</code></a>
+						</h4>
+						<p class="description">
+							Method that &ldquo;removes&rdquo; a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							(via <code>removeChild</code>) from a parent
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>par</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will act as the <code>parentNode</code>.
+							</dd>
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will be removed from the given parent
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								if successful.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="replace">
+						<h4 class="heading">
+							<a href="#replace"
+								title="@LIBRARY_NAME@.node.replace"><code>@LIBRARY_NAME@.node.replace</code></a>
+						</h4>
+						<p class="description">
+							Method that &ldquo;replaces&rdquo; a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							(via <code>replaceChild</code>) with a new
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a> on a parent
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>par</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will act as the <code>parentNode</code>.
+							</dd>
+							<dt>
+								<var>newObj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will replace a given <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								on a parent <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								if successful.
+							</dd>
+							<dt>
+								<var>oldObj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will be replaced by a given <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								on a parent <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								if successful.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="multiplicative">
+				<h3 class="heading">
+					<a href="#multiplicative"
+						title="Multiplicative Methods">Multiplicative Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="clone">
+						<h4 class="heading">
+							<a href="#clone"
+								title="@LIBRARY_NAME@.node.clone"><code>@LIBRARY_NAME@.node.clone</code></a>
+						</h4>
+						<p class="description">
+							Method that &ldquo;clones&rdquo; a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>
+							(via <code>cloneNode</code>); performs a &ldquo;shallow&rdquo;
+							(one level) &ldquo;clone&rdquo; if <var>deep</var> is false; performs
+							a &ldquo;deep&rdquo; (recursive) &ldquo;clone&rdquo; if <var>deep</var> is true.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								that will be &ldquo;cloned&rdquo;.
+							</dd>
+							<dt>
+								<var>deep</var>
+							</dt>
+							<dd>
+								A boolean that will determine if a &ldquo;deep&rdquo; (recursive)
+								or a &ldquo;shallow&rdquo; (one level) &ldquo;clone&rdquo; will be performed
+								if successful.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="access">
+				<h3 class="heading">
+					<a href="#access"
+						title="Access Methods">Access Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="get_name">
+						<h4 class="heading">
+							<a href="#get_name"
+								title="@LIBRARY_NAME@.node.getName"><code>@LIBRARY_NAME@.node.getName</code></a>
+						</h4>
+						<p class="description">
+							Method that retrieves a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							<code>nodeName</code> property; returns property in lower case form if
+							<var>lower</var> is true; returns property in upper case form if <var>upper</var>
+							is false; returns `null` if not applicable.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to access.
+							</dd>
+							<dt>
+								<var>lower</var>
+							</dt>
+							<dd>
+								A boolean that will determine if a the <code>nodeName</code> property
+								will be returned in lower case or upper case form.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>String || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="get_value">
+						<h4 class="heading">
+							<a href="#get_value"
+								title="@LIBRARY_NAME@.node.getValue"><code>@LIBRARY_NAME@.node.getValue</code></a>
+						</h4>
+						<p class="description">
+							Method that retrieves a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							<code>nodeValue</code> property; returns `null` if not applicable.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to access.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>String || null</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="set_value">
+						<h4 class="heading">
+							<a href="#set_value"
+								title="@LIBRARY_NAME@.node.setValue"><code>@LIBRARY_NAME@.node.setValue</code></a>
+						</h4>
+						<p class="description">
+							Method that overwrites a <a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>'s
+							<code>nodeValue</code> property; returns `null` if not applicable.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>obj</var>
+							</dt>
+							<dd>
+								A <a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								to access.
+							</dd>
+							<dt>
+								<var>newValue</var>
+							</dt>
+							<dd>
+								A string containing the new value for the <code>nodeValue</code>
+								property.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>String || null</code>
+						</p>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<ul class="doc_row row">
-			<li class="cell doc_cell doc_entry fragment" id="prepend">
-				<h3 class="heading">
-					<a href="#prepend"
-						title="@LIBRARY_NAME@.node.prepend"><code>@LIBRARY_NAME@.node.prepend</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>par</var>, <var>newObj</var>, <var>refObj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that wraps <code>insertBefore</code>,
-						which in turn appends a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a> before
-						another <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a> to a
-						parent <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>par</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will act as the <code>parentNode</code>.
-					</dd>
-					<dt>
-						<var>newObj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will be inserted before the referenced
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						if successful.
-					</dd>
-					<dt>
-						<var>refObj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will act as the reference <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to where the new <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						will be inserted before.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="prepend_list">
-				<h3 class="heading">
-					<a href="#prepend_list"
-						title="@LIBRARY_NAME@.node.prependList"><code>@LIBRARY_NAME@.node.prependList</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>par</var>, <var>list</var>, <var>refObj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method takes an <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>
-						and passes each element to <a href="#prepend"
-							title="@LIBRARY_NAME@.node.prepend"><code>prepend</code></a>.
-					</dd>
-					<dt>
-						<var>par</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will act as the <code>parentNode</code>.
-					</dd>
-					<dt>
-						<var>list</var>
-					</dt>
-					<dd>
-						An <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>
-						containing <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>s
-						to be prefixed.
-					</dd>
-					<dt>
-						<var>refObj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will act as the reference <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to where the new <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						will be inserted before.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="append">
-				<h3 class="heading">
-					<a href="#append"
-						title="@LIBRARY_NAME@.node.append"><code>@LIBRARY_NAME@.node.append</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>par</var>, <var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that &ldquo;appends&rdquo; a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						(via <code>appendChild</code>) to a parent <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>par</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will act as the <code>parentNode</code>.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will be appended to the given parent
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-						if successful.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="append_list">
-				<h3 class="heading">
-					<a href="#append_list"
-						title="@LIBRARY_NAME@.node.appendList"><code>@LIBRARY_NAME@.node.appendList</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>par</var>, <var>list</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method takes an <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>
-						and passes each element to <a href="#append"
-							title="@LIBRARY_NAME@.node.append"><code>append</code></a>.
-					</dd>
-					<dt>
-						<var>par</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will act as the <code>parentNode</code>.
-					</dd>
-					<dt>
-						<var>list</var>
-					</dt>
-					<dd>
-						An <a href="glossary.html#array_like_object"
-							title="Array-like Object">array-like object</a>
-						containing <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>s
-						to be appended.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="remove">
-				<h3 class="heading">
-					<a href="#remove"
-						title="@LIBRARY_NAME@.node.remove"><code>@LIBRARY_NAME@.node.remove</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>par</var>, <var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that &ldquo;removes&rdquo; a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						(via <code>removeChild</code>) from a parent
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>par</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will act as the <code>parentNode</code>.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will be removed from the given parent
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						if successful.
-					</dd>
-					@DOCS_DESCRIPTION@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="replace">
-				<h3 class="heading">
-					<a href="#replace"
-						title="@LIBRARY_NAME@.node.replace"><code>@LIBRARY_NAME@.node.replace</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>par</var>, <var>newObj</var>, <var>oldObj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that &ldquo;replaces&rdquo; a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						(via <code>replaceChild</code>) with a new
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a> on a parent
-						<a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>.
-					</dd>
-					<dt>
-						<var>par</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will act as the <code>parentNode</code>.
-					</dd>
-					<dt>
-						<var>newObj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will replace a given <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						on a parent <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						if successful.
-					</dd>
-					<dt>
-						<var>oldObj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will be replaced by a given <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						on a parent <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						if successful.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="clone">
-				<h3 class="heading">
-					<a href="#clone"
-						title="@LIBRARY_NAME@.node.clone"><code>@LIBRARY_NAME@.node.clone</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>, <var>deep</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that &ldquo;clones&rdquo; a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						(via <code>cloneNode</code>); performs a &ldquo;shallow&rdquo;
-						(one level) &ldquo;clone&rdquo; if <var>deep</var> is false; performs
-						a &ldquo;deep&rdquo; (recursive) &ldquo;clone&rdquo; if <var>deep</var> is true.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						that will be &ldquo;cloned&rdquo;.
-					</dd>
-					<dt>
-						<var>deep</var>
-					</dt>
-					<dd>
-						A boolean that will determine if a &ldquo;deep&rdquo; (recursive)
-						or a &ldquo;shallow&rdquo; (one level) &ldquo;clone&rdquo; will be performed
-						if successful.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>Object || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="get_name">
-				<h3 class="heading">
-					<a href="#get_name"
-						title="@LIBRARY_NAME@.node.getName"><code>@LIBRARY_NAME@.node.getName</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>, <var>lower</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that retrieves a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						<code>nodeName</code> property; returns property in lower case form if
-						<var>lower</var> is true; returns property in upper case form if <var>upper</var>
-						is false; returns `null` if not applicable.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to access.
-					</dd>
-					<dt>
-						<var>lower</var>
-					</dt>
-					<dd>
-						A boolean that will determine if a the <code>nodeName</code> property
-						will be returned in lower case or upper case form.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>String || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="get_value">
-				<h3 class="heading">
-					<a href="#get_value"
-						title="@LIBRARY_NAME@.node.getValue"><code>@LIBRARY_NAME@.node.getValue</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that retrieves a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						<code>nodeValue</code> property; returns `null` if not applicable.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to access.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>String || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-			<li class="cell doc_cell doc_entry fragment" id="set_value">
-				<h3 class="heading">
-					<a href="#set_value"
-						title="@LIBRARY_NAME@.node.setValue"><code>@LIBRARY_NAME@.node.setValue</code></a>
-				</h3>
-				<p class="doc_art function_head">function (<var>obj</var>, <var>newValue</var>) {</p>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						Method that overwrites a <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						<code>nodeValue</code> property; returns `null` if not applicable.
-					</dd>
-					<dt>
-						<var>obj</var>
-					</dt>
-					<dd>
-						A <a href="glossary.html#node_like_object"
-							title="Node-like Object">node-like object</a>
-						to access.
-					</dd>
-					<dt>
-						<var>newValue</var>
-					</dt>
-					<dd>
-						A string containing the new value for the <code>nodeValue</code>
-						property.
-					</dd>
-					@DOCS_RETURN_VALUE@
-					<dd>
-						<code>String || null</code>
-					</dd>
-				</dl>
-				<p class="doc_art function_tail">}</p>
-			</li>
-		</ul>
 		<div class="primary_row row">
 			<div class="cell prev_link primary_cell">
 				<a href="is.html" rel="prev"

@@ -37,6 +37,7 @@
         * classes.js;
         * traverse.js;
         * text.js;
+        * ancestors.js;
         * select.js.
 
 # Matt's DOM Utils (Utils)
@@ -109,6 +110,13 @@ See ./Tests/Traverse for examples.
 implementation. This includes methods for getting and setting text.
 
 See ./Tests/Text for examples.
+
+### Ancestors
+
+*Utils* provides various methods for traversal of document
+tree ancestors.
+
+See ./Tests/Ancestors for examples.
 
 ### Select
 
@@ -185,7 +193,9 @@ who cannot or do not wish to run command-line code.
 
 * [Thomas "PointedEars" Lahn](http://www.pointedears.de "pointedears.de")
 
+* [Peter Michaux](http://peter.michaux.ca "peter.michaux.ca")
+
 
 ## Metadata
 
-* Last edited on Sunday, June 24th 2012
+* Last edited on Wednesday, June 27th 2012
