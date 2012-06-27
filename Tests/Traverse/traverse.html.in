@@ -87,29 +87,6 @@
 					</td>
 					<td id="result_8"></td>
 				</tr>
-				<tr id="test_9">
-					<td>9.</td>
-					<td>
-						<code>@LIBRARY_NAME@.traverse.isAncestor</code> returns a Boolean.
-					</td>
-					<td id="result_9"></td>
-				</tr>
-				<tr id="test_10">
-					<td>10.</td>
-					<td>
-						<code>@LIBRARY_NAME@.traverse.getAncestors</code> returns a
-							linked list-like object.
-					</td>
-					<td id="result_10"></td>
-				</tr>
-				<tr id="test_11">
-					<td>11.</td>
-					<td>
-						<code>@LIBRARY_NAME@.traverse.ancestors</code> returns an
-							array-like object.
-					</td>
-					<td id="result_11"></td>
-				</tr>
 			</tbody>
 		</table>
 		<div id="score_area">

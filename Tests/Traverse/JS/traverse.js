@@ -133,43 +133,6 @@ if (typeof Utils === "object" && Utils) {
 			);
 		}
 
-		function isAncestor()
-		{
-			var child = commonElements.traverse_text,
-				node = Utils.traverse.isAncestor(
-					global.document,
-					child
-				);
-			return typeof node === "boolean";
-		}
-
-		function ancestors()
-		{
-			var node = commonElements.test,
-				list = Utils.traverse.getAncestors(
-					node
-				),
-				test;
-			if (list && list.value) {
-				test = list.value;
-			}
-			return Utils.is.nodeLike(
-				test
-			);
-		}
-
-		function ancestorsTraversed()
-		{
-			var node = commonElements.test,
-				nodes = Utils.traverse.ancestors(
-					node,
-					optimisticFilter
-				);
-			return Utils.is.arrayLike(
-				nodes
-			);
-		}
-
 		tests = (function () {
 			return [
 				childNodes,
@@ -179,10 +142,7 @@ if (typeof Utils === "object" && Utils) {
 				tree,
 				treeTraversed,
 				childrenTree,
-				childrenTreeTraversed,
-				isAncestor,
-				ancestors,
-				ancestorsTraversed
+				childrenTreeTraversed
 			];
 		}());
 
