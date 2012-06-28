@@ -181,7 +181,7 @@ hr, .row
 	margin: 1em 0 0 0;
 }
 
-.doc_cell, .doc_list
+.doc_list
 {
 	margin: 0 0 0 2em;
 }
@@ -189,11 +189,6 @@ hr, .row
 .test_list
 {
 	list-style: square outside;
-}
-
-.doc_cell .heading
-{
-	margin: 0;
 }
 
 .fragment:target
@@ -224,6 +219,11 @@ hr, .row
 .next_link
 {
 	text-align: right;
+}
+
+.doc_entry
+{
+	padding: .5em 0 .5em 0;
 }
 
 .quotation::before, .quotation::after

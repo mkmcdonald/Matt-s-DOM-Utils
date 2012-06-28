@@ -6,13 +6,11 @@
 @BODY@
 @TESTS_HEADER@
 @TESTS_NAV@
-		<div class="primary_row row ">
+		<div class="column primary_column">
 			<div class="cell primary_cell">
 				<h2 class="heading" title="Tests">Tests</h2>
 			</div>
-		</div>
-		<ul class="doc_row row">
-			<li class="cell doc_cell">
+			<div class="cell primary_cell">
 				<a href="./Node" title="Node Tests">./Node</a>	
 				<ul class="test_list">
 					<li>
@@ -20,8 +18,8 @@
 							title="node.html">./Node/node.html</a>
 					</li>
 				</ul>
-			</li>
-			<li class="cell doc_cell">
+			</div>
+			<div class="cell primary_cell">
 				<a href="./Create" title="Create Tests">./Create</a>	
 				<ul class="test_list">
 					<li>
@@ -29,8 +27,8 @@
 							title="create.html">./Create/create.html</a>
 					</li>
 				</ul>
-			</li>
-			<li class="cell doc_cell">
+			</div>
+			<div class="cell primary_cell">
 				<a href="./Classes" title="Classes Tests">./Classes</a>	
 				<ul class="test_list">
 					<li>
@@ -38,8 +36,8 @@
 							title="classes.html">./Classes/classes.html</a>
 					</li>
 				</ul>
-			</li>
-			<li class="cell doc_cell">
+			</div>
+			<div class="cell primary_cell">
 				<a href="./Traverse" title="Traverse Tests">./Traverse</a>	
 				<ul class="test_list">
 					<li>
@@ -47,8 +45,8 @@
 							title="traverse.html">./Traverse/traverse.html</a>
 					</li>
 				</ul>
-			</li>
-			<li class="cell doc_cell">
+			</div>
+			<div class="cell primary_cell">
 				<a href="./Text" title="Text Tests">./Text</a>	
 				<ul class="test_list">
 					<li>
@@ -56,8 +54,8 @@
 							title="text.html">./Text/text.html</a>
 					</li>
 				</ul>
-			</li>
-			<li class="cell doc_cell">
+			</div>
+			<div class="cell primary_cell">
 				<a href="./Ancestors" title="Ancestors Tests">./Ancestors</a>	
 				<ul class="test_list">
 					<li>
@@ -65,8 +63,8 @@
 							title="ancestors.html">./Ancestors/ancestors.html</a>
 					</li>
 				</ul>
-			</li>
-			<li class="cell doc_cell">
+			</div>
+			<div class="cell primary_cell">
 				<a href="./Select" title="Select Tests">./Select</a>	
 				<ul class="test_list">
 					<li>
@@ -74,8 +72,8 @@
 							title="select.html">./Select/select.html</a>
 					</li>
 				</ul>
-			</li>
-			<li class="cell doc_cell">
+			</div>
+			<div class="cell primary_cell">
 				<a href="./Complete" title="Complete Tests">./Complete</a>	
 				<ul class="test_list">
 					<li>
@@ -87,8 +85,8 @@
 							title="complete-min.html">./Complete/complete-min.html</a>
 					</li>
 				</ul>
-			</li>
-			<li class="cell doc_cell">
+			</div>
+			<div class="cell primary_cell">
 				<a href="./HOWTO" title="HOWTO Tests">./HOWTO</a>	
 				<ul class="test_list">
 					<li>
@@ -100,7 +98,7 @@
 							title="text.html">./HOWTO/text.html</a>
 					</li>
 				</ul>
-			</li>
-		</ul>
+			</div>
+		</div>
 @FOOTER@
 @END@
