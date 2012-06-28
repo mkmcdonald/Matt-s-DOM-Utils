@@ -38,99 +38,83 @@
 					<a href="#truthy"
 						title="Truthy">Truthy</a>
 				</h3>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						A value that when coerced to a <code>Boolean</code>
-						equals <code>true</code>.
-					</dd>
-				</dl>
+				<p class="description">
+					A value that when coerced to a <code>Boolean</code>
+					equals <code>true</code>.
+				</p>
 			</li>
 			<li class="cell doc_cell doc_entry fragment" id="falsey">
 				<h3 class="heading">
 					<a href="#falsey"
 						title="Falsey">Falsey</a>
 				</h3>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						A value that when coerced to a <code>Boolean</code>
-						equals <code>false</code>.
-					</dd>
-				</dl>
+				<p class="description">
+					A value that when coerced to a <code>Boolean</code>
+					equals <code>false</code>.
+				</p>
 			</li>
 			<li class="cell doc_cell doc_entry fragment" id="host_like_object">
 				<h3 class="heading">
 					<a href="#host_like_object"
 						title="Host-like Object">Host-like Object</a>
 				</h3>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						An object resembling a host object, meaning
-						an object that passes one of the following two
-						assertions:
-						<ol>
-							<li>
-								A <code>typeof</code> result of
-								&ldquo;object&rdquo; or &ldquo;function&rdquo;
-								along with <a href="#truthy"
-									title="truthiness">&ldquo;truthiness&rdquo;</a>;
-							</li>
-							<li>
-								A <code>typeof</code> result of
-								&ldquo;unknown&rdquo;.
-							</li>
-						</ol>
-					</dd>
-				</dl>
+				<p class="description">
+					An object resembling a host object, meaning
+					an object that passes one of the following two
+					assertions:
+				</p>
+				<ol>
+					<li>
+						A <code>typeof</code> result of
+						&ldquo;object&rdquo; or &ldquo;function&rdquo;
+						along with <a href="#truthy"
+							title="truthiness">&ldquo;truthiness&rdquo;</a>;
+					</li>
+					<li>
+						A <code>typeof</code> result of
+						&ldquo;unknown&rdquo;.
+					</li>
+				</ol>
 			</li>
 			<li class="cell doc_cell doc_entry fragment" id="array_like_object">
 				<h3 class="heading">
 					<a href="#array_like_object"
 						title="Array-like Object">Array-like Object</a>
 				</h3>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						An object resembling an array, meaning
-						a <a href="#truthy"
-							title="Truthy">truthy</a>
-						<a href="#host_like_object"
-							title="Host-like Object">host-like object</a>
-						with a numeric <code>length</code> property.
-					</dd>
-				</dl>
+				<p class="description">
+					An object resembling an array, meaning
+					a <a href="#truthy"
+						title="Truthy">truthy</a>
+					<a href="#host_like_object"
+						title="Host-like Object">host-like object</a>
+					with a numeric <code>length</code> property.
+				</p>
 			</li>
 			<li class="cell doc_cell doc_entry fragment" id="node_like_object">
 				<h3 class="heading">
 					<a href="#node_like_object"
 						title="Node-like Object">Node-like Object</a>
 				</h3>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						An object resembling a node, meaning
-						a <a href="#truthy"
-							title="Truthy">truthy</a>
-						<a href="#host_like_object"
-							title="Host-like Object">host-like object</a>
-						with a numeric <code>nodeType</code> property.
-					</dd>
-				</dl>
+				<p class="description">
+					An object resembling a node, meaning
+					a <a href="#truthy"
+						title="Truthy">truthy</a>
+					<a href="#host_like_object"
+						title="Host-like Object">host-like object</a>
+					with a numeric <code>nodeType</code> property.
+				</p>
 			</li>
 			<li class="cell doc_cell doc_entry fragment" id="document_tree">
 				<h3 class="heading">
 					<a href="#document_tree"
 						title="Document Tree">Document Tree</a>
 				</h3>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						A parsed tree representing the current document;
-						interfaced with via the DOM; often confused for
-						&ldquo;the DOM&rdquo;.
-						<pre>document
+				<p class="description">
+					A parsed tree representing the current document;
+					interfaced with via the DOM; often confused for
+					&ldquo;the DOM&rdquo;.
+				</p>
+				<pre class="example">document
 ----doctype
 ----documentElement
 --------head
@@ -140,30 +124,25 @@
 ------------div
 ----------------text
 </pre>
-					</dd>
-				</dl>
 			</li>
 			<li class="cell doc_cell doc_entry fragment" id="subtree">
 				<h3 class="heading">
 					<a href="#subtree"
 						title="Subtree">Subtree</a>
 				</h3>
-				<dl class="doc_list">
-					@DOCS_DESCRIPTION@
-					<dd>
-						An object representing a 
-						<a href="#node_like_object"
-							title="Node-like Object">node-like object</a>'s
-						recursive <code>childNodes</code>; a tree that's  a
-						branch of the
-						<a href="#document_tree"
-							title="Document Tree">document tree</a>.
-						<pre>body
+				<p class="description">
+					An object representing a 
+					<a href="#node_like_object"
+						title="Node-like Object">node-like object</a>'s
+					recursive <code>childNodes</code>; a tree that's  a
+					branch of the
+					<a href="#document_tree"
+						title="Document Tree">document tree</a>.
+				</p>
+				<pre class="example">body
 ----div
 --------text
 </pre>
-					</dd>
-				</dl>
 			</li>
 		</ul>
 		<div class="primary_row row">
