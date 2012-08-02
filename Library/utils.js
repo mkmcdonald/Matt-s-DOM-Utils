@@ -1,3 +1,3 @@
 var Utils = Utils || {},
-	global = global || this;
+	global = this;
 

@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html;charset=UTF-8">
+		<title>Event Leak Test</title>
+		<link href="../../Assets/CSS/tests.css"
+			media="all" rel="stylesheet"
+			type="text/css">
+	</head>
+	<body>
+		<h1>Event Leak Test</h1>
+		<button id="start" type="button">Run Test</button>
+		<button id="stop" type="button">Clear Test</button>
+		<script src="../../Builds/Uncompressed/utils-complete.js"
+			type="text/javascript"></script>
+		<script src="JS/leak.js"
+			type="text/javascript"></script>
+	</body>
+</html>
+

@@ -11,7 +11,10 @@ if (typeof Utils === "object" && Utils) {
 
 			runTests,
 
-			tester;
+			tester,
+
+			eventObject,
+			eventTarget;
 
 		commonElements = (function () {
 			var obj = {},
@@ -20,6 +23,7 @@ if (typeof Utils === "object" && Utils) {
 			obj.create_test = doc.links[1];
 			obj.classes_test = doc.links[2];
 			obj.traverse_test = doc.links[3];
+			obj.event_test = doc.images.event_test;
 			obj.test_form = form;
 			obj.start = form.elements.start;
 			obj.stop = form.elements.stop;
@@ -110,9 +114,10 @@ if (typeof Utils === "object" && Utils) {
 		{
 			var list = generatePrependList(),
 				par = commonElements.node_test,
+				key = "prependList",
 				nodes;
 			if (list && list.length && par) {
-				nodes = Utils.node.prependList(
+				nodes = Utils.node[key](
 					par,
 					list,
 					par.lastChild
@@ -126,9 +131,10 @@ if (typeof Utils === "object" && Utils) {
 			tag
 		)
 		{
-			var result = null;
-			if (Utils.create.element) {
-				result = Utils.create.element(
+			var key = "element",
+				result = null;
+			if (Utils.create[key]) {
+				result = Utils.create[key](
 					doc,
 					tag
 				);
@@ -164,10 +170,11 @@ if (typeof Utils === "object" && Utils) {
 		function appendList()
 		{
 			var list = generateAppendList(),
+				key = "appendList",
 				par = commonElements.node_test,
 				nodes;
 			if (list && list.length) {
-				nodes = Utils.node.appendList(
+				nodes = Utils.node[key](
 					par,
 					list
 				);
@@ -210,9 +217,10 @@ if (typeof Utils === "object" && Utils) {
 			text
 		)
 		{
-			var result = null;
-			if (Utils.create.text) {
-				result = Utils.create.text(
+			var key = "text",
+				result = null;
+			if (Utils.create[key]) {
+				result = Utils.create[key](
 					doc,
 					text
 				);
@@ -312,9 +320,10 @@ if (typeof Utils === "object" && Utils) {
 			text
 		)
 		{
-			var result = null;
-			if (Utils.create.comment) {
-				result = Utils.create.comment(
+			var key = "comment",
+				result = null;
+			if (Utils.create[key]) {
+				result = Utils.create[key](
 					doc,
 					text
 				);
@@ -337,9 +346,10 @@ if (typeof Utils === "object" && Utils) {
 			doc
 		)
 		{
-			var result = null;
-			if (Utils.create.documentFragment) {
-				result = Utils.create.documentFragment(
+			var key = "documentFragment",
+				result = null;
+			if (Utils.create[key]) {
+				result = Utils.create[key](
 					doc
 				);
 			}
@@ -358,10 +368,11 @@ if (typeof Utils === "object" && Utils) {
 
 		function contains()
 		{
-			var test,
+			var key = "contains",
+				test,
 				node = commonElements.classes_test;
-			if (Utils.classes.contains) {
-				test = Utils.classes.contains(
+			if (Utils.classes[key]) {
+				test = Utils.classes[key](
 					node,
 					"good"
 				);
@@ -371,8 +382,9 @@ if (typeof Utils === "object" && Utils) {
 
 		function containsList()
 		{
-			var node = commonElements.classes_test,
-				tokens  = Utils.classes.containsList(
+			var key = "containsList",
+				node = commonElements.classes_test,
+				tokens  = Utils.classes[key](
 					node,
 					["a", "b", "c"]
 				);
@@ -394,8 +406,9 @@ if (typeof Utils === "object" && Utils) {
 
 		function addList()
 		{
-			var node = commonElements.classes_test,
-				test = Utils.classes.addList(
+			var key = "addList",
+				node = commonElements.classes_test,
+				test = Utils.classes[key](
 					node,
 					["a", "b", "c"]
 				);
@@ -417,8 +430,9 @@ if (typeof Utils === "object" && Utils) {
 
 		function removeList()
 		{
-			var node = commonElements.classes_test,
-				tokens = Utils.classes.removeList(
+			var key = "removeList",
+				node = commonElements.classes_test,
+				tokens = Utils.classes[key](
 					node,
 					["a", "b", "c"]
 				);
@@ -440,8 +454,9 @@ if (typeof Utils === "object" && Utils) {
 
 		function toggleList()
 		{
-			var node = commonElements.classes_test,
-				test = Utils.classes.toggleList(
+			var key = "toggleList",
+				node = commonElements.classes_test,
+				test = Utils.classes[key](
 					node,
 					["a", "b", "c"]
 				);
@@ -477,10 +492,11 @@ if (typeof Utils === "object" && Utils) {
 
 		function childNodes()
 		{
-			var node = commonElements.traverse_test,
+			var key = "getNodes",
+				node = commonElements.traverse_test,
 				nodes;
-			if (Utils.traverse.getNodes) {
-				nodes = Utils.traverse.getNodes(
+			if (Utils.traverse[key]) {
+				nodes = Utils.traverse[key](
 					node
 				);
 			}
@@ -489,15 +505,18 @@ if (typeof Utils === "object" && Utils) {
 			);
 		}
 
-		function optimisticFilter(node)
+		function optimisticFilter(
+			node
+		)
 		{
 			return true;
 		}
 
 		function childNodesTraversed()
 		{
-			var node = commonElements.traverse_test,
-				nodes = Utils.traverse.nodes(
+			var key = "nodes",
+				node = commonElements.traverse_test,
+				nodes = Utils.traverse[key](
 					node,
 					optimisticFilter
 				);
@@ -508,10 +527,11 @@ if (typeof Utils === "object" && Utils) {
 
 		function children()
 		{
-			var node = commonElements.traverse_test,
+			var key = "getElements",
+				node = commonElements.traverse_test,
 				test;
-			if (Utils.traverse.getElements) {
-				test = Utils.traverse.getElements(
+			if (Utils.traverse[key]) {
+				test = Utils.traverse[key](
 					node
 				);
 			}
@@ -520,15 +540,18 @@ if (typeof Utils === "object" && Utils) {
 			);
 		}
 
-		function pessimisticFilter(node)
+		function pessimisticFilter(
+			node
+		)
 		{
 			return false;
 		}
 
 		function childrenTraversed()
 		{
-			var node = commonElements.traverse_test,
-				nodes = Utils.traverse.elements(
+			var key = "elements",
+				node = commonElements.traverse_test,
+				nodes = Utils.traverse[key](
 					node,
 					pessimisticFilter
 				);
@@ -539,9 +562,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function tree()
 		{
-			var nodes = Utils.traverse.getNodeTree(
-				global.document
-			);
+			var key = "getNodeTree",
+				nodes = Utils.traverse[key](
+					global.document
+				);
 			return Utils.is.arrayLike(
 				nodes
 			);
@@ -560,9 +584,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function childrenTree()
 		{
-			var tree = Utils.traverse.getElementTree(
-				global.document
-			);
+			var key = "getElementTree",
+				tree = Utils.traverse[key](
+					global.document
+				);
 			return Utils.is.arrayLike(
 				tree
 			);
@@ -570,10 +595,11 @@ if (typeof Utils === "object" && Utils) {
 
 		function childrenTreeTraversed()
 		{
-			var nodes = Utils.traverse.elementTree(
-				global.document,
-				optimisticFilter
-			);
+			var key = "elementTree",
+				nodes = Utils.traverse[key](
+					global.document,
+					optimisticFilter
+				);
 			return Utils.is.arrayLike(
 				nodes
 			);
@@ -601,8 +627,9 @@ if (typeof Utils === "object" && Utils) {
 
 		function ancestorsTraversed()
 		{
-			var node = commonElements.traverse_test,
-				nodes = Utils.ancestors.traverse(
+			var key = "traverse",
+				node = commonElements.traverse_test,
+				nodes = Utils.ancestors[key](
 					node,
 					optimisticFilter
 				);
@@ -652,9 +679,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function byTagName()
 		{
-			var test;
-			if (Utils.select.byTagName) {
-				test = Utils.select.byTagName(
+			var key = "byTagName",
+				test;
+			if (Utils.select[key]) {
+				test = Utils.select[key](
 					global.document,
 					"input"
 				);
@@ -666,9 +694,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function byClassName()
 		{
-			var test;
-			if (Utils.select.byClassName) {
-				test = Utils.select.byClassName(
+			var key = "byClassName",
+				test;
+			if (Utils.select[key]) {
+				test = Utils.select[key](
 					global.document,
 					"container"
 				);
@@ -708,9 +737,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function queryAll()
 		{
-			var test;
-			if (Utils.select.queryAll) {
-				test = Utils.select.queryAll(
+			var key = "queryAll",
+				test;
+			if (Utils.select[key]) {
+				test = Utils.select[key](
 					global.document,
 					"input[type]"
 				);
@@ -762,9 +792,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function allImages()
 		{
-			var test;
-			if (Utils.select.allImages) {
-				test = Utils.select.allImages(
+			var key = "allImages",
+				test;
+			if (Utils.select[key]) {
+				test = Utils.select[key](
 					global.document
 				);
 			}
@@ -789,9 +820,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function allEmbeds()
 		{
-			var test;
-			if (Utils.select.allEmbeds) {
-				test = Utils.select.allEmbeds(
+			var key = "allEmbeds",
+				test;
+			if (Utils.select[key]) {
+				test = Utils.select[key](
 					global.document
 				);
 			}
@@ -816,9 +848,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function allPlugins()
 		{
-			var test;
-			if (Utils.select.allPlugins) {
-				test = Utils.select.allPlugins(
+			var key = "allPlugins",
+				test;
+			if (Utils.select[key]) {
+				test = Utils.select[key](
 					global.document
 				);
 			}
@@ -843,9 +876,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function allLinks()
 		{
-			var test;
-			if (Utils.select.allLinks) {
-				test = Utils.select.allLinks(
+			var key = "allLinks",
+				test;
+			if (Utils.select[key]) {
+				test = Utils.select[key](
 					global.document
 				);
 			}
@@ -870,9 +904,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function allForms()
 		{
-			var test;
-			if (Utils.select.allForms) {
-				test = Utils.select.allForms(
+			var key = "allForms",
+				test;
+			if (Utils.select[key]) {
+				test = Utils.select[key](
 					global.document
 				);
 			}
@@ -897,9 +932,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function allScripts()
 		{
-			var test;
-			if (Utils.select.allScripts) {
-				test = Utils.select.allScripts(
+			var key = "allScripts",
+				test;
+			if (Utils.select[key]) {
+				test = Utils.select[key](
 					global.document
 				);
 			}
@@ -924,9 +960,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function allApplets()
 		{
-			var test;
-			if (Utils.select.allApplets) {
-				test = Utils.select.allApplets(
+			var key = "allApplets",
+				test;
+			if (Utils.select[key]) {
+				test = Utils.select[key](
 					global.document
 				);
 			}
@@ -951,9 +988,10 @@ if (typeof Utils === "object" && Utils) {
 
 		function allAnchors()
 		{
-			var test;
-			if (Utils.select.allAnchors) {
-				test = Utils.select.allAnchors(
+			var key = "allAnchors",
+				test;
+			if (Utils.select[key]) {
+				test = Utils.select[key](
 					global.document
 				);
 			}
@@ -983,6 +1021,304 @@ if (typeof Utils === "object" && Utils) {
 			return Utils.is.arrayLike(
 				test
 			);
+		}
+
+		function bindHandler(
+			handler,
+			thisValue
+		)
+		{
+			return Utils.event.bindHandler(
+				handler,
+				thisValue
+			);
+		}
+
+		function nativeBound(
+			evt
+		)
+		{
+			return this;
+		}
+
+		function bindNative()
+		{
+			var result = false;
+			boundHandler = bindHandler(
+				nativeBound,
+				global.document
+			);
+			if (boundHandler) {
+				if (boundHandler() ===
+					global.document) {
+					result = true;
+				} else if (boundHandler() ===
+					global) {
+					// handler was not bound
+					result = false;
+				}
+			}
+			return result;
+		}
+
+		function unbindHandler(
+			bound
+		)
+		{
+			return Utils.event.unbindHandler(
+				bound
+			);
+		}
+
+		function unbindNative()
+		{
+			bound = unbindHandler(
+				boundHandler
+			);
+			return bound === nativeBound;
+		}
+
+		function addWindowListener(
+			win,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "addWindowListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					win,
+					evt,
+					handler,
+					capture
+				);
+			}
+			win = null;
+			return result;
+		}
+
+		function dummyHandler(
+			evt
+		)
+		{
+			return this;
+		}
+
+		function addWindowLoad()
+		{
+			var test = addWindowListener(
+				global.window,
+				"load",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function removeWindowListener(
+			win,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "removeWindowListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					win,
+					evt,
+					handler,
+					capture
+				);
+			}
+			win = null;
+			return result;
+		}
+
+		function removeWindowLoad()
+		{
+			var test = removeWindowListener(
+				global.window,
+				"load",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function addDocumentListener(
+			doc,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "addDocumentListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					doc,
+					evt,
+					handler,
+					capture
+				);
+			}
+			doc = null;
+			return result;
+		}
+
+		function addDocumentClick()
+		{
+			var test = addDocumentListener(
+				global.document,
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function removeDocumentListener(
+			doc,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "removeDocumentListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					doc,
+					evt,
+					handler,
+					capture
+				);
+			}
+			doc = null;
+			return result;
+		}
+
+		function removeDocumentClick()
+		{
+			var test = removeDocumentListener(
+				global.document,
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function addElementListener(
+			el,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "addElementListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					el,
+					evt,
+					handler,
+					capture
+				);
+			}
+			return result;
+		}
+
+		function getBody(
+			doc
+		)
+		{
+			var hO = "hostObject",
+				key = "body",
+				result = null;
+			if (doc && Utils.is[hO](doc[key])) {
+				result = doc[key];
+			}
+			return result;
+		}
+
+		function addElementClick()
+		{
+			var test = addElementListener(
+				getBody(global.document),
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function removeElementListener(
+			el,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "removeElementListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					el,
+					evt,
+					handler,
+					capture
+				);
+			}
+			return result;
+		}
+
+		function removeElementClick()
+		{
+			var test = removeElementListener(
+				getBody(global.document),
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function isHostObject(
+			obj
+		)
+		{
+			return Utils.is.hostObject(
+				obj
+			);
+		}
+
+		function checkEventObject()
+		{
+			var par = commonElements,
+				key = "event_test",
+				test = false;
+			if (isHostObject(par[key])) {
+				test = isHostObject(
+					eventObject
+				);
+			}
+			return test;
+		}
+
+		function checkEventTarget()
+		{
+			var par = commonElements,
+				key = "event_test",
+				test = false;
+			if (isHostObject(par[key])) {
+				test = eventTarget === par[key];
+			}
+			return test;
 		}
 
 		tests = [
@@ -1049,7 +1385,17 @@ if (typeof Utils === "object" && Utils) {
 			anchors,
 			allAnchors,
 			namedItem,
-			collection
+			collection,
+			bindNative,
+			unbindNative,
+			addWindowLoad,
+			removeWindowLoad,
+			addDocumentClick,
+			removeDocumentClick,
+			addElementClick,
+			removeElementClick,
+			checkEventObject,
+			checkEventTarget
 		];
 
 		function resetTestData()
@@ -1063,20 +1409,10 @@ if (typeof Utils === "object" && Utils) {
 			button
 		)
 		{
-			button.disabled = true;
-			button.onclick = function () {};
-		}
-
-		function createMessage(text)
-		{
-			var str = String(text);
-			if (str === "") {
-				str = "[an empty string]";
+			if (button) {
+				button.disabled = true;
+				button.onclick = function () {};
 			}
-			return Utils.create.text(
-				global.document,
-				str
-			);
 		}
 
 		function addMessage(
@@ -1160,18 +1496,88 @@ if (typeof Utils === "object" && Utils) {
 			runTests();
 		}
 
-		function endTests(evt)
+		function enableStartButton()
 		{
-			global.clearTimeout(tester);
+			var par = commonElements;
+			if (par.start) {
+				par.start.disabled = false;
+				par.start.onclick = startTests;
+			}
+		}
+
+		function addStartHandler()
+		{
+			var par = commonElements;
+			if (par.start) {
+				par.start.onclick = startTests;
+			}
+		}
+
+		function endTests(
+			evt
+		)
+		{
+			global.clearTimeout(
+				tester
+			);
 			tester = null;
-			commonElements.start.disabled = false;
-			commonElements.start.onclick = startTests;
+			enableStartButton();
+		}
+
+		function addStopHandler()
+		{
+			var par = commonElements;
+			if (par.stop) {
+				par.stop.onclick = endTests;
+			}
+		}
+
+		function getEventObject(
+			evt
+		)
+		{
+			return Utils.event.getObject(
+				evt
+			);
+		}
+
+		function getEventTarget(
+			evt
+		)
+		{
+			return Utils.event.getTarget(
+				evt
+			);
+		}
+
+		function runErrorTest(
+			evt
+		)
+		{
+			eventObject = getEventObject(
+				evt
+			);
+			eventTarget = getEventTarget(
+				evt
+			);
+		}
+
+		function addEventTestHandler()
+		{
+			var par = commonElements,
+				key = "event_test";
+			if (par[key]) {
+				par[key].onerror =
+					runErrorTest;
+				par[key].src = "null.null";
+			}
 		}
 
 		function addHandlers()
 		{
-			commonElements.start.onclick = startTests;
-			commonElements.stop.onclick = endTests;
+			addStartHandler();
+			addStopHandler();
+			addEventTestHandler();
 		}
 
 		addHandlers();

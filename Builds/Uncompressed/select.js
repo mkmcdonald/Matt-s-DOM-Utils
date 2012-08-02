@@ -783,10 +783,11 @@ if (typeof Utils === "object" && Utils) {
 		)
 		{
 			var types = selectorTypes,
+				u = "undefined",
 				result = false;
 			if (isNodeLike(obj)) {
-				result = typeof types[obj.nodeType] !==
-					"undefined";
+				result = types[obj.nodeType] !==
+					global[u];
 			}
 			return result;
 		}

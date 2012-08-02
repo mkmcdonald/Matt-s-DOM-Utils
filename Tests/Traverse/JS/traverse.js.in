@@ -29,10 +29,11 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function childNodes()
 		{
-			var node = commonElements.test,
+			var key = "getNodes",
+				node = commonElements.test,
 				nodes;
-			if (@LIBRARY_NAME@.traverse.getNodes) {
-				nodes = @LIBRARY_NAME@.traverse.getNodes(
+			if (@LIBRARY_NAME@.traverse[key]) {
+				nodes = @LIBRARY_NAME@.traverse[key](
 					node
 				);
 			}
@@ -50,8 +51,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function childNodesTraversed()
 		{
-			var node = commonElements.test,
-				nodes = @LIBRARY_NAME@.traverse.nodes(
+			var key = "nodes",
+				node = commonElements.test,
+				nodes = @LIBRARY_NAME@.traverse[key](
 					node,
 					optimisticFilter
 				);
@@ -62,10 +64,11 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function children()
 		{
-			var node = commonElements.test,
+			var key = "getElements",
+				node = commonElements.test,
 				test;
-			if (@LIBRARY_NAME@.traverse.getElements) {
-				test = @LIBRARY_NAME@.traverse.getElements(
+			if (@LIBRARY_NAME@.traverse[key]) {
+				test = @LIBRARY_NAME@.traverse[key](
 					node
 				);
 			}
@@ -74,15 +77,18 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
-		function pessimisticFilter(node)
+		function pessimisticFilter(
+			node
+		)
 		{
 			return false;
 		}
 
 		function childrenTraversed()
 		{
-			var node = commonElements.test,
-				nodes = @LIBRARY_NAME@.traverse.elements(
+			var key = "elements",
+				node = commonElements.test,
+				nodes = @LIBRARY_NAME@.traverse[key](
 					node,
 					pessimisticFilter
 				);
@@ -93,7 +99,8 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function tree()
 		{
-			var nodes = @LIBRARY_NAME@.traverse.getNodeTree(
+			var key = "getNodeTree",
+				nodes = @LIBRARY_NAME@.traverse[key](
 				global.document
 			);
 			return @LIBRARY_NAME@.is.arrayLike(
@@ -103,7 +110,8 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function treeTraversed()
 		{
-			var nodes = @LIBRARY_NAME@.traverse.nodeTree(
+			var key = "nodeTree",
+				nodes = @LIBRARY_NAME@.traverse[key](
 				global.document,
 				optimisticFilter
 			);
@@ -114,7 +122,8 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function childrenTree()
 		{
-			var tree = @LIBRARY_NAME@.traverse.getElementTree(
+			var key = "getElementTree",
+				tree = @LIBRARY_NAME@.traverse[key](
 				global.document
 			);
 			return @LIBRARY_NAME@.is.arrayLike(
@@ -124,7 +133,8 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function childrenTreeTraversed()
 		{
-			var nodes = @LIBRARY_NAME@.traverse.elementTree(
+			var key = "elementTree",
+				nodes = @LIBRARY_NAME@.traverse[key](
 				global.document,
 				optimisticFilter
 			);
@@ -153,50 +163,22 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			testsRun = 0;
 		}
 
+		function isHostObject(
+			obj
+		)
+		{
+			return @LIBRARY_NAME@.is.hostObject(
+				obj
+			);
+		}
+
 		function disableStartButton()
 		{
-			var par = commonElements,
-				button = par.start;
-			button.disabled = true;
-			button.onclick = function () {};
-		}
-
-		function createText(
-			doc,
-			text
-		)
-		{
-			var result = null;
-			if (@LIBRARY_NAME@.create.text) {
-				result = @LIBRARY_NAME@.create.text(
-					doc,
-					text
-				);
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.disabled = true;
+				par.start.onclick = function () {};
 			}
-			return result;
-		}
-
-		function appendNode(
-			par,
-			node
-		)
-		{
-			return @LIBRARY_NAME@.node.append(
-				par,
-				node
-			);
-		}
-
-		function createMessage(text)
-		{
-			var str = String(text);
-			if (str === "") {
-				str = "[an empty string]";
-			}
-			return createText(
-				global.document,
-				str
-			);
 		}
 
 		function grabById(
@@ -209,17 +191,30 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
+		function setText(
+			obj,
+			text,
+			doc
+		)
+		{
+			return @LIBRARY_NAME@.text.set(
+				obj,
+				text,
+				doc
+			);
+		}
+
 		function addMessage(
 			msg,
 			num
 		)
 		{
-			var cell = grabById("result_" + num),
-				text = createMessage(msg);
+			var cell = grabById("result_" + num);
 			if (cell) {
-				appendNode(
+				setText(
 					cell,
-					text
+					msg,
+					global.document
 				);
 			}
 		}
@@ -227,16 +222,13 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		function updateScore()
 		{
 			var par = commonElements,
-				element = par.score,
-				total = score + " / " + testsRun,
-				text = createMessage(total);
-			if (element && !element.firstChild) {
-				appendNode(
-					element,
-					text
+				total = score + " / " + testsRun;
+			if (isHostObject(par.score)) {
+				setText(
+					par.score,
+					total,
+					global.document
 				);
-			} else if (element && element.firstChild) {
-				element.firstChild.nodeValue = total;
 			}
 		}
 
@@ -306,7 +298,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		{
 			var key = "setTimeout",
 				result;
-			if (@LIBRARY_NAME@.is.hostObject(global[key])) {
+			if (isHostObject(global[key])) {
 				result = global[key](
 					ref,
 					ms
@@ -343,26 +335,11 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			disableStartButton();
 		}
 
-		function removeNode(
-			par,
-			node
-		)
+		function addStartHandler()
 		{
-			return @LIBRARY_NAME@.node.remove(
-				par,
-				par.firstChild
-			);
-		}
-
-		function clearChildNodes(
-			par
-		)
-		{
-			while (par && par.firstChild) {
-				removeNode(
-					par,
-					par.firstChild
-				);
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.onclick = startTests;
 			}
 		}
 
@@ -375,8 +352,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 				index;
 			if (cell && row) {
 				row.className = "";
-				clearChildNodes(
-					cell
+				setText(
+					cell,
+					"\r\n",
+					global.document
 				);
 			}
 		}
@@ -394,19 +373,23 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function resetScore()
 		{
-			var par = commonElements,
-				cell = par.score;
-			clearChildNodes(
-				cell
-			);
+			var par = commonElements;
+			if (isHostObject(par.score)) {
+				setText(
+					par.score,
+					"0 / 0",
+					global.document
+				);
+			}
 		}
 
 		function enableStartButton()
 		{
-			var par = commonElements,
-				button = par.start;
-			button.disabled = false;
-			button.onclick = startTests;
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.disabled = false;
+				par.start.onclick = startTests;
+			}
 		}
 
 		function removeTimeout(
@@ -414,7 +397,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		)
 		{
 			var key = "clearTimeout";
-			if (@LIBRARY_NAME@.is.hostObject(global[key])) {
+			if (isHostObject(global[key])) {
 				global[key](
 					ref
 				);
@@ -434,11 +417,19 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			enableStartButton();
 		}
 
+		function addStopHandler()
+		{
+			var par = commonElements;
+			if (isHostObject(par.stop)) {
+				par.stop.onclick = endTests;
+			}
+		}
+
 		function addHandlers()
 		{
 			var par = commonElements;
-			par.start.onclick = startTests;
-			par.stop.onclick = endTests;
+			addStartHandler();
+			addStopHandler();
 		}
 
 		addHandlers();

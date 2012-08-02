@@ -1,0 +1,663 @@
+var global = this;
+if (typeof Utils === "object" && Utils) {
+	(function () {
+		var doc = global.document,
+
+			commonElements,
+
+			boundHandler,		
+
+			eventObject,
+			eventTarget,
+
+			tests,
+			testIndex,
+
+			score,
+			testsRun,
+
+			runTests,
+
+			tester;
+
+		commonElements = (function () {
+			var key = "getElementById",
+				obj = {};
+			obj.test = doc[key]("test");
+			obj.start = doc[key]("start");
+			obj.stop = doc[key]("stop");
+			obj.results = doc[key]("results");
+			obj.tests = doc[key]("tests");
+			obj.score = doc[key]("score");
+			return obj;
+		}());
+
+		doc = null;
+
+		function bindHandler(
+			handler,
+			thisValue
+		)
+		{
+			return Utils.event.bindHandler(
+				handler,
+				thisValue
+			);
+		}
+
+		function nativeBound(
+			evt
+		)
+		{
+			return this;
+		}
+
+		function bindNative()
+		{
+			var result = false;
+			boundHandler = bindHandler(
+				nativeBound,
+				global.document
+			);
+			if (boundHandler) {
+				if (boundHandler() ===
+					global.document) {
+					result = true;
+				} else if (boundHandler() ===
+					global) {
+					// handler was not bound
+					result = false;
+				}
+			}
+			return result;
+		}
+
+		function unbindHandler(
+			bound
+		)
+		{
+			return Utils.event.unbindHandler(
+				bound
+			);
+		}
+
+		function unbindNative()
+		{
+			bound = unbindHandler(
+				boundHandler
+			);
+			return bound === nativeBound;
+		}
+
+		function addWindowListener(
+			win,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "addWindowListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					win,
+					evt,
+					handler,
+					capture
+				);
+			}
+			win = null;
+			return result;
+		}
+
+		function dummyHandler(
+			evt
+		)
+		{
+			return this;
+		}
+
+		function addWindowLoad()
+		{
+			var test = addWindowListener(
+				global.window,
+				"load",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function removeWindowListener(
+			win,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "removeWindowListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					win,
+					evt,
+					handler,
+					capture
+				);
+			}
+			win = null;
+			return result;
+		}
+
+		function removeWindowLoad()
+		{
+			var test = removeWindowListener(
+				global.window,
+				"load",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function addDocumentListener(
+			doc,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "addDocumentListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					doc,
+					evt,
+					handler,
+					capture
+				);
+			}
+			doc = null;
+			return result;
+		}
+
+		function addDocumentClick()
+		{
+			var test = addDocumentListener(
+				global.document,
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function removeDocumentListener(
+			doc,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "removeDocumentListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					doc,
+					evt,
+					handler,
+					capture
+				);
+			}
+			doc = null;
+			return result;
+		}
+
+		function removeDocumentClick()
+		{
+			var test = removeDocumentListener(
+				global.document,
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function addElementListener(
+			el,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "addElementListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					el,
+					evt,
+					handler,
+					capture
+				);
+			}
+			return result;
+		}
+
+		function getBody(
+			doc
+		)
+		{
+			var hO = "hostObject",
+				key = "body",
+				result = null;
+			if (doc && Utils.is[hO](doc[key])) {
+				result = doc[key];
+			}
+			return result;
+		}
+
+		function addElementClick()
+		{
+			var test = addElementListener(
+				getBody(global.document),
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function removeElementListener(
+			el,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "removeElementListener",
+				result = null;
+			if (Utils.event[key]) {
+				result = Utils.event[key](
+					el,
+					evt,
+					handler,
+					capture
+				);
+			}
+			return result;
+		}
+
+		function removeElementClick()
+		{
+			var test = removeElementListener(
+				getBody(global.document),
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function isHostObject(
+			obj
+		)
+		{
+			return Utils.is.hostObject(
+				obj
+			);
+		}
+
+		function checkEventObject()
+		{
+			var par = commonElements,
+				test = false;
+			if (isHostObject(par.test)) {
+				test = isHostObject(
+					eventObject
+				);
+			}
+			return test;
+		}
+
+		function checkEventTarget()
+		{
+			var par = commonElements,
+				test = false;
+			if (isHostObject(par.test)) {
+				test = eventTarget === par.test;
+			}
+			return test;
+		}
+
+		tests = [
+			bindNative,
+			unbindNative,
+			addWindowLoad,
+			removeWindowLoad,
+			addDocumentClick,
+			removeDocumentClick,
+			addElementClick,
+			removeElementClick,
+			checkEventObject,
+			checkEventTarget
+		];
+
+		function resetTestData()
+		{
+			testIndex = 0;
+			score = 0;
+			testsRun = 0;
+		}
+
+		function disableStartButton()
+		{
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.disabled = true;
+				par.start.onclick = function () {};
+			}
+		}
+
+		function grabById(
+			id
+		)
+		{
+			var key = "getElementById";
+			return global.document[key](
+				id
+			);
+		}
+
+		function setText(
+			obj,
+			text,
+			doc
+		)
+		{
+			return Utils.text.set(
+				obj,
+				text,
+				doc
+			);
+		}
+
+		function addMessage(
+			msg,
+			num
+		)
+		{
+			var cell = grabById("result_" + num);
+			if (cell) {
+				setText(
+					cell,
+					msg,
+					global.document
+				);
+			}
+		}
+
+		function updateScore()
+		{
+			var par = commonElements,
+				total = score + " / " + testsRun;
+			setText(
+				par.score,
+				total,
+				global.document
+			);
+		}
+
+		function adjustScore(
+			result,
+			num
+		)
+		{
+
+			var row = grabById("test_" + num);
+			if (row) {
+				if (result === "true") {
+					row.className = "pass";
+					score += 1;
+					testsRun += 1;
+				} else if (result === "false") {
+					row.className = "fail";
+				} else if (result === "ERROR") {
+					row.className = "error";
+					testsRun += 1;
+				}
+			}
+			updateScore();
+		}
+
+		function addResult(
+			result,
+			num
+		)
+		{
+			addMessage(
+				result,
+				num
+			);
+			adjustScore(
+				result,
+				num
+			);
+		}
+
+		function runTest(
+			test,
+			key
+		)
+		{
+			var result = null;
+			if (typeof test === "function") {
+				try {
+					result = test();
+					result = String(
+						result
+					);
+				} catch (err) {
+					result = "ERROR";
+				}
+				addResult(
+					result,
+					key
+				);
+			}
+		}
+
+		function makeTimeout(
+			ref,
+			ms
+		)
+		{
+			var key = "setTimeout",
+				result;
+			if (isHostObject(global[key])) {
+				result = global[key](
+					ref,
+					ms
+				);
+			}
+			return result;
+		}
+
+		runTests = (function () {
+			var max = tests.length;
+			return function () {
+				if (testIndex < max) {
+					runTest(
+						tests[testIndex],
+						testIndex + 1
+					);
+					testIndex += 1;
+					tester = makeTimeout(
+						runTests,
+						100
+					);
+				} else if (testIndex >= max) {
+					testIndex = 0;
+				}
+			};
+		}());
+
+		function startTests(
+			evt
+		)
+		{
+			resetTestData();
+			runTests();
+			disableStartButton();
+		}
+
+		function addStartHandler()
+		{
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.onclick = startTests;
+			}
+		}
+
+		function removeNode(
+			par,
+			node
+		)
+		{
+			return Utils.node.remove(
+				par,
+				par.firstChild
+			);
+		}
+
+		function clearResult(
+			num
+		)
+		{
+			var cell = grabById("result_" + num),
+				row = grabById("test_" + num),
+				index;
+			if (cell && row) {
+				row.className = "";
+				setText(
+					cell,
+					"\r\n",
+					global.document
+				);
+			}
+		}
+
+		function clearTests()
+		{
+			var index = 0,
+				max = tests.length;
+			for (index; index < max; index += 1) {
+				clearResult(
+					index + 1
+				);
+			}
+		}
+
+		function resetScore()
+		{
+			var par = commonElements,
+				cell = par.score;
+			setText(
+				cell,
+				"0 / 0",
+				global.document
+			);
+		}
+
+		function enableStartButton()
+		{
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.disabled = false;
+				par.start.onclick = startTests;
+			}
+		}
+
+		function removeTimeout(
+			ref
+		)
+		{
+			var key = "clearTimeout";
+			if (isHostObject(global[key])) {
+				global[key](
+					ref
+				);
+			}
+		}
+
+		function endTests(
+			evt
+		)
+		{
+			removeTimeout(
+				tester
+			);
+			tester = null;
+			clearTests();
+			resetScore();
+			enableStartButton();
+		}
+
+		function addStopHandler()
+		{
+			var par = commonElements;
+			if (isHostObject(par.stop)) {
+				par.stop.onclick = endTests;
+			}
+		}
+
+		function getEventObject(
+			evt
+		)
+		{
+			return Utils.event.getObject(
+				evt
+			);
+		}
+
+		function getEventTarget(
+			evt
+		)
+		{
+			return Utils.event.getTarget(
+				evt
+			);
+		}
+
+		function runErrorTest(
+			evt
+		)
+		{
+			eventObject = getEventObject(
+				evt
+			);
+			eventTarget = getEventTarget(
+				evt
+			);
+		}
+
+		function addTestHandler()
+		{
+			var par = commonElements;
+			if (par.test) {
+				par.test.onerror =
+					runErrorTest;
+				par.test.src = "null.null";
+			}
+		}
+
+		function addHandlers()
+		{
+			addStartHandler();
+			addStopHandler();
+			addTestHandler();
+		}
+
+		addHandlers();
+	}());
+}

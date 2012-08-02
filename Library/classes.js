@@ -72,8 +72,9 @@ if (typeof Utils === "object" && Utils) {
                 * @closure
                 *
                 * @description
-                * Variable containing the current body
-                * node-like object or `null`.
+                * Wrapper method that returns the current body
+                * node-like object; returns `null` if not
+                * applicable.
                 */
 
 		body = (function () {
@@ -355,13 +356,13 @@ if (typeof Utils === "object" && Utils) {
 		)
 		{
 			var invalidChar = invalidChars[chr],
+				u = "undefined",
 				result = false;
-			if (typeof invalidChar !== "undefined") {
-				raiseInvalid();
-			} else if (chr === "") {
+			if (chr === "") {
 				raiseSyntax();
-			} else if (typeof invalidChar ===
-				"undefined") {
+			} else if (invalidChar !== global[u]) {
+				raiseInvalid();
+			} else if (invalidChar === global[u]) {
 				result = true;
 			}
 			return result;

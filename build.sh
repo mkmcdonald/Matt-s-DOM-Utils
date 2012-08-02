@@ -22,6 +22,7 @@ function begin_modules ()
 		"text"
 		"ancestors"
 		"select"
+		"event"
 	);
 }
 

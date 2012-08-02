@@ -26,58 +26,80 @@
 				<tr id="test_1">
 					<td>1.</td>
 					<td><code>@LIBRARY_NAME@.node.prepend</code> returns a node-like object</td>
-					<td id="result_1"></td>
+					<td id="result_1">
+						
+					</td>
 				</tr>
 				<tr id="test_2">
 					<td>2.</td>
 					<td><code>@LIBRARY_NAME@.node.prependList</code> returns <code>undefined</code></td>
-					<td id="result_2"></td>
+					<td id="result_2">
+						
+					</td>
 				</tr>
 				<tr id="test_3">
 					<td>3.</td>
 					<td><code>@LIBRARY_NAME@.node.append</code> returns <code>undefined</code></td>
-					<td id="result_3"></td>
+					<td id="result_3">
+						
+					</td>
 				</tr>
 				<tr id="test_4">
 					<td>4.</td>
 					<td><code>@LIBRARY_NAME@.node.appendList</code> returns <code>undefined</code></td>
-					<td id="result_4"></td>
+					<td id="result_4">
+						
+					</td>
 				</tr>
 				<tr id="test_5">
 					<td>5.</td>
 					<td><code>@LIBRARY_NAME@.node.remove</code> returns a node-like object</td>
-					<td id="result_5"></td>
+					<td id="result_5">
+						
+					</td>
 				</tr>
 				<tr id="test_6">
 					<td>6.</td>
 					<td><code>@LIBRARY_NAME@.node.replace</code> returns a node-like object</td>
-					<td id="result_6"></td>
+					<td id="result_6">
+						
+					</td>
 				</tr>
 				<tr id="test_7">
 					<td>7.</td>
 					<td><code>@LIBRARY_NAME@.node.clone</code> returns a node-like object</td>
-					<td id="result_7"></td>
+					<td id="result_7">
+						
+					</td>
 				</tr>
 				<tr id="test_8">
 					<td>8.</td>
 					<td><code>@LIBRARY_NAME@.node.getName</code> returns a String</td>
-					<td id="result_8"></td>
+					<td id="result_8">
+						
+					</td>
 				</tr>
 				<tr id="test_9">
 					<td>9.</td>
 					<td><code>@LIBRARY_NAME@.node.getValue</code> returns a String</td>
-					<td id="result_9"></td>
+					<td id="result_9">
+						
+					</td>
 				</tr>
 				<tr id="test_10">
 					<td>10.</td>
 					<td><code>@LIBRARY_NAME@.node.setValue</code> returns a String</td>
-					<td id="result_10"></td>
+					<td id="result_10">
+						
+					</td>
 				</tr>
 			</tbody>
 		</table>
 		<div id="score_area">
 			<p>Score:</p>
-			<p id="score"></p>
+			<p id="score">
+				0 / 0
+			</p>
 		</div>
 		<hr>
 		<h2>Test Element</h2>

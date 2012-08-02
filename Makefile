@@ -24,6 +24,7 @@ TRAVERSE = $(LIBRARY)/traverse.js
 TEXT = $(LIBRARY)/text.js
 ANCESTORS = $(LIBRARY)/ancestors.js
 SELECT = $(LIBRARY)/select.js
+EVENT = $(LIBRARY)/event.js
 
 # build
 
@@ -33,7 +34,8 @@ MAKE_HEAD = cat $(HEAD_DEP) > $(HEAD_FILE);
 
 COMPLETE_FILE = $(UNCOMPRESSED)/utils-complete.js
 COMPLETE_DEP = $(HEAD_FILE) $(RAISE) $(TYPES) $(IS) $(NODE) $(CREATE)\
-	$(CLASSES) $(TRAVERSE) $(TEXT) $(ANCESTORS) $(SELECT)
+	$(CLASSES) $(TRAVERSE) $(TEXT) $(ANCESTORS) $(SELECT)\
+	$(EVENT)
 MAKE_COMPLETE = cat $(COMPLETE_DEP) > $(COMPLETE_FILE);
 
 COPY_LIB = find $(LIBRARY) -name "*.js" -type f | xargs\
@@ -46,7 +48,6 @@ all: complete compress
 	@echo "--------------------";
 	@echo "";
 	@echo "BUILD COMPLETE";
-	@echo "";
 
 head:
 	@echo "building utils-head.js";

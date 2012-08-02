@@ -25,4 +25,4 @@
  * @see http://www.fortybelow.ca/projects/JavaScript/Utils/
  */
 
-var Utils=Utils||{},global=global||this;
+var Utils=Utils||{},global=this;

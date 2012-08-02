@@ -10,7 +10,7 @@
 
 
         Matt's DOM Utils
-        http://www.fortybelow.ca/projects/JavaScript/Utils/
+        http://www.fortybelow.ca/Projects/JavaScript/Utils/
 
         Description:
 
@@ -38,7 +38,8 @@
         * traverse.js;
         * text.js;
         * ancestors.js;
-        * select.js.
+        * select.js;
+        * event.js.
 
 # Matt's DOM Utils (Utils)
 
@@ -69,7 +70,7 @@ upon the DOM 4 spec.
 ### Is
 
 *Utils* provides identification tests. These include tests for
-document tree node-like objects as well as "host objects". Utilizing
+document tree node-like objects as well as "host objects". Utilising
 these tests allows scripts to degrade gracefully.
 
 ### Node
@@ -127,11 +128,55 @@ methods such as `NodeSelector::querySelectorAll`.
 
 See ./Tests/Select for examples.
 
+### Event
+
+*Utils* provides a set of methods to add event listeners
+for both the DOM Level 2+ and MSHTML event models alongside methods
+to bind and unbind event handlers.
+
+See ./Tests/Event for examples.
+
 ---
 
 ## Builds
 
-*Utils* provides a Makefile for initial set-up.
+*Utils* provides a configure.ac file, which resonates
+thoughout the entire project tree.
+
+### Configuration
+
+*Utils* provides a configure.ac file, which can be
+edited to amend the project tree. In order to compile it,
+GNU Autotools (specifically `autoconf`) must be available to
+the system.
+
+#### Project Name
+
+A Bash variable is utilised in order to build the entire project
+tree under a variable name. This can then be edited in the configure.ac
+file, and then compiled into the configure script.
+
+To use a custom project name, find the following snippet in configure.ac:
+
+        # your library name here
+
+        AC_SUBST(LIBRARY_NAME)
+        LIBRARY_NAME="Utils";
+
+and amend the `LIBRARY_NAME` variable's value to another string value.
+
+Then, call the following command:
+
+        autoconf
+
+in the project root to create a configure script from the file.
+
+Finally, run the configure script by calling:
+
+        ./configure
+
+in the project root. This will echo the changes to the configure.ac file
+throughout the project tree.
 
 ### Makefile
 
@@ -160,7 +205,7 @@ to ./Builds/Compressed).
 
 *Utils* provides multiple options for custom builds.
 
-#### Command-line
+#### Command-Line
 
 `./build.sh [modules]` will pass the specified modules to the
 build script and will then export the result to
@@ -170,7 +215,7 @@ build script and will then export the result to
 
 `./build.sh traverse text`
 
-#### Server-side
+#### Server-Side
 
 A server-side builder is located at the project site, which
 provides an easy way to string together files for those
@@ -198,4 +243,4 @@ who cannot or do not wish to run command-line code.
 
 ## Metadata
 
-* Last edited on Wednesday, June 27th 2012
+* Last edited on Thursday, August 2nd 2012

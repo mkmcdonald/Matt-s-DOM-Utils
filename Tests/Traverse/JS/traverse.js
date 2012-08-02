@@ -29,10 +29,11 @@ if (typeof Utils === "object" && Utils) {
 
 		function childNodes()
 		{
-			var node = commonElements.test,
+			var key = "getNodes",
+				node = commonElements.test,
 				nodes;
-			if (Utils.traverse.getNodes) {
-				nodes = Utils.traverse.getNodes(
+			if (Utils.traverse[key]) {
+				nodes = Utils.traverse[key](
 					node
 				);
 			}
@@ -50,8 +51,9 @@ if (typeof Utils === "object" && Utils) {
 
 		function childNodesTraversed()
 		{
-			var node = commonElements.test,
-				nodes = Utils.traverse.nodes(
+			var key = "nodes",
+				node = commonElements.test,
+				nodes = Utils.traverse[key](
 					node,
 					optimisticFilter
 				);
@@ -62,10 +64,11 @@ if (typeof Utils === "object" && Utils) {
 
 		function children()
 		{
-			var node = commonElements.test,
+			var key = "getElements",
+				node = commonElements.test,
 				test;
-			if (Utils.traverse.getElements) {
-				test = Utils.traverse.getElements(
+			if (Utils.traverse[key]) {
+				test = Utils.traverse[key](
 					node
 				);
 			}
@@ -74,15 +77,18 @@ if (typeof Utils === "object" && Utils) {
 			);
 		}
 
-		function pessimisticFilter(node)
+		function pessimisticFilter(
+			node
+		)
 		{
 			return false;
 		}
 
 		function childrenTraversed()
 		{
-			var node = commonElements.test,
-				nodes = Utils.traverse.elements(
+			var key = "elements",
+				node = commonElements.test,
+				nodes = Utils.traverse[key](
 					node,
 					pessimisticFilter
 				);
@@ -93,7 +99,8 @@ if (typeof Utils === "object" && Utils) {
 
 		function tree()
 		{
-			var nodes = Utils.traverse.getNodeTree(
+			var key = "getNodeTree",
+				nodes = Utils.traverse[key](
 				global.document
 			);
 			return Utils.is.arrayLike(
@@ -103,7 +110,8 @@ if (typeof Utils === "object" && Utils) {
 
 		function treeTraversed()
 		{
-			var nodes = Utils.traverse.nodeTree(
+			var key = "nodeTree",
+				nodes = Utils.traverse[key](
 				global.document,
 				optimisticFilter
 			);
@@ -114,7 +122,8 @@ if (typeof Utils === "object" && Utils) {
 
 		function childrenTree()
 		{
-			var tree = Utils.traverse.getElementTree(
+			var key = "getElementTree",
+				tree = Utils.traverse[key](
 				global.document
 			);
 			return Utils.is.arrayLike(
@@ -124,7 +133,8 @@ if (typeof Utils === "object" && Utils) {
 
 		function childrenTreeTraversed()
 		{
-			var nodes = Utils.traverse.elementTree(
+			var key = "elementTree",
+				nodes = Utils.traverse[key](
 				global.document,
 				optimisticFilter
 			);
@@ -153,50 +163,22 @@ if (typeof Utils === "object" && Utils) {
 			testsRun = 0;
 		}
 
+		function isHostObject(
+			obj
+		)
+		{
+			return Utils.is.hostObject(
+				obj
+			);
+		}
+
 		function disableStartButton()
 		{
-			var par = commonElements,
-				button = par.start;
-			button.disabled = true;
-			button.onclick = function () {};
-		}
-
-		function createText(
-			doc,
-			text
-		)
-		{
-			var result = null;
-			if (Utils.create.text) {
-				result = Utils.create.text(
-					doc,
-					text
-				);
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.disabled = true;
+				par.start.onclick = function () {};
 			}
-			return result;
-		}
-
-		function appendNode(
-			par,
-			node
-		)
-		{
-			return Utils.node.append(
-				par,
-				node
-			);
-		}
-
-		function createMessage(text)
-		{
-			var str = String(text);
-			if (str === "") {
-				str = "[an empty string]";
-			}
-			return createText(
-				global.document,
-				str
-			);
 		}
 
 		function grabById(
@@ -209,17 +191,30 @@ if (typeof Utils === "object" && Utils) {
 			);
 		}
 
+		function setText(
+			obj,
+			text,
+			doc
+		)
+		{
+			return Utils.text.set(
+				obj,
+				text,
+				doc
+			);
+		}
+
 		function addMessage(
 			msg,
 			num
 		)
 		{
-			var cell = grabById("result_" + num),
-				text = createMessage(msg);
+			var cell = grabById("result_" + num);
 			if (cell) {
-				appendNode(
+				setText(
 					cell,
-					text
+					msg,
+					global.document
 				);
 			}
 		}
@@ -227,16 +222,13 @@ if (typeof Utils === "object" && Utils) {
 		function updateScore()
 		{
 			var par = commonElements,
-				element = par.score,
-				total = score + " / " + testsRun,
-				text = createMessage(total);
-			if (element && !element.firstChild) {
-				appendNode(
-					element,
-					text
+				total = score + " / " + testsRun;
+			if (isHostObject(par.score)) {
+				setText(
+					par.score,
+					total,
+					global.document
 				);
-			} else if (element && element.firstChild) {
-				element.firstChild.nodeValue = total;
 			}
 		}
 
@@ -306,7 +298,7 @@ if (typeof Utils === "object" && Utils) {
 		{
 			var key = "setTimeout",
 				result;
-			if (Utils.is.hostObject(global[key])) {
+			if (isHostObject(global[key])) {
 				result = global[key](
 					ref,
 					ms
@@ -343,26 +335,11 @@ if (typeof Utils === "object" && Utils) {
 			disableStartButton();
 		}
 
-		function removeNode(
-			par,
-			node
-		)
+		function addStartHandler()
 		{
-			return Utils.node.remove(
-				par,
-				par.firstChild
-			);
-		}
-
-		function clearChildNodes(
-			par
-		)
-		{
-			while (par && par.firstChild) {
-				removeNode(
-					par,
-					par.firstChild
-				);
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.onclick = startTests;
 			}
 		}
 
@@ -375,8 +352,10 @@ if (typeof Utils === "object" && Utils) {
 				index;
 			if (cell && row) {
 				row.className = "";
-				clearChildNodes(
-					cell
+				setText(
+					cell,
+					"\r\n",
+					global.document
 				);
 			}
 		}
@@ -394,19 +373,23 @@ if (typeof Utils === "object" && Utils) {
 
 		function resetScore()
 		{
-			var par = commonElements,
-				cell = par.score;
-			clearChildNodes(
-				cell
-			);
+			var par = commonElements;
+			if (isHostObject(par.score)) {
+				setText(
+					par.score,
+					"0 / 0",
+					global.document
+				);
+			}
 		}
 
 		function enableStartButton()
 		{
-			var par = commonElements,
-				button = par.start;
-			button.disabled = false;
-			button.onclick = startTests;
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.disabled = false;
+				par.start.onclick = startTests;
+			}
 		}
 
 		function removeTimeout(
@@ -414,7 +397,7 @@ if (typeof Utils === "object" && Utils) {
 		)
 		{
 			var key = "clearTimeout";
-			if (Utils.is.hostObject(global[key])) {
+			if (isHostObject(global[key])) {
 				global[key](
 					ref
 				);
@@ -434,11 +417,19 @@ if (typeof Utils === "object" && Utils) {
 			enableStartButton();
 		}
 
+		function addStopHandler()
+		{
+			var par = commonElements;
+			if (isHostObject(par.stop)) {
+				par.stop.onclick = endTests;
+			}
+		}
+
 		function addHandlers()
 		{
 			var par = commonElements;
-			par.start.onclick = startTests;
-			par.stop.onclick = endTests;
+			addStartHandler();
+			addStopHandler();
 		}
 
 		addHandlers();

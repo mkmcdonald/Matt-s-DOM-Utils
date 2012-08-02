@@ -60,6 +60,7 @@ begin_parts ()
 		"text"
 		"ancestors"
 		"select"
+		"event"
 	);
 	compress_parts "${PARTS[@]}";
 }

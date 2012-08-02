@@ -26,52 +26,72 @@
 				<tr id="test_1">
 					<td>1.</td>
 					<td><code>@LIBRARY_NAME@.node.prepend</code> returns a node-like object</td>
-					<td id="result_1"></td>
+					<td id="result_1">
+						
+					</td>
 				</tr>
 				<tr id="test_2">
 					<td>2.</td>
 					<td><code>@LIBRARY_NAME@.node.prependList</code> returns <code>undefined</code></td>
-					<td id="result_2"></td>
+					<td id="result_2">
+						
+					</td>
 				</tr>
 				<tr id="test_3">
 					<td>3.</td>
 					<td><code>@LIBRARY_NAME@.node.append</code> returns <code>undefined</code></td>
-					<td id="result_3"></td>
+					<td id="result_3">
+						
+					</td>
 				</tr>
 				<tr id="test_4">
 					<td>4.</td>
 					<td><code>@LIBRARY_NAME@.node.appendList</code> returns <code>undefined</code></td>
-					<td id="result_4"></td>
+					<td id="result_4">
+						
+					</td>
 				</tr>
 				<tr id="test_5">
 					<td>5.</td>
 					<td><code>@LIBRARY_NAME@.node.remove</code> returns a node-like object</td>
-					<td id="result_5"></td>
+					<td id="result_5">
+						
+					</td>
 				</tr>
 				<tr id="test_6">
 					<td>6.</td>
 					<td><code>@LIBRARY_NAME@.node.replace</code> returns a node-like object</td>
-					<td id="result_6"></td>
+					<td id="result_6">
+						
+					</td>
 				</tr>
 				<tr id="test_7">
 					<td>7.</td>
 					<td><code>@LIBRARY_NAME@.node.clone</code> returns a node-like object</td>
-					<td id="result_7"></td>
+					<td id="result_7">
+						
+					</td>
 				</tr>
 				<tr id="test_8">
 					<td>8.</td>
 					<td><code>@LIBRARY_NAME@.node.getName</code> returns a String</td>
-					<td id="result_8"></td>
+					<td id="result_8">
+						
+					</td>
 				</tr>
 				<tr id="test_9">
 					<td>9.</td>
 					<td><code>@LIBRARY_NAME@.node.getValue</code> returns a String</td>
-					<td id="result_9"></td>
+					<td id="result_9">
+						
+					</td>
 				</tr>
 				<tr id="test_10">
 					<td>10.</td>
 					<td><code>@LIBRARY_NAME@.node.setValue</code> returns a String</td>
-					<td id="result_10"></td>
+					<td id="result_10">
+						
+					</td>
 				</tr>
 				<tr id="test_11">
 					<td>11.</td>
@@ -79,7 +99,9 @@
 						<code>@LIBRARY_NAME@.create.element</code> returns an element
 							node-like object.
 					</td>
-					<td id="result_11"></td>
+					<td id="result_11">
+						
+					</td>
 				</tr>
 				<tr id="test_12">
 					<td>12.</td>
@@ -87,7 +109,9 @@
 						<code>@LIBRARY_NAME@.create.text</code> returns a text
 							node-like object.
 					</td>
-					<td id="result_12"></td>
+					<td id="result_12">
+						
+					</td>
 				</tr>
 				<tr id="test_13">
 					<td>13.</td>
@@ -95,7 +119,9 @@
 						<code>@LIBRARY_NAME@.create.comment</code> returns a comment
 							node-like object.
 					</td>
-					<td id="result_13"></td>
+					<td id="result_13">
+						
+					</td>
 				</tr>
 				<tr id="test_14">
 					<td>14.</td>
@@ -103,21 +129,27 @@
 						<code>@LIBRARY_NAME@.create.documentFragment</code> returns a
 							document fragment node-like object.
 					</td>
-					<td id="result_14"></td>
+					<td id="result_14">
+						
+					</td>
 				</tr>
 				<tr id="test_15">
 					<td>15.</td>
 					<td>
 						<code>@LIBRARY_NAME@.classes.contains</code> returns a Boolean.
 					</td>
-					<td id="result_15"></td>
+					<td id="result_15">
+						
+					</td>
 				</tr>
 				<tr id="test_16">
 					<td>16.</td>
 					<td>
 						<code>@LIBRARY_NAME@.classes.containsList</code> returns a Boolean.
 					</td>
-					<td id="result_16"></td>
+					<td id="result_16">
+						
+					</td>
 				</tr>
 				<tr id="test_17">
 					<td>17.</td>
@@ -125,7 +157,9 @@
 						<code>@LIBRARY_NAME@.classes.add</code> returns
 							<code>undefined</code>.
 					</td>
-					<td id="result_17"></td>
+					<td id="result_17">
+						
+					</td>
 				</tr>
 				<tr id="test_18">
 					<td>18.</td>
@@ -133,7 +167,9 @@
 						<code>@LIBRARY_NAME@.classes.addList</code> returns
 							<code>undefined</code>.
 					</td>
-					<td id="result_18"></td>
+					<td id="result_18">
+						
+					</td>
 				</tr>
 				<tr id="test_19">
 					<td>19.</td>
@@ -141,7 +177,9 @@
 						<code>@LIBRARY_NAME@.classes.remove</code> returns
 							<code>undefined</code>.
 					</td>
-					<td id="result_19"></td>
+					<td id="result_19">
+						
+					</td>
 				</tr>
 				<tr id="test_20">
 					<td>20.</td>
@@ -149,21 +187,27 @@
 						<code>@LIBRARY_NAME@.classes.removeList</code> returns
 							<code>undefined</code>.
 					</td>
-					<td id="result_20"></td>
+					<td id="result_20">
+						
+					</td>
 				</tr>
 				<tr id="test_21">
 					<td>21.</td>
 					<td>
 						<code>@LIBRARY_NAME@.classes.toggle</code> returns a Boolean.
 					</td>
-					<td id="result_21"></td>
+					<td id="result_21">
+						
+					</td>
 				</tr>
 				<tr id="test_22">
 					<td>22.</td>
 					<td>
 						<code>@LIBRARY_NAME@.classes.toggle</code> returns a Boolean.
 					</td>
-					<td id="result_22"></td>
+					<td id="result_22">
+						
+					</td>
 				</tr>
 				<tr id="test_23">
 					<td>23.</td>
@@ -171,7 +215,9 @@
 						<code>@LIBRARY_NAME@.classes.toggleList</code> returns
 							<code>undefined</code>.
 					</td>
-					<td id="result_23"></td>
+					<td id="result_23">
+						
+					</td>
 				</tr>
 				<tr id="test_24">
 					<td>24.</td>
@@ -179,7 +225,9 @@
 						<code>@LIBRARY_NAME@.classes.item</code> returns a
 							String.
 					</td>
-					<td id="result_24"></td>
+					<td id="result_24">
+						
+					</td>
 				</tr>
 				<tr id="test_25">
 					<td>25.</td>
@@ -187,7 +235,9 @@
 						<code>@LIBRARY_NAME@.classes.get</code> returns an
 							array-like object.
 					</td>
-					<td id="result_25"></td>
+					<td id="result_25">
+						
+					</td>
 				</tr>
 				<tr id="test_26">
 					<td>26.</td>
@@ -195,7 +245,9 @@
 						<code>@LIBRARY_NAME@.traverse.getNodes</code> returns an
 							array-like object.
 					</td>
-					<td id="result_26"></td>
+					<td id="result_26">
+						
+					</td>
 				</tr>
 				<tr id="test_27">
 					<td>27.</td>
@@ -203,7 +255,9 @@
 						<code>@LIBRARY_NAME@.traverse.nodes</code> returns an
 							array-like object.
 					</td>
-					<td id="result_27"></td>
+					<td id="result_27">
+						
+					</td>
 				</tr>
 				<tr id="test_28">
 					<td>28.</td>
@@ -211,7 +265,9 @@
 						<code>@LIBRARY_NAME@.traverse.getElements</code> returns an
 							array-like object.
 					</td>
-					<td id="result_28"></td>
+					<td id="result_28">
+						
+					</td>
 				</tr>
 				<tr id="test_29">
 					<td>29.</td>
@@ -219,7 +275,9 @@
 						<code>@LIBRARY_NAME@.traverse.elements</code> returns an
 							array-like object.
 					</td>
-					<td id="result_29"></td>
+					<td id="result_29">
+						
+					</td>
 				</tr>
 				<tr id="test_30">
 					<td>30.</td>
@@ -227,7 +285,9 @@
 						<code>@LIBRARY_NAME@.traverse.getNodeTree</code> returns an
 							array-like object.
 					</td>
-					<td id="result_30"></td>
+					<td id="result_30">
+						
+					</td>
 				</tr>
 				<tr id="test_31">
 					<td>31.</td>
@@ -235,7 +295,9 @@
 						<code>@LIBRARY_NAME@.traverse.nodeTree</code> returns an
 							array-like object.
 					</td>
-					<td id="result_31"></td>
+					<td id="result_31">
+						
+					</td>
 				</tr>
 				<tr id="test_32">
 					<td>32.</td>
@@ -243,7 +305,9 @@
 						<code>@LIBRARY_NAME@.traverse.getElementTree</code> returns an
 							array-like object.
 					</td>
-					<td id="result_32"></td>
+					<td id="result_32">
+						
+					</td>
 				</tr>
 				<tr id="test_33">
 					<td>33.</td>
@@ -251,21 +315,27 @@
 						<code>@LIBRARY_NAME@.traverse.elementTree</code> returns an
 							array-like object.
 					</td>
-					<td id="result_33"></td>
+					<td id="result_33">
+						
+					</td>
 				</tr>
 				<tr id="test_34">
 					<td>34.</td>
 					<td>
 						<code>@LIBRARY_NAME@.text.get</code> returns a String.
 					</td>
-					<td id="result_34"></td>
+					<td id="result_34">
+						
+					</td>
 				</tr>
 				<tr id="test_35">
 					<td>35.</td>
 					<td>
 						<code>@LIBRARY_NAME@.text.set</code> returns a String.
 					</td>
-					<td id="result_35"></td>
+					<td id="result_35">
+						
+					</td>
 				</tr>
 				<tr id="test_36">
 					<td>36.</td>
@@ -273,7 +343,9 @@
 						<code>@LIBRARY_NAME@.ancestors.traverse</code> returns an
 							array-like object.
 					</td>
-					<td id="result_36"></td>
+					<td id="result_36">
+						
+					</td>
 				</tr>
 				<tr id="test_37">
 					<td>37.</td>
@@ -281,14 +353,18 @@
 						<code>@LIBRARY_NAME@.ancestors.get</code> returns a
 							linked list-like object.
 					</td>
-					<td id="result_37"></td>
+					<td id="result_37">
+						
+					</td>
 				</tr>
 				<tr id="test_38">
 					<td>38.</td>
 					<td>
 						<code>@LIBRARY_NAME@.ancestors.is</code> returns a Boolean.
 					</td>
-					<td id="result_38"></td>
+					<td id="result_38">
+						
+					</td>
 				</tr>
 				<tr id="test_39">
 					<td>39.</td>
@@ -296,7 +372,9 @@
 						<code>@LIBRARY_NAME@.select.byName</code> returns an
 							array-like object.
 					</td>
-					<td id="result_39"></td>
+					<td id="result_39">
+						
+					</td>
 				</tr>
 				<tr id="test_40">
 					<td>40.</td>
@@ -304,7 +382,9 @@
 						<code>@LIBRARY_NAME@.select.byTagName</code> returns an
 							array-like object.
 					</td>
-					<td id="result_40"></td>
+					<td id="result_40">
+						
+					</td>
 				</tr>
 				<tr id="test_41">
 					<td>41.</td>
@@ -312,7 +392,9 @@
 						<code>@LIBRARY_NAME@.select.byClassName</code> returns an
 							array-like object.
 					</td>
-					<td id="result_41"></td>
+					<td id="result_41">
+						
+					</td>
 				</tr>
 				<tr id="test_42">
 					<td>42.</td>
@@ -320,7 +402,9 @@
 						<code>@LIBRARY_NAME@.select.byId</code> returns a
 							node-like object.
 					</td>
-					<td id="result_42"></td>
+					<td id="result_42">
+						
+					</td>
 				</tr>
 				<tr id="test_43">
 					<td>43.</td>
@@ -328,7 +412,9 @@
 						<code>@LIBRARY_NAME@.select.query</code> returns an
 							array-like object.
 					</td>
-					<td id="result_43"></td>
+					<td id="result_43">
+						
+					</td>
 				</tr>
 				<tr id="test_44">
 					<td>44.</td>
@@ -336,7 +422,9 @@
 						<code>@LIBRARY_NAME@.select.queryAll</code> returns an
 							array-like object.
 					</td>
-					<td id="result_44"></td>
+					<td id="result_44">
+						
+					</td>
 				</tr>
 				<tr id="test_45">
 					<td>45.</td>
@@ -344,7 +432,9 @@
 						<code>@LIBRARY_NAME@.select.head</code> returns a
 							node-like object.
 					</td>
-					<td id="result_45"></td>
+					<td id="result_45">
+						
+					</td>
 				</tr>
 				<tr id="test_46">
 					<td>46.</td>
@@ -352,7 +442,9 @@
 						<code>@LIBRARY_NAME@.select.body</code> returns a
 							node-like object.
 					</td>
-					<td id="result_46"></td>
+					<td id="result_46">
+						
+					</td>
 				</tr>
 				<tr id="test_47">
 					<td>47.</td>
@@ -360,7 +452,9 @@
 						<code>@LIBRARY_NAME@.select.images</code> returns a
 							node-like object.
 					</td>
-					<td id="result_47"></td>
+					<td id="result_47">
+						
+					</td>
 				</tr>
 				<tr id="test_48">
 					<td>48.</td>
@@ -368,7 +462,9 @@
 						<code>@LIBRARY_NAME@.select.allImages</code> returns an
 							array-like object.
 					</td>
-					<td id="result_48"></td>
+					<td id="result_48">
+						
+					</td>
 				</tr>
 				<tr id="test_49">
 					<td>49.</td>
@@ -376,7 +472,9 @@
 						<code>@LIBRARY_NAME@.select.embeds</code> returns a
 							node-like object.
 					</td>
-					<td id="result_49"></td>
+					<td id="result_49">
+						
+					</td>
 				</tr>
 				<tr id="test_50">
 					<td>50.</td>
@@ -384,7 +482,9 @@
 						<code>@LIBRARY_NAME@.select.allEmbeds</code> returns an
 							array-like object.
 					</td>
-					<td id="result_50"></td>
+					<td id="result_50">
+						
+					</td>
 				</tr>
 				<tr id="test_51">
 					<td>51.</td>
@@ -392,7 +492,9 @@
 						<code>@LIBRARY_NAME@.select.plugins</code> returns a
 							node-like object.
 					</td>
-					<td id="result_51"></td>
+					<td id="result_51">
+						
+					</td>
 				</tr>
 				<tr id="test_52">
 					<td>52.</td>
@@ -400,7 +502,9 @@
 						<code>@LIBRARY_NAME@.select.allPlugins</code> returns an
 							array-like object.
 					</td>
-					<td id="result_52"></td>
+					<td id="result_52">
+						
+					</td>
 				</tr>
 				<tr id="test_53">
 					<td>53.</td>
@@ -408,7 +512,9 @@
 						<code>@LIBRARY_NAME@.select.links</code> returns a
 							node-like object.
 					</td>
-					<td id="result_53"></td>
+					<td id="result_53">
+						
+					</td>
 				</tr>
 				<tr id="test_54">
 					<td>54.</td>
@@ -416,7 +522,9 @@
 						<code>@LIBRARY_NAME@.select.allLinks</code> returns an
 							array-like object.
 					</td>
-					<td id="result_54"></td>
+					<td id="result_54">
+						
+					</td>
 				</tr>
 				<tr id="test_55">
 					<td>55.</td>
@@ -424,7 +532,9 @@
 						<code>@LIBRARY_NAME@.select.forms</code> returns a
 							node-like object.
 					</td>
-					<td id="result_55"></td>
+					<td id="result_55">
+						
+					</td>
 				</tr>
 				<tr id="test_56">
 					<td>56.</td>
@@ -432,7 +542,9 @@
 						<code>@LIBRARY_NAME@.select.allForms</code> returns an
 							array-like object.
 					</td>
-					<td id="result_56"></td>
+					<td id="result_56">
+						
+					</td>
 				</tr>
 				<tr id="test_57">
 					<td>57.</td>
@@ -440,7 +552,9 @@
 						<code>@LIBRARY_NAME@.select.scripts</code> returns a
 							node-like object.
 					</td>
-					<td id="result_57"></td>
+					<td id="result_57">
+						
+					</td>
 				</tr>
 				<tr id="test_58">
 					<td>58.</td>
@@ -448,7 +562,9 @@
 						<code>@LIBRARY_NAME@.select.allScripts</code> returns an
 							array-like object.
 					</td>
-					<td id="result_58"></td>
+					<td id="result_58">
+						
+					</td>
 				</tr>
 				<tr id="test_59">
 					<td>59.</td>
@@ -456,7 +572,9 @@
 						<code>@LIBRARY_NAME@.select.applets</code> returns a
 							node-like object.
 					</td>
-					<td id="result_59"></td>
+					<td id="result_59">
+						
+					</td>
 				</tr>
 				<tr id="test_60">
 					<td>60.</td>
@@ -464,7 +582,9 @@
 						<code>@LIBRARY_NAME@.select.allApplets</code> returns an
 							array-like object.
 					</td>
-					<td id="result_60"></td>
+					<td id="result_60">
+						
+					</td>
 				</tr>
 				<tr id="test_61">
 					<td>61.</td>
@@ -472,7 +592,9 @@
 						<code>@LIBRARY_NAME@.select.anchors</code> returns a
 							node-like object.
 					</td>
-					<td id="result_61"></td>
+					<td id="result_61">
+						
+					</td>
 				</tr>
 				<tr id="test_62">
 					<td>62.</td>
@@ -480,7 +602,9 @@
 						<code>@LIBRARY_NAME@.select.allAnchors</code> returns an
 							array-like object.
 					</td>
-					<td id="result_62"></td>
+					<td id="result_62">
+						
+					</td>
 				</tr>
 				<tr id="test_63">
 					<td>63.</td>
@@ -488,7 +612,9 @@
 						<code>@LIBRARY_NAME@.select.namedItem</code> returns a
 							node-like object.
 					</td>
-					<td id="result_63"></td>
+					<td id="result_63">
+						
+					</td>
 				</tr>
 				<tr id="test_64">
 					<td>64.</td>
@@ -496,13 +622,117 @@
 						<code>@LIBRARY_NAME@.select.collection</code> returns an
 							array-like object.
 					</td>
-					<td id="result_64"></td>
+					<td id="result_64">
+						
+					</td>
+				</tr>
+				<tr id="test_65">
+					<td>65.</td>
+					<td>
+						<code>@LIBRARY_NAME@.event.bindHandler</code> successfully
+						binds a native Function.
+					</td>
+					<td id="result_65">
+						
+					</td>
+				</tr>
+				<tr id="test_66">
+					<td>66.</td>
+					<td>
+						<code>@LIBRARY_NAME@.event.unbindHandler</code> successfully
+						unbinds a native Function.
+					</td>
+					<td id="result_66">
+						
+					</td>
+				</tr>
+				<tr id="test_67">
+					<td>67.</td>
+					<td>
+						<code>@LIBRARY_NAME@.event.addWindowListener</code> successfully
+						adds an event listener to a Window object.
+					</td>
+					<td id="result_67">
+						
+					</td>
+				</tr>
+				<tr id="test_68">
+					<td>68.</td>
+					<td>
+						<code>@LIBRARY_NAME@.event.removeWindowListener</code> successfully
+						removes an event listener from a Window object.
+					</td>
+					<td id="result_68">
+						
+					</td>
+				</tr>
+				<tr id="test_69">
+					<td>69.</td>
+					<td>
+						<code>@LIBRARY_NAME@.event.addDocumentListener</code> successfully
+						adds an event Listener to a Document node-like object.
+					</td>
+					<td id="result_69">
+						
+					</td>
+				</tr>
+				<tr id="test_70">
+					<td>70.</td>
+					<td>
+						<code>@LIBRARY_NAME@.event.removeDocumentListener</code> successfully
+						removes an event listener from a Document node-like object.
+					</td>
+					<td id="result_70">
+						
+					</td>
+				</tr>
+				<tr id="test_71">
+					<td>71.</td>
+					<td>
+						<code>@LIBRARY_NAME@.event.addElementListener</code> successfully
+						adds an event listener to a Body element node-like object.
+					</td>
+					<td id="result_71">
+						
+					</td>
+				</tr>
+				<tr id="test_72">
+					<td>72.</td>
+					<td>
+						<code>@LIBRARY_NAME@.event.removeElementListener</code> successfully
+						removes an event listener from a Body element node-like object.
+					</td>
+					<td id="result_72">
+						
+					</td>
+				</tr>
+				<tr id="test_73">
+					<td>73.</td>
+					<td>
+						<code>@LIBRARY_NAME@.event.getObject</code> successfully
+						returns an Event object.
+					</td>
+					<td id="result_73">
+						
+					</td>
+				</tr>
+				<tr id="test_74">
+					<td>74.</td>
+					<td>
+						<code>@LIBRARY_NAME@.event.getTarget</code> successfully
+						returns an Event's target.
+					</td>
+					<td id="result_74">
+						
+					</td>
 				</tr>
 			</tbody>
 		</table>
 		<div id="score_area">
 			<p>Score:</p>
-			<p id="score"></p>
+			<p id="score">
+				0 / 0
+			</p>
 		</div>
 		<hr>
 		<h2>Node Test Element</h2>
@@ -591,6 +821,11 @@ Will sound through the mine.</pre>
 				<a name="anchor3" title="Test Three">Test Three</a>
 			</p>
 		</div>
+		<hr>
+		<h2>Event Test Element</h2>
+		<img alt="Test Image" id="event_test"
+			height="100" name="event_test"
+			width="100">
 		<script src="../../Builds/Uncompressed/utils-complete.js"
 			type="text/javascript"></script>
 		<script src="JS/complete.js"

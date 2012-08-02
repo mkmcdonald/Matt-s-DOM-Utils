@@ -52,7 +52,11 @@
 			"select" => array(
 				"full" => UNCOMPRESSED . "/select.js",
 				"min" => COMPRESSED . "/select-min.js"
-			)
+			),
+			"event" => array(
+				"full" => UNCOMPRESSED . "/event.js",
+				"min" => COMPRESSED . "/event-min.js"
+			),
 		);
 
 		function convertFile(

@@ -1,0 +1,477 @@
+@BEGIN@
+@HEAD@
+		<title>Matt's DOM Utils (@LIBRARY_NAME@): Documentation&mdash;@LIBRARY_NAME@.event</title>
+@DOCS_STYLESHEET@
+@DOCS_RESOURCES@
+		<link href="ancestors.html" hreflang="en" media="all"
+			rel="prev" title="@LIBRARY_NAME@.select"
+			type="text/html">
+		<link href="./" hreflang="en" media="all"
+			rel="index" title="Documentation Index"
+			type="text/html">
+		<link href="glossary.html" hreflang="en" media="all"
+			rel="next" title="Glossary"
+			type="text/html">
+@BODY@
+@DOCS_HEADER@
+@DOCS_NAV@
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="select.html" rel="prev"
+					title="Previous">&larr;<code>@LIBRARY_NAME@.select</code></a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="glossary.html" rel="next"
+					title="Next">Glossary&rarr;</a>
+			</div>
+		</div>
+		<div class="column primary_column">
+			<div class="cell primary_cell">
+				<h2 class="heading" title="@LIBRARY_NAME@.event">
+					<code>@LIBRARY_NAME@.event</code>
+				</h2>
+				<div class="fragment module_info" id="info">
+					<h3 class="heading">
+						<a href="#info"
+							title="Info">Info</a>
+					</h3>
+					<p class="description">
+						A module containing various methods to add and remove event listeners,
+						bind and unbind event handlers and retrieve an Event object.
+					</p>
+					<ol>
+						<li>
+							<a href="#listener"
+								title="Listener Methods">Listener Methods</a>
+						</li>
+						<li>
+							<a href="#object"
+								title="Event Object Methods">Event Object Methods</a>
+						</li>
+						<li>
+							<a href="#handler"
+								title="Handler Methods">Handler Methods</a>
+						</li>
+						<li>
+							<a href="#storage"
+								title="Storage Properties">Storage Properties</a>
+						</li>
+					</ol>
+				</div>
+			</div>
+			<div class="cell primary_cell" id="listener">
+				<h3 class="heading">
+					<a href="#listener"
+						title="Listener Methods">Listener Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="add_window_listener">
+						<h4 class="heading">
+							<a href="#add_window_listener"
+								title="@LIBRARY_NAME@.event.addWindowListener"><code>@LIBRARY_NAME@.event.addWindowListener</code></a>
+						</h4>
+						<p class="description">
+							Method that adds an event listener to a <code>Window</code>
+							object, utilising one of two available event models.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>win</var>
+							</dt>
+							<dd>
+								A <code>Window</code> object.
+							</dd>
+							<dt>
+								<var>evt</var>
+							</dt>
+							<dd>
+								A string containing the event to listen for.
+							</dd>
+							<dt>
+								<var>handler</var>
+							</dt>
+							<dd>
+								A function to utilise as a callback.
+							</dd>
+							<dt>
+								<var>capture</var>
+							</dt>
+							<dd>
+								A boolean asserting if the capture phase is to be utilised.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="add_document_listener">
+						<h4 class="heading">
+							<a href="#add_document_listener"
+								title="@LIBRARY_NAME@.event.addDocumentListener"><code>@LIBRARY_NAME@.event.addDocumentListener</code></a>
+						</h4>
+						<p class="description">
+							Method that adds an event listener to a <code>Document</code>
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>,
+							utilising one of two available event models.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A <code>Document</code>
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								object.
+							</dd>
+							<dt>
+								<var>evt</var>
+							</dt>
+							<dd>
+								A string containing the event to listen for.
+							</dd>
+							<dt>
+								<var>handler</var>
+							</dt>
+							<dd>
+								A function to utilise as a callback.
+							</dd>
+							<dt>
+								<var>capture</var>
+							</dt>
+							<dd>
+								A boolean asserting if the capture phase is to be utilised.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="add_element_listener">
+						<h4 class="heading">
+							<a href="#add_element_listener"
+								title="@LIBRARY_NAME@.event.addElementListener"><code>@LIBRARY_NAME@.event.addElementListener</code></a>
+						</h4>
+						<p class="description">
+							Method that adds an event listener to an <code>Element</code>
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>,
+							utilising one of two available event models.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>el</var>
+							</dt>
+							<dd>
+								An <code>Element</code>
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								object.
+							</dd>
+							<dt>
+								<var>evt</var>
+							</dt>
+							<dd>
+								A string containing the event to listen for.
+							</dd>
+							<dt>
+								<var>handler</var>
+							</dt>
+							<dd>
+								A function to utilise as a callback.
+							</dd>
+							<dt>
+								<var>capture</var>
+							</dt>
+							<dd>
+								A boolean asserting if the capture phase is to be utilised.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="remove_window_listener">
+						<h4 class="heading">
+							<a href="#remove_window_listener"
+								title="@LIBRARY_NAME@.event.removeWindowListener"><code>@LIBRARY_NAME@.event.removeWindowListener</code></a>
+						</h4>
+						<p class="description">
+							Method that removes an event listener to a <code>Window</code>
+							object, utilising one of two available event models.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>win</var>
+							</dt>
+							<dd>
+								A <code>Window</code> object.
+							</dd>
+							<dt>
+								<var>evt</var>
+							</dt>
+							<dd>
+								A string containing the event listened for.
+							</dd>
+							<dt>
+								<var>handler</var>
+							</dt>
+							<dd>
+								A function utilised as the listener's callback.
+							</dd>
+							<dt>
+								<var>capture</var>
+							</dt>
+							<dd>
+								A boolean asserting if the capture phase was used.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="remove_document_listener">
+						<h4 class="heading">
+							<a href="#remove_document_listener"
+								title="@LIBRARY_NAME@.event.removeDocumentListener"><code>@LIBRARY_NAME@.event.removeDocumentListener</code></a>
+						</h4>
+						<p class="description">
+							Method that removes an event listener to a <code>Document</code>
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>,
+							utilising one of two available event models.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>doc</var>
+							</dt>
+							<dd>
+								A <code>Document</code>
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								object.
+							</dd>
+							<dt>
+								<var>evt</var>
+							</dt>
+							<dd>
+								A string containing the event listened for.
+							</dd>
+							<dt>
+								<var>handler</var>
+							</dt>
+							<dd>
+								A function utilised as the listener's callback.
+							</dd>
+							<dt>
+								<var>capture</var>
+							</dt>
+							<dd>
+								A boolean asserting if the capture phase was used.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="remove_element_listener">
+						<h4 class="heading">
+							<a href="#remove_element_listener"
+								title="@LIBRARY_NAME@.event.removeElementListener"><code>@LIBRARY_NAME@.event.removeElementListener</code></a>
+						</h4>
+						<p class="description">
+							Method that adds an event listener to an <code>Element</code>
+							<a href="glossary.html#node_like_object"
+								title="Node-like Object">node-like object</a>,
+							utilising one of two available event models.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>el</var>
+							</dt>
+							<dd>
+								An <code>Element</code>
+								<a href="glossary.html#node_like_object"
+									title="Node-like Object">node-like object</a>
+								object.
+							</dd>
+							<dt>
+								<var>evt</var>
+							</dt>
+							<dd>
+								A string containing the event listened for.
+							</dd>
+							<dt>
+								<var>handler</var>
+							</dt>
+							<dd>
+								A function utilised as the listener's callback.
+							</dd>
+							<dt>
+								<var>capture</var>
+							</dt>
+							<dd>
+								A boolean asserting if the capture phase was used.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>undefined</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="object">
+				<h3 class="heading">
+					<a href="#object"
+						title="Object Methods">Object Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="get_object">
+						<h4 class="heading">
+							<a href="#get_object"
+								title="@LIBRARY_NAME@.event.getObject"><code>@LIBRARY_NAME@.event.getObject</code></a>
+						</h4>
+						<p class="description">
+							Method that retrieves the event object for the
+							specified <code>Event</code> object.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>evt</var>
+							</dt>
+							<dd>
+								An Event object to access.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="get_target">
+						<h4 class="heading">
+							<a href="#get_target"
+								title="@LIBRARY_NAME@.event.getTarget"><code>@LIBRARY_NAME@.event.getTarget</code></a>
+						</h4>
+						<p class="description">
+							Method that retrieves the <code>EventTarget</code> object
+							that dispatched the event for the specified <code>Event</code>
+							object.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>evt</var>
+							</dt>
+							<dd>
+								An Event object to access.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Object</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="handler">
+				<h3 class="heading">
+					<a href="#handler"
+						title="Handler Methods">Handler Methods</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="bind_handler">
+						<h4 class="heading">
+							<a href="#bind_handler"
+								title="@LIBRARY_NAME@.event.bindHandler"><code>@LIBRARY_NAME@.event.bindHandler</code></a>
+						</h4>
+						<p class="description">
+							Method that closes over the specified event handler with a closure,
+							and calls the specified event handler with a specific custom value for
+							the <code>this</code> keyword.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>handler</var>
+							</dt>
+							<dd>
+								A function acting as an event handler to close over.
+							</dd>
+							<dt>
+								<var>thisValue</var>
+							</dt>
+							<dd>
+								A value to pass to the event handler as a custom value
+								for the <code>this</code> keyword.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Function</code>
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="unbind_handler">
+						<h4 class="heading">
+							<a href="#unbind_handler"
+								title="@LIBRARY_NAME@.event.unbindHandler"><code>@LIBRARY_NAME@.event.unbindHandler</code></a>
+						</h4>
+						<p class="description">
+							Method that removes a closure from the specified event handler.
+						</p>
+						<dl class="doc_list">
+							<dt>
+								<var>bound</var>
+							</dt>
+							<dd>
+								A previously bound function to remove a closure from.
+							</dd>
+						</dl>
+						<p class="return">
+							Return value: <code>Function</code>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cell primary_cell" id="storage">
+				<h3 class="heading">
+					<a href="#storage"
+						title="Storage Properties">Storage Properties</a>
+				</h3>
+				<ul class="doc_group">
+					<li class="doc_entry fragment" id="handlers">
+						<h4 class="heading">
+							<a href="#handlers"
+								title="@LIBRARY_NAME@.event.handlers"><code>@LIBRARY_NAME@.event.handlers</code></a>
+						</h4>
+						<p class="description">
+							Object that stores both the unbound and bound forms of event handlers
+							utilised in the module's handler methods.
+						</p>
+					</li>
+					<li class="doc_entry fragment" id="these">
+						<h4 class="heading">
+							<a href="#these"
+								title="@LIBRARY_NAME@.event.these"><code>@LIBRARY_NAME@.event.these</code></a>
+						</h4>
+						<p class="description">
+							Object that stores the custom <code>this</code> keyword values
+							utilised in the module's handler methods.
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		</div>
+		<div class="primary_row row">
+			<div class="cell prev_link primary_cell">
+				<a href="select.html" rel="prev"
+					title="Previous">&larr;<code>@LIBRARY_NAME@.select</code></a>
+			</div>
+			<div class="cell index_link primary_cell">
+				<a href="./" rel="index"
+					title="Up">&uarr;Back to Documentation Index</a>
+			</div>
+			<div class="cell next_link primary_cell">
+				<a href="glossary.html" rel="next"
+					title="Next">Glossary&rarr;</a>
+			</div>
+		</div>
+@FOOTER@
+@END@

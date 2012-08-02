@@ -176,10 +176,10 @@
 				</h3>
 				<p>
 					&ldquo;Graceful Degradation&rdquo; is a phrase that describes a process
-					triggered by a web client at runtime. The process enables a page to continue
+					triggered by a Web client at runtime. The process enables a page to continue
 					working even after erring. A page thereby often reverts to static content because
 					insufficient support was detected. To grasp <em>Graceful Degradation</em>, one
-					must first grasp the web client.
+					must first grasp the Web client.
 				</p>
 				<blockquote cite="http://groups.google.com/group/comp.lang.javascript/msg/60a6bb437e54f282">
 					<p class="quotation">
@@ -193,9 +193,9 @@
 					&mdash;Richard Cornford (on <em>Graceful Degradation</em>)<a href="#footnote_0" title="Footnote Zero">[0]</a>
 				</blockquote>
 				<p>
-					The web client is one of the most hostile environments that a software
+					The Web client is one of the most hostile environments that a software
 					developer can face. Many variables can cause a page to falter. Each layer
-					of the web client has variables which can trigger differing behavior in a
+					of the Web client has variables which can trigger differing behaviour in a
 					page. They are outlined in detail below.
 				</p>
 				<div id="progressive_enhancement">
@@ -209,10 +209,10 @@
 						&ldquo;Progressive Enhancement&rdquo; differs from
 						<em>Graceful Degradation</em>. <em>Progressive Enhancement</em>
 						is a phrase that describes a build process undertaken by a developer
-						while building a web page. A default state is first created with HTML;
+						while building a Web page. A default state is first created with HTML;
 						CSS is then layered on to decorate. Finally, JavaScript is added
-						to give the page dynamic behavior. This incremental process
-						allows web pages to be stable should variables change.
+						to give the page dynamic behaviour. This incremental process
+						allows Web pages to be stable should variables change.
 					</p>
 				</div>
 			</div>
@@ -245,7 +245,7 @@
 							is specified to contain the host of the resource
 							requested. Colloquially, one might refer to
 							a &ldquo;host&rdquo; as a &ldquo;domain&rdquo; or
-							&ldquo;domain name&rdquo;. Hosts can be blocked by web
+							&ldquo;domain name&rdquo;. Hosts can be blocked by Web
 							clients through a preferences panel or the user through a hosts
 							file. Quite often, this feature is used to block advertising
 							hosts, and by proxy, advertising. Therefore, it is wise
@@ -253,7 +253,7 @@
 							is a common target). Some examples would include: images, CSS
 							stylesheets and JavaScript files. Sometimes, a client will
 							block a host without the user's explicit consent. This can be caused
-							by a &ldquo;web filter&rdquo;, which is used by many administrators
+							by a &ldquo;Web filter&rdquo;, which is used by many administrators
 							to prevent users from browsing undesired or lewd content.
 						</p>
 					</div>
@@ -265,10 +265,10 @@
 						<p>
 							The 4xx range of status codes (specified in HTTP/1.1)<a href="#footnote_3"
 								title="Footnote Three">[3]</a> denotes an error on the part
-							of the web client. Conversely, the 5xx range of status codes (also
+							of the Web client. Conversely, the 5xx range of status codes (also
 							specified in HTTP/1.1)<a href="#footnote_4" title="Footnote Four">[4]</a>
-							denotes an error on the part of the web server. When applied to
-							external resources in a web page, they can encumber an entire page
+							denote errors on the part of the Web server. When applied to
+							external resources in a Web page, they can encumber an entire page
 							unless dealt with judiciously. One such example is the following
 							JavaScript snippet:
 						</p>
@@ -323,8 +323,8 @@ document.body.appendChild(img);</pre>
 					</h4>
 					<p>
 						HTML is a markup language derived from SGML that allows one to
-						author web content. It contains variables which can be modified
-						by the web client. Some examples follow.
+						author Web content. It contains variables which can be modified
+						by the Web client. Some examples follow.
 					</p>
 					<div id="doctype">
 						<h5 class="heading">
@@ -365,9 +365,9 @@ document.body.appendChild(img);</pre>
 								title="Alien Features">Alien Features</a>
 						</h5>
 						<p>
-							Environments that do not recognize a particular
+							Environments that do not recognise a particular
 							element will render textual content inside. This
-							behavior can be used to leave messages to the user
+							behaviour can be used to leave messages to the user
 							that the feature is unsupported. In HTML 5,
 							a snippet such as:
 						</p>
@@ -379,7 +379,7 @@ document.body.appendChild(img);</pre>
 							textual content is not rendered.
 						</p>
 						<p>
-							Environments that do not recognize a particular
+							Environments that do not recognise a particular
 							property will ignore it. This snippet:
 						</p>
 						<pre>
@@ -387,7 +387,7 @@ document.body.appendChild(img);</pre>
 	placeholder="First Name"
 	type="text"&gt;</pre>
 						<p>
-							is an example wherein an unrecognized attribute
+							is an example wherein an unrecognised attribute
 							(the <code>placeholder</code> attribute)
 							will often be ignored.
 						</p>
@@ -401,7 +401,7 @@ document.body.appendChild(img);</pre>
 					<p>
 						CSS is a style sheet language used to visually format HTML.
 						Like HTML, it also contains variables which can by modified by
-						the web client. What follows is a set of examples.
+						the Web client. What follows is a set of examples.
 					</p>
 					<div id="alien_properties">
 						<h5 class="heading">
@@ -409,7 +409,7 @@ document.body.appendChild(img);</pre>
 								title="Alien Properties">Alien Properties</a>
 						</h5>
 						<p>
-							Unrecognized properties will be ignored by
+							Unrecognised properties will be ignored by
 							an environment. This facilitates the use
 							of newer features while having little
 							effect on outdated environments. For example,
@@ -458,7 +458,7 @@ document.body.appendChild(img);</pre>
 					<p>
 						JavaScript is a scripting language and a subset of the ECMAScript language.
 						Unfortunately, it contains many variables that can by modified by
-						a web client. Common problem points are outlined below.
+						a Web client. Common problem points are outlined below.
 					</p>
 					<div id="native_features">
 						<h5 class="heading">
@@ -466,7 +466,7 @@ document.body.appendChild(img);</pre>
 								title="Native Features">Native Features</a>
 						</h5>
 						<p>
-							Unrecognized native features will err upon use in
+							Unrecognised native features will err upon use in
 							an environment. As a result, newer features should
 							be used with caution. The following snippet:
 						</p>
@@ -495,7 +495,7 @@ var keys = Object.keys({});</pre>
 						<p>
 							could be used as an alternative in order
 							to support more environments, though its
-							behavior deviates slightly from the
+							behaviour deviates slightly from the
 							native method.
 						</p>
 					</div>
@@ -505,7 +505,7 @@ var keys = Object.keys({});</pre>
 								title="Host Features">Host Features</a>
 						</h5>
 						<p>
-							Like native features, unrecognized host features
+							Like native features, unrecognised host features
 							will err upon use in an environment. However,
 							host features are even more volatile as their
 							implementation in ECMAScript is largely undefined.
@@ -572,9 +572,9 @@ var canCallDocFrag = (function () {
 						title="Defense">Defense</a>
 				</h3>
 				<p>
-					Once one has learned of the follies that populate the web client,
+					Once one has learned of the follies that populate the Web client,
 					one can then learn how to safeguard against them. A wide array
-					of strategies exist to author defensively for the web. They are
+					of strategies exist to author defensively for the Web. They are
 					explained below.
 				</p>
 				<div id="defense_html">
@@ -585,7 +585,7 @@ var canCallDocFrag = (function () {
 					<p>
 						HTML does not explicitly contain tools for defensive
 						authoring, but its status as the building blocks of
-						a web page allows it to be used defensively.
+						a Web page allows it to be used defensively.
 					</p>
 					<div id="default_state">
 						<h5 class="heading">
@@ -594,10 +594,10 @@ var canCallDocFrag = (function () {
 						</h5>
 						<p>
 							A default state is the first state in which a
-							web client is presented with upon loading a page.
+							Web client is presented with upon loading a page.
 							For HTML pages, this means static HTML. Default
 							states are used to provide clients with forms of
-							pages while not patronizing users of these clients.
+							pages while not patronising users of these clients.
 							Messages such as: &ldquo;Please upgrade your browser;
 							this one is insufficient&rdquo; and &ldquo;Please enable
 							JavaScript to view this page&rdquo; only insult the
@@ -606,7 +606,7 @@ var canCallDocFrag = (function () {
 						<p>
 							An optimal approach is to provide a static alternative.
 							For example, consider a proposal to create a rotating image
-							slideshow for the home page of a large web site. JavaScript
+							slideshow for the home page of a large Web site. JavaScript
 							would be the presumptive choice to rotate images at the
 							behest of a timer. However, consider a scenario wherein
 							scripting is disabled. Perhaps an administrator has disabled
@@ -688,7 +688,7 @@ startShow();</pre>
 						<p>
 							Default styles are often overlooked by developers.
 							When respected, they can yield a defensive foundation
-							for web pages. One such case is the <code>&lt;p&gt;</code>
+							for Web pages. One such case is the <code>&lt;p&gt;</code>
 							element, which has a top and bottom margin specified<a href="#footnote_6"
 								title="Footnote Six">[6]</a> in CSS 2.1. It
 							can be used to easily style and separate form controls.
@@ -729,7 +729,7 @@ startShow();</pre>
 							title="CSS">CSS</a>
 					</h4>
 					<p>
-						CSS can be written defensively to minimize loopholes
+						CSS can be written defensively to minimise loopholes
 						created by deficient environments. By testing a wide
 						range of browsers and studying standards, one can
 						acquire knowledge of defensive CSS strategies. Some
@@ -756,7 +756,7 @@ startShow();</pre>
 							floated next to each other may remove those floats if a
 							certain width range is detected. The result is one
 							singular pseudo-column, which is optimal for cramped
-							display widths. The project web site for <em>@LIBRARY_NAME@</em>
+							display widths. The project Web site for <em>@LIBRARY_NAME@</em>
 							uses this strategy; its use is most evident on the home page.
 							An example would be the following snippet:
 

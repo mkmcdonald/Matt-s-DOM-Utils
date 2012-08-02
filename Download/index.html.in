@@ -84,6 +84,13 @@
 						@LIBRARY_NAME@.select
 					</label>
 				</p>
+				<p>
+					<input id="event_file" name="event_file"
+						type="checkbox" value="event">
+					<label for="event_file">
+						@LIBRARY_NAME@.event
+					</label>
+				</p>
 			</fieldset>
 			<fieldset class="cell build_set primary_cell">
 				<legend>Checkout</legend>

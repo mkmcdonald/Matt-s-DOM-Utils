@@ -17,7 +17,12 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 			doc,
 
-			isDocument;
+			isDocument,
+
+			canGetParentWindow,
+			canGetDefaultView,
+
+			isWindow;
 
                /**
                 * @private
@@ -39,10 +44,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
                 * Method that returns a boolean asserting if the
                 * specified object is a host-like object (by passing
                 * one of two assertions:
-		* a) a `typeof` result of "object" or "function"
-		* along with "truthiness";
-		* b) a `typeof` result of "unknown".
-		*
+                * a) a `typeof` result of "object" or "function"
+                *         along with "truthiness";
+                * b) a `typeof` result of "unknown".
+                *
                 * @param obj Object
                 * An object to assert.
                 */
@@ -386,7 +391,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
                 * An object to assert.
                 */
 
-		function isAlmostDocument(
+		function isCurrentDocument(
 			obj
 		)
 		{
@@ -407,13 +412,13 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
                 * An object to assert.
                 *
                 * @see `isDocumentNode`.
-                * @see `isAlmostDocument`.
+                * @see `isCurrentDocument`.
                 */
 
 		isDocument = (function () {
 			var result = isDocumentNode;
 			if (!isNodeLike(doc)) {
-				result = isAlmostDocument;
+				result = isCurrentDocument;
 			}
 			return result;
 		}());
@@ -487,6 +492,199 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is the current Window.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isCurrentWindow(
+			obj
+		)
+		{
+			return obj === global.window;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns the implicit document
+                * for the Window provided; returns `null` if not
+                * applicable.
+                *
+                * @param win Object
+                * A Window-like object to access.
+                */
+
+		function getWindowDocument(
+			win
+		)
+		{
+			var key = "document";
+			if (isHostObject(win[key])) {
+				return win[key];
+			}
+			win = null;
+			return null;
+		}
+
+               /**
+                * @private
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure) a
+                * boolean asserting if `parentWindow` is an
+                * available property of the current document.
+                */
+
+		canGetParentWindow = (function () {
+			var key = "parentWindow";
+			return isHostObject(doc[key]);
+		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns the "parent" Window for the
+                * document provided; returns `null` if not
+                * applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
+
+		function getParentWindow(
+			doc
+		)
+		{
+			var key = "parentWindow";
+			if (isHostObject(doc[key])) {
+				return doc[key];
+			}
+			doc = null;
+			return null;
+		}
+
+               /**
+                * @private
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure) a
+                * boolean asserting if `defaultView` is an available
+                * property of the current document.
+                */
+
+		canGetDefaultView = (function () {
+			var key = "defaultView";
+			return isHostObject(doc[key]);
+		}());
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns the "view" for the document
+                * provided; returns `null` if not applicable.
+                *
+                * @param doc Object
+                * A document node-like object to access.
+                */
+
+		function getDefaultView(
+			doc
+		)
+		{
+			var key = "defaultView";
+			if (isHostObject(doc[key])) {
+				return doc[key];
+			}
+			doc = null;
+			return null;
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is the "parent" Window for the
+                * implicit document provided.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isParentWindow(
+			obj
+		)
+		{
+			return obj === getParentWindow(
+				getWindowDocument(obj) ||
+				global.document
+			);
+		}
+
+               /**
+                * @private
+                *
+                * @description
+                * Method that returns a boolean asserting if the
+                * specified object is the "view" for the implicit
+                * document provided.
+                *
+                * @param obj Object
+                * An object to assert.
+                */
+
+		function isDefaultView(
+			obj
+		)
+		{
+			return obj === getDefaultView(
+				getWindowDocument(obj) ||
+				global.document
+			);
+		}
+
+               /**
+                * @public `@LIBRARY_NAME@.is.window`.
+                *
+                * @closure
+                *
+                * @description
+                * Wrapper method that returns (via a closure) a
+                * method that returns a boolean asserting if the
+                * specified object is a Window object.
+                *
+                * @param obj Object
+                * An object to assert.
+                *
+                * @see `isCurrentWindow`
+                * @see `isParentWindow`
+                * @see `isDefaultView`
+                */
+
+		isWindow = (function () {
+			var result = isCurrentWindow;
+			if (canGetParentWindow) {
+				result = isParentWindow;
+			} else if (canGetDefaultView) {
+				result = isDefaultView;
+			}
+			return result;
+		}());
+
 		doc = null;
 
 		@LIBRARY_NAME@.is = @LIBRARY_NAME@.is || {
@@ -511,7 +709,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			"documentType": isDocumentTypeNode,
 			"documentFragment":
 				isDocumentFragmentNode,
-			"notation": isNotationNode
+			"notation": isNotationNode,
+
+			"window": isWindow
 		};
 	}());
 }

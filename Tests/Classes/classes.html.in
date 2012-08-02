@@ -28,14 +28,18 @@
 					<td>
 						<code>@LIBRARY_NAME@.classes.contains</code> returns a Boolean.
 					</td>
-					<td id="result_1"></td>
+					<td id="result_1">
+						
+					</td>
 				</tr>
 				<tr id="test_2">
 					<td>2.</td>
 					<td>
 						<code>@LIBRARY_NAME@.classes.containsList</code> returns a Boolean.
 					</td>
-					<td id="result_2"></td>
+					<td id="result_2">
+						
+					</td>
 				</tr>
 				<tr id="test_3">
 					<td>3.</td>
@@ -43,7 +47,9 @@
 						<code>@LIBRARY_NAME@.classes.add</code> returns
 							<code>undefined</code>.
 					</td>
-					<td id="result_3"></td>
+					<td id="result_3">
+						
+					</td>
 				</tr>
 				<tr id="test_4">
 					<td>4.</td>
@@ -51,7 +57,9 @@
 						<code>@LIBRARY_NAME@.classes.addList</code> returns
 							<code>undefined</code>.
 					</td>
-					<td id="result_4"></td>
+					<td id="result_4">
+						
+					</td>
 				</tr>
 				<tr id="test_5">
 					<td>5.</td>
@@ -59,7 +67,9 @@
 						<code>@LIBRARY_NAME@.classes.remove</code> returns
 							<code>undefined</code>.
 					</td>
-					<td id="result_5"></td>
+					<td id="result_5">
+						
+					</td>
 				</tr>
 				<tr id="test_6">
 					<td>6.</td>
@@ -67,21 +77,27 @@
 						<code>@LIBRARY_NAME@.classes.removeList</code> returns
 							<code>undefined</code>.
 					</td>
-					<td id="result_6"></td>
+					<td id="result_6">
+						
+					</td>
 				</tr>
 				<tr id="test_7">
 					<td>7.</td>
 					<td>
 						<code>@LIBRARY_NAME@.classes.toggle</code> returns a Boolean.
 					</td>
-					<td id="result_7"></td>
+					<td id="result_7">
+						
+					</td>
 				</tr>
 				<tr id="test_8">
 					<td>8.</td>
 					<td>
 						<code>@LIBRARY_NAME@.classes.toggle</code> returns a Boolean.
 					</td>
-					<td id="result_8"></td>
+					<td id="result_8">
+						
+					</td>
 				</tr>
 				<tr id="test_9">
 					<td>9.</td>
@@ -89,7 +105,9 @@
 						<code>@LIBRARY_NAME@.classes.toggleList</code> returns
 							<code>undefined</code>.
 					</td>
-					<td id="result_9"></td>
+					<td id="result_9">
+						
+					</td>
 				</tr>
 				<tr id="test_10">
 					<td>10.</td>
@@ -97,7 +115,9 @@
 						<code>@LIBRARY_NAME@.classes.item</code> returns a
 							String.
 					</td>
-					<td id="result_10"></td>
+					<td id="result_10">
+						
+					</td>
 				</tr>
 				<tr id="test_11">
 					<td>11.</td>
@@ -105,13 +125,17 @@
 						<code>@LIBRARY_NAME@.classes.get</code> returns an
 							array-like object.
 					</td>
-					<td id="result_11"></td>
+					<td id="result_11">
+						
+					</td>
 				</tr>
 			</tbody>
 		</table>
 		<div id="score_area">
 			<p>Score:</p>
-			<p id="score"></p>
+			<p id="score">
+				0 / 0
+			</p>
 		</div>
 		<hr>
 		<h2>Test Element</h2>

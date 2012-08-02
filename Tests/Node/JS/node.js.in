@@ -28,7 +28,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		doc = null;
 
-		function prepend(node)
+		function prepend(
+			node
+		)
 		{
 			var par = commonElements.test;
 			if (par && node) {
@@ -95,7 +97,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function generatePrependList()
 		{
-			return generateList(3);
+			return generateList(
+				3
+			);
 		}
 
 		function insertList()
@@ -130,7 +134,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function generateAppendList()
 		{
-			return generateList(3);
+			return generateList(
+				3
+			);
 		}
 
 		function appendList()
@@ -162,7 +168,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
-		function replace(node)
+		function replace(
+			node
+		)
 		{
 			var par = commonElements.test;
 			if (par) {
@@ -197,7 +205,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 				"c = b^x; x = log(c) / log(b)"
 			);
 			if (node) {
-				node = replace(node);
+				node = replace(
+					node
+				);
 			}
 			return @LIBRARY_NAME@.is.nodeLike(
 				node
@@ -273,50 +283,22 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			testsRun = 0;
 		}
 
+		function isHostObject(
+			obj
+		)
+		{
+			return @LIBRARY_NAME@.is.hostObject(
+				obj
+			);
+		}
+
 		function disableStartButton()
 		{
-			var par = commonElements,
-				button = par.start;
-			button.disabled = true;
-			button.onclick = function () {};
-		}
-
-		function createText(
-			doc,
-			text
-		)
-		{
-			var result = null;
-			if (@LIBRARY_NAME@.create.text) {
-				result = @LIBRARY_NAME@.create.text(
-					doc,
-					text
-				);
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.disabled = true;
+				par.start.onclick = function () {};
 			}
-			return result;
-		}
-
-		function appendNode(
-			par,
-			node
-		)
-		{
-			return @LIBRARY_NAME@.node.append(
-				par,
-				node
-			);
-		}
-
-		function createMessage(text)
-		{
-			var str = String(text);
-			if (str === "") {
-				str = "[an empty string]";
-			}
-			return createText(
-				global.document,
-				str
-			);
 		}
 
 		function grabById(
@@ -329,17 +311,30 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
+		function setText(
+			obj,
+			text,
+			doc
+		)
+		{
+			return @LIBRARY_NAME@.text.set(
+				obj,
+				text,
+				doc
+			);
+		}
+
 		function addMessage(
 			msg,
 			num
 		)
 		{
-			var cell = grabById("result_" + num),
-				text = createMessage(msg);
+			var cell = grabById("result_" + num);
 			if (cell) {
-				appendNode(
+				setText(
 					cell,
-					text
+					msg,
+					global.document
 				);
 			}
 		}
@@ -347,16 +342,13 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		function updateScore()
 		{
 			var par = commonElements,
-				element = par.score,
-				total = score + " / " + testsRun,
-				text = createMessage(total);
-			if (element && !element.firstChild) {
-				appendNode(
-					element,
-					text
+				total = score + " / " + testsRun;
+			if (isHostObject(par.score)) {
+				setText(
+					par.score,
+					total,
+					global.document
 				);
-			} else if (element && element.firstChild) {
-				element.firstChild.nodeValue = total;
 			}
 		}
 
@@ -426,7 +418,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		{
 			var key = "setTimeout",
 				result;
-			if (@LIBRARY_NAME@.is.hostObject(global[key])) {
+			if (isHostObject(global[key])) {
 				result = global[key](
 					ref,
 					ms
@@ -463,26 +455,11 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			disableStartButton();
 		}
 
-		function removeNode(
-			par,
-			node
-		)
+		function addStartHandler()
 		{
-			return @LIBRARY_NAME@.node.remove(
-				par,
-				par.firstChild
-			);
-		}
-
-		function clearChildNodes(
-			par
-		)
-		{
-			while (par && par.firstChild) {
-				removeNode(
-					par,
-					par.firstChild
-				);
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.onclick = startTests;
 			}
 		}
 
@@ -495,8 +472,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 				index;
 			if (cell && row) {
 				row.className = "";
-				clearChildNodes(
-					cell
+				setText(
+					cell,
+					"\r\n",
+					global.document
 				);
 			}
 		}
@@ -514,19 +493,23 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function resetScore()
 		{
-			var par = commonElements,
-				cell = par.score;
-			clearChildNodes(
-				cell
-			);
+			var par = commonElements;
+			if (isHostObject(par.score)) {
+				setText(
+					par.score,
+					"0 / 0",
+					global.document
+				);
+			}
 		}
 
 		function enableStartButton()
 		{
-			var par = commonElements,
-				button = par.start;
-			button.disabled = false;
-			button.onclick = startTests;
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.disabled = false;
+				par.start.onclick = startTests;
+			}
 		}
 
 		function removeTimeout(
@@ -534,7 +517,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		)
 		{
 			var key = "clearTimeout";
-			if (@LIBRARY_NAME@.is.hostObject(global[key])) {
+			if (isHostObject(global[key])) {
 				global[key](
 					ref
 				);
@@ -554,11 +537,19 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			enableStartButton();
 		}
 
+		function addStopHandler()
+		{
+			var par = commonElements;
+			if (isHostObject(par.stop)) {
+				par.stop.onclick = endTests;
+			}
+		}
+
 		function addHandlers()
 		{
 			var par = commonElements;
-			par.start.onclick = startTests;
-			par.stop.onclick = endTests;
+			addStartHandler();
+			addStopHandler();
 		}
 
 		addHandlers();

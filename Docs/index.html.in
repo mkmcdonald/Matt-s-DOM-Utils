@@ -55,6 +55,10 @@
 						<a href="select.html"
 							title="@LIBRARY_NAME@.select"><code>@LIBRARY_NAME@.select</code></a>
 					</li>
+					<li>
+						<a href="event.html"
+							title="@LIBRARY_NAME@.event"><code>@LIBRARY_NAME@.event</code></a>
+					</li>
 				</ul>
 			</div>
 		</div>

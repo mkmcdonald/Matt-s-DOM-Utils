@@ -32,9 +32,10 @@ if (typeof Utils === "object" && Utils) {
 			tag
 		)
 		{
-			var result = null;
+			var key = "element",
+				result = null;
 			if (Utils.create.element) {
-				result = Utils.create.element(
+				result = Utils.create[key](
 					doc,
 					tag
 				);
@@ -84,9 +85,10 @@ if (typeof Utils === "object" && Utils) {
 			text
 		)
 		{
-			var result = null;
-			if (Utils.create.comment) {
-				result = Utils.create.comment(
+			var key = "comment",
+				result = null;
+			if (Utils.create[key]) {
+				result = Utils.create[key](
 					doc,
 					text
 				);
@@ -109,9 +111,10 @@ if (typeof Utils === "object" && Utils) {
 			doc
 		)
 		{
-			var result = null;
-			if (Utils.create.documentFragment) {
-				result = Utils.create.documentFragment(
+			var key = "documentFragment",
+				result = null;
+			if (Utils.create[key]) {
+				result = Utils.create[key](
 					doc
 				);
 			}
@@ -144,50 +147,22 @@ if (typeof Utils === "object" && Utils) {
 			testsRun = 0;
 		}
 
+		function isHostObject(
+			obj
+		)
+		{
+			return Utils.is.hostObject(
+				obj
+			);
+		}
+
 		function disableStartButton()
 		{
-			var par = commonElements,
-				button = par.start;
-			button.disabled = true;
-			button.onclick = function () {};
-		}
-
-		function createText(
-			doc,
-			text
-		)
-		{
-			var result = null;
-			if (Utils.create.text) {
-				result = Utils.create.text(
-					doc,
-					text
-				);
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.disabled = true;
+				par.start.onclick = function () {};
 			}
-			return result;
-		}
-
-		function appendNode(
-			par,
-			node
-		)
-		{
-			return Utils.node.append(
-				par,
-				node
-			);
-		}
-
-		function createMessage(text)
-		{
-			var str = String(text);
-			if (str === "") {
-				str = "[an empty string]";
-			}
-			return createText(
-				global.document,
-				str
-			);
 		}
 
 		function grabById(
@@ -200,17 +175,30 @@ if (typeof Utils === "object" && Utils) {
 			);
 		}
 
+		function setText(
+			obj,
+			text,
+			doc
+		)
+		{
+			return Utils.text.set(
+				obj,
+				text,
+				doc
+			);
+		}
+
 		function addMessage(
 			msg,
 			num
 		)
 		{
-			var cell = grabById("result_" + num),
-				text = createMessage(msg);
+			var cell = grabById("result_" + num);
 			if (cell) {
-				appendNode(
+				setText(
 					cell,
-					text
+					msg,
+					global.document
 				);
 			}
 		}
@@ -218,16 +206,13 @@ if (typeof Utils === "object" && Utils) {
 		function updateScore()
 		{
 			var par = commonElements,
-				element = par.score,
-				total = score + " / " + testsRun,
-				text = createMessage(total);
-			if (element && !element.firstChild) {
-				appendNode(
-					element,
-					text
+				total = score + " / " + testsRun;
+			if (isHostObject(par.score)) {
+				setText(
+					par.score,
+					total,
+					global.document
 				);
-			} else if (element && element.firstChild) {
-				element.firstChild.nodeValue = total;
 			}
 		}
 
@@ -297,7 +282,7 @@ if (typeof Utils === "object" && Utils) {
 		{
 			var key = "setTimeout",
 				result;
-			if (Utils.is.hostObject(global[key])) {
+			if (isHostObject(global[key])) {
 				result = global[key](
 					ref,
 					ms
@@ -334,26 +319,11 @@ if (typeof Utils === "object" && Utils) {
 			disableStartButton();
 		}
 
-		function removeNode(
-			par,
-			node
-		)
+		function addStartHandler()
 		{
-			return Utils.node.remove(
-				par,
-				par.firstChild
-			);
-		}
-
-		function clearChildNodes(
-			par
-		)
-		{
-			while (par && par.firstChild) {
-				removeNode(
-					par,
-					par.firstChild
-				);
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.onclick = startTests;
 			}
 		}
 
@@ -366,8 +336,10 @@ if (typeof Utils === "object" && Utils) {
 				index;
 			if (cell && row) {
 				row.className = "";
-				clearChildNodes(
-					cell
+				setText(
+					cell,
+					"\r\n",
+					global.document
 				);
 			}
 		}
@@ -385,19 +357,23 @@ if (typeof Utils === "object" && Utils) {
 
 		function resetScore()
 		{
-			var par = commonElements,
-				cell = par.score;
-			clearChildNodes(
-				cell
-			);
+			var par = commonElements;
+			if (isHostObject(par.score)) {
+				setText(
+					par.score,
+					"0 / 0",
+					global.document
+				);
+			}
 		}
 
 		function enableStartButton()
 		{
-			var par = commonElements,
-				button = par.start;
-			button.disabled = false;
-			button.onclick = startTests;
+			var par = commonElements;
+			if (isHostObject(par.start)) {
+				par.start.disabled = false;
+				par.start.onclick = startTests;
+			}
 		}
 
 		function removeTimeout(
@@ -405,7 +381,7 @@ if (typeof Utils === "object" && Utils) {
 		)
 		{
 			var key = "clearTimeout";
-			if (Utils.is.hostObject(global[key])) {
+			if (isHostObject(global[key])) {
 				global[key](
 					ref
 				);
@@ -425,11 +401,19 @@ if (typeof Utils === "object" && Utils) {
 			enableStartButton();
 		}
 
+		function addStopHandler()
+		{
+			var par = commonElements;
+			if (isHostObject(par.stop)) {
+				par.stop.onclick = endTests;
+			}
+		}
+
 		function addHandlers()
 		{
 			var par = commonElements;
-			par.start.onclick = startTests;
-			par.stop.onclick = endTests;
+			addStartHandler();
+			addStopHandler();
 		}
 
 		addHandlers();

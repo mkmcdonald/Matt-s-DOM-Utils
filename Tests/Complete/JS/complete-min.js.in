@@ -11,7 +11,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 			runTests,
 
-			tester;
+			tester,
+
+			eventObject,
+			eventTarget;
 
 		commonElements = (function () {
 			var obj = {},
@@ -20,6 +23,7 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			obj.create_test = doc.links[1];
 			obj.classes_test = doc.links[2];
 			obj.traverse_test = doc.links[3];
+			obj.event_test = doc.images.event_test;
 			obj.test_form = form;
 			obj.start = form.elements.start;
 			obj.stop = form.elements.stop;
@@ -110,9 +114,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		{
 			var list = generatePrependList(),
 				par = commonElements.node_test,
+				key = "prependList",
 				nodes;
 			if (list && list.length && par) {
-				nodes = @LIBRARY_NAME@.node.prependList(
+				nodes = @LIBRARY_NAME@.node[key](
 					par,
 					list,
 					par.lastChild
@@ -126,9 +131,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			tag
 		)
 		{
-			var result = null;
-			if (@LIBRARY_NAME@.create.element) {
-				result = @LIBRARY_NAME@.create.element(
+			var key = "element",
+				result = null;
+			if (@LIBRARY_NAME@.create[key]) {
+				result = @LIBRARY_NAME@.create[key](
 					doc,
 					tag
 				);
@@ -164,10 +170,11 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 		function appendList()
 		{
 			var list = generateAppendList(),
+				key = "appendList",
 				par = commonElements.node_test,
 				nodes;
 			if (list && list.length) {
-				nodes = @LIBRARY_NAME@.node.appendList(
+				nodes = @LIBRARY_NAME@.node[key](
 					par,
 					list
 				);
@@ -210,9 +217,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			text
 		)
 		{
-			var result = null;
-			if (@LIBRARY_NAME@.create.text) {
-				result = @LIBRARY_NAME@.create.text(
+			var key = "text",
+				result = null;
+			if (@LIBRARY_NAME@.create[key]) {
+				result = @LIBRARY_NAME@.create[key](
 					doc,
 					text
 				);
@@ -312,9 +320,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			text
 		)
 		{
-			var result = null;
-			if (@LIBRARY_NAME@.create.comment) {
-				result = @LIBRARY_NAME@.create.comment(
+			var key = "comment",
+				result = null;
+			if (@LIBRARY_NAME@.create[key]) {
+				result = @LIBRARY_NAME@.create[key](
 					doc,
 					text
 				);
@@ -337,9 +346,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			doc
 		)
 		{
-			var result = null;
-			if (@LIBRARY_NAME@.create.documentFragment) {
-				result = @LIBRARY_NAME@.create.documentFragment(
+			var key = "documentFragment",
+				result = null;
+			if (@LIBRARY_NAME@.create[key]) {
+				result = @LIBRARY_NAME@.create[key](
 					doc
 				);
 			}
@@ -358,10 +368,11 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function contains()
 		{
-			var test,
+			var key = "contains",
+				test,
 				node = commonElements.classes_test;
-			if (@LIBRARY_NAME@.classes.contains) {
-				test = @LIBRARY_NAME@.classes.contains(
+			if (@LIBRARY_NAME@.classes[key]) {
+				test = @LIBRARY_NAME@.classes[key](
 					node,
 					"good"
 				);
@@ -371,8 +382,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function containsList()
 		{
-			var node = commonElements.classes_test,
-				tokens  = @LIBRARY_NAME@.classes.containsList(
+			var key = "containsList",
+				node = commonElements.classes_test,
+				tokens  = @LIBRARY_NAME@.classes[key](
 					node,
 					["a", "b", "c"]
 				);
@@ -394,8 +406,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function addList()
 		{
-			var node = commonElements.classes_test,
-				test = @LIBRARY_NAME@.classes.addList(
+			var key = "addList",
+				node = commonElements.classes_test,
+				test = @LIBRARY_NAME@.classes[key](
 					node,
 					["a", "b", "c"]
 				);
@@ -417,8 +430,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function removeList()
 		{
-			var node = commonElements.classes_test,
-				tokens = @LIBRARY_NAME@.classes.removeList(
+			var key = "removeList",
+				node = commonElements.classes_test,
+				tokens = @LIBRARY_NAME@.classes[key](
 					node,
 					["a", "b", "c"]
 				);
@@ -440,8 +454,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function toggleList()
 		{
-			var node = commonElements.classes_test,
-				test = @LIBRARY_NAME@.classes.toggleList(
+			var key = "toggleList",
+				node = commonElements.classes_test,
+				test = @LIBRARY_NAME@.classes[key](
 					node,
 					["a", "b", "c"]
 				);
@@ -477,10 +492,11 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function childNodes()
 		{
-			var node = commonElements.traverse_test,
+			var key = "getNodes",
+				node = commonElements.traverse_test,
 				nodes;
-			if (@LIBRARY_NAME@.traverse.getNodes) {
-				nodes = @LIBRARY_NAME@.traverse.getNodes(
+			if (@LIBRARY_NAME@.traverse[key]) {
+				nodes = @LIBRARY_NAME@.traverse[key](
 					node
 				);
 			}
@@ -489,15 +505,18 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
-		function optimisticFilter(node)
+		function optimisticFilter(
+			node
+		)
 		{
 			return true;
 		}
 
 		function childNodesTraversed()
 		{
-			var node = commonElements.traverse_test,
-				nodes = @LIBRARY_NAME@.traverse.nodes(
+			var key = "nodes",
+				node = commonElements.traverse_test,
+				nodes = @LIBRARY_NAME@.traverse[key](
 					node,
 					optimisticFilter
 				);
@@ -508,10 +527,11 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function children()
 		{
-			var node = commonElements.traverse_test,
+			var key = "getElements",
+				node = commonElements.traverse_test,
 				test;
-			if (@LIBRARY_NAME@.traverse.getElements) {
-				test = @LIBRARY_NAME@.traverse.getElements(
+			if (@LIBRARY_NAME@.traverse[key]) {
+				test = @LIBRARY_NAME@.traverse[key](
 					node
 				);
 			}
@@ -520,15 +540,18 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			);
 		}
 
-		function pessimisticFilter(node)
+		function pessimisticFilter(
+			node
+		)
 		{
 			return false;
 		}
 
 		function childrenTraversed()
 		{
-			var node = commonElements.traverse_test,
-				nodes = @LIBRARY_NAME@.traverse.elements(
+			var key = "elements",
+				node = commonElements.traverse_test,
+				nodes = @LIBRARY_NAME@.traverse[key](
 					node,
 					pessimisticFilter
 				);
@@ -539,9 +562,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function tree()
 		{
-			var nodes = @LIBRARY_NAME@.traverse.getNodeTree(
-				global.document
-			);
+			var key = "getNodeTree",
+				nodes = @LIBRARY_NAME@.traverse[key](
+					global.document
+				);
 			return @LIBRARY_NAME@.is.arrayLike(
 				nodes
 			);
@@ -560,9 +584,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function childrenTree()
 		{
-			var tree = @LIBRARY_NAME@.traverse.getElementTree(
-				global.document
-			);
+			var key = "getElementTree",
+				tree = @LIBRARY_NAME@.traverse[key](
+					global.document
+				);
 			return @LIBRARY_NAME@.is.arrayLike(
 				tree
 			);
@@ -570,10 +595,11 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function childrenTreeTraversed()
 		{
-			var nodes = @LIBRARY_NAME@.traverse.elementTree(
-				global.document,
-				optimisticFilter
-			);
+			var key = "elementTree",
+				nodes = @LIBRARY_NAME@.traverse[key](
+					global.document,
+					optimisticFilter
+				);
 			return @LIBRARY_NAME@.is.arrayLike(
 				nodes
 			);
@@ -601,8 +627,9 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function ancestorsTraversed()
 		{
-			var node = commonElements.traverse_test,
-				nodes = @LIBRARY_NAME@.ancestors.traverse(
+			var key = "traverse",
+				node = commonElements.traverse_test,
+				nodes = @LIBRARY_NAME@.ancestors[key](
 					node,
 					optimisticFilter
 				);
@@ -652,9 +679,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function byTagName()
 		{
-			var test;
-			if (@LIBRARY_NAME@.select.byTagName) {
-				test = @LIBRARY_NAME@.select.byTagName(
+			var key = "byTagName",
+				test;
+			if (@LIBRARY_NAME@.select[key]) {
+				test = @LIBRARY_NAME@.select[key](
 					global.document,
 					"input"
 				);
@@ -666,9 +694,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function byClassName()
 		{
-			var test;
-			if (@LIBRARY_NAME@.select.byClassName) {
-				test = @LIBRARY_NAME@.select.byClassName(
+			var key = "byClassName",
+				test;
+			if (@LIBRARY_NAME@.select[key]) {
+				test = @LIBRARY_NAME@.select[key](
 					global.document,
 					"container"
 				);
@@ -708,9 +737,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function queryAll()
 		{
-			var test;
-			if (@LIBRARY_NAME@.select.queryAll) {
-				test = @LIBRARY_NAME@.select.queryAll(
+			var key = "queryAll",
+				test;
+			if (@LIBRARY_NAME@.select[key]) {
+				test = @LIBRARY_NAME@.select[key](
 					global.document,
 					"input[type]"
 				);
@@ -762,9 +792,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function allImages()
 		{
-			var test;
-			if (@LIBRARY_NAME@.select.allImages) {
-				test = @LIBRARY_NAME@.select.allImages(
+			var key = "allImages",
+				test;
+			if (@LIBRARY_NAME@.select[key]) {
+				test = @LIBRARY_NAME@.select[key](
 					global.document
 				);
 			}
@@ -789,9 +820,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function allEmbeds()
 		{
-			var test;
-			if (@LIBRARY_NAME@.select.allEmbeds) {
-				test = @LIBRARY_NAME@.select.allEmbeds(
+			var key = "allEmbeds",
+				test;
+			if (@LIBRARY_NAME@.select[key]) {
+				test = @LIBRARY_NAME@.select[key](
 					global.document
 				);
 			}
@@ -816,9 +848,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function allPlugins()
 		{
-			var test;
-			if (@LIBRARY_NAME@.select.allPlugins) {
-				test = @LIBRARY_NAME@.select.allPlugins(
+			var key = "allPlugins",
+				test;
+			if (@LIBRARY_NAME@.select[key]) {
+				test = @LIBRARY_NAME@.select[key](
 					global.document
 				);
 			}
@@ -843,9 +876,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function allLinks()
 		{
-			var test;
-			if (@LIBRARY_NAME@.select.allLinks) {
-				test = @LIBRARY_NAME@.select.allLinks(
+			var key = "allLinks",
+				test;
+			if (@LIBRARY_NAME@.select[key]) {
+				test = @LIBRARY_NAME@.select[key](
 					global.document
 				);
 			}
@@ -870,9 +904,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function allForms()
 		{
-			var test;
-			if (@LIBRARY_NAME@.select.allForms) {
-				test = @LIBRARY_NAME@.select.allForms(
+			var key = "allForms",
+				test;
+			if (@LIBRARY_NAME@.select[key]) {
+				test = @LIBRARY_NAME@.select[key](
 					global.document
 				);
 			}
@@ -897,9 +932,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function allScripts()
 		{
-			var test;
-			if (@LIBRARY_NAME@.select.allScripts) {
-				test = @LIBRARY_NAME@.select.allScripts(
+			var key = "allScripts",
+				test;
+			if (@LIBRARY_NAME@.select[key]) {
+				test = @LIBRARY_NAME@.select[key](
 					global.document
 				);
 			}
@@ -924,9 +960,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function allApplets()
 		{
-			var test;
-			if (@LIBRARY_NAME@.select.allApplets) {
-				test = @LIBRARY_NAME@.select.allApplets(
+			var key = "allApplets",
+				test;
+			if (@LIBRARY_NAME@.select[key]) {
+				test = @LIBRARY_NAME@.select[key](
 					global.document
 				);
 			}
@@ -951,9 +988,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 
 		function allAnchors()
 		{
-			var test;
-			if (@LIBRARY_NAME@.select.allAnchors) {
-				test = @LIBRARY_NAME@.select.allAnchors(
+			var key = "allAnchors",
+				test;
+			if (@LIBRARY_NAME@.select[key]) {
+				test = @LIBRARY_NAME@.select[key](
 					global.document
 				);
 			}
@@ -983,6 +1021,304 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			return @LIBRARY_NAME@.is.arrayLike(
 				test
 			);
+		}
+
+		function bindHandler(
+			handler,
+			thisValue
+		)
+		{
+			return @LIBRARY_NAME@.event.bindHandler(
+				handler,
+				thisValue
+			);
+		}
+
+		function nativeBound(
+			evt
+		)
+		{
+			return this;
+		}
+
+		function bindNative()
+		{
+			var result = false;
+			boundHandler = bindHandler(
+				nativeBound,
+				global.document
+			);
+			if (boundHandler) {
+				if (boundHandler() ===
+					global.document) {
+					result = true;
+				} else if (boundHandler() ===
+					global) {
+					// handler was not bound
+					result = false;
+				}
+			}
+			return result;
+		}
+
+		function unbindHandler(
+			bound
+		)
+		{
+			return @LIBRARY_NAME@.event.unbindHandler(
+				bound
+			);
+		}
+
+		function unbindNative()
+		{
+			bound = unbindHandler(
+				boundHandler
+			);
+			return bound === nativeBound;
+		}
+
+		function addWindowListener(
+			win,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "addWindowListener",
+				result = null;
+			if (@LIBRARY_NAME@.event[key]) {
+				result = @LIBRARY_NAME@.event[key](
+					win,
+					evt,
+					handler,
+					capture
+				);
+			}
+			win = null;
+			return result;
+		}
+
+		function dummyHandler(
+			evt
+		)
+		{
+			return this;
+		}
+
+		function addWindowLoad()
+		{
+			var test = addWindowListener(
+				global.window,
+				"load",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function removeWindowListener(
+			win,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "removeWindowListener",
+				result = null;
+			if (@LIBRARY_NAME@.event[key]) {
+				result = @LIBRARY_NAME@.event[key](
+					win,
+					evt,
+					handler,
+					capture
+				);
+			}
+			win = null;
+			return result;
+		}
+
+		function removeWindowLoad()
+		{
+			var test = removeWindowListener(
+				global.window,
+				"load",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function addDocumentListener(
+			doc,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "addDocumentListener",
+				result = null;
+			if (@LIBRARY_NAME@.event[key]) {
+				result = @LIBRARY_NAME@.event[key](
+					doc,
+					evt,
+					handler,
+					capture
+				);
+			}
+			doc = null;
+			return result;
+		}
+
+		function addDocumentClick()
+		{
+			var test = addDocumentListener(
+				global.document,
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function removeDocumentListener(
+			doc,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "removeDocumentListener",
+				result = null;
+			if (@LIBRARY_NAME@.event[key]) {
+				result = @LIBRARY_NAME@.event[key](
+					doc,
+					evt,
+					handler,
+					capture
+				);
+			}
+			doc = null;
+			return result;
+		}
+
+		function removeDocumentClick()
+		{
+			var test = removeDocumentListener(
+				global.document,
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function addElementListener(
+			el,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "addElementListener",
+				result = null;
+			if (@LIBRARY_NAME@.event[key]) {
+				result = @LIBRARY_NAME@.event[key](
+					el,
+					evt,
+					handler,
+					capture
+				);
+			}
+			return result;
+		}
+
+		function getBody(
+			doc
+		)
+		{
+			var hO = "hostObject",
+				key = "body",
+				result = null;
+			if (doc && @LIBRARY_NAME@.is[hO](doc[key])) {
+				result = doc[key];
+			}
+			return result;
+		}
+
+		function addElementClick()
+		{
+			var test = addElementListener(
+				getBody(global.document),
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function removeElementListener(
+			el,
+			evt,
+			handler,
+			capture
+		)
+		{
+			var key = "removeElementListener",
+				result = null;
+			if (@LIBRARY_NAME@.event[key]) {
+				result = @LIBRARY_NAME@.event[key](
+					el,
+					evt,
+					handler,
+					capture
+				);
+			}
+			return result;
+		}
+
+		function removeElementClick()
+		{
+			var test = removeElementListener(
+				getBody(global.document),
+				"click",
+				dummyHandler,
+				false
+			);
+			return test === global["undefined"];
+		}
+
+		function isHostObject(
+			obj
+		)
+		{
+			return @LIBRARY_NAME@.is.hostObject(
+				obj
+			);
+		}
+
+		function checkEventObject()
+		{
+			var par = commonElements,
+				key = "event_test",
+				test = false;
+			if (isHostObject(par[key])) {
+				test = isHostObject(
+					eventObject
+				);
+			}
+			return test;
+		}
+
+		function checkEventTarget()
+		{
+			var par = commonElements,
+				key = "event_test",
+				test = false;
+			if (isHostObject(par[key])) {
+				test = eventTarget === par[key];
+			}
+			return test;
 		}
 
 		tests = [
@@ -1049,7 +1385,17 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			anchors,
 			allAnchors,
 			namedItem,
-			collection
+			collection,
+			bindNative,
+			unbindNative,
+			addWindowLoad,
+			removeWindowLoad,
+			addDocumentClick,
+			removeDocumentClick,
+			addElementClick,
+			removeElementClick,
+			checkEventObject,
+			checkEventTarget
 		];
 
 		function resetTestData()
@@ -1063,20 +1409,10 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			button
 		)
 		{
-			button.disabled = true;
-			button.onclick = function () {};
-		}
-
-		function createMessage(text)
-		{
-			var str = String(text);
-			if (str === "") {
-				str = "[an empty string]";
+			if (button) {
+				button.disabled = true;
+				button.onclick = function () {};
 			}
-			return @LIBRARY_NAME@.create.text(
-				global.document,
-				str
-			);
 		}
 
 		function addMessage(
@@ -1160,18 +1496,88 @@ if (typeof @LIBRARY_NAME@ === "object" && @LIBRARY_NAME@) {
 			runTests();
 		}
 
-		function endTests(evt)
+		function enableStartButton()
 		{
-			global.clearTimeout(tester);
+			var par = commonElements;
+			if (par.start) {
+				par.start.disabled = false;
+				par.start.onclick = startTests;
+			}
+		}
+
+		function addStartHandler()
+		{
+			var par = commonElements;
+			if (par.start) {
+				par.start.onclick = startTests;
+			}
+		}
+
+		function endTests(
+			evt
+		)
+		{
+			global.clearTimeout(
+				tester
+			);
 			tester = null;
-			commonElements.start.disabled = false;
-			commonElements.start.onclick = startTests;
+			enableStartButton();
+		}
+
+		function addStopHandler()
+		{
+			var par = commonElements;
+			if (par.stop) {
+				par.stop.onclick = endTests;
+			}
+		}
+
+		function getEventObject(
+			evt
+		)
+		{
+			return @LIBRARY_NAME@.event.getObject(
+				evt
+			);
+		}
+
+		function getEventTarget(
+			evt
+		)
+		{
+			return @LIBRARY_NAME@.event.getTarget(
+				evt
+			);
+		}
+
+		function runErrorTest(
+			evt
+		)
+		{
+			eventObject = getEventObject(
+				evt
+			);
+			eventTarget = getEventTarget(
+				evt
+			);
+		}
+
+		function addEventTestHandler()
+		{
+			var par = commonElements,
+				key = "event_test";
+			if (par[key]) {
+				par[key].onerror =
+					runErrorTest;
+				par[key].src = "null.null";
+			}
 		}
 
 		function addHandlers()
 		{
-			commonElements.start.onclick = startTests;
-			commonElements.stop.onclick = endTests;
+			addStartHandler();
+			addStopHandler();
+			addEventTestHandler();
 		}
 
 		addHandlers();

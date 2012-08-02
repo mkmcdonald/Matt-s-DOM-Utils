@@ -26,7 +26,7 @@
  */
 
 var Utils = Utils || {},
-	global = global || this;
+	global = this;
 
 /**
  * @title Matt's DOM Utils

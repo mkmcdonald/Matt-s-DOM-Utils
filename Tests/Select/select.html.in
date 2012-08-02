@@ -29,7 +29,9 @@
 						<code>@LIBRARY_NAME@.select.byName</code> returns an
 							array-like object.
 					</td>
-					<td id="result_1"></td>
+					<td id="result_1">
+						
+					</td>
 				</tr>
 				<tr id="test_2">
 					<td>2.</td>
@@ -37,7 +39,9 @@
 						<code>@LIBRARY_NAME@.select.byTagName</code> returns an
 							array-like object.
 					</td>
-					<td id="result_2"></td>
+					<td id="result_2">
+						
+					</td>
 				</tr>
 				<tr id="test_3">
 					<td>3.</td>
@@ -45,7 +49,9 @@
 						<code>@LIBRARY_NAME@.select.byClassName</code> returns an
 							array-like object.
 					</td>
-					<td id="result_3"></td>
+					<td id="result_3">
+						
+					</td>
 				</tr>
 				<tr id="test_4">
 					<td>4.</td>
@@ -53,7 +59,9 @@
 						<code>@LIBRARY_NAME@.select.byId</code> returns a
 							node-like object.
 					</td>
-					<td id="result_4"></td>
+					<td id="result_4">
+						
+					</td>
 				</tr>
 				<tr id="test_5">
 					<td>5.</td>
@@ -61,7 +69,9 @@
 						<code>@LIBRARY_NAME@.select.query</code> returns an
 							array-like object.
 					</td>
-					<td id="result_5"></td>
+					<td id="result_5">
+						
+					</td>
 				</tr>
 				<tr id="test_6">
 					<td>6.</td>
@@ -69,7 +79,9 @@
 						<code>@LIBRARY_NAME@.select.queryAll</code> returns an
 							array-like object.
 					</td>
-					<td id="result_6"></td>
+					<td id="result_6">
+						
+					</td>
 				</tr>
 				<tr id="test_7">
 					<td>7.</td>
@@ -77,7 +89,9 @@
 						<code>@LIBRARY_NAME@.select.head</code> returns a
 							node-like object.
 					</td>
-					<td id="result_7"></td>
+					<td id="result_7">
+						
+					</td>
 				</tr>
 				<tr id="test_8">
 					<td>8.</td>
@@ -85,7 +99,9 @@
 						<code>@LIBRARY_NAME@.select.body</code> returns a
 							node-like object.
 					</td>
-					<td id="result_8"></td>
+					<td id="result_8">
+						
+					</td>
 				</tr>
 				<tr id="test_9">
 					<td>9.</td>
@@ -93,7 +109,9 @@
 						<code>@LIBRARY_NAME@.select.images</code> returns a
 							node-like object.
 					</td>
-					<td id="result_9"></td>
+					<td id="result_9">
+						
+					</td>
 				</tr>
 				<tr id="test_10">
 					<td>10.</td>
@@ -101,7 +119,9 @@
 						<code>@LIBRARY_NAME@.select.allImages</code> returns an
 							array-like object.
 					</td>
-					<td id="result_10"></td>
+					<td id="result_10">
+						
+					</td>
 				</tr>
 				<tr id="test_11">
 					<td>11.</td>
@@ -109,7 +129,9 @@
 						<code>@LIBRARY_NAME@.select.embeds</code> returns a
 							node-like object.
 					</td>
-					<td id="result_11"></td>
+					<td id="result_11">
+						
+					</td>
 				</tr>
 				<tr id="test_12">
 					<td>12.</td>
@@ -117,7 +139,9 @@
 						<code>@LIBRARY_NAME@.select.allEmbeds</code> returns an
 							array-like object.
 					</td>
-					<td id="result_12"></td>
+					<td id="result_12">
+						
+					</td>
 				</tr>
 				<tr id="test_13">
 					<td>13.</td>
@@ -125,7 +149,9 @@
 						<code>@LIBRARY_NAME@.select.plugins</code> returns a
 							node-like object.
 					</td>
-					<td id="result_13"></td>
+					<td id="result_13">
+						
+					</td>
 				</tr>
 				<tr id="test_14">
 					<td>14.</td>
@@ -133,7 +159,9 @@
 						<code>@LIBRARY_NAME@.select.allPlugins</code> returns an
 							array-like object.
 					</td>
-					<td id="result_14"></td>
+					<td id="result_14">
+						
+					</td>
 				</tr>
 				<tr id="test_15">
 					<td>15.</td>
@@ -141,7 +169,9 @@
 						<code>@LIBRARY_NAME@.select.links</code> returns a
 							node-like object.
 					</td>
-					<td id="result_15"></td>
+					<td id="result_15">
+						
+					</td>
 				</tr>
 				<tr id="test_16">
 					<td>16.</td>
@@ -149,7 +179,9 @@
 						<code>@LIBRARY_NAME@.select.allLinks</code> returns an
 							array-like object.
 					</td>
-					<td id="result_16"></td>
+					<td id="result_16">
+						
+					</td>
 				</tr>
 				<tr id="test_17">
 					<td>17.</td>
@@ -157,7 +189,9 @@
 						<code>@LIBRARY_NAME@.select.forms</code> returns a
 							node-like object.
 					</td>
-					<td id="result_17"></td>
+					<td id="result_17">
+						
+					</td>
 				</tr>
 				<tr id="test_18">
 					<td>18.</td>
@@ -165,7 +199,9 @@
 						<code>@LIBRARY_NAME@.select.allForms</code> returns an
 							array-like object.
 					</td>
-					<td id="result_18"></td>
+					<td id="result_18">
+						
+					</td>
 				</tr>
 				<tr id="test_19">
 					<td>19.</td>
@@ -173,7 +209,9 @@
 						<code>@LIBRARY_NAME@.select.scripts</code> returns a
 							node-like object.
 					</td>
-					<td id="result_19"></td>
+					<td id="result_19">
+						
+					</td>
 				</tr>
 				<tr id="test_20">
 					<td>20.</td>
@@ -181,7 +219,9 @@
 						<code>@LIBRARY_NAME@.select.allScripts</code> returns an
 							array-like object.
 					</td>
-					<td id="result_20"></td>
+					<td id="result_20">
+						
+					</td>
 				</tr>
 				<tr id="test_21">
 					<td>21.</td>
@@ -189,7 +229,9 @@
 						<code>@LIBRARY_NAME@.select.applets</code> returns a
 							node-like object.
 					</td>
-					<td id="result_21"></td>
+					<td id="result_21">
+						
+					</td>
 				</tr>
 				<tr id="test_22">
 					<td>22.</td>
@@ -197,7 +239,9 @@
 						<code>@LIBRARY_NAME@.select.allApplets</code> returns an
 							array-like object.
 					</td>
-					<td id="result_22"></td>
+					<td id="result_22">
+						
+					</td>
 				</tr>
 				<tr id="test_23">
 					<td>23.</td>
@@ -205,7 +249,9 @@
 						<code>@LIBRARY_NAME@.select.anchors</code> returns a
 							node-like object.
 					</td>
-					<td id="result_23"></td>
+					<td id="result_23">
+						
+					</td>
 				</tr>
 				<tr id="test_24">
 					<td>24.</td>
@@ -213,7 +259,9 @@
 						<code>@LIBRARY_NAME@.select.allAnchors</code> returns an
 							array-like object.
 					</td>
-					<td id="result_24"></td>
+					<td id="result_24">
+						
+					</td>
 				</tr>
 				<tr id="test_25">
 					<td>25.</td>
@@ -221,7 +269,9 @@
 						<code>@LIBRARY_NAME@.select.namedItem</code> returns a
 							node-like object.
 					</td>
-					<td id="result_25"></td>
+					<td id="result_25">
+						
+					</td>
 				</tr>
 				<tr id="test_26">
 					<td>26.</td>
@@ -229,13 +279,17 @@
 						<code>@LIBRARY_NAME@.select.collection</code> returns an
 							array-like object.
 					</td>
-					<td id="result_26"></td>
+					<td id="result_26">
+						
+					</td>
 				</tr>
 			</tbody>
 		</table>
 		<div id="score_area">
 			<p>Score:</p>
-			<p id="score"></p>
+			<p id="score">
+				0 / 0
+			</p>
 		</div>
 		<hr>
 		<h2>Test Image</h2>
