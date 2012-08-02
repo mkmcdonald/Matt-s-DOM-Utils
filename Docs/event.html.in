@@ -70,6 +70,7 @@
 							<a href="#add_window_listener"
 								title="@LIBRARY_NAME@.event.addWindowListener"><code>@LIBRARY_NAME@.event.addWindowListener</code></a>
 						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
 						<p class="description">
 							Method that adds an event listener to a <code>Window</code>
 							object, utilising one of two available event models.
@@ -109,6 +110,7 @@
 							<a href="#add_document_listener"
 								title="@LIBRARY_NAME@.event.addDocumentListener"><code>@LIBRARY_NAME@.event.addDocumentListener</code></a>
 						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
 						<p class="description">
 							Method that adds an event listener to a <code>Document</code>
 							<a href="glossary.html#node_like_object"
@@ -153,6 +155,7 @@
 							<a href="#add_element_listener"
 								title="@LIBRARY_NAME@.event.addElementListener"><code>@LIBRARY_NAME@.event.addElementListener</code></a>
 						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
 						<p class="description">
 							Method that adds an event listener to an <code>Element</code>
 							<a href="glossary.html#node_like_object"
@@ -197,6 +200,7 @@
 							<a href="#remove_window_listener"
 								title="@LIBRARY_NAME@.event.removeWindowListener"><code>@LIBRARY_NAME@.event.removeWindowListener</code></a>
 						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
 						<p class="description">
 							Method that removes an event listener to a <code>Window</code>
 							object, utilising one of two available event models.
@@ -236,6 +240,7 @@
 							<a href="#remove_document_listener"
 								title="@LIBRARY_NAME@.event.removeDocumentListener"><code>@LIBRARY_NAME@.event.removeDocumentListener</code></a>
 						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
 						<p class="description">
 							Method that removes an event listener to a <code>Document</code>
 							<a href="glossary.html#node_like_object"
@@ -280,6 +285,7 @@
 							<a href="#remove_element_listener"
 								title="@LIBRARY_NAME@.event.removeElementListener"><code>@LIBRARY_NAME@.event.removeElementListener</code></a>
 						</h4>
+						@DOCS_HOST_DETECTION_WARNING@
 						<p class="description">
 							Method that adds an event listener to an <code>Element</code>
 							<a href="glossary.html#node_like_object"
