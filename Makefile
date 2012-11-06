@@ -38,8 +38,8 @@ COMPLETE_DEP = $(HEAD_FILE) $(RAISE) $(TYPES) $(IS) $(NODE) $(CREATE)\
 	$(EVENT)
 MAKE_COMPLETE = cat $(COMPLETE_DEP) > $(COMPLETE_FILE);
 
-COPY_LIB = find $(LIBRARY) -name "*.js" -type f | xargs\
-	cp -t $(UNCOMPRESSED);
+COPY_LIB = find $(LIBRARY) -name "*.js" -type f | xargs -J % \
+	cp % $(UNCOMPRESSED);
 MAKE_COMPRESS = $(COPY_LIB) ./compress.sh;
 
 MAKE_CLEAN = find $(BUILDS) -type f | xargs rm -f;
